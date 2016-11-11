@@ -1,0 +1,261 @@
+Command line:
+
+http://dev.mysql.com/doc/refman/5.7/en/connecting.html
+
+OSXAir:~ rduvalwa2$ /usr/local/mysql-5.7.9-osx10.9-x86_64/bin/mysql -h localhost -u root -p password
+Enter password: 
+
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 53
+Server version: 5.7.9 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+*** Jan 27 2015 ****
+Documentation:
+See http://dev.mysql.com/doc/connector-python/en/connector-python-api-errors-error.html
+http://dev.mysql.com/doc/connector-python/en/index.html
+http://dev.mysql.com/doc/connector-python/en/connector-python-reference.html
+
+MySql Download  uid rduvalwag  red1!Dawg
+	http://dev.mysql.com/downloads/connector/python/
+MySQL Connector/Python is a standardized database driver for Python platforms and development.
+Online Documentation:   
+	http://dev.mysql.com/doc/connector-python/en/connector-python-installation.html
+
+A. Installing Connector/Python on OS X Using a Disk Image
+Connector/Python OS X disk images (.dmg files) are available from the Connector/Python download site (see Section 4.1,
+ “Obtaining Connector/Python”).
+Download the .dmg file and install Connector/Python by opening it and double clicking the resulting .pkg file. 
+End location: 
+		C1246895-Air:site-packages rduvalwa2$ ls
+		README
+		mysql
+		mysql_connector_python-2.0.2-py2.7.egg-info
+		C1246895-Air:site-packages rduvalwa2$ pwd
+		/Library/Python/2.7/site-packages
+		C1246895-Air:site-packages rduvalwa2$ 
+
+B. Install package as usual
+
+C. Test  import mysql.connector
+C1246895-Air:Python rduvalwa2$ python
+Python 2.7.6 (default, Sep  9 2014, 15:04:36) 
+[GCC 4.2.1 Compatible Apple LLVM 6.0 (clang-600.0.39)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import mysql.connector
+>>> cnx = mysql.connector.connect(user='rduvalwa2',password='reddog',host='192.168.1.6',database='password')
+>>> cnx.close()
+>>> cnx = mysql.connector.connect(user='rduvalwa2',password='reddog',host='192.168.1.6',database='passwor')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/Library/Python/2.7/site-packages/mysql/connector/__init__.py", line 159, in connect
+    return MySQLConnection(*args, **kwargs)
+  File "/Library/Python/2.7/site-packages/mysql/connector/connection.py", line 129, in __init__
+    self.connect(**kwargs)
+  File "/Library/Python/2.7/site-packages/mysql/connector/connection.py", line 454, in connect
+    self._open_connection()
+  File "/Library/Python/2.7/site-packages/mysql/connector/connection.py", line 421, in _open_connection
+    self._ssl)
+  File "/Library/Python/2.7/site-packages/mysql/connector/connection.py", line 204, in _do_auth
+    self._auth_switch_request(username, password)
+  File "/Library/Python/2.7/site-packages/mysql/connector/connection.py", line 240, in _auth_switch_request
+    raise errors.get_exception(packet)
+mysql.connector.errors.ProgrammingError: 1049 (42000): Unknown database 'passwor'
+>>> cnx = mysql.connector.connect(user='rduvalwa2',password='reddog',host='192.168.1.6',database='password')
+>>> cnx.close()
+
+3.4
+C1246895-Air:site-packages rduvalwa2$ python3.4
+Python 3.4.2 (v3.4.2:ab2c023a9432, Oct  5 2014, 20:42:22) 
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import mysql.connector
+>>> cnx = mysql.connector.connect(user='rduvalwa2',password='reddog',host='192.168.1.6',database='password')
+>>> cnx.close()
+
+B. Try this:
+C1246895-Air:site-packages rduvalwa2$ pip3.4 install https://dev.mysql.com/get/Downloads/Connector-Python/mysql-connector-python-2.0.2.tar.gz
+Downloading/unpacking https://dev.mysql.com/get/Downloads/Connector-Python/mysql-connector-python-2.0.2.tar.gz
+  Downloading mysql-connector-python-2.0.2.tar.gz (209kB): 209kB downloaded
+  Running setup.py (path:/var/folders/yv/dbpkqmlj30b5h2f7xxvn1fw40000gq/T/pip-5_kqomup-build/setup.py) egg_info for package from https://dev.mysql.com/get/Downloads/Connector-Python/mysql-connector-python-2.0.2.tar.gz
+    
+Installing collected packages: mysql-connector-python
+  Running setup.py install for mysql-connector-python
+    
+Successfully installed mysql-connector-python
+Cleaning up...
+C1246895-Air:site-packages rduvalwa2$ 
+
+Results in:
+C1246895-Air:site-packages rduvalwa2$ ls
+README
+__pycache__
+_markerlib
+easy_install.py
+mysql
+mysql_connector_python-2.0.2-py3.4.egg-info
+pip
+pip-1.5.6.dist-info
+pkg_resources.py
+setuptools
+setuptools-2.1.dist-info
+C1246895-Air:site-packages rduvalwa2$ pwd
+/Library/Frameworks/Python.framework/Versions/3.4/lib/python3.4/site-packages
+C1246895-Air:site-packages rduvalwa2$ 
+
+
+*** Old **********
+Lesson File: C:\Python_Code\PythonSync\Lesson_10_Python_DataBase
+
+A. Getting a Mysql driver for Python 3.4
+   1.  http://stackoverflow.com/questions/23376103/python-3-4-0-with-mysql-database
+		Summary:
+		MySQLdb does not support Python 3 but it is not the only MySQL driver for Python.
+		You can try using PyMySQL,http://www.pymysql.org/. 
+		It is a pure python MySQL driver, which means it is slower, 
+		but it does not require a compiled C component or MySQL libraries and 
+		header files to be installed on client machines. 
+		The latest version on pypi, https://pypi.python.org/pypi/PyMySQL,
+		0.6.2, has Python 3.4 support.
+        Another option is simply to use another database system like PostgreSQL.
+
+		2. Install pip https://pypi.python.org/pypi/pip   A tool for installing and managing Python packages.
+			Quickstart - install pip https://pip.pypa.io/en/latest/installing.html
+			Installation
+			Python & OS Support
+				pip works with CPython versions 2.6, 2.7, 3.1, 3.2, 3.3, 3.4 and also pypy.
+				pip works on Unix/Linux, OS X, and Windows.
+			Note
+			Python 2.5 was supported through v1.3.1, and Python 2.4 was supported through v1.1.
+			Install pip
+				To install or upgrade pip, securely download get-pip.py.
+				(download and move file to $PYTHON_HOME
+					Then run the following (which may require administrator access):
+					python get-pip.py
+					C:\Python34>python get-pip.py
+						Requirement already up-to-date: pip in c:\python34\lib\site-packages
+						Cleaning up...
+					C:\Python34>
+****** Issue downloading https://github.com/PyMySQL/PyMySQL/tarball/  getting curl and ssh to work
+$ # X.X is the desired PyMySQL version (e.g. 0.5 or 0.6).
+$ curl -L https://github.com/PyMySQL/PyMySQL/tarball/pymysql-X.X | tar xz
+$ cd PyMySQL*
+$ python setup.py install
+$ # The folder PyMySQL* can be safely removed now.
+
+		2.  http://www.pymysql.org/
+       Requirements
+		Python -- one of the following:
+        CPython >= 2.6 or >= 3.3
+			PyPy >= 2.0
+			IronPython 2.7
+		MySQL Server -- one of the following:
+			MySQL >= 4.1
+			MariaDB >= 5.1
+			
+		Installation
+		The last stable release is available on PyPI and can be installed with pip:
+		$ pip install PyMySQL
+		Alternatively (e.g. if pip is not available), a tarball can be downloaded from GitHub and installed with Setuptools:
+		$ # X.X is the desired PyMySQL version (e.g. 0.5 or 0.6).
+		$ curl -L https://github.com/PyMySQL/PyMySQL/tarball/pymysql-X.X | tar xz
+		$ cd PyMySQL*
+		$ python setup.py install
+		$ # The folder PyMySQL* can be safely removed now.
+
+		
+*****************************************************************************
+
+Python Data Base Notes
+
+1) Download and install
+	https://dev.mysql.com/downloads/connector/python/
+	https://dev.mysql.com/doc/connector-python/en/connector-python-installation.html
+		4.1 Obtaining Connector/Python
+		Packages are available at the Connector/Python download site. For some packaging formats, there are different packages
+		for different versions of Python; choose the one appropriate for the version of Python installed on your system.
+		http://dev.mysql.com/downloads/connector/python/
+		a)  Connector/Python 2.1.3  Looking for previous GA versions?
+			Selected Platform:  Mac OS X 10.9 (Architecture Independent), DMG Archive  Python	2.1.3	201.3K	
+            Download  (mysql-connector-python-2.1.3-osx10.9.dmg)	MD5: f11d2171283081d33fae5e579b04974c
+		b)  mysql-connector-python-2.1.3-osx10.9.dmg
+			- typical Mac package install
+			- install location:  /Library/Python/2.7/site-packages/mysql
+			- I copied the mysql from the installed location to:
+			/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/mysql
+			
+2) Usage:
+	a) Python 3.5
+	Example 1:
+	https://dev.mysql.com/doc/connector-python/en/connector-python-examples.html
+	>>> import mysql.connector
+	>>> cnx = mysql.connector.connect(user='root',password='blu4jazz',host='127.0.0.1',database='Music')
+	>>> cnx.close()
+
+	Example 2:	
+	>>> from mysql.connector import (connection)
+	>>> cnx = connection.MySQLConnection(user='root', password='blue4jazz', host='localhost',database='Music')
+	Traceback (most recent call last):
+  	File "<stdin>", line 1, in <module>
+ 	File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/mysql/connector/connection.py", line 95, in __init__self.connect(**kwargs)
+ 	File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/mysql/connector/abstracts.py", line 719, in connect self._open_connection()
+  	File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/mysql/connector/connection.py", line 210, in _open_connectionself._ssl)
+  	File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/mysql/connector/connection.py", line 144, in _do_auth self._auth_switch_request(username, password)
+  	File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/mysql/connector/connection.py", line 177, in _auth_switch_request raise errors.get_exception(packet)
+	mysql.connector.errors.ProgrammingError: 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+	
+	Example 3:
+	>>> cnx = mysql.connector.connect(user='root',password='blu4jazz',host='localhost',database='Music')
+	>>> cnx.close()
+	
+	Example 4:
+	>>> cnx = mysql.connector.connect(user='root',password='blu4jazzxx',host='localhost',database='Music')
+	Traceback (most recent call last):
+  	File "<stdin>", line 1, in <module>
+  	File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/mysql/connector/__init__.py", line 179, in connect
+    	return MySQLConnection(*args, **kwargs)
+  	File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/mysql/connector/connection.py", line 95, in __init__
+    	self.connect(**kwargs)
+  	File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/mysql/connector/abstracts.py", line 719, in connect
+    	self._open_connection()
+  	File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/mysql/connector/connection.py", line 210, in _open_connection
+    	self._ssl)
+  	File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/mysql/connector/connection.py", line 144, in _do_auth
+    	self._auth_switch_request(username, password)
+  	File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/mysql/connector/connection.py", line 177, in _auth_switch_request
+    	raise errors.get_exception(packet)
+	mysql.connector.errors.ProgrammingError: 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+	
+	b) Python 2.7.9
+	Example 1:
+	https://dev.mysql.com/doc/connector-python/en/connector-python-examples.html
+	>>> import mysql.connector
+	>>> cnx = mysql.connector.connect(user='root',password='blu4jazz',host='127.0.0.1',database='Music')
+	>>> cnx.close()
+
+	Example 2:	
+	>>> from mysql.connector import (connection)
+	>>> cnx = connection.MySQLConnection(user='root', password='blue4jazz', host='127.0.0.1',database='Music')
+	Traceback (most recent call last):
+  	File "<stdin>", line 1, in <module>
+ 	File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/mysql/connector/connection.py", line 95, in __init__self.connect(**kwargs)
+ 	File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/mysql/connector/abstracts.py", line 719, in connect self._open_connection()
+  	File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/mysql/connector/connection.py", line 210, in _open_connectionself._ssl)
+  	File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/mysql/connector/connection.py", line 144, in _do_auth self._auth_switch_request(username, password)
+  	File "/Library/Frameworks/Python.framework/Versions/3.5/lib/python3.5/mysql/connector/connection.py", line 177, in _auth_switch_request raise errors.get_exception(packet)
+	mysql.connector.errors.ProgrammingError: 1045 (28000): Access denied for user 'root'@'localhost' (using password: YES)
+	
+********************************************************************************			
+		
+		
+		

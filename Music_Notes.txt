@@ -1,0 +1,29 @@
+Music code Notes:
+
+1.  Links
+	https://dev.mysql.com/doc/connector-python/en/
+	
+	
+Reference files:
+
+/Users/rduvalwa2/DevTools/JAVA_SOURCE/MUX
+
+OSXAir:~ rduvalwa2$ find . -name *.py | grep [C,c]onnect
+./DevTools/eclipse-luna/workspace/OReilly_Python/DB_Connector/src/bad_db_info.py
+./DevTools/eclipse-luna/workspace/OReilly_Python/DB_Connector/src/db_info.py
+./DevTools/eclipse-luna/workspace/OReilly_Python/DB_Connector/src/my_sql_example.py
+./DevTools/eclipse-luna/workspace/OReilly_Python/DB_Connector/src/my_sql_example_error.py
+./Workspace/GitRepos/OReilly_Python_New.git/DB_Connector/src/bad_db_info.py
+./Workspace/GitRepos/OReilly_Python_New.git/DB_Connector/src/db_info.py
+./Workspace/GitRepos/OReilly_Python_New.git/DB_Connector/src/my_sql_example.py
+./Workspace/GitRepos/OReilly_Python_New.git/DB_Connector/src/my_sql_example_error.py
+./Workspace/OReilly_Python_X/DB_Connector/src/bad_db_info.py
+./Workspace/OReilly_Python_X/DB_Connector/src/db_info.py
+./Workspace/OReilly_Python_X/DB_Connector/src/my_sql_example.py
+./Workspace/OReilly_Python_X/DB_Connector/src/my_sql_example_error.py
+./Workspace/OReilly_Python_XX/DB_Connector/src/bad_db_info.py
+./Workspace/OReilly_Python_XX/DB_Connector/src/db_info.py
+./Workspace/OReilly_Python_XX/DB_Connector/src/my_sql_example.py
+./Workspace/OReilly_Python_XX/DB_Connector/src/my_sql_example_error.py
+./Workspace/Py_Servers/sockets/apps/socket_connect.py
+OSXAir:~ rduvalwa2$ 
