@@ -1,0 +1,449 @@
+/Users/rduvalwa2/AA_Code_Projects/Code/Java/src/Projects/Audio_Demo/JavaSoundDemo/audio/22-new.aif
+/Users/rduvalwa2/AA_Code_Projects/Code/Java/src/Projects/AudioFile/flute+hrn+mrmba.aif
+/Users/rduvalwa2/AA_Code_Projects/Code/Java/src/Projects/Sound/flute+hrn+mrmba.aiff
+/Users/rduvalwa2/AA_Code_Projects/Code/Java/src/Projects/Sound/Sound/flute+hrn+mrmba.aiff
+/Users/rduvalwa2/DevTools/Code/Java/src/Projects/AudioFile/flute+hrn+mrmba.aif
+/Users/rduvalwa2/DevTools/Code/Java/src/Projects/Sound/flute+hrn+mrmba.aiff
+/Users/rduvalwa2/DevTools/Code/Java/src/Projects/Sound/Sound/flute+hrn+mrmba.aiff
+/Users/rduvalwa2/Music/01 Massachusettes.aiff
+/Users/rduvalwa2/Music/02 New York Mining Disaster 1941.aiff
+/Users/rduvalwa2/Music/03 Spicks And Specks.aiff
+/Users/rduvalwa2/Music/04 To Love Somebody.aiff
+/Users/rduvalwa2/Music/05 Words.aiff
+/Users/rduvalwa2/Music/07 Every Christian Lion Hearted Man.aiff
+/Users/rduvalwa2/Music/08 First Of May.aiff
+/Users/rduvalwa2/Music/09 Holliday.aiff
+/Users/rduvalwa2/Music/10 I Cant see Nobody.aiff
+/Users/rduvalwa2/Music/11 I Started A Joke.aiff
+/Users/rduvalwa2/Music/12 I Got To Get A Message To You.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Hard Days Night/A Hard Days Night.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Hard Days Night/And I Love.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Hard Days Night/Beatle_Hard_DaysNight_1.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Hard Days Night/Beatle_Hard_DaysNight_2.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Hard Days Night/Can't Buy Me Love.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Hard Days Night/I Should Have Know Better.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Hard Days Night/I Should Have Known Better.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Hard Days Night/I'll Cry Instead.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Hard Days Night/I'm Happy Just to Dance with You.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Hard Days Night/If I Fell.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles IV/Bad Boy.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles IV/Beatles IV side 1.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles IV/Beatles IV side 2.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles IV/Dizzy Miss Lizzy.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles IV/Eight Day a Week.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles IV/Every Little Thing.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles IV/I Don't Want to Spoil the Party.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles IV/Kansas City.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles IV/Tell Me What You See.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles IV/What You're Doing.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles IV/Words of Love.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles IV/Yes It Is.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles IV/You Like Me to Much.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Songs Pictures Stories/Anna.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Songs Pictures Stories/Ask Me Why.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Songs Pictures Stories/Baby It You.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Songs Pictures Stories/Beatles_SongsHistoryPictures_1.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Songs Pictures Stories/Beatles_SongsPicStories_2.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Songs Pictures Stories/Boys.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Songs Pictures Stories/Chains.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Songs Pictures Stories/Do You Want To Know A Secret.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Songs Pictures Stories/I Saw Her Standing There.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Songs Pictures Stories/Misery.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Songs Pictures Stories/Please Please.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Songs Pictures Stories/Taste Of Honey.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Songs Pictures Stories/There's A Place.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Songs Pictures Stories/Twist And Shout.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Yesterday and Today/Act Naturally.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Yesterday and Today/And Your Bird Can Sing.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Yesterday and Today/Day Tripper.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Yesterday and Today/Doctor Roberts.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Yesterday and Today/Drive My Car.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Yesterday and Today/I'm Only Sleeping.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Yesterday and Today/If I Needed someone.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Yesterday and Today/Norwegian Wood.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Yesterday and Today/Nowhere Man.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Yesterday and Today/We Can Work It Out.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Yesterday and Today/What Goes On.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Yesterday and Today/Yesterday and Today 1.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Yesterday and Today/Yesterday and Today 2.aiff
+/Users/rduvalwa2/Music/Beattles/Beatles Yesterday and Today/Yesterday.aiff
+/Users/rduvalwa2/Music/Beattles/Help/Another Girl.aiff
+/Users/rduvalwa2/Music/Beattles/Help/Beatles Help 1.aiff
+/Users/rduvalwa2/Music/Beattles/Help/Beatles Help 2.aiff
+/Users/rduvalwa2/Music/Beattles/Help/Help.aiff
+/Users/rduvalwa2/Music/Beattles/Help/I Need You.aiff
+/Users/rduvalwa2/Music/Beattles/Help/The Chase(orchestra).aiff
+/Users/rduvalwa2/Music/Beattles/Help/The Night Before.aiff
+/Users/rduvalwa2/Music/Beattles/Help/Ticket To Ride.aiff
+/Users/rduvalwa2/Music/Beattles/Help/You're Going to Lose That Girl.aiff
+/Users/rduvalwa2/Music/Beattles/Help/You've Got to Hide Your Love Away.aiff
+/Users/rduvalwa2/Music/Beattles/Magical Mystery Tour/All You Need Is Love.aiff
+/Users/rduvalwa2/Music/Beattles/Magical Mystery Tour/Baby You're a Rich Man.aiff
+/Users/rduvalwa2/Music/Beattles/Magical Mystery Tour/Blue Jay Way.aiff
+/Users/rduvalwa2/Music/Beattles/Magical Mystery Tour/Flying.aiff
+/Users/rduvalwa2/Music/Beattles/Magical Mystery Tour/Fool On The Hill.aiff
+/Users/rduvalwa2/Music/Beattles/Magical Mystery Tour/Hello Goodbye.aiff
+/Users/rduvalwa2/Music/Beattles/Magical Mystery Tour/I Am the Walrus.aiff
+/Users/rduvalwa2/Music/Beattles/Magical Mystery Tour/Magical Mystery Tour 1.aiff
+/Users/rduvalwa2/Music/Beattles/Magical Mystery Tour/Magical Mystery Tour 2.aiff
+/Users/rduvalwa2/Music/Beattles/Magical Mystery Tour/Magical Mystery Tour.aiff
+/Users/rduvalwa2/Music/Beattles/Magical Mystery Tour/Penny Lane.aiff
+/Users/rduvalwa2/Music/Beattles/Magical Mystery Tour/Stawberry Fields Forever.aiff
+/Users/rduvalwa2/Music/Beattles/Magical Mystery Tour/Your Mother Should Know.aiff
+/Users/rduvalwa2/Music/Beattles/Meet The Beatles/All I've Got To Do.aiff
+/Users/rduvalwa2/Music/Beattles/Meet The Beatles/All My Loving.aiff
+/Users/rduvalwa2/Music/Beattles/Meet The Beatles/Don't Bother Me.aiff
+/Users/rduvalwa2/Music/Beattles/Meet The Beatles/Hold Me Tight.aiff
+/Users/rduvalwa2/Music/Beattles/Meet The Beatles/I Saw Her Standing There.aiff
+/Users/rduvalwa2/Music/Beattles/Meet The Beatles/I Wanna Be Your Man.aiff
+/Users/rduvalwa2/Music/Beattles/Meet The Beatles/I Want To Hold Your Hand.aiff
+/Users/rduvalwa2/Music/Beattles/Meet The Beatles/It Won't Be Long.aiff
+/Users/rduvalwa2/Music/Beattles/Meet The Beatles/Little Child.aiff
+/Users/rduvalwa2/Music/Beattles/Meet The Beatles/Meet The beatles 1.aiff
+/Users/rduvalwa2/Music/Beattles/Meet The Beatles/Meet The Beatles_2.aiff
+/Users/rduvalwa2/Music/Beattles/Meet The Beatles/Not A Second Time.aiff
+/Users/rduvalwa2/Music/Beattles/Meet The Beatles/This Boy.aiff
+/Users/rduvalwa2/Music/Beattles/Meet The Beatles/Till There Was You.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul/Drive My Car.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul/Girl.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul/I'm Looking Through You.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul/If I Needed Someone.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul/In My Life.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul/Michelle.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul/Norwegian Wood.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul/Nowhere Man.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul/Run For Your Life.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul/The Word.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul/Think For Yourself.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul/Wait.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul/What Goes On.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul/You Wont See Me.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul North American/Girl.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul North American/I'm Looking Through You.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul North American/I've Just Seen a Face.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul North American/In My Life.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul North American/It's Only Love.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul North American/Michelle.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul North American/Norwegian Wood.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul North American/Rubber Soul North 1.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul North American/Rubber Soul North 2.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul North American/Run For Your Life.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul North American/The Word.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul North American/Think For Yourself.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul North American/Wait.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul North American/You Won't See Me.aiff
+/Users/rduvalwa2/Music/Beattles/Rubber Soul North American old/12 Run For Your Life.aiff
+/Users/rduvalwa2/Music/Beattles/Something New/And I Love Her.aiff
+/Users/rduvalwa2/Music/Beattles/Something New/Any Time At All.aiff
+/Users/rduvalwa2/Music/Beattles/Something New/Beatels_SomethingNew_2.aiff
+/Users/rduvalwa2/Music/Beattles/Something New/Beatles_sometingNew_1.aiff
+/Users/rduvalwa2/Music/Beattles/Something New/I'll Cry Instead.aiff
+/Users/rduvalwa2/Music/Beattles/Something New/I'm Happy Just To Dance With You.aiff
+/Users/rduvalwa2/Music/Beattles/Something New/If I Fell.aiff
+/Users/rduvalwa2/Music/Beattles/Something New/Komm, Gib Mir Deine Hand.aiff
+/Users/rduvalwa2/Music/Beattles/Something New/Match Box.aiff
+/Users/rduvalwa2/Music/Beattles/Something New/Slow Down.aiff
+/Users/rduvalwa2/Music/Beattles/Something New/Tell Me Why.aiff
+/Users/rduvalwa2/Music/Beattles/Something New/Things We Said Today.aiff
+/Users/rduvalwa2/Music/Beattles/Something New/When I Get Home.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles Again/Can't Buy Me Love.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles Again/Don't Let Me Down.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles Again/Hey Jude 2.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles Again/Hey Jude.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles Again/Hey Jude_1.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles Again/I Should Have Known Better.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles Again/Lady Madonna.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles Again/Old Brown Shoe.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles Again/Paper Back Writer.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles Again/Rain.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles Again/Revolution.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles Again/The Ballad of John and Yoko.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles' Second Album/Beatles' Second Album 1.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles' Second Album/Beatles' Second Album 2.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles' Second Album/Devil In Her Heart.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles' Second Album/I Call Your Name.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles' Second Album/I'll Get You.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles' Second Album/Long Tall Sally.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles' Second Album/Money.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles' Second Album/Please Mister Postman.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles' Second Album/Roll Over Beethoven.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles' Second Album/She Loves You.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles' Second Album/Thank You Girl.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles' Second Album/You Cant Do That.aiff
+/Users/rduvalwa2/Music/Beattles/The Beatles' Second Album/Yoy Really Got A Hold On Me.aiff
+/Users/rduvalwa2/Music/BGs_MrNatural/BeeGees_MrNatural_2.aiff
+/Users/rduvalwa2/Music/BGs_MrNatural/BGs_Mr_Natural_1.aiff
+/Users/rduvalwa2/Music/BGs_MrNatural/BGs_MrNatural_2.aiff
+/Users/rduvalwa2/Music/BGs_MrNatural/Charade.aiff
+/Users/rduvalwa2/Music/BGs_MrNatural/Dogs.aiff
+/Users/rduvalwa2/Music/BGs_MrNatural/Give a Hand Take a Hand.aiff
+/Users/rduvalwa2/Music/BGs_MrNatural/Had Alot of Love Last Night.aiff
+/Users/rduvalwa2/Music/BGs_MrNatural/Heavy Breathing.aiff
+/Users/rduvalwa2/Music/BGs_MrNatural/I Can't let You Go.aiff
+/Users/rduvalwa2/Music/BGs_MrNatural/Lost In Your Love.aiff
+/Users/rduvalwa2/Music/BGs_MrNatural/Mr Natural.aiff
+/Users/rduvalwa2/Music/BGs_MrNatural/The Voices.aiff
+/Users/rduvalwa2/Music/BGs_MrNatural/Throw a Penny.aiff
+/Users/rduvalwa2/Music/Criss Cross 2.aiff
+/Users/rduvalwa2/Music/Criss Cross.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Beatles/Something New/01 Side 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Best Of The BeeGees/01 Massachusettes.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Best Of The BeeGees/02 New York Mining Disaster 1941.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Best Of The BeeGees/03 Spicks And Specks.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Best Of The BeeGees/04 To Love Somebody.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Best Of The BeeGees/05 Words.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Best Of The BeeGees/07 Every Christian Lion Hearted Man.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Best Of The BeeGees/08 First Of May.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Best Of The BeeGees/09 Holliday.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Best Of The BeeGees/10 I Cant see Nobody.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Best Of The BeeGees/11 I Started A Joke.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Best Of The BeeGees/12 I Got To Get A Message To You.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Mr. Natural/01 Charade.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Mr. Natural/01 side 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Mr. Natural/02 side 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Mr. Natural/02 Throw a Penny.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Mr. Natural/03 The Voices.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Mr. Natural/04 Give a Hand Take a Hand.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Mr. Natural/05 Dogs.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Mr. Natural/06 Mr Natural.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Mr. Natural/07 Lost In Your Love.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Mr. Natural/08 I Can't Let You Go.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Mr. Natural/09 Heavy Breathing.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Bee Gees/Mr. Natural/10 Had Alot of Love Last Night.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles Again(Hey Jude)/01 Can't Buy Me Love.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles Again(Hey Jude)/02 I should Have Known Better.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles Again(Hey Jude)/03 Paper Back Writer.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles Again(Hey Jude)/04 Rain.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles Again(Hey Jude)/05 Lady Madonna.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles Again(Hey Jude)/06 Revolution.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles Again(Hey Jude)/07 Hey Jude.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles Again(Hey Jude)/08 Old Brown Shoe.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles Again(Hey Jude)/09 Don't Let Me Down.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles Again(Hey Jude)/10 The Ballad of John and Yoko.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles IV/01 Kansas City.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles IV/01 side1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles IV/02 Eitght Days a Week.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles IV/02 side 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles IV/03 You Like Me to Much.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles IV/04 Bad Boy.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles IV/05 I Don't Want to Spoil the Party.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles IV/06 Words of Love.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles IV/07 What You're Doing.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles IV/08 Yes It Is.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles IV/09 Dizzy Miss Lizzy.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles IV/10 Tell Me What You See.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles IV/11 Every Little Thing.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles Song History Pictures/01 Side 2 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles Song History Pictures/01 Side 2 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles Song History Pictures/01 Side 2 3.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles Song History Pictures/01 Side 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles Song History Pictures/01 Side1 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles Song History Pictures/01 Side1 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles Song History Pictures/01 Side1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles Song History Pictures/06 Ask Me Why.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles Song History Pictures/12 Twist And Shout.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles' Second Album/01 Roll Over Beethoven.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles' Second Album/02 Thank You Girl.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles' Second Album/03 You Really Got A Hold On Me.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles' Second Album/04 Devil In Her Heart.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles' Second Album/05 Money.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles' Second Album/06 You Can't Do That You 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles' Second Album/06 You Can't Do That You.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles' Second Album/07 Long Tall Sally.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles' Second Album/08 I Call Your Name.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles' Second Album/09 Please Mister Poster Man.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles' Second Album/10 I'll Get You.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Beatles' Second Album/11 She Loves You.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Hard Days Night/01 A Hard Days Night.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Hard Days Night/01 side 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Hard Days Night/02 I Should Have Known Better.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Hard Days Night/03 I'll Cry Instead.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Hard Days Night/04 I Should Have Know Better.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Hard Days Night/04 I'm Happy Just to Dance with You.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Hard Days Night/05 If I Fell.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Hard Days Night/06 And I Love Her.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Hard Days Night/07 Can't Buy Me Love.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Hard Days Night/side 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Help/01 Help.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Help/01 side 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Help/01 side 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Help/02 The Night Before.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Help/03 You've Got to Hide Your Love Away.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Help/04 I Need You.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Help/05 Another Girl.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Help/06 Ticket To Ride.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Help/07 You're Going to Lose That Girl.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Help/08 The Chase(orchestra).aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Let It Be/Let It Be - iTunes LP (v2.1).itlp/TuneKit/sounds/Exit.aif
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Let It Be/Let It Be - iTunes LP (v2.1).itlp/TuneKit/sounds/Limit.aif
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Let It Be/Let It Be - iTunes LP (v2.1).itlp/TuneKit/sounds/Selection.aif
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Let It Be/Let It Be - iTunes LP (v2.1).itlp/TuneKit/sounds/SelectionChange.aif
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Magical Mystery Tour/01 Magical Mystery Tour.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Magical Mystery Tour/01 Side 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Magical Mystery Tour/01 Side 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Magical Mystery Tour/02 Fool On The Hill.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Magical Mystery Tour/03 Flying.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Magical Mystery Tour/04 Blue Jay Way.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Magical Mystery Tour/05 Your Mother Should Know.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Magical Mystery Tour/06 I Am the Walrus.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Magical Mystery Tour/07 Hello Goodbye.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Magical Mystery Tour/08 Strawberry Fields Forever.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Magical Mystery Tour/09 Penny Lane.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Magical Mystery Tour/10 Baby You're a Rich Man.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Magical Mystery Tour/11 All You Need Is Love.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/01 I Want To Hold Your Hand 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/01 I Want To Hold Your Hand.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/01 Side1 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/01 Side1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/01 Side2 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/01 Side2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/02 I Saw Here Standing There 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/02 I Saw Here Standing There.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/03 This Boy 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/03 This Boy.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/04 It Won't Be Long 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/04 It Won't Be Long.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/05 All I've Got To Do 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/05 All I've Got To Do.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/06 All My Loving 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/06 All My Loving.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/07 Don't Bother Me 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/07 Don't Bother Me.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/08 Little Child 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/08 Little Child.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/09 Till There Was You 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/09 Till There Was You.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/10 Hold Me Tight 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/10 Hold Me Tight.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/11 I Wanna Be Your Man 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/11 I Wanna Be Your Man.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/12 Not A Second Time 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Meet The Beatles/12 Not A Second Time.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/01 Drive My Car.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/02 Norwegian Wood 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/02 Norwegian Wood 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/02 Norwegian Wood 3.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/02 Norwegian Wood.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/03 You Wont See Me 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/03 You Wont See Me.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/04 Nowhere Man 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/04 Nowhere Man 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/04 Nowhere Man.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/05 Think For Yourself 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/05 Think For Yourself.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/06 The Word 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/06 The Word 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/06 The Word.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/07 Michelle 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/07 Michelle.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/08 What Goes On 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/08 What Goes On 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/08 What Goes On.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/09 Girl 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/09 Girl.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/10 I'm Looking Through You.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/10 Im Looking Thru You 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/10 Im Looking Thru You.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/11 In My Life 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/11 In My Life.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/11 Wait 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/11 Wait 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/11 Wait.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/13 If I Needed Someone 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/13 If I Needed Someone.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/14 Run For Your Life 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul/14 Run For Your Life.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul (North American)/01 I've Just Seen a Face.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul (North American)/01 side 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul (North American)/02 Norwegian Wood.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul (North American)/02 side 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul (North American)/03 You Won't See Me.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul (North American)/04 Think For Yourself.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul (North American)/05 The Word.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul (North American)/06 Michelle.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul (North American)/07 It's Only Love.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul (North American)/08 Girl.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul (North American)/09 I'm Looking Through You.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul (North American)/10 In My Life.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul (North American)/11 Wait.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Rubber Soul (North American)/12 Run For Your Life.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/01 I'll Cry Instead 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/01 I'll Cry Instead.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/01 Side 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/02 Things We Said Today 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/02 Things We Said Today.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/03 Any Time At All 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/03 Any Time At All.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/04 When I Get Home 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/04 When I Get Home.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/05 Slow Down 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/05 Slow Down.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/06 Match Box 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/06 Match Box.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/07 Tell Me Why 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/07 Tell Me Why.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/08 And I Love Her 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/08 And I Love Her.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/09 I'm Happy Just To Dance With You 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/09 I'm Happy Just To Dance With You.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/10 If I Fell 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/10 If I Fell.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/11 Komm, Gib Mir Deine Hand 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Something New/11 Komm, Gib Mir Deine Hand.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/The Beatles ‎– Songs, Pictures And Stories Of The Fabulous/01 I Saw Her Standing There 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/The Beatles ‎– Songs, Pictures And Stories Of The Fabulous/01 I Saw Her Standing There.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/The Beatles ‎– Songs, Pictures And Stories Of The Fabulous/02 Misey.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/The Beatles ‎– Songs, Pictures And Stories Of The Fabulous/03 Anna 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/The Beatles ‎– Songs, Pictures And Stories Of The Fabulous/03 Anna.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/The Beatles ‎– Songs, Pictures And Stories Of The Fabulous/04 chains 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/The Beatles ‎– Songs, Pictures And Stories Of The Fabulous/04 chains.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/The Beatles ‎– Songs, Pictures And Stories Of The Fabulous/05 Boys 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/The Beatles ‎– Songs, Pictures And Stories Of The Fabulous/05 Boys.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/The Beatles ‎– Songs, Pictures And Stories Of The Fabulous/06 Ask Me Why.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/The Beatles ‎– Songs, Pictures And Stories Of The Fabulous/07 Please Please 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/The Beatles ‎– Songs, Pictures And Stories Of The Fabulous/07 Please Please.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/The Beatles ‎– Songs, Pictures And Stories Of The Fabulous/08 Baby It You 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/The Beatles ‎– Songs, Pictures And Stories Of The Fabulous/08 Baby It You.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/The Beatles ‎– Songs, Pictures And Stories Of The Fabulous/09 Do You Want To Know A Secret 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/The Beatles ‎– Songs, Pictures And Stories Of The Fabulous/09 Do You Want To Know A Secret.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/The Beatles ‎– Songs, Pictures And Stories Of The Fabulous/10 Taste Of Honey 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/The Beatles ‎– Songs, Pictures And Stories Of The Fabulous/10 Taste Of Honey.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/The Beatles ‎– Songs, Pictures And Stories Of The Fabulous/11 There's A Place 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/The Beatles ‎– Songs, Pictures And Stories Of The Fabulous/11 There's A Place.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/The Beatles ‎– Songs, Pictures And Stories Of The Fabulous/12 Twist And Shout.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/01 Drive My Car 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/01 Drive My Car 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/01 Drive My Car.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/01 Side1 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/01 Side1 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/01 Side1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/01 Side2 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/01 Side2 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/01 Side2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/02 I'm Only Sleeping 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/02 I'm Only Sleeping.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/03 Nowhere Man 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/03 Nowhere Man 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/03 Nowhere Man.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/04 Doctor Roberts.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/05 Yesterday 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/05 Yesterday 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/05 Yesterday.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/06 Act Naturally.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/07 And Your Bird Can Sing 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/07 And Your Bird Can Sing 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/07 And Your Bird Can Sing.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/08 If I Needed Someone.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/09 We Can Work It Out 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/09 We Can Work It Out 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/09 We Can Work It Out.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/10 What Goes On.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/11 Day Tripper 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/11 Day Tripper 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Beatles/Yesterday and Today/11 Day Tripper.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Who/Tommy/01 The Who-Tommy Side 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Who/Tommy/02 The Who-Tommy Side 2.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Who/Tommy/03 The Who-Tommy Side 3.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Who/Tommy/04 The Who-Tommy Side 4.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Thelonious Monk/Criss Cross/01 Side 1.aiff
+/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Thelonious Monk/Criss Cross/02 Side 2.aiff

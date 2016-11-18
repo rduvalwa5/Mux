@@ -5,10 +5,10 @@ this file provides user info for login
 USERNAME="rduvalwa2"
 PASSWORD="blu4jazz"
 HOST="OSXAir.home.home"
-DATABASE="password"
+DATABASE="Music"
 PORT=3306
 
-login_info = {
+login_info_Albums = {
               'host': HOST,
               'user': USERNAME,
               'password': PASSWORD,
@@ -16,21 +16,10 @@ login_info = {
               'port':PORT
               }
 
-
-'''
-On C1246895-J
-CREATE USER 'rduvalwa2'@'C1246895-Air.ftrdhcpuser.net' IDENTIFIED BY 'reddog';
-
-GRANT ALL ON password.* TO 'rduvalwa2'@'C1246895-Air.ftrdhcpuser.net';
-commit;
-
-select * from mysql.user;
-'''
-
-login_info2 = {
+login_info_Artist = {
               'host': "localhost",
               'user': "root",
               'password': "blu4jazz",
-              'database': "password",
+              'database': "Music",
               'port':"3306"
               }
