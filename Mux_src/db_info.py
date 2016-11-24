@@ -4,8 +4,9 @@ this file provides user info for login
 '''
 USERNAME="rduvalwa2"
 PASSWORD="blu4jazz"
-HOST="OSXAir.home.home"
-DATABASE="password"
+#HOST="OSXAir.home.home"
+HOST= "localhost"
+DATABASE="Music"
 PORT=3306
 
 login_info = {
@@ -32,5 +33,13 @@ login_info2 = {
               'user': "root",
               'password': "blu4jazz",
               'database': "password",
+              'port':"3306"
+              }
+
+login_info_xps = {
+              'host': "c1246895-xps",
+              'user': "rduvalwa2",
+              'password': "blu4jazz",
+              'database': "Music",
               'port':"3306"
               }
