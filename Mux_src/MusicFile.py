@@ -184,9 +184,10 @@ class musicFile:
                         albums.append((a,album))
                         album_songs = os.listdir(base + "/" + a + "/" + album)
                         for song in album_songs:
-                                print(index,":",a,";",album,";",song)
+#                                print(index,":",a,";",album,";",song)
+                                songs.append((index,a,album,song))
                                 index = index + 1
-        
+        return songs
         
     
 if __name__  == '__main__':
@@ -271,7 +272,9 @@ if __name__  == '__main__':
     '''
         def test_songList(self):
             mux = musicFile()
-            mux.get_songs()
+            mysongs = mux.get_songs()
+            for item in mysongs:
+                print(item)
            
     unittest.main()    
     '''
