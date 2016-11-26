@@ -32,3 +32,11 @@ login_info_xps = {
               'database': "Music",
               'port':"3306"
               }
+
+login_info_osx = {
+              'host': "OSXAir.home.home",
+              'user': "rduvalwa2",
+              'password': "blu4jazz",
+              'database': "Music",
+              'port':"3306"
+              }
