@@ -41,13 +41,13 @@ class musicFile:
 
     def get_select_Album(self, fields, constraints):
         if os.uname().nodename == 'C1246895-osx.home':
-            print(os.uname().nodename)
+#            print(os.uname().nodename)
             conn = mysql.connector.Connect(**login_info_osx)
         else:
-            print(os.uname().nodename)
+#            print(os.uname().nodename)
             conn = mysql.connector.Connect(**login_info_root)
         dbCursor = conn.cursor()
-        statement = "select " + fields + " from Music.Albums " + constraints + ";" #where Albums.index = 3;"
+        statement = "select " + fields + " from Music.artist_albums " + constraints + ";" #where Albums.index = 3;"
         dbCursor.execute(statement)
         row = dbCursor.fetchone()
         dbCursor.close()
@@ -98,7 +98,6 @@ class musicFile:
         selectStatement = "select * from Music.Artis where Artis.index = " + str(indexDb) + ";"
         cursor.execute(selectStatement) 
         result = cursor.fetchone()
-        print("Result ", result)
         cursor.close()
         conn.close()
         return result
@@ -119,7 +118,6 @@ class musicFile:
         cursor.execute(deleteStatement) 
         cursor.execute(selectStatement) 
         result2 = cursor.fetchone()
-        print("Result 2 ", result2)
         cursor.close()
         conn.close()
 
@@ -134,7 +132,6 @@ class musicFile:
             conn = mysql.connector.Connect(**login_info_root)
         cursor = conn.cursor()
         self.statement = statement
-        print(statement)
         cursor.execute(statement)
         row = cursor.fetchone()
         while row is not None:
@@ -152,7 +149,6 @@ class musicFile:
             if os.path.isdir(self.base + "/" + directory):
                 artist.append((index,directory))
                 index = index + 1
-#                print("directory: ",directory)
         return artist
     
     def get_albums(self):
@@ -168,7 +164,6 @@ class musicFile:
                     if album != '.DS_Store':
                         albums.append((index,artist,album))
                         index = index + 1
-#                    print(album)
         return albums
 
     def get_songs(self):
@@ -185,7 +180,6 @@ class musicFile:
                         albums.append((a,album))
                         album_songs = os.listdir(base + "/" + a[1] + "/" + album)
                         for song in album_songs:
-#                                print(index,":",a,";",album,";",song)
                                 songs.append((index,a[1],album,song))
                                 index = index + 1
         return songs
@@ -206,12 +200,11 @@ class musicFile:
         allSongs = self.get_songs()
         for song in allSongs:
                 insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(song[0]) + ",\"" + self.server + "\",\"" + self.base + "\",\""  + song[1] + "\",\""  + song[2] + "\",\""  + song[3] + "\",\""  + "rock" + "\",\""  + "download" + "\")"
-#                print(insertStatement)
                 cursor.execute( insertStatement)
         countStatement = "SELECT count(*) FROM music.album2songs;"        
         cursor.execute(countStatement)
         count = cursor.fetchone()
-        print(count[0])
+        print(count)
         commit = "commit;"
         cursor.execute(commit)
         print("done")
@@ -234,12 +227,37 @@ class musicFile:
         allAbums = self.get_albums()
         for album in allAbums:
                 insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.genre,artist_albums.type)  values(" + str(album[0]) + ",\""  + album[1] + "\",\""  + album[2] + "\",\""  + "rock" + "\",\""  + "download" + "\")"
-#                print(insertStatement)
                 cursor.execute( insertStatement)
         countStatement = "SELECT count(*) FROM music.artist_albums;"        
         cursor.execute(countStatement)
         count = cursor.fetchone()
         print(count[0])
+        commit = "commit;"
+        cursor.execute(commit)
+        print("done")
+        cursor.close()
+        conn.close()
+
+    def add_album(self,album,artist,tipe):
+        '''
+        This code recurses thru the "base" path and captures the artist, album and song
+        '''
+        if os.uname().nodename == 'C1246895-osx.home':
+            self.server = os.uname().nodename
+            conn = mysql.connector.Connect(**login_info_osx)
+        else:
+            self.server = os.uname().nodename
+            conn = mysql.connector.Connect(**login_info_root)
+        cursor = conn.cursor()
+        maxIndex =  self.get_max_index("artist_albums")
+        index = maxIndex[0]
+        newIndex = index + 1
+        print(newIndex)
+        insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.type)  values(" + str(newIndex) + ",\""  + artist + "\",\""  + album + "\",\""  + tipe + "\")"
+        print(insertStatement)
+        cursor.execute(insertStatement)
+        count = cursor.fetchone()
+#        print(count[0])
         commit = "commit;"
         cursor.execute(commit)
         print("done")
@@ -262,7 +280,6 @@ class musicFile:
         allArtist = self.get_music_artist()
         for artist in allArtist:
                 insertStatement = "INSERT into Music.artist (artist.index, artist.artist,artist.genre)  values(" + str(artist[0]) + ",\"" + artist[1] + "\",\""  + "rock" + "\")"
-#                print(insertStatement)
                 cursor.execute( insertStatement)
         countStatement = "SELECT count(*) FROM music.artist;"        
         cursor.execute(countStatement)
@@ -287,16 +304,19 @@ if __name__  == '__main__':
 #        print(album)
 
 # ************
-    mux.initial_insert_into_album2songs()
+#    mux.initial_insert_into_album2songs()
 # ************
-    mux.initial_insert_into_artist_albums()
+#    mux.initial_insert_into_artist_albums()
 # ************
-    mux.initial_insert_into_artist()
+#    mux.initial_insert_into_artist()
 # ************
 
 #    statement = "SELECT count(*) FROM music.album2songs;"
 #    mux.select_song_by_criteria(statement)
-    
+
+#    mux.add_album('Planet Waves', 'Bob Dylan', 'Vinyl')
+#    mux.add_album('Nashville Skyline', 'Bob Dylan', 'Vinyl')
+
     '''
     import unittest
     class TestConnector(unittest.TestCase):
@@ -304,7 +324,7 @@ if __name__  == '__main__':
         def test_get_select_ArtistAlbums(self):
             fields = "count(*)"
             constraints = " "
-            expected = 751
+            expected = 869
             mux = musicFile()
             result = mux.get_select_Album(fields, constraints)
             self.assertEqual(expected,result[0])
@@ -313,7 +333,7 @@ if __name__  == '__main__':
         def test_get_select_Album(self):
             fields = "count(*)"
             constraints = " "
-            expected = 748
+            expected = 869
             mux = musicFile()
             result = mux.get_select_ArtistAlbums(fields, constraints)
             self.assertEqual(expected,result[0])
@@ -321,7 +341,7 @@ if __name__  == '__main__':
         def test_get_select_Artist(self):
             fields = "count(*)"
             constraints = " "
-            expected = 441
+            expected = 511
             mux = musicFile()
             result = mux.get_select_Artist(fields, constraints)
             self.assertEqual(expected,result[0])
@@ -329,58 +349,46 @@ if __name__  == '__main__':
         def testGetMaxArtist(self):
             mux = musicFile()
             table = 'Artist'
-            expected = 441
-#            mux.get_max_index(table)
+            expected = 510
             result = mux.get_max_index(table)
-            print(result[0])
             self.assertEqual(expected,result[0])
             
         def testGetMaxAlbums(self):
             mux = musicFile()
-            table = 'Albums'
-            expected = 751
-#            mux.get_max_index(table)
+            table = 'artist_albums'
+            expected = 868
             result = mux.get_max_index(table)
-            print(result[0])
             self.assertEqual(expected,result[0])
-
+ 
         def testGetMaxSongs(self):
             mux = musicFile()
-            table = 'songs'
-            expected = 6578
-#            mux.get_max_index(table)
+            table = 'album2songs'
+            expected = 6569
             result = mux.get_max_index(table)
-            print(result[0])
             self.assertEqual(expected,result[0])
-            
+ 
+           
         def testGetMaxAlbumSongs(self):
             mux = musicFile()
-            table = 'album_songss'
-            expected = 6578
-#            mux.get_max_index(table)
+            table = 'album2songs'
+            expected = 6569
             result = mux.get_max_index(table)
-            print(result[0])
             self.assertEqual(expected,result[0]) 
        
         def test_get_dirs_artist(self):
             mux = musicFile()
             base =   "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
-            musicArtist = mux.get_music_artist(base)
-            for artist in musicArtist:
-                    print("Artist: ",artist)
-            print("size: ", len(musicArtist))
-    
+            musicArtist = mux.get_music_artist()
+            self.assertIn( (409, 'The Charlie Daniels Band'), musicArtist, "Charlie Daniels Band not there")
+
         def test_albumList(self):
             mux = musicFile()
             alms = mux.get_albums()
-            for a in alms:
-                print(a)
-    
+            self.assertIn((802, "Tim O'Brien", 'Cornbread Nation'), alms, "Cornbread Nation not present")
+
         def test_songList(self):
             mux = musicFile()
             mysongs = mux.get_songs()
-            for item in mysongs:
-                print(item)
-           
+            self.assertIn((0, '18 South', 'Soulful Southern Roots Music', '01 Late Night Ramble.mp3'), mysongs, "'01 Late Night Ramble.mp3' song is missing")       
     unittest.main()    
         '''
