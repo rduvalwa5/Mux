@@ -24,6 +24,19 @@ class musicFile:
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home'       
     
+    def get_record_count(self,table):
+        statement = "select count(*) from " + table   + ";"
+        if os.uname().nodename == 'C1246895-osx.home':
+            conn = mysql.connector.Connect(**login_info_osx)
+        else:
+            conn = mysql.connector.Connect(**login_info_root)
+        
+        cursor = conn.cursor()
+        cursor.execute(statement)
+        count = cursor.fetchone()
+        conn.close()   
+        return count        
+    
     def get_max_index(self, table):
         self.table = '`Music`.' + table
         self.tableIndex = table + "." + 'Index'
@@ -310,6 +323,14 @@ if __name__  == '__main__':
 # ************
 #    mux.initial_insert_into_artist()
 # ************
+
+    albumCount = mux.get_record_count("`Music`.artist_albums")
+    songCount = mux.get_record_count("`Music`.album2songs")
+    artistCount = mux.get_record_count("`Music`.artist")
+
+    print("Artist: ", artistCount ," Songs: ", songCount, " Albums: ", albumCount )
+
+
 
 #    statement = "SELECT count(*) FROM music.album2songs;"
 #    mux.select_song_by_criteria(statement)
