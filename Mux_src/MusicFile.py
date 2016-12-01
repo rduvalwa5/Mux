@@ -73,12 +73,14 @@ class musicFile:
         else:
             conn = mysql.connector.Connect(**login_info_root)
         dbCursor = conn.cursor()
-        statement = "select " + fields + " from Music.Artist " + constraints + ";" #where Albums.index = 3;"
+        statement = "select "+ fields + "from Music.artist where " + constraints + ";" #where Albums.index = 3;"
+        print(statement)
         dbCursor.execute(statement)
         row = dbCursor.fetchone()
-        dbCursor.close()
-        conn.close()
-        return row        
+#        print(row)
+        return row 
+        dbCursor.close()     
+        conn.close()       
     
     def get_select_ArtistAlbums(self, fields, constraints):
         if os.uname().nodename == 'C1246895-osx.home':
@@ -251,31 +253,6 @@ class musicFile:
         cursor.close()
         conn.close()
 
-    def add_album(self,album,artist,tipe):
-        '''
-        This code recurses thru the "base" path and captures the artist, album and song
-        '''
-        if os.uname().nodename == 'C1246895-osx.home':
-            self.server = os.uname().nodename
-            conn = mysql.connector.Connect(**login_info_osx)
-        else:
-            self.server = os.uname().nodename
-            conn = mysql.connector.Connect(**login_info_root)
-        cursor = conn.cursor()
-        maxIndex =  self.get_max_index("artist_albums")
-        index = maxIndex[0]
-        newIndex = index + 1
-        print(newIndex)
-        insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.type)  values(" + str(newIndex) + ",\""  + artist + "\",\""  + album + "\",\""  + tipe + "\")"
-        print(insertStatement)
-        cursor.execute(insertStatement)
-        count = cursor.fetchone()
-#        print(count[0])
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
-        cursor.close()
-        conn.close()
 
     def initial_insert_into_artist(self): 
         '''
@@ -303,12 +280,121 @@ class musicFile:
         print("done")
         cursor.close()
         conn.close()
+
+ 
+    def add_album(self,album,artist,tipe):
+        '''
+        This code recurses thru the "base" path and captures the artist, album and song
+        '''
+        if os.uname().nodename == 'C1246895-osx.home':
+            self.server = os.uname().nodename
+            conn = mysql.connector.Connect(**login_info_osx)
+        else:
+            self.server = os.uname().nodename
+            conn = mysql.connector.Connect(**login_info_root)
+        cursor = conn.cursor()
+        maxIndex =  self.get_max_index("artist_albums")
+        index = maxIndex[0]
+        newIndex = index + 1
+        print(newIndex)
+        insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.type)  values(" + str(newIndex) + ",\""  + artist + "\",\""  + album + "\",\""  + tipe + "\")"
+        print(insertStatement)
+        cursor.execute(insertStatement)
+        count = cursor.fetchone()
+#        print(count[0])
+        commit = "commit;"
+        cursor.execute(commit)
+        print("done")
+        cursor.close()
+        conn.close()
+
         
+#  Not done
+    def delete_album(self,artist):
+        if os.uname().nodename == 'C1246895-osx.home':
+            self.server = os.uname().nodename
+            conn = mysql.connector.Connect(**login_info_osx)
+        else:
+            self.server = os.uname().nodename
+            conn = mysql.connector.Connect(**login_info_root)
+        cursor = conn.cursor()
+        selectStatement = "select artist.index from Music.artist where artist.artist like " + "'" + artist + "';"
+        print(selectStatement)
+        cursor.execute(selectStatement)
+        row = cursor.fetchone()
+        index = row[0]
+        print(index)
+        deleteStatement = "Delete from `Music`.artist where `Music`.artist.index = " + str(index) + ";"       
+        print(deleteStatement)
+        cursor.execute(deleteStatement)
+        commit = "commit;"
+        cursor.execute(commit)
+        print("done")
+        cursor.close()
+        conn.close()
+        
+        
+    def add_artist(self,artist,genre):
+        if os.uname().nodename == 'C1246895-osx.home':
+            self.server = os.uname().nodename
+            conn = mysql.connector.Connect(**login_info_osx)
+        else:
+            self.server = os.uname().nodename
+            conn = mysql.connector.Connect(**login_info_root)
+        cursor = conn.cursor()
+        maxIndex =  self.get_max_index("artist")
+        index = maxIndex[0]
+        newIndex = index + 1
+        print(newIndex) 
+        insertStatement = "INSERT into Music.artist (artist.index, artist.artist,artist.genre)  values(" + str(newIndex) + ",\""  + artist  + "\",\""  + genre + "\")"
+        print(insertStatement)
+        cursor.execute(insertStatement)
+        commit = "commit;"
+        cursor.execute(commit)
+        print("done")
+        cursor.close()
+        conn.close()
+
+    def delete_artist(self,artist):
+        if os.uname().nodename == 'C1246895-osx.home':
+            self.server = os.uname().nodename
+            conn = mysql.connector.Connect(**login_info_osx)
+        else:
+            self.server = os.uname().nodename
+            conn = mysql.connector.Connect(**login_info_root)
+        cursor = conn.cursor()
+        selectStatement = "select artist.index from Music.artist where artist.artist like " + "'" + artist + "';"
+        print(selectStatement)
+        cursor.execute(selectStatement)
+        row = cursor.fetchone()
+        index = row[0]
+        print(index)
+        deleteStatement = "Delete from `Music`.artist where `Music`.artist.index = " + str(index) + ";"       
+        print(deleteStatement)
+        cursor.execute(deleteStatement)
+        commit = "commit;"
+        cursor.execute(commit)
+        print("done")
+        cursor.close()
+        conn.close()
+
+
     
 if __name__  == '__main__':
     mux = musicFile()
-    
-#    artistList = mux.get_music_artist()
+
+    albumCount = mux.get_record_count("`Music`.artist_albums")
+    songCount = mux.get_record_count("`Music`.album2songs")
+    artistCount = mux.get_record_count("`Music`.artist")
+    print("Artist: ", artistCount ," Songs: ", songCount, " Albums: ", albumCount )
+
+
+
+#    fields = "Music.artist.index, Music.artist.artist "
+#    criteria = " Music.artist.artist like \'Bob Dylan\'"   
+#    result = mux.get_select_Artist(fields,criteria)
+#    print(result)
+
 #    for artist in artistList:
 #        print(artist)
 
@@ -324,20 +410,32 @@ if __name__  == '__main__':
 #    mux.initial_insert_into_artist()
 # ************
 
-    albumCount = mux.get_record_count("`Music`.artist_albums")
-    songCount = mux.get_record_count("`Music`.album2songs")
-    artistCount = mux.get_record_count("`Music`.artist")
+    '''
+    Test add artist, select artist, delete artist
+    '''
+    arts = "Joe Blow"
+    mux.add_artist(arts,"Rock")  
+    fields = " * "
+    criteria = "Music.artist.artist like \'Joe Blow\'"
+    print(mux.get_select_Artist(fields,criteria))
+    mux.delete_artist(arts)   
+    print(mux.get_select_Artist(fields,criteria))
+    
+    
+    
+    
 
-    print("Artist: ", artistCount ," Songs: ", songCount, " Albums: ", albumCount )
-
-
-
-#    statement = "SELECT count(*) FROM music.album2songs;"
-#    mux.select_song_by_criteria(statement)
-
-#    mux.add_album('Planet Waves', 'Bob Dylan', 'Vinyl')
-#    mux.add_album('Nashville Skyline', 'Bob Dylan', 'Vinyl')
-
+#    albumCount = mux.get_record_count("`Music`.artist_albums")
+#    songCount = mux.get_record_count("`Music`.album2songs")
+#    artistCount = mux.get_record_count("`Music`.artist")
+#    print("Artist: ", artistCount ," Songs: ", songCount, " Albums: ", albumCount )
+    
+    
+#    albumCount = mux.get_record_count("`Music`.artist_albums")
+#    songCount = mux.get_record_count("`Music`.album2songs")
+#    artistCount = mux.get_record_count("`Music`.artist")
+#    print("Artist: ", artistCount ," Songs: ", songCount, " Albums: ", albumCount )
+    
     '''
     import unittest
     class TestConnector(unittest.TestCase):

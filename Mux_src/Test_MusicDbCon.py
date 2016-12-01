@@ -64,43 +64,40 @@ class TestMusicDb(unittest.TestCase):
     def testGetMaxArtist(self):
             mux = musicFile()
             table = 'Artist'
-            expected = 441
+            expected = 535
 #            mux.get_max_index(table)
             result = mux.get_max_index(table)
             print(result[0])
             self.assertEqual(expected,result[0])
-            
+               
     def testGetMaxAlbums(self):
             mux = musicFile()
-            table = 'Albums'
-            expected = 751
+            table = 'artist_albums'
+            expected = 900
 #            mux.get_max_index(table)
             result = mux.get_max_index(table)
             print(result[0])
             self.assertEqual(expected,result[0])
-
+    
     def testGetMaxSongs(self):
             mux = musicFile()
-            table = 'songs'
-            expected = 6578
+            table = 'album2songs'
+            expected = 6589
 #            mux.get_max_index(table)
             result = mux.get_max_index(table)
             print(result[0])
             self.assertEqual(expected,result[0])
-            
+        
     def testGetMaxAlbumSongs(self):
             mux = musicFile()
-            table = 'album_songss'
-            expected = 6578
+            table = 'artist_albums'
+            expected = 900
 #            mux.get_max_index(table)
             result = mux.get_max_index(table)
             print(result[0])
             self.assertEqual(expected,result[0])           
-       
+    '''       
     def test_music_Albums_Rows(self):
-        '''
-        Test access local database Albums table
-        '''
         db = mysql.connector.Connect(**login_info_rd)
         cursor = db.cursor()
         statement = "select count(*) from Music.Albums;"
@@ -112,9 +109,6 @@ class TestMusicDb(unittest.TestCase):
         db.close()
     
     def test_Music_Artist_RowsJ(self):
-        '''
-        Test access local database Artist table
-        '''
         db = mysql.connector.Connect(**login_info_root)
         cursor = db.cursor()
 #        statement = "select uid from active_passwords where ap in ('password_db');"
@@ -127,9 +121,6 @@ class TestMusicDb(unittest.TestCase):
         db.close()
     
     def test_Music_Album_values(self):
-        '''
-        Test access local database Albums table specific record access
-        '''
         db = mysql.connector.Connect(**login_info_rd)
         cursor = db.cursor()
 #        statement = "select album from Music.Albums where Albums.index = 3;"
@@ -146,9 +137,6 @@ class TestMusicDb(unittest.TestCase):
 
  
     def test_Crud_AlbumTable(self):
-        '''
-        Test Create, Review, Update and Delete to Music.Albums table
-        '''
         albumName = "Test Album"
         db = mysql.connector.Connect(**login_info_rd)
         cursor = db.cursor()
@@ -178,9 +166,6 @@ class TestMusicDb(unittest.TestCase):
         db.close()
  
     def test_MusicSongs_By_Criteria(self):
-        '''
-        Test access local database Albums table specific record access
-        '''
         statement = 'select Music.songs.song from Music.songs where songs.type = \'tape\';'
         mux = musicFile()
         result = mux.select_song_by_criteria(statement)
@@ -189,9 +174,6 @@ class TestMusicDb(unittest.TestCase):
                 self.assertCountEqual('Purple Rain.mp3',item,'Not there')
         
     def test_get_select_Albums(self):
-        '''
-        Test access local database Albums table
-        '''
         fields = "count(*)"
         constraints = " "
         expected = 751
@@ -200,9 +182,6 @@ class TestMusicDb(unittest.TestCase):
         self.assertEqual(expected,result[0])
 
     def test_get_select_ArtistAlbums(self):
-        '''
-        Test access local database ArtistAlbums table
-        '''
         fields = "count(*)"
         constraints = " "
         expected = 748
@@ -211,28 +190,14 @@ class TestMusicDb(unittest.TestCase):
         self.assertEqual(expected,result[0])
 
     def test_get_select_Artist(self):
-        '''
-        Test access local database Artist table
-        '''
         fields = "count(*)"
         constraints = " "
         expected = 441
         mux = musicFile()
         result = mux.get_select_Artist(fields, constraints)
         self.assertEqual(expected,result[0])
-
+'''
 
 if __name__ == "__main__":
     unittest.main()
     
-    '''
-    Finding files... done.
-    Importing test modules ... done.
-    
-    ap
-    uid
-    pwd
-    AP is  password_db UID rduval pwd  reddog
-    Row is  40
-
-    '''
