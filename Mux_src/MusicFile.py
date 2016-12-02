@@ -88,7 +88,8 @@ class musicFile:
         else:
             conn = mysql.connector.Connect(**login_info_root)
         dbCursor = conn.cursor()
-        statement = "select " + fields + " from Music.Artist_Albums" + constraints + ";" #where Albums.index = 3;"
+        statement = "select " + fields + " from Music.artist_albums" + constraints + ";"
+        print(statement)
         dbCursor.execute(statement)
         row = dbCursor.fetchone()
         dbCursor.close()
@@ -310,7 +311,7 @@ class musicFile:
 
         
 #  Not done
-    def delete_album(self,artist):
+    def delete_album(self,album):
         if os.uname().nodename == 'C1246895-osx.home':
             self.server = os.uname().nodename
             conn = mysql.connector.Connect(**login_info_osx)
@@ -318,13 +319,13 @@ class musicFile:
             self.server = os.uname().nodename
             conn = mysql.connector.Connect(**login_info_root)
         cursor = conn.cursor()
-        selectStatement = "select artist.index from Music.artist where artist.artist like " + "'" + artist + "';"
+        selectStatement = "select artist_albums.index from Music.artist_albums where artist_albums.album like " + "'" + album + "';"
         print(selectStatement)
         cursor.execute(selectStatement)
         row = cursor.fetchone()
         index = row[0]
         print(index)
-        deleteStatement = "Delete from `Music`.artist where `Music`.artist.index = " + str(index) + ";"       
+        deleteStatement = "Delete from `Music`.artist_albums where `Music`.artist_albums.index = " + str(index) + ";"       
         print(deleteStatement)
         cursor.execute(deleteStatement)
         commit = "commit;"
@@ -421,7 +422,19 @@ if __name__  == '__main__':
     mux.delete_artist(arts)   
     print(mux.get_select_Artist(fields,criteria))
     
-    
+    '''
+    Test add album, select album, delete album
+    '''  
+    arts = "Joe Blow"
+    album = "The Best of Joe Blow"
+    tipe = "Country"
+    mux.add_album(album,arts,tipe)
+    fields = " * "
+    criteria = " where Music.artist_albums.album like '" + album + "'"
+    result = mux.get_select_ArtistAlbums(fields,criteria)
+    print(result)
+    mux.delete_album(album)   
+    print(mux.get_select_ArtistAlbums(fields,criteria))
     
     
 
