@@ -95,48 +95,7 @@ class musicFile:
         dbCursor.close()
         conn.close()
         return row        
-
     
-    def create_Artist(self,artist):
-        self.artist = artist
-        if os.uname().nodename == 'C1246895-osx.home':
-            conn = mysql.connector.Connect(**login_info_osx)
-        else:
-            conn = mysql.connector.Connect(**login_info_root)
-        cursor = conn.cursor()
-        max_index_statement = "select max(Artist.Index) from Music.Artist; "
-        cursor.execute( max_index_statement)
-        maxIndex = cursor.fetchone()
-        indexDb = maxIndex[0] + 1      
-#        insertStatement = "INSERT into Music.Albums (Albums.Album,Albums.Index,Albums.`Artist Id`) values(\""+albumName+"\"," + str(indexDb) + ",801)"
-        insertStatement = "INSERT into Music.Artist (Artist.Artist, Artist.Index) values(\""+self.artist+"\"," + str(indexDb) + ")"
-        cursor.execute( insertStatement)
-        selectStatement = "select * from Music.Artis where Artis.index = " + str(indexDb) + ";"
-        cursor.execute(selectStatement) 
-        result = cursor.fetchone()
-        cursor.close()
-        conn.close()
-        return result
-
-
-    def delete_record_Artist(self,artist):
-        self.artist = artist
-        self.index = artist
-        if os.uname().nodename == 'C1246895-osx.home':
-            conn = mysql.connector.Connect(**login_info_osx)
-        else:
-            conn = mysql.connector.Connect(**login_info_root)
-        cursor = conn.cursor()
-        selectStatement = "select Index from Music.Artis where Artis.Artist = " + artist + ";"
-        cursor.execute(selectStatement) 
-        index = cursor.fetchone()
-        deleteStatement = "Delete from Music.Artist where Artist.index = " + str(index) + ";"
-        cursor.execute(deleteStatement) 
-        cursor.execute(selectStatement) 
-        result2 = cursor.fetchone()
-        cursor.close()
-        conn.close()
-
     def select_song_by_criteria(self,statement):
         '''
         Select a song or songs by criteria.
@@ -182,7 +141,7 @@ class musicFile:
                         index = index + 1
         return albums
 
-    def get_songs(self):
+    def get_all_songs(self):
         index = 0
         base =   "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         albums = []
@@ -199,6 +158,45 @@ class musicFile:
                                 songs.append((index,a[1],album,song))
                                 index = index + 1
         return songs
+    
+    def get_all_songs_type_genre(self):
+        if os.uname().nodename == 'C1246895-osx.home':
+            conn = mysql.connector.Connect(**login_info_osx)
+        else:
+            conn = mysql.connector.Connect(**login_info_root)
+        cursor = conn.cursor()
+        sync_statement = "UPDATE `Music`.album2songs t1 INNER JOIN `Music`.artist_albums t2 ON t1.album = t2.album SET t1.genre = t2.genre, t1.type = t2.type;"
+        cursor.execute(sync_statement)
+        commit = "commit;"
+        cursor.execute(commit)    
+    
+    def get_songs(self,artist,album='all'):
+        base =   "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
+        albums = []
+        songs = []
+        newIndex = 0
+        if os.path.isdir(base + "/" + artist):
+                artist_albums = os.listdir(base + "/" + artist)
+                print("artist_albums: ", artist_albums)
+                if album == 'all':
+                    for al in artist_albums:
+                        if al != '.DS_Store':
+                            albums.append((artist,al))
+                            album_songs = os.listdir(base + "/" + artist + "/" + al)
+                            for song in album_songs:
+                                    songs.append((newIndex,artist,al,song))
+                elif  album != 'all':
+                    for al in artist_albums:
+                        if al == album:
+                            if al != '.DS_Store':
+                                albums.append((artist,al))
+                                album_songs = os.listdir(base + "/" + artist + "/" + al)
+                                for song in album_songs:
+                                    songs.append((newIndex,artist,al,song))
+                        
+            
+        return songs
+
 
     def initial_insert_into_album2songs(self): 
         '''
@@ -213,7 +211,7 @@ class musicFile:
         cursor = conn.cursor()
         trunkate = "truncate  music.album2songs;"
         cursor.execute(trunkate)
-        allSongs = self.get_songs()
+        allSongs = self.get_all_songs()
         for song in allSongs:
                 insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(song[0]) + ",\"" + self.server + "\",\"" + self.base + "\",\""  + song[1] + "\",\""  + song[2] + "\",\""  + song[3] + "\",\""  + "rock" + "\",\""  + "download" + "\")"
                 cursor.execute( insertStatement)
@@ -226,6 +224,108 @@ class musicFile:
         print("done")
         cursor.close()
         conn.close()
+
+    def add_songs(self,artist,album='all'):
+        '''
+        This code adds song
+        '''
+        if os.uname().nodename == 'C1246895-osx.home':
+            self.server = os.uname().nodename
+            conn = mysql.connector.Connect(**login_info_osx)
+        else:
+            self.server = os.uname().nodename
+            conn = mysql.connector.Connect(**login_info_root)
+        cursor = conn.cursor()
+        maxIndex =  self.get_max_index("album2songs")
+        index = maxIndex[0]
+        newIndex = index + 1
+        print(newIndex)
+        if album == 'all': 
+            songs = self.get_songs(artist)
+        else:
+            songs = self.get_songs(artist,album)
+        print(songs)
+        for song in songs:
+                insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(newIndex) + ",\"" + self.server + "\",\"" + self.base + "\",\""  + song[1] + "\",\""  + song[2] + "\",\""  + song[3] + "\",\""  + "rock" + "\",\""  + "download" + "\")"
+                print(insertStatement)
+                cursor.execute( insertStatement)
+                newIndex = newIndex + 1
+        countStatement = "SELECT count(*) FROM music.album2songs;"        
+        cursor.execute(countStatement)
+        count = cursor.fetchone()
+        print(count)
+        commit = "commit;"
+        cursor.execute(commit)
+        print("done")
+        cursor.close()
+        conn.close()
+
+    
+    def delete_songs(self,artist,albumin='all',songin="all"):
+        if os.uname().nodename == 'C1246895-osx.home':
+            self.server = os.uname().nodename
+            conn = mysql.connector.Connect(**login_info_osx)
+        else:
+            self.server = os.uname().nodename
+            conn = mysql.connector.Connect(**login_info_root)
+        cursor = conn.cursor()   
+        delete_songs = self.get_songs(artist,albumin)
+        print("delete songs: ", delete_songs)  
+        index = 0
+        if albumin == 'all':
+            if songin == 'all':   
+                for song in delete_songs:
+                        selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
+                        print(selectStatement)
+                        cursor.execute(selectStatement)
+                        row = cursor.fetchone()
+                        index = row[0]  
+                        print("delete index: ", index)         
+                        deleteStatement = "Delete from `Music`.album2songs where `Music`.album2songs.index = " + str(index) + ";"  
+                        print(deleteStatement)
+                        cursor.execute(deleteStatement)
+            else:
+                for song in delete_songs:  
+                    if song[0] == 'songin':
+                        selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
+                        print(selectStatement)
+                        cursor.execute(selectStatement)
+                        row = cursor.fetchone()
+                        index = row[0]           
+                        deleteStatement = "Delete from `Music`.album2songs where `Music`.album2songs.index = " + str(index) + ";"  
+                        print(deleteStatement)
+                        cursor.execute(deleteStatement)        
+        else:
+            if albumin != 'all': 
+                if songin == 'all':  
+                    for song in delete_songs:
+                        if albumin == song[2]: 
+                            selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
+                            print(selectStatement)
+                            cursor.execute(selectStatement)
+                            row = cursor.fetchone()
+                            index = row[0]                      
+                            deleteStatement = "Delete from `Music`.album2songs where `Music`.album2songs.index = " + str(index) + ";"  
+                            print(deleteStatement)
+                            cursor.execute(deleteStatement)
+            elif songin != 'all':
+                    for song in delete_songs:
+                        if albumin == song[2]:                                
+                            if song[0] == 'song': 
+                                selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
+                                print(selectStatement)
+                                cursor.execute(selectStatement)
+                                row = cursor.fetchone()
+                                index = row[0]           
+                                deleteStatement = "Delete from `Music`.album2songs where `Music`.album2songs.index = " + str(index) + ";"  
+                                print(deleteStatement)
+                                cursor.execute(deleteStatement)        
+        commit = "commit;"
+        cursor.execute(commit)
+        print("done")
+        cursor.close()
+        conn.close()
+
 
     def initial_insert_into_artist_albums(self): 
         '''
@@ -384,11 +484,23 @@ class musicFile:
 if __name__  == '__main__':
     mux = musicFile()
 
-    albumCount = mux.get_record_count("`Music`.artist_albums")
-    songCount = mux.get_record_count("`Music`.album2songs")
-    artistCount = mux.get_record_count("`Music`.artist")
-    print("Artist: ", artistCount ," Songs: ", songCount, " Albums: ", albumCount )
+#    albumCount = mux.get_record_count("`Music`.artist_albums")
+#    songCount = mux.get_record_count("`Music`.album2songs")
+#    artistCount = mux.get_record_count("`Music`.artist")
+#    print("Artist: ", artistCount ," Songs: ", songCount, " Albums: ", albumCount )
 
+#    mux.add_songs('ZZ_ZTest', 'Test_Album1')
+#    mux.delete_songs('ZZ_ZTest', 'Test_Album1')
+    
+#    mux.add_songs('ZZ_ZTest', 'Test_Album2')
+#    mux.delete_songs('ZZ_ZTest', 'Test_Album2')
+    
+#    mux.add_songs('ZZ_ZTest','all')
+#    mux.delete_songs('ZZ_ZTest','all')
+    
+    
+#    songs = mux.get_songs(artist, album):
+        
 
 
 #    fields = "Music.artist.index, Music.artist.artist "
@@ -405,6 +517,7 @@ if __name__  == '__main__':
 
 # ************
 #    mux.initial_insert_into_album2songs()
+#    mux.get_all_songs_type_genre()
 # ************
 #    mux.initial_insert_into_artist_albums()
 # ************
@@ -414,27 +527,27 @@ if __name__  == '__main__':
     '''
     Test add artist, select artist, delete artist
     '''
-    arts = "Joe Blow"
-    mux.add_artist(arts,"Rock")  
-    fields = " * "
-    criteria = "Music.artist.artist like \'Joe Blow\'"
-    print(mux.get_select_Artist(fields,criteria))
-    mux.delete_artist(arts)   
-    print(mux.get_select_Artist(fields,criteria))
+#    arts = "Joe Blow"
+#    mux.add_artist(arts,"Rock")  
+#    fields = " * "
+#    criteria = "Music.artist.artist like \'Joe Blow\'"
+#    print(mux.get_select_Artist(fields,criteria))
+#    mux.delete_artist(arts)   
+#    print(mux.get_select_Artist(fields,criteria))
     
     '''
     Test add album, select album, delete album
     '''  
-    arts = "Joe Blow"
-    album = "The Best of Joe Blow"
-    tipe = "Country"
-    mux.add_album(album,arts,tipe)
-    fields = " * "
-    criteria = " where Music.artist_albums.album like '" + album + "'"
-    result = mux.get_select_ArtistAlbums(fields,criteria)
-    print(result)
-    mux.delete_album(album)   
-    print(mux.get_select_ArtistAlbums(fields,criteria))
+#    arts = "Joe Blow"
+#    album = "The Best of Joe Blow"
+#    tipe = "Country"
+#    mux.add_album(album,arts,tipe)
+#    fields = " * "
+#    criteria = " where Music.artist_albums.album like '" + album + "'"
+#    result = mux.get_select_ArtistAlbums(fields,criteria)
+#    print(result)
+#    mux.delete_album(album)   
+#    print(mux.get_select_ArtistAlbums(fields,criteria))
     
     
 
@@ -520,7 +633,7 @@ if __name__  == '__main__':
 
         def test_songList(self):
             mux = musicFile()
-            mysongs = mux.get_songs()
+            mysongs = mux.get_all_songs()
             self.assertIn((0, '18 South', 'Soulful Southern Roots Music', '01 Late Night Ramble.mp3'), mysongs, "'01 Late Night Ramble.mp3' song is missing")       
     unittest.main()    
         '''
