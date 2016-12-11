@@ -68,17 +68,18 @@ class musicFile:
         return row
 
     def get_select_Artist(self, fields, constraints):
+        outPut = []
         if os.uname().nodename == 'C1246895-osx.home':
             conn = mysql.connector.Connect(**login_info_osx)
         else:
             conn = mysql.connector.Connect(**login_info_root)
         dbCursor = conn.cursor()
-        statement = "select "+ fields + "from Music.artist where " + constraints + ";" #where Albums.index = 3;"
+        statement = "select "+ fields + " from Music.artist where " + constraints + ";" #where Albums.index = 3;"
         print(statement)
         dbCursor.execute(statement)
-        row = dbCursor.fetchone()
+        rows = dbCursor.fetchall()
 #        print(row)
-        return row 
+        return rows
         dbCursor.close()     
         conn.close()       
     
