@@ -4,7 +4,7 @@ Created on Nov 22, 2016
 @author: rduvalwa2
 '''
 import unittest
-from MusicFile import musicFile
+from MusicFile_old import musicFile
 
 
 class Test(unittest.TestCase):
