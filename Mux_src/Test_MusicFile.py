@@ -14,7 +14,7 @@ class Test(unittest.TestCase):
             get_record_count
             '''
             table = "`Music`.artist_albums"
-            expected = 901
+            expected = 904
             mux = musicFile()
             result = mux.get_record_count(table)
             self.assertEqual(expected,result[0])
@@ -24,7 +24,7 @@ class Test(unittest.TestCase):
             get_record_count
             '''
             table = "`Music`.album2songs"
-            expected = 6593
+            expected = 6596
             mux = musicFile()
             result = mux.get_record_count(table)
             self.assertEqual(expected,result[0])
@@ -45,7 +45,7 @@ class Test(unittest.TestCase):
             '''
             display =  "count(*)"
             constraints = "where type like 'Vinyl'"
-            expected = 184
+            expected = 183
             mux = musicFile()
             result = mux.get_select_Album(display,constraints)
             self.assertEqual(expected,result[0])

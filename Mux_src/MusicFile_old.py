@@ -483,7 +483,7 @@ class musicFile:
 
     
 if __name__  == '__main__':
-    mux = musicFile()
+#    mux = musicFile()
 
 #    albumCount = mux.get_record_count("`Music`.artist_albums")
 #    songCount = mux.get_record_count("`Music`.album2songs")
@@ -563,7 +563,7 @@ if __name__  == '__main__':
 #    artistCount = mux.get_record_count("`Music`.artist")
 #    print("Artist: ", artistCount ," Songs: ", songCount, " Albums: ", albumCount )
     
-    '''
+
     import unittest
     class TestConnector(unittest.TestCase):
 
@@ -637,4 +637,3 @@ if __name__  == '__main__':
             mysongs = mux.get_all_songs()
             self.assertIn((0, '18 South', 'Soulful Southern Roots Music', '01 Late Night Ramble.mp3'), mysongs, "'01 Late Night Ramble.mp3' song is missing")       
     unittest.main()    
-        '''

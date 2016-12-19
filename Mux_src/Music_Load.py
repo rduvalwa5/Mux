@@ -1,9 +1,9 @@
-import os, sys
-import mysql.connector
-from  Musicdb_info import login_info_rd
+import os
+import mysql.connector, Music_Get_Functions
+#from  Musicdb_info import login_info_rd
 from Musicdb_info import login_info_root
 from Musicdb_info import login_info_osx 
-from mysql.connector.errors import Error
+#from mysql.connector.errors import Error
 
 
 class musicLoad_Functions:   
@@ -64,12 +64,6 @@ class musicLoad_Functions:
         '''
         This code recurses thru the "base" path and captures the artist, album and song
         '''
-#        if os.uname().nodename == 'C1246895-osx.home':
-#            self.server = os.uname().nodename
-#            conn = mysql.connector.Connect(**login_info_osx)
-#        else:
-#            self.server = os.uname().nodename
-#            conn = mysql.connector.Connect(**login_info_root)
         cursor = self.conn.cursor()
         trunkate = "truncate  music.artist;"
         cursor.execute(trunkate)
@@ -85,18 +79,11 @@ class musicLoad_Functions:
         cursor.execute(commit)
         print("done")
         cursor.close()
-#        self.conn.close()
 
     def initial_insert_into_artistAlbums(self): 
         '''
         This code recurses thru the "base" path and captures the artist, album and song
         '''
-#        if os.uname().nodename == 'C1246895-osx.home':
-#            self.server = os.uname().nodename
-#            conn = mysql.connector.Connect(**login_info_osx)
-#        else:
-#            self.server = os.uname().nodename
-#            conn = mysql.connector.Connect(**login_info_root)
         cursor = self.conn.cursor()
         trunkate = "truncate  music.artist_albums;"
         cursor.execute(trunkate)
@@ -112,18 +99,11 @@ class musicLoad_Functions:
         cursor.execute(commit)
         print("done")
         cursor.close()
-#        self.conn.close()
 
     def initial_insert_into_album2songs(self): 
         '''
         This code recurses thru the "base" path and captures the artist, album and song
         '''
-#        if os.uname().nodename == 'C1246895-osx.home':
-#            self.server = os.uname().nodename
-#            conn = mysql.connector.Connect(**login_info_osx)
-#        else:
-#            self.server = os.uname().nodename
-#            conn = mysql.connector.Connect(**login_info_root)
         cursor = self.conn.cursor()
         trunkate = "truncate  music.album2songs;"
         cursor.execute(trunkate)
@@ -139,8 +119,6 @@ class musicLoad_Functions:
         cursor.execute(commit)
         print("done")
         cursor.close()
-#        self.conn.close()
-
 
 class musicSong_Add_Delete:       
     def __init__(self):
@@ -156,14 +134,9 @@ class musicSong_Add_Delete:
         self.table = '`Music`.' + table
         self.tableIndex = table + "." + 'Index'
         max_index_statement = "select max(" + self.tableIndex + ") from " + self.table   + ";"
-#        if os.uname().nodename == 'C1246895-osx.home':
-#            conn = mysql.connector.Connect(**login_info_osx)
-#        else:
-#            conn = mysql.connector.Connect(**login_info_root)
         cursor = self.conn.cursor()
         cursor.execute( max_index_statement)
         maxIndex = cursor.fetchone()
- #       conn.close()   
         return maxIndex
     
     def get_songs(self,artist,album='all'):
@@ -195,12 +168,6 @@ class musicSong_Add_Delete:
         '''
         This code adds song
         '''
-#        if os.uname().nodename == 'C1246895-osx.home':
-#            self.server = os.uname().nodename
-#            conn = mysql.connector.Connect(**login_info_osx)
-#        else:
-#            self.server = os.uname().nodename
-#            conn = mysql.connector.Connect(**login_info_root)
         cursor = self.conn.cursor()
         maxIndex =  self.get_max_index("album2songs")
         index = maxIndex[0]
@@ -224,15 +191,8 @@ class musicSong_Add_Delete:
         cursor.execute(commit)
         print("done")
         cursor.close()
-#        self.conn.close()
     
     def delete_songs(self,artist,albumin='all',songin="all"):
-#        if os.uname().nodename == 'C1246895-osx.home':
-#            self.server = os.uname().nodename
-#            conn = mysql.connector.Connect(**login_info_osx)
-#        else:
-#            self.server = os.uname().nodename
-#            conn = mysql.connector.Connect(**login_info_root)
         cursor = self.conn.cursor()   
         delete_songs = self.get_songs(artist,albumin)
         print("delete songs: ", delete_songs)  
@@ -289,7 +249,9 @@ class musicSong_Add_Delete:
         cursor.execute(commit)
         print("done")
         cursor.close()
-#        self.conn.close()
+
+    def dbConnectionClose(self):
+        self.conn.close()
 
 class musicAlbum_Add_Delete:       
     def __init__(self):
@@ -301,30 +263,22 @@ class musicAlbum_Add_Delete:
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home'      
 
+    def dbConnectionClose(self):
+        self.conn.close()
+
     def get_max_index(self, table):
         self.table = '`Music`.' + table
         self.tableIndex = table + "." + 'Index'
         max_index_statement = "select max(" + self.tableIndex + ") from " + self.table   + ";"
-#        if os.uname().nodename == 'C1246895-osx.home':
-#            conn = mysql.connector.Connect(**login_info_osx)
-#        else:
-#            conn = mysql.connector.Connect(**login_info_root)
         cursor = self.conn.cursor()
         cursor.execute( max_index_statement)
         maxIndex = cursor.fetchone()
-#        self.conn.close()   
         return maxIndex
     
     def add_album(self,album,artist,tipe,gen):
         '''
         This code recurses thru the "base" path and captures the artist, album and song
         '''
-#        if os.uname().nodename == 'C1246895-osx.home':
-#            self.server = os.uname().nodename
-#            conn = mysql.connector.Connect(**login_info_osx)
-#        else:
-#            self.server = os.uname().nodename
-#            conn = mysql.connector.Connect(**login_info_root)
         cursor = self.conn.cursor()
         maxIndex =  self.get_max_index("artist_albums")
         index = maxIndex[0]
@@ -338,8 +292,8 @@ class musicAlbum_Add_Delete:
         commit = "commit;"
         cursor.execute(commit)
         print("done")
-        cursor.close()
-#        self.conn.close()
+#        cursor.close()
+        self.conn.close()
         
 #  Not done
     def delete_album(self,album):
@@ -363,7 +317,7 @@ class musicAlbum_Add_Delete:
         cursor.execute(commit)
         print("done")
         cursor.close()
-#        self.conn.close()
+
         
 class musicArtist_Add_Delete:       
     def __init__(self):
@@ -375,27 +329,20 @@ class musicArtist_Add_Delete:
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home'     
 
+    def dbConnectionClose(self):
+        self.conn.close()
+
     def get_max_index(self, table):
         self.table = '`Music`.' + table
         self.tableIndex = table + "." + 'Index'
         max_index_statement = "select max(" + self.tableIndex + ") from " + self.table   + ";"
-#        if os.uname().nodename == 'C1246895-osx.home':
-#            conn = mysql.connector.Connect(**login_info_osx)
-#        else:
-#            conn = mysql.connector.Connect(**login_info_root)
+
         cursor = self.conn.cursor()
         cursor.execute( max_index_statement)
         maxIndex = cursor.fetchone()
-#        self.conn.close()   
         return maxIndex
                     
     def add_artist(self,artist,genre):
-#        if os.uname().nodename == 'C1246895-osx.home':
-#            self.server = os.uname().nodename
-#            conn = mysql.connector.Connect(**login_info_osx)
-#        else:
-#            self.server = os.uname().nodename
-#            conn = mysql.connector.Connect(**login_info_root)
         cursor = self.conn.cursor()
         maxIndex =  self.get_max_index("artist")
         index = maxIndex[0]
@@ -408,15 +355,8 @@ class musicArtist_Add_Delete:
         cursor.execute(commit)
         print("done")
         cursor.close()
-#        self.conn.close()
 
     def delete_artist(self,artist):
-#        if os.uname().nodename == 'C1246895-osx.home':
-#            self.server = os.uname().nodename
-#            conn = mysql.connector.Connect(**login_info_osx)
-#        else:
-#            self.server = os.uname().nodename
-#            conn = mysql.connector.Connect(**login_info_root)
         cursor = self.conn.cursor()
         selectStatement = "select artist.index from Music.artist where artist.artist like " + "'" + artist + "';"
         print(selectStatement)
@@ -430,32 +370,37 @@ class musicArtist_Add_Delete:
         commit = "commit;"
         cursor.execute(commit)
         print("done")
-        cursor.close()
-#        self.conn.close()
-    
+            
 if __name__  == '__main__':
-    '''
-    addArtist = musicArtist_Add_Delete()
-    arts = 'ZZ_ZTestX'
-    genre = 'Test Gen'
-    album = 'Test_Album1X'
-    tipe = 'TestTape'
-    albums = ['Test_AlbumA','Test_AlbumB','Test_AlbumC']
-    addArtist.add_artist(arts ,genre)
-    addArtist.delete_artist(arts)
-        
-    addSongs = musicSong_Add_Delete()
-    addSongs.add_songs('ZZ_ZTest')
-    addSongs.delete_songs('ZZ_ZTest')
-        
-    addAlbum = musicAlbum_Add_Delete()
-    for al in albums:
-            addAlbum.add_album(al, arts, tipe, genre)
+    import unittest
+    class Test_MusicLoad(unittest.TestCase):
+        def setUp(self):
+            print("Test setup")
+            self.getInfo = Music_Get_Functions.musicGet_Functions()
+            self.addArtistInfo = musicArtist_Add_Delete()
+            self.addAlbum = musicAlbum_Add_Delete()
+            self.arts = 'ZZ_ZTestX'
+            self.genre = 'Test GenX'
+            self.album = 'Test_Album1X'
+            self.tipe = 'TestTape'
+            self.albums = ['Test_AlbumA','Test_AlbumB','Test_AlbumC']
+            
+        def tearDown(self):
+            self.addArtistInfo.dbConnectionClose()
+            self.addAlbum.dbConnectionClose()
+            self.getInfo.close_connection()
+            
+        def test_Add_Artist(self): 
+            self.addArtistInfo.add_artist(self.arts ,self.genre)
+            result = self.getInfo.get_artist_from_artistTable(self.arts)
+            self.assertEqual(self.arts,result[0][1],"artist name add failed")
+            self.assertEqual(self.genre,result[0][2],"artist genre add failed")           
 
-    for al in albums:    
-            addAlbum.delete_album(al)
-    '''
-#    load = musicLoad_Functions()
-#    load.initial_insert_into_album2songs()
-#    load.initial_insert_into_artist()
-#    load.initial_insert_into_artistAlbums()
+        def test_Delete_Artist(self): 
+            self.addArtistInfo.delete_artist(self.arts)
+            result = self.getInfo.get_artist_from_artistTable(self.arts)
+            expected = []
+            self.assertListEqual(expected, result, "list is not empty")       
+            
+    unittest.main()            
+          

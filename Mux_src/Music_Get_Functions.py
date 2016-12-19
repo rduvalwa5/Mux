@@ -4,23 +4,15 @@ Created on Dec 10, 2016
 @author: rduvalwa2
 '''
 
-import os, sys
+import os
 import mysql.connector
-from  Musicdb_info import login_info_rd
+#from  Musicdb_info import login_info_rd
 from Musicdb_info import login_info_root
 from Musicdb_info import login_info_osx 
-from mysql.connector.errors import Error
+#from mysql.connector.errors import Error
 
 
-class connection_db:
-    def connect_music(self,node):
-        if os.uname().nodename == 'C1246895-osx.home':
-            self.conn = mysql.connector.Connect(**login_info_osx)
-        elif  os.uname().nodename == 'OSXAir.home':
-            self.conn = mysql.connector.Connect(**login_info_root)
-        return self.conn
-
-class musicFunctions:   
+class musicGet_Functions:   
     def __init__(self):
         if os.uname().nodename == 'C1246895-osx.home':
             self.conn = mysql.connector.Connect(**login_info_osx)
@@ -48,10 +40,33 @@ class musicFunctions:
         cursor.execute(statement)
         result = cursor.fetchall()  
         return result                   
+
+    def get_artist_from_artistTable(self,artist):
+#       select music.artist.index, artist, genre from music.artist where artist = 'Bill Withers';
+        fields = "*"
+        statement = "select " + fields + " from music.artist where artist = '" + artist + "';"
+        print(statement)
+        cursor = self.conn.cursor()
+        cursor.execute(statement)
+        result = cursor.fetchall()  
+        return result                 
+
+    def get_artistAlbums_from_albums(self,artist):
+#       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
+        fields = "*"
+        statement = "select " + fields + " from music.artist_albums where artist = '" + artist + "';"
+        print(statement)
+        cursor = self.conn.cursor()
+        cursor.execute(statement)
+        result = cursor.fetchall()  
+        return result   
+    
+    def dbConnectionClose(self):
+        self.conn.close()         
         
 if __name__  == '__main__':
     print(os.uname().nodename)
-    mux = musicFunctions()
+    mux = musicGet_Functions()
     print("All albums ",mux.get_count('music.artist_albums'))
     print("All songs ",mux.get_count('music.album2songs'))
     print("All artist ",mux.get_count('artist'))
@@ -67,5 +82,8 @@ if __name__  == '__main__':
     allTexMexAlbums = mux.get_all("distinct music.album2songs.album", texMexTable, criteria)
     for album in allTexMexAlbums:
         print("TexMex Album: ",album[0])
+    
+    print(mux.get_artist_from_artistTable("Bill Withers"))
+    print(mux.get_artistAlbums_from_albums("Bill Withers"))
     
     mux.close_connection()
