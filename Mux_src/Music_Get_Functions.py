@@ -18,12 +18,12 @@ class musicGet_Functions:
             self.conn = mysql.connector.Connect(**login_info_osx)
         elif  os.uname().nodename == 'OSXAir.home.home':
             self.conn = mysql.connector.Connect(**login_info_root)
-        print(self.conn)
+#        print(self.conn)
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home'  
         
-    def close_connection(self):
-        self.conn.close() 
+#    def close_connection(self):
+#        self.conn.close() 
             
     def get_count(self,table = 'music.album2songs', criteria = " "):
         statement = "select count(*) from " + table + " "  + criteria + ";"
@@ -60,6 +60,16 @@ class musicGet_Functions:
         cursor.execute(statement)
         result = cursor.fetchall()  
         return result   
+    
+    def get_Album_from_ArtistAlbums(self,album):
+#       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
+        fields = "*"
+        statement = "select " + fields + " from music.artist_albums where album = '" + album + "';"
+        print(statement)
+        cursor = self.conn.cursor()
+        cursor.execute(statement)
+        result = cursor.fetchall()  
+        return result           
     
     def dbConnectionClose(self):
         self.conn.close()         
