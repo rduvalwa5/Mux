@@ -53,6 +53,9 @@ class Test_MusicLoad(unittest.TestCase):
             self.assertEqual(newGenre,result[0][2],"genre update failed") 
          
         def test_update_date_artist_genre_rock(self): 
+            '''
+            This test retores the updated record
+            '''
             original = 'Rock'
             updateArtist = "Bill Withers"      
             self.addArtistInfo.update_artist(updateArtist, original)
