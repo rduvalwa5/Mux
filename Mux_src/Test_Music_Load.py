@@ -46,9 +46,7 @@ class Test_MusicLoad(unittest.TestCase):
             
         def test_update_date_artist_genre_update(self):
             newGenre = "Update"
-            original = 'Rock'
             updateArtist = "Bill Withers"
-            
             self.addArtistInfo.update_artist(updateArtist, newGenre)
             result = self.getInfo.get_artist_from_artistTable(updateArtist)
             print("Update result newGenre",result)
