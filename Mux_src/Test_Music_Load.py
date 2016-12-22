@@ -156,6 +156,8 @@ class Test_MusicLoad(unittest.TestCase):
             self.assertEqual(original_genre, result[0][3], 'genre failed')
             self.assertEqual(original_type, result[0][4], 'type failed')
         ''' 
+            
+            
         def test_Delete_Album(self): 
             self.addAlbum.delete_album(self.album)
             result = self.getInfo.get_Album_from_ArtistAlbums(self.album)
