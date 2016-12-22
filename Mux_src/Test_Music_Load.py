@@ -17,6 +17,7 @@ class Test_MusicLoad(unittest.TestCase):
             self.albums = ['Test_AlbumA','Test_AlbumB','Test_AlbumC']
             
         def tearDown(self):
+            self.Restore_testAlbum()
             self.addArtistInfo.dbConnectionClose()
             self.addAlbum.dbConnectionClose()
             self.getInfo.dbConnectionClose()
@@ -92,14 +93,87 @@ class Test_MusicLoad(unittest.TestCase):
             self.assertEqual(self.genre, result[0][3], "genre does not match")
             self.assertEqual(self.tipe, result[0][4], "type does not match")
          
+        def test_Update_Album_Artist(self):
+            '''
+            update_album(self,album, artist = 'no_change', genre = 'no_change', tipe = 'no_change'):
+            '''
+            original_artist = 'ZZ_ZTest'
+            update_artist = 'ZZ Top'
+            test_album = 'Test_AlbumA'
+            
+            self.addAlbum.update_album(test_album, update_artist)
+            result = self.getInfo.get_Album_from_ArtistAlbums(test_album)
+            print("update result is ", result)
+            self.assertEqual(update_artist, result[0][1], "album update artist failed")
+            self.assertEqual(test_album, result[0][2], 'album name is wrong')
 
-         
+        def test_Update_Album_Artist_genre(self):
+            '''
+            update_album(self,album, artist = 'no_change', genre = 'no_change', tipe = 'no_change'):
+            '''
+            original_artist = 'ZZ Top'
+            update_artist = 'ZZ_ZTest'
+            test_album = 'Test_AlbumA'
+            update_genre = 'up_genre'
+            
+            self.addAlbum.update_album(test_album, update_artist,update_genre)
+            result = self.getInfo.get_Album_from_ArtistAlbums(test_album)
+            print("update result is ", result)
+            self.assertEqual(update_artist, result[0][1], "album update artist failed")
+            self.assertEqual(update_genre, result[0][3], 'genre failed')
+            self.assertEqual(test_album, result[0][2], 'album name is wrong')
+
+        def test_Update_Album_type(self):
+            '''
+            update_album(self,album, artist = 'no_change', genre = 'no_change', tipe = 'no_change'):
+            '''
+            original_artist = 'ZZ_ZTest'
+            original_genre = 'Test GenX'
+            original_type = 'TestTape'
+            update_artist = 'no_change'
+            test_album = 'Test_AlbumA'
+            update_genre = 'no_change'
+            update_type = 'Up_Type'
+            
+            self.addAlbum.update_album(test_album, 'no_change','no_change',update_type)
+            result = self.getInfo.get_Album_from_ArtistAlbums(test_album)
+            print("update result is ", result)
+            self.assertEqual(original_artist, result[0][1], "album update artist failed")
+            self.assertEqual(original_genre, result[0][3], 'genre failed')
+            self.assertEqual(test_album, result[0][2], 'album name is wrong')
+            self.assertEqual(update_type, result[0][4], 'type failed')
+
+        '''
+        def test_Restore_testAlbum(self):
+            test_album = 'Test_AlbumA'
+            original_artist = 'ZZ_ZTest'
+            original_genre = 'Test GenX'
+            original_type = 'TestTape'
+            self.addAlbum.update_album(test_album, original_artist, original_genre, original_type)
+            result = self.getInfo.get_Album_from_ArtistAlbums(test_album)
+            self.assertEqual(original_artist, result[0][1], "album update artist failed")
+            self.assertEqual(test_album, result[0][2], 'album name is wrong')
+            self.assertEqual(original_genre, result[0][3], 'genre failed')
+            self.assertEqual(original_type, result[0][4], 'type failed')
+        ''' 
         def test_Delete_Album(self): 
             self.addAlbum.delete_album(self.album)
             result = self.getInfo.get_Album_from_ArtistAlbums(self.album)
             expected = []
             self.assertListEqual(expected, result, "list is not empty")   
             
+        def Restore_testAlbum(self):
+            test_album = 'Test_AlbumA'
+            original_artist = 'ZZ_ZTest'
+            original_genre = 'Test GenX'
+            original_type = 'TestTape'
+            self.addAlbum.update_album(test_album, original_artist, original_genre, original_type)
+            result = self.getInfo.get_Album_from_ArtistAlbums(test_album)
+            self.assertEqual(original_artist, result[0][1], "album update artist failed")
+            self.assertEqual(test_album, result[0][2], 'album name is wrong')
+            self.assertEqual(original_genre, result[0][3], 'genre failed')
+            self.assertEqual(original_type, result[0][4], 'type failed')       
             
+                 
 if __name__ == "__main__":
     unittest.main()

@@ -306,7 +306,53 @@ class album_Add_Update_Delete:
             self.conn.close()
         else:
             print(album, "already exist in table.")
+
+    def update_album(self,album, artist = 'no_change', genre = 'no_change', tipe = 'no_change'):
+        '''
+        genre is the only attribute that can change
+        update music.artist_albums set genre = 'Rock' WHERE artist = 'Bill Withers';
+        '''
+        cursor = self.conn.cursor()
+        if self.doesAlbumExist(album) == 'True': 
+            '''
+            build addition of attribute changes
+            '''          
+            if artist != 'no_change':
+                    updateStatement = "UPDATE Music.artist_albums set artist = '" + artist + "' where album = '" + album + "';"
+                    if genre != 'no_change':
+                            updateStatement = "UPDATE Music.artist_albums set artist = '" + artist + "', genre = '" + genre + "' where album = '" + album + "';"
+                            if tipe != 'no_change':
+                                updateStatement = "UPDATE Music.artist_albums set artist = '" + artist + "', genre = '" + genre + "' ,type = '" + tipe + "' where album = '" + album + "';"
+                    print(updateStatement)
+                    cursor.execute(updateStatement)
+                    commit = "commit;"
+                    cursor.execute(commit)
+            elif artist == 'no_change' and  genre != 'no_change':
+                    if tipe != 'no_change':
+                        updateStatement = "UPDATE Music.artist_albums set genre = '" + genre + "' type = '" + tipe + "' where album = '" + album + "';"
+                    else:
+                        updateStatement = "UPDATE Music.artist_albums set genre = '" + genre + "' where album = '" + album + "';"
+                    print(updateStatement)
+                    cursor.execute(updateStatement)
+                    commit = "commit;"
+                    cursor.execute(commit)
+            elif artist == 'no_change' and genre == 'no_change':
+                    if tipe != 'no_change':
+                                updateStatement = "UPDATE Music.artist_albums set type = '" + tipe + "' where album = '" + album + "';"
+                                print(updateStatement)
+                                cursor.execute(updateStatement)
+                                commit = "commit;"
+                                cursor.execute(commit)
+                    else:
+                        print("no updates ", artist , genre, tipe )    
+            else:
+                print("no updates ", artist , genre, tipe )    
+        else:
+            print(artist," does not exist in data table Music.artist_albums.")            
+        print("done")
+        cursor.close()
             
+
     def delete_album(self,album):
         cursor = self.conn.cursor()
         selectStatement = "select artist_albums.index from Music.artist_albums where artist_albums.album like " + "'" + album + "';"
@@ -380,17 +426,17 @@ class artist_Add_Update_Delete:
         genre is the only attribute that can change
         update music.artist set genre = 'Rock' WHERE artist = 'Bill Withers';
         '''
-        if self.doesArtistExist(artist) == 'True':
-            cursor = self.conn.cursor()
+        cursor = self.conn.cursor()
+        if self.doesArtistExist(artist) == 'True':            
             updateStatement = "UPDATE Music.artist set genre = '" + genre + "' where artist = '" + artist + "';"
             print(updateStatement)
             cursor.execute(updateStatement)
             commit = "commit;"
             cursor.execute(commit)
-            print("done")
-            cursor.close()
+            print("done")            
         else:
             print(artist," does not exist in data table Music.artist.")
+        cursor.close()
 
     def delete_artist(self,artist):
         cursor = self.conn.cursor()
@@ -408,8 +454,25 @@ class artist_Add_Update_Delete:
         print("done")
             
 if __name__  == '__main__':
-    
     '''
+    update_album = album_Add_Update_Delete()
+    print("update all")
+    update_album.update_album('Test_AlbumA', 'upArtist', 'UpGenre', 'UpType')
+    print("album does not exist")
+    update_album.update_album('no album', 'upArtist', 'UpGenre', 'UpType')
+    print("update artist and genre")
+    update_album.update_album('Test_AlbumA', 'upArtist', 'UpGenre')
+    print("update only artist")
+    update_album.update_album('Test_AlbumA', 'upArtist')
+    print("update no input")
+    update_album.update_album('Test_AlbumA')
+    print("update only genre")
+    update_album.update_album('Test_AlbumA', 'no_change','UpGenre')
+    print("update genre and type")
+    update_album.update_album('Test_AlbumA', 'no_change','UpGenre','UpType')
+    print("update type only")
+    update_album.update_album('Test_AlbumA', 'no_change','no_change','UpType')
+
     import unittest
     class Test_MusicLoad(unittest.TestCase):
         def setUp(self):
