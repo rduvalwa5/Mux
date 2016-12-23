@@ -1,12 +1,13 @@
 import os
-import mysql.connector, Music_Get_Functions
+import mysql.connector
+from Music_Get_Functions import musicGet_Functions
 #from  Musicdb_info import login_info_rd
 from Musicdb_info import login_info_root
 from Musicdb_info import login_info_osx 
 #from mysql.connector.errors import Error
 
 
-class musicLoad_Functions:   
+class musicLoad_Functions:
     def __init__(self):
         if os.uname().nodename == 'C1246895-osx.home':
             self.conn = mysql.connector.Connect(**login_info_osx)
@@ -80,6 +81,9 @@ class musicLoad_Functions:
         print("done")
         cursor.close()
 
+    """
+    Initial Load functions
+    """
     def initial_insert_into_artistAlbums(self): 
         '''
         This code recurses thru the "base" path and captures the artist, album and song
@@ -119,6 +123,24 @@ class musicLoad_Functions:
         cursor.execute(commit)
         print("done")
         cursor.close()
+        
+    def sync_song_type(self):
+        cursor = self.conn.cursor()
+        statement = "UPDATE `Music`.album2songs t1 INNER JOIN `Music`.artist_albums t2 ON t1.album = t2.album SET t1.type = t2.type;"
+        cursor.execute(statement)
+        commit = "commit;"
+        cursor.execute(commit)
+        print("done")
+        cursor.close()       
+
+    def sync_song_genre(self): 
+        cursor = self.conn.cursor()
+        statement = "UPDATE `Music`.album2songs t1 INNER JOIN `Music`.artist t2 ON t1.artist = t2.artist SET t1.genre = t2.genre;"
+        cursor.execute(statement)
+        commit = "commit;"
+        cursor.execute(commit)
+        print("done")
+        cursor.close()              
 
 class song_Add_Update_Delete:       
     def __init__(self):
@@ -187,6 +209,36 @@ class song_Add_Update_Delete:
         cursor.execute(countStatement)
         count = cursor.fetchone()
 #        print(count)
+        commit = "commit;"
+        cursor.execute(commit)
+        print("done")
+        cursor.close()
+
+    def add_song(self,album,artist,genre,song,type,path='"/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"',server='OSXAir.home' ):
+        '''
+        insert into `Music`.album2songs (album2songs.index, album, artist,genre,path,server,song,type) 
+         values (6599,'SongAlbum','SongArts','SongGenre','/path/path/','song_server','test song','test_type');
+        '''
+        cursor = self.conn.cursor()
+        maxIndex =  self.get_max_index("album2songs")
+        index = maxIndex[0]
+        newIndex = index + 1
+        insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values("  + str(newIndex) + ",\"" + server + "\",\"" + path + "\",\""  + artist + "\",\""  + album + "\",\""  + song + "\",\""  + genre + "\",\""  + type + "\")"
+        print(insertStatement)
+        cursor.execute( insertStatement)
+        commit = "commit;"
+        cursor.execute(commit)
+        print("done")
+        cursor.close()
+  
+    def delete_song(self,song):
+        '''
+        delete  from `Music`.album2songs where song like 'Song_Song';
+        '''
+        statement = "delete  from `Music`.album2songs where song like '" + song + "';"
+        print(statement)
+        cursor = self.conn.cursor()
+        cursor.execute( statement)
         commit = "commit;"
         cursor.execute(commit)
         print("done")
@@ -329,7 +381,7 @@ class album_Add_Update_Delete:
                     cursor.execute(commit)
             elif artist == 'no_change' and  genre != 'no_change':
                     if tipe != 'no_change':
-                        updateStatement = "UPDATE Music.artist_albums set genre = '" + genre + "' type = '" + tipe + "' where album = '" + album + "';"
+                        updateStatement = "UPDATE Music.artist_albums set genre = '" + genre + "', type = '" + tipe + "' where album = '" + album + "';"
                     else:
                         updateStatement = "UPDATE Music.artist_albums set genre = '" + genre + "' where album = '" + album + "';"
                     print(updateStatement)
@@ -368,6 +420,7 @@ class album_Add_Update_Delete:
         cursor.execute(commit)
         print("done")
         cursor.close()
+
 
         
 class artist_Add_Update_Delete:       
@@ -454,6 +507,22 @@ class artist_Add_Update_Delete:
         print("done")
             
 if __name__  == '__main__':
+    
+    album = 'Test_Songalbum'
+    artist = 'Song_album'
+    genre = 'Song_genre'
+    song = 'Song_Song.mp3'
+    tipe = 'Song_Type'
+    server = 'song_server'
+    path = '/Test/Music'
+    server = 'Test_Server'
+    Song = song_Add_Update_Delete()
+    get = musicGet_Functions()
+    Song.add_song(album,artist,genre,song,tipe,path,server)
+    result = get.get_song_by_song(song)  
+    print(result)
+    Song.delete_song(song)
+    
     '''
     update_album = album_Add_Update_Delete()
     print("update all")
@@ -472,78 +541,5 @@ if __name__  == '__main__':
     update_album.update_album('Test_AlbumA', 'no_change','UpGenre','UpType')
     print("update type only")
     update_album.update_album('Test_AlbumA', 'no_change','no_change','UpType')
-
-    import unittest
-    class Test_MusicLoad(unittest.TestCase):
-        def setUp(self):
-            print("Test setup")
-            self.getInfo = Music_Get_Functions.musicGet_Functions()
-            self.addArtistInfo = artist_Add_Update_Delete()
-            self.addAlbum = album_Add_Update_Delete()
-            self.arts = 'ZZ_ZTestX'
-            self.genre = 'Test GenX'
-            self.album = 'Test_Album1X'
-            self.tipe = 'TestTape'
-            self.albums = ['Test_AlbumA','Test_AlbumB','Test_AlbumC']
-            
-        def tearDown(self):
-            self.addArtistInfo.dbConnectionClose()
-            self.addAlbum.dbConnectionClose()
-            self.getInfo.dbConnectionClose()
-            
-        def test_Add_Artist(self): 
-            self.addArtistInfo.add_artist(self.arts ,self.genre)
-            result = self.getInfo.get_artist_from_artistTable(self.arts)
-            self.assertEqual(self.arts,result[0][1],"artist name add failed")
-            self.assertEqual(self.genre,result[0][2],"artist genre add failed")           
-
-        def test_Delete_Artist(self): 
-            self.addArtistInfo.delete_artist(self.arts)
-            result = self.getInfo.get_artist_from_artistTable(self.arts)
-            expected = []
-            self.assertListEqual(expected, result, "list is not empty")  
-            
-        def testDoesArtistAlreadyExist_False(self):
-            expected = "False" 
-            result = self.addArtistInfo.doesArtistExist("Bill Wither")
-            self.assertEqual(expected,result, "Result expected False but was True")  
-            
-        def testDoesArtistAlreadyExist_True_(self):
-            testArtist = "Bill Withers"
-            testIndex = 42
-            expected = "True" 
-            result = self.addArtistInfo.doesArtistExist("Bill Withers")
-            self.assertEqual(expected,result, "Result expected True but was False")   
-            self.addArtistInfo.add_artist(testArtist,self.genre)
-            result = self.getInfo.get_artist_from_artistTable("Bill Withers")
-            self.assertEqual(testIndex,result[0][0],"artist index not " + str(testIndex))
-            self.assertEqual(testArtist,result[0][1],"artist not in data table")
-              
-        def test_DoesAlbumExist_True(self):
-            expected = "True" 
-            album = 'Heart Like A Wheel'
-            result = self.addAlbum.doesAlbumExist(album)
-            self.assertEqual(expected,result, "Result expected True but was False")  
-  
-        def test_DoesAlbumExist_False(self):
-            expected = "False" 
-            album = "Long Long Road"
-            result = self.addAlbum.doesAlbumExist(album)
-            self.assertEqual(expected,result, "Result expected False but was True")          
-
-        def test_Add_Album(self):
-            self.addAlbum.add_album(self.album,self.arts,self.tipe,self.genre)
-            result = self.getInfo.get_Album_from_ArtistAlbums(self.album)
-            self.assertEqual(self.arts, result[0][1], "artist does not match")
-            self.assertEqual(self.album, result[0][2], "album does not match")
-            self.assertEqual(self.genre, result[0][3], "genre does not match")
-            self.assertEqual(self.tipe, result[0][4], "type does not match")
-         
-        def test_Delete_Album(self): 
-            self.addAlbum.delete_album(self.album)
-            result = self.getInfo.get_Album_from_ArtistAlbums(self.album)
-            expected = []
-            self.assertListEqual(expected, result, "list is not empty")  
-            
-    unittest.main()            
+    update_album.Restore_testAlbum()
     '''

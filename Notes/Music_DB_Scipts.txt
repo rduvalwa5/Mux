@@ -1,0 +1,684 @@
+/* end ypdate scripts */
+
+UPDATE `Music`.album2songs t1
+       INNER JOIN `Music`.artist t2 ON t1.artist = t2.artist
+   SET t1.genre = t2.genre;
+
+UPDATE `Music`.album2songs t1
+       INNER JOIN `Music`.artist_albums t2 ON t1.album = t2.album
+   SET t1.type = t2.type;
+
+/* end ypdate scripts */
+
+
+select * from artist;
+
+
+/* begin verify scripts */
+/* **** working on verifying genre */
+
+select count(distinct `Music`.album2songs.artist ) from `Music`.album2songs where genre = 'Rock';
+-- 233
+select count(distinct `Music`.artist.artist ) from `Music`.artist where genre = 'Rock';
+-- 236
+select count(distinct `Music`.album2songs.artist ) from `Music`.album2songs where genre = 'Folk';
+-- 54
+select count(distinct `Music`.artist.artist ) from `Music`.artist where genre = 'Folk';
+-- 54
+select count(distinct `Music`.album2songs.artist ) from `Music`.album2songs where genre = 'Jazz';
+-- 49
+select count(distinct `Music`.artist.artist ) from `Music`.artist where genre = 'Jazz';
+-- 49
+select count(distinct `Music`.album2songs.artist ) from `Music`.album2songs where genre = 'Blues';
+-- 13
+select count(distinct `Music`.artist.artist ) from `Music`.artist where genre = 'Blues';
+--13
+select count(distinct `Music`.album2songs.artist ) from `Music`.album2songs where genre = 'BlueGrass';
+-- 8
+select count(distinct `Music`.artist.artist ) from `Music`.artist where genre = 'BlueGrass';
+-- 8
+select count(distinct `Music`.album2songs.artist ) from `Music`.album2songs where genre = 'Country';
+-- 64
+select count(distinct `Music`.artist.artist ) from `Music`.artist where genre = 'Country';
+-- 64
+select count(distinct `Music`.album2songs.artist ) from `Music`.album2songs where genre = 'Pop';
+-- 65
+select count(distinct `Music`.artist.artist ) from `Music`.artist where genre = 'Pop';
+-- 65
+select count(distinct `Music`.album2songs.artist ) from `Music`.album2songs where genre = 'Regae';
+-- 4
+select count(distinct `Music`.artist.artist ) from `Music`.artist where genre = 'Regae';
+-- 4
+select count(distinct `Music`.album2songs.artist ) from `Music`.album2songs where genre = 'RockaBilly';
+-- 6
+select count(distinct `Music`.artist.artist ) from `Music`.artist where genre = 'RockaBilly';
+-- 6
+select count(distinct `Music`.album2songs.artist ) from `Music`.album2songs where genre = 'TexMex';
+-- 7
+select count(distinct `Music`.artist.artist ) from `Music`.artist where genre = 'TexMex';
+-- 7
+select count(distinct `Music`.album2songs.artist ) from `Music`.album2songs where genre = 'Soul';
+-- 4
+select count(distinct `Music`.artist.artist ) from `Music`.artist where genre = 'Soul';
+-- 4
+select count(distinct `Music`.album2songs.artist ) from `Music`.album2songs where genre = 'Classic';
+-- 14
+select count(distinct `Music`.artist.artist ) from `Music`.artist where genre = 'Classic';
+-- 14
+
+select  `Music`.album2songs.genre ,count(`Music`.album2songs.genre ) from `Music`.album2songs group by genre order by genre;
+
+update `Music`.album2songs set genre = 'BlueGrass'  where genre = 'Blue Grass';
+
+
+select count(distinct artist) from Music.artist  where genre = 'Rock';
+
+select count(distinct album) from Music.artist_albums  where type = 'CD';
+
+select distinct album, artist , type from Music.artist_albums  where type = 'Download'
+and album not in (select `Music`.album2songs.album from `Music`.album2songs where type = 'Download');
+
+
+select album, artist, type  from `Music`.album2songs where type = 'Download'
+and album not in (select album from Music.artist_albums  where type = 'Download');
+
+select * from `Music`.album2songs  where album like '4 John Paul George Ringo EP';
+
+select * from `Music`.artist_albums where album like '4 John Paul George Ringo - EP';
+
+
+insert into Music.artist_albums  values (901,'George Harrison','4 John Paul George Ringo - EP','Rock','Download');
+
+insert into Music.artist_albums  values (902,'John Lennon','4 John Paul George Ringo - EP','Rock','Download');
+
+insert into Music.artist_albums  values (903,'Ringo Starr','4 John Paul George Ringo - EP','Rock','Download');
+
+insert into Music.artist_albums  values (904,'Wings','4 John Paul George Ringo - EP','Rock','Download');
+
+select * from `Music`.album2songs  where album like '4 John Paul George Ringo EP';
+
+insert into Music.album2songs  values (6596,'OSXAir.home','/Users/rduvalwa2/Music/iTunes/iTunes Music/Music','Wings','4 John Paul George Ringo EP','Call Me Back Again','Rock','Download');
+
+insert into Music.album2songs  values (6597,'OSXAir.home','/Users/rduvalwa2/Music/iTunes/iTunes Music/Music','Ringo Starr','4 John Paul George Ringo EP','Walk With You','Rock','Download');
+
+insert into Music.album2songs  values (6598,'OSXAir.home','/Users/rduvalwa2/Music/iTunes/iTunes Music/Music','George Harrison','4 John Paul George Ringo EP','Let It Down','Rock','Download');
+
+
+-- 2704	OSXAir.home	/Users/rduvalwa2/Music/iTunes/iTunes Music/Music	John Lennon	4 John Paul George Ringo EP	01 Love.m4a	Rock	download
+
+select * from  Music.album2songs where album2songs.artist like 'ZZ_ZTest';
+
+delete from Music.album2songs where album2songs.artist like 'ZZ_ZTest';
+
+delete from `Music`.artist_albums where artist like 'ZZ_ZTest';
+
+-- (artist,album,genre,type,index)
+select max(artist_albums.index) from `Music`.artist_albums;
+
+select max(album2songs.index) from `Music`.album2songs;
+-- 6595
+
+select * from `Music`.artist_albums where artist_albums.index = 901;
+
+
+select type, count(type) from Music.artist_albums group by type; 
+
+select * from `Music`.album2songs
+where album in ('Working Class Hero - The Definitive Lennon');
+
+select * from `Music`.album2songs
+where artist like '%Lennon%';
+
+
+select * from `Music`.artist_albums
+where album in ('Working Class Hero - The Definitive Lennon');
+
+
+/* check */
+
+select count(distinct album) from Music.artist_albums  where type = 'CD';
+select count(distinct `Music`.album2songs.album ) from `Music`.album2songs where type = 'CD';
+
+
+select  * from `Music`.album2songs
+where album in ('The Definitive Collection','Midnight on the Water', 'Greatest Hits');
+
+select  * from `Music`.artist_albums
+where album in ('The Definitive Collection','Midnight on the Water', 'Greatest Hits');
+
+/* fix */
+update `Music`.artist_albums set album = 'Working Class Hero The Definitive Lennon' 
+WHERE artist = 'John Lennon'
+and album = 'Working Class Hero - The Definitive Lennon';
+
+
+update `Music`.album2songs set album = 'Super Hits The Byrds' 
+WHERE artist = 'The Byrds'
+and album = 'Super Hits';
+
+commit;
+
+/* end fix and verify */
+
+
+
+
+select distinct artist , genre  FROM `Music`.album2songs order by artist;
+
+select *  FROM `Music`.artist order by artist.index;
+
+select *  FROM `Music`.artist where artist.index = 0;
+
+commit;
+
+update `Music`.album2songs set artist = 'AAAndrea Zonn' where artist like 'Andrea Zonn; Dirk Powell; John Herrmann; Ronnie McCoury; Tim O\'Brien';
+update `Music`.artist set artist = 'Tim O\'Brien' where artist like 'Andrea Zonn; Dirk Powell; John Herrmann; Ronnie McCoury; Tim O\'Brien';
+
+commit;
+
+select *  FROM `Music`.artist where artist like 'Tim O\'Brien';
+
+select song, artist , genre  FROM `Music`.album2songs where artist like 'Andrea Zonn%';
+
+SELECT count(*) FROM `Music`.album2songs;
+-- 6596
+
+SELECT count(*) FROM `Music`.artist_albums;
+-- 904 c1246895-osx
+-- 905
+
+SELECT count(*) FROM `Music`.artist;
+-- 536
+-- 537
+
+/*
+6570
+done
+869
+done
+511
+done
+*/
+
+/* update artist for genre
+Single-table syntax:
+
+UPDATE [LOW_PRIORITY] [IGNORE] table_reference
+    SET col_name1={expr1|DEFAULT} [, col_name2={expr2|DEFAULT}] ...
+    [WHERE where_condition]
+    [ORDER BY ...]
+    [LIMIT row_count]
+Multiple-table syntax:
+
+UPDATE [LOW_PRIORITY] [IGNORE] table_references
+    SET col_name1={expr1|DEFAULT} [, col_name2={expr2|DEFAULT}] ...
+    [WHERE where_condition]
+
+ */
+
+UPDATE `Music`.artist, `Music`.artist_albums, `Music`.album2songs
+   SET `Music`.artist.genre = 'Folk',
+       `Music`.artist_albums.genre = 'Folk',
+       `Music`.album2songs.genre = 'Folk'
+ WHERE    `Music`.artist.artist = 'Joan Baez'
+       OR `Music`.artist_albums.artist = 'Joan Baez'
+       OR `Music`.album2songs.artist = 'Joan Baez';
+
+UPDATE `Music`.artist
+   SET `Music`.artist.genre = 'Folk'
+ WHERE `Music`.artist.artist = 'Joan Baez';
+
+SELECT *
+  FROM `Music`.artist
+ WHERE artist = 'Joan Baez';
+ 
+select *  FROM `Music`.album2songs where artist like 'Tim O\'Brien';
+
+select album2songs.index ,song, artist , genre  FROM `Music`.album2songs where artist like 'Andrea Zonn%';
+update `Music`.album2songs set album2songs.artist = 'Tim O\'Brien', album2songs.genre = 'Blue Grass' where artist like 'Andrea Zonn%'; 
+
+
+select artist.index, artist , genre  FROM `Music`.artist where artist like 'Andrea Zonn%';
+
+select artist.index, artist , genre  FROM `Music`.artist where artist like 'Tim O\'Brien';
+
+delete from Music.artist where artist.index = 495;
+
+select artist_albums.index, album, artist , genre, type  FROM `Music`.artist_albums where artist like 'Andrea Zonn%';
+
+update `Music`.artist_albums set artist_albums.artist = 'Tim O\'Brien', artist_albums.genre = 'Blue Grass' where artist like 'Andrea Zonn%'; 
+
+select artist_albums.index, album, artist , genre, type  FROM `Music`.artist_albums where artist like 'Tim O\'Brien';
+
+delete from artist_albums where artist_albums.index = 830;
+
+update `Music`.artist_albums set artist_albums.artist = 'Tim O\'Brien', artist_albums.genre = 'Blue Grass' where artist_albums.index = 829; 
+-- ***************************
+
+SELECT count(*) FROM `Music`.album2songs;
+
+-- 6593
+
+SELECT count(*) FROM `Music`.artist_albums;
+
+-- 901
+
+SELECT count(*)
+  FROM `Music`.artist_albums
+ WHERE type LIKE 'CD';
+
+-- 250
+
+SELECT count(*)
+  FROM `Music`.artist_albums
+ WHERE type LIKE 'Download';
+
+-- 459
+
+SELECT count(*)
+  FROM `Music`.artist_albums
+ WHERE type LIKE 'Vinyl';
+
+-- 184
+
+SELECT count(*)
+  FROM `Music`.artist_albums
+ WHERE genre LIKE 'Folk';
+
+SELECT count(*) FROM `Music`.artist;
+
+-- 536
+
+SELECT artist
+  FROM `Music`.artist
+ WHERE genre LIKE 'TexMex';
+
+SELECT *
+  FROM `Music`.artist
+ WHERE artist LIKE '%Fender%';
+
+SELECT *
+  FROM `Music`.artist_albums
+ WHERE artist LIKE 'Los Lobos';
+
+UPDATE `Music`.artist_albums
+   SET genre = 'TexMex'
+ WHERE artist LIKE 'The Sir Douglas Quintet';
+
+UPDATE `Music`.artist t1
+       INNER JOIN `Music`.artist_albums t2 ON t1.artist = t2.artist
+   SET t1.genre = t2.genre;
+
+
+
+
+/*
+6570
+done
+869
+done
+511
+done
+*/
+
+/* update artist for genre
+Single-table syntax:
+
+UPDATE [LOW_PRIORITY] [IGNORE] table_reference
+    SET col_name1={expr1|DEFAULT} [, col_name2={expr2|DEFAULT}] ...
+    [WHERE where_condition]
+    [ORDER BY ...]
+    [LIMIT row_count]
+Multiple-table syntax:
+
+UPDATE [LOW_PRIORITY] [IGNORE] table_references
+    SET col_name1={expr1|DEFAULT} [, col_name2={expr2|DEFAULT}] ...
+    [WHERE where_condition]
+
+ 
+
+UPDATE `Music`.artist, `Music`.artist_albums, `Music`.album2songs 
+	SET `Music`.artist.genre = 'Folk', `Music`.artist_albums.genre = 'Folk', `Music`.album2songs.genre = 'Folk'
+	where  `Music`.artist.artist = 'Joan Baez' or  `Music`.artist_albums.artist = 'Joan Baez' or `Music`.album2songs.artist = 'Joan Baez';
+*/
+
+UPDATE `Music`.artist
+   SET `Music`.artist.genre = 'Blues'
+ WHERE `Music`.artist.artist LIKE '%Mayall%';
+
+UPDATE `Music`.artist_albums
+   SET `Music`.artist_albums.genre = 'Blues'
+ WHERE `Music`.artist_albums.artist LIKE '%Mayall%';
+
+UPDATE `Music`.album2songs
+   SET `Music`.album2songs.genre = 'Blues'
+ WHERE `Music`.album2songs.artist LIKE '%Mayall%';
+
+
+UPDATE `Music`.artist_albums
+   SET `Music`.artist_albums.type = 'CD'
+ WHERE `Music`.artist_albums.artist LIKE '%Mayall%';
+
+UPDATE `Music`.album2songs
+   SET `Music`.album2songs.type = 'CD'
+ WHERE `Music`.album2songs.artist LIKE '%Mayall%';
+
+
+
+SELECT *
+  FROM `Music`.artist
+ WHERE artist LIKE '%Mayall%';
+
+SELECT *
+  FROM `Music`.artist_albums
+ WHERE artist LIKE '%Mayall%';
+
+SELECT *
+  FROM `Music`.album2songs
+ WHERE artist LIKE '%Mayall%';
+
+UPDATE `Music`.artist_albums
+   SET `Music`.artist_albums.type = 'Download'
+ WHERE `Music`.artist_albums.album LIKE 'Padlock On The Blues';
+
+UPDATE `Music`.album2songs
+   SET `Music`.album2songs.type = 'Download'
+ WHERE `Music`.album2songs.album LIKE 'Padlock On The Blues';
+
+UPDATE `Music`.artist
+   SET `Music`.artist.genre = 'Rock'
+ WHERE `Music`.artist.genre = 'rock';
+
+UPDATE `Music`.artist_albums
+   SET `Music`.artist_albums.genre = 'Rock'
+ WHERE `Music`.artist_albums.genre = 'rock';
+
+
+UPDATE `Music`.artist_albums
+   SET `Music`.artist_albums.type = 'Download'
+ WHERE `Music`.artist_albums.type = 'download';
+
+UPDATE `Music`.artist
+   SET `Music`.artist.genre = 'Country'
+ WHERE `Music`.artist.genre = 'Cpuntry';
+
+COMMIT;
+
+
+
+/*
+UPDATE TableB 
+SET TableB.value = (
+    SELECT TableA.value 
+    FROM TableA
+    WHERE TableA.name = TableB.name
+);
+
+UPDATE tableB t1 
+        INNER JOIN tableA t2 
+             ON t1.name = t2.name
+SET t1.value = t2.value
+*/
+
+SELECT * FROM `Music`.album2songs;
+
+UPDATE `Music`.album2songs t1
+       INNER JOIN `Music`.artist t2 ON t1.artist = t2.artist
+   SET t1.genre = t2.genre;
+
+UPDATE `Music`.album2songs t1
+       INNER JOIN `Music`.artist_albums t2 ON t1.album = t2.album
+   SET t1.type = t2.type;
+
+
+select `Music`.album2songs.type, count(`Music`.album2songs.type) from `Music`.album2songs group by `Music`.album2songs.type;
+
+select `Music`.album2songs.genre, count(`Music`.album2songs.genre) from `Music`.album2songs group by `Music`.album2songs.genre;
+
+
+SELECT `Music`.artist.genre, count(`Music`.artist.genre)
+    FROM `Music`.artist
+GROUP BY `Music`.artist.genre
+ORDER BY `Music`.artist.genre;
+
+  SELECT `Music`.album2songs.genre, count(`Music`.album2songs.genre)
+    FROM `Music`.album2songs
+GROUP BY `Music`.album2songs.genre
+ORDER BY `Music`.album2songs.genre;
+
+
+  SELECT DISTINCT a.artist
+    FROM `Music`.album2songs a
+   WHERE a.genre LIKE 'TexMex'
+ORDER BY a.artist;
+
+  SELECT DISTINCT a.artist
+    FROM `Music`.album2songs a
+   WHERE a.genre LIKE 'Classic'
+ORDER BY a.artist;
+
+
+  SELECT a.type, count(a.type)
+    FROM `Music`.artist_albums a
+GROUP BY a.type
+ORDER BY a.type;
+
+/*
+download 	444
+Vinyl	    192
+Tape			9
+CD			224
+*/
+
+ALTER TABLE `Music`.artist_albums
+   DROP COLUMN genre;
+
+SELECT max(artist_albums.index) FROM `Music`.artist_albums;
+
+SELECT *
+  FROM `Music`.artist_albums
+ WHERE artist_albums.index =
+          (SELECT max(artist_albums.index) FROM `Music`.artist_albums);
+
+SELECT * FROM Music.artist;
+
+SELECT count(*) FROM Music.artist;
+
+SELECT count(*) FROM Music.artist_albums;
+
+/* alter table to add and drop column */
+
+ALTER TABLE Music.artist_albums
+   ADD genre VARCHAR(20) AFTER album;
+
+ALTER TABLE `Music`.artist_albums
+   DROP COLUMN genre;
+
+SELECT *
+  FROM Music.artist_albums
+ WHERE artist_albums.album LIKE
+          'The Music Inside_ A Collaboration Dedicated To Waylon Jennings, Volume II';
+
+SELECT *
+  FROM Music.artist_albums
+ WHERE Music.artist_albums.artist LIKE '%Baez%';
+
+UPDATE `Music`.artist_albums
+   SET genre = 'Rock', type = 'Tape'
+ WHERE album LIKE 'Driving Music';
+
+UPDATE `Music`.artist_albums
+   SET genre = 'Country', type = 'Vinyl'
+ WHERE artist LIKE '%Waylon%';
+
+SELECT artist.index
+  FROM Music.artist
+ WHERE artist.artist LIKE 'Joe Blow';
+
+DELETE FROM Music.artist
+      WHERE artist.artist LIKE 'Joe Blow';
+
+DELETE FROM Music.artist
+      WHERE Music.artist.index = 542;
+
+COMMIT;
+
+SELECT *
+  FROM Music.artist
+ WHERE artist.artist LIKE '%Lennon%';
+
+SELECT count(*) FROM Music.album2songs;
+
+SELECT *
+  FROM Music.album2songs
+ WHERE Music.album2songs.artist LIKE '%Lennon%';
+
+SELECT *
+  FROM Music.album2songs
+ WHERE Music.album2songs.album LIKE
+          'Lennon Legend The Very Best of John Lennon';
+
+SELECT *
+  FROM artist_albums
+ WHERE artist_albums.album LIKE 'Lennon Legend The Very Best of John Lennon';
+
+UPDATE artist_albums
+   SET artist_albums.album = 'Lennon Legend The Very Best of John Lennon'
+ WHERE artist_albums.album LIKE 'Lennon Legend_ The Very Best of John Lennon';
+
+
+SELECT *
+  FROM Music.artist_albums
+ WHERE artist_albums.album LIKE 'The Best of Joe Blow';
+
+DELETE FROM Music.artist_albums
+      WHERE artist_albums.index > 900;
+
+SELECT *
+  FROM Music.artist_albums
+ WHERE Music.artist_albums.album LIKE 'The Best of Joe Blow';
+
+SELECT *
+  FROM Music.album2songs
+ WHERE Music.album2songs.index = 0;
+
+SELECT *
+  FROM Music.album2songs
+ WHERE Music.album2songs.artist LIKE 'ZZ_ZTest';
+
+DELETE FROM Music.album2songs
+      WHERE Music.album2songs.artist LIKE 'ZZ_ZTest';
+
+SELECT album2songs.index
+  FROM Music.album2songs
+ WHERE album2songs.song LIKE 'TestSong1.m4a';
+
+SELECT *
+  FROM album2songs
+ WHERE artist LIKE '%Doobie%';
+
+SELECT album2songs.song, album2songs.album
+  FROM album2songs
+ WHERE artist LIKE '%Doobie%';
+
+SELECT DISTINCT album
+  FROM album2songs
+ WHERE genre LIKE 'TexMex';
+
+SELECT song, genre
+  FROM album2songs
+ WHERE artist LIKE 'Freddy Fender';
+
+UPDATE album2songs
+   SET genre = 'TexMex'
+ WHERE artist LIKE 'Freddy Fender';
+
+SELECT *
+  FROM Music.artist
+ WHERE artist LIKE '%Test%';
+
+DELETE FROM Music.artist
+      WHERE artist LIKE '%Test%';
+
+SELECT *
+  FROM Music.album2songs
+ WHERE artist LIKE '%Test%';
+
+DELETE FROM Music.album2songs
+      WHERE artist LIKE '%Test%';
+
+SELECT *
+  FROM Music.artist_albums
+ WHERE album LIKE '%Test_Album%';
+
+SELECT *
+  FROM Music.artist_albums
+ WHERE artist LIKE 'ZZ_ZTest';
+
+DELETE FROM Music.artist_albums
+      WHERE artist LIKE 'ZZ_ZTest';
+
+
+SELECT *
+  FROM Music.artist_albums
+ WHERE genre LIKE 'Tex%';
+
+SELECT *
+  FROM Music.album2songs
+ WHERE genre LIKE 'Tex%';
+
+SELECT *
+  FROM Music.albums2songs
+ WHERE Music.album2songs.artist LIKE 'Freddy Fender';
+
+SELECT * FROM Music.albums2songs;
+
+
+***** Dec 22 2016
+
+SELECT *
+  FROM `Music`.artist_albums a
+ WHERE a.artist LIKE 'Z%';
+
+ SELECT *
+    FROM `Music`.artist_albums a
+ORDER BY a.index DESC;
+
+INSERT INTO `Music`.artist_albums
+     VALUES (907,
+             'ZZ_ZTest',
+             'Test_AlbumC',
+             'Test GenX',
+             'TestTape');
+
+COMMIT;
+
+UPDATE `Music`.artist_albums
+ SET artist = 'ZZ_ZTest',genre = 'Test GenX',type = 'TestTape'
+ WHERE album = 'Test_AlbumA';
+ 
+ -- Test_AlbumA
+ select * from `Music`.artist_albums a  WHERE a.album like 'Test_AlbumA';
+ 
+ SELECT *
+  FROM `Music`.artist_albums a
+ WHERE a.album LIKE 'Test_AlbumA';
+ 
+ Delete from `Music`.artist_albums where  album LIKE 'Test_Album%';
+ 
+ 
+ insert into `Music`.artist_albums  (artist_albums.index, artist, album, genre, type) values (907,'ZZ_ZTest','Test_AlbumC','Test_GenX','TestTape');
+ 
+ select max(a.index) + 1 from music.album2songs a;
+ 
+ insert into `Music`.album2songs (album2songs.index, album, artist,genre,path,server,song,type) 
+ 	values (6599,'SongAlbum','SongArts','SongGenre','/path/path/','song_server','test song','test_type');
+	
+
+		
+select * from `Music`.album2songs where song like 'Song%'; -- Song For David.mp3
+
+delete  from `Music`.album2songs where song like '';
+
+
+delete from `Music`.album2songs where song like 'test song';

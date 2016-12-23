@@ -41,6 +41,18 @@ class musicGet_Functions:
         result = cursor.fetchall()  
         return result                   
 
+    def get_song_by_song(self,song):
+        '''
+        '''
+        fields = '*'
+        statement = "Select " + fields + "from music.album2songs where song = '" + song + "';"
+        print(statement)
+        cursor = self.conn.cursor()
+        cursor.execute(statement)
+        result = cursor.fetchall()  
+        return result            
+
+
     def get_artist_from_artistTable(self,artist):
 #       select music.artist.index, artist, genre from music.artist where artist = 'Bill Withers';
         fields = "*"
@@ -77,6 +89,7 @@ class musicGet_Functions:
 if __name__  == '__main__':
     print(os.uname().nodename)
     mux = musicGet_Functions()
+    print(mux.get_song_by_song('Song For David.mp3'))
     print("All albums ",mux.get_count('music.artist_albums'))
     print("All songs ",mux.get_count('music.album2songs'))
     print("All artist ",mux.get_count('artist'))

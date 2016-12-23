@@ -1,6 +1,10 @@
 '''
 '''
 import unittest 
+from Musicdb_info import login_info_root
+from Musicdb_info import login_info_osx 
+import mysql.connector
+import os
 import Music_Get_Functions
 from  Music_Load import musicLoad_Functions, song_Add_Update_Delete, album_Add_Update_Delete, artist_Add_Update_Delete
 
@@ -10,17 +14,20 @@ class Test_MusicLoad(unittest.TestCase):
             self.getInfo = Music_Get_Functions.musicGet_Functions()
             self.addArtistInfo = artist_Add_Update_Delete()
             self.addAlbum = album_Add_Update_Delete()
-            self.arts = 'ZZ_ZTestX'
-            self.genre = 'Test GenX'
-            self.album = 'Test_Album1X'
-            self.tipe = 'TestTape'
-            self.albums = ['Test_AlbumA','Test_AlbumB','Test_AlbumC']
+            self.arts = 'Test_Add_Artist'
+            self.genre = 'Add_Gen'
+            self.album = 'Test_Add_Album'
+            self.tipe = 'Add_Type'
             
         def tearDown(self):
             self.Restore_testAlbum()
             self.addArtistInfo.dbConnectionClose()
             self.addAlbum.dbConnectionClose()
             self.getInfo.dbConnectionClose()
+         
+        """
+            Test Artist Table Functions
+        """
             
         def test_Add_Artist(self): 
             self.addArtistInfo.add_artist(self.arts ,self.genre)
@@ -69,7 +76,10 @@ class Test_MusicLoad(unittest.TestCase):
             result = self.getInfo.get_artist_from_artistTable(self.arts)
             expected = []
             self.assertListEqual(expected, result, "list is not empty")  
-              
+         
+        """
+            Test Artist_Albums Table Functions
+        """  
         def test_DoesAlbumExist_True(self):
             expected = "True" 
             album = 'Heart Like A Wheel'
@@ -97,7 +107,6 @@ class Test_MusicLoad(unittest.TestCase):
             '''
             update_album(self,album, artist = 'no_change', genre = 'no_change', tipe = 'no_change'):
             '''
-            original_artist = 'ZZ_ZTest'
             update_artist = 'ZZ Top'
             test_album = 'Test_AlbumA'
             
@@ -111,15 +120,15 @@ class Test_MusicLoad(unittest.TestCase):
             '''
             update_album(self,album, artist = 'no_change', genre = 'no_change', tipe = 'no_change'):
             '''
-            original_artist = 'ZZ Top'
-            update_artist = 'ZZ_ZTest'
+            original_artist = 'ZZ_ZTest'
+            update_artist = 'no_change'
             test_album = 'Test_AlbumA'
             update_genre = 'up_genre'
             
             self.addAlbum.update_album(test_album, update_artist,update_genre)
             result = self.getInfo.get_Album_from_ArtistAlbums(test_album)
             print("update result is ", result)
-            self.assertEqual(update_artist, result[0][1], "album update artist failed")
+            self.assertEqual(original_artist, result[0][1], "album update artist failed")
             self.assertEqual(update_genre, result[0][3], 'genre failed')
             self.assertEqual(test_album, result[0][2], 'album name is wrong')
 
@@ -129,10 +138,7 @@ class Test_MusicLoad(unittest.TestCase):
             '''
             original_artist = 'ZZ_ZTest'
             original_genre = 'Test GenX'
-            original_type = 'TestTape'
-            update_artist = 'no_change'
             test_album = 'Test_AlbumA'
-            update_genre = 'no_change'
             update_type = 'Up_Type'
             
             self.addAlbum.update_album(test_album, 'no_change','no_change',update_type)
@@ -143,38 +149,62 @@ class Test_MusicLoad(unittest.TestCase):
             self.assertEqual(test_album, result[0][2], 'album name is wrong')
             self.assertEqual(update_type, result[0][4], 'type failed')
 
-        '''
-        def test_Restore_testAlbum(self):
-            test_album = 'Test_AlbumA'
-            original_artist = 'ZZ_ZTest'
-            original_genre = 'Test GenX'
-            original_type = 'TestTape'
-            self.addAlbum.update_album(test_album, original_artist, original_genre, original_type)
-            result = self.getInfo.get_Album_from_ArtistAlbums(test_album)
-            self.assertEqual(original_artist, result[0][1], "album update artist failed")
-            self.assertEqual(test_album, result[0][2], 'album name is wrong')
-            self.assertEqual(original_genre, result[0][3], 'genre failed')
-            self.assertEqual(original_type, result[0][4], 'type failed')
-        ''' 
-            
-            
         def test_Delete_Album(self): 
             self.addAlbum.delete_album(self.album)
             result = self.getInfo.get_Album_from_ArtistAlbums(self.album)
             expected = []
             self.assertListEqual(expected, result, "list is not empty")   
             
-        def Restore_testAlbum(self):
-            test_album = 'Test_AlbumA'
-            original_artist = 'ZZ_ZTest'
-            original_genre = 'Test GenX'
-            original_type = 'TestTape'
-            self.addAlbum.update_album(test_album, original_artist, original_genre, original_type)
-            result = self.getInfo.get_Album_from_ArtistAlbums(test_album)
-            self.assertEqual(original_artist, result[0][1], "album update artist failed")
-            self.assertEqual(test_album, result[0][2], 'album name is wrong')
-            self.assertEqual(original_genre, result[0][3], 'genre failed')
-            self.assertEqual(original_type, result[0][4], 'type failed')       
+              
+        """
+            Test Album_Songs Table Functions
+        """ 
+        
+        def test_Add_Song(self):
+            pass
+        
+        def test_update_song_artist(self):
+            pass
+
+        def test_update_song_album(self):
+            pass                
+ 
+        def test_update_song_server(self):
+            pass            
+ 
+        def test_update_song_path(self):
+            pass 
+
+        def test_update_song_genre(self):
+            pass   
+        
+        def test_update_song_type(self):
+            pass
+        
+        def test_delete_song(self):
+            pass          
+              
+        
+                   
+        """
+            Test Support Functions
+        """                    
+        def Restore_testAlbum(self):   
+            if os.uname().nodename == 'C1246895-osx.home':
+                self.conn = mysql.connector.Connect(**login_info_osx)
+            elif  os.uname().nodename == 'OSXAir.home.home':
+                self.conn = mysql.connector.Connect(**login_info_root)
+
+            statement = "UPDATE `Music`.artist_albums SET artist = 'ZZ_ZTest',genre = 'Test GenX',type = 'TestTape' WHERE album = 'Test_AlbumA';"
+            print(statement)
+            self.addAlbum.conn 
+            cursor = self.conn.cursor()
+            cursor.execute(statement)
+            commit = "commit;"
+            cursor.execute(commit)
+            print("done")
+            cursor.close()
+            self.conn.close()
             
                  
 if __name__ == "__main__":
