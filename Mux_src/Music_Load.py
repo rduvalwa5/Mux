@@ -152,6 +152,16 @@ class song_Add_Update_Delete:
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home'      
         
+#    def get_dbConnection(self):
+#        if os.uname().nodename == 'C1246895-osx.home':
+#            self.conn2 = mysql.connector.Connect(**login_info_osx)
+#        elif  os.uname().nodename == 'OSXAir.home.home':
+#            self.conn2 = mysql.connector.Connect(**login_info_root)
+#        print(self.conn)
+#        self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
+#        self.server = 'OSXAir.home'      
+#        return self.conn2
+    
     def get_max_index(self, table):
         self.table = '`Music`.' + table
         self.tableIndex = table + "." + 'Index'
@@ -207,7 +217,7 @@ class song_Add_Update_Delete:
                 newIndex = newIndex + 1
         countStatement = "SELECT count(*) FROM music.album2songs;"        
         cursor.execute(countStatement)
-        count = cursor.fetchone()
+#        count = cursor.fetchone()
 #        print(count)
         commit = "commit;"
         cursor.execute(commit)
@@ -230,6 +240,86 @@ class song_Add_Update_Delete:
         cursor.execute(commit)
         print("done")
         cursor.close()
+        
+    def update_song_album(self, album,song):
+        '''
+        UPDATE `Music`.album2songs SET album = 'Test_Album' WHERE song = 'Song_Song.mp3';
+        '''
+#        xconn = self.get_dbConnection()
+        cursor = self.conn.cursor()
+        statement = "UPDATE `Music`.album2songs SET album = '" + album + "' WHERE song = '" + song  + "';"
+        print(statement)
+        cursor.execute( statement)
+        commit = "commit;"
+        cursor.execute(commit)
+        print("done")
+        cursor.close()   
+  #      xconn.close()
+         
+    def update_song_artist(self,artist,song):
+        '''
+        UPDATE `Music`.album2songs SET artist = 'ZZ_ZTest' WHERE song = 'Song_Song.mp3';
+        '''
+        cursor = self.conn.cursor()
+        statement = "UPDATE `Music`.album2songs SET artist = '" + artist + "' WHERE song = '" + song  + "';"
+        print(statement)
+        cursor.execute( statement)
+        commit = "commit;"
+        cursor.execute(commit)
+        print("done")
+        cursor.close()    
+    
+    def update_song_genre(self,genre,song):
+        '''
+        UPDATE `Music`.album2songs SET genre = 'Rock' WHERE song = 'Song_Song.mp3';
+        '''
+        cursor = self.conn.cursor()
+        statement = "UPDATE `Music`.album2songs SET genre = '" + genre + "' WHERE song = '" + song  + "';"
+        print(statement)
+        cursor.execute( statement)
+        commit = "commit;"
+        cursor.execute(commit)
+        print("done")
+        cursor.close()    
+    
+    def update_song_type(self,tipe,song):
+        '''
+        UPDATE `Music`.album2songs SET type = 'CD' WHERE song = 'Song_Song.mp3';
+        '''
+        cursor = self.conn.cursor()
+        statement = "UPDATE `Music`.album2songs SET type = '" + tipe + "' WHERE song = '" + song  + "';"
+        print(statement)
+        cursor.execute( statement)
+        commit = "commit;"
+        cursor.execute(commit)
+        print("done")
+        cursor.close()    
+    
+    def update_song_path(self,path,song):
+        '''
+        UPDATE `Music`.album2songs SET path = '/home.music/' WHERE song = 'Song_Song.mp3';
+        '''
+        cursor = self.conn.cursor()
+        statement = "UPDATE `Music`.album2songs SET path = '" + path + "' WHERE song = '" + song  + "';"
+        print(statement)
+        cursor.execute( statement)
+        commit = "commit;"
+        cursor.execute(commit)
+        print("done")
+        cursor.close()    
+
+    def update_song_server(self,server, song):
+        '''
+        UPDATE `Music`.album2songs SET server = 'music_server' WHERE song = 'Song_Song.mp3';
+        '''
+        cursor = self.conn.cursor()
+        statement = "UPDATE `Music`.album2songs SET server = '" + server + "' WHERE song = '" + song  + "';"
+        print(statement)
+        cursor.execute( statement)
+        commit = "commit;"
+        cursor.execute(commit)
+        print("done")
+        cursor.close()   
   
     def delete_song(self,song):
         '''
@@ -497,6 +587,7 @@ class artist_Add_Update_Delete:
         print(selectStatement)
         cursor.execute(selectStatement)
         row = cursor.fetchone()
+        print(row)
         index = row[0]
 #        print(index)
         deleteStatement = "Delete from `Music`.artist where `Music`.artist.index = " + str(index) + ";"       
@@ -507,21 +598,38 @@ class artist_Add_Update_Delete:
         print("done")
             
 if __name__  == '__main__':
-    
-    album = 'Test_Songalbum'
-    artist = 'Song_album'
+
+    song = 'Song_Song.mp3'    
+ 
+    album = 'Test_SongAlbum'
+    album_up = 'Up_SongAlbum'
+    artist = 'Song_Artist'
+    artist_up = 'Up_Song_Artist'
     genre = 'Song_genre'
-    song = 'Song_Song.mp3'
+    genre_up = 'Up_Song_genre'
+    
     tipe = 'Song_Type'
+    tipe_up = 'Up_Song_Type'
     server = 'song_server'
+    server_up = 'up_song_server'
     path = '/Test/Music'
-    server = 'Test_Server'
+    path_up = '/Test/Up_Music'
+
     Song = song_Add_Update_Delete()
     get = musicGet_Functions()
     Song.add_song(album,artist,genre,song,tipe,path,server)
-    result = get.get_song_by_song(song)  
-    print(result)
+    Song.update_song_album(album_up, song)
+    Song.update_song_artist(artist_up, song)
+    Song.update_song_genre(genre_up, song)
+    Song.update_song_path(path_up, song)
+    Song.update_song_server(server_up, song)
+    Song.update_song_type(tipe_up, song)
+    result_genre_up = get.get_song_by_song(song)
+    print("genre up ", result_genre_up)
     Song.delete_song(song)
+#    for x in range(10):
+#            Delete_result = get.get_song_by_song(song)  
+#            print('after: ', x , Delete_result)
     
     '''
     update_album = album_Add_Update_Delete()
