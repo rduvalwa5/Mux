@@ -599,6 +599,20 @@ class artist_Add_Update_Delete:
             
 if __name__  == '__main__':
 
+#    getSongs = musicLoad_Functions()
+#    getSongs.initial_insert_into_album2songs()
+#    getSongs.sync_song_type()
+#    getSongs.sync_song_genre()
+    
+
+#    addArtist = artist_Add_Update_Delete()
+    #.initial_insert_into_artist('Sir Douglas Quintet','TexMex')
+#    addArtist.add_artist('Sir Douglas Quintet','TexMex')
+    
+    addAlbum = album_Add_Update_Delete()
+    addAlbum.add_album("Mendocino", 'Sir Douglas Quintet', 'download', 'TexMex')
+    
+    '''
     song = 'Song_Song.mp3'    
  
     album = 'Test_SongAlbum'
@@ -627,11 +641,7 @@ if __name__  == '__main__':
     result_genre_up = get.get_song_by_song(song)
     print("genre up ", result_genre_up)
     Song.delete_song(song)
-#    for x in range(10):
-#            Delete_result = get.get_song_by_song(song)  
-#            print('after: ', x , Delete_result)
     
-    '''
     update_album = album_Add_Update_Delete()
     print("update all")
     update_album.update_album('Test_AlbumA', 'upArtist', 'UpGenre', 'UpType')
