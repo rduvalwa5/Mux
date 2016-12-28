@@ -598,7 +598,7 @@ class artist_Add_Update_Delete:
         print("done")
             
 if __name__  == '__main__':
-
+    pass
 #    getSongs = musicLoad_Functions()
 #    getSongs.initial_insert_into_album2songs()
 #    getSongs.sync_song_type()
@@ -609,8 +609,19 @@ if __name__  == '__main__':
     #.initial_insert_into_artist('Sir Douglas Quintet','TexMex')
 #    addArtist.add_artist('Sir Douglas Quintet','TexMex')
     
-    addAlbum = album_Add_Update_Delete()
-    addAlbum.add_album("Mendocino", 'Sir Douglas Quintet', 'download', 'TexMex')
+#    addAlbum = album_Add_Update_Delete()
+#    addAlbum.add_album("The Yardbirds", 'The Yardbirds', 'download', 'Rock')
+    
+#    addSong = song_Add_Update_Delete()
+#    songs = ['Over Under Sideways Down','The Nazz Are Blue','Rack My Mind']
+    
+#    for song in songs:
+#        addSong.add_song("The Yardbirds", "The Yardbirds", "Rock", song, "Downlaod", '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', "OSXAir.home")
+    
+
+#    for song in songs:    
+#            addSong.update_song_type('Download', song)
+
     
     '''
     song = 'Song_Song.mp3'    

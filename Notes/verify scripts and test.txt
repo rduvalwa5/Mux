@@ -1,9 +1,23 @@
 -- verify song load
 
-select count(*) from `Music`.album2songs a;
--- 6596
+SELECT count(*)
+  FROM `Music`.album2songs a;
+-- 6625
 
-select type, count(type) from `Music`.album2songs a group by type order by count(type) desc;
+
+SELECT *
+  FROM `Music`.album2songs a
+  where artist like 'The Yardbirds';
+  
+ Select * from `Music`.artist_albums a where artist like '%Yard%';
+ 
+ Select * from artist where artist like '%Yard%';
+
+SELECT type, count(type)
+    FROM `Music`.album2songs a
+GROUP BY type
+ORDER BY count(type) DESC;
+
 /*
 Type			count
 Download		2759
@@ -20,8 +34,19 @@ Vinyl		1851
 Tape			24
 */
 
+/* 12-27-2016
+Download	2788
+CD	1962
+Vinyl	1851
+Tape	24
+*/
 
-select genre, count(genre) from `Music`.album2songs a group by genre order by count(genre) desc;
+
+  SELECT genre, count(genre)
+    FROM `Music`.album2songs a
+GROUP BY genre
+ORDER BY count(genre) DESC;
+
 /* Before
 Rock			3127
 Jazz			788
@@ -59,14 +84,31 @@ Talk			1
 */
 
 
-select * from `Music`.artist a where a.artist like '%Sir%';
+SELECT *
+  FROM `Music`.album2songs a
+ WHERE a.artist LIKE '%Sir%';
 
-select * from `Music`.artist a where a.genre like 'TexMex';
+UPDATE `Music`.album2songs a
+   SET artist = 'Sir Douglas Quintet'
+ WHERE artist = 'The Sir Douglas Quintet';
 
-select * from `Music`.album2songs a where a.artist like '%sir%';
+
+SELECT *
+  FROM `Music`.artist a
+ WHERE a.artist LIKE '%Sir%';
+
+SELECT *
+  FROM `Music`.artist a
+ WHERE a.genre LIKE 'TexMex';
+
+SELECT *
+  FROM `Music`.album2songs a
+ WHERE a.artist LIKE '%sir%';
 
 
-select * from `Music`.artist_albums a where a.artist like '%Sir%';
+SELECT *
+  FROM `Music`.artist_albums a
+ WHERE a.artist LIKE '%Sir%';
 
 
 SELECT music.artist.index, artist, genre
