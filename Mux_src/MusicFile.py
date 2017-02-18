@@ -78,10 +78,10 @@ class musicFile:
         print(statement)
         dbCursor.execute(statement)
         rows = dbCursor.fetchall()
-#        print(row)
-        return rows
+#        print(row)   
         dbCursor.close()     
-        conn.close()       
+        conn.close() 
+        return rows      
     
     def get_select_ArtistAlbums(self, fields, constraints):
         if os.uname().nodename == 'C1246895-osx.home':
@@ -480,7 +480,8 @@ class musicFile:
         cursor.close()
         conn.close()
 
-
+    def dbConnectionClose(self):
+        self.conn.close()    
     
 if __name__  == '__main__':
 #    mux = musicFile()
