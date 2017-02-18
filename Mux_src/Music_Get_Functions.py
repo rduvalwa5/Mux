@@ -1,6 +1,6 @@
 '''
 Created on Feb 16, 2017
-
+improve for Python 3.6
 @author: rduvalwa2
 '''
 
