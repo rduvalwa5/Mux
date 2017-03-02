@@ -3,14 +3,23 @@ Created on Nov 10, 2016
 This code is a Python port of a program that I wrote in Java in 2006
 It attempts to find the music files on a server and put them into a data base.
 @author: rduvalwa2
+http://pymysql.readthedocs.io/en/latest/user/examples.html
+
+connection = pymysql.connect(host='localhost',
+                             user='user',
+                             password='passwd',
+                             db='db',
+                             charset='utf8mb4',
+                             cursorclass=pymysql.cursors.DictCursor)
+
 '''
-from MusicFile import musicFile
+from WindowsMusicFile import musicFile
 import unittest
-import mysql.connector
+import pymysql.connections
 from  Musicdb_info import login_info_rd
 from Musicdb_info import login_info_root
 from Musicdb_info import login_info_xps
-from mysql.connector.errors import Error
+from pymysql import Error
 
 
 class TestMusicDb(unittest.TestCase):
@@ -19,13 +28,13 @@ class TestMusicDb(unittest.TestCase):
         '''
         Test access remote database
         '''
-        db = mysql.connector.Connect(**login_info_xps)
+        db = pymysql.connect(host='localhost',user='rduval',password='blu4jazz',db='Music',charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
         cursor = db.cursor()
-        statement = "select count(*) from Music.Albums;"
+        statement = "select count(*) from Music.artist_albums;"
         cursor.execute(statement)
         row = cursor.fetchone()
-        print("Row is " ,row[0])
-        self.assertTrue(row[0] == 751)
+        print("Row is " ,row['count(*)'])
+        self.assertTrue(row['count(*)'] == 904)
         cursor.close()
         db.close()
 
@@ -34,71 +43,68 @@ class TestMusicDb(unittest.TestCase):
         Test Create, Review, Update and Delete to Music.Albums table remote server
         '''
         albumName = "Test Album"
-        db = mysql.connector.Connect(**login_info_xps)
+        db = pymysql.connect(host='localhost',user='rduval',password='blu4jazz',db='Music',charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+#        db = pymysql.connect(**login_info_xps)
         cursor = db.cursor()
-        max_index_statement = "select max(Albums.Index) from Music.Albums; "
+        max_index_statement = "select max(artist_albums.index) from Music.artist_albums; "
         cursor.execute( max_index_statement)
         maxIndex = cursor.fetchone()
-        print("Max Index is " ,maxIndex[0])
-        indexDb = maxIndex[0] + 1
-        insertStatement = "INSERT into Music.Albums (Albums.Album,Albums.Index,Albums.`Artist Id`) values(\""+albumName+"\"," + str(indexDb) + ",801)"
-        cursor.execute( insertStatement)
-        selectStatement = "select * from Music.Albums where Albums.index = " + str(indexDb) + ";"
+        print("Max Index is " ,maxIndex['max(artist_albums.index)'])
+        indexDb = maxIndex['max(artist_albums.index)'] + 1
+        insertStatement =  "INSERT into Music.artist_albums (artist_albums.album,artist_albums.index,artist_albums.artist,artist_albums.genre,artist_albums.type) values('" + albumName + "',"  + str(indexDb) +  ",'TestArtist','Test_Genre','Test_Type');"
+#        insertStatement = "INSERT into Music.artist_albums (artist_albums.album,artist_albums.index,artist_albums.artist,artist_albums.genre,artist_albums.type) values(\""+albumName+"\"," + str(indexDb) + "TestArtist" + "Test_Genre" + "Test_Type" +")"
+#        insertStatement = "INSERT into Music.artist_albums (artist_albums.album,artist_albums.index) values(\""+albumName+"\"," + str(indexDb) + ")"
+        cursor.execute(insertStatement)
+        selectStatement = "select * from Music.artist_albums where Music.artist_albums.index = " + str(indexDb) + ";"
         cursor.execute(selectStatement) 
         result = cursor.fetchone()
-        print("Result ", result)
-#        newAlbumName = "NewTestAlbum"
-        updateStatement = "UPDATE Music.Albums SET Albums.Album = \"NewTestAlbum\" where Albums.index = " + str(indexDb) +";"
-        cursor.execute(updateStatement) 
+        print("Insert Result ", result)
+        expected =  {'index': 905, 'artist': 'TestArtist', 'album': 'Test Album', 'genre': 'Test_Genre', 'type': 'Test_Type'}
+        self.assertEqual(expected, result,"Insert failed")
+        newAlbumName = "NewTestAlbum"
+        updateStatement = "UPDATE Music.artist_albums SET artist_albums.album = '" + newAlbumName + "' where artist_albums.index = " + str(indexDb) +";"
+        cursor.execute(updateStatement)
+        selectStatement = "select * from Music.artist_albums where Music.artist_albums.index = " + str(indexDb) + ";"
         cursor.execute(selectStatement) 
-        result1 = cursor.fetchone()
-        print("Result 1 ", result1)
-        deleteStatement = "Delete from Music.Albums where Albums.index = " + str(indexDb) + ";"
+        result = cursor.fetchone()
+        print("Insert Result ", result)
+        expected =  {'index': 905, 'artist': 'TestArtist', 'album': 'NewTestAlbum', 'genre': 'Test_Genre', 'type': 'Test_Type'}
+        self.assertEqual(expected, result,"Insert failed")
+        deleteStatement = "Delete from Music.artist_albums where Music.artist_albums.index = " + str(indexDb) + ";"
         cursor.execute(deleteStatement) 
         cursor.execute(selectStatement) 
         result2 = cursor.fetchone()
         print("Result 2 ", result2)
+        self.assertEqual(None, result2,"Delete failed")
         cursor.close()
         db.close()
+        
 
     def testGetMaxArtist(self):
             mux = musicFile()
-            table = 'Artist'
-            expected = 535
-#            mux.get_max_index(table)
+            table = 'artist'
+            expected = 536
             result = mux.get_max_index(table)
-            print(result[0])
-            self.assertEqual(expected,result[0])
+            self.assertEqual(expected,result['max(artist.Index)'])
                
     def testGetMaxAlbums(self):
             mux = musicFile()
             table = 'artist_albums'
-            expected = 900
-#            mux.get_max_index(table)
+            expected = 904
             result = mux.get_max_index(table)
-            print(result[0])
-            self.assertEqual(expected,result[0])
+            self.assertEqual(expected,result['max(artist_albums.Index)'])
     
     def testGetMaxSongs(self):
             mux = musicFile()
             table = 'album2songs'
-            expected = 6589
-#            mux.get_max_index(table)
+            expected = 6598
             result = mux.get_max_index(table)
-            print(result[0])
-            self.assertEqual(expected,result[0])
+            print(result)
+            self.assertEqual(expected,result['max(album2songs.Index)'])
         
-    def testGetMaxAlbumSongs(self):
-            mux = musicFile()
-            table = 'artist_albums'
-            expected = 900
-#            mux.get_max_index(table)
-            result = mux.get_max_index(table)
-            print(result[0])
-            self.assertEqual(expected,result[0])           
     '''       
     def test_music_Albums_Rows(self):
-        db = mysql.connector.Connect(**login_info_rd)
+        db =pymysql.connections(**login_info_rd)
         cursor = db.cursor()
         statement = "select count(*) from Music.Albums;"
         cursor.execute(statement)
@@ -109,7 +115,7 @@ class TestMusicDb(unittest.TestCase):
         db.close()
     
     def test_Music_Artist_RowsJ(self):
-        db = mysql.connector.Connect(**login_info_root)
+        db = pymysql.connections(**login_info_root)
         cursor = db.cursor()
 #        statement = "select uid from active_passwords where ap in ('password_db');"
         statement = "select count(*) from Music.Artist;"
@@ -121,7 +127,7 @@ class TestMusicDb(unittest.TestCase):
         db.close()
     
     def test_Music_Album_values(self):
-        db = mysql.connector.Connect(**login_info_rd)
+        db = pymysql.connections(**login_info_rd)
         cursor = db.cursor()
 #        statement = "select album from Music.Albums where Albums.index = 3;"
         statement = "select * from Music.Albums where Albums.index = 3;"
@@ -138,7 +144,7 @@ class TestMusicDb(unittest.TestCase):
  
     def test_Crud_AlbumTable(self):
         albumName = "Test Album"
-        db = mysql.connector.Connect(**login_info_rd)
+        db = pymysql.connections(**login_info_rd)
         cursor = db.cursor()
         max_index_statement = "select max(Albums.Index) from Music.Albums; "
         cursor.execute( max_index_statement)

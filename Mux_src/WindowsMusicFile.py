@@ -2,15 +2,24 @@
 Created on Nov 10, 2016
 This code is a Python port of a program that I wrote in Java in 2006
 It attempts to find the music files on a server and put them into a data base.
+On Windows 7
+
+Use command window as administrator:
+C:\Program Files\Python36-32\Scripts>pip install mysqlclient
+Collecting mysqlclient
+  Using cached mysqlclient-1.3.10-cp36-cp36m-win32.whl
+Installing collected packages: mysqlclient
+Successfully installed mysqlclient-1.3.10
+C:\Program Files\Python36-32\Scripts>
 @author: rduvalwa2
 '''
 
 import os, sys
-import mysql.connector
+import pymysql.connections
 from  Musicdb_info import login_info_rd
 from Musicdb_info import login_info_root
 from Musicdb_info import login_info_osx 
-from mysql.connector.errors import Error
+from pymysql.err import Error
 
 
 class connection_db:
@@ -26,10 +35,10 @@ class musicFile:
     
     def get_record_count(self,table):
         statement = "select count(*) from " + table   + ";"
-        if os.uname().nodename == 'C1246895-osx.home':
-            conn = mysql.connector.Connect(**login_info_osx)
+        if os.uname_result.nodename == 'C1246895-osx.home':
+            conn = pymysql.connections(**login_info_osx)
         else:
-            conn = mysql.connector.Connect(**login_info_root)
+            conn = pymysql.connections(**login_info_root)
         
         cursor = conn.cursor()
         cursor.execute(statement)
@@ -41,10 +50,11 @@ class musicFile:
         self.table = '`Music`.' + table
         self.tableIndex = table + "." + 'Index'
         max_index_statement = "select max(" + self.tableIndex + ") from " + self.table   + ";"
-        if os.uname().nodename == 'C1246895-osx.home':
-            conn = mysql.connector.Connect(**login_info_osx)
+        if os.uname_result.nodename == 'C1246895-osx.home':
+            conn = pymysql.connections(**login_info_osx)
         else:
-            conn = mysql.connector.Connect(**login_info_root)
+            conn = pymysql.connect(host='localhost',user='rduval',password='blu4jazz',db='Music',charset='utf8mb4',cursorclass=pymysql.cursors.DictCursor)
+
         cursor = conn.cursor()
         cursor.execute( max_index_statement)
         maxIndex = cursor.fetchone()
@@ -53,12 +63,12 @@ class musicFile:
     
 
     def get_select_Album(self, fields, constraints):
-        if os.uname().nodename == 'C1246895-osx.home':
-#            print(os.uname().nodename)
-            conn = mysql.connector.Connect(**login_info_osx)
+        if os.uname_result.nodename == 'C1246895-osx.home':
+#            print(os.uname_result.nodename)
+            conn = pymysql.connections(**login_info_osx)
         else:
-#            print(os.uname().nodename)
-            conn = mysql.connector.Connect(**login_info_root)
+#            print(os.uname_result.nodename)
+            conn = pymysql.connections(**login_info_root)
         dbCursor = conn.cursor()
         statement = "select " + fields + " from Music.artist_albums " + constraints + ";" #where Albums.index = 3;"
         dbCursor.execute(statement)
@@ -69,10 +79,10 @@ class musicFile:
 
     def get_select_Artist(self, fields, constraints):
         outPut = []
-        if os.uname().nodename == 'C1246895-osx.home':
-            conn = mysql.connector.Connect(**login_info_osx)
+        if os.uname_result.nodename == 'C1246895-osx.home':
+            conn = pymysql.connections(**login_info_osx)
         else:
-            conn = mysql.connector.Connect(**login_info_root)
+            conn = pymysql.connections(**login_info_root)
         dbCursor = conn.cursor()
         statement = "select "+ fields + " from Music.artist where " + constraints + ";" #where Albums.index = 3;"
         print(statement)
@@ -84,10 +94,10 @@ class musicFile:
         conn.close()       
     
     def get_select_ArtistAlbums(self, fields, constraints):
-        if os.uname().nodename == 'C1246895-osx.home':
-            conn = mysql.connector.Connect(**login_info_osx)
+        if os.uname_result.nodename == 'C1246895-osx.home':
+            conn = pymysql.connections(**login_info_osx)
         else:
-            conn = mysql.connector.Connect(**login_info_root)
+            conn = pymysql.connections(**login_info_root)
         dbCursor = conn.cursor()
         statement = "select " + fields + " from Music.artist_albums" + constraints + ";"
         print(statement)
@@ -102,10 +112,10 @@ class musicFile:
         Select a song or songs by criteria.
         '''
         rows = []
-        if os.uname().nodename == 'C1246895-osx.home':
-            conn = mysql.connector.Connect(**login_info_osx)
+        if os.uname_result.nodename == 'C1246895-osx.home':
+            conn = pymysql.connections(**login_info_osx)
         else:
-            conn = mysql.connector.Connect(**login_info_root)
+            conn = pymysql.connections(**login_info_root)
         cursor = conn.cursor()
         self.statement = statement
         cursor.execute(statement)
@@ -161,10 +171,10 @@ class musicFile:
         return songs
     
     def get_all_songs_type_genre(self):
-        if os.uname().nodename == 'C1246895-osx.home':
-            conn = mysql.connector.Connect(**login_info_osx)
+        if os.uname_result.nodename == 'C1246895-osx.home':
+            conn = pymysql.connections(**login_info_osx)
         else:
-            conn = mysql.connector.Connect(**login_info_root)
+            conn = pymysql.connections(**login_info_root)
         cursor = conn.cursor()
         sync_statement = "UPDATE `Music`.album2songs t1 INNER JOIN `Music`.artist_albums t2 ON t1.album = t2.album SET t1.genre = t2.genre, t1.type = t2.type;"
         cursor.execute(sync_statement)
@@ -203,12 +213,12 @@ class musicFile:
         '''
         This code recurses thru the "base" path and captures the artist, album and song
         '''
-        if os.uname().nodename == 'C1246895-osx.home':
-            self.server = os.uname().nodename
-            conn = mysql.connector.Connect(**login_info_osx)
+        if os.uname_result.nodename == 'C1246895-osx.home':
+            self.server = os.uname_result.nodename
+            conn = pymysql.connections(**login_info_osx)
         else:
-            self.server = os.uname().nodename
-            conn = mysql.connector.Connect(**login_info_root)
+            self.server = os.uname_result.nodename
+            conn = pymysql.connections(**login_info_root)
         cursor = conn.cursor()
         trunkate = "truncate  music.album2songs;"
         cursor.execute(trunkate)
@@ -230,12 +240,12 @@ class musicFile:
         '''
         This code adds song
         '''
-        if os.uname().nodename == 'C1246895-osx.home':
-            self.server = os.uname().nodename
-            conn = mysql.connector.Connect(**login_info_osx)
+        if os.uname_result.nodename == 'C1246895-osx.home':
+            self.server = os.uname_result.nodename
+            conn = pymysql.connections(**login_info_osx)
         else:
-            self.server = os.uname().nodename
-            conn = mysql.connector.Connect(**login_info_root)
+            self.server = os.uname_result.nodename
+            conn = pymysql.connections(**login_info_root)
         cursor = conn.cursor()
         maxIndex =  self.get_max_index("album2songs")
         index = maxIndex[0]
@@ -263,12 +273,12 @@ class musicFile:
 
     
     def delete_songs(self,artist,albumin='all',songin="all"):
-        if os.uname().nodename == 'C1246895-osx.home':
-            self.server = os.uname().nodename
-            conn = mysql.connector.Connect(**login_info_osx)
+        if os.uname_result.nodename == 'C1246895-osx.home':
+            self.server = os.uname_result.nodename
+            conn = pymysql.connections(**login_info_osx)
         else:
-            self.server = os.uname().nodename
-            conn = mysql.connector.Connect(**login_info_root)
+            self.server = os.uname_result.nodename
+            conn = pymysql.connections(**login_info_root)
         cursor = conn.cursor()   
         delete_songs = self.get_songs(artist,albumin)
         print("delete songs: ", delete_songs)  
@@ -332,12 +342,12 @@ class musicFile:
         '''
         This code recurses thru the "base" path and captures the artist, album and song
         '''
-        if os.uname().nodename == 'C1246895-osx.home':
-            self.server = os.uname().nodename
-            conn = mysql.connector.Connect(**login_info_osx)
+        if os.uname_result.nodename == 'C1246895-osx.home':
+            self.server = os.uname_result.nodename
+            conn = pymysql.connections(**login_info_osx)
         else:
-            self.server = os.uname().nodename
-            conn = mysql.connector.Connect(**login_info_root)
+            self.server = os.uname_result.nodename
+            conn = pymysql.connections(**login_info_root)
         cursor = conn.cursor()
         trunkate = "truncate  music.artist_albums;"
         cursor.execute(trunkate)
@@ -360,12 +370,12 @@ class musicFile:
         '''
         This code recurses thru the "base" path and captures the artist, album and song
         '''
-        if os.uname().nodename == 'C1246895-osx.home':
-            self.server = os.uname().nodename
-            conn = mysql.connector.Connect(**login_info_osx)
+        if os.uname_result.nodename == 'C1246895-osx.home':
+            self.server = os.uname_result.nodename
+            conn = pymysql.connections(**login_info_osx)
         else:
-            self.server = os.uname().nodename
-            conn = mysql.connector.Connect(**login_info_root)
+            self.server = os.uname_result.nodename
+            conn = pymysql.connections(**login_info_root)
         cursor = conn.cursor()
         trunkate = "truncate  music.artist;"
         cursor.execute(trunkate)
@@ -388,12 +398,12 @@ class musicFile:
         '''
         This code recurses thru the "base" path and captures the artist, album and song
         '''
-        if os.uname().nodename == 'C1246895-osx.home':
-            self.server = os.uname().nodename
-            conn = mysql.connector.Connect(**login_info_osx)
+        if os.uname_result.nodename == 'C1246895-osx.home':
+            self.server = os.uname_result.nodename
+            conn = pymysql.connections(**login_info_osx)
         else:
-            self.server = os.uname().nodename
-            conn = mysql.connector.Connect(**login_info_root)
+            self.server = os.uname_result.nodename
+            conn = pymysql.connections(**login_info_root)
         cursor = conn.cursor()
         maxIndex =  self.get_max_index("artist_albums")
         index = maxIndex[0]
@@ -413,12 +423,12 @@ class musicFile:
         
 #  Not done
     def delete_album(self,album):
-        if os.uname().nodename == 'C1246895-osx.home':
-            self.server = os.uname().nodename
-            conn = mysql.connector.Connect(**login_info_osx)
+        if os.uname_result.nodename == 'C1246895-osx.home':
+            self.server = os.uname_result.nodename
+            conn = pymysql.connections(**login_info_osx)
         else:
-            self.server = os.uname().nodename
-            conn = mysql.connector.Connect(**login_info_root)
+            self.server = os.uname_result.nodename
+            conn = pymysql.connections(**login_info_root)
         cursor = conn.cursor()
         selectStatement = "select artist_albums.index from Music.artist_albums where artist_albums.album like " + "'" + album + "';"
         print(selectStatement)
@@ -437,12 +447,12 @@ class musicFile:
         
         
     def add_artist(self,artist,genre):
-        if os.uname().nodename == 'C1246895-osx.home':
-            self.server = os.uname().nodename
-            conn = mysql.connector.Connect(**login_info_osx)
+        if os.uname_result.nodename == 'C1246895-osx.home':
+            self.server = os.uname_result.nodename
+            conn = pymysql.connections(**login_info_osx)
         else:
-            self.server = os.uname().nodename
-            conn = mysql.connector.Connect(**login_info_root)
+            self.server = os.uname_result.nodename
+            conn = pymysql.connections(**login_info_root)
         cursor = conn.cursor()
         maxIndex =  self.get_max_index("artist")
         index = maxIndex[0]
@@ -458,12 +468,12 @@ class musicFile:
         conn.close()
 
     def delete_artist(self,artist):
-        if os.uname().nodename == 'C1246895-osx.home':
-            self.server = os.uname().nodename
-            conn = mysql.connector.Connect(**login_info_osx)
+        if os.uname_result.nodename == 'C1246895-osx.home':
+            self.server = os.uname_result.nodename
+            conn = pymysql.connections(**login_info_osx)
         else:
-            self.server = os.uname().nodename
-            conn = mysql.connector.Connect(**login_info_root)
+            self.server = os.uname_result.nodename
+            conn = pymysql.connections(**login_info_root)
         cursor = conn.cursor()
         selectStatement = "select artist.index from Music.artist where artist.artist like " + "'" + artist + "';"
         print(selectStatement)
