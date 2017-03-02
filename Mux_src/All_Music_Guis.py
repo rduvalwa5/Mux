@@ -18,7 +18,7 @@ class getSong_UI(Frame):
     def createSongWidgets(self):
         """Add all the widgets to the main frame."""
         top_frame = Frame(self)
-        self.labelInput = Label(top_frame, text="Song Name")
+        self.labelInput = Label(top_frame, text="Song Name \n mp3 aiff m4p ")
         self.text_in = Entry(top_frame)
         self.labelResult = Label(top_frame, text="Result")
         self.labelInput.pack()
