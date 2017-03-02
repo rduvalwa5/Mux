@@ -1,0 +1,145 @@
+-- verify song load
+
+SELECT count(*)
+  FROM `Music`.album2songs a;
+-- 6625
+
+
+SELECT *
+  FROM `Music`.album2songs a
+  where artist like 'The Yardbirds';
+  
+ Select * from `Music`.artist_albums a where artist like '%Yard%';
+ 
+ Select * from artist where artist like '%Yard%';
+
+SELECT type, count(type)
+    FROM `Music`.album2songs a
+GROUP BY type
+ORDER BY count(type) DESC;
+
+/*
+Type			count
+Download		2759
+CD			1962
+Vinyl		1851
+Tape			24
+
+*/
+
+/* after
+Download		2785
+CD			1962
+Vinyl		1851
+Tape			24
+*/
+
+/* 12-27-2016
+Download	2788
+CD	1962
+Vinyl	1851
+Tape	24
+*/
+
+
+  SELECT genre, count(genre)
+    FROM `Music`.album2songs a
+GROUP BY genre
+ORDER BY count(genre) DESC;
+
+/* Before
+Rock			3127
+Jazz			788
+Country		775
+Folk			556
+Blues		434
+Pop			377
+BlueGrass	168
+Holiday		141
+TexMex		86
+Soul			43
+Classic		43
+RockaBilly	33
+Regae		23
+Talk			1
+Blue Grass	1
+
+*/
+
+/* After
+Rock			3151
+Jazz			788
+Country		775
+Folk			556
+Blues		434
+Pop			377
+BlueGrass	168
+Holiday		141
+TexMex		89
+Soul			43
+Classic		43
+RockaBilly	33
+Regae		23
+Talk			1
+*/
+
+
+SELECT *
+  FROM `Music`.album2songs a
+ WHERE a.artist LIKE '%Sir%';
+
+UPDATE `Music`.album2songs a
+   SET artist = 'Sir Douglas Quintet'
+ WHERE artist = 'The Sir Douglas Quintet';
+
+
+SELECT *
+  FROM `Music`.artist a
+ WHERE a.artist LIKE '%Sir%';
+
+SELECT *
+  FROM `Music`.artist a
+ WHERE a.genre LIKE 'TexMex';
+
+SELECT *
+  FROM `Music`.album2songs a
+ WHERE a.artist LIKE '%sir%';
+
+
+SELECT *
+  FROM `Music`.artist_albums a
+ WHERE a.artist LIKE '%Sir%';
+
+
+SELECT music.artist.index, artist, genre
+  FROM music.artist
+ WHERE artist = 'ZZ_ZTestX';
+
+DELETE FROM music.artist
+      WHERE artist = 'ZZ_ZTestX';
+
+SELECT music.artist.index, artist, genre
+  FROM music.artist
+ WHERE artist = 'Bill Withers';
+
+UPDATE music.artist
+   SET genre = 'Rock'
+ WHERE artist = 'Bill Withers';
+
+SELECT *
+  FROM Music.artist_albums
+ WHERE album LIKE 'Test_%';
+
+
+UPDATE Music.artist_albums
+   SET artist = 'ZZ_ZTestX', genre = 'Test GenX', type = 'TestTape'
+ WHERE artist_albums.index = 905;
+
+COMMIT;
+
+DELETE FROM Music.artist_albums
+      WHERE album LIKE 'Test_Album1';
+
+SELECT *
+  FROM music.artist_albums
+ WHERE artist LIKE 'Z%';

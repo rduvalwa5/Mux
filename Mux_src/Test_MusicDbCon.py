@@ -4,7 +4,7 @@ This code is a Python port of a program that I wrote in Java in 2006
 It attempts to find the music files on a server and put them into a data base.
 @author: rduvalwa2
 '''
-from MusicFile import musicFile
+from MusicFile_old import musicFile
 import unittest
 import mysql.connector
 from  Musicdb_info import login_info_rd

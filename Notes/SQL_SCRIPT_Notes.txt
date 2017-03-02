@@ -1,0 +1,587 @@
+SQL Scripts:
+
+http://dev.mysql.com/doc/refman/5.7/en/connecting.html
+
+
+*********** Create User and gant privileges ************** Nov 20 2016
+
+mysql> create user 'rduvalwa2'@'OSXAir.home.home' identified by 'blu4jazz';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> grant all privileges on mysql.* to 'rduvalwa2'@'OSXAir.home.home' with grant option;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> grant all privileges on music.* to 'rduvalwa2'@'OSXAir.home.home' with grant option;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>
+
+*********** Command line access ************** Nov 20 2016
+
+
+
+1) login on local host
+	C:\Documents and Settings\RDuval>mysql -h localhost -u root
+	C:\ mysql -h localhost -u rduvalwa2 -p
+	
+2) login remote host
+	mysql -h c1246895-xps -u rduvalwa2 -p
+	
+3) mysql -h c1246895-xps -u rduvalwa2 -pblu4jazz mysql
+	
+
+
+
+******************************
+************ Links:
+http://dev.mysql.com/doc/refman/5.7/en/stored-programs-defining.html
+https://www.ntu.edu.sg/home/ehchua/programming/sql/MySQL_Intermediate.html
+
+
+************ Installing MySQL:
+1) See install ReadMe.txt
+2) After down load install image (.dmg) by double clicking on it
+3) Install MSQL.prePane (shows the status of the MySql Instance)
+	- this is the application that is accessed from System Preferences
+4) Install MysqlStartupItem.pkg
+5) Go into System Preferences - select MySql to get status of server
+6) install Toad for Mac OSX  - Mysql Workbench did not work well
+
+
+Installed MacOsx 10.6 for Subversion Collabnet
+http://www.open.collab.net/
+
+Post-Installation Notes
+You have successfully installed the Subversion 1.6.13 universal binary for OS X Snow Leopard (10.6).  Please remember to prepend /opt/subversion/bin to your PATH environment variable.  This can be done a multitude of ways but an easy one is to add the following to the end of ~/.profile:
+
+export PATH=/opt/subversion/bin:$PATH
+
+If you plan on running an Apache-based Subversion server, you will also need to prepend the DYLD_LIBRARY_PATH variable in /usr/sbin/envvars with /opt/subversion/lib so that the Subversion libraries shipped with this binary are used instead of those supplied by the operating system.  Here is an example snippet of what /usr/sbin/envvars might look like after making these changes:
+
+...
+DYLD_LIBRARY_PATH="/opt/subversion/lib:/usr/lib:$DYLD_LIBRARY_PATH"
+...
+
+You will also need to update the SSL portion of your httpd.conf if you're using SSL:
+
+SSLProtocol ALL -SSLv2 -TLSv1
+
+What this does is disable SSL v2 and TLS which would force SSLv3.  The reason for this is to work around a bug in the OpenSSL library shipped with OS X.
+
+
+************ Scripts:
+***** Nov 14 2016 *******************
+
+http://dev.mysql.com/doc/refman/5.6/en/dynindex-statement.html
+http://dev.mysql.com/doc/refman/5.7/en/connecting.html
+
+1)  Command line 
+                    mysql -h host -u user -p call for password  database
+OSXAir:~ rduvalwa2$ mysql -h localhost -u root -p mysql
+Enter password: 
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 5
+Server version: 5.7.9 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> 
+
+2) Show the databases on the server
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| Music              |
+| mysql              |
+| password           |
+| password_v2        |
+| performance_schema |
+| sys                |
++--------------------+
+7 rows in set (0.00 sec)
+
+3) Connect to database
+mysql> connect Music;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Connection id:    6
+Current database: Music
+
+3) Show Tables
+mysql> show tables;
++-----------------+
+| Tables_in_music |
++-----------------+
+| songs           |
++-----------------+
+1 row in set (0.00 sec)
+
+4) Get size of table
+mysql> select count(*) from songs;
++----------+
+| count(*) |
++----------+
+|        0 |
++----------+
+1 row in set (0.00 sec)
+
+5) Manually load data into table
+mysql> LOAD DATA INFILE '/Users/rduvalwa2/git/Mux/Notes/Song_Import_v1.csv' INTO TABLE Music.songs;
+
+
+
+
+Manage Mysql ********************
+
+1) Create User:
+mysql> CREATE USER 'rduvalwa2@OSXAir.home.home' IDENTIFIED BY 'blu4jazz';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from user;
++-----------+----------------------------+-------------+-------------+-------------+-------------+-------------+-----------+-------------+---------------+--------------+-----------+------------+-----------------+------------+------------+--------------+------------+-----------------------+------------------+--------------+-----------------+------------------+------------------+----------------+---------------------+--------------------+------------------+------------+--------------+------------------------+----------+------------+-------------+--------------+---------------+-------------+-----------------+----------------------+-----------------------+-------------------------------------------+------------------+-----------------------+-------------------+----------------+
+| Host      | User                       | Select_priv | Insert_priv | Update_priv | Delete_priv | Create_priv | Drop_priv | Reload_priv | Shutdown_priv | Process_priv | File_priv | Grant_priv | References_priv | Index_priv | Alter_priv | Show_db_priv | Super_priv | Create_tmp_table_priv | Lock_tables_priv | Execute_priv | Repl_slave_priv | Repl_client_priv | Create_view_priv | Show_view_priv | Create_routine_priv | Alter_routine_priv | Create_user_priv | Event_priv | Trigger_priv | Create_tablespace_priv | ssl_type | ssl_cipher | x509_issuer | x509_subject | max_questions | max_updates | max_connections | max_user_connections | plugin                | authentication_string                     | password_expired | password_last_changed | password_lifetime | account_locked |
++-----------+----------------------------+-------------+-------------+-------------+-------------+-------------+-----------+-------------+---------------+--------------+-----------+------------+-----------------+------------+------------+--------------+------------+-----------------------+------------------+--------------+-----------------+------------------+------------------+----------------+---------------------+--------------------+------------------+------------+--------------+------------------------+----------+------------+-------------+--------------+---------------+-------------+-----------------+----------------------+-----------------------+-------------------------------------------+------------------+-----------------------+-------------------+----------------+
+| localhost | root                       | Y           | Y           | Y           | Y           | Y           | Y         | Y           | Y             | Y            | Y         | Y          | Y               | Y          | Y          | Y            | Y          | Y                     | Y                | Y            | Y               | Y                | Y                | Y              | Y                   | Y                  | Y                | Y          | Y            | Y                      |          |            |             |              |             0 |           0 |               0 |                    0 | mysql_native_password | *F5C3EC5586247B659098C66A4B290988650E024A | N                | 2015-12-02 23:20:09   |              NULL | N              |
+| localhost | mysql.sys                  | N           | N           | N           | N           | N           | N         | N           | N             | N            | N         | N          | N               | N          | N          | N            | N          | N                     | N                | N            | N               | N                | N                | N              | N                   | N                  | N                | N          | N            | N                      |          |            |             |              |             0 |           0 |               0 |                    0 | mysql_native_password | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE | N                | 2015-12-02 22:54:56   |              NULL | Y              |
+| localhost | rduvalwa2                  | Y           | Y           | Y           | Y           | Y           | Y         | Y           | Y             | Y            | Y         | Y          | Y               | Y          | Y          | Y            | Y          | Y                     | Y                | Y            | Y               | Y                | Y                | Y              | Y                   | Y                  | Y                | Y          | Y            | Y                      |          |            |             |              |         10000 |       10000 |             100 |                   10 | mysql_native_password | *F5C3EC5586247B659098C66A4B290988650E024A | N                | 2015-12-03 10:39:36   |              NULL | N              |
+| %         | rduval                     | Y           | Y           | Y           | Y           | Y           | Y         | Y           | Y             | Y            | Y         | Y          | Y               | Y          | Y          | Y            | Y          | Y                     | Y                | Y            | Y               | Y                | Y                | Y              | Y                   | Y                  | Y                | Y          | Y            | Y                      |          |            |             |              |         10000 |       10000 |              10 |                   10 | mysql_native_password | *5ABF3CE5A280F6A2CF875E43DA36C3698518C479 | N                | 2015-12-04 22:36:13   |              NULL | N              |
+| %         | rduvalwa2@OSXAir.home.home | N           | N           | N           | N           | N           | N         | N           | N             | N            | N         | N          | N               | N          | N          | N            | N          | N                     | N                | N            | N               | N                | N                | N              | N                   | N                  | N                | N          | N            | N                      |          |            |             |              |             0 |           0 |               0 |                    0 | mysql_native_password | *F5C3EC5586247B659098C66A4B290988650E024A | N                | 2016-11-15 19:20:56   |              NULL | N              |
++-----------+----------------------------+-------------+-------------+-------------+-------------+-------------+-----------+-------------+---------------+--------------+-----------+------------+-----------------+------------+------------+--------------+------------+-----------------------+------------------+--------------+-----------------+------------------+------------------+----------------+---------------------+--------------------+------------------+------------+--------------+------------------------+----------+------------+-------------+--------------+---------------+-------------+-----------------+----------------------+-----------------------+-------------------------------------------+------------------+-----------------------+-------------------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> 
+
+2) Grant permissions:
+	mysql> create user 'rduvalwa2@OSXAir' identified by 'blu4jazz';
+	Query OK, 0 rows affected (0.00 sec)
+
+	mysql> grant all privileges on music.* to 'rduvalwa2@OSXAir' with GRANT OPTION;
+	Query OK, 0 rows affected (0.00 sec)
+
+	mysql> grant all privileges on password.* to 'rduvalwa2@OSXAir' with GRANT OPTION;
+	Query OK, 0 rows affected (0.00 sec)
+
+	mysql> grant all privileges on music.* to 'rduvalwa2@OSXAir.home.home' with GRANT OPTION;
+	Query OK, 0 rows affected (0.00 sec)
+
+	mysql> grant all privileges on password.* to 'rduvalwa2@OSXAir.home.home' with GRANT OPTION;
+	Query OK, 0 rows affected (0.00 sec)
+
+3) Check permissions for a user
+	mysql> show grants for 'rduvalwa2@OSXAir';
+	+----------------------------------------------------------------------------------+
+	| Grants for rduvalwa2@OSXAir@%                                                    |
+	+----------------------------------------------------------------------------------+
+	| GRANT USAGE ON *.* TO 'rduvalwa2@OSXAir'@'%'                                     |
+	| GRANT ALL PRIVILEGES ON `music`.* TO 'rduvalwa2@OSXAir'@'%' WITH GRANT OPTION    |
+	| GRANT ALL PRIVILEGES ON `password`.* TO 'rduvalwa2@OSXAir'@'%' WITH GRANT OPTION |
+	+----------------------------------------------------------------------------------+
+	3 rows in set (0.00 sec)
+
+
+
+
+**** Scripts *****************************************
+SQL Scripts:
+
+
+Links:
+
+https://www.ntu.edu.sg/home/ehchua/programming/sql/MySQL_Intermediate.html
+
+
+SELECT DISTINCT s.album,
+                  al.`Index`,
+                  s.artist,
+                  at.`Index`,
+                  s.genre,
+                  s.type
+    FROM Music.songs s, `Music`.`Albums`al, `Music`.`Artist`at
+   WHERE s.album LIKE al.`Album` AND s.`Artist` LIKE at.`Artist`
+ORDER BY s.artist;
+
+
+  SELECT *
+    FROM `Music`.`Album_Artist`a
+ORDER BY a.`AlbumIndex`;
+
+SELECT *
+  FROM Albums
+ WHERE Albums.album LIKE 'Compilations';
+
+SELECT *
+  FROM `Music`.songs s
+ WHERE s.album LIKE 'Compilation';
+
+
+SELECT count(DISTINCT `Music`.songs.album) FROM Music.songs;
+
+-- 751
+
+SELECT count(*)
+  FROM `Music`.`Artist_Albums`a;
+
+-- 748
+
+SELECT count(*)
+  FROM `Music`.`Albums`a;
+
+-- 751
+
+SELECT *
+  FROM `Music`.songs s;
+
+  SELECT Album, Albums.Index
+    FROM music.Albums
+   WHERE Album IN (SELECT DISTINCT songs.album
+                     FROM music.songs
+                    WHERE songs.artist LIKE 'The Beatles')
+ORDER BY Albums.Album;
+
+  SELECT Album, Albums.Index
+    FROM music.Albums
+   WHERE Album IN (SELECT DISTINCT songs.album
+                     FROM music.songs)
+ORDER BY Albums.Album;
+
+  SELECT DISTINCT Albums.Album,
+                  Albums.Index,
+                  Artist.Artist,
+                  Artist.Index,
+                  songs.genre
+    FROM music.Artist, music.Albums, music.songs
+   WHERE     Artist.Artist IN (SELECT DISTINCT songs.artist
+                                 FROM music.songs)
+         AND Albums.Album IN (SELECT DISTINCT songs.album
+                                FROM music.songs
+                               WHERE songs.artist LIKE Artist.artist)
+         AND songs.genre IN
+                (SELECT DISTINCT songs.genre
+                   FROM music.songs
+                  WHERE     songs.artist LIKE Artist.artist
+                        AND Albums.album LIKE songs.album)
+ORDER BY Albums.Album;
+
+
+select 0, s.song, s.album, s.artist
+from `Music`.songs s
+order by s.album;
+
+select count(*) from `Music`.songs s;
+
+select 0, s.song, s.album, s.artist
+from `Music`.songs s
+order by s.album;
+
+select count(*) from `Music`.songs s;
+
+select * from music.album_songss a
+where a.song_artist like 'Savoy%';
+
+select count(*) from Music.album_songss;
+-- 6578
+
+***** Nov 17 2016 ***********************************
+
+1) Working with setting variable in Mysql, this does not work in Toad
+mysql> SET @set_value = (select Albums.`Artist Id` from Music.Albums where Albums.index = 3);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @set_value;
++------------+
+| @set_value |
++------------+
+|          0 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> SET @set_value = 1 + (select Albums.`Artist Id` from Music.Albums where Albums.index = 3);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @set_value;
++------------+
+| @set_value |
++------------+
+|          1 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> SET @set_value = 1 + (select Albums.`Artist Id` from Music.Albums where Albums.index = 3);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @set_value;
++------------+
+| @set_value |
++------------+
+|          1 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> SET @set_value = 1 + (select Albums.`Artist Id` from Music.Albums where Albums.index = 3);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @set_value;
++------------+
+| @set_value |
++------------+
+|          1 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE Music.Albums SET Albums.`Artist Id`  = @set_value  where Albums.index = 3;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select Albums.`Artist Id` from Music.Albums where Albums.index = 3;
++-----------+
+| Artist Id |
++-----------+
+|         1 |
++-----------+
+1 row in set (0.00 sec)
+
+
+************ Scripts:
+
+SELECT DISTINCT s.album,
+                  al.`Index`,
+                  s.artist,
+                  at.`Index`,
+                  s.genre,
+                  s.type
+    FROM Music.songs s, `Music`.`Albums`al, `Music`.`Artist`at
+   WHERE s.album LIKE al.`Album` AND s.`Artist` LIKE at.`Artist`
+ORDER BY s.artist;
+
+
+  SELECT *
+    FROM `Music`.`Album_Artist`a
+ORDER BY a.`AlbumIndex`;
+
+SELECT *
+  FROM Albums
+ WHERE Albums.album LIKE 'Compilations';
+
+SELECT *
+  FROM `Music`.songs s
+ WHERE s.album LIKE 'Compilation';
+
+
+SELECT count(DISTINCT `Music`.songs.album) FROM Music.songs;
+
+-- 751
+
+SELECT count(*)
+  FROM `Music`.`Artist_Albums`a;
+
+-- 748
+
+SELECT count(*)
+  FROM `Music`.`Albums`a;
+
+-- 751
+
+SELECT *
+  FROM `Music`.songs s;
+
+  SELECT Album, Albums.Index
+    FROM music.Albums
+   WHERE Album IN (SELECT DISTINCT songs.album
+                     FROM music.songs
+                    WHERE songs.artist LIKE 'The Beatles')
+ORDER BY Albums.Album;
+
+  SELECT Album, Albums.Index
+    FROM music.Albums
+   WHERE Album IN (SELECT DISTINCT songs.album
+                     FROM music.songs)
+ORDER BY Albums.Album;
+
+  SELECT DISTINCT Albums.Album,
+                  Albums.Index,
+                  Artist.Artist,
+                  Artist.Index,
+                  songs.genre
+    FROM music.Artist, music.Albums, music.songs
+   WHERE     Artist.Artist IN (SELECT DISTINCT songs.artist
+                                 FROM music.songs)
+         AND Albums.Album IN (SELECT DISTINCT songs.album
+                                FROM music.songs
+                               WHERE songs.artist LIKE Artist.artist)
+         AND songs.genre IN
+                (SELECT DISTINCT songs.genre
+                   FROM music.songs
+                  WHERE     songs.artist LIKE Artist.artist
+                        AND Albums.album LIKE songs.album)
+ORDER BY Albums.Album;
+
+---------------- End ----------------------
+
+***********************************************************************************************
+************ Export Import Database:
+
+***** Nov 18 2016 ****************************************************************************
+I am creating a backup of Music database on C1246895-XPS a windows 7 system
+
+Links on subject:
+
+https://mediatemple.net/community/products/dv/204403864/export-and-import-mysql-databases
+http://stackoverflow.com/questions/3031412/how-to-export-a-mysql-database-using-command-prompt
+https://www.tutorialspoint.com/mysql/mysql-database-export.htm
+http://stackoverflow.com/questions/13566735/how-to-export-mysql-schema-with-data
+
+1) Export data and table schema:
+	To export a mysql database (as a dump) from the command line run:
+		mysqldump -u root -p --databases DB_NAME >databasename.sql
+
+	actual as worked
+		mysqldump Music -p > MusicDataBase.sql:
+2) Transfer data to target server: C1246895-XPS (192.168.1.20) Windows 7
+	a) I shared the drive on target
+	b) I used the target to get the file from the contributing host, OSAAir.home
+	
+3) On target server I created a Music database
+4) create database Music;
+5) Using Toad on target server I access a edit window for the Music database:
+	a) select the Music database
+	b) open an edit window
+6) I opened the MusicDataBase.sql
+7) I executed the file MusicDataBase.sql
+	- after successfully executed I verified the data tables:
+	select count(*)from songs;
+	-- 6578
+	select count(*) from album_songss;
+	-- 6578
+	select count(*) from albums;
+	-- 751
+	select count(*) from artist;
+	-- 441
+8) compare the results with the host contributing database
+	
+---- Additional notes:
+mysqldump database_name > database_exportname.sql
+To import a mysql database dump into a database:
+
+mysql database_name < database_exportname.sql
+To export all databases into a dump:
+
+mysqldump --all-databases > all_databases_export.sql
+To import one of these mysql databases from the dump into a database:
+
+mysql --one-database database_name < all_databases_export.sql
+------------------------
+
+
+
+
+---------------- End ----------------------
+
+***********************************************************************************************
+************ Old Notes:
+
+***** Nov 19 2016 ****************************************************************************
+Mysql notes
+
+1) Ini file:
+
+Uncommented bind-address, port
+I think this allowed the server to start running.
+
+#This File was made using the WinMySQLAdmin 1.4 Tool
+#4/14/2006 10:35:48 AM
+
+#Uncomment or Add only the keys that you know how works.
+#Read the MySQL Manual for instructions
+
+[mysqld]
+basedir=C:/mysql
+bind-address=67.183.130.100
+datadir=C:/mysql/data
+#language=C:/mysql/share/your language directory
+#slow query log#=
+#tmpdir#=
+port=3306
+#set-variable=key_buffer=16M
+[WinMySQLadmin]
+Server=C:/mysql/bin/mysqld-max-nt.exe
+user=rduval
+password=reddog
+
+----------------------------------------------
+
+
+1) login as root
+C:\Documents and Settings\RDuval>mysql -h localhost -u root
+
+2) Show existing databases
+mysql>  show databases;
++----------+
+| Database |
++----------+
+| mysql    |
+| test     |
++----------+
+2 rows in set (0.00 sec)
+
+3) Create database
+mysql> create database mux;
+
+mysql> show databases;
++----------+
+| Database |
++----------+
+| mux      |
+| mysql    |
+| test     |
++----------+
+3 rows in set (0.00 sec)
+
+3) Add user mux
+mysql>  grant all on mux.* to mux@'C1246895-a' identified by 'mux';
+Query OK, 0 rows affected (0.03 sec)
+
+---------------- End ----------------------
+
+
+
+-- this is an inner join not writen as a join
+-- in this join only data that meets the criteria is returned
+select mux.album.title, mux.song.song from mux.song, mux.album
+where mux.song.album_id = mux.album.album_id
+and mux.album.title like 'Red Dirt Girl'
+
+-- this is an inner join writen as a join
+-- in this join only data that meets the criteria is returned
+select mux.album.title, mux.song.song
+from mux.song INNER JOIN mux.album
+on mux.song.album_id = mux.album.album_id
+where mux.album.title like 'Red Dirt Girl'
+
+title		song	
+Red Dirt Girl	Bang the Drum Slowly.wma	
+Red Dirt Girl	Boy From Tupelo.wma	
+Red Dirt Girl	Hour of Gold.wma	
+Red Dirt Girl	I Don't Wanna Talk About It Now.wma	
+Red Dirt Girl	J'Ai Fait Toutl.wma	
+Red Dirt Girl	Michelangelo.wma	
+Red Dirt Girl	My Antonia.wma	
+Red Dirt Girl	My Baby Needs a Shepherd.wma	
+Red Dirt Girl	One Big Love.wma	
+Red Dirt Girl	Red Dirt.wma	
+Red Dirt Girl	The Pearl.wma	
+Red Dirt Girl	Tragedy.wma	
+
+
