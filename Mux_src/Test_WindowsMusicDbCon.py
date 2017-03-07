@@ -38,7 +38,6 @@ class TestMusicDb(unittest.TestCase):
         Test access remote database
         http://zetcode.com/db/mysqlpython/
         '''
- 
         db = connDb.connect(host='OSXAir.home.home',user='rduval',password='blu4jazz',db='Music')
 #        db = MySQLdb.Connect(host='OSXAir.home.home',user='rduval',password='blu4jazz',db='Music',charset='utf8mb4',cursorclass=connDb.cursors.DictCursor)
         cursor = db.cursor()
