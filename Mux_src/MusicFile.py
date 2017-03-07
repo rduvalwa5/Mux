@@ -72,9 +72,9 @@ class musicFile:
         if os.uname().nodename == 'C1246895-osx.home':
             conn = mysql.connector.Connect(**login_info_osx)
         else:
-            conn = mysql.connector.Connect(**login_info_root)
+            conn = mysql.connector.Connect(**login_info_rd)
         dbCursor = conn.cursor()
-        statement = "select "+ fields + " from Music.artist where " + constraints + ";" #where Albums.index = 3;"
+        statement = "select "+ fields + " from Music.artist " + constraints + ";" #where Albums.index = 3;"
         print(statement)
         dbCursor.execute(statement)
         rows = dbCursor.fetchall()
@@ -571,7 +571,7 @@ if __name__  == '__main__':
         def test_get_select_ArtistAlbums(self):
             fields = "count(*)"
             constraints = " "
-            expected = 869
+            expected = 909
             mux = musicFile()
             result = mux.get_select_Album(fields, constraints)
             self.assertEqual(expected,result[0])
@@ -580,7 +580,7 @@ if __name__  == '__main__':
         def test_get_select_Album(self):
             fields = "count(*)"
             constraints = " "
-            expected = 869
+            expected = 909
             mux = musicFile()
             result = mux.get_select_ArtistAlbums(fields, constraints)
             self.assertEqual(expected,result[0])
@@ -588,29 +588,29 @@ if __name__  == '__main__':
         def test_get_select_Artist(self):
             fields = "count(*)"
             constraints = " "
-            expected = 511
+            expected = 537
             mux = musicFile()
             result = mux.get_select_Artist(fields, constraints)
-            self.assertEqual(expected,result[0])
+            self.assertEqual(expected,result[0][0])
 
         def testGetMaxArtist(self):
             mux = musicFile()
             table = 'Artist'
-            expected = 510
+            expected = 537
             result = mux.get_max_index(table)
             self.assertEqual(expected,result[0])
             
         def testGetMaxAlbums(self):
             mux = musicFile()
             table = 'artist_albums'
-            expected = 868
+            expected = 909
             result = mux.get_max_index(table)
             self.assertEqual(expected,result[0])
  
         def testGetMaxSongs(self):
             mux = musicFile()
             table = 'album2songs'
-            expected = 6569
+            expected = 6624
             result = mux.get_max_index(table)
             self.assertEqual(expected,result[0])
  
@@ -618,7 +618,7 @@ if __name__  == '__main__':
         def testGetMaxAlbumSongs(self):
             mux = musicFile()
             table = 'album2songs'
-            expected = 6569
+            expected = 6624
             result = mux.get_max_index(table)
             self.assertEqual(expected,result[0]) 
        

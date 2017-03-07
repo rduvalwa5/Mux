@@ -2,10 +2,22 @@
 Created on Feb 16, 2017
 improve for Python 3.6
 @author: rduvalwa2
+
+OSXAir:bin rduvalwa2$ pip3.6 install mysqlclient
+Collecting mysqlclient
+  Downloading mysqlclient-1.3.10.tar.gz (82kB)
+    100% |████████████████████████████████| 92kB 795kB/s 
+Installing collected packages: mysqlclient
+  Running setup.py install for mysqlclient ... done
+Successfully installed mysqlclient-1.3.10
+OSXAir:bin rduvalwa2$ 
+
 '''
 
-
-
+'''
+import MySQLdb as connDb 
+new process see the WindowsMusicFile.py
+''' 
 import os
 import mysql.connector
 from Musicdb_info import login_info_root
@@ -347,6 +359,24 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
         
+    def get_artistSongs_fromSongs(self,artist):
+#       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
+        fields = "music.album2songs.song, music.album2songs.album"
+        statement = "select " + fields + " from music.album2songs where artist like '" + artist + "';"
+        artistSongs = []
+        print(statement)
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(statement)
+            result = cursor.fetchall()  
+            print(result)
+            cursor.close()
+            self.dbConnectionClose()
+            return result   
+        except mysql.connector.Error as err:
+            print("Exception is ", err)
+            return str(err)
+        
     '''
         Album  ********************
     '''
@@ -366,6 +396,25 @@ class musicGet_Functions:
         except mysql.connector.Error as err:
             print("Exception is ", err)
             return str(err) 
+
+    def get_album_songs(self,album):
+#       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
+#        albumSongs = []
+        fields = "music.album2songs.song"
+        statement = "select " + fields + " from music.album2songs where album = '" + album + "';"
+        print(statement)
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(statement)
+            result = cursor.fetchall()
+            cursor.close()
+            self.dbConnectionClose()
+            return result           
+        except mysql.connector.Error as err:
+            print("Exception is ", err)
+            return str(err) 
+
+
 
     def add_album(self,album,artist,tipe):
         '''
@@ -530,12 +579,13 @@ if __name__  == '__main__':
             print("add song result is ", result)
             self.assertEqual(result,"Success" )
 
-#        def test_get_Song(self):
-#            mux = musicGet_Functions()
-#            expected = (6625,'OSXAir.home','/Users/rduvalwa2/Music/iTunes/iTunes Music/Music','TestArtist_X','TestAlbum_X','TestSong.mpX','Rock','Download')
-#            result = mux.get_song('TestSong.mpX')
-#            print(result[0])
-#            self.assertEqual(expected,result[0])
+        def test_get_Song(self):
+            thisSong = 'Johnny B. Goode.mp3'
+            mux = musicGet_Functions()
+            expected =  (970, 'OSXAir.home', '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', 'Chuck Berry', 'The Best of Chuck Berry', '08 Johnny B. Goode.mp3', 'Rock', 'Vinyl')
+            result = mux.get_song(thisSong)
+            print("song result is ",result[0])
+            self.assertEqual(expected,result[0])
      
      
         def test_delete_songs(self):
@@ -545,8 +595,6 @@ if __name__  == '__main__':
             song = 'TestSong.mpX'
             expected = song + " deleted"
             result = mux.delete_one_song(artist, album, song)
-#            result = mux.get_song('TestSong.mpX')
-#            print(result)
             self.assertEqual(expected,result)            
             
         def test_get_Album(self):
@@ -568,74 +616,18 @@ if __name__  == '__main__':
             result = mux.get_artistAlbums_fromAlbums('Ten Years After')
             self.assertEqual(expected, result)
         
-        
+        def test_get_album_songs(self):
+            mux = musicGet_Functions()
+            expected = [('01 One of These Days.m4p',), ('02 Here They Come.m4p',), ("03 I'd Love to Change the World.m4p",), ('04 Over the Hill.m4p',), ("05 Baby Won't You Let Me Rock 'N' Roll You.m4p",), ('06 Once There Was a Time.m4p',), ('07 Let the Sky Fall.m4p',), ('08 Hard Monkeys.m4p',), ("09 I've Been There Too.m4p",), ('10 Uncle Jam.m4p',)]
+            result = mux.get_album_songs('A Space In Time')
+            print("album songs", result)
+            self.assertEqual(expected, result, "song list for A Space In Time wrong" )
 
-    '''
-        def testGetMaxAlbums(self):
+        def test_get_artist_songs(self):
             mux = musicGet_Functions()
-            table = 'artist_albums'
-            expected = 868
-            result = mux.get_max_index(table)
-            self.assertEqual(expected,result[0])
- 
-        def testGetMaxSongs(self):
-            mux = musicGet_Functions()
-            table = 'album2songs'
-            expected = 6569
-            result = mux.get_max_index(table)
-            self.assertEqual(expected,result[0])
- 
-           
-        def testGetMaxAlbumSongs(self):
-            mux = musicGet_Functions()
-            table = 'album2songs'
-            expected = 6569
-            result = mux.get_max_index(table)
-            self.assertEqual(expected,result[0]) 
-       
-        def test_get_dirs_artist(self):
-            mux = musicGet_Functions()
-            base =   "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
-            musicArtist = mux.get_music_artist()
-            self.assertIn( (409, 'The Charlie Daniels Band'), musicArtist, "Charlie Daniels Band not there")
-
-        def test_albumList(self):
-            mux = musicGet_Functions()
-            alms = mux.get_albums()
-            self.assertIn((802, "Tim O'Brien", 'Cornbread Nation'), alms, "Cornbread Nation not present")
-
-        def test_songList(self):
-            mux = musicGet_Functions()
-            mysongs = mux.get_all_songs()
-            self.assertIn((0, '18 South', 'Soulful Southern Roots Music', '01 Late Night Ramble.mp3'), mysongs, "'01 Late Night Ramble.mp3' song is missing")       
-  '''
+            expected = [('01 One of These Days.m4p', 'A Space In Time'), ('02 Here They Come.m4p', 'A Space In Time'), ("03 I'd Love to Change the World.m4p", 'A Space In Time'), ('04 Over the Hill.m4p', 'A Space In Time'), ("05 Baby Won't You Let Me Rock 'N' Roll You.m4p", 'A Space In Time'), ('06 Once There Was a Time.m4p', 'A Space In Time'), ('07 Let the Sky Fall.m4p', 'A Space In Time'), ('08 Hard Monkeys.m4p', 'A Space In Time'), ("09 I've Been There Too.m4p", 'A Space In Time'), ('10 Uncle Jam.m4p', 'A Space In Time'), ('01 One of These Days.m4p', 'Recorded Live'), ('02 You Give Me Loving.m4p', 'Recorded Live'), ('03 Good Morning Little Schoolgirl.m4p', 'Recorded Live'), ('04 Help Me.m4p', 'Recorded Live'), ('05 Classical Thing.m4p', 'Recorded Live'), ('06 Scat Thing.m4p', 'Recorded Live'), ("07 I Can't Keep from Cryin' Sometimes.m4p", 'Recorded Live'), ("09 I Can't Keep from Cryin' (Cont'd).m4p", 'Recorded Live'), ('10 Silly Thing.m4p', 'Recorded Live'), ("11 Slow Blues In 'C'.m4p", 'Recorded Live'), ("12 I'm Going Home.m4p", 'Recorded Live'), ('13 Choo Choo Mama.m4p', 'Recorded Live'), ('01 Rock You Mama (Live).m4a', 'Undead (Remastered) [Live]'), ('02 Spoonful (Live).m4a', 'Undead (Remastered) [Live]'), ("03 I May Be Wrong, But I Won't Be Wrong Always (Live).m4a", 'Undead (Remastered) [Live]'), ('04 Summertime _ Shantung Cabbage (Live).m4a', 'Undead (Remastered) [Live]'), ('05 Spider In My Web (Live).m4a', 'Undead (Remastered) [Live]'), ("06 (At the) Woodchopper's Ball [Live].m4a", 'Undead (Remastered) [Live]'), ('07 Standing At the Crossroads (Live).m4a', 'Undead (Remastered) [Live]'), ("08 I Can't Keep from Crying Sometimes _ Extension On One Chord (Live).m4a", 'Undead (Remastered) [Live]'), ("09 I'm Going Home (Live).m4a", 'Undead (Remastered) [Live]')]
+            result = mux.get_artistSongs_fromSongs('Ten Years After')
+            print("artist songs", result)
+            self.assertEqual(expected, result, "song list for Ten Years After wrong" )
 
     unittest.main()    
-
-    
-    
-    '''   
-    print(os.uname().nodename)
-    mux = musicGet_Functions()
-    print(mux.get_song('Song For David.mp3'))
-    print("All albums ",mux.get_count('music.artist_albums'))
-    print("All songs ",mux.get_count('music.album2songs'))
-    print("All artist ",mux.get_count('artist'))
-    criteria = " where genre = 'TexMex'"
-    table = 'music.artist_albums'
-    print("All TexMex albums ", mux.get_count(table,criteria))
-    texMexTable = 'music.album2songs'
-    print("All TexMex songs ", mux.get_count(texMexTable,criteria))
-    allTexMexSongs = mux.get_all("music.album2songs.song", texMexTable, criteria)
-    for song in allTexMexSongs:
-        print(song[0])
-    criteria = " where genre = 'TexMex'"
-    allTexMexAlbums = mux.get_all("distinct music.album2songs.album", texMexTable, criteria)
-    for album in allTexMexAlbums:
-        print("TexMex Album: ",album[0])
-    
-    print(mux.get_artist("Bill Withers"))
-    print(mux.get_artistAlbums_fromAlbums("Bill Withers"))
-    
- #   mux.close_connection()
-     '''

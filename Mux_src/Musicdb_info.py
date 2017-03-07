@@ -27,8 +27,8 @@ login_info_root = {
 
 login_info_xps = {
               'host': "c1246895-xps",
-              'user': "rduvalwa2",
-              'password': "blu4jazz",
+              'user': "rduval",
+              'password': "Red1!Dawg",
               'database': "Music",
               'port':"3306"
               }
