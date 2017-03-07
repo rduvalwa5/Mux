@@ -19,9 +19,9 @@ from platform import platform
 import MySQLdb as connDb 
 new process see the WindowsMusicFile.py
 ''' 
-import os
-#import mysql.connector
-import MySQLdb as connDb
+import os, platform
+import mysql.connector
+#import MySQLdb  # as connDb
 from Musicdb_info import login_info_root
 from Musicdb_info import login_info_osx 
 
@@ -29,15 +29,18 @@ from Musicdb_info import login_info_osx
 class musicGet_Functions:   
     def __init__(self):
 #        print("*************** Node Name is ",os.getenv("HOSTNAME"))
-        if os.uname_result.nodename == 'C1246895-osx.home':
+        if platform.uname().node == 'C1246895-osx.home':
+            self.conn = mysql.connector.Connect(**login_info_osx)
 #        if os.uname().nodename == 'C1246895-osx.home':
-            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduval',password='blu4jazz',db='Music')
+#            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduval',password='blu4jazz',db='Music')
 #        elif  os.uname().nodename == 'OSXAir.home.home':
 #            self.conn = mysql.connector.Connect(**login_info_root)
-        elif os.uname_result.nodename == 'OSXAir.home.home':
-            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduval',password='blu4jazz',db='Music')
-        else: 
-            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduval',password='blu4jazz',db='Music')
+        elif platform.uname().node == 'OSXAir.home.home':
+            self.conn = mysql.connector.Connect(**login_info_root)
+#            self.conn  = connDb.connect(host='OSXAir.home.home',user='root',password='blu4jazz',db='Music')
+        elif platform.uname().node == 'C1246895-WIN64-Air':
+            self.conn = mysql.connector.Connect(**login_info_root)
+#            self.conn  = connDb.connect(host='OSXAir.home.home',user='root',password='blu4jazz',db='Music')
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home'  
     '''
@@ -54,7 +57,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return maxIndex
-        except connDb.Connect().Error as err:
+        except mysql.connector.Error as err:
             print("Exception is ", err)
             return str(err)
                 
@@ -68,7 +71,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return theCount       
-        except connDb.Connect().Error as err:
+        except mysql.connector.Error as err:
             print("Exception is ", err)
             return str(err)
             
@@ -82,7 +85,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result                   
-        except connDb.Connect().Error as err:
+        except mysql.connector.Error as err:
             print("Exception is ", err)
             return str(err)
 
@@ -107,7 +110,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result            
-        except connDb.Connect().Error as err:
+        except mysql.connector.Error as err:
             print("Exception is ", err)
             return str(err)
 
@@ -150,7 +153,7 @@ class musicGet_Functions:
                 return  True
             else:
                 return False
-        except connDb.Connect().Error as err:
+        except mysql.connector.Error as err:
             print("Exception is ", err)
             return str(err)        
     
@@ -163,7 +166,7 @@ class musicGet_Functions:
             print("max is " ,maxIndex)
             newIndex = maxIndex + 1
             print("new is ", newIndex)
-        except connDb.Connect().Error as err:
+        except mysql.connector.Error as err:
             print("Exception is ", err)
             return str(err)
                     
@@ -175,7 +178,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return "Success"
-        except connDb.Connect().Error as err:
+        except mysql.connector.Error as err:
             print("Exception is ", err)
             return str(err)
 
@@ -190,7 +193,7 @@ class musicGet_Functions:
                 cursor.close()
                 self.dbConnectionClose()
                 return song + " deleted"  
-            except connDb.Connect().Error as err:
+            except mysql.connector.Error as err:
                 print("Exception is ", err)
                 return str(err)      
 
@@ -300,7 +303,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result  
-        except connDb.Connect().Error as err:
+        except mysql.connector.Error as err:
             print("Exception is ", err)
             return str(err)               
        
@@ -320,7 +323,7 @@ class musicGet_Functions:
             print("done")
             self.dbConnectionClose()
             return "Added " + artist
-        except connDb.Connect().Error as err:
+        except mysql.connector.Error as err:
             print("Exception is ", err)
             return str(err)
         
@@ -333,7 +336,7 @@ class musicGet_Functions:
             row = cursor.fetchone()
             index = row[0]
             print(index)
-        except connDb.Connect().Error as err:
+        except mysql.connector.Error as err:
             print("Exception is ", err)
             return str(err)
         
@@ -346,7 +349,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return "deleted " + artist
-        except connDb.Connect().Error as err:
+        except mysql.connector.Error as err:
             print("Exception is ", err)
             return str(err) 
 
@@ -363,7 +366,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result   
-        except connDb.Connect().Error as err:
+        except mysql.connector.Error as err:
             print("Exception is ", err)
             return str(err)
         
@@ -381,7 +384,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result   
-        except connDb.Connect().Error as err:
+        except mysql.connector.Error as err:
             print("Exception is ", err)
             return str(err)
         
@@ -401,7 +404,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result           
-        except connDb.Connect().Error as err:
+        except mysql.connector.Error as err:
             print("Exception is ", err)
             return str(err) 
 
@@ -418,7 +421,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result           
-        except connDb.Connect().Error as err:
+        except mysql.connector.Error as err:
             print("Exception is ", err)
             return str(err) 
 
@@ -444,7 +447,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result  
-        except connDb.Connect().Error as err:
+        except mysql.connector.Error as err:
             print("Exception is ", err)
             return str(err)        
 
@@ -457,7 +460,7 @@ class musicGet_Functions:
             row = cursor.fetchone()
             index = row[0]
             print(index)
-        except connDb.Connect().Error as err:
+        except mysql.connector.Error as err:
             print("Exception is ", err)
             return str(err)
         deleteStatement = "Delete from `Music`.artist_albums where `Music`.artist_albums.index = " + str(index) + ";"       
@@ -470,7 +473,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result  
-        except connDb.Connect().Error as err:
+        except mysql.connector.Error as err:
             print("Exception is ", err)
             return str(err)
 
@@ -499,7 +502,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result
-        except connDb.Connect().Error as err:
+        except mysql.connector.Error as err:
             print("Exception is ", err)
             return str(err)   
 
