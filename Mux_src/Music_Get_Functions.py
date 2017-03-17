@@ -55,7 +55,7 @@ class musicGet_Functions:
             cursor.execute( max_index_statement)
             maxIndex = cursor.fetchone()
             cursor.close()
-            self.dbConnectionClose()
+#            self.dbConnectionClose()
             return maxIndex
         except mysql.connector.Error as err:
             print("Exception is ", err)
@@ -69,7 +69,7 @@ class musicGet_Functions:
             count = cursor.fetchone()  
             theCount = count[0]
             cursor.close()
-            self.dbConnectionClose()
+#            self.dbConnectionClose()
             return theCount       
         except mysql.connector.Error as err:
             print("Exception is ", err)
@@ -197,6 +197,38 @@ class musicGet_Functions:
                 print("Exception is ", err)
                 return str(err)      
 
+    def add_songs_in_path(self,path,album,artist,genre,inType):
+        '''
+        mux = musicGet_Functions()
+        myPath = "/Users/rduvalwa2/music/iTunes/iTunes Music/Music/Seals & Crofts/Seals & Crofts Greatist Hits"
+        album = "Seals & Crofts/Seals & Crofts Greatist Hits"
+        artist = "Seals & Crofts"
+        genre = "Rock"
+        inType = "CD"    
+        mux.add_songs_in_path(myPath, album, artist, genre, inType)   
+        '''       
+        idx = self.get_max_index('album2songs')
+        cursor = self.conn.cursor()
+        print(idx)
+        index = idx[0] + 1
+        base =   path
+        songs = []
+        if os.path.isdir(base):
+            album_songs = os.listdir(path)
+            for song in album_songs:
+                        songs.append((index,song))
+                        index = index + 1
+
+            for song in songs:
+                insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(song[0]) + ",\"" + self.server + "\",\"" + self.base + "\",\""  + artist + "\",\""  +  album + "\",\""  + song[1] + "\",\""  + genre + "\",\""  + inType + "\")"
+                print(insertStatement)
+                cursor.execute( insertStatement)
+        commit = "commit;"
+        cursor.execute(commit)
+        print("done")
+        cursor.close()
+        self.conn.close()        
+
     def add_songs(self,artist,album='all'):
         '''
         This code adds song
@@ -321,7 +353,7 @@ class musicGet_Functions:
             cursor.execute(commit)
             cursor.close()
             print("done")
-            self.dbConnectionClose()
+#            self.dbConnectionClose()
             return "Added " + artist
         except mysql.connector.Error as err:
             print("Exception is ", err)
@@ -347,7 +379,7 @@ class musicGet_Functions:
             commit = "commit;"
             cursor.execute(commit)
             cursor.close()
-            self.dbConnectionClose()
+#            self.dbConnectionClose()
             return "deleted " + artist
         except mysql.connector.Error as err:
             print("Exception is ", err)
@@ -427,7 +459,7 @@ class musicGet_Functions:
 
 
 
-    def add_album(self,album,artist,tipe):
+    def add_album(self,album,artist,genre = 'Rock' ,tipe = 'Download'):
         '''
         This code recurses thru the "base" path and captures the artist, album and song
         '''
@@ -436,7 +468,7 @@ class musicGet_Functions:
         index = maxIndex[0]
         newIndex = index + 1
         print(newIndex)
-        insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.type)  values(" + str(newIndex) + ",\""  + artist + "\",\""  + album + "\",\""  + tipe + "\")"
+        insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.genre, artist_albums.type)  values(" + str(newIndex) + ",\""  + artist + "\",\""  + album + "\",\"" + genre + "\",\""  + tipe + "\")"
         print(insertStatement)
         try:
             cursor.execute(insertStatement)
@@ -445,7 +477,7 @@ class musicGet_Functions:
             cursor.execute(commit)
             result = "album " + album + "added"
             cursor.close()
-            self.dbConnectionClose()
+#            self.dbConnectionClose()
             return result  
         except mysql.connector.Error as err:
             print("Exception is ", err)
@@ -471,7 +503,7 @@ class musicGet_Functions:
             cursor.execute(commit)
             result = "album " + album + "deleted"
             cursor.close()
-            self.dbConnectionClose()
+#            self.dbConnectionClose()
             return result  
         except mysql.connector.Error as err:
             print("Exception is ", err)
@@ -508,7 +540,6 @@ class musicGet_Functions:
 
          
 if __name__  == '__main__':
-    
     import unittest
     class TestConnector(unittest.TestCase):
         
@@ -516,27 +547,31 @@ if __name__  == '__main__':
             mux = musicGet_Functions()
             table = 'Music.artist'
             criteria = ""
-            expected = 537
+            expected = 540
             result = mux.get_count(table, criteria)
             print("get_count artist",result)
+            mux.dbConnectionClose()
             self.assertEqual(expected,result)
+            
               
         def test_get_count_Artist_Albums(self):
             mux = musicGet_Functions()
             table = 'Music.artist_albums'
             criteria = ""
-            expected = 909
+            expected = 912
             result = mux.get_count(table, criteria)
             print("get_count albums",result)
+            mux.dbConnectionClose()
             self.assertEqual(expected,result)
             
         def test_get_count_album2Songs(self):
             mux = musicGet_Functions()
             table = 'Music.album2songs'
             criteria = ""
-            expected = 6625
+            expected = 6736
             result = mux.get_count(table, criteria)
             print("get_count songs",result)
+            mux.dbConnectionClose()
             self.assertEqual(expected,result)              
                     
         def test_get_all(self):
@@ -549,22 +584,25 @@ if __name__  == '__main__':
         def testGetMaxArtist(self):
             mux = musicGet_Functions()
             table = 'artist'
-            expected = 537
+            expected = 540
             result = mux.get_max_index(table)
+            mux.dbConnectionClose()
             self.assertEqual(expected,result[0])
             
         def testGetMaxAlbums(self):
             mux = musicGet_Functions()
             table = 'artist_albums'
-            expected = 909
+            expected = 912
             result = mux.get_max_index(table)
+            mux.dbConnectionClose()
             self.assertEqual(expected,result[0])
 
         def testGetMaxSongs(self):
             mux = musicGet_Functions()
             table = 'album2songs'
-            expected = 6624
+            expected = 6735
             result = mux.get_max_index(table)
+            mux.dbConnectionClose()
             self.assertEqual(expected,result[0])
         
         def test_artist_album_song_exist(self):
