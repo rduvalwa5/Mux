@@ -2,7 +2,6 @@
 Created on Feb 16, 2017
 improve for Python 3.6
 @author: rduvalwa2
-
 OSXAir:bin rduvalwa2$ pip3.6 install mysqlclient
 Collecting mysqlclient
   Downloading mysqlclient-1.3.10.tar.gz (82kB)
