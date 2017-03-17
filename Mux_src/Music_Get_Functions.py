@@ -558,7 +558,7 @@ if __name__  == '__main__':
             mux = musicGet_Functions()
             table = 'Music.artist_albums'
             criteria = ""
-            expected = 912
+            expected = 915
             result = mux.get_count(table, criteria)
             print("get_count albums",result)
             mux.dbConnectionClose()
@@ -592,7 +592,7 @@ if __name__  == '__main__':
         def testGetMaxAlbums(self):
             mux = musicGet_Functions()
             table = 'artist_albums'
-            expected = 912
+            expected = 915
             result = mux.get_max_index(table)
             mux.dbConnectionClose()
             self.assertEqual(expected,result[0])
