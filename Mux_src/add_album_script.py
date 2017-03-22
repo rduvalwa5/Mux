@@ -10,8 +10,9 @@ if __name__ == "__main__" :
     mux =  musicGet_Functions()
     print(mux.get_count('artist_albums', ''))
 #    albumList = [("Seals & Crofts/Seals & Crofts Greatist Hits","Seals & Crofts","Rock","CD"),("Lost Treasures_ Rare & Unreleased","Herb Alpert & The Tijuana Brass","Alternative","CD"),("Joni Mitchell Hits","Joni Mitchell","Rock","CD")] 
-    albumList = [("Chicago V","Chicago","Rock","CD"),("Chicago Live In Japan Disc 1","Chicago","Rock","CD"),("Chicago Live In Japan Disc 2","Chicago","Rock","CD")] 
-
+    albumList = [("Oh My Heart - Single","R.E.M.","Rock","Download"),("In Time - The Best of R.E.M. 1988-2003","R.E.M.","Rock","Download"),("Collapse Into Now","R.E.M.","Rock","CD")] 
+#,("In The Dark","The Grateful Dead","Rock","CD")]          
+#    albumList = [("Aladdin Sane","David Bowie","Rock","CD"),("Best of Bowie","David Bowie","Rock","Download"),("The Best of David Bowie 1980_1987","David Bowie","Rock","Download")] #,("In The Dark","The Grateful Dead","Rock","CD")]          
     for album in albumList:
 #        mux.add_album(album, artist, tipe)
         mux.add_album(album[0], album[1],album[2],album[3])
