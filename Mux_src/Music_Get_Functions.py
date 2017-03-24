@@ -323,6 +323,23 @@ class musicGet_Functions:
         Artist  ********************
     '''
 
+    def get_all_artist(self):
+#       select music.artist.index, artist, genre from music.artist where artist = 'Bill Withers';
+        fields = "music.artist.artist"
+        statement = "select " + fields + " from music.artist;"
+        print(statement)
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(statement)
+            result = cursor.fetchall()  
+            cursor.close()
+            self.dbConnectionClose()
+            return result  
+        except mysql.connector.Error as err:
+            print("Exception is ", err)
+            return str(err)               
+
+
     def get_artist(self,artist):
 #       select music.artist.index, artist, genre from music.artist where artist = 'Bill Withers';
         fields = "*"
@@ -444,7 +461,11 @@ class musicGet_Functions:
 #       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
 #        albumSongs = []
         fields = "music.album2songs.song"
-        statement = "select " + fields + " from music.album2songs where album = '" + album + "';"
+        if album == 'all':
+            statement = "select " + fields + " from music.album2songs;"
+        else:   
+            statement = "select " + fields + " from music.album2songs where album = '" + album + "';"
+        
         print(statement)
         cursor = self.conn.cursor()
         try:
@@ -457,6 +478,23 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err) 
 
+    def get_artist_songs(self,artist):
+#       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
+#        albumSongs = []
+        fields = "music.album2songs.song"
+        statement = "select " + fields + " from music.album2songs where artist = '" + artist + "';"
+        
+        print(statement)
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(statement)
+            result = cursor.fetchall()
+            cursor.close()
+            self.dbConnectionClose()
+            return result           
+        except mysql.connector.Error as err:
+            print("Exception is ", err)
+            return str(err) 
 
 
     def add_album(self,album,artist,genre = 'Rock' ,tipe = 'Download'):
