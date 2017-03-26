@@ -419,19 +419,37 @@ class musicGet_Functions:
 #       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
 #        albumSongs = []
         fields = "music.album2songs.song"
-        statement = "select " + fields + " from music.album2songs where album = '" + album + "';"
+        if album == 'all':
+            statement = "select " + fields + " from music.album2songs;"
+        else:   
+            statement = "select " + fields + " from music.album2songs where album = '" + album + "';"
+        
         print(statement)
         cursor = self.conn.cursor()
-        albumSongs = []
         try:
             cursor.execute(statement)
             result = cursor.fetchall()
-            for song in result:
-                albumSongs.append(song[0])
-            print("albumsongs are:", albumSongs)
             cursor.close()
             self.dbConnectionClose()
-            return albumSongs           
+            return result           
+        except self.conn.Error as err:
+            print("Exception is ", err)
+            return str(err) 
+
+    def get_artist_songs(self,artist):
+#       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
+#        albumSongs = []
+        fields = "music.album2songs.song"
+        statement = "select " + fields + " from music.album2songs where artist = '" + artist + "';"
+        
+        print(statement)
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(statement)
+            result = cursor.fetchall()
+            cursor.close()
+            self.dbConnectionClose()
+            return result           
         except self.conn.Error as err:
             print("Exception is ", err)
             return str(err) 
