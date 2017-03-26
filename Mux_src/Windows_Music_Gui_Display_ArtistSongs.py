@@ -5,8 +5,7 @@ This code prints the songs in the album
 '''
 from tkinter import *
 from Windows_Music_Get_Functions import musicGet_Functions
-
-
+ 
 class Application(Frame):
     def __init__(self, master=None):
         def frame1ClickHandler(event):
@@ -15,10 +14,10 @@ class Application(Frame):
             print("Frame 2", event.x, event.y)
         def openHandler():
             mux = musicGet_Functions()
-            album_name = self.text_in.get()
+            artist = self.text_in.get()
             try:
-                songList = mux.get_album_songs(album_name)
-                self.text_in2.insert(END, album_name + " songs: \n")
+                songList = mux.get_artist_songs(artist)
+                self.text_in2.insert(END, artist + " songs: \n")
                 if songList != []:
                     for song in songList:
                         print(song[0])
@@ -27,7 +26,7 @@ class Application(Frame):
                         self.text_in2.insert(END, s)
                         self.text_in2.insert(END, "\n")
                 else:
-                    self.text_in2.insert(END, "None found! \n")                
+                    self.text_in2.insert(END, "None found! \n")
             except self.conn.Error as err:
                 print("Exception is ", err)
                 self.text_in2.insert(END, err)
@@ -47,7 +46,7 @@ class Application(Frame):
         Button(self,text=myButtonTxt.format(1),command=myButtonCmd).grid(row=14, column=1, sticky=E+W)
         frame3 = Frame(self) 
         frame3.grid(row=0, column=0, rowspan=14, columnspan=3, sticky=N+S+W+E)
-        entryText = "Input Album Name"
+        entryText = "Input Artist Name"
         self.text_in = Entry(frame3)
         self.text_in.config(fg = "black")
         self.text_in.insert(0, entryText)
