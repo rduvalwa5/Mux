@@ -22,25 +22,25 @@ new process see the WindowsMusicFile.py
 import os, platform
 import mysql.connector
 #import MySQLdb  # as connDb
-from Musicdb_info import login_info_root
-from Musicdb_info import login_info_osx 
+#import login_info_default from Musicdb_info
+from    Musicdb_info    import login_info_default
+from    Musicdb_info    import login_info_rduval    
+from    Musicdb_info    import login_info_osx 
 
 
 class musicGet_Functions:   
     def __init__(self):
-#        print("*************** Node Name is ",os.getenv("HOSTNAME"))
+        print("*************** Node Name is ",platform.uname().node)
         if platform.uname().node == 'C1246895-osx.home':
             self.conn = mysql.connector.Connect(**login_info_osx)
-#        if os.uname().nodename == 'C1246895-osx.home':
-#            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduval',password='blu4jazz',db='Music')
-#        elif  os.uname().nodename == 'OSXAir.home.home':
-#            self.conn = mysql.connector.Connect(**login_info_root)
-        elif platform.uname().node == 'OSXAir.home.home':
-            self.conn = mysql.connector.Connect(**login_info_root)
+        elif platform.uname().node == 'OSXAir.local':
+            self.conn = mysql.connector.Connect(**login_info_default)
 #            self.conn  = connDb.connect(host='OSXAir.home.home',user='root',password='blu4jazz',db='Music')
         elif platform.uname().node == 'C1246895-WIN64-Air':
-            self.conn = mysql.connector.Connect(**login_info_root)
+            self.conn = mysql.connector.Connect(**login_info_default)
 #            self.conn  = connDb.connect(host='OSXAir.home.home',user='root',password='blu4jazz',db='Music')
+        else:
+            self.conn = mysql.connector.Connect(**login_info_default)
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home'  
     '''
@@ -325,7 +325,8 @@ class musicGet_Functions:
 
     def get_all_artist(self):
 #       select music.artist.index, artist, genre from music.artist where artist = 'Bill Withers';
-        fields = "music.artist.artist"
+        fields = "music.artist.artist, music.artist.index"
+#        fields = "*"
         statement = "select " + fields + " from music.artist;"
         print(statement)
         cursor = self.conn.cursor()

@@ -9,6 +9,7 @@ HOST="localhost"
 DATABASE="Music"
 PORT=3306
 
+'''
 login_info_rd = {
               'host': HOST,
               'user': USERNAME,
@@ -16,8 +17,16 @@ login_info_rd = {
               'database': DATABASE,
               'port':PORT
               }
+'''
+login_info_rduval = {
+              'host': "localhost",
+              'user': "rduval",
+              'password': "blu4jazz",
+              'database': "Music",
+              'port':"3306"
+              }
 
-login_info_root = {
+login_info_default = {
               'host': "localhost",
               'user': "root",
               'password': "blu4jazz",
