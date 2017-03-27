@@ -23,7 +23,7 @@ import os, platform
 #import mysql.connector
 import MySQLdb as connDb
 #import MySQLdb  # as connDb
-from Musicdb_info import login_info_root
+from Musicdb_info import login_info_rduval
 from Musicdb_info import login_info_osx 
 
 
@@ -545,7 +545,7 @@ if __name__  == '__main__':
             mux = musicGet_Functions()
             table = 'Music.artist'
             criteria = ""
-            expected = 537
+            expected = 540
             result = mux.get_count(table, criteria)
             print("get_count artist",result)
             self.assertEqual(expected,result)
@@ -554,7 +554,7 @@ if __name__  == '__main__':
             mux = musicGet_Functions()
             table = 'Music.artist_albums'
             criteria = ""
-            expected = 909
+            expected = 932
             result = mux.get_count(table, criteria)
             print("get_count albums",result)
             self.assertEqual(expected,result)
@@ -563,7 +563,7 @@ if __name__  == '__main__':
             mux = musicGet_Functions()
             table = 'Music.album2songs'
             criteria = ""
-            expected = 6625
+            expected = 6815
             result = mux.get_count(table, criteria)
             print("get_count songs",result)
             self.assertEqual(expected,result)              
@@ -578,21 +578,21 @@ if __name__  == '__main__':
         def testGetMaxArtist(self):
             mux = musicGet_Functions()
             table = 'artist'
-            expected = 537
+            expected = 540
             result = mux.get_max_index(table)
             self.assertEqual(expected,result[0])
             
         def testGetMaxAlbums(self):
             mux = musicGet_Functions()
             table = 'artist_albums'
-            expected = 909
+            expected = 935
             result = mux.get_max_index(table)
             self.assertEqual(expected,result[0])
 
         def testGetMaxSongs(self):
             mux = musicGet_Functions()
             table = 'album2songs'
-            expected = 6624
+            expected = 6845
             result = mux.get_max_index(table)
             self.assertEqual(expected,result[0])
         
@@ -659,7 +659,8 @@ if __name__  == '__main__':
         
         def test_get_album_songs(self):
             mux = musicGet_Functions()
-            expected = ['01 One of These Days.m4p', '02 Here They Come.m4p', "03 I'd Love to Change the World.m4p", '04 Over the Hill.m4p', "05 Baby Won't You Let Me Rock 'N' Roll You.m4p", '06 Once There Was a Time.m4p', '07 Let the Sky Fall.m4p', '08 Hard Monkeys.m4p', "09 I've Been There Too.m4p", '10 Uncle Jam.m4p']
+#            expected =(('01 One of These Days.m4p',), ('02 Here[282 chars]p',))
+            expected = (('01 One of These Days.m4p',), ('02 Here They Come.m4p',), ("03 I'd Love to Change the World.m4p",), ('04 Over the Hill.m4p',), ("05 Baby Won't You Let Me Rock 'N' Roll You.m4p",), ('06 Once There Was a Time.m4p',), ('07 Let the Sky Fall.m4p',), ('08 Hard Monkeys.m4p',), ("09 I've Been There Too.m4p",), ('10 Uncle Jam.m4p',))
             result = mux.get_album_songs('A Space In Time')
             print("album songs", result)
             self.assertEqual(expected, result, "song list for A Space In Time wrong" )
