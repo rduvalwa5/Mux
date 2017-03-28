@@ -25,23 +25,18 @@ import MySQLdb as connDb
 #import MySQLdb  # as connDb
 from Musicdb_info import login_info_rduval
 from Musicdb_info import login_info_osx 
+from Musicdb_info import login_info_xps 
 
 
 class musicGet_Functions:   
     def __init__(self):
-#        print("*************** Node Name is ",os.getenv("HOSTNAME"))
+        print("**** Node Name is ",platform.uname().node)
         if platform.uname().node == 'C1246895-XPS':
-#            self.conn = mysql.connector.Connect(**login_info_osx)
-#        if os.uname().nodename == 'C1246895-osx.home':
-            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduval',password='blu4jazz',db='Music')
-#        elif  os.uname().nodename == 'OSXAir.home.home':
-#            self.conn = mysql.connector.Connect(**login_info_root)
-        elif platform.uname().node == 'OSXAir.home.home':
-#            self.conn = mysql.connector.Connect(**login_info_root)
-            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduval',password='blu4jazz',db='Music')
+            self.conn  = connDb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
+        elif platform.uname().node == 'OSXAir.home':
+            self.conn  = connDb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
         elif platform.uname().node == 'C1246895-WIN64-Air':
-#            self.conn = mysql.connector.Connect(**login_info_root)
-            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduval',password='blu4jazz',db='Music')
+            self.conn  = connDb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home'  
     '''
@@ -291,6 +286,24 @@ class musicGet_Functions:
     '''
         Artist  ********************
     '''
+
+    def get_all_artist(self):
+#       select music.artist.index, artist, genre from music.artist where artist = 'Bill Withers';
+        fields = "music.artist.artist, music.artist.index"
+#        fields = "*"
+        statement = "select " + fields + " from music.artist;"
+        print(statement)
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(statement)
+            result = cursor.fetchall()  
+            cursor.close()
+            self.dbConnectionClose()
+            return result  
+        except mysql.connector.Error as err:
+            print("Exception is ", err)
+            return str(err)               
+
 
     def get_artist(self,artist):
 #       select music.artist.index, artist, genre from music.artist where artist = 'Bill Withers';
