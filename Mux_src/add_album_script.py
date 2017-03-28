@@ -9,7 +9,7 @@ from Music_Get_Functions import musicGet_Functions
 if __name__ == "__main__" :    
     mux =  musicGet_Functions()
     print(mux.get_count('artist_albums', ''))
-    albumList = [("Greatest Hits","ZZ Top","Rock","Download")]
+    albumList = [("Anthology Kenny Rogers & The First Edition","Kenny Rogers & The First Edition","Rock","Download")]
     for album in albumList:
         mux.add_album(album[0], album[1],album[2],album[3])
     print(mux.get_count('artist_albums', ''))

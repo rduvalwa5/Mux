@@ -9,9 +9,10 @@ from Music_Get_Functions import musicGet_Functions
         
 if __name__ == "__main__" :       
     mux = musicGet_Functions()
-    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/R.E.M./Collapse Into Now"
-    album = "Collapse Into Now"
-    artist = "R.E.M."
+    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Kenny Rogers & The First Edition/Anthology Kenny Rogers & The First Edition"
+#    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Kenny Rogers & The First Edition/Anthology Kenny Rogers & The First Edition"
+    album = "Anthology Kenny Rogers & The First Edition"
+    artist = "Kenny Rogers & The First Edition"
     genre = "Rock"
-    inType = "CD"    
+    inType = "Download"    
     mux.add_songs_in_path(myPath, album, artist, genre, inType)   

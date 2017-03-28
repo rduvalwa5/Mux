@@ -29,7 +29,7 @@ mylist = Listbox(root, yscrollcommand = scrollbar.set, width = 100, selectmode =
 
 for n in range(len(artistList)):
     mylist.insert(END,str(n) + "  " + str(artistList[n][1]) + "  " + artistList[n][0])
-mylist.insert(END,mylist.size())
+mylist.insert(END,"Total Artist " + str(mylist.size()))
 mylist.pack( side = LEFT, fill = BOTH )
 scrollbar.config( command = mylist.yview )
 
