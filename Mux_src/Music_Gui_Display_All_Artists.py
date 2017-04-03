@@ -25,7 +25,7 @@ print(artistList)
 scrollbar = Scrollbar(root)
 scrollbar.pack( side = RIGHT, fill=Y )
 
-mylist = Listbox(root, yscrollcommand = scrollbar.set, width = 100, selectmode = EXTENDED )
+mylist = Listbox(root, yscrollcommand = scrollbar.set, width = 100, selectmode = EXTENDED, bg = 'yellow' , fg = 'red')
 
 for n in range(len(artistList)):
     mylist.insert(END,str(n) + "  " + str(artistList[n][1]) + "  " + artistList[n][0])
