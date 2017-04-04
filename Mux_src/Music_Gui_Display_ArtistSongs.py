@@ -5,7 +5,7 @@ This code prints the songs by an artist
 '''
 from tkinter import *
 from Music_Get_Functions import musicGet_Functions
-import mysql.connector
+import MySQLdb   as connDb
 
  
 class Application(Frame):
@@ -23,7 +23,7 @@ class Application(Frame):
                         self.text_in2.insert(END, s)
                 else:
                     self.text_in2.insert(END, "None found! \n")
-            except mysql.connector.Error as err:
+            except self.conn.Error as err:
                 print("Exception is ", err)
                 self.text_in2.insert(END, err)
         Frame.__init__(self, master)

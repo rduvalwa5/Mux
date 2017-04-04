@@ -1,5 +1,5 @@
 '''
-
+Down load Python 3.6.1
 Created on Feb 16, 2017
 improve for Python 3.6
 @author: rduvalwa2
@@ -20,8 +20,8 @@ import MySQLdb as connDb
 new process see the WindowsMusicFile.py
 ''' 
 import os, platform
-import mysql.connector
-#import MySQLdb  # as connDb
+#import self.conn.Error
+import MySQLdb   as connDb
 #import login_info_default from Musicdb_info
 from    Musicdb_info    import login_info_default
 from    Musicdb_info    import login_info_rduval    
@@ -32,15 +32,17 @@ class musicGet_Functions:
     def __init__(self):
         print("*************** Node Name is ",platform.uname().node)
         if platform.uname().node == 'C1246895-osx.home':
-            self.conn = mysql.connector.Connect(**login_info_osx)
+#            self.conn = connDb.Connect(**login_info_osx)
+            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
+
         elif platform.uname().node == 'OSXAir.local':
-            self.conn = mysql.connector.Connect(**login_info_default)
-#            self.conn  = connDb.connect(host='OSXAir.home.home',user='root',password='blu4jazz',db='Music')
+            self.conn = connDb.Connect(**login_info_default)
+#            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
         elif platform.uname().node == 'C1246895-WIN64-Air':
-            self.conn = mysql.connector.Connect(**login_info_default)
+            self.conn = connDb.Connect(**login_info_default)
 #            self.conn  = connDb.connect(host='OSXAir.home.home',user='root',password='blu4jazz',db='Music')
         else:
-            self.conn = mysql.connector.Connect(**login_info_default)
+            self.conn = connDb.Connect(**login_info_default)
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home'  
     '''
@@ -57,7 +59,7 @@ class musicGet_Functions:
             cursor.close()
 #            self.dbConnectionClose()
             return maxIndex
-        except mysql.connector.Error as err:
+        except self.conn.Error.Error as err:
             print("Exception is ", err)
             return str(err)
                 
@@ -71,7 +73,7 @@ class musicGet_Functions:
             cursor.close()
 #            self.dbConnectionClose()
             return theCount       
-        except mysql.connector.Error as err:
+        except self.conn.Error.Error as err:
             print("Exception is ", err)
             return str(err)
             
@@ -85,7 +87,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result                   
-        except mysql.connector.Error as err:
+        except self.conn.Error.Error as err:
             print("Exception is ", err)
             return str(err)
 
@@ -110,7 +112,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result            
-        except mysql.connector.Error as err:
+        except self.conn.Error.Error as err:
             print("Exception is ", err)
             return str(err)
 
@@ -153,7 +155,7 @@ class musicGet_Functions:
                 return  True
             else:
                 return False
-        except mysql.connector.Error as err:
+        except self.conn.Error.Error as err:
             print("Exception is ", err)
             return str(err)        
     
@@ -166,7 +168,7 @@ class musicGet_Functions:
             print("max is " ,maxIndex)
             newIndex = maxIndex + 1
             print("new is ", newIndex)
-        except mysql.connector.Error as err:
+        except self.conn.Error.Error as err:
             print("Exception is ", err)
             return str(err)
                     
@@ -178,7 +180,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return "Success"
-        except mysql.connector.Error as err:
+        except self.conn.Error.Error as err:
             print("Exception is ", err)
             return str(err)
 
@@ -193,7 +195,7 @@ class musicGet_Functions:
                 cursor.close()
                 self.dbConnectionClose()
                 return song + " deleted"  
-            except mysql.connector.Error as err:
+            except self.conn.Error.Error as err:
                 print("Exception is ", err)
                 return str(err)      
 
@@ -336,7 +338,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result  
-        except mysql.connector.Error as err:
+        except self.conn.Error as err:
             print("Exception is ", err)
             return str(err)               
 
@@ -353,7 +355,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result  
-        except mysql.connector.Error as err:
+        except self.conn.Error as err:
             print("Exception is ", err)
             return str(err)               
        
@@ -373,7 +375,7 @@ class musicGet_Functions:
             print("done")
 #            self.dbConnectionClose()
             return "Added " + artist
-        except mysql.connector.Error as err:
+        except self.conn.Error as err:
             print("Exception is ", err)
             return str(err)
         
@@ -386,7 +388,7 @@ class musicGet_Functions:
             row = cursor.fetchone()
             index = row[0]
             print(index)
-        except mysql.connector.Error as err:
+        except self.conn.Error as err:
             print("Exception is ", err)
             return str(err)
         
@@ -399,7 +401,7 @@ class musicGet_Functions:
             cursor.close()
 #            self.dbConnectionClose()
             return "deleted " + artist
-        except mysql.connector.Error as err:
+        except self.conn.Error as err:
             print("Exception is ", err)
             return str(err) 
 
@@ -416,7 +418,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result   
-        except mysql.connector.Error as err:
+        except self.conn.Error as err:
             print("Exception is ", err)
             return str(err)
         
@@ -434,7 +436,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result   
-        except mysql.connector.Error as err:
+        except self.conn.Error as err:
             print("Exception is ", err)
             return str(err)
         
@@ -452,7 +454,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result           
-        except mysql.connector.Error as err:
+        except self.conn.Error as err:
             print("Exception is ", err)
             return str(err)         
             
@@ -468,7 +470,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result           
-        except mysql.connector.Error as err:
+        except self.conn.Error as err:
             print("Exception is ", err)
             return str(err) 
 
@@ -489,7 +491,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result           
-        except mysql.connector.Error as err:
+        except self.conn.Error.Error as err:
             print("Exception is ", err)
             return str(err) 
 
@@ -507,7 +509,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result           
-        except mysql.connector.Error as err:
+        except self.conn.Error.Error as err:
             print("Exception is ", err)
             return str(err) 
 
@@ -532,7 +534,7 @@ class musicGet_Functions:
             cursor.close()
 #            self.dbConnectionClose()
             return result  
-        except mysql.connector.Error as err:
+        except self.conn.Error.Error as err:
             print("Exception is ", err)
             return str(err)        
 
@@ -545,7 +547,7 @@ class musicGet_Functions:
             row = cursor.fetchone()
             index = row[0]
             print(index)
-        except mysql.connector.Error as err:
+        except self.conn.Error.Error as err:
             print("Exception is ", err)
             return str(err)
         deleteStatement = "Delete from `Music`.artist_albums where `Music`.artist_albums.index = " + str(index) + ";"       
@@ -558,7 +560,7 @@ class musicGet_Functions:
             cursor.close()
 #            self.dbConnectionClose()
             return result  
-        except mysql.connector.Error as err:
+        except self.conn.Error.Error as err:
             print("Exception is ", err)
             return str(err)
 
@@ -587,7 +589,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result
-        except mysql.connector.Error as err:
+        except self.conn.Error.Error as err:
             print("Exception is ", err)
             return str(err)   
 
@@ -719,20 +721,21 @@ if __name__  == '__main__':
 
         def test_get_artistAlbums_from_Albums(self):
             mux = musicGet_Functions()
-            expected = [(664, 'Ten Years After', 'A Space In Time', 'Rock', 'Download'), (665, 'Ten Years After', 'Recorded Live', 'Rock', 'Download'), (666, 'Ten Years After', 'Undead (Remastered) [Live]', 'Rock', 'Download')]
+            expected = ((664, 'Ten Years After', 'A Space In Time', 'Rock', 'Download'), (665, 'Ten Years After', 'Recorded Live', 'Rock', 'Download'), (666, 'Ten Years After', 'Undead (Remastered) [Live]', 'Rock', 'Download'))
             result = mux.get_artistAlbums_fromAlbums('Ten Years After')
+            print("artistAlbums 726 ", result)
             self.assertEqual(expected, result)
         
         def test_get_album_songs(self):
             mux = musicGet_Functions()
-            expected = [('01 One of These Days.m4p',), ('02 Here They Come.m4p',), ("03 I'd Love to Change the World.m4p",), ('04 Over the Hill.m4p',), ("05 Baby Won't You Let Me Rock 'N' Roll You.m4p",), ('06 Once There Was a Time.m4p',), ('07 Let the Sky Fall.m4p',), ('08 Hard Monkeys.m4p',), ("09 I've Been There Too.m4p",), ('10 Uncle Jam.m4p',)]
+            expected = (('01 One of These Days.m4p',), ('02 Here They Come.m4p',), ("03 I'd Love to Change the World.m4p",), ('04 Over the Hill.m4p',), ("05 Baby Won't You Let Me Rock 'N' Roll You.m4p",), ('06 Once There Was a Time.m4p',), ('07 Let the Sky Fall.m4p',), ('08 Hard Monkeys.m4p',), ("09 I've Been There Too.m4p",), ('10 Uncle Jam.m4p',))
             result = mux.get_album_songs('A Space In Time')
-            print("album songs", result)
+            print("album songs 733", result)
             self.assertEqual(expected, result, "song list for A Space In Time wrong" )
 
         def test_get_artist_songs(self):
             mux = musicGet_Functions()
-            expected = [('01 One of These Days.m4p', 'A Space In Time'), ('02 Here They Come.m4p', 'A Space In Time'), ("03 I'd Love to Change the World.m4p", 'A Space In Time'), ('04 Over the Hill.m4p', 'A Space In Time'), ("05 Baby Won't You Let Me Rock 'N' Roll You.m4p", 'A Space In Time'), ('06 Once There Was a Time.m4p', 'A Space In Time'), ('07 Let the Sky Fall.m4p', 'A Space In Time'), ('08 Hard Monkeys.m4p', 'A Space In Time'), ("09 I've Been There Too.m4p", 'A Space In Time'), ('10 Uncle Jam.m4p', 'A Space In Time'), ('01 One of These Days.m4p', 'Recorded Live'), ('02 You Give Me Loving.m4p', 'Recorded Live'), ('03 Good Morning Little Schoolgirl.m4p', 'Recorded Live'), ('04 Help Me.m4p', 'Recorded Live'), ('05 Classical Thing.m4p', 'Recorded Live'), ('06 Scat Thing.m4p', 'Recorded Live'), ("07 I Can't Keep from Cryin' Sometimes.m4p", 'Recorded Live'), ("09 I Can't Keep from Cryin' (Cont'd).m4p", 'Recorded Live'), ('10 Silly Thing.m4p', 'Recorded Live'), ("11 Slow Blues In 'C'.m4p", 'Recorded Live'), ("12 I'm Going Home.m4p", 'Recorded Live'), ('13 Choo Choo Mama.m4p', 'Recorded Live'), ('01 Rock You Mama (Live).m4a', 'Undead (Remastered) [Live]'), ('02 Spoonful (Live).m4a', 'Undead (Remastered) [Live]'), ("03 I May Be Wrong, But I Won't Be Wrong Always (Live).m4a", 'Undead (Remastered) [Live]'), ('04 Summertime _ Shantung Cabbage (Live).m4a', 'Undead (Remastered) [Live]'), ('05 Spider In My Web (Live).m4a', 'Undead (Remastered) [Live]'), ("06 (At the) Woodchopper's Ball [Live].m4a", 'Undead (Remastered) [Live]'), ('07 Standing At the Crossroads (Live).m4a', 'Undead (Remastered) [Live]'), ("08 I Can't Keep from Crying Sometimes _ Extension On One Chord (Live).m4a", 'Undead (Remastered) [Live]'), ("09 I'm Going Home (Live).m4a", 'Undead (Remastered) [Live]')]
+            expected = (('01 One of These Days.m4p', 'A Space In Time'), ('02 Here They Come.m4p', 'A Space In Time'), ("03 I'd Love to Change the World.m4p", 'A Space In Time'), ('04 Over the Hill.m4p', 'A Space In Time'), ("05 Baby Won't You Let Me Rock 'N' Roll You.m4p", 'A Space In Time'), ('06 Once There Was a Time.m4p', 'A Space In Time'), ('07 Let the Sky Fall.m4p', 'A Space In Time'), ('08 Hard Monkeys.m4p', 'A Space In Time'), ("09 I've Been There Too.m4p", 'A Space In Time'), ('10 Uncle Jam.m4p', 'A Space In Time'), ('01 One of These Days.m4p', 'Recorded Live'), ('02 You Give Me Loving.m4p', 'Recorded Live'), ('03 Good Morning Little Schoolgirl.m4p', 'Recorded Live'), ('04 Help Me.m4p', 'Recorded Live'), ('05 Classical Thing.m4p', 'Recorded Live'), ('06 Scat Thing.m4p', 'Recorded Live'), ("07 I Can't Keep from Cryin' Sometimes.m4p", 'Recorded Live'), ("09 I Can't Keep from Cryin' (Cont'd).m4p", 'Recorded Live'), ('10 Silly Thing.m4p', 'Recorded Live'), ("11 Slow Blues In 'C'.m4p", 'Recorded Live'), ("12 I'm Going Home.m4p", 'Recorded Live'), ('13 Choo Choo Mama.m4p', 'Recorded Live'), ('01 Rock You Mama (Live).m4a', 'Undead (Remastered) [Live]'), ('02 Spoonful (Live).m4a', 'Undead (Remastered) [Live]'), ("03 I May Be Wrong, But I Won't Be Wrong Always (Live).m4a", 'Undead (Remastered) [Live]'), ('04 Summertime _ Shantung Cabbage (Live).m4a', 'Undead (Remastered) [Live]'), ('05 Spider In My Web (Live).m4a', 'Undead (Remastered) [Live]'), ("06 (At the) Woodchopper's Ball [Live].m4a", 'Undead (Remastered) [Live]'), ('07 Standing At the Crossroads (Live).m4a', 'Undead (Remastered) [Live]'), ("08 I Can't Keep from Crying Sometimes _ Extension On One Chord (Live).m4a", 'Undead (Remastered) [Live]'), ("09 I'm Going Home (Live).m4a", 'Undead (Remastered) [Live]'))
             result = mux.get_artistSongs_fromSongs('Ten Years After')
             print("artist songs", result)
             self.assertEqual(expected, result, "song list for Ten Years After wrong" )

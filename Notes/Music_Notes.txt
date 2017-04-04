@@ -1,5 +1,24 @@
 Music code Notes:
 
+Python 3.6.1 upgrade changes behavior of MySql connector:
+
+Down load Python 3.6.1
+Created on Feb 16, 2017
+improve for Python 3.6
+@author: rduvalwa2
+OSXAir:bin rduvalwa2$ pip3.6 install mysqlclient
+Collecting mysqlclient
+  Downloading mysqlclient-1.3.10.tar.gz (82kB)
+    100% |████████████████████████████████| 92kB 795kB/s 
+Installing collected packages: mysqlclient
+  Running setup.py install for mysqlclient ... done
+Successfully installed mysqlclient-1.3.10
+OSXAir:bin rduvalwa2$ 
+
+
+
+
+
 Access from XPS:
 C:\Users\RDuval>mysql -h OSXAir.home -u rduval -p music  <----- this -----------------
 Enter password: ********

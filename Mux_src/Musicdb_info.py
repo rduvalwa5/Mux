@@ -43,8 +43,8 @@ login_info_xps = {
               }
 
 login_info_osx = {
-              'host': "localhost",
-              'user': "root",
+              'host': "OSXAir.home",
+              'user': "rduvalwa2",
               'password': "blu4jazz",
               'database': "Music",
               'port':"3306"
