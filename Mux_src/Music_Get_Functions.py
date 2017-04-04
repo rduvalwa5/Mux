@@ -35,12 +35,12 @@ class musicGet_Functions:
 #            self.conn = connDb.Connect(**login_info_osx)
             self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
 
-        elif platform.uname().node == 'OSXAir.local':
-            self.conn = connDb.Connect(**login_info_default)
-#            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
+        elif platform.uname().node == 'OSXAir.home.home':
+#            self.conn = connDb.Connect(**login_info_default)
+            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
         elif platform.uname().node == 'C1246895-WIN64-Air':
-            self.conn = connDb.Connect(**login_info_default)
-#            self.conn  = connDb.connect(host='OSXAir.home.home',user='root',password='blu4jazz',db='Music')
+#            self.conn = connDb.Connect(**login_info_default)
+            self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
         else:
             self.conn = connDb.Connect(**login_info_default)
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
