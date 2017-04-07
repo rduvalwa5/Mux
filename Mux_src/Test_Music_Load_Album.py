@@ -1,10 +1,12 @@
 '''
 '''
 import unittest 
-from Musicdb_info import login_info_root
-from Musicdb_info import login_info_osx 
-import mysql.connector
-import os
+#from Musicdb_info import login_info_root
+#from Musicdb_info import login_info_osx 
+#import mysql.connector
+import os, platform
+#import self.conn.Error
+import MySQLdb   as connDb
 import Music_Get_Functions
 from  Music_Load import musicLoad_Functions, song_Add_Update_Delete, album_Add_Update_Delete, artist_Add_Update_Delete
 
@@ -14,7 +16,7 @@ class Test_MusicLoad(unittest.TestCase):
 
             print("Test setup")
             self.getInfo = Music_Get_Functions.musicGet_Functions()
-            self.albumAddUpDel = album_Add_Update_Delete()
+            self.albumAddUpDel = album_Add_Update_Delete(False)
             self.artistAdd = 'Test_Add_Artist'
             self.genreAdd = 'Add_Gen'
             self.albumAdd = 'Test_Add_Album'
@@ -56,8 +58,39 @@ class Test_MusicLoad(unittest.TestCase):
             expected = "False" 
             album = "Long Long Road"
             result = self.albumAddUpDel.doesAlbumExist(album)
-            self.assertEqual(expected,result, "Result expected False but was True")          
+            self.assertEqual(expected,result, "Result expected False but was True")  
+            
+        """
+            Test Support Functions
+        """                    
+        def Restore_testAlbum(self):   
+            print("*************** Node Name is ",platform.uname().node)
+            if platform.uname().node == 'C1246895-osx.home':
+#            self.conn = connDb.Connect(**login_info_osx)
+                self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
 
+            elif platform.uname().node == 'OSXAir.home.home':
+#            self.conn = connDb.Connect(**login_info_default)
+                self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+            elif platform.uname().node == 'C1246895-WIN64-Air':
+#            self.conn = connDb.Connect(**login_info_default)
+                self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
+            else:
+                self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
+
+            statement = "UPDATE `Music`.artist_albums SET artist = 'ZZ_ZTest',genre = 'Test GenX',type = 'TestTape' WHERE album = 'Test_AlbumA';"
+            print(statement)
+            self.albumAddUpDel.conn 
+            cursor = self.conn.cursor()
+            cursor.execute(statement)
+            commit = "commit;"
+            cursor.execute(commit)
+            print("done")
+            cursor.close()
+            self.conn.close()
+       
+                    
+'''
         def test_Add_Album(self):
             """
              Test Add Album to artist_albums table.
@@ -121,27 +154,10 @@ class Test_MusicLoad(unittest.TestCase):
             print(result)
             expected = []
             self.assertListEqual(expected, result, "list is not empty")   
-                               
-        """
-            Test Support Functions
-        """                    
-        def Restore_testAlbum(self):   
-            if os.uname().nodename == 'C1246895-osx.home':
-                conn = mysql.connector.Connect(**login_info_osx)
-            elif  os.uname().nodename == 'OSXAir.home.home':
-                conn = mysql.connector.Connect(**login_info_root)
-
-            statement = "UPDATE `Music`.artist_albums SET artist = 'ZZ_ZTest',genre = 'Test GenX',type = 'TestTape' WHERE album = 'Test_AlbumA';"
-            print(statement)
-#            self.albumAddUpDel.conn 
-            cursor = conn.cursor()
-            cursor.execute(statement)
-            commit = "commit;"
-            cursor.execute(commit)
-            print("done")
-            cursor.close()
-            conn.close()
             
+'''
+                               
+
                  
 if __name__ == "__main__":
     unittest.main()

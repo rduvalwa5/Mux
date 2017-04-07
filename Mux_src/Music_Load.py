@@ -1,31 +1,41 @@
-import os
-import mysql.connector
-from Music_Get_Functions import musicGet_Functions
-#from  Musicdb_info import login_info_rd
-from Musicdb_info import login_info_root
-from Musicdb_info import login_info_osx 
-#from mysql.connector.errors import Error
+import os, platform
+#import self.conn.Error
+import MySQLdb   as connDb
+#import login_info_default from Musicdb_info
+from    Musicdb_info    import login_info_default
+from    Musicdb_info    import login_info_rduval    
+from    Musicdb_info    import login_info_osx 
 
 
 class musicLoad_Functions:
-    def __init__(self):
-        if os.uname().nodename == 'C1246895-osx.home':
-            self.conn = mysql.connector.Connect(**login_info_osx)
-        elif  os.uname().nodename == 'OSXAir.home.home':
-            self.conn = mysql.connector.Connect(**login_info_root)
-#        print(self.conn)
-        self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
-        self.server = 'OSXAir.home'
+    def __init__(self,test = False):
+        print("*************** Node Name is ",platform.uname().node)
+        if platform.uname().node == 'C1246895-osx.home':
+#            self.conn = connDb.Connect(**login_info_osx)
+            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
 
+        elif platform.uname().node == 'OSXAir.home.home':
+#            self.conn = connDb.Connect(**login_info_default)
+            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+        elif platform.uname().node == 'C1246895-WIN64-Air':
+#            self.conn = connDb.Connect(**login_info_default)
+            self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
+        else:
+            self.conn = connDb.Connect(**login_info_default)
+        self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
+        self.server = 'OSXAir.home' 
+        self.notTestRun = test
+    
+    
     def get_albums(self):
-        base =   "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
+#        base =   "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         albums = []
         index = 0
         artists = self.get_music_artist()
         for a in artists:
             artist = a[1]
-            if os.path.isdir(base + "/" + artist):
-                artist_albums = os.listdir(base + "/" + artist)
+            if os.path.isdir(self.base + "/" + artist):
+                artist_albums = os.listdir(self.base + "/" + artist)
                 for album in artist_albums:
                     if album != '.DS_Store':
                         albums.append((index,artist,album))
@@ -44,17 +54,17 @@ class musicLoad_Functions:
 
     def get_all_songs(self):
         index = 0
-        base =   "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
+#        base =   "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         albums = []
         songs = []
         artist = self.get_music_artist()
         for a in artist:
-            if os.path.isdir(base + "/" + a[1]):
-                artist_albums = os.listdir(base + "/" + a[1])
+            if os.path.isdir(self.base + "/" + a[1]):
+                artist_albums = os.listdir(self.base + "/" + a[1])
                 for album in artist_albums:
                     if album != '.DS_Store':
                         albums.append((a,album))
-                        album_songs = os.listdir(base + "/" + a[1] + "/" + album)
+                        album_songs = os.listdir(self.base + "/" + a[1] + "/" + album)
                         for song in album_songs:
                                 songs.append((index,a[1],album,song))
                                 index = index + 1
@@ -69,16 +79,17 @@ class musicLoad_Functions:
         trunkate = "truncate  music.artist;"
         cursor.execute(trunkate)
         allArtist = self.get_music_artist()
-        for artist in allArtist:
-                insertStatement = "INSERT into Music.artist (artist.index, artist.artist,artist.genre)  values(" + str(artist[0]) + ",\"" + artist[1] + "\",\""  + "rock" + "\")"
+        if self.notTestRun:
+            for artist in allArtist:
+                insertStatement = "INSERT into Music.artist (artist.index, artist.artist,artist.genre)  values(" + str(artist[0]) + ",\"" + artist[1] + "\",\""  + "Rock" + "\")"
                 cursor.execute( insertStatement)
-        countStatement = "SELECT count(*) FROM music.artist;"        
-        cursor.execute(countStatement)
-        count = cursor.fetchone()
-#        print(count[0])
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
+            countStatement = "SELECT count(*) FROM music.artist;"        
+            cursor.execute(countStatement)
+            count = cursor.fetchone()
+#            print(count[0])
+            commit = "commit;"
+            cursor.execute(commit)
+            print("done")
         cursor.close()
 
     """
@@ -92,16 +103,17 @@ class musicLoad_Functions:
         trunkate = "truncate  music.artist_albums;"
         cursor.execute(trunkate)
         allAbums = self.get_albums()
-        for album in allAbums:
+        if self.notTestRun:
+            for album in allAbums:
                 insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.genre,artist_albums.type)  values(" + str(album[0]) + ",\""  + album[1] + "\",\""  + album[2] + "\",\""  + "rock" + "\",\""  + "download" + "\")"
                 cursor.execute( insertStatement)
-        countStatement = "SELECT count(*) FROM music.artist_albums;"        
-        cursor.execute(countStatement)
-        count = cursor.fetchone()
+            countStatement = "SELECT count(*) FROM music.artist_albums;"        
+            cursor.execute(countStatement)
+            count = cursor.fetchone()
 #        print(count[0])
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
+            commit = "commit;"
+            cursor.execute(commit)
+            print("done")
         cursor.close()
 
     def initial_insert_into_album2songs(self): 
@@ -109,59 +121,72 @@ class musicLoad_Functions:
         This code recurses thru the "base" path and captures the artist, album and song
         '''
         cursor = self.conn.cursor()
-        trunkate = "truncate  music.album2songs;"
-        cursor.execute(trunkate)
         allSongs = self.get_all_songs()
-        for song in allSongs:
+        if self.notTestRun:
+            trunkate = "truncate  music.album2songs;"
+            cursor.execute(trunkate)
+            for song in allSongs:
                 insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(song[0]) + ",\"" + self.server + "\",\"" + self.base + "\",\""  + song[1] + "\",\""  + song[2] + "\",\""  + song[3] + "\",\""  + "rock" + "\",\""  + "download" + "\")"
+                print(insertStatement)
                 cursor.execute( insertStatement)
-        countStatement = "SELECT count(*) FROM music.album2songs;"        
-        cursor.execute(countStatement)
-        count = cursor.fetchone()
-#        print(count)
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
+            countStatement = "SELECT count(*) FROM music.album2songs;"        
+            cursor.execute(countStatement)
+            count = cursor.fetchone()
+            print(count)
+            commit = "commit;"
+            cursor.execute(commit)
+            print("done")
+        else:
+            for song in allSongs:
+                insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(song[0]) + ",\"" + self.server + "\",\"" + self.base + "\",\""  + song[1] + "\",\""  + song[2] + "\",\""  + song[3] + "\",\""  + "rock" + "\",\""  + "download" + "\")"
+#                print(insertStatement)
+
         cursor.close()
         
     def sync_song_type(self):
         cursor = self.conn.cursor()
         statement = "UPDATE `Music`.album2songs t1 INNER JOIN `Music`.artist_albums t2 ON t1.album = t2.album SET t1.type = t2.type;"
-        cursor.execute(statement)
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
+        if not self.notTestRun:
+            print(statement)
+        if self.notTestRun:
+            statement = "UPDATE `Music`.album2songs t1 INNER JOIN `Music`.artist_albums t2 ON t1.album = t2.album SET t1.type = t2.type;"
+            cursor.execute(statement)
+            commit = "commit;"
+            cursor.execute(commit)
+            print("done")
         cursor.close()       
 
     def sync_song_genre(self): 
         cursor = self.conn.cursor()
-        statement = "UPDATE `Music`.album2songs t1 INNER JOIN `Music`.artist t2 ON t1.artist = t2.artist SET t1.genre = t2.genre;"
-        cursor.execute(statement)
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
+        statement = "UPDATE `Music`.album2songs t1 INNER JOIN `Music`.artist_albums t2 ON t1.album = t2.album SET t1.genre = t2.genre;"
+        if not self.notTestRun:
+            print(statement)
+        if self.notTestRun:
+            cursor.execute(statement)
+            commit = "commit;"
+            cursor.execute(commit)
+            print("done")
         cursor.close()              
 
-class song_Add_Update_Delete:       
-    def __init__(self):
-        if os.uname().nodename == 'C1246895-osx.home':
-            self.conn = mysql.connector.Connect(**login_info_osx)
-        elif  os.uname().nodename == 'OSXAir.home.home':
-            self.conn = mysql.connector.Connect(**login_info_root)
-#        print(self.conn)
+class song_Add_Update_Delete():       
+    def __init__(self,test = False):
+        print("*************** Node Name is ",platform.uname().node)
+        if platform.uname().node == 'C1246895-osx.home':
+#            self.conn = connDb.Connect(**login_info_osx)
+            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
+
+        elif platform.uname().node == 'OSXAir.home.home':
+#            self.conn = connDb.Connect(**login_info_default)
+            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+        elif platform.uname().node == 'C1246895-WIN64-Air':
+#            self.conn = connDb.Connect(**login_info_default)
+            self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
+        else:
+            self.conn = connDb.Connect(**login_info_default)
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
-        self.server = 'OSXAir.home'      
+        self.server = 'OSXAir.home' 
+        self.notTestRun = test 
         
-#    def get_dbConnection(self):
-#        if os.uname().nodename == 'C1246895-osx.home':
-#            self.conn2 = mysql.connector.Connect(**login_info_osx)
-#        elif  os.uname().nodename == 'OSXAir.home.home':
-#            self.conn2 = mysql.connector.Connect(**login_info_root)
-#        print(self.conn)
-#        self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
-#        self.server = 'OSXAir.home'      
-#        return self.conn2
-    
     def get_max_index(self, table):
         self.table = '`Music`.' + table
         self.tableIndex = table + "." + 'Index'
@@ -210,18 +235,19 @@ class song_Add_Update_Delete:
         else:
             songs = self.get_songs(artist,album)
 #        print(songs)
-        for song in songs:
+        if self.notTestRun:
+            for song in songs:
                 insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(newIndex) + ",\"" + self.server + "\",\"" + self.base + "\",\""  + song[1] + "\",\""  + song[2] + "\",\""  + song[3] + "\",\""  + "rock" + "\",\""  + "download" + "\")"
                 print(insertStatement)
                 cursor.execute( insertStatement)
                 newIndex = newIndex + 1
-        countStatement = "SELECT count(*) FROM music.album2songs;"        
-        cursor.execute(countStatement)
-#        count = cursor.fetchone()
-#        print(count)
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
+            countStatement = "SELECT count(*) FROM music.album2songs;"        
+            cursor.execute(countStatement)
+#            count = cursor.fetchone()
+#            print(count)
+            commit = "commit;"
+            cursor.execute(commit)
+            print("done")
         cursor.close()
 
     def add_song(self,album,artist,genre,song,type,path='"/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"',server='OSXAir.home' ):
@@ -235,10 +261,11 @@ class song_Add_Update_Delete:
         newIndex = index + 1
         insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values("  + str(newIndex) + ",\"" + server + "\",\"" + path + "\",\""  + artist + "\",\""  + album + "\",\""  + song + "\",\""  + genre + "\",\""  + type + "\")"
         print(insertStatement)
-        cursor.execute( insertStatement)
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
+        if self.notTestRun:
+            cursor.execute( insertStatement)
+            commit = "commit;"
+            cursor.execute(commit)
+            print("done")
         cursor.close()
         
     def update_song_album(self, album,song):
@@ -247,12 +274,13 @@ class song_Add_Update_Delete:
         '''
 #        xconn = self.get_dbConnection()
         cursor = self.conn.cursor()
-        statement = "UPDATE `Music`.album2songs SET album = '" + album + "' WHERE song = '" + song  + "';"
-        print(statement)
-        cursor.execute( statement)
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
+        if self.notTestRun:
+            statement = "UPDATE `Music`.album2songs SET album = '" + album + "' WHERE song = '" + song  + "';"
+            print(statement)
+            cursor.execute( statement)
+            commit = "commit;"
+            cursor.execute(commit)
+            print("done")
         cursor.close()   
   #      xconn.close()
          
@@ -261,12 +289,13 @@ class song_Add_Update_Delete:
         UPDATE `Music`.album2songs SET artist = 'ZZ_ZTest' WHERE song = 'Song_Song.mp3';
         '''
         cursor = self.conn.cursor()
-        statement = "UPDATE `Music`.album2songs SET artist = '" + artist + "' WHERE song = '" + song  + "';"
-        print(statement)
-        cursor.execute( statement)
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
+        if self.notTestRun:
+            statement = "UPDATE `Music`.album2songs SET artist = '" + artist + "' WHERE song = '" + song  + "';"
+            print(statement)
+            cursor.execute( statement)
+            commit = "commit;"
+            cursor.execute(commit)
+            print("done")
         cursor.close()    
     
     def update_song_genre(self,genre,song):
@@ -274,12 +303,13 @@ class song_Add_Update_Delete:
         UPDATE `Music`.album2songs SET genre = 'Rock' WHERE song = 'Song_Song.mp3';
         '''
         cursor = self.conn.cursor()
-        statement = "UPDATE `Music`.album2songs SET genre = '" + genre + "' WHERE song = '" + song  + "';"
-        print(statement)
-        cursor.execute( statement)
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
+        if self.notTestRun:
+            statement = "UPDATE `Music`.album2songs SET genre = '" + genre + "' WHERE song = '" + song  + "';"
+            print(statement)
+            cursor.execute( statement)
+            commit = "commit;"
+            cursor.execute(commit)
+            print("done")
         cursor.close()    
     
     def update_song_type(self,tipe,song):
@@ -287,12 +317,13 @@ class song_Add_Update_Delete:
         UPDATE `Music`.album2songs SET type = 'CD' WHERE song = 'Song_Song.mp3';
         '''
         cursor = self.conn.cursor()
-        statement = "UPDATE `Music`.album2songs SET type = '" + tipe + "' WHERE song = '" + song  + "';"
-        print(statement)
-        cursor.execute( statement)
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
+        if self.notTestRun:
+            statement = "UPDATE `Music`.album2songs SET type = '" + tipe + "' WHERE song = '" + song  + "';"
+            print(statement)
+            cursor.execute( statement)
+            commit = "commit;"
+            cursor.execute(commit)
+            print("done")
         cursor.close()    
     
     def update_song_path(self,path,song):
@@ -300,12 +331,13 @@ class song_Add_Update_Delete:
         UPDATE `Music`.album2songs SET path = '/home.music/' WHERE song = 'Song_Song.mp3';
         '''
         cursor = self.conn.cursor()
-        statement = "UPDATE `Music`.album2songs SET path = '" + path + "' WHERE song = '" + song  + "';"
-        print(statement)
-        cursor.execute( statement)
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
+        if self.notTestRun:
+            statement = "UPDATE `Music`.album2songs SET path = '" + path + "' WHERE song = '" + song  + "';"
+            print(statement)
+            cursor.execute( statement)
+            commit = "commit;"
+            cursor.execute(commit)
+            print("done")
         cursor.close()    
 
     def update_song_server(self,server, song):
@@ -313,25 +345,27 @@ class song_Add_Update_Delete:
         UPDATE `Music`.album2songs SET server = 'music_server' WHERE song = 'Song_Song.mp3';
         '''
         cursor = self.conn.cursor()
-        statement = "UPDATE `Music`.album2songs SET server = '" + server + "' WHERE song = '" + song  + "';"
-        print(statement)
-        cursor.execute( statement)
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
+        if self.notTestRun:
+            statement = "UPDATE `Music`.album2songs SET server = '" + server + "' WHERE song = '" + song  + "';"
+            print(statement)
+            cursor.execute( statement)
+            commit = "commit;"
+            cursor.execute(commit)
+            print("done")
         cursor.close()   
   
     def delete_song(self,song):
         '''
         delete  from `Music`.album2songs where song like 'Song_Song';
         '''
-        statement = "delete  from `Music`.album2songs where song like '" + song + "';"
-        print(statement)
-        cursor = self.conn.cursor()
-        cursor.execute( statement)
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
+        if self.notTestRun:
+            statement = "delete  from `Music`.album2songs where song like '" + song + "';"
+            print(statement)
+            cursor = self.conn.cursor()
+            cursor.execute( statement)
+            commit = "commit;"
+            cursor.execute(commit)
+            print("done")
         cursor.close()
     
     def delete_songs(self,artist,albumin='all',songin="all"):
@@ -342,6 +376,7 @@ class song_Add_Update_Delete:
         if albumin == 'all':
             if songin == 'all':   
                 for song in delete_songs:
+                    if self.notTestRun:
                         selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
                         print(selectStatement)
                         cursor.execute(selectStatement)
@@ -354,39 +389,42 @@ class song_Add_Update_Delete:
             else:
                 for song in delete_songs:  
                     if song[0] == 'songin':
-                        selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
-                        print(selectStatement)
-                        cursor.execute(selectStatement)
-                        row = cursor.fetchone()
-                        index = row[0]           
-                        deleteStatement = "Delete from `Music`.album2songs where `Music`.album2songs.index = " + str(index) + ";"  
-                        print(deleteStatement)
-                        cursor.execute(deleteStatement)        
+                        if self.notTestRun:
+                            selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
+                            print(selectStatement)
+                            cursor.execute(selectStatement)
+                            row = cursor.fetchone()
+                            index = row[0]           
+                            deleteStatement = "Delete from `Music`.album2songs where `Music`.album2songs.index = " + str(index) + ";"  
+                            print(deleteStatement)
+                            cursor.execute(deleteStatement)        
         else:
             if albumin != 'all': 
                 if songin == 'all':  
                     for song in delete_songs:
                         if albumin == song[2]: 
-                            selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
-                            print(selectStatement)
-                            cursor.execute(selectStatement)
-                            row = cursor.fetchone()
-                            index = row[0]                      
-                            deleteStatement = "Delete from `Music`.album2songs where `Music`.album2songs.index = " + str(index) + ";"  
-                            print(deleteStatement)
-                            cursor.execute(deleteStatement)
-            elif songin != 'all':
-                    for song in delete_songs:
-                        if albumin == song[2]:                                
-                            if song[0] == 'song': 
+                            if self.notTestRun:
                                 selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
                                 print(selectStatement)
                                 cursor.execute(selectStatement)
                                 row = cursor.fetchone()
-                                index = row[0]           
+                                index = row[0]                      
                                 deleteStatement = "Delete from `Music`.album2songs where `Music`.album2songs.index = " + str(index) + ";"  
                                 print(deleteStatement)
-                                cursor.execute(deleteStatement)        
+                                cursor.execute(deleteStatement)
+            elif songin != 'all':
+                    for song in delete_songs:
+                        if albumin == song[2]:                                
+                            if song[0] == 'song': 
+                                if self.notTestRun:
+                                    selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
+                                    print(selectStatement)
+                                    cursor.execute(selectStatement)
+                                    row = cursor.fetchone()
+                                    index = row[0]           
+                                    deleteStatement = "Delete from `Music`.album2songs where `Music`.album2songs.index = " + str(index) + ";"  
+                                    print(deleteStatement)
+                                    cursor.execute(deleteStatement)        
         commit = "commit;"
         cursor.execute(commit)
         print("done")
@@ -396,14 +434,23 @@ class song_Add_Update_Delete:
         self.conn.close()
 
 class album_Add_Update_Delete:       
-    def __init__(self):
-        if os.uname().nodename == 'C1246895-osx.home':
-            self.conn = mysql.connector.Connect(**login_info_osx)
-        elif  os.uname().nodename == 'OSXAir.home.home':
-            self.conn = mysql.connector.Connect(**login_info_root)
-#        print(self.conn)
+    def __init__(self,test = False):
+        print("*************** Node Name is ",platform.uname().node)
+        if platform.uname().node == 'C1246895-osx.home':
+#            self.conn = connDb.Connect(**login_info_osx)
+            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
+
+        elif platform.uname().node == 'OSXAir.home.home':
+#            self.conn = connDb.Connect(**login_info_default)
+            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+        elif platform.uname().node == 'C1246895-WIN64-Air':
+#            self.conn = connDb.Connect(**login_info_default)
+            self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
+        else:
+            self.conn = connDb.Connect(**login_info_default)
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
-        self.server = 'OSXAir.home'      
+        self.server = 'OSXAir.home' 
+        self.notTestRun = test
 
     def dbConnectionClose(self):
         self.conn.close()
@@ -439,12 +486,13 @@ class album_Add_Update_Delete:
             index = maxIndex[0]
             newIndex = index + 1
 #            print(newIndex)
-            insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.type,artist_albums.genre)  values(" + str(newIndex) + ",\""  + artist + "\",\""  + album + "\",\""  + tipe +  "\",\"" + gen +"\" )"
-            print(insertStatement)
-            cursor.execute(insertStatement)
-            commit = "commit;"
-            cursor.execute(commit)
-            print("done")
+            if self.notTestRun:
+                insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.type,artist_albums.genre)  values(" + str(newIndex) + ",\""  + artist + "\",\""  + album + "\",\""  + tipe +  "\",\"" + gen +"\" )"
+                print(insertStatement)
+                cursor.execute(insertStatement)
+                commit = "commit;"
+                cursor.execute(commit)
+                print("done")
             self.conn.close()
         else:
             print(album, "already exist in table.")
@@ -460,6 +508,7 @@ class album_Add_Update_Delete:
             build addition of attribute changes
             '''          
             if artist != 'no_change':
+                if self.notTestRun:
                     updateStatement = "UPDATE Music.artist_albums set artist = '" + artist + "' where album = '" + album + "';"
                     if genre != 'no_change':
                             updateStatement = "UPDATE Music.artist_albums set artist = '" + artist + "', genre = '" + genre + "' where album = '" + album + "';"
@@ -470,6 +519,7 @@ class album_Add_Update_Delete:
                     commit = "commit;"
                     cursor.execute(commit)
             elif artist == 'no_change' and  genre != 'no_change':
+                if self.notTestRun:
                     if tipe != 'no_change':
                         updateStatement = "UPDATE Music.artist_albums set genre = '" + genre + "', type = '" + tipe + "' where album = '" + album + "';"
                     else:
@@ -479,6 +529,7 @@ class album_Add_Update_Delete:
                     commit = "commit;"
                     cursor.execute(commit)
             elif artist == 'no_change' and genre == 'no_change':
+                if self.notTestRun:
                     if tipe != 'no_change':
                                 updateStatement = "UPDATE Music.artist_albums set type = '" + tipe + "' where album = '" + album + "';"
                                 print(updateStatement)
@@ -497,31 +548,41 @@ class album_Add_Update_Delete:
 
     def delete_album(self,album):
         cursor = self.conn.cursor()
-        selectStatement = "select artist_albums.index from Music.artist_albums where artist_albums.album like " + "'" + album + "';"
-        print(selectStatement)
-        cursor.execute(selectStatement)
-        row = cursor.fetchone()
-        index = row[0]
+        if self.notTestRun:
+            selectStatement = "select artist_albums.index from Music.artist_albums where artist_albums.album like " + "'" + album + "';"
+            print(selectStatement)
+            cursor.execute(selectStatement)
+            row = cursor.fetchone()
+            index = row[0]
 #        print(index)
-        deleteStatement = "Delete from `Music`.artist_albums where `Music`.artist_albums.index = " + str(index) + ";"       
-        print(deleteStatement)
-        cursor.execute(deleteStatement)
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
+            deleteStatement = "Delete from `Music`.artist_albums where `Music`.artist_albums.index = " + str(index) + ";"       
+            print(deleteStatement)
+            cursor.execute(deleteStatement)
+            commit = "commit;"
+            cursor.execute(commit)
+            print("done")
         cursor.close()
 
 
         
 class artist_Add_Update_Delete:       
-    def __init__(self):
-        if os.uname().nodename == 'C1246895-osx.home':
-            self.conn = mysql.connector.Connect(**login_info_osx)
-        elif  os.uname().nodename == 'OSXAir.home.home':
-            self.conn = mysql.connector.Connect(**login_info_root)
-#        print(self.conn)
+    def __init__(self,test = False):
+        print("*************** Node Name is ",platform.uname().node)
+        if platform.uname().node == 'C1246895-osx.home':
+#            self.conn = connDb.Connect(**login_info_osx)
+            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
+
+        elif platform.uname().node == 'OSXAir.home.home':
+#            self.conn = connDb.Connect(**login_info_default)
+            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+        elif platform.uname().node == 'C1246895-WIN64-Air':
+#            self.conn = connDb.Connect(**login_info_default)
+            self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
+        else:
+            self.conn = connDb.Connect(**login_info_default)
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
-        self.server = 'OSXAir.home'     
+        self.server = 'OSXAir.home' 
+        self.notTestRun = test  
 
     def dbConnectionClose(self):
         self.conn.close()
@@ -554,12 +615,13 @@ class artist_Add_Update_Delete:
             index = maxIndex[0]
             newIndex = index + 1
 #            print(newIndex) 
-            insertStatement = "INSERT into Music.artist (artist.index, artist.artist,artist.genre)  values(" + str(newIndex) + ",\""  + artist  + "\",\""  + genre + "\")"
-            print(insertStatement)
-            cursor.execute(insertStatement)
-            commit = "commit;"
-            cursor.execute(commit)
-            print("done")
+            if self.notTestRun:
+                insertStatement = "INSERT into Music.artist (artist.index, artist.artist,artist.genre)  values(" + str(newIndex) + ",\""  + artist  + "\",\""  + genre + "\")"
+                print(insertStatement)
+                cursor.execute(insertStatement)
+                commit = "commit;"
+                cursor.execute(commit)
+                print("done")
             cursor.close()
         else:
             print(artist," already exist in data table Music.artist.")
@@ -570,13 +632,14 @@ class artist_Add_Update_Delete:
         update music.artist set genre = 'Rock' WHERE artist = 'Bill Withers';
         '''
         cursor = self.conn.cursor()
-        if self.doesArtistExist(artist) == 'True':            
-            updateStatement = "UPDATE Music.artist set genre = '" + genre + "' where artist = '" + artist + "';"
-            print(updateStatement)
-            cursor.execute(updateStatement)
-            commit = "commit;"
-            cursor.execute(commit)
-            print("done")            
+        if self.doesArtistExist(artist) == 'True':
+            if self.notTestRun:            
+                updateStatement = "UPDATE Music.artist set genre = '" + genre + "' where artist = '" + artist + "';"
+                print(updateStatement)
+                cursor.execute(updateStatement)
+                commit = "commit;"
+                cursor.execute(commit)
+                print("done")            
         else:
             print(artist," does not exist in data table Music.artist.")
         cursor.close()
@@ -587,88 +650,109 @@ class artist_Add_Update_Delete:
         print(selectStatement)
         cursor.execute(selectStatement)
         row = cursor.fetchone()
-        print(row)
+        print('deleting ',row)
         index = row[0]
 #        print(index)
-        deleteStatement = "Delete from `Music`.artist where `Music`.artist.index = " + str(index) + ";"       
-        print(deleteStatement)
-        cursor.execute(deleteStatement)
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
+        if self.notTestRun:
+            deleteStatement = "Delete from `Music`.artist where `Music`.artist.index = " + str(index) + ";"       
+            print(deleteStatement)
+            cursor.execute(deleteStatement) 
+            commit = "commit;"
+            cursor.execute(commit)
+            print("done")
+        cursor.close()
+
+'''
+Use only select statements
+'''
+
+class verify_data_tables:
+        def __init__(self,test = True):
+            print("*************** Node Name is ",platform.uname().node)
+            if platform.uname().node == 'C1246895-osx.home':
+#            self.conn = connDb.Connect(**login_info_osx)
+                self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
+
+            elif platform.uname().node == 'OSXAir.home.home':
+#            self.conn = connDb.Connect(**login_info_default)
+                self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+            elif platform.uname().node == 'C1246895-WIN64-Air':
+#            self.conn = connDb.Connect(**login_info_default)
+                self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
+            else:
+                self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+            self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
+            self.server = 'OSXAir.home' 
+            self.notTestRun = test  
+        
+        def check_artist_table(self):
+            cursor = self.conn.cursor()
+            selectStatement = "SELECT DISTINCT a.artist,a.genre FROM `Music`.album2songs a WHERE a.artist NOT IN (SELECT b.artist FROM Music.artist b);"
+            print(selectStatement)
+            if self.notTestRun:
+                cursor.execute(selectStatement)
+                rows = cursor.fetchall()
+                for item in rows:
+                    print(item)
+            cursor.close()
+
+        def check_albums_table(self):
+            cursor = self.conn.cursor()
+            selectStatement = "SELECT DISTINCT a.album, a.artist, a.genre, a.type FROM `Music`.album2songs a WHERE a.album NOT IN (SELECT b.album FROM Music.artist_albums b);"
+            print(selectStatement)
+            if self.notTestRun:
+                cursor.execute(selectStatement)
+                rows = cursor.fetchall()
+                for item in rows:
+                    print(item)
+            cursor.close()
             
+        def check_genre_songs2albums(self):
+            result = []
+            cursor = self.conn.cursor()
+            selectStatement = "SELECT DISTINCT a.album as 'album album', a.genre as 'album genre', b.genre as 'song genre' FROM `Music`.album2songs b, Music.artist_albums a WHERE a.album = b.album and a.genre != b.genre;"
+            if self.notTestRun:
+                cursor.execute(selectStatement)
+                rows = cursor.fetchall()
+                for item in rows:
+                    result.append(item)
+#                    print(item)
+            cursor.close()
+            return result
+       
+        def check_Type_songs2albums(self):
+            result = []
+            cursor = self.conn.cursor()
+            selectStatement = "SELECT DISTINCT a.album as 'album album', a.type as 'album type', b.type as 'song type' FROM `Music`.album2songs b, Music.artist_albums a WHERE a.album = b.album and a.type != b.type;"
+            if self.notTestRun:
+                cursor.execute(selectStatement)
+                rows = cursor.fetchall()
+                for item in rows:
+                    result.append(item)
+#                    print(item)
+            cursor.close()
+            return result           
+                
 if __name__  == '__main__':
-    pass
-#    getSongs = musicLoad_Functions()
-#    getSongs.initial_insert_into_album2songs()
-#    getSongs.sync_song_type()
-#    getSongs.sync_song_genre()
     
-
-#    addArtist = artist_Add_Update_Delete()
-    #.initial_insert_into_artist('Sir Douglas Quintet','TexMex')
-#    addArtist.add_artist('Sir Douglas Quintet','TexMex')
+    verifyArtist = verify_data_tables()
+    verifyArtist.check_artist_table()
+    verifyArtist.check_albums_table()
+    outPutG = verifyArtist.check_genre_songs2albums()
+    print('genre outPut is', outPutG)
+    for result in outPutG:
+        print(result)
+        
+    outPutT = verifyArtist.check_Type_songs2albums()
+    print('genre outPut is', outPutT)
+    for result in outPutT:
+        print(result)
     
-#    addAlbum = album_Add_Update_Delete()
-#    addAlbum.add_album("The Yardbirds", 'The Yardbirds', 'download', 'Rock')
+#    trueLoad = musicLoad_Functions(True)
+#    trueLoad.initial_insert_into_album2songs()
+#    allSongs = trueLoad.get_all_songs()
+#    print('num songs is ', len(allSongs))
     
-#    addSong = song_Add_Update_Delete()
-#    songs = ['Over Under Sideways Down','The Nazz Are Blue','Rack My Mind']
+#    trueLoad.sync_song_genre()
+#    trueLoad.sync_song_type()
     
-#    for song in songs:
-#        addSong.add_song("The Yardbirds", "The Yardbirds", "Rock", song, "Downlaod", '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', "OSXAir.home")
-    
-
-#    for song in songs:    
-#            addSong.update_song_type('Download', song)
-
-    
-    '''
-    song = 'Song_Song.mp3'    
- 
-    album = 'Test_SongAlbum'
-    album_up = 'Up_SongAlbum'
-    artist = 'Song_Artist'
-    artist_up = 'Up_Song_Artist'
-    genre = 'Song_genre'
-    genre_up = 'Up_Song_genre'
-    
-    tipe = 'Song_Type'
-    tipe_up = 'Up_Song_Type'
-    server = 'song_server'
-    server_up = 'up_song_server'
-    path = '/Test/Music'
-    path_up = '/Test/Up_Music'
-
-    Song = song_Add_Update_Delete()
-    get = musicGet_Functions()
-    Song.add_song(album,artist,genre,song,tipe,path,server)
-    Song.update_song_album(album_up, song)
-    Song.update_song_artist(artist_up, song)
-    Song.update_song_genre(genre_up, song)
-    Song.update_song_path(path_up, song)
-    Song.update_song_server(server_up, song)
-    Song.update_song_type(tipe_up, song)
-    result_genre_up = get.get_song_by_song(song)
-    print("genre up ", result_genre_up)
-    Song.delete_song(song)
-    
-    update_album = album_Add_Update_Delete()
-    print("update all")
-    update_album.update_album('Test_AlbumA', 'upArtist', 'UpGenre', 'UpType')
-    print("album does not exist")
-    update_album.update_album('no album', 'upArtist', 'UpGenre', 'UpType')
-    print("update artist and genre")
-    update_album.update_album('Test_AlbumA', 'upArtist', 'UpGenre')
-    print("update only artist")
-    update_album.update_album('Test_AlbumA', 'upArtist')
-    print("update no input")
-    update_album.update_album('Test_AlbumA')
-    print("update only genre")
-    update_album.update_album('Test_AlbumA', 'no_change','UpGenre')
-    print("update genre and type")
-    update_album.update_album('Test_AlbumA', 'no_change','UpGenre','UpType')
-    print("update type only")
-    update_album.update_album('Test_AlbumA', 'no_change','no_change','UpType')
-    update_album.Restore_testAlbum()
-    '''

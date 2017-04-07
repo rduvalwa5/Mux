@@ -602,7 +602,7 @@ if __name__  == '__main__':
             mux = musicGet_Functions()
             table = 'Music.artist'
             criteria = ""
-            expected = 541
+            expected = 553
             result = mux.get_count(table, criteria)
             print("get_count artist",result)
             mux.dbConnectionClose()
@@ -613,7 +613,7 @@ if __name__  == '__main__':
             mux = musicGet_Functions()
             table = 'Music.artist_albums'
             criteria = ""
-            expected = 933
+            expected = 953
             result = mux.get_count(table, criteria)
             print("get_count albums",result)
             mux.dbConnectionClose()
@@ -623,14 +623,14 @@ if __name__  == '__main__':
             mux = musicGet_Functions()
             table = 'Music.album2songs'
             criteria = ""
-            expected = 6816
+            expected = 6745
             result = mux.get_count(table, criteria)
             print("get_count songs",result)
             mux.dbConnectionClose()
             self.assertEqual(expected,result)              
                     
         def test_get_all(self):
-            expected = 556
+            expected = 540
             mux = musicGet_Functions()
             result = mux.get_all("`Music`.album2songs.album, `Music`.album2songs.artist", "`Music`.album2songs","where `Music`.album2songs.genre like 'folk'" )
             print(len(result))
@@ -639,7 +639,7 @@ if __name__  == '__main__':
         def testGetMaxArtist(self):
             mux = musicGet_Functions()
             table = 'artist'
-            expected = 541
+            expected = 553
             result = mux.get_max_index(table)
             mux.dbConnectionClose()
             self.assertEqual(expected,result[0])
@@ -647,7 +647,7 @@ if __name__  == '__main__':
         def testGetMaxAlbums(self):
             mux = musicGet_Functions()
             table = 'artist_albums'
-            expected = 936
+            expected = 956
             result = mux.get_max_index(table)
             mux.dbConnectionClose()
             self.assertEqual(expected,result[0])
@@ -655,7 +655,7 @@ if __name__  == '__main__':
         def testGetMaxSongs(self):
             mux = musicGet_Functions()
             table = 'album2songs'
-            expected = 6846
+            expected = 6744
             result = mux.get_max_index(table)
             mux.dbConnectionClose()
             self.assertEqual(expected,result[0])
@@ -686,7 +686,7 @@ if __name__  == '__main__':
         def test_get_Song(self):
             thisSong = 'Johnny B. Goode.mp3'
             mux = musicGet_Functions()
-            expected =  (970, 'OSXAir.home', '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', 'Chuck Berry', 'The Best of Chuck Berry', '08 Johnny B. Goode.mp3', 'Rock', 'Vinyl')
+            expected =  (939, 'OSXAir.home', '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', 'Chuck Berry', 'The Best of Chuck Berry', '08 Johnny B. Goode.mp3', 'Rock', 'Vinyl')
             result = mux.get_song(thisSong)
             print("song result is ",result[0])
             self.assertEqual(expected,result[0])
@@ -704,7 +704,7 @@ if __name__  == '__main__':
         def test_get_Album(self):
             mux = musicGet_Functions()
             album = 'A Space In Time'
-            expected = (664, 'Ten Years After', 'A Space In Time', 'Rock', 'Download')
+            expected = (664, 'Ten Years After', 'A Space In Time', 'Blues', 'Download')
             result = mux.get_album(album)
             self.assertEqual(expected,result[0])
 
@@ -721,7 +721,7 @@ if __name__  == '__main__':
 
         def test_get_artistAlbums_from_Albums(self):
             mux = musicGet_Functions()
-            expected = ((664, 'Ten Years After', 'A Space In Time', 'Rock', 'Download'), (665, 'Ten Years After', 'Recorded Live', 'Rock', 'Download'), (666, 'Ten Years After', 'Undead (Remastered) [Live]', 'Rock', 'Download'))
+            expected =  ((664, 'Ten Years After', 'A Space In Time', 'Blues', 'Download'), (665, 'Ten Years After', 'Recorded Live', 'Blues', 'Download'), (666, 'Ten Years After', 'Undead (Remastered) [Live]', 'Rock', 'Download'))
             result = mux.get_artistAlbums_fromAlbums('Ten Years After')
             print("artistAlbums 726 ", result)
             self.assertEqual(expected, result)
