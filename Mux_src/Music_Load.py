@@ -289,14 +289,32 @@ class song_Add_Update_Delete():
         UPDATE `Music`.album2songs SET artist = 'ZZ_ZTest' WHERE song = 'Song_Song.mp3';
         '''
         cursor = self.conn.cursor()
+        statement = "UPDATE `Music`.album2songs SET artist = '" + artist + "' WHERE song like '" + song  + "';"
+        print(statement)
+
         if self.notTestRun:
-            statement = "UPDATE `Music`.album2songs SET artist = '" + artist + "' WHERE song = '" + song  + "';"
-            print(statement)
             cursor.execute( statement)
             commit = "commit;"
             cursor.execute(commit)
             print("done")
         cursor.close()    
+  
+    def update_songs_artists(self,songs):
+        '''
+        UPDATE `Music`.album2songs SET artist = 'ZZ_ZTest' WHERE song = 'Song_Song.mp3';
+        '''
+        artistSongs = songs  
+        for item in artistSongs:
+            cursor = self.conn.cursor()
+            statement = "UPDATE `Music`.album2songs SET artist = '" + item[1] + "' WHERE song like '" + item[0]  + "';"
+            print(statement)
+            if self.notTestRun:
+                cursor.execute( statement)
+        commit = "commit;"
+        cursor.execute(commit)
+        print("done")
+        cursor.close()      
+    
     
     def update_song_genre(self,genre,song):
         '''
@@ -734,19 +752,19 @@ class verify_data_tables:
             return result           
                 
 if __name__  == '__main__':
-    
-    verifyArtist = verify_data_tables()
-    verifyArtist.check_artist_table()
-    verifyArtist.check_albums_table()
-    outPutG = verifyArtist.check_genre_songs2albums()
-    print('genre outPut is', outPutG)
-    for result in outPutG:
-        print(result)
+    pass
+#    verifyArtist = verify_data_tables()
+#    verifyArtist.check_artist_table()
+#    verifyArtist.check_albums_table()
+#    outPutG = verifyArtist.check_genre_songs2albums()
+#    print('genre outPut is', outPutG)
+#    for result in outPutG:
+#        print(result)
         
-    outPutT = verifyArtist.check_Type_songs2albums()
-    print('genre outPut is', outPutT)
-    for result in outPutT:
-        print(result)
+#    outPutT = verifyArtist.check_Type_songs2albums()
+#    print('genre outPut is', outPutT)
+#    for result in outPutT:
+#        print(result)
     
 #    trueLoad = musicLoad_Functions(True)
 #    trueLoad.initial_insert_into_album2songs()

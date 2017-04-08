@@ -1,0 +1,139 @@
+-- Update Compilation artist
+
+select * from `Music`.album2songs a where a.artist like "Compilations";
+
+update `Music`.album2songs a set a.artist = "Various Artist" where a.album like "Gypsy Soul_ New Flamenco";
+
+
+SELECT *
+  FROM `Music`.artist a;
+
+SELECT a.song, a.artist
+  FROM `Music`.album2songs a
+ WHERE a.album LIKE "20th Century Rocks_ 60's Rock Bands - Wild Thing (Re-Recorded Versions)"
+ order by a.song ASC;
+
+
+SELECT *
+  FROM `Music`.artist a;
+
+SELECT *
+  FROM `Music`.album2songs a
+ WHERE a.song LIKE '10 Non Dirle Che Non E\' Cosi\' (If You See Her, Say Hello).mp3';
+
+UPDATE `Music`.album2songs a
+   SET a.artist = "The Fraternity of Man"
+ WHERE a.song LIKE "%Bogart%";
+
+UPDATE `Music`.album2songs a
+   SET a.artist = "Eric Burdon & The Animals"
+ WHERE a.song LIKE "%San Franciscan Nights%";
+
+UPDATE `Music`.album2songs a
+   SET a.artist = "Thunderclap Newman"
+ WHERE a.song LIKE "%Something In the Air%";
+
+UPDATE `Music`.album2songs a
+   SET a.artist = "Chuck Berry"
+ WHERE a.song LIKE "%You Never Can Tell%";
+
+UPDATE `Music`.album2songs a
+   SET a.artist = "Magokoro Brothers"
+ WHERE a.song LIKE "%01 My Back Pages.mp3%";
+
+UPDATE `Music`.album2songs a
+   SET a.artist = "Shirley Caesar"
+ WHERE a.song LIKE "%02 Gotta Serve Somebody.mp3%";
+ 
+ 
+ /*
+     song_artist = [("01 My Back Pages.mp3","Magokoro Brothers"),\
+                   ("02 Gotta Serve Somebody.mp3","Shirley Caesar"),\
+                   ("03 Down In The Flood (New Version).mp3","Bob Dylan"),\
+                   ("04 It\\'s All Over Now, Baby Blue.mp3","Grateful Dead"),\
+                   ("05 Most Of The Time.mp3","Sophie Zelmani"), \
+                   ("06 On A Night Like This.mp3","Los Lobos"), \
+                   ("07 Diamond Joe.mp3","Bob Dylan"), \
+                   ("08 Come Una Pietra Scalciata (Like A Rolling Stone).mp3","Articolo"), \
+                   ("09 One More Cup Of Coffee.mp3","Sertab"), \
+                   ("10 Non Dirle Che Non E\\' Cosi\\' (If You See Her, Say Hello).mp3","Francesco De Gregori"), \
+                   ("11 Dixie.mp3","Bob Dylan"), \
+                   ("12 Senor (Tales Of Yankee Power).mp3","Jerry Garcia"), \
+                   ("13 Cold Irons Bound (New Version).mp3","Bob Dylan"), \
+                   ("14 City Of Gold.mp3","The Dixie Hummingbirds")]    
+          
+    song_artist = [("1-01 All Along The Watchtower.mp3","Eddie Vedder & The Million Dollar Bashers"), \
+                   ("1-02 I\\'m Not There.mp3","Sonic Youth"), \
+                   ("1-03 Goin\\' To Acapulco.mp3","Jim James & Calexico"), \
+                   ("1-04 Tombstone Blues.mp3","Richie Havens"), \
+                   ("1-05 Ballad Of A Thin Man.mp3","Stephen Malkmus & The Million Dollar Bashers"), \
+                   ("1-06 Stuck Inside Of Mobile With The Memphis Blues Again.mp3","Cat Power"), \
+                   ("1-07 Pressing On.mp3","John Doe"), \
+                   ("1-08 Fourth Time Around.mp3","Yo La Tengo"), \
+                   ("1-09 Dark Eyes.mp3","Iron & Wine With Calexico"), \
+                   ("1-10 Highway 61 Revisited.mp3","Karen O & The Million Dollar Bashers"), \
+                   ("1-11 One More Cup Of Coffee.mp3","Roger McGuinn & Calexico"), \
+                   ("1-12 The Lonesome Death Of Hattie Carroll.mp3","Mason Jennings"), \
+                   ("1-13 Billy.mp3","Los Lobos"), \
+                   ("1-14 Simple Twist Of Fate.mp3","Jeff Tweedy"), \
+                   ("1-15 The Man In The Long Black Coat.mp3","Mark Lanegan"), \
+                   ("1-16 Senor (Tales Of Yankee Power).mp3","Willie Nelson & Calexico")]       
+                   
+
+    song_artist = [("2-01 As I Went Out One Morning.mp3","Mira Billotte"), \
+				("2-02 Can\\'t Leave Her Behind.mp3","Stephen Malkmus & Lee Ranaldo"), \
+				("2-03 Ring Them Bells.mp3","Sufjan Stevens"), \
+				("2-04 Just Like A Woman.mp3","Calexico & Charlotte Gainsbourg"),
+				("2-05 Mama You\\'ve Been On My Mind A Fraction Of Last Thoughts On Woody Guthrie.mp3","Jack Johnson"), \
+				("2-06 I Wanna Be Your Lover.mp3","Yo La Tengo"), \
+				("2-07 You Ain\\'t Goin\\' Nowhere.mp3","Glen Hansard & Marketa Irglova"), \
+				("2-08 Can You Please Crawl Out Your Window_.mp3","The Hold Steady"), \
+				("2-09 Just Like Tom Thumb\\'s Blues.mp3","Ramblin\\' Jack Elliott"), \
+				("2-10 Wicked Messenger.mp3","The Black Keys"), \
+				("2-11 Cold Irons Bound.mp3","Tom Verlaine & The Million Dollar Bashers"), \
+				("2-12 The Times They Are A-Changin\\'.mp3","Mason Jennings"), \
+				("2-13 Maggie\\'s Farm.mp3","Stephen Malkmus & The Million Dollar Bashers"), \
+				("2-14 When The Ship Comes In.mp3","Marcus Carl Franklin"), \
+				("2-15 Moonshiner.mp3","Bob Forrest"), \
+				("2-16 I Dreamed I Saw St. Augustine.mp3","John Doe"), \
+				("2-17 Knockin\\' On Heaven\\'s Door.mp3","Antony & The Johnsons"), \
+				("2-18 I\\'m Not There.mp3","Bob Dylan & The Band")]  
+
+    song_artist = [("01 Comfortably Numb.mp3","Roger Waters Feat Van Morrison & The Band"), \
+                   ("02 Sail On, Sailor.mp3","The Beach Boys"), \
+                   ("03 Let It Loose.mp3","The Rolling Stones"), \
+                   ("04 Sweet Dreams.mp3","Roy Buchanan"), \
+                   ("05 One Way Out.mp3","The Allman Brothers Band"), \
+                   ("06 Baby Blue.mp3","Badfinger"), \
+                   ("07 I\\'m Shipping Up To Boston.mp3","Dropkick Murphys"), \
+                   ("08 Nobody But Me.mp3","The Human Beinz"), \
+                   ("09 Tweedlee Dee.mp3","LaVern Baker"), \
+                   ("10 Sweet Dreams (Of You).mp3","Patsy Cline"), \
+                   ("11 The Departed Tango.mp3","Howard Shore"), \
+                   ("12 Beacon Hill.mp3","Howard Shore")]  
+                   
+ 
+     song_artist = [("01 Wild Thing (Re-Recorded).m4a","The Troggs"), \
+                   ("02 Kicks (Re-Recorded).m4a","Paul Revere & The Raiders"), \
+ 	               ("03 Shakin' All Over (feat. Chad Allan) [Re-Recorded].m4a","The Guess Who"), \
+ 	               ("04 Time Won't Let Me (Re-Recorded).m4a","The Outsiders"), \
+ 	               ("05 Liar, Liar.m4a","The Castaways"), \
+ 	               ("06 Bend Me, Shape Me (Re-Recorded).m4a","The American Breed"), \
+ 	               ("07 Lady Willpower (Re-Recorded).m4a","Gary Puckett & The Union Gap"), \
+ 	               ("08 Wooly Bully (Re-Recorded).m4a","Sam the Sham & The Pharaohs"), \
+ 	               ("09 Western Union (Re-Recorded).m4a","The Five Americans"), \
+ 	               ("10 Laugh, Laugh (Re-Recorded).m4a","The Beau Brummels"), \
+ 	               ("11 Keep On Dancing (Re-Recorded).m4a","The Gentrys"), \
+ 	               ("12 The Letter (Re-Recorded).m4a","The Box Tops"), \
+ 	               ("13 Midnight Confessions (Re-Recorded).m4a","The Grass Roots"), \
+ 	               ("14 Spooky (feat. Dennis Yost) [Re-Recorded].m4a","Classics IV"), \
+ 	               ("15 Windy (Re-Recorded).m4a","The Association"), \
+ 	               ("16 This Diamond Ring (Re-Recorded).m4a","Gary Lewis & The Playboys"), \
+ 	               ("17 Tobacco Road (Re-Recorded).m4a","Nashville Teens"), \
+ 	               ("18 Silence Is Golden (Re-Recorded).m4a","The Tremeloes"), \
+ 	               ("19 Out of Limits (Re-Recorded).m4a","The Marketts"), \
+ 	               ("20 Kind of a Drag (Re-Recorded).m4a","The Buckinghams")]
+  
+
+                   
+ */  
