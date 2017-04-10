@@ -1,9 +1,14 @@
 '''
 '''
 import unittest 
-from Musicdb_info import login_info_root
-from Musicdb_info import login_info_osx 
-import mysql.connector
+
+#import os, platform
+#import self.conn.Error
+#import MySQLdb   as connDb
+
+#from Musicdb_info import login_info_root
+#from Musicdb_info import login_info_osx 
+#import mysql.connector
 import os
 import Music_Get_Functions
 from  Music_Load import musicLoad_Functions, song_Add_Update_Delete, album_Add_Update_Delete, artist_Add_Update_Delete
