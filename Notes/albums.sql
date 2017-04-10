@@ -8631,4 +8631,6 @@ INSERT INTO artist_albums(`index`,
              'Test',
              'Test_Album2',
              'TestGenre',
-             'TestType');COMMIT;
+             'TestType');
+             
+    COMMIT;
