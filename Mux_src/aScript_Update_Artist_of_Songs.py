@@ -25,27 +25,9 @@ from Music_Load import song_Add_Update_Delete
         
 if __name__ == "__main__" :
     
-    song_artist = [("01 Wild Thing (Re-Recorded).m4a","The Troggs"), \
+    song_artist =    [("Song","The Troggs"), \
                    ("02 Kicks (Re-Recorded).m4a","Paul Revere & The Raiders"), \
-                    ("03 Shakin\\' All Over (feat. Chad Allan) [Re-Recorded].m4a","The Guess Who"), \
-                    ("04 Time Won\\'t Let Me (Re-Recorded).m4a","The Outsiders"), \
-                    ("05 Liar, Liar.m4a","The Castaways"), \
-                    ("06 Bend Me, Shape Me (Re-Recorded).m4a","The American Breed"), \
-                    ("07 Lady Willpower (Re-Recorded).m4a","Gary Puckett & The Union Gap"), \
-                    ("08 Wooly Bully (Re-Recorded).m4a","Sam the Sham & The Pharaohs"), \
-                    ("09 Western Union (Re-Recorded).m4a","The Five Americans"), \
-                    ("10 Laugh, Laugh (Re-Recorded).m4a","The Beau Brummels"), \
-                    ("11 Keep On Dancing (Re-Recorded).m4a","The Gentrys"), \
-                    ("12 The Letter (Re-Recorded).m4a","The Box Tops"), \
-                    ("13 Midnight Confessions (Re-Recorded).m4a","The Grass Roots"), \
-                    ("14 Spooky (feat. Dennis Yost) [Re-Recorded].m4a","Classics IV"), \
-                    ("15 Windy (Re-Recorded).m4a","The Association"), \
-                    ("16 This Diamond Ring (Re-Recorded).m4a","Gary Lewis & The Playboys"), \
-                    ("17 Tobacco Road (Re-Recorded).m4a","Nashville Teens"), \
-                    ("18 Silence Is Golden (Re-Recorded).m4a","The Tremeloes"), \
-                    ("19 Out of Limits (Re-Recorded).m4a","The Marketts"), \
-                    ("20 Kind of a Drag (Re-Recorded).m4a","The Buckinghams")]
-     
+                    ("03 Shakin\\' All Over (feat. Chad Allan) [Re-Recorded].m4a","The Guess Who")]
     
     mux = song_Add_Update_Delete(True)
     print(song_artist )
