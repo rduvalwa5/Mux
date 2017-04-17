@@ -752,19 +752,23 @@ class verify_data_tables:
             return result           
                 
 if __name__  == '__main__':
-#    pass
-    verify = verify_data_tables()
-    verify.check_artist_table()
-    verify.check_albums_table()
-    outPutG = verify.check_genre_songs2albums()
-    print('genre outPut is', outPutG)
-    for result in outPutG:
-        print(result)
+    pass
+#    verify = verify_data_tables()
+#    verify.check_artist_table()
+#    verify.check_albums_table()
+#    outPutG = verify.check_genre_songs2albums()
+#    print('genre outPut is', outPutG)
+#    for result in outPutG:
+#        print(result)
         
-    outPutT = verify.check_Type_songs2albums()
-    print('genre outPut is', outPutT)
-    for result in outPutT:
-        print(result)
+#    outPutT = verify.check_Type_songs2albums()
+#   print('genre outPut is', outPutT)
+#    for result in outPutT:
+#        print(result)
+
+
+#    addArtist = artist_Add_Update_Delete(True)
+#    addArtist.add_artist("AA_Artist", "AA_Genre")
     
 #    trueLoad = musicLoad_Functions(True)
 #    trueLoad.initial_insert_into_album2songs()
@@ -773,4 +777,3 @@ if __name__  == '__main__':
     
 #    trueLoad.sync_song_genre()
 #    trueLoad.sync_song_type()
-    
