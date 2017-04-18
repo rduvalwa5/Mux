@@ -237,10 +237,12 @@ class song_Add_Update_Delete():
 #        print(songs)
         if self.notTestRun:
             for song in songs:
-                insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(newIndex) + ",\"" + self.server + "\",\"" + self.base + "\",\""  + song[1] + "\",\""  + song[2] + "\",\""  + song[3] + "\",\""  + "rock" + "\",\""  + "download" + "\")"
-                print(insertStatement)
-                cursor.execute( insertStatement)
-                newIndex = newIndex + 1
+                print(song[3])
+                if song[3] != ".DS_Store":
+                    insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(newIndex) + ",\"" + self.server + "\",\"" + self.base + "\",\""  + song[1] + "\",\""  + song[2] + "\",\""  + song[3] + "\",\""  + "rock" + "\",\""  + "download" + "\")"
+#                    print(insertStatement)
+                    cursor.execute( insertStatement)
+                    newIndex = newIndex + 1
             countStatement = "SELECT count(*) FROM music.album2songs;"        
             cursor.execute(countStatement)
 #            count = cursor.fetchone()
@@ -475,14 +477,15 @@ class album_Add_Update_Delete:
 
     def doesAlbumExist(self,album):
         cursor = self.conn.cursor()
-        selectStatement = "Select  Music.artist_albums.index from Music.artist_albums where  Music.artist_albums.album = '" + album + "';"
+        selectStatement = "Select Music.artist_albums.index from Music.artist_albums where Music.artist_albums.album like '" + album + "';"
         print(selectStatement)
         cursor.execute(selectStatement)
         aritstIndex = cursor.fetchone()
-        if aritstIndex != None:
-            returnCode = 'True'
-        else:
+        print("aritstIndex issss ",aritstIndex )
+        if aritstIndex == None:
             returnCode = 'False'
+        else:
+            returnCode = 'True'
         return returnCode
 
     def get_max_index(self, table):
@@ -498,7 +501,7 @@ class album_Add_Update_Delete:
         '''
         This code recurses thru the "base" path and captures the artist, album and song
         '''
-        if self.doesAlbumExist(artist) == 'False':
+        if self.doesAlbumExist(album) == 'False':
             cursor = self.conn.cursor()
             maxIndex =  self.get_max_index("artist_albums")
             index = maxIndex[0]
@@ -512,8 +515,10 @@ class album_Add_Update_Delete:
                 cursor.execute(commit)
                 print("done")
             self.conn.close()
+            return "Success " + album
         else:
-            print(album, "already exist in table.")
+            print(album, "Already exist in table.")
+            return "Already exist in table."
 
     def update_album(self,album, artist = 'no_change', genre = 'no_change', tipe = 'no_change'):
         '''
@@ -641,9 +646,10 @@ class artist_Add_Update_Delete:
                 cursor.execute(commit)
                 print("done")
             cursor.close()
+            return "Success " + artist
         else:
             print(artist," already exist in data table Music.artist.")
-
+            return "artist already exist in table"
     def update_artist(self,artist, genre):
         '''
         genre is the only attribute that can change
