@@ -575,16 +575,20 @@ class album_Add_Update_Delete:
             selectStatement = "select artist_albums.index from Music.artist_albums where artist_albums.album like " + "'" + album + "';"
             print(selectStatement)
             cursor.execute(selectStatement)
-            row = cursor.fetchone()
-            index = row[0]
-#        print(index)
-            deleteStatement = "Delete from `Music`.artist_albums where `Music`.artist_albums.index = " + str(index) + ";"       
-            print(deleteStatement)
-            cursor.execute(deleteStatement)
-            commit = "commit;"
-            cursor.execute(commit)
-            print("done")
-        cursor.close()
+            try:
+                row = cursor.fetchone()
+                index = row[0]
+                deleteStatement = "Delete from `Music`.artist_albums where `Music`.artist_albums.index = " + str(index) + ";"       
+                print(deleteStatement)
+                cursor.execute(deleteStatement)
+                commit = "commit;"
+                cursor.execute(commit)
+                print("done")
+                cursor.close()
+                return "Success"
+            except TypeError:
+                print("Album not found")
+                return "Album not found"
 
 
         

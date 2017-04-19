@@ -18,7 +18,7 @@ class Application(Frame):
     def createAlbumWidgets(self):
         """Add all the widgets to the main frame."""
         top_frame = Frame(self)
-        self.labelInput = Label(top_frame, text="Album Name")
+        self.labelInput = Label(top_frame, text="Get Album Name")
         self.text_in = Entry(top_frame)
         self.labelResult = Label(top_frame, text="Result")
         self.labelInput.pack()
@@ -29,7 +29,7 @@ class Application(Frame):
         bottom_frame = Frame(self)
         bottom_frame.pack(side=TOP)
 #how to disable a button
-        self.QUIT = Button(bottom_frame, text="Quit", command=self.quit, state='disabled')
+        self.QUIT = Button(bottom_frame, text="Quit", command=self.quit, state='active')
         self.QUIT.pack(side=LEFT)
         self.handleb = Button(bottom_frame, text="Submit", command=self.handle)
         self.handleb.pack(side=LEFT)
@@ -41,17 +41,19 @@ class Application(Frame):
         album = self.text_in.get()
         muxGet = musicGet_Functions()
         result = muxGet.get_album(album)
-        if result != []:
+        print("result is ",result)
+        if result != ():
             albums = []
             idx = 0
             for i in result:
                 print(i)
                 albums.append((result[idx][0],result[idx][2]))
                 idx = idx + 1
-            print(albums)            
+            print("albums are ", albums)            
             output = albums
         else:
             output = album + " not found"
+            print(output)
             
  # use .config to change the state of the button           
         self.labelResult.config(text=output)

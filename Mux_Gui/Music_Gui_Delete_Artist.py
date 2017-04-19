@@ -32,7 +32,7 @@ class Application(Frame):
         bottom_frame = Frame(self)
         bottom_frame.pack(side=TOP)
 #how to disable a button
-        self.QUIT = Button(bottom_frame, text="Quit", command=self.quit, state='disabled')
+        self.QUIT = Button(bottom_frame, text="Quit", command=self.quit, state='active')
         self.QUIT.pack(side=LEFT)
         self.handleb = Button(bottom_frame, text="Submit", command=self.handle)
         self.handleb.pack(side=LEFT)
