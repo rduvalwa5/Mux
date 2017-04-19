@@ -12,21 +12,13 @@ Installing collected packages: mysqlclient
 Successfully installed mysqlclient-1.3.10
 OSXAir:bin rduvalwa2$ 
 
-'''
-from platform import platform
-
-'''
 import MySQLdb as connDb 
 new process see the WindowsMusicFile.py
 ''' 
-import os, platform
-#import self.conn.Error
+import os
+import platform
 import MySQLdb   as connDb
-#import login_info_default from Musicdb_info
 from    Musicdb_info    import login_info_default
-from    Musicdb_info    import login_info_rduval    
-from    Musicdb_info    import login_info_osx 
-
 
 class musicGet_Functions:   
     def __init__(self):
@@ -115,7 +107,6 @@ class musicGet_Functions:
             return str(err)
 
     def get_AllSongs(self):
-        fields = '*'
         statement = "select a.`index`, a.artist, a.album, a.song from `Music`.album2songs a;"
         print(statement)
         cursor = self.conn.cursor()
@@ -442,7 +433,6 @@ class musicGet_Functions:
 #       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
         fields = "music.album2songs.song, music.album2songs.album"
         statement = "select " + fields + " from music.album2songs where artist like '" + artist + "';"
-        artistSongs = []
         print(statement)
         cursor = self.conn.cursor()
         try:
@@ -585,7 +575,7 @@ class musicGet_Functions:
             get from table by id  **********************
         ''' 
  
-    def get_by_id(self,id,itemType):
+    def get_by_id(self,objId,itemType):
         
         if itemType == 'artist':
             table = 'Music.artist'
@@ -596,7 +586,7 @@ class musicGet_Functions:
         else:
             table = 'Music.album2songs'
             
-        statement = "select * from " + table + " where " + table + ".index  = "  + str(id) + ";"
+        statement = "select * from " + table + " where " + table + ".index  = "  + str(objId) + ";"
         print(statement)
         cursor = self.conn.cursor()
         try:
