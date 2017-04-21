@@ -606,7 +606,7 @@ if __name__  == '__main__':
         
         def test_get_all_songs(self):
             mux = musicGet_Functions()
-            expected = 6846
+            expected = 6750
             result = mux.get_AllSongs()
             print("All songs count is ", len(result))
             print(result[0])
@@ -637,14 +637,14 @@ if __name__  == '__main__':
             mux = musicGet_Functions()
             table = 'Music.album2songs'
             criteria = ""
-            expected = 6846
+            expected = 6750
             result = mux.get_count(table, criteria)
             print("get_count songs",result)
             mux.dbConnectionClose()
             self.assertEqual(expected,result)              
                     
         def test_get_all(self):
-            expected = 574
+            expected = 576
             mux = musicGet_Functions()
             result = mux.get_all("`Music`.album2songs.album, `Music`.album2songs.artist", "`Music`.album2songs","where `Music`.album2songs.genre like 'folk'" )
             print(len(result))
@@ -669,7 +669,7 @@ if __name__  == '__main__':
         def testGetMaxSongs(self):
             mux = musicGet_Functions()
             table = 'album2songs'
-            expected = 6846
+            expected = 6749
             result = mux.get_max_index(table)
             mux.dbConnectionClose()
             self.assertEqual(expected,result[0])
@@ -700,7 +700,7 @@ if __name__  == '__main__':
         def test_get_Song(self):
             thisSong = 'Johnny B. Goode.mp3'
             mux = musicGet_Functions()
-            expected =  (939, 'OSXAir.home', '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', 'Chuck Berry', 'The Best of Chuck Berry', '08 Johnny B. Goode.mp3', 'Rock', 'Vinyl')
+            expected =  (960, 'OSXAir.home', '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', 'Chuck Berry', 'The Best of Chuck Berry', '08 Johnny B. Goode.mp3', 'Rock', 'Vinyl')
             result = mux.get_song(thisSong)
             print("song result is ",result[0])
             self.assertEqual(expected,result[0])

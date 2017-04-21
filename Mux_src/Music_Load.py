@@ -66,6 +66,7 @@ class musicLoad_Functions:
                         albums.append((a,album))
                         album_songs = os.listdir(self.base + "/" + a[1] + "/" + album)
                         for song in album_songs:
+                            if song != '.DS_Store' and song != 'side1.mp3' and song != 'side2.mp3' and song != 'side3.mp3' and song != 'side4.mp3':
                                 songs.append((index,a[1],album,song))
                                 index = index + 1
         return songs
@@ -762,7 +763,19 @@ class verify_data_tables:
             return result           
                 
 if __name__  == '__main__':
-    pass
+    runMode = "Run" # NoRun  # Test
+    if runMode == "NoRun":
+            pass
+    if runMode == "Run":
+        trueLoad = musicLoad_Functions(True)
+        trueLoad.initial_insert_into_album2songs()
+        allSongs = trueLoad.get_all_songs()
+        print('num songs is ', len(allSongs))
+    
+        trueLoad.sync_song_genre()
+        trueLoad.sync_song_type()
+
+
 #    verify = verify_data_tables()
 #    verify.check_artist_table()
 #    verify.check_albums_table()
@@ -780,10 +793,3 @@ if __name__  == '__main__':
 #    addArtist = artist_Add_Update_Delete(True)
 #    addArtist.add_artist("AA_Artist", "AA_Genre")
     
-#    trueLoad = musicLoad_Functions(True)
-#    trueLoad.initial_insert_into_album2songs()
-#    allSongs = trueLoad.get_all_songs()
-#    print('num songs is ', len(allSongs))
-    
-#    trueLoad.sync_song_genre()
-#    trueLoad.sync_song_type()
