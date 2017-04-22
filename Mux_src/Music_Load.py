@@ -1,11 +1,6 @@
 import os, platform
-#import self.conn.Error
 import MySQLdb   as connDb
-#import login_info_default from Musicdb_info
 from    Musicdb_info    import login_info_default
-from    Musicdb_info    import login_info_rduval    
-from    Musicdb_info    import login_info_osx 
-
 
 class musicLoad_Functions:
     def __init__(self,test = False):
@@ -21,10 +16,56 @@ class musicLoad_Functions:
 #            self.conn = connDb.Connect(**login_info_default)
             self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
         else:
-            self.conn = connDb.Connect(**login_info_default)
+            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+            
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home' 
         self.notTestRun = test
+        self.genreList = ['Alternative','BlueGrass','Blues','Classic','Country','Folk','Holiday',\
+                            'Jazz','Latino','Pop','Regae','Rock','RockaBilly','Soul','Talk', \
+                            'TestGenre','TexMex','Traditional','World']
+    
+    def get_genre_album2songs(self):
+        pass
+        
+    def get_genre_genre(self):
+        pass
+    
+    def set_genre_genre(self,genre):
+        print("Start set_genre")
+        print(genre)
+        cursor = self.conn.cursor()
+        for gen in genre:
+            statement = "insert into `Music`.genre set genre = '" + gen + "';"
+            print(self.does_genre_exist(gen))
+            if self.does_genre_exist(gen):
+                print(gen , " already exist!")
+            else:
+                try:
+                    print(statement)
+                    cursor.execute(statement)
+                    print("Success " + gen)
+                    cursor.execute("commit;")
+                except self.conn.Error.Error as err:
+                    print("Exception is ", err)
+
+        cursor.close()
+        print("done")
+
+    def does_genre_exist(self,genre):
+        cursor = self.conn.cursor()
+        statement = "select g.g_idx from `Music`.genre g where genre like '" + genre + "';"
+        cursor.execute(statement)
+        result = cursor.fetchone()
+        if result != None:
+            print(result)
+            return True
+        else:
+            return False
+            
+        cursor.close()
+        
+        
     
     
     def get_albums(self):
@@ -763,18 +804,33 @@ class verify_data_tables:
             return result           
                 
 if __name__  == '__main__':
-    runMode = "Run" # NoRun  # Test
-    if runMode == "NoRun":
-            pass
-    if runMode == "Run":
-        trueLoad = musicLoad_Functions(True)
-        trueLoad.initial_insert_into_album2songs()
-        allSongs = trueLoad.get_all_songs()
-        print('num songs is ', len(allSongs))
     
-        trueLoad.sync_song_genre()
-        trueLoad.sync_song_type()
+    runMode = "NoRun" # NoRun  # Test
+    trueLoad = musicLoad_Functions(True)
+#    testGen = 'Rocky'
+#    output = trueLoad.does_genre_exist(testGen)
+#    print(output)
+#    testGen = 'Rock'
+#    output = trueLoad.does_genre_exist(testGen)
+#    print(output)
+    genreList = ['Alternative','BlueGrass','Blues','Classic','Country','Folk','Holiday',\
+                            'Jazz','Latino','Pop','Regae','Rock','RockaBilly','Soul','Talk', \
+                            'TestGenre','TexMex','Traditional','World']
+    trueLoad.set_genre_genre(genreList)
+    
+    
+#    if runMode == "NoRun":
+#            pass
+#    if runMode == "Run":
+#        trueLoad = musicLoad_Functions(True)
+#        trueLoad.initial_insert_into_album2songs()
+#        allSongs = trueLoad.get_all_songs()
+#        print('num songs is ', len(allSongs))
+    
+#        trueLoad.sync_song_genre()
+#        trueLoad.sync_song_type()
 
+ 
 
 #    verify = verify_data_tables()
 #    verify.check_artist_table()
