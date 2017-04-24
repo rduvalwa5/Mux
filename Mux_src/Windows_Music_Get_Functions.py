@@ -585,7 +585,7 @@ if __name__  == '__main__':
             mux = musicGet_Functions()
             table = 'Music.artist_albums'
             criteria = ""
-            expected = 962
+            expected = 927
             result = mux.get_count(table, criteria)
             print("get_count albums",result)
             self.assertEqual(expected,result)
@@ -594,13 +594,13 @@ if __name__  == '__main__':
             mux = musicGet_Functions()
             table = 'Music.album2songs'
             criteria = ""
-            expected = 6846
+            expected = 6744
             result = mux.get_count(table, criteria)
             print("get_count songs",result)
             self.assertEqual(expected,result)              
                     
         def test_get_all(self):
-            expected = 574
+            expected = 576
             mux = musicGet_Functions()
             result = mux.get_all("`Music`.album2songs.album, `Music`.album2songs.artist", "`Music`.album2songs","where `Music`.album2songs.genre like 'folk'" )
             print(len(result))
@@ -609,21 +609,21 @@ if __name__  == '__main__':
         def testGetMaxArtist(self):
             mux = musicGet_Functions()
             table = 'artist'
-            expected = 557
+            expected = 558
             result = mux.get_max_index(table)
             self.assertEqual(expected,result[0])
             
         def testGetMaxAlbums(self):
             mux = musicGet_Functions()
             table = 'artist_albums'
-            expected = 966
+            expected = 973
             result = mux.get_max_index(table)
             self.assertEqual(expected,result[0])
 
         def testGetMaxSongs(self):
             mux = musicGet_Functions()
             table = 'album2songs'
-            expected = 6846
+            expected = 6743
             result = mux.get_max_index(table)
             self.assertEqual(expected,result[0])
         
@@ -653,7 +653,7 @@ if __name__  == '__main__':
         def test_get_Song(self):
             thisSong = 'Johnny B. Goode.mp3'
             mux = musicGet_Functions()
-            expected =  (939, 'OSXAir.home', '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', 'Chuck Berry', 'The Best of Chuck Berry', '08 Johnny B. Goode.mp3', 'Rock', 'Vinyl')
+            expected =  (946, 'OSXAir.home', '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', 'Chuck Berry', 'The Best of Chuck Berry', '08 Johnny B. Goode.mp3', 'Rock', 'Vinyl', 1)
             result = mux.get_song(thisSong)
             print("song result is ",result[0])
             self.assertEqual(expected,result[0])
@@ -703,8 +703,9 @@ if __name__  == '__main__':
 
         def test_get_artist_songs(self):
             mux = musicGet_Functions()
-            expected = ['01 One of These Days.m4p', '02 Here They Come.m4p', "03 I'd Love to Change the World.m4p", '04 Over the Hill.m4p', "05 Baby Won't You Let Me Rock 'N' Roll You.m4p", '06 Once There Was a Time.m4p', '07 Let the Sky Fall.m4p', '08 Hard Monkeys.m4p', "09 I've Been There Too.m4p", '10 Uncle Jam.m4p', '01 One of These Days.m4p', '02 You Give Me Loving.m4p', '03 Good Morning Little Schoolgirl.m4p', '04 Help Me.m4p', '05 Classical Thing.m4p', '06 Scat Thing.m4p', "07 I Can't Keep from Cryin' Sometimes.m4p", "09 I Can't Keep from Cryin' (Cont'd).m4p", '10 Silly Thing.m4p', "11 Slow Blues In 'C'.m4p", "12 I'm Going Home.m4p", '13 Choo Choo Mama.m4p', '01 Rock You Mama (Live).m4a', '02 Spoonful (Live).m4a', "03 I May Be Wrong, But I Won't Be Wrong Always (Live).m4a", '04 Summertime _ Shantung Cabbage (Live).m4a', '05 Spider In My Web (Live).m4a', "06 (At the) Woodchopper's Ball [Live].m4a", '07 Standing At the Crossroads (Live).m4a', "08 I Can't Keep from Crying Sometimes _ Extension On One Chord (Live).m4a", "09 I'm Going Home (Live).m4a"]
+            expected = ['01 One of These Days.m4p', '02 Here They Come.m4p', "03 I'd Love to Change the World.m4p", '04 Over the Hill.m4p', "05 Baby Won't You Let Me Rock 'N' Roll You.m4p", '06 Once There Was a Time.m4p', '07 Let the Sky Fall.m4p', '08 Hard Monkeys.m4p', "09 I've Been There Too.m4p", '10 Uncle Jam.m4p', '01 One of These Days Live.m4p', '02 You Give Me Loving.m4p', '03 Good Morning Little Schoolgirl.m4p', '04 Help Me.m4p', '05 Classical Thing.m4p', '06 Scat Thing.m4p', "07 I Can't Keep from Cryin' Sometimes.m4p", "09 I Can't Keep from Cryin' (Cont'd).m4p", '10 Silly Thing.m4p', "11 Slow Blues In 'C'.m4p", "12 I'm Going Home.m4p", '13 Choo Choo Mama.m4p', '01 Rock You Mama (Live).m4a', '02 Spoonful (Live).m4a', "03 I May Be Wrong, But I Won't Be Wrong Always (Live).m4a", '04 Summertime _ Shantung Cabbage (Live).m4a', '05 Spider In My Web (Live).m4a', "06 (At the) Woodchopper's Ball [Live].m4a", '07 Standing At the Crossroads (Live).m4a', "08 I Can't Keep from Crying Sometimes _ Extension On One Chord (Live).m4a", "09 I'm Going Home (Live).m4a"]
             result = mux.get_artistSongs_fromSongs('Ten Years After')
+
             print("artist songs", result)
             self.assertEqual(expected, result, "song list for Ten Years After wrong" )
 
