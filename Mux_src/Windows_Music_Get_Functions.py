@@ -37,6 +37,10 @@ class musicGet_Functions:
             self.conn  = connDb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
         elif platform.uname().node == 'C1246895-WIN64-Air':
             self.conn  = connDb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
+        else:
+            self.conn  = connDb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
+            
+
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home'  
     '''
@@ -300,7 +304,7 @@ class musicGet_Functions:
             cursor.close()
             self.dbConnectionClose()
             return result  
-        except mysql.connector.Error as err:
+        except self.conn.Error as err:
             print("Exception is ", err)
             return str(err)               
 
