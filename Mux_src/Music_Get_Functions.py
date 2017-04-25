@@ -34,7 +34,7 @@ class musicGet_Functions:
 #            self.conn = connDb.Connect(**login_info_default)
             self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
         else:
-            self.conn = connDb.Connect(**login_info_default)
+            self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home'  
     '''
