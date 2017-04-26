@@ -801,7 +801,10 @@ class verify_data_tables:
                     result.append(item)
 #                    print(item)
             cursor.close()
-            return result           
+            return result    
+        
+
+              
                 
 if __name__  == '__main__':
     
@@ -815,7 +818,7 @@ if __name__  == '__main__':
 #    print(output)
     genreList = ['Alternative','BlueGrass','Blues','Classic','Country','Folk','Holiday',\
                             'Jazz','Latino','Pop','Regae','Rock','RockaBilly','Soul','Talk', \
-                            'TestGenre','TexMex','Traditional','World']
+                            'TestGenre','TexMex','Traditional','World','Easy Listening']
     trueLoad.set_genre_genre(genreList)
     
     
