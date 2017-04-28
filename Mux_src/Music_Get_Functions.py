@@ -92,6 +92,23 @@ class musicGet_Functions:
         Song  ********************
     '''
 
+    def update_song_artist(self,artist,song):
+        statement = "update `Music`.album2songs set artist = '" + artist + "' where song like '%" + song + "%';"
+        print(statement)
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(statement)
+            cursor.execute("commit;")
+            cursor.close()
+            self.dbConnectionClose()
+            return song + "updated successfully"            
+        except self.conn.Error.Error as err:
+            print("Exception is ", err)
+            return str(err)
+
+        
+
+
     def get_song(self,song):
         fields = '*'
         statement = "Select " + fields + " from music.album2songs where song like '%" + song + "';"
@@ -332,7 +349,6 @@ class musicGet_Functions:
     '''
         Artist  ********************
     '''
-
     def get_all_artist(self):
 #       select music.artist.index, artist, genre from music.artist where artist = 'Bill Withers';
         fields = "music.artist.artist, music.artist.index"

@@ -8,7 +8,7 @@ import os, platform
 import MySQLdb   as connDb
 
 
-class verify_albums:
+class verify_artist:
     def __init__(self):       
         print("*************** Node Name is ",platform.uname().node)
         if platform.uname().node == 'C1246895-osx.home':
@@ -25,16 +25,16 @@ class verify_albums:
             self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
 
 
-    def verify_albums_match_rock(self,genre):
+    def verify_artist_match(self):
             cursor = self.conn.cursor()
-            statement = "select * from `Music`.artist_albums a where a.genre = '" + genre + "' and a.album NOT IN  (select distinct b.album from `Music`.album2songs b where b.genre = '" + genre + "');"
-#            statement = "select a.album from `Music`.artist_albums a where a.genre = '" + genre + "';" 
+            statement = "select b.artist, b.`index` from `Music`.artist b \
+                         where b.artist NOT IN (select distinct a.artist from `Music`.album2songs a) \
+                         order by b.artist asc;"
             try:
                 cursor.execute(statement)
                 result = cursor.fetchall()  
 #                print("Result is ", result)
                 cursor.close()
-
                 return result             
             except self.conn.Error as err:
                 print("Exception is ", err)
@@ -42,15 +42,8 @@ class verify_albums:
             self.conn.close()
         
 if __name__ == "__main__" :    
-    albumVerifyRock = verify_albums()
-    genreList = ['Alternative','BlueGrass','Blues','Classical','Country','Folk','Holiday',\
-                            'Jazz','Latino','Pop','Regae','Rock','RockaBilly','Soul','Talk', \
-                            'TestGenre','TexMex','Traditional','World']
-#    print(genreList)
-    for gen in genreList:
-#        print(gen)
-#        print(gen, " " , albumVerifyRock.verify_albums_match_rock(gen))
-        if len(albumVerifyRock.verify_albums_match_rock(gen)) > 0:
-            for album in albumVerifyRock.verify_albums_match_rock(gen):
-                print(album)
+    verifyArtist = verify_artist()
+    result = verifyArtist.verify_artist_match()
+    for artist in result:
+                print(artist)
     
