@@ -27,7 +27,7 @@ class musicGet_Functions:
             self.conn  = connDb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
         elif platform.uname().node == 'C1246895-osx.home':
 #            self.conn = connDb.Connect(**login_info_osx)
-            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
+            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
         elif platform.uname().node == 'OSXAir.home.home':
 #            self.conn = connDb.Connect(**login_info_default)
             self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
