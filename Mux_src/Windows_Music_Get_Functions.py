@@ -30,16 +30,22 @@ from Musicdb_info import login_info_xps
 
 class musicGet_Functions:   
     def __init__(self):
-        print("**** Node Name is ",platform.uname().node)
+        print("*************** Node Name is ",platform.uname().node)
         if platform.uname().node == 'C1246895-XPS':
             self.conn  = connDb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
-        elif platform.uname().node == 'OSXAir.home':
-            self.conn  = connDb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
+        elif platform.uname().node == 'C1246895-osx.home':
+#            self.conn = connDb.Connect(**login_info_osx)
+            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+        elif platform.uname().node == 'OSXAir.home.home':
+#            self.conn = connDb.Connect(**login_info_default)
+            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
         elif platform.uname().node == 'C1246895-WIN64-Air':
-            self.conn  = connDb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
+#            self.conn = connDb.Connect(**login_info_default)
+            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
         else:
-            self.conn  = connDb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
-            
+            self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
+        self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
+        self.server = 'OSXAir.home'  
 
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home'  
@@ -576,7 +582,7 @@ if __name__  == '__main__':
             mux = musicGet_Functions()
             table = 'Music.artist'
             criteria = ""
-            expected = 564
+            expected = 549
             result = mux.get_count(table, criteria)
             print("get_count artist",result)
             self.assertEqual(expected,result)
@@ -585,7 +591,7 @@ if __name__  == '__main__':
             mux = musicGet_Functions()
             table = 'Music.artist_albums'
             criteria = ""
-            expected = 932
+            expected = 892
             result = mux.get_count(table, criteria)
             print("get_count albums",result)
             self.assertEqual(expected,result)
@@ -594,7 +600,7 @@ if __name__  == '__main__':
             mux = musicGet_Functions()
             table = 'Music.album2songs'
             criteria = ""
-            expected = 6831
+            expected = 6841
             result = mux.get_count(table, criteria)
             print("get_count songs",result)
             self.assertEqual(expected,result)              
@@ -609,21 +615,21 @@ if __name__  == '__main__':
         def testGetMaxArtist(self):
             mux = musicGet_Functions()
             table = 'artist'
-            expected = 565
+            expected = 575
             result = mux.get_max_index(table)
             self.assertEqual(expected,result[0])
             
         def testGetMaxAlbums(self):
             mux = musicGet_Functions()
             table = 'artist_albums'
-            expected = 978
+            expected = 986
             result = mux.get_max_index(table)
             self.assertEqual(expected,result[0])
 
         def testGetMaxSongs(self):
             mux = musicGet_Functions()
             table = 'album2songs'
-            expected = 6830
+            expected = 6854
             result = mux.get_max_index(table)
             self.assertEqual(expected,result[0])
         

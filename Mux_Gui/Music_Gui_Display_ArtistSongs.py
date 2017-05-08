@@ -41,9 +41,10 @@ class Application(Frame):
         self.text_in.config(fg = "black")
         self.text_in.insert(0, entryText)
         self.text_in.pack(side="top",fill='both',expand=1)
-        self.text_in2 = Listbox(frame3,height=25,width=100)
-        
+        self.text_in2 = Listbox(frame3,height=25,width=100)     
         self.text_in2.pack(side='left', fill='both',expand=1)
+        
+        
 root = Tk()
 app = Application(master=root)                
 app.mainloop()
