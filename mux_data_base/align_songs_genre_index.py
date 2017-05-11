@@ -70,7 +70,7 @@ class Genre_Align_Index:
                 return err    
                                        
 if __name__ == '__main__':
-    alignGenreIdx = Genre_Align_Index()
+    alignGenreIdx = Genre_Align_Index(True)
     
     alignGenreIdx.align_genre_index()
 

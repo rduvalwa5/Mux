@@ -26,13 +26,10 @@ class musicGet_Functions:
         if platform.uname().node == 'C1246895-XPS':
             self.conn  = connDb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
         elif platform.uname().node == 'C1246895-osx.home':
-#            self.conn = connDb.Connect(**login_info_osx)
             self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
         elif platform.uname().node == 'OSXAir.home.home':
-#            self.conn = connDb.Connect(**login_info_default)
             self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
         elif platform.uname().node == 'C1246895-WIN64-Air':
-#            self.conn = connDb.Connect(**login_info_default)
             self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
         else:
             self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
@@ -50,7 +47,6 @@ class musicGet_Functions:
             cursor.execute( max_index_statement)
             maxIndex = cursor.fetchone()
             cursor.close()
-#            self.dbConnectionClose()
             return maxIndex
         except self.conn.Error.Error as err:
             print("Exception is ", err)
@@ -58,18 +54,28 @@ class musicGet_Functions:
                 
     def get_count(self,table = 'music.album2songs', criteria = " "):
         statement = "select count(*) from " + table + " "  + criteria + ";"
+        print("get count statement ", statement)
         cursor = self.conn.cursor()
         try:
             cursor.execute(statement)
             count = cursor.fetchone()  
             theCount = count[0]
             cursor.close()
-#            self.dbConnectionClose()
             return theCount       
         except self.conn.Error.Error as err:
             print("Exception is ", err)
             return str(err)
-            
+
+    def get_type_count(self,tipe):
+        criteria = "where music.album2songs.type = '" + tipe + "'"
+        result = self.get_count('music.album2songs', criteria)
+        return result
+
+    def get_genre_count(self,gen):
+        criteria = "where music.album2songs.genre = '" + gen + "'"
+        result = self.get_count('music.album2songs', criteria)
+        return result
+
     def get_all(self,fields = "*",table = 'music.album2songs', criteria = " "):
         statement = "select " + fields + " from " + table + " "  + criteria + ";"
         print("get all ", statement)
@@ -83,7 +89,6 @@ class musicGet_Functions:
         except self.conn.Error.Error as err:
             print("Exception is ", err)
             return str(err)
-
                
     def dbConnectionClose(self):
         self.conn.close()         
@@ -105,9 +110,6 @@ class musicGet_Functions:
         except self.conn.Error.Error as err:
             print("Exception is ", err)
             return str(err)
-
-        
-
 
     def get_song(self,song):
         fields = '*'
@@ -622,6 +624,21 @@ if __name__  == '__main__':
     import Test_Results
     
     class TestConnector(unittest.TestCase):
+            
+        def test_type_count(self):
+            mux = musicGet_Functions()
+            for tipe in Test_Results.typeList:
+                expected = tipe[1]
+                self.assertEqual(expected, mux.get_type_count(tipe[0])) 
+                      
+        def test_genre_count(self):
+            mux = musicGet_Functions()
+            gList = Test_Results.genreList
+            for gen in gList:
+                expected = gen[1]
+                result = mux.get_genre_count(gen[0])
+                self.assertEqual(expected,result)
+                    
         def test_get_all_songs(self):
             mux = musicGet_Functions()
             expected = Test_Results.songs_count  # 6831

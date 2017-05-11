@@ -87,6 +87,10 @@ update `Music`.album2songs INNER JOIN  `Music`.genre
 on album2songs.genre = genre.genre
 set `Music`.album2songs.genre_idx = `Music`.genre.g_idx;
 
+select a.genre, count(a.genre)   from `Music`.album2songs a group by a.genre order by count(a.genre) desc;
+
+select a.genre_idx, count(a.genre_idx)   from `Music`.album2songs a group by a.genre_idx order by count(a.genre_idx) desc;
+
 
 /* verify table sync */
 
