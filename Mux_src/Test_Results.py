@@ -23,5 +23,5 @@ genreList = [('Alternative',3),('BlueGrass',157),('Blues',434),('Classical',43),
             ('Rock',3392),('RockaBilly',33),('Soul',44),('Talk',1),('TestGenre',3),('TexMex',134), \
             ('Traditional',23),('World',15)]
 typeList = [('CD',2281),('Download',2838),('Tape',24),('TestType',3),('Vinyl',1699)]
-
+genresList = (('Rock', 1), ('Alternative', 7), ('BlueGrass', 8), ('Blues', 9), ('Classical', 10), ('Country', 11), ('Folk', 12), ('Holiday', 13), ('Jazz', 14), ('Latino', 15), ('Pop', 16), ('Regae', 17), ('RockaBilly', 18), ('Soul', 19), ('Talk', 20), ('TestGenre', 21), ('TexMex', 22), ('Traditional', 23), ('World', 24), ('NewGenre', 25), ('Easy Listening', 26))
 

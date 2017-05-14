@@ -76,6 +76,37 @@ class musicGet_Functions:
         result = self.get_count('music.album2songs', criteria)
         return result
 
+    def get_all_genre_count(self):
+        statement = "SELECT a.genre, count(a.genre) FROM `Music`.album2songs a GROUP BY a.genre ORDER BY a.genre;"
+        print("genres count statement ", statement)
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(statement)
+            genresCount = cursor.fetchall()  
+            cursor.close()
+            self.dbConnectionClose()
+            print("Genres Count",genresCount)
+            return genresCount                   
+        except self.conn.Error.Error as err:
+            print("Exception is ", err)
+            return str(err)
+
+    def get_genres(self):
+        statement = "SELECT * FROM `Music`.genre;"
+        print("genres ", statement)
+        genres = []
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(statement)
+            genres = cursor.fetchall()  
+            cursor.close()
+            self.dbConnectionClose()
+            print("Genres ",genres)
+            return genres                   
+        except self.conn.Error.Error as err:
+            print("Exception is ", err)
+            return str(err)
+
     def get_all(self,fields = "*",table = 'music.album2songs', criteria = " "):
         statement = "select " + fields + " from " + table + " "  + criteria + ";"
         print("get all ", statement)
@@ -803,6 +834,12 @@ if __name__  == '__main__':
             print("artist songs", result)
             self.assertEqual(expected, result, "song list for Ten Years After wrong" )
 
+        def test_genres(self):
+            mux = musicGet_Functions()
+            genres = mux.get_genres()
+            self.assertEqual(Test_Results.genresList, genres, "genre list is wrong")
+                
+            
         '''
         def test_verify_albums_match_rock(self):
             mux = musicGet_Functions()
