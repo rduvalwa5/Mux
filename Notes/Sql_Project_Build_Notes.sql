@@ -1,3 +1,23 @@
+/* Verify all album2songs songs in normalized table */
+
+select max(a.`index`) from `Music`.album2songs a;
+
+select * from `Music`.genre g where g.genre like 'Rock';
+ 
+insert into `Music`.album2songs (`index`, server, path, artist, album, song, genre, type, genre_idx)  values (6862,'fake server','expect not in path','not in artist2','not in album2','expect not in normalized2','noType','Rock',1);
+
+
+SELECT a.`index`,
+       a.song,
+       a.artist,
+       a.album,
+       a.path
+  FROM `Music`.album2songs a
+ WHERE a.`index` NOT IN (SELECT n.`song_idx`
+                           FROM `Music`.normal_song n);
+
+
+
 /* Artist table */
 
 select b.artist, b.`index` from `Music`.artist b 
