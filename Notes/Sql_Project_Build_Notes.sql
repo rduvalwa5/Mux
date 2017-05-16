@@ -10,57 +10,12 @@ select a.artist, a.`index` from `Music`.album2songs a
 where a.artist NOT IN (select b.artist from `Music`.artist b )
 order by a.artist asc;
 
-
-
-select * from `Music`.artist a where a.artist like 'Hank Williams Jr.';
 select * from `Music`.artist a where a.artist like 'Hank Williams%';
 
 update `Music`.album2songs set genre = 'Classical' where genre like 'classic';
-update `Music`.genre set genre = 'Classical' where genre like 'classic';
-update `Music`.artist_albums set genre = 'Classical' where genre like 'classic';
-update `Music`.album2songs set artist = '' where song like '';
-
-update `Music`.album2songs set artist = 'Paco De Lucia' where album like 'Paco De Lucía';
-
-update `Music`.artist set artist = 'Hank Williams Jr' where artist like 'Hank Williams, Jr%';
-
-update `Music`.album2songs set artist = 'Hank Williams Jr' where artist like 'Hank Williams Jr%';
-
-update `Music`.artist set artist = 'Paco De Lucia' where `Music`.artist.`index` = 324;
-
-select * from `Music`.album2songs a where a.genre like 'Classical';
-
-select * from `Music`.artist_albums a where a.genre like 'Classical';
-
-select * from `Music`.artist a where a.genre like 'Classical';
-
-select * from `Music`.artist a where a.artist like 'Jose%Felici%';
-
-select * from `Music`.album2songs a where a.artist like 'Glen Hansard & Markéta Irglová';
-
-delete from `Music`.album2songs where artist = 'Jose Feliciano' and genre_idx = '1';
-
-select * from `Music`.genre a where a.genre like 'Classical';
-
-select * from `Music`.album2songs a where a.song like '2-07 You Ain\'t Goin\' Nowhere.mp3';
-
-select * from `Music`.album2songs a where a.album like 'The Music Inside - A Collaboration Dedicated to Waylon Jennings, Vol. 1';
-
-delete from `Music`.album2songs  where album like 'Gypsy Soul_ New Flamenco' and `Music`.album2songs.index > 6844;
-
-select * from `Music`.artist b where b.artist like 'Eddie Vedder & The Million Dollar Bashers';
-
-select * from `Music`.artist_albums a where a.album like 'Saint-Saens_ Danse Macabre';
-
-select * from `Music`.artist a where a.artist like "Glen Hansard & Markéta Irglová";
-
 
 delete from `Music`.artist where artist like "Glen Hansard & Markéta Irglová";
 
-
-update `Music`.artist set artist = "Hank Williams, Jr." where artist like "Hank Williams, Jr._";
-
-update `Music`.artist_albums set artist = "Glen Hansard & Marketa Irglova" where artist like "Glen Hansard & Markéta Irglová";
 /*
 04/22/2017
 create genre table and sync albums2songs table
@@ -90,7 +45,6 @@ set `Music`.album2songs.genre_idx = `Music`.genre.g_idx;
 select a.genre, count(a.genre)   from `Music`.album2songs a group by a.genre order by count(a.genre) desc;
 
 select a.genre_idx, count(a.genre_idx)   from `Music`.album2songs a group by a.genre_idx order by count(a.genre_idx) desc;
-
 
 /* verify table sync */
 

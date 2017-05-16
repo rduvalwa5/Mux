@@ -38,6 +38,23 @@ class musicGet_Functions:
     '''
     Get max index values from tables
     '''
+        
+    def verify_normalized_table(self):
+            cursor = self.conn.cursor()
+            statement = "SELECT a.`index`, a.song, a.artist,a.album, a.path \
+                     FROM `Music`.album2songs a \
+                     WHERE a.`index` NOT IN (SELECT n.`song_idx` FROM `Music`.normal_song n);"
+            try:
+                cursor.execute(statement)
+                result = cursor.fetchall()  
+#                print("Result is ", result)
+                cursor.close()
+                return result             
+            except self.conn.Error as err:
+                print("Exception is ", err)
+                return str(err)
+            self.conn.close()
+        
     def get_max_index(self, table):
         self.table = '`Music`.' + table
         self.tableIndex = table + "." + 'Index'
