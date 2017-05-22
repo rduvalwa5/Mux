@@ -27,9 +27,10 @@ scrollbar.pack( side = RIGHT, fill=Y )
 
 mylist = Listbox(root, yscrollcommand = scrollbar.set, width = 100, selectmode = EXTENDED, bg = 'black' , fg = 'yellow')
 
+mylist.insert(END,"#" + "\t" + "Genre" + "\t\t\t" + "Index")
 for n in range(len(genreList)):
-    mylist.insert(END,str(n) + "  " + str(genreList[n][1]) + "  " + genreList[n][0])
-mylist.insert(END,"Total Genres " + str(mylist.size()))
+    mylist.insert(END,str(n + 1) + "\t" + genreList[n][0] + "\t\t\t" + str(genreList[n][1]))
+mylist.insert(END,"Total Genres " + str(mylist.size() - 1 ))
 mylist.pack( side = LEFT, fill = BOTH )
 scrollbar.config( command = mylist.yview )
 

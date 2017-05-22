@@ -4,14 +4,14 @@ Created on Apr 25, 2017
 @author: rduvalwa2
 '''
 
-songs_count = 6845
+songs_count = 6847
 artist_count = 549
 artist_albums_count = 892
 folk_songs = 576
 folk_albums = 47
 get_max_index_artist = 575
 get_max_index_albums = 986
-get_max_index_songs = 6860
+get_max_index_songs = 6862
 get_song = (946, 'OSXAir.home', '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', 'Chuck Berry', 'The Best of Chuck Berry', '08 Johnny B. Goode.mp3', 'Rock', 'Vinyl', 1)
 get_album = (664, 'Ten Years After', 'A Space In Time', 'Blues', 'Download')
 get_artist = (411, 'Ten Years After', 'Blues')

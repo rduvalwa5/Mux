@@ -9,43 +9,13 @@ HOST="localhost"
 DATABASE="Music"
 PORT=3306
 
-'''
-login_info_rd = {
-              'host': HOST,
-              'user': USERNAME,
-              'password': PASSWORD,
-              'database': DATABASE,
-              'port':PORT
-              }
-'''
-login_info_rduval = {
-              'host': "localhost",
-              'user': "rduval",
-              'password': "blu4jazz",
-              'database': "Music",
-              'port':"3306"
-              }
 
-login_info_default = {
-              'host': "localhost",
-              'user': "root",
-              'password': "blu4jazz",
-              'database': "Music",
-              'port':"3306"
-              }
+login_info_default = "host='OSXAir.home',user='root',password='blu4jazz',db='Music'"
 
-login_info_xps = {
-              'host': "c1246895-xps",
-              'user': "rduval",
-              'password': "Red1!Dawg",
-              'database': "Music",
-              'port':"3306"
-              }
+login_info_osxAir = {"host":"OSXAir.home","user":"rduvalwa2","password":"blu4jazz","db":"Music"}
 
-login_info_osx = {
-              'host': "OSXAir.home",
-              'user': "rduvalwa2",
-              'password': "blu4jazz",
-              'database': "Music",
-              'port':"3306"
-              }
+login_info_xps = "host='OSXAir.home',user='rduval',password='blu4jazz',db='Music'"
+
+login_info_WIN64_Air = "host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music'"
+
+login_info_osx = "host='OSXAir.home',user='rduval',password='blu4jazz',db='Music'"

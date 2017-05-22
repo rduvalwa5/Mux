@@ -82,5 +82,4 @@ class Application(Frame):
         self.text_in2 = Listbox(frame3,height=25,width=100)     
         self.text_in2.pack(side='left', fill='both',expand=1)
         
-        
 root = Tk()
