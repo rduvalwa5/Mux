@@ -23,9 +23,9 @@ import os, platform
 #import mysql.connector
 import MySQLdb as connDb
 #import MySQLdb  # as connDb
-from Musicdb_info import login_info_rduval
-from Musicdb_info import login_info_osx 
-from Musicdb_info import login_info_xps 
+#from Musicdb_info import login_info_rduval
+#from Musicdb_info import login_info_osx 
+#from Musicdb_info import login_info_xps 
 
 
 class musicGet_Functions:   
@@ -66,6 +66,22 @@ class musicGet_Functions:
         except self.conn.Error as err:
             print("Exception is ", err)
             return str(err)
+
+    def get_all_genre_count(self):
+        statement = "SELECT a.genre, count(a.genre) FROM `Music`.album2songs a GROUP BY a.genre ORDER BY a.genre;"
+        print("genres count statement ", statement)
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(statement)
+            genresCount = cursor.fetchall()  
+            cursor.close()
+            self.dbConnectionClose()
+            print("Genres Count",genresCount)
+            return genresCount                   
+        except self.conn.Error as err:
+            print("Exception is ", err)
+            return str(err)
+
                 
     def get_count(self,table = 'music.album2songs', criteria = " "):
         statement = "select count(*) from " + table + " "  + criteria + ";"
