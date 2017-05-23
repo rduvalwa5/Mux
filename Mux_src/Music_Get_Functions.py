@@ -695,6 +695,7 @@ if __name__  == '__main__':
             gList = Test_Results.genreList
             for gen in gList:
                 expected = gen[1]
+                print("expect for genre ", gen[0])
                 result = mux.get_genre_count(gen[0])
                 self.assertEqual(expected,result)
                     
