@@ -20,22 +20,16 @@ import MySQLdb as connDb
 new process see the WindowsMusicFile.py
 ''' 
 import os, platform
-#import mysql.connector
-import MySQLdb # as connDb
+import MySQLdb
 from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
-
-#import MySQLdb  # as connDb
-#from Musicdb_info import login_info_rduval
-#from Musicdb_info import login_info_osx 
-#from Musicdb_info import login_info_xps 
 
 
 class musicGet_Functions:   
     def __init__(self):
         print("*************** Node Name is ",platform.uname().node)
         if platform.uname().node == 'C1246895-XPS':
-        #    self.conn  = connDb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
-            self.conn  = MySQLdb.connect(login_info_xps)
+            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
+#            self.conn  = c.connect(login_info_xps)
         elif platform.uname().node == 'C1246895-osx.home':
         #    self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
             self.conn  = MySQLdb.connect(login_info_osx)
@@ -50,29 +44,7 @@ class musicGet_Functions:
             self.conn  = MySQLdb.connect(login_info_default)
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home'  
-    '''
-    def __init__(self):
-        print("*************** Node Name is ",platform.uname().node)
-        if platform.uname().node == 'C1246895-XPS':
-            self.conn  = connDb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
-        elif platform.uname().node == 'C1246895-osx.home':
-#            self.conn = connDb.Connect(**login_info_osx)
-            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
-        elif platform.uname().node == 'OSXAir.home.home':
-#            self.conn = connDb.Connect(**login_info_default)
-            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
-        elif platform.uname().node == 'C1246895-WIN64-Air':
-#            self.conn = connDb.Connect(**login_info_default)
-            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
-        else:
-            self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
-        self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
-        self.server = 'OSXAir.home'  
 
-        self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
-        self.server = 'OSXAir.home' 
-         
-  '''
     '''
     Get max index values from tables
     '''
@@ -106,7 +78,21 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
 
-                
+    def get_all_type_count(self):
+        statement = "SELECT a.`type`, count(a.`type`) FROM `Music`.album2songs a GROUP BY a.`type` ORDER BY a.`type`;"
+        print("type count statement ", statement)
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(statement)
+            typeCount = cursor.fetchall()  
+            cursor.close()
+            self.dbConnectionClose()
+            print("Type Count",typeCount)
+            return typeCount                   
+        except self.conn.Error as err:
+            print("Exception is ", err)
+            return str(err)
+
     def get_count(self,table = 'music.album2songs', criteria = " "):
         statement = "select count(*) from " + table + " "  + criteria + ";"
         cursor = self.conn.cursor()

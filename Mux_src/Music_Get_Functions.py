@@ -20,9 +20,6 @@ import platform
 import MySQLdb  # as connDb
 from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
 
-
-
-
 class musicGet_Functions:   
     def __init__(self):
         print("*************** Node Name is ",platform.uname().node)
@@ -113,6 +110,21 @@ class musicGet_Functions:
             print("Genres Count",genresCount)
             return genresCount                   
         except self.conn.Error.Error as err:
+            print("Exception is ", err)
+            return str(err)
+
+    def get_all_type_count(self):
+        statement = "SELECT a.`type`, count(a.`type`) FROM `Music`.album2songs a GROUP BY a.`type` ORDER BY a.`type`;"
+        print("type count statement ", statement)
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(statement)
+            typeCount = cursor.fetchall()  
+            cursor.close()
+            self.dbConnectionClose()
+            print("Type Count",typeCount)
+            return typeCount                   
+        except self.conn.Error as err:
             print("Exception is ", err)
             return str(err)
 
