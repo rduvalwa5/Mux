@@ -4,7 +4,7 @@ https://www.tutorialspoint.com/python/tk_listbox.htm
 @author: rduvalwa2
 '''
 from tkinter import *
-from Windows_Music_Get_Functions import musicGet_Functions
+from Music_Get_Functions import musicGet_Functions
 
 root = Tk()
 
