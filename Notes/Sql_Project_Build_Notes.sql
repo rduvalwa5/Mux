@@ -1,5 +1,11 @@
 /* Verify all album2songs songs in normalized table */
 
+update `Music`.artist set artist = 'Grateful Dead' where artist = 'The Grateful Dead';
+update `Music`.artist_albums set artist = 'Grateful Dead' where artist = 'The Grateful Dead';
+select * from `Music`.album2songs a where a.artist like 'Grateful Dead';
+
+update `Music`.album2songs set artist = 'Grateful Dead' where artist = 'The Grateful Dead';
+
 select max(a.`index`) from `Music`.album2songs a;
 
 select * from `Music`.genre g where g.genre like 'Rock';
