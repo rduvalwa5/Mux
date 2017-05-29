@@ -43,6 +43,15 @@ class musicGet_Functions:
     '''
     Get max index values from tables
     '''
+    def set_safe_update_delete(self):
+        cursor = self.conn.cursor()
+        statement = 'SET SQL_SAFE_UPDATES = 0;'
+        try:
+            cursor.execute(statement)
+            cursor.close()           
+        except self.conn.Error as err:
+                print("Exception is ", err)
+        self.conn.close()
         
     def verify_normalized_table(self):
             cursor = self.conn.cursor()
@@ -606,7 +615,6 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err) 
 
-
     def add_album(self,album,artist,genre = 'Rock' ,tipe = 'Download'):
         '''
         This code recurses thru the "base" path and captures the artist, album and song
@@ -631,16 +639,39 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)        
 
+    def update_album(self,album,field,value):
+        cursor = self.conn.cursor()
+        execute = False
+        print(type(value))
+        if type(value) == type('str'): 
+            statement = "update `Music`.`artist_albums` set " + field + " = '" + value  +"' where album like '" + album +"';"
+            print(statement)
+        if type(value) == type(99):
+            print("INT Input........")
+            statement = "update `Music`.`artist_albums` set " + field + " = " + value  +" where album like '" + album +"';"
+            print(statement)
+        try:
+                cursor.execute(statement)
+                execute = True
+        except self.conn.Error as err:
+                print("Exception is ", err)
+                return str(err)        
+        if execute:   
+            commit = "commit;"
+            cursor.execute(commit)
+        cursor.close()
+
     def delete_album(self,album):
         cursor = self.conn.cursor()
         selectStatement = "select artist_albums.index from Music.artist_albums where artist_albums.album like " + "'" + album + "';"
-        print(selectStatement)
+        print("Delete Select .......",selectStatement)
         try:
             cursor.execute(selectStatement)
             row = cursor.fetchone()
+            print("Rowwww ", row[0])
             index = row[0]
-            print(index)
-        except self.conn.Error.Error as err:
+            print("Delete Album index.....",index)
+        except self.conn.Error as err:
             print("Exception is ", err)
             return str(err)
         deleteStatement = "Delete from `Music`.artist_albums where `Music`.artist_albums.index = " + str(index) + ";"       
@@ -653,7 +684,7 @@ class musicGet_Functions:
             cursor.close()
 #            self.dbConnectionClose()
             return result  
-        except self.conn.Error.Error as err:
+        except self.conn.Error as err:
             print("Exception is ", err)
             return str(err)
 
@@ -880,7 +911,60 @@ if __name__  == '__main__':
             genres = mux.get_genres()
             self.assertEqual(Test_Results.genresList, genres, "genre list is wrong")
                 
+        def test_album_insert_update_album_cover(self):  
+            mux = musicGet_Functions()
+            album = "Test_Crud_Album"
+            artist = "Test_Crud_Artist"
+            genre = "Test_Crud_Genre"
+            tipe = "Test_Crud_Type"
+            field = 'cover_name'
+            value = 'Test_Crud_cover'
+#            mux.set_safe_update_delete()
+            mux.add_album(album, artist, genre, tipe)
+            mux.update_album(album, field,value)
+            field = 'cover_idx'
+            value = '99999'
+            mux.update_album(album,field,value)
+            update_result =  mux.get_album(album)
+            print("Update Result.........", update_result)
+            expected = ((996, 'Test_Crud_Artist', 'Test_Crud_Album', 'Test_Crud_Genre', 'Test_Crud_Type', 'Test_Crud_cover', 99999),)
+            self.assertEqual(expected, update_result, "album update failure")
+
+#        def test_album_update_artist(self):  
+#            mux = musicGet_Functions()
+#            album = "Test_Crud_Album"
+#            field = 'artist'
+#            value = "Crud_Artist"
+#            mux.update_album(album, field,value)
+#            result =  mux.get_album(album)
+#            print("Update artist ", result)
+#            expected =  ((996, 'Crud_Artist', 'Test_Crud_Album', 'Test_Crud_Genre', 'Test_Crud_Type', 'Test_Crud_cover', 99999),)
+#            self.assertEqual(expected, result[0], "album update failure")
             
+        def test_album_update_albumName(self):  
+            mux = musicGet_Functions()
+#            mux.set_safe_update_delete()
+            album = "Test_Crud_Album"
+            field = 'album'
+            value = "Test_Album_Name_Crud"
+            mux.update_album(album, field,value)
+            result =  mux.get_album(value)
+            print(result)
+            expected =  ((996, 'Test_Crud_Artist', 'Test_Album_Name_Crud', 'Test_Crud_Genre', 'Test_Crud_Type', 'Test_Crud_cover', 99999),)
+            self.assertEqual(expected, result, "album update failure")
+            
+        def test_delete_album(self):
+            mux = musicGet_Functions()
+#            album = "Test_Crud_Album"  
+#            album = "Test_Album_Name_Update" 
+            album = "Test_Album_Name_Crud"                     
+            mux.delete_album(album)
+#            print("Get album delete.......", mux.get_album(album))
+#            print("EEEEnd Crud Testttttt")
+            result = mux.get_album(album)
+            self.assertEqual((),result, "Delete failed")
+            
+              
         '''
         def test_verify_albums_match_rock(self):
             mux = musicGet_Functions()

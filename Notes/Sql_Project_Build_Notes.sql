@@ -1,6 +1,27 @@
+/* album cover table */
+CREATE TABLE `Music`.`album_covers` (
+  `album_cover` VARCHAR(100) NOT NULL,
+  `description` VARCHAR(200) NULL,
+  `cover_idx` INT NOT NULL,
+  `album_idx` VARCHAR(45) NULL,
+  UNIQUE INDEX `album_cover_UNIQUE` (`album_cover` ASC),
+  PRIMARY KEY (`cover_idx`),
+  UNIQUE INDEX `cover_idx_UNIQUE` (`cover_idx` ASC));
+
+ALTER TABLE `Music`.`album_covers` 
+CHANGE COLUMN `cover_idx` `cover_idx` INT(11) UNSIGNED NOT NULL ;
+
+
+INSERT into  `Music`.`album_covers` (cover_idx,album_cover,description,album_idx)  
+values(0,"ABC Years.jpg","18 South",0);
+
+select * from `Music`.`album_covers`;
+
+select * from `Music`.artist_albums a where a.artist like '%Mayall%;
+
 /* Verify all album2songs songs in normalized table */
 
-update `Music`.artist set artist = 'Grateful Dead' where artist = 'The Grateful Dead';
+-- update `Music`.artist set artist = 'Grateful Dead' where artist = 'The Grateful Dead';
 update `Music`.artist_albums set artist = 'Grateful Dead' where artist = 'The Grateful Dead';
 select * from `Music`.album2songs a where a.artist like 'Grateful Dead';
 
