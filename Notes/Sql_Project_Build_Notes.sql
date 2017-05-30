@@ -1,3 +1,5 @@
+/* 5-30-2017 */
+
 /* album cover table */
 CREATE TABLE `Music`.`album_covers` (
   `album_cover` VARCHAR(100) NOT NULL,
@@ -7,17 +9,42 @@ CREATE TABLE `Music`.`album_covers` (
   UNIQUE INDEX `album_cover_UNIQUE` (`album_cover` ASC),
   PRIMARY KEY (`cover_idx`),
   UNIQUE INDEX `cover_idx_UNIQUE` (`cover_idx` ASC));
+  
+  
+select * from `Music`.`artist_albums` where type like 'Vinyl'; -- and artist like '%Coltrane%' ;  
+  
+select * from `Music`.`album_covers` a  where a.album_cover like '%Running%';
+
+select * from `Music`.`album_covers` a where a.album_cover like '%Rocket%';
+
+insert into `Music`.`album_covers` values ('Coltrane_Hartman.jpg','',252,'');
+-- 227
+update `Music`.`album_covers` set album_cover = 'Beatles Hard Days Night.jpg' where album_cover like 'Beatles Hard Days Nigh.jpg';
+
+
+
+select * from Music.artist_albums where artist_albums.artist like '%Alvin Lee%';
+
+delete from `Music`.`artist_albums` where album like 'Test_Album_Name_Update';
+
+
+
+SET SQL_SAFE_UPDATES = 0;
+update `Music`.`artist_albums` set cover_name =  'The-Beatles-Yesterday-And-Today_Original.jpg' where album like 'Yesterday and Today';
+update `Music`.`artist_albums` set cover_idx =  227 where album like 'Yesterday and Today';
+
+SET SQL_SAFE_UPDATES = 1;
 
 ALTER TABLE `Music`.`album_covers` 
 CHANGE COLUMN `cover_idx` `cover_idx` INT(11) UNSIGNED NOT NULL ;
 
 
 INSERT into  `Music`.`album_covers` (cover_idx,album_cover,description,album_idx)  
-values(0,"ABC Years.jpg","18 South",0);
+values(1,"ABC Years.jpg","John Mayall Drivin On_ The ABC Years (1975-1982) Disc 2",376);
 
-select * from `Music`.`album_covers`;
+select count(*) from `Music`.`album_covers`;
 
-select * from `Music`.artist_albums a where a.artist like '%Mayall%;
+select * from `Music`.artist_albums a where a.artist like '%Mayall%';
 
 /* Verify all album2songs songs in normalized table */
 
