@@ -24,8 +24,8 @@ class musicGet_Functions:
     def __init__(self):
         print("*************** Node Name is ",platform.uname().node)
         if platform.uname().node == 'C1246895-XPS':
-        #    self.conn  = connDb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
-            self.conn  = MySQLdb.connect(login_info_xps)
+            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
+#            self.conn  = c.connect(login_info_xps)
         elif platform.uname().node == 'C1246895-osx.home':
         #    self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
             self.conn  = MySQLdb.connect(login_info_osx)
