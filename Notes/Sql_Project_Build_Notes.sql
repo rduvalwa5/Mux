@@ -1,3 +1,42 @@
+/* set and unset safe mode */
+SET SQL_SAFE_UPDATES = 0;
+
+select count(*) from Music.album2songs;
+-- 7069
+
+select max(`index`)   from Music.album2songs;
+-- 7084
+
+select count(*) from Music.artist;
+-- 559
+select max(`index`) from Music.artist;
+-- 586
+
+select count(*) from Music.artist_albums;
+-- 906
+select max(`index`) from Music.artist_albums;
+-- 1004
+
+
+/* add music */
+
+select * from Music.album2songs a where a.artist like '%Airplane%';
+
+update Music.album2songs set album = 'The Essential Jefferson Airplane' where album like 'The Essential Jefferson Airplane [Disc 1]';
+
+update Music.artist_albums set album = 'The Essential Jefferson Airplane' where album like 'The Essential Jefferson Airplane [Disc 1]';
+
+delete from Music.artist_albums where album like 'The Essential Jefferson Airplane [Disc 2]';
+
+
+select * from Music.artist_albums;
+
+delete from Music.artist_albums where `index` = 998;
+
+select * from Music.artist where artist like '%Dave Matthews%';
+
+
+
 /* album cover table */
 CREATE TABLE `Music`.`album_covers` (
   `album_cover` VARCHAR(100) NOT NULL,
@@ -23,7 +62,7 @@ select * from `Music`.album_covers a where a.album_cover like '%Brecker%';
 
 select max(cover_idx) from `Music`.album_covers;
 
-insert into `Music`.album_covers values ('The Brecker Brothers.jpg','',248,'');
+insert into `Music`.album_covers values ('Ace Frehley.jpg','',249,'');
 
 
 

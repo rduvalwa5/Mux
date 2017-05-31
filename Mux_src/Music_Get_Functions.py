@@ -927,7 +927,7 @@ if __name__  == '__main__':
             mux.update_album(album,field,value)
             update_result =  mux.get_album(album)
             print("Update Result.........", update_result)
-            expected = ((996, 'Test_Crud_Artist', 'Test_Crud_Album', 'Test_Crud_Genre', 'Test_Crud_Type', 'Test_Crud_cover', 99999),)
+            expected = ((1005, 'Test_Crud_Artist', 'Test_Crud_Album', 'Test_Crud_Genre', 'Test_Crud_Type', 'Test_Crud_cover', 99999),)
             self.assertEqual(expected, update_result, "album update failure")
 
 #        def test_album_update_artist(self):  
@@ -950,7 +950,7 @@ if __name__  == '__main__':
             mux.update_album(album, field,value)
             result =  mux.get_album(value)
             print(result)
-            expected =  ((996, 'Test_Crud_Artist', 'Test_Album_Name_Crud', 'Test_Crud_Genre', 'Test_Crud_Type', 'Test_Crud_cover', 99999),)
+            expected =  ((1005, 'Test_Crud_Artist', 'Test_Album_Name_Crud', 'Test_Crud_Genre', 'Test_Crud_Type', 'Test_Crud_cover', 99999),)
             self.assertEqual(expected, result, "album update failure")
             
         def test_delete_album(self):

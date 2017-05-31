@@ -721,7 +721,7 @@ class artist_Add_Update_Delete:
         cursor.execute(selectStatement)
         row = cursor.fetchone()
         print('deleting ',row)
-        index = row[0]
+        index = row
 #        print(index)
         if self.notTestRun:
             deleteStatement = "Delete from `Music`.artist where `Music`.artist.index = " + str(index) + ";"       
