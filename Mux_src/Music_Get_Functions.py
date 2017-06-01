@@ -174,8 +174,8 @@ class musicGet_Functions:
         Song  ********************
     '''
 
-    def update_song_artist(self,artist,song):
-        statement = "update `Music`.album2songs set artist = '" + artist + "' where song like '%" + song + "%';"
+    def update_song_artist(self,artist,song,album):
+        statement = "update `Music`.album2songs set artist = '" + artist + "' where song like '%" + song + "' and album like '" + album + "' ;"
         print(statement)
         cursor = self.conn.cursor()
         try:
@@ -188,9 +188,9 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
 
-    def get_song(self,song):
+    def get_song(self,song,album):
         fields = '*'
-        statement = "Select " + fields + " from music.album2songs where song like '%" + song + "';"
+        statement = "Select " + fields + " from music.album2songs where song like '%" + song + "' and album like '" + album + "' ;"
         print(statement)
         cursor = self.conn.cursor()
         try:
@@ -845,10 +845,11 @@ if __name__  == '__main__':
 
         def test_get_Song(self):
             thisSong = 'Johnny B. Goode.mp3'
+            thisAlbum = 'The Best of Chuck Berry'
             mux = musicGet_Functions()
 #            expected =  (946, 'OSXAir.home', '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', 'Chuck Berry', 'The Best of Chuck Berry', '08 Johnny B. Goode.mp3', 'Rock', 'Vinyl', 1)
             expected = Test_Results.get_song
-            result = mux.get_song(thisSong)
+            result = mux.get_song(thisSong,thisAlbum)
             print("song result is ",result[0])
             self.assertEqual(expected,result[0])
         
@@ -927,7 +928,7 @@ if __name__  == '__main__':
             mux.update_album(album,field,value)
             update_result =  mux.get_album(album)
             print("Update Result.........", update_result)
-            expected = ((1005, 'Test_Crud_Artist', 'Test_Crud_Album', 'Test_Crud_Genre', 'Test_Crud_Type', 'Test_Crud_cover', 99999),)
+            expected = ((1006, 'Test_Crud_Artist', 'Test_Crud_Album', 'Test_Crud_Genre', 'Test_Crud_Type', 'Test_Crud_cover', 99999),)
             self.assertEqual(expected, update_result, "album update failure")
 
 #        def test_album_update_artist(self):  
@@ -950,7 +951,7 @@ if __name__  == '__main__':
             mux.update_album(album, field,value)
             result =  mux.get_album(value)
             print(result)
-            expected =  ((1005, 'Test_Crud_Artist', 'Test_Album_Name_Crud', 'Test_Crud_Genre', 'Test_Crud_Type', 'Test_Crud_cover', 99999),)
+            expected =  ((1006, 'Test_Crud_Artist', 'Test_Album_Name_Crud', 'Test_Crud_Genre', 'Test_Crud_Type', 'Test_Crud_cover', 99999),)
             self.assertEqual(expected, result, "album update failure")
             
         def test_delete_album(self):

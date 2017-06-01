@@ -1,8 +1,5 @@
 import platform
 import MySQLdb   as connDb
-#from    Musicdb_info    import login_info_default
-#from    Musicdb_info    import login_info_rduval    
-#from    Musicdb_info    import login_info_osx 
 
 
 class musicLoad_Functions:
@@ -36,12 +33,12 @@ class musicLoad_Functions:
         for song in songs:
 #            print(song)
             insertStatement = "INSERT into Music.normal_song (song, song_idx,artist_idx, album_idx)  values( " + "\"" +  song[1] + "\"," + str(song[0]) + "," + str(song[2]) + "," + str(song[3]) + ");"
-            print(insertStatement)
+#            print(insertStatement)
             try:
                 if self.notTestRun:
                     cursor.execute(insertStatement)
             except self.conn.Error as err:
-                print("Exception is ", song,  err)
+                print("Insert Exception is ", song,  err)
 #            return str(err)
         if self.notTestRun:
             commit = "commit;"

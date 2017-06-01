@@ -17,22 +17,36 @@ class Application(Frame):
         
     def createArtistWidgets(self):
         """Add all the widgets to the main frame."""
+        tag_name = Frame(self)
         artist_name = Frame(self)
         song_name = Frame(self)
+        album_name = Frame(self)
+        self.labeltag = Label(tag_name, text="Update Song Artist")
         self.labelSong = Label(song_name, text="Song Name")
-        self.labelArtist = Label(artist_name, text="Artist Name")        
-        self.text_in_song = Entry(song_name)
+        self.labelAlbum = Label(album_name, text="Album Name")
+        self.labelArtist = Label(artist_name, text="Artist Name")
+        self.labelResult = Label(artist_name, text="Result")
+                
+        self.text_in_song = Entry(song_name)        
+        self.text_in_album = Entry(album_name)
         self.text_in_artist = Entry(artist_name)
         
-        self.labelResult = Label(artist_name, text="Result")
+        self.labeltag.pack()
         self.labelArtist.pack()
-        self.labelSong.pack()   
+        self.labelSong.pack()
+        self.labelAlbum.pack()   
+        
              
         self.text_in_song.pack()
         self.text_in_artist.pack()
-        self.labelResult.pack()
+        self.text_in_album.pack()
+        self.labelResult.pack()  
+        
+        tag_name.pack(side=TOP)
         artist_name.pack(side=TOP)
-        song_name.pack(side=TOP)       
+        song_name.pack(side=TOP)
+        album_name.pack(side=TOP) 
+            
         bottom_frame = Frame(self)
         bottom_frame.pack(side=TOP)
 #how to disable a button
@@ -47,8 +61,9 @@ class Application(Frame):
         radio button."""
         artist = self.text_in_artist.get()
         song = self.text_in_song.get()
+        album = self.text_in_album.get()
         update = musicGet_Functions()
-        result = update.update_song_artist(artist, song)
+        result = update.update_song_artist(artist,song,album)
         output = result
         self.labelResult.config(text=output)
         self.QUIT.config(state = 'active')

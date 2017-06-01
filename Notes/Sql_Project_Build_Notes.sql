@@ -1,3 +1,112 @@
+/* trouble shooting normalized table*/
+
+select distinct sng.`index`, sng.song,  art.`index`, alb.`index` 
+                    from `Music`.album2songs sng, `Music`.artist art, `Music`.artist_albums alb 
+                    where sng.album = alb.album  
+                    and sng.artist = art.artist 
+                    order by sng.`index`;
+
+
+
+select sng.song, count(sng.song) from `Music`.album2songs sng group by sng.song order by count(sng.song) desc;
+
+/*
+ALTER TABLE `Music`.`normal_song` 
+CHANGE COLUMN `artist_idx` `artist_idx` BIGINT(5) NOT NULL ,
+CHANGE COLUMN `song_idx` `song_idx` BIGINT(5) NOT NULL ;
+*/
+
+/*
+'01 I Want You.mp3', '3'
+'06 Love \'Em And Leave \'Em.mp3', '3'
+'04 Ladies Room.mp3', '3'
+'09 Hard Luck Woman.mp3', '3'
+'02 Take Me.mp3', '3'
+'07 Mr. Speed.mp3', '3'normal_song
+'05 Baby Driver.mp3', '3'
+'10 Makin\' Love.mp3', '3'
+'03 Calling Dr. Love.mp3', '3'
+'08 See You In Your Dreams.mp3', '3'
+'02 New Potato Caboose.mp3', '2'
+*/
+
+
+select * from `Music`.album2songs sng where sng.song like '10 Makin\' Love.mp3';
+
+delete from `Music`.album2songs where `index` in (7022, 7032);
+
+
+select art.artist, count(art.artist) from `Music`.artist art group by art.artist order by count(art.artist) desc;
+
+/*
+'Jose Feliciano', '2'
+'Padraig MacMathuna', '2'
+*/
+
+select * from `Music`.artist art where art.artist like 'Padraig MacMathuna';
+
+delete from `Music`.artist where `index` in (334);
+
+
+select al.album, count(al.album) from `Music`.artist_albums al group by al.album order by count(al.album) desc;
+
+/*
+'20th Century Rocks 60s Rock Bands - Wild Thing (Re-Recorded Versions)', '20'
+'The Music Inside_ A Collaboration Dedicated To Waylon Jennings, Volume II', '12'
+'The Departed', '11'
+'The Music Inside - A Collaboration Dedicated to Waylon Jennings, Vol. 1', '11'
+'4 John Paul George Ringo - EP', '4'
+'Delta Lady_ The Rita Coolidge Anthology [Disc 2]', '4'
+'50\'s Rock', '4'
+'Mambo Bounce', '4'
+'The Cream Of Clapton', '3'
+'The Sunshine Collection', '3'
+'Easy Rider (Soundtrack from the Motion Picture) [Deluxe Edition]', '3'
+'Dont Stop The Music', '3'
+'In Time - The Best of R.E.M. 1988-2003', '3'
+'Workin\' With The Miles Davis Quintet', '2'
+'Nightrider', '2'
+'Driving Music', '2'
+'Legend (Remastered)', '2'
+'Oh My Heart - Single', '2'
+'Rock Masters_ Bobby Rydell', '2'
+'Hair', '2'
+'CityScape', '2'
+'Unknown Album', '2'
+'The Mamas & The Papas Greatest Hits', '2'
+'Delta Lady _ The Anthology', '2'
+'Back To Back', '2'
+'Collapse Into Now', '2'
+'See What Tomorrow Brings', '2'
+
+*/
+
+select * from `Music`.artist art where art.artist like 'Hair%';
+
+select * from `Music`.artist_albums al where al.album like 'The Sunshine Collection';
+
+delete from `Music`.artist_albums where `index` in (507,804);
+
+update `Music`.artist_albums set artist = 'various artist' where `index` in (134,507,804);
+
+
+
+
+/* work on delete scripts and rem=name and adjust for faults in scripts*/
+
+select * from Music.album2songs a where a.artist like '%Dave Matthews Band%';
+
+select * from Music.artist_albums a where a.artist like '%Dave Matthews Band%';
+
+select * from Music.artist_albums a where a.album like 'Everyday';
+
+select * from Music.album2songs a where a.song like '%Johnny B. Goode.mp3';
+
+select * from Music.artist b where b.artist like '%Dave Matthews Band%';
+
+-- insert into Music.artist_albums values (
+
+
 /* set and unset safe mode */
 SET SQL_SAFE_UPDATES = 0;
 
