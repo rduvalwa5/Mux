@@ -92,7 +92,7 @@ update `Music`.artist_albums set artist = 'various artist' where `index` in (134
 
 
 
-/* work on delete scripts and rem=name and adjust for faults in scripts*/
+/* work on delete scripts and rename and adjust for faults in scripts*/
 
 select * from Music.album2songs a where a.artist like '%Dave Matthews Band%';
 
@@ -158,26 +158,21 @@ CREATE TABLE `Music`.`album_covers` (
 
 select * from `Music`.artist_albums a WHERE a.type like 'Vinyl' and a.cover_name is NULL;
 
-select * from `Music`.artist_albums a WHERE a.type like 'Vinyl' and a.artist like '%Brecker Brothers%';
+select * from `Music`.artist_albums a WHERE a.type like 'Vinyl' and a.artist like '%Baez%';
 
-select * from `Music`.artist_albums a WHERE a.artist like '%Brecker%';
-
-select * from `Music`.artist_albums a WHERE a.`index` in (107,112,116);
-
-delete from `Music`.artist_albums  WHERE `index` in (112,116);
-
-select * from `Music`.album_covers a where a.album_cover like '%Brecker%';
- 
+select * from `Music`.album_covers a where a.album_cover like '%Gulf%';
 
 select max(cover_idx) from `Music`.album_covers;
 
-insert into `Music`.album_covers values ('Ace Frehley.jpg','',249,'');
+insert into `Music`.album_covers values ('Joan Baez Noel.jpeg','',254,'');
 
 
+select * from `Music`.artist_albums a WHERE a.`index` in (107,112,116);
+delete from `Music`.artist_albums  WHERE `index` in (112,116);
 
 select * from `Music`.artist_albums a where a.album like 'The Brecker Brothers';
 
-update `Music`.album_covers set album_cover = 'The Brecker Brothers.jpg' where cover_idx = 248;
+update `Music`.album_covers set album_cover = 'Alices_Restruant.jpg' where cover_idx = 249;
 
 
 
