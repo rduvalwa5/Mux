@@ -158,13 +158,13 @@ CREATE TABLE `Music`.`album_covers` (
 
 select * from `Music`.artist_albums a WHERE a.type like 'Vinyl' and a.cover_name is NULL;
 
-select * from `Music`.artist_albums a WHERE a.type like 'Vinyl' and a.artist like '%Baez%';
+select * from `Music`.artist_albums a WHERE a.type like 'Vinyl' and a.artist like '%Allman%';
 
-select * from `Music`.album_covers a where a.album_cover like '%Gulf%';
+select * from `Music`.album_covers a where a.album_cover like '%Cream%';
 
 select max(cover_idx) from `Music`.album_covers;
 
-insert into `Music`.album_covers values ('Joan Baez Noel.jpeg','',254,'');
+insert into `Music`.album_covers values ('fresh_cream.jpg','',256,'');
 
 
 select * from `Music`.artist_albums a WHERE a.`index` in (107,112,116);
@@ -172,7 +172,7 @@ delete from `Music`.artist_albums  WHERE `index` in (112,116);
 
 select * from `Music`.artist_albums a where a.album like 'The Brecker Brothers';
 
-update `Music`.album_covers set album_cover = 'Alices_Restruant.jpg' where cover_idx = 249;
+update `Music`.album_covers set album_cover = 'chuck_berry.jpg' where cover_idx = 254;
 
 
 
