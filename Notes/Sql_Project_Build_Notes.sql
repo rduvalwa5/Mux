@@ -155,16 +155,18 @@ CREATE TABLE `Music`.`album_covers` (
   UNIQUE INDEX `album_cover_UNIQUE` (`album_cover` ASC),
   PRIMARY KEY (`cover_idx`),
   UNIQUE INDEX `cover_idx_UNIQUE` (`cover_idx` ASC));
+  
+select * from `Music`.artist_albums a WHERE a.artist like '%Jimmy Witherspoon%';
 
 select * from `Music`.artist_albums a WHERE a.type like 'Vinyl' and a.cover_name is NULL;
 
-select * from `Music`.artist_albums a WHERE a.type like 'Vinyl' and a.artist like '%Allman%';
+select * from `Music`.artist_albums a WHERE a.type like 'Vinyl' and a.artist like '%Less%';
 
-select * from `Music`.album_covers a where a.album_cover like '%Cream%';
+select * from `Music`.album_covers a where a.album_cover like '%Swiss Movement%';
 
 select max(cover_idx) from `Music`.album_covers;
 
-insert into `Music`.album_covers values ('fresh_cream.jpg','',256,'');
+insert into `Music`.album_covers values ('LiveAt1972MontereyJazz Festival.jpg','',264,'');
 
 
 select * from `Music`.artist_albums a WHERE a.`index` in (107,112,116);
