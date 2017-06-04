@@ -162,13 +162,15 @@ select count(*) from `Music`.artist_albums a WHERE a.type like 'Vinyl' and a.cov
 
 select * from `Music`.artist_albums a WHERE a.type like 'Vinyl' and a.cover_name is NULL;
 
-select * from `Music`.artist_albums a WHERE a.type like 'Vinyl' and a.artist like '%Less%';
+select * from `Music`.artist_albums a WHERE a.type like 'Vinyl' and a.artist like '%Tina%';
 
-select * from `Music`.album_covers a where a.album_cover like '%point%';
+select * from `Music`.album_covers a where a.album_cover like '%Crusader 1.jpg%';
 
 select max(cover_idx) from `Music`.album_covers;
 
-insert into `Music`.album_covers values ('ThreeDogNight_The_Bestof3DogNight.jpg','',271,'');
+select * from `Music`.album_covers order by cover_idx desc;
+
+insert into `Music`.album_covers values ('Ike_Tina_Turner.jpeg','',299,'');
 
 
 select * from `Music`.artist_albums a WHERE a.`index` in (107,112,116);
