@@ -47,7 +47,7 @@ class Application(Frame):
             idx = 0
             for i in result:
                 print(i)
-                albums.append((result[idx][0],result[idx][2]))
+                albums.append((result[idx][0],result[idx][1],result[idx][2],result[idx][3],result[idx][4],result[idx][5],result[idx][6]))
                 idx = idx + 1
             print("albums are ", albums)            
             output = albums
