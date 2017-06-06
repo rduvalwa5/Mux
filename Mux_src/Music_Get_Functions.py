@@ -646,6 +646,7 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
 
+
     def get_album_cover(self,cover):
         cursor = self.conn.cursor()
         statement = "select * from Music.album_covers ac where ac.album_cover like '" + cover + "' :"
