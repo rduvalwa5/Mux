@@ -416,12 +416,12 @@ class song_Add_Update_Delete():
             print("done")
         cursor.close()   
   
-    def delete_song(self,song):
+    def delete_song(self,idx):
         '''
         delete  from `Music`.album2songs where song like 'Song_Song';
         '''
         if self.notTestRun:
-            statement = "delete  from `Music`.album2songs where song like '" + song + "';"
+            statement = "delete  from `Music`.album2songs where `index` = " + str(idx) + ";"
             print(statement)
             cursor = self.conn.cursor()
             cursor.execute( statement)

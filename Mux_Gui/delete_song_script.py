@@ -7,9 +7,9 @@ Created on Mar 16, 2017
 from Music_Get_Functions import musicGet_Functions
         
 if __name__ == "__main__" :    
-    mux =  musicGet_Functions()
-    print(mux.get_count('artist', ''))
-    artistsList = ["Seals & Crofts","Herb Alpert & The Tijuana Brass","Joni Mitchell"] #"Seals & Crofts",
-    for artist in artistsList:
-        mux.delete_artist(artist)
-    print(mux.get_count('artist', ''))
+    mux =  musicGet_Functions(True)
+    print(mux.get_count('album2songs', ''))
+    songidList = [4094] 
+    for id in songidList:
+        mux.delete_song(id)
+    print(mux.get_count('album2songs', ''))

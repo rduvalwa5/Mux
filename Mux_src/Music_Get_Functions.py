@@ -21,7 +21,7 @@ import MySQLdb  # as connDb
 from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
 
 class musicGet_Functions:   
-    def __init__(self):
+    def __init__(self,isNotTest):
         print("*************** Node Name is ",platform.uname().node)
         if platform.uname().node == 'C1246895-XPS':
             self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
@@ -39,7 +39,8 @@ class musicGet_Functions:
 #            self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
             self.conn  = MySQLdb.connect(login_info_default)
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
-        self.server = 'OSXAir.home'  
+        self.server = 'OSXAir.home' 
+        self.notTestRun =  isNotTest
     '''
     Get max index values from tables
     '''
@@ -316,11 +317,14 @@ class musicGet_Functions:
         index = idx[0] + 1
         base =   path
         songs = []
+#        print("base ",base)
         if os.path.isdir(base):
+#            print(base)
             album_songs = os.listdir(path)
+            print(album_songs)
             for song in album_songs: 
                 if song != '.DS_Store':
-#                        print("song", song)
+                        print("song", song)
                         songs.append((index,song))
                         index = index + 1
 
@@ -365,66 +369,20 @@ class musicGet_Functions:
         self.dbConnectionClose()
         return result 
     
-    def delete_songs(self,artist,albumin='all',songin="all"):
-        cursor = self.conn.cursor()   
-        delete_songs = self.get_songs(artist,albumin)
-        print("delete songs: ", delete_songs)  
-        index = 0
-        if albumin == 'all':
-            if songin == 'all':   
-                for song in delete_songs:
-                        selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
-                        print(selectStatement)
-                        cursor.execute(selectStatement)
-                        row = cursor.fetchone()
-                        index = row[0]  
-                        print("delete index: ", index)         
-                        deleteStatement = "Delete from `Music`.album2songs where `Music`.album2songs.index = " + str(index) + ";"  
-                        print(deleteStatement)
-                        cursor.execute(deleteStatement)
-            else:
-                for song in delete_songs:  
-                    if song[0] == 'songin':
-                        selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
-                        print(selectStatement)
-                        cursor.execute(selectStatement)
-                        row = cursor.fetchone()
-                        index = row[0]           
-                        deleteStatement = "Delete from `Music`.album2songs where `Music`.album2songs.index = " + str(index) + ";"  
-                        print(deleteStatement)
-                        cursor.execute(deleteStatement)        
-        else:
-            if albumin != 'all': 
-                if songin == 'all':  
-                    for song in delete_songs:
-                        if albumin == song[2]: 
-                            selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
-                            print(selectStatement)
-                            cursor.execute(selectStatement)
-                            row = cursor.fetchone()
-                            index = row[0]                      
-                            deleteStatement = "Delete from `Music`.album2songs where `Music`.album2songs.index = " + str(index) + ";"  
-                            print(deleteStatement)
-                            cursor.execute(deleteStatement)
-            elif songin != 'all':
-                    for song in delete_songs:
-                        if albumin == song[2]:                                
-                            if song[0] == 'song': 
-                                selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
-                                print(selectStatement)
-                                cursor.execute(selectStatement)
-                                row = cursor.fetchone()
-                                index = row[0]           
-                                deleteStatement = "Delete from `Music`.album2songs where `Music`.album2songs.index = " + str(index) + ";"  
-                                print(deleteStatement)
-                                cursor.execute(deleteStatement)        
-        commit = "commit;"
-        cursor.execute(commit)
-        result = "deleted songs"
+    def delete_song(self,idx):
+        '''
+        delete  from `Music`.album2songs where song like 'Song_Song';
+        '''
+        if self.notTestRun:
+            statement = "delete  from `Music`.album2songs where `index` = " + str(idx) + ";"
+            print(statement)
+            cursor = self.conn.cursor()
+            cursor.execute( statement)
+            commit = "commit;"
+            cursor.execute(commit)
+            print("done")
         cursor.close()
-        self.dbConnectionClose()
-        return result  
-
+    
     '''
         Artist  ********************
     '''
@@ -581,9 +539,9 @@ class musicGet_Functions:
 #        albumSongs = []
         fields = "music.album2songs.song"
         if album == 'all':
-            statement = "select " + fields + " from music.album2songs;"
+            statement = "select " + fields + " from music.album2songs order by `index`;"
         else:   
-            statement = "select " + fields + " from music.album2songs where album = '" + album + "';"
+            statement = "select " + fields + " from music.album2songs where album = '" + album + "' order by `index`;"
         
         print(statement)
         cursor = self.conn.cursor()
@@ -725,7 +683,7 @@ if __name__  == '__main__':
     class TestConnector(unittest.TestCase):
             
         def test_type_count(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             for tipe in Test_Results.typeList:
                 print("Type IS...", tipe[0])
                 expected = tipe[1]
@@ -734,7 +692,7 @@ if __name__  == '__main__':
                 self.assertEqual(expected, result) 
                       
         def test_genre_count(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             gList = Test_Results.genreList
             for gen in gList:
                 expected = gen[1]
@@ -743,7 +701,7 @@ if __name__  == '__main__':
                 self.assertEqual(expected,result)
                     
         def test_get_all_songs(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             expected = Test_Results.songs_count  # 6831
             result = mux.get_AllSongs()
             print("All songs count is ", len(result))
@@ -751,7 +709,7 @@ if __name__  == '__main__':
             self.assertEqual(expected, len(result),"Song count is wrong")
         
         def test_get_count_Artist(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             table = 'Music.artist'
             criteria = ""
             expected = Test_Results.artist_count # 564
@@ -762,7 +720,7 @@ if __name__  == '__main__':
             
               
         def test_get_count_Artist_Albums(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             table = 'Music.artist_albums'
             criteria = ""
             expected = Test_Results.artist_albums_count  #932
@@ -772,7 +730,7 @@ if __name__  == '__main__':
             self.assertEqual(expected,result)
             
         def test_get_count_album2Songs(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             table = 'Music.album2songs'
             criteria = ""
             expected = Test_Results.songs_count
@@ -783,21 +741,21 @@ if __name__  == '__main__':
                     
         def test_get_all_folk_albums(self):
             expected = Test_Results.folk_albums # 576
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             result = mux.get_all("`Music`.artist_albums.album", "`Music`.artist_albums","where `Music`.artist_albums.genre like 'Folk'" )
             print(len(result))
             self.assertEqual(expected, len(result))
 
         def test_get_all_folk_songs(self):
             expected = Test_Results.folk_songs # 576
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             result = mux.get_all("`Music`.album2songs.album, `Music`.album2songs.artist", "`Music`.album2songs","where `Music`.album2songs.genre like 'folk'" )
             print(len(result))
             self.assertEqual(expected, len(result))
 
         
         def testGetMaxIndex_Artist(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             table = 'artist'
             expected = Test_Results.get_max_index_artist # 565
             result = mux.get_max_index(table)
@@ -805,7 +763,7 @@ if __name__  == '__main__':
             self.assertEqual(expected,result[0])
             
         def testGetMaxIndex_Albums(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             table = 'artist_albums'
             expected = Test_Results.get_max_index_albums # 978
             result = mux.get_max_index(table)
@@ -813,7 +771,7 @@ if __name__  == '__main__':
             self.assertEqual(expected,result[0])
 
         def testGetMaxIndex_Songs(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             table = 'album2songs'
             expected = Test_Results.get_max_index_songs #6830
             result = mux.get_max_index(table)
@@ -821,21 +779,21 @@ if __name__  == '__main__':
             self.assertEqual(expected,result[0])
         
         def test_artist_album_song_exist(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(False)
             expected = False
             result = mux.test_artist_album_song_exist('Ten Years After', 'A Space In Time', '04 Over the Hill.m4p')
             print('Expect False ', result)
             self.assertFalse(expected, result)
 
         def test_artist_album_song_Notexist(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             expected = True
             result = mux.test_artist_album_song_exist('Ten Years After', 'A Space In Time', '09 Over the Hill.m4p')
             print('Expect True ', result)
             self.assertTrue(expected, result)
             
         def test_Add_Song(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             artist = 'TestArtist_X'
             album = 'TestAlbum_X'
             song = 'TestSong.mpX'
@@ -846,7 +804,7 @@ if __name__  == '__main__':
         def test_get_Song(self):
             thisSong = 'Johnny B. Goode.mp3'
             thisAlbum = 'The Best of Chuck Berry'
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
 #            expected =  (946, 'OSXAir.home', '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', 'Chuck Berry', 'The Best of Chuck Berry', '08 Johnny B. Goode.mp3', 'Rock', 'Vinyl', 1)
             expected = Test_Results.get_song
             result = mux.get_song(thisSong,thisAlbum)
@@ -854,7 +812,7 @@ if __name__  == '__main__':
             self.assertEqual(expected,result[0])
         
         def test_delete_songs(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             artist = 'TestArtist_X'
             album = 'TestAlbum_X'
             song = 'TestSong.mpX'
@@ -863,14 +821,14 @@ if __name__  == '__main__':
             self.assertEqual(expected,result)            
             
         def test_get_Album(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             album = 'A Space In Time'
             expected = Test_Results.get_album  # (664, 'Ten Years After', 'A Space In Time', 'Blues', 'Download')
             result = mux.get_album(album)
             self.assertEqual(expected,result[0])
 
         def test_get_all_albums(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             result = mux.get_all_albums()
             expected = Test_Results.artist_albums_count
             print("all albums ", result)
@@ -878,13 +836,13 @@ if __name__  == '__main__':
             self.assertEqual(expected, len(result),"All album count wrong")
 
         def test_get_Artist(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             expected = Test_Results.get_artist   # (411, 'Ten Years After', 'Blues')
             result = mux.get_artist('Ten Years After')
             self.assertEqual(expected,result[0])
 
         def test_get_artistAlbums_from_Albums(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             expected =  Test_Results.get_artist_albums
  #           ((664, 'Ten Years After', 'A Space In Time', 'Blues', 'Download'), (665, 'Ten Years After', 'Recorded Live', 'Blues', 'Download'), (666, 'Ten Years After', 'Undead (Remastered) [Live]', 'Rock', 'Download'))
             result = mux.get_artistAlbums_fromAlbums('Ten Years After')
@@ -892,7 +850,7 @@ if __name__  == '__main__':
             self.assertEqual(expected, result)
         
         def test_get_album_songs(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             expected = Test_Results.get_artist_albums_songs
           #  (('01 One of These Days.m4p',), ('02 Here They Come.m4p',), ("03 I'd Love to Change the World.m4p",), ('04 Over the Hill.m4p',), ("05 Baby Won't You Let Me Rock 'N' Roll You.m4p",), ('06 Once There Was a Time.m4p',), ('07 Let the Sky Fall.m4p',), ('08 Hard Monkeys.m4p',), ("09 I've Been There Too.m4p",), ('10 Uncle Jam.m4p',))
             result = mux.get_album_songs('A Space In Time')
@@ -900,7 +858,7 @@ if __name__  == '__main__':
             self.assertEqual(expected, result, "song list for A Space In Time wrong" )
 
         def test_get_artist_songs(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             expected = Test_Results.get_artist_songs
             # (('01 One of These Days.m4p', 'A Space In Time'), ('02 Here They Come.m4p', 'A Space In Time'), ("03 I'd Love to Change the World.m4p", 'A Space In Time'), ('04 Over the Hill.m4p', 'A Space In Time'), ("05 Baby Won't You Let Me Rock 'N' Roll You.m4p", 'A Space In Time'), ('06 Once There Was a Time.m4p', 'A Space In Time'), ('07 Let the Sky Fall.m4p', 'A Space In Time'), ('08 Hard Monkeys.m4p', 'A Space In Time'), ("09 I've Been There Too.m4p", 'A Space In Time'), ('10 Uncle Jam.m4p', 'A Space In Time'), ('01 One of These Days Live.m4p', 'Recorded Live'), ('02 You Give Me Loving.m4p', 'Recorded Live'), ('03 Good Morning Little Schoolgirl.m4p', 'Recorded Live'), ('04 Help Me.m4p', 'Recorded Live'), ('05 Classical Thing.m4p', 'Recorded Live'), ('06 Scat Thing.m4p', 'Recorded Live'), ("07 I Can't Keep from Cryin' Sometimes.m4p", 'Recorded Live'), ("09 I Can't Keep from Cryin' (Cont'd).m4p", 'Recorded Live'), ('10 Silly Thing.m4p', 'Recorded Live'), ("11 Slow Blues In 'C'.m4p", 'Recorded Live'), ("12 I'm Going Home.m4p", 'Recorded Live'), ('13 Choo Choo Mama.m4p', 'Recorded Live'), ('01 Rock You Mama (Live).m4a', 'Undead (Remastered) [Live]'), ('02 Spoonful (Live).m4a', 'Undead (Remastered) [Live]'), ("03 I May Be Wrong, But I Won't Be Wrong Always (Live).m4a", 'Undead (Remastered) [Live]'), ('04 Summertime _ Shantung Cabbage (Live).m4a', 'Undead (Remastered) [Live]'), ('05 Spider In My Web (Live).m4a', 'Undead (Remastered) [Live]'), ("06 (At the) Woodchopper's Ball [Live].m4a", 'Undead (Remastered) [Live]'), ('07 Standing At the Crossroads (Live).m4a', 'Undead (Remastered) [Live]'), ("08 I Can't Keep from Crying Sometimes _ Extension On One Chord (Live).m4a", 'Undead (Remastered) [Live]'), ("09 I'm Going Home (Live).m4a", 'Undead (Remastered) [Live]'))
             result = mux.get_artistSongs_fromSongs('Ten Years After')
@@ -908,12 +866,12 @@ if __name__  == '__main__':
             self.assertEqual(expected, result, "song list for Ten Years After wrong" )
 
         def test_genres(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             genres = mux.get_genres()
             self.assertEqual(Test_Results.genresList, genres, "genre list is wrong")
                 
         def test_album_insert_update_album_cover(self):  
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             album = "Test_Crud_Album"
             artist = "Test_Crud_Artist"
             genre = "Test_Crud_Genre"
@@ -943,7 +901,7 @@ if __name__  == '__main__':
 #            self.assertEqual(expected, result[0], "album update failure")
             
         def test_album_update_albumName(self):  
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
 #            mux.set_safe_update_delete()
             album = "Test_Crud_Album"
             field = 'album'
@@ -955,7 +913,7 @@ if __name__  == '__main__':
             self.assertEqual(expected, result, "album update failure")
             
         def test_delete_album(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
 #            album = "Test_Crud_Album"  
 #            album = "Test_Album_Name_Update" 
             album = "Test_Album_Name_Crud"                     
