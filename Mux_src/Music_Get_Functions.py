@@ -27,8 +27,8 @@ class musicGet_Functions:
             self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
 #            self.conn  = c.connect(login_info_xps)
         elif platform.uname().node == 'C1246895-osx.home':
-        #    self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn  = MySQLdb.connect(login_info_osx)
+            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+#            self.conn  = MySQLdb.connect(login_info_osx)
         elif platform.uname().node == 'OSXAir.home.home':
 #            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
             self.conn  = MySQLdb.connect(host=login_info_osxAir['host'],user=login_info_osxAir['user'],password=login_info_osxAir['password'],db=login_info_osxAir['db'])
@@ -407,7 +407,7 @@ class musicGet_Functions:
     def get_artist(self,artist):
 #       select music.artist.index, artist, genre from music.artist where artist = 'Bill Withers';
         fields = "*"
-        statement = "select " + fields + " from music.artist where artist = '" + artist + "';"
+        statement = "select " + fields + " from music.artist where artist like '" + artist + "';"
         print(statement)
         cursor = self.conn.cursor()
         try:
