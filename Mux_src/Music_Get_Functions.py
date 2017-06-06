@@ -646,6 +646,40 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
 
+    def get_album_cover(self,cover):
+        cursor = self.conn.cursor()
+        statement = "select * from Music.album_covers ac where ac.album_cover like '" + cover + "' :"
+        try:
+            result = cursor.execute(statement)
+            return result
+            cursor.close()
+#            self.dbConnectionClose()
+            return result  
+        except self.conn.Error as err:
+            print("Exception is ", err)
+            return str(err)
+
+    def get_album_cover_count(self,cover):
+        cursor = self.conn.cursor()
+        statement = "select count(*) from Music.album_covers:"
+        try:
+            result = cursor.execute(statement)
+            return result
+            cursor.close()
+#            self.dbConnectionClose()
+            return result  
+        except self.conn.Error as err:
+            print("Exception is ", err)
+            return str(err)
+        
+    def add_album_cover(self,cover):
+        pass
+    
+    def delete_album_cover(self,cover):
+        pass
+
+
+
 
         '''
             get from table by id  **********************
