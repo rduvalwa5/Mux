@@ -4,6 +4,7 @@ Created on Apr 25, 2017
 @author: rduvalwa2
 '''
 
+cover_count = 302
 songs_count = 7071
 artist_count = 558
 artist_albums_count = 881

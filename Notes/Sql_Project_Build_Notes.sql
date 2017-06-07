@@ -7,6 +7,7 @@ select distinct sng.`index`, sng.song,  art.`index`, alb.`index`
                     order by sng.`index`;
 
 
+select count(*)  from `Music`.album_covers;
 
 select sng.song, count(sng.song) from `Music`.album2songs sng group by sng.song order by count(sng.song) desc;
 
@@ -167,6 +168,10 @@ select * from `Music`.artist_albums a WHERE a.type like 'Vinyl' and a.artist lik
 select * from `Music`.album_covers a where a.album_cover like '%Janis%';
 
 select max(cover_idx) from `Music`.album_covers;
+
+select max(cover_idx) from `Music`.album_covers;
+
+select * from `Music`.album_covers ac where ac.`index` = 303;
 
 select * from `Music`.album_covers order by cover_idx desc;
 

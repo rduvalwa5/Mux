@@ -44,7 +44,7 @@ class musicGet_Functions:
     '''
     Get max index values from tables
     '''
-    def set_safe_update_delete(self):
+    def set_safe_update(self):
         cursor = self.conn.cursor()
         statement = 'SET SQL_SAFE_UPDATES = 0;'
         try:
@@ -649,9 +649,12 @@ class musicGet_Functions:
 
     def get_album_cover(self,cover):
         cursor = self.conn.cursor()
-        statement = "select * from Music.album_covers ac where ac.album_cover like '" + cover + "' :"
+        statement = "select * from `Music`.album_covers ac where ac.album_cover like '" + cover + "';"
+        print("get cover statement ", statement)
         try:
-            result = cursor.execute(statement)
+            cursor.execute(statement)
+            result = cursor.fetchone()
+            print(result)
             return result
             cursor.close()
 #            self.dbConnectionClose()
@@ -660,12 +663,13 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
 
-    def get_album_cover_count(self,cover):
+    def get_album_cover_count(self):
         cursor = self.conn.cursor()
-        statement = "select count(*) from Music.album_covers:"
+        statement = "select count(*)  from `Music`.album_covers;"
         try:
-            result = cursor.execute(statement)
-            return result
+            cursor.execute(statement)
+            result =cursor.fetchone()
+            return result[0]
             cursor.close()
 #            self.dbConnectionClose()
             return result  
@@ -674,17 +678,36 @@ class musicGet_Functions:
             return str(err)
         
     def add_album_cover(self,cover):
-        pass
+        cursor = self.conn.cursor()
+        statementIdx = "select max(cover_idx) from `Music`.album_covers;"
+        cursor.execute(statementIdx)
+        idx = cursor.fetchone()
+        print("MAX ***********", idx[0])
+        newIdx = idx[0] + 1   
+        print("*********** New covver    ", newIdx) 
+#        statement = insert into `Music`.album_covers values ('BobbyDarin_MackTheKnife.jpeg','',303,'');
+        statement = "insert into `Music`.album_covers values ('" + cover + "',''," + str(newIdx) + ",'');"
+        print(statement)
+        cursor.execute(statement)
+        cursor.execute("commit;")
+        print(self.get_album_cover(cover))
     
     def delete_album_cover(self,cover):
-        pass
+        cursor = self.conn.cursor()
+        cover_result = self.get_album_cover(cover)
+        coverIdx = cover_result[2]
+        print("cover result delete", coverIdx)
+        statement = "delete from `Music`.album_covers where cover_idx = " + str(coverIdx) + ";"
+        print(statement)
+        cursor.execute(statement)
+        cursor.execute("commit;")
 
 
 
 
-        '''
+    '''
             get from table by id  **********************
-        ''' 
+    ''' 
  
     def get_by_id(self,objId,itemType):
         
@@ -924,17 +947,13 @@ if __name__  == '__main__':
             expected = ((1006, 'Test_Crud_Artist', 'Test_Crud_Album', 'Test_Crud_Genre', 'Test_Crud_Type', 'Test_Crud_cover', 99999),)
             self.assertEqual(expected, update_result, "album update failure")
 
-#        def test_album_update_artist(self):  
-#            mux = musicGet_Functions()
-#            album = "Test_Crud_Album"
-#            field = 'artist'
-#            value = "Crud_Artist"
-#            mux.update_album(album, field,value)
-#            result =  mux.get_album(album)
-#            print("Update artist ", result)
-#            expected =  ((996, 'Crud_Artist', 'Test_Crud_Album', 'Test_Crud_Genre', 'Test_Crud_Type', 'Test_Crud_cover', 99999),)
-#            self.assertEqual(expected, result[0], "album update failure")
-            
+        def test_get_album_count(self):  
+            mux = musicGet_Functions(True)
+            expected = Test_Results.cover_count
+            result = mux.get_album_cover_count()
+#            print("***** album cover count is ",result)
+            self.assertEqual(expected, result, "cover count wrong")
+ 
         def test_album_update_albumName(self):  
             mux = musicGet_Functions(True)
 #            mux.set_safe_update_delete()
@@ -957,26 +976,30 @@ if __name__  == '__main__':
 #            print("EEEEnd Crud Testttttt")
             result = mux.get_album(album)
             self.assertEqual((),result, "Delete failed")
+
+        def test_get_albumcover(self):
+            mux = musicGet_Functions(True)
+            albumCover = '80-81.jpg'
+            getCoverResult = mux.get_album_cover(albumCover)
+            self.assertEqual(albumCover, getCoverResult[0], "add album cover failed")
+
+
+        def test_add_albumcover(self):
+            mux = musicGet_Functions(True)
+            albumCover = "Test Cover"
+            mux.add_album_cover(albumCover)
+            getCoverResult = mux.get_album_cover(albumCover)
+            self.assertEqual(albumCover, getCoverResult[0], "add album cover failed")
+            
+        def test_delete_albumcover(self):
+            albumCover = "Test Cover"
+            mux = musicGet_Functions(True)
+            mux.delete_album_cover(albumCover)
+            expected = None
+            deleteResult = mux.get_album_cover(albumCover)
+            self.assertEqual(expected, deleteResult, "delete album cover failed")
+            
             
               
-        '''
-        def test_verify_albums_match_rock(self):
-            mux = musicGet_Functions()
-            cursor = mux.init()
-            statement = "select * from `Music`.artist_albums a \
-                         where a.genre = 'Rock' \
-                        and a.album NOT IN  (select distinct b.album from `Music`.album2songs b where b.genre = \"Rock\");"
-            try:
-                cursor.execute(statement)
-                result = cursor.fetchall()  
-                print("Result is ", result)
-                cursor.close()
-                self.dbConnectionClose()
-                self.assertIsNone(result, "result has values")                 
-            except self.conn.Error.Error as err:
-                print("Exception is ", err)
-                return str(err)
-        '''
-
 
     unittest.main()    
