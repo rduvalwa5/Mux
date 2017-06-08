@@ -691,6 +691,7 @@ class musicGet_Functions:
         cursor.execute(statement)
         cursor.execute("commit;")
         print(self.get_album_cover(cover))
+        return self.get_album_cover(cover)
     
     def delete_album_cover(self,cover):
         cursor = self.conn.cursor()
