@@ -61,8 +61,8 @@ class Application(Frame):
         operation = self.r.get()
         if operation == 1:
             item = 'album'
-            muxGet = musicGet_Functions()
-            muxGet.update_album(album,item,new_album_name)
+            muxGet = musicGet_Functions(True)
+            muxGet.update_album(album,item,value)
             result = muxGet.get_album(album)
             if result != []:
                 output = result
@@ -71,7 +71,7 @@ class Application(Frame):
             
         elif operation == 2:
             item = 'artist'
-            muxGet = musicGet_Functions()
+            muxGet = musicGet_Functions(True)
             muxGet.update_album(album,item,value)
             result = muxGet.get_album(album)
             if result != []:
@@ -81,7 +81,7 @@ class Application(Frame):
                 
         elif operation == 3:
             item = 'genre'
-            muxGet = musicGet_Functions()
+            muxGet = musicGet_Functions(True)
             muxGet.update_album(album,item,value)
             result = muxGet.get_album(album)
             if result != []:
@@ -91,7 +91,7 @@ class Application(Frame):
                 
         elif operation == 4:
             item = 'type'
-            muxGet = musicGet_Functions()
+            muxGet = musicGet_Functions(True)
             muxGet.update_album(album,item,value)
             result = muxGet.get_album(album)
             if result != []:
