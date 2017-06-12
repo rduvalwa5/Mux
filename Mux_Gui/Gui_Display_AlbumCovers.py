@@ -1,6 +1,5 @@
 '''
-Created on March 2 2017
-https://www.tutorialspoint.com/python/tk_listbox.htm 
+List of album covers
 @author: rduvalwa2
 '''
 from tkinter import *
@@ -9,26 +8,26 @@ from Music_Get_Functions import musicGet_Functions
 
 root = Tk()
 
-albumList = []
+albumCoverList = []
 mux = musicGet_Functions(True)
-albumsIn = mux.get_all_albums()
-print(albumsIn)
-if albumsIn != []:
-    for album in albumsIn:
-        print(album)
-        albumList.append((album[0],album[1],album[2]))
+coversIn = mux.get_all_album_covers()
+print(coversIn)
+if coversIn != []:
+    for cover in coversIn:
+        print(cover)
+        albumCoverList.append((cover[2],cover[0]))
 else:
-    albumList.append("None found!")
+    albumCoverList.append("None found!")
 
-print(albumList)
+print(albumCoverList)
 
 scrollbar = Scrollbar(root)
 scrollbar.pack( side = RIGHT, fill=Y )
 
 mylist = Listbox(root, yscrollcommand = scrollbar.set, width = 100, selectmode = EXTENDED )
 
-for n in range(len(albumList)):
-    mylist.insert(END," " + str(albumList[n][0]) + "  " + albumList[n][1] + "  " + albumList[n][2] )
+for n in range(len(albumCoverList)):
+    mylist.insert(END," " + str(albumCoverList[n][0]) + "  " + albumCoverList[n][1] )
 mylist.insert(END,"Total Albums " + str(mylist.size()))
 mylist.pack( side = LEFT, fill = BOTH )
 scrollbar.config( command = mylist.yview )

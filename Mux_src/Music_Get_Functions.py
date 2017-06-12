@@ -646,6 +646,20 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
 
+    def get_all_album_covers(self):
+        cursor = self.conn.cursor()
+        statement = "select * from `Music`.album_covers;"
+        print("get cover statement ", statement)
+        try:
+            cursor.execute(statement)
+            result = cursor.fetchall()
+            return result
+            cursor.close()
+#            self.dbConnectionClose()
+            return result  
+        except self.conn.Error as err:
+            print("Exception is ", err)
+            return str(err)
 
     def get_album_cover(self,cover):
         cursor = self.conn.cursor()

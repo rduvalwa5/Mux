@@ -31,8 +31,16 @@ from tkinter import *
 from PIL import ImageTk, Image
 import os
 
-root = Tk()
-img = ImageTk.PhotoImage(Image.open("/Users/rduvalwa2/git/Mux/AlbumCovers/52nd Street.jpg"))
-panel = Label(root, image = img)
-panel.pack(side = "bottom", fill = "both", expand = "yes")
-root.mainloop()
+albums = []
+base =   "/Users/rduvalwa2/git/Mux/AlbumCovers"
+for root, _, files in os.walk(base):
+    for file in files:
+        if ".DS_Store" not in file:
+#            albums.append(base + "/" + file)
+            frame = Frame()
+            fil = base + "/" + file
+            root = Tk()
+            img = ImageTk.PhotoImage(Image.open(fil))
+            panel = Label(root, image = img)
+            panel.pack(side = "bottom", fill = "both", expand = "yes")
+            root.mainloop()
