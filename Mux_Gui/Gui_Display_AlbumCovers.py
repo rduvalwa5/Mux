@@ -7,6 +7,7 @@ from Music_Get_Functions import musicGet_Functions
 #import mysql.connector
 
 root = Tk()
+root.geometry("1000x500+30+30")
 
 albumCoverList = []
 mux = musicGet_Functions(True)

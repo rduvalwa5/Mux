@@ -521,7 +521,7 @@ class musicGet_Functions:
     def get_album(self,album):
 #       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
         fields = "*"
-        statement = "select " + fields + " from music.artist_albums where album = '" + album + "';"
+        statement = "select " + fields + " from music.artist_albums where album like '" + album + "';"
         print(statement)
         cursor = self.conn.cursor()
         try:
@@ -959,7 +959,7 @@ if __name__  == '__main__':
             mux.update_album(album,field,value)
             update_result =  mux.get_album(album)
             print("Update Result.........", update_result)
-            expected = ((1023, 'Test_Crud_Artist', 'Test_Crud_Album', 'Test_Crud_Genre', 'Test_Crud_Type', 'Test_Crud_cover', 99999),)
+            expected = ((1030, 'Test_Crud_Artist', 'Test_Crud_Album', 'Test_Crud_Genre', 'Test_Crud_Type', 'Test_Crud_cover', 99999),)
             self.assertEqual(expected, update_result, "album update failure")
 
         def test_get_album_count(self):  
@@ -978,7 +978,7 @@ if __name__  == '__main__':
             mux.update_album(album, field,value)
             result =  mux.get_album(value)
             print(result)
-            expected =  ((1023, 'Test_Crud_Artist', 'Test_Album_Name_Crud', 'Test_Crud_Genre', 'Test_Crud_Type', 'Test_Crud_cover', 99999),)
+            expected =  ((1030, 'Test_Crud_Artist', 'Test_Album_Name_Crud', 'Test_Crud_Genre', 'Test_Crud_Type', 'Test_Crud_cover', 99999),)
             self.assertEqual(expected, result, "album update failure")
             
         def test_delete_album(self):

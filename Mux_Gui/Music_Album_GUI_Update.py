@@ -101,7 +101,7 @@ class Application(Frame):
                 
         elif operation == 5:
             item = 'cover_name'
-            muxGet = musicGet_Functions()
+            muxGet = musicGet_Functions(True)
             muxGet.update_album(album,item,value)
             result = muxGet.get_album(album)
             if result != []:
@@ -111,7 +111,7 @@ class Application(Frame):
                 
         elif operation == 6:
             item = 'cover_idx'
-            muxGet = musicGet_Functions()
+            muxGet = musicGet_Functions(True)
             muxGet.update_album(album,item,value)
             result = muxGet.get_album(album)
             if result != []:

@@ -1,3 +1,14 @@
+/* counts */
+select count(*)  from `Music`.album_covers;
+select count(*) from `Music`.album2songs;
+select count(*) from `Music`.artist;
+select count(*) from `Music`.artist_albums where album like '%Collaboration%';
+
+
+select * from `Music`.artist_albums where album like '%Collaboration%';
+
+select count(*) from `Music`.album2songs a where a.genre like 'Folk';
+
 /* trouble shooting normalized table*/
 
 select distinct sng.`index`, sng.song,  art.`index`, alb.`index` 
@@ -5,9 +16,26 @@ select distinct sng.`index`, sng.song,  art.`index`, alb.`index`
                     where sng.album = alb.album  
                     and sng.artist = art.artist 
                     order by sng.`index`;
+commit;
+/* match CD to album cover */
+
+select * from `Music`.artist_albums a where a.`type` like 'CD' and a.cover_idx is NULL;
+
+select * from `Music`.album_covers where album_cover like '%Traffic%';
+
+delete from `Music`.artist_albums where `index` = 1018;
 
 
-select count(*)  from `Music`.album_covers;
+select * from `Music`.artist_albums where album like 'Keith Urban Fuse';
+
+update `Music`.artist_albums set album = 'Keith Urban Fuse' where `index` = 1017;
+
+select *  from `Music`.album_covers order by cover_idx desc;
+
+delete from `Music`.album_covers where cover_idx = 309;
+
+
+
 
 select sng.song, count(sng.song) from `Music`.album2songs sng group by sng.song order by count(sng.song) desc;
 
@@ -171,12 +199,21 @@ select max(cover_idx) from `Music`.album_covers;
 
 select max(cover_idx) from `Music`.album_covers;
 
-select * from `Music`.album_covers ac where ac.`index` = 303;
+select * from  `Music`.album_covers ac;
+
+select * from `Music`.album_covers ac where ac.album_cover like '%Test%';
 
 select * from `Music`.album_covers order by cover_idx desc;
 
 insert into `Music`.album_covers values ('BobbyDarin_MackTheKnife.jpeg','',303,'');
 
+insert into `Music`.album_covers values ('Test Cover','',304,'');
+
+delete from `Music`.album_covers where cover_idx = 305;
+
+select * from `Music`.album_covers ac where ac.cover_idx > 303;
+
+select * from `Music`.album_covers ac where ac.album_cover like 'Next%';
 
 select * from `Music`.album2songs a where a.album like "Pete Seeger & Arlo Guthrie - Together In Concert";
 
