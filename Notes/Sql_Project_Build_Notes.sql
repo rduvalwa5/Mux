@@ -19,9 +19,11 @@ select distinct sng.`index`, sng.song,  art.`index`, alb.`index`
 commit;
 /* match CD to album cover */
 
+select count(*) from `Music`.artist_albums a where a.`type` like 'CD' and a.cover_idx is NULL;
+
 select * from `Music`.artist_albums a where a.`type` like 'CD' and a.cover_idx is NULL;
 
-select * from `Music`.album_covers where album_cover like '%Traffic%';
+select * from `Music`.album_covers where album_cover like '%Piano Player%';
 
 delete from `Music`.artist_albums where `index` = 1018;
 
