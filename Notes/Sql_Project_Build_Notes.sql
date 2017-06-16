@@ -23,12 +23,12 @@ select count(*) from `Music`.artist_albums a where a.`type` like 'CD' and a.cove
 
 select * from `Music`.artist_albums a where a.`type` like 'CD' and a.cover_idx is NULL;
 
-select * from `Music`.album_covers where album_cover like '%Piano Player%';
+select * from `Music`.album_covers where album_cover like '%Hell%';
 
 delete from `Music`.artist_albums where `index` = 1018;
 
 
-select * from `Music`.artist_albums where album like 'Keith Urban Fuse';
+select * from `Music`.artist_albums where album like 'Drivin\' Wheels_ Best Of 1972-1982 [Disc 1]';
 
 update `Music`.artist_albums set album = 'Keith Urban Fuse' where `index` = 1017;
 
