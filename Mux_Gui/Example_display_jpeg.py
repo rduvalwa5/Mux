@@ -20,6 +20,7 @@ from PIL import ImageTk, Image
 def button_click_exit_mainloop (event):
     event.widget.quit() # this will cause mainloop to unblock.
 
+
 root = tkinter.Tk()
 root.bind("<Button>", button_click_exit_mainloop)
 root.geometry('+%d+%d' % (100,100))

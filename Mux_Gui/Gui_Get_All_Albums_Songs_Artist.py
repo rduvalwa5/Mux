@@ -5,7 +5,7 @@ def getSongs():
     root = Tk()
     
     songList = []
-    mux = musicGet_Functions()
+    mux = musicGet_Functions(True)
     songsIn = mux.get_AllSongs()
     if songsIn != []:
         for song in songsIn:
@@ -28,7 +28,7 @@ def getSongs():
 def getAlbums():
         root = Tk()
         albumList = []
-        mux = musicGet_Functions()
+        mux = musicGet_Functions(True)
         albumsIn = mux.get_all_albums()
         print(albumsIn)
         if albumsIn != []:
@@ -52,7 +52,7 @@ def getAlbums():
 def getArtists():
         root = Tk()
         artistList = []
-        mux = musicGet_Functions()
+        mux = musicGet_Functions(True)
         artistIn = mux.get_all_artist()
         print(artistIn)
         if artistIn != []:
