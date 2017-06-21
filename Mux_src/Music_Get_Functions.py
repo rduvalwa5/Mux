@@ -14,6 +14,20 @@ OSXAir:bin rduvalwa2$
 
 import MySQLdb as connDb 
 new process see the WindowsMusicFile.py
+
+add Pillow ot Windows:
+1) change permissions to directory where Python is so that you can read, write, modify
+2) C:\Program Files\Python36-32\Scripts>pip3.6.exe install Pillow
+Collecting Pillow
+  Using cached Pillow-4.1.1-cp36-cp36m-win32.whl
+Collecting olefile (from Pillow)
+  Using cached olefile-0.44.zip
+Installing collected packages: olefile, Pillow
+  Running setup.py install for olefile ... done
+Successfully installed Pillow-4.1.1 olefile-0.44
+
+other wise you will see this:
+error: could not create 'c:\program files\python36-32\Lib\site-packages\olefile': Access is denied
 ''' 
 import os
 import platform
