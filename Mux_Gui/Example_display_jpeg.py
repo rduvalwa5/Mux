@@ -12,7 +12,7 @@ Click on the image display window to go to the next image.
 Noah Spurrier 2007
 """
 
-import os, sys
+import os, sys , platform
 import tkinter
 from PIL import ImageTk, Image
 #import Image, ImageTk
@@ -24,8 +24,11 @@ def button_click_exit_mainloop (event):
 root = tkinter.Tk()
 root.bind("<Button>", button_click_exit_mainloop)
 root.geometry('+%d+%d' % (100,100))
-base = '/Users/rduvalwa2/Music/Album Covers/'
-dirlist = os.listdir('/Users/rduvalwa2/Music/Album Covers')
+if platform.uname().node == 'C1246895-XPS':
+    base = "C:\\Users\\RDuval\\git\\HubPRojects\\Mux\\AlbumCovers\\"
+else:
+    base = '/Users/rduvalwa2/Music/Album Covers/'
+dirlist = os.listdir(base)
 old_label_image = None
 for f in dirlist:
     print(f)

@@ -12,13 +12,16 @@ Click on the image display window to go to the next image.
 Noah Spurrier 2007
 """
 
-import os, sys
+import os, sys , platform
 import tkinter
 from PIL import ImageTk, Image
 from tkinter import Toplevel
 
-base = '/Users/rduvalwa2/Music/Album Covers/'
-dirlist = os.listdir('/Users/rduvalwa2/Music/Album Covers')
+if platform.uname().node == 'C1246895-XPS':
+    base = "C:\\Users\\RDuval\\git\\HubPRojects\\Mux\\AlbumCovers\\"
+else:
+    base = '/Users/rduvalwa2/Music/Album Covers/'
+dirlist = os.listdir(base)
 
 
 #This creates the main window of an application
