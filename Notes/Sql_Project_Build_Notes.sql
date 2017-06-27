@@ -1,7 +1,21 @@
+select * from `Music`.artist a where a.artist like '%Beach%';
+
+select * from `Music`.artist_albums al where al.album like '%Bowie%';
+
+select * from `Music`.album_covers ac where ac.album_cover like '%Tapes%';
+
 /* counts */
 select count(*)  from `Music`.album_covers;
 select count(*) from `Music`.album2songs;
 select count(*) from `Music`.artist;
+select count(*) from `Music`.artist_albums;
+
+select max(`index`)  from `Music`.album_covers;
+select max(`index`) from `Music`.album2songs;
+select max(`index`) from `Music`.artist;
+select max(`index`) from `Music`.artist_albums;
+
+
 select count(*) from `Music`.artist_albums where album like '%Collaboration%';
 
 
