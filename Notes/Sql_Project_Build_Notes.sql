@@ -1,3 +1,19 @@
+SET SQL_SAFE_UPDATES = 0;
+
+select * from `Music`.album2songs a where a.song like '%songZZ%';
+
+select * from `Music`.album2songs a where a.artist like '%Mavericks%' order by a.album;
+
+select * from `Music`.album2songs a where a.album like '%Mono%' order by a.song;
+
+update `Music`.album2songs set song = '06 What You Do To Me.mp3' where song like '06What You Do To Me.mp3';
+
+update `Music`.album2songs set genre = 'Country' where album like 'Mono';
+
+select * from `Music`.album2songs a where a.song like '%Fascinate Me%';
+
+commit;
+
 select * from `Music`.artist a where a.artist like '%Beach%';
 
 select * from `Music`.artist_albums al where al.album like '%Bowie%';

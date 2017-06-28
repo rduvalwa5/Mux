@@ -383,6 +383,30 @@ class musicGet_Functions:
         self.dbConnectionClose()
         return result 
     
+    def add_song(self,artist,album,song,genre,typ):
+        '''
+        This code adds song
+        '''
+        cursor = self.conn.cursor()
+        maxIndex =  self.get_max_index("album2songs")
+        index = maxIndex[0]
+        newIndex = index + 1
+        print(newIndex)
+        insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(newIndex) + ",\"" + self.server + "\",\"" + self.base + "\",\""  + artist + "\",\""  + album + "\",\""  + song + "\",\""  + genre + "\",\""  + typ + "\")"
+        print(insertStatement)
+        cursor.execute( insertStatement)
+        countStatement = "SELECT count(*) FROM music.album2songs;"        
+        cursor.execute(countStatement)
+        count = cursor.fetchone()
+        print(count)
+        commit = "commit;"
+        cursor.execute(commit)
+        result = "added " + song
+        cursor.close()
+        self.dbConnectionClose()
+        return result 
+    
+    
     def delete_song(self,idx):
         '''
         delete  from `Music`.album2songs where song like 'Song_Song';

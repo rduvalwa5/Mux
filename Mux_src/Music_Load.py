@@ -294,7 +294,7 @@ class song_Add_Update_Delete():
             print("done")
         cursor.close()
 
-    def add_song(self,album,artist,genre,song,type,path='"/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"',server='OSXAir.home' ):
+    def add_song(self,album,artist,genre,song,type,path='/Users/rduvalwa2/Music/iTunes/iTunes Music/Music',server='OSXAir.home' ):
         '''
         insert into `Music`.album2songs (album2songs.index, album, artist,genre,path,server,song,type) 
          values (6599,'SongAlbum','SongArts','SongGenre','/path/path/','song_server','test song','test_type');
@@ -311,6 +311,7 @@ class song_Add_Update_Delete():
             cursor.execute(commit)
             print("done")
         cursor.close()
+        return newIndex
         
     def update_song_album(self, album,song):
         '''
