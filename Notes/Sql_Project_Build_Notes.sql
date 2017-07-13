@@ -2,9 +2,9 @@ SET SQL_SAFE_UPDATES = 0;
 
 select * from `Music`.album2songs a where a.song like '%songZZ%';
 
-select * from `Music`.album2songs a where a.artist like '%Mavericks%' order by a.album;
+select * from `Music`.album2songs a where a.artist like '%Styx%' order by a.album;
 
-select * from `Music`.album2songs a where a.album like '%Mono%' order by a.song;
+select * from `Music`.album2songs a where a.album like '%Cornerstone%' order by a.song;
 
 update `Music`.album2songs set song = '06 What You Do To Me.mp3' where song like '06What You Do To Me.mp3';
 
@@ -12,11 +12,13 @@ update `Music`.album2songs set genre = 'Country' where album like 'Mono';
 
 select * from `Music`.album2songs a where a.song like '%Fascinate Me%';
 
+select * from `Music`.artist_albums where artist like 'Styx';
+
 commit;
 
 select * from `Music`.artist a where a.artist like '%Beach%';
 
-select * from `Music`.artist_albums al where al.album like '%Bowie%';
+select * from `Music`.artist_albums al where al.album like '%More%';
 
 select * from `Music`.album_covers ac where ac.album_cover like '%Tapes%';
 
@@ -61,6 +63,8 @@ delete from `Music`.artist_albums where `index` = 1018;
 select * from `Music`.artist_albums where album like 'Drivin\' Wheels_ Best Of 1972-1982 [Disc 1]';
 
 update `Music`.artist_albums set album = 'Keith Urban Fuse' where `index` = 1017;
+
+update `Music`.album_covers set album_cover = 'Waylon and Willie.jpeg' where album_cover like 'Waylon and Willie.jpg';
 
 select *  from `Music`.album_covers order by cover_idx desc;
 
