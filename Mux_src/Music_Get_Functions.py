@@ -38,14 +38,14 @@ class musicGet_Functions:
     def __init__(self,isNotTest):
         print("*************** Node Name is ",platform.uname().node)
         if platform.uname().node == 'C1246895-XPS':
-            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
+            self.conn  = MySQLdb.connect(host='OSXAir.local',user='rduval',password='blu4jazz',db='Music')
 #            self.conn  = c.connect(login_info_xps)
         elif platform.uname().node == 'C1246895-osx.home':
             self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
 #            self.conn  = MySQLdb.connect(login_info_osx)
         elif platform.uname().node == 'OSXAir.home.home':
-#            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn  = MySQLdb.connect(host=login_info_osxAir['host'],user=login_info_osxAir['user'],password=login_info_osxAir['password'],db=login_info_osxAir['db'])
+            self.conn  = MySQLdb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
+#            self.conn  = MySQLdb.connect(host=login_info_osxAir['host'],user=login_info_osxAir['user'],password=login_info_osxAir['password'],db=login_info_osxAir['db'])
         elif platform.uname().node == 'C1246895-WIN64-Air':
         #    self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
             self.conn  = MySQLdb.connect(login_info_WIN64_Air)
