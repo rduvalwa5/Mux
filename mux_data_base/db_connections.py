@@ -6,7 +6,7 @@ for testing data base connectivity
 import os
 import platform
 import MySQLdb  # as connDb
-from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
+#from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
 
 class dbInfo:
     def dbSpecs(self):
@@ -82,7 +82,7 @@ class musicGet_Functions:
 
 if __name__  == '__main__':
     import unittest
-    import Test_Results
+    import DB_Test_Results
     
     class TestConnector(unittest.TestCase):
             
@@ -90,7 +90,7 @@ if __name__  == '__main__':
             mux = musicGet_Functions(True)
             table = 'Music.artist'
             criteria = ""
-            expected = Test_Results.artist_count # 564
+            expected = DB_Test_Results.artist_count # 564
             result = mux.get_count(table, criteria)
             print("get_count artist",result)
             mux.dbConnectionClose()
@@ -101,7 +101,7 @@ if __name__  == '__main__':
             mux = musicGet_Functions(True)
             table = 'Music.artist_albums'
             criteria = ""
-            expected = Test_Results.artist_albums_count  #932
+            expected = DB_Test_Results.artist_albums_count  #932
             result = mux.get_count(table, criteria)
             print("get_count albums",result)
             mux.dbConnectionClose()
@@ -111,7 +111,7 @@ if __name__  == '__main__':
             mux = musicGet_Functions(True)
             table = 'Music.album2songs'
             criteria = ""
-            expected = Test_Results.songs_count
+            expected = DB_Test_Results.songs_count
             result = mux.get_count(table, criteria)
             print("get_count songs",result)
             mux.dbConnectionClose()
@@ -119,7 +119,7 @@ if __name__  == '__main__':
                     
         def test_get_album_count(self):  
             mux = musicGet_Functions(True)
-            expected = Test_Results.cover_count
+            expected = DB_Test_Results.cover_count
             result = mux.get_album_cover_count()
 #            print("***** album cover count is ",result)
             self.assertEqual(expected, result, "cover count wrong")
