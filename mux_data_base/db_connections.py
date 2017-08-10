@@ -28,7 +28,6 @@ class dbInfo:
 
 class musicGet_Functions:   
     def __init__(self,isNotTest):
-        dbIn = dbInfo.login_spec
         print("*************** Node Name is ",platform.uname().node)
         if platform.uname().node == 'C1246895-XPS':
 #            self.conn  = MySQLdb.connect(host='OSXAir.local',user='rduval',password='blu4jazz',db='Music')
