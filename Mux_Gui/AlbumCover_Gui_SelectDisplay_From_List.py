@@ -47,7 +47,7 @@ class displaySelectCover():
         if platform.uname().node == 'C1246895-XPS':
             base = "C:\\Users\\RDuval\\git\\HubPRojects\\Mux\\AlbumCovers\\"
         else:
-            base = '/Users/rduvalwa2/git/Mux/AlbumCovers/'
+            base = '/Users/rduvalwa2/Workspace_Git_Python/Mux/AlbumCovers/'
         widget = event.widget
         selection=widget.curselection()
         value = widget.get(selection[0])

@@ -1,11 +1,10 @@
 '''
 Created on Feb 5, 2017
-
 @author: rduvalwa2
 '''
 
 from tkinter import *
-from Music_Get_Functions import musicGet_Functions
+#from Music_Get_Functions  import musicGet_Functions
 import Music_Load
 
 class Application(Frame):
