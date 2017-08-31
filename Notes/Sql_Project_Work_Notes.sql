@@ -1,3 +1,5 @@
+/* 08-29-2017 */
+
 SET SQL_SAFE_UPDATES = 0;
 
 -- data verifications
