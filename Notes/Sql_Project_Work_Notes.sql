@@ -1,5 +1,76 @@
 SET SQL_SAFE_UPDATES = 0;
 
+-- data verifications
+
+select count(*) from `Music`.album2songs;
+-- 7807  08-29-2017
+
+select count(*) from `Music`.artist;
+-- 567  08-29-2017
+
+select count(*) from `Music`.artist_albums;
+-- 929  08-29-2017
+
+select count(*) from `Music`.album_covers;
+-- 468  08-29-2017
+
+select * from `Music`.genre order by g_idx;
+/*
+Rock, 1
+Alternative, 7
+BlueGrass, 8
+Blues, 9
+Classical, 10
+Country, 11
+Folk, 12
+Holiday, 13
+Jazz, 14
+Latino, 15
+Pop, 16
+Regae, 17
+RockaBilly, 18
+Soul, 19
+Talk, 20
+TestGenre, 21
+TexMex, 22
+Traditional, 23
+World, 24
+NewGenre, 25
+Easy Listening, 26
+Classic, 27
+*/
+
+select a.genre, count(a.genre)  from `Music`.album2songs a group by a.genre order by a.genre;
+/*
+'Alternative','3'
+'BlueGrass','157'
+'Blues','446'
+'Classical','43'
+'Country','897'
+'Easy Listening','28'
+'Folk','599'
+'Holiday','97'
+'Jazz','759'
+'Latino','1'
+'Pop','362'
+'Regae','23'
+'Rock','4140'
+'RockaBilly','32'
+'Soul','44'
+'Talk','1'
+'TestGenre','3'
+'TexMex','134'
+'Traditional','23'
+'World','15'
+*/
+
+
+
+
+
+
+
+
 select * from `Music`.album2songs a where a.song like '%songZZ%';
 
 select * from `Music`.album2songs a where a.artist like '%Styx%' order by a.album;
@@ -349,6 +420,175 @@ set `Music`.album2songs.genre_idx = `Music`.genre.g_idx;
 select a.genre, count(a.genre)   from `Music`.album2songs a group by a.genre order by count(a.genre) desc;
 
 select a.genre_idx, count(a.genre_idx)   from `Music`.album2songs a group by a.genre_idx order by count(a.genre_idx) desc;
+
+/* verify table sync */
+
+select a.genre_idx, count(a.genre_idx)
+FROM `Music`.album2songs a
+group by a.genre_idx
+order by count(a.genre_idx) desc;
+
+select a.genre, count(a.genre)
+FROM `Music`.album2songs a
+group by a.genre
+order by count(a.genre) desc;
+
+/* project build normalized table */
+
+/* Verify all album2songs songs in normalized table */
+
+SELECT a.`index`,
+       a.song,
+       a.artist,
+       a.album,
+       a.path
+  FROM `Music`.album2songs a
+ WHERE a.`index` NOT IN (SELECT n.`song_idx`
+                           FROM `Music`.normal_song n);
+                           
+SELECT sng.song as 'Song',
+         sng.`index` as 'Song Index',
+         art.`index` as 'Artist Index',
+         alb.`index` as 'Album'
+    FROM `Music`.album2songs sng, `Music`.artist art, `Music`.artist_albums alb
+   WHERE sng.album = alb.album AND sng.artist = art.artist
+ORDER BY art.`index`, alb.`index`, sng.`index`;
+
+SELECT count(*)
+  FROM `Music`.album2songs a
+ WHERE a.`index` NOT IN (SELECT n.`song_idx`
+                           FROM `Music`.normal_song n);
+
+SELECT sng.song as 'Song',
+         sng.`index` as 'Song Index',
+         art.`index` as 'Artist Index',
+         alb.`index` as 'Album'
+    FROM `Music`.album2songs sng, `Music`.artist art, `Music`.artist_albums alb
+   WHERE sng.album = alb.album AND sng.artist = art.artist
+ORDER BY art.`index`, alb.`index`, sng.`index`;
+
+SELECT a.song as 'song',
+         a.`index` as 'song index',
+         b.artist as 'artist',
+         b.`index` as 'artist index',
+         c.album as 'album',
+         c.`index` as 'album index'
+    FROM `Music`.album2songs a, `Music`.artist b, `Music`.artist_albums c
+   WHERE a.album = c.album AND a.artist = b.artist
+ORDER BY b.artist,c.album, a.song;
+
+
+/* 
+Collect songs under compilations artist name 
+*/
+
+SELECT *
+  FROM music.album2songs
+ WHERE music.album2songs.artist LIKE 'Compilations';
+
+
+/*
+Verify artist table and album table
+*/
+
+SELECT DISTINCT a.album,
+                a.artist,
+                a.genre,
+                a.type
+  FROM `Music`.album2songs a
+ WHERE a.artist NOT IN (SELECT b.artist
+                          FROM Music.artist b);
+                    
+SELECT DISTINCT a.album,
+                a.artist,
+                a.genre,
+                a.type
+  FROM `Music`.album2songs a
+ WHERE a.album NOT IN (SELECT b.album
+                          FROM `Music`.artist_albums b);
+
+
+/*
+sync artistalbum table to album2songs table
+*/
+
+SELECT b.album, b.`index`
+ FROM `Music`.artist_albums b
+ WHERE b.album NOT IN (SELECT a.album FROM `Music`.album2songs a)
+ order by b.index;
+
+SELECT count(*)
+ FROM `Music`.artist_albums b
+ WHERE b.album NOT IN (SELECT a.album FROM `Music`.album2songs a)
+ order by b.album;
+
+select count(distinct a.album) from `Music`.album2songs a;
+-- 794
+
+select count(distinct b.album) from `Music`.artist_albums b;
+-- 794
+
+select * from `Music`.artist_albums a where a.album like 'The Brecker Bothers';
+
+select * from `Music`.album2songs a where a.album like 'The Brecker Bothers';
+
+select * from `Music`.artist_albums a where a.`index` = 136;
+
+delete from `Music`.artist_albums where `index` = 702;
+
+
+-- from file
+
+/* Artist table */
+
+select b.artist, b.`index` from `Music`.artist b 
+where b.artist NOT IN (select distinct a.artist from `Music`.album2songs a)
+order by b.artist asc;
+
+
+update `Music`.album2songs set artist = 'Al DiMeola' where song like '%Mediterranean Sundance.mp3';
+
+
+
+select * from `Music`.album2songs a where a.artist like 'Eddie Vedder & The Million Dollar Bashers';
+
+select * from `Music`.album2songs a where a.song like '%Tombstone Blues%';
+
+select * from `Music`.album2songs a where a.album like 'The Music Inside - A Collaboration Dedicated to Waylon Jennings, Vol. 1';
+
+delete from `Music`.album2songs  where album like 'Gypsy Soul_ New Flamenco' and `Music`.album2songs.index > 6844;
+
+select * from `Music`.artist b where b.artist like 'Eddie Vedder & The Million Dollar Bashers';
+
+select * from `Music`.artist_albums a where a.album like 'Antony & The Johnsons';
+
+delete from `Music`.artist where artist like 'Angèle Dubeau & La Pietà';
+/*
+04/22/2017
+create genre table and sync albums2songs table
+
+*/
+
+
+/* project genre table */
+insert into `Music`.genre set genre = 'Rock';
+
+select * from `Music`.genre g ;
+select g.g_idx from `Music`.genre g where genre like 'Rock';
+
+select a.genre, count(a.genre) from `Music`.album2songs a group by a.genre order by a.genre;
+
+/*
+'Alternative','BlueGrass',Blues','Classic','Country','Folk','Holiday','Jazz','Latino','Pop','Regae',
+'Rock','RockaBilly','Soul','Talk','TestGenre','TexMex','Traditional','World',
+*/
+
+/* Sync album2songs to genre table */
+
+update `Music`.album2songs INNER JOIN  `Music`.genre
+on album2songs.genre = genre.genre
+set `Music`.album2songs.genre_idx = `Music`.genre.g_idx;
+
 
 /* verify table sync */
 

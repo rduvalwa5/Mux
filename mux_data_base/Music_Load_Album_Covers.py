@@ -18,7 +18,7 @@ class albumCoverLoad:
         else:
             self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
         self.album_covers = []    
-        self.base = "/Users/rduvalwa2/git/Mux/AlbumCovers"
+        self.base = "/Users/rduvalwa2/Workspace_Git_Python/Mux/AlbumCovers"
     
     def get_album_covers(self):
 #        base =   "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music

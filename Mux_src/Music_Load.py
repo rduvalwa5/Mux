@@ -1,23 +1,28 @@
 import os, platform
-import MySQLdb   as connDb
-from    Musicdb_info    import login_info_default
+import MySQLdb
+from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
 
 class musicLoad_Functions:
     def __init__(self,test = False):
         print("*************** Node Name is ",platform.uname().node)
-        if platform.uname().node == 'C1246895-osx.home':
-#            self.conn = connDb.Connect(**login_info_osx)
-            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
-
+        if platform.uname().node == 'C1246895-XPS':
+            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
+#            self.conn  = c.connect(login_info_xps)
+        elif platform.uname().node == 'C1246895-osx.home':
+            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+#            self.conn  = MySQLdb.connect(login_info_osx)
         elif platform.uname().node == 'OSXAir.home.home':
-#            self.conn = connDb.Connect(**login_info_default)
-            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+#            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+            self.conn  = MySQLdb.connect(host=login_info_osxAir['host'],user=login_info_osxAir['user'],password=login_info_osxAir['password'],db=login_info_osxAir['db'])
         elif platform.uname().node == 'C1246895-WIN64-Air':
-#            self.conn = connDb.Connect(**login_info_default)
-            self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
+        #    self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
+            self.conn  = MySQLdb.connect(login_info_WIN64_Air)
+        elif platform.uname().node == 'Randalls-MBP.home':
+            print("Host is " , 'Randalls-MBP.home')
+            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')            
         else:
-            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
-            
+            print("Host is " , 'default')
+            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home' 
         self.notTestRun = test
@@ -213,18 +218,24 @@ class musicLoad_Functions:
 class song_Add_Update_Delete():       
     def __init__(self,test = False):
         print("*************** Node Name is ",platform.uname().node)
-        if platform.uname().node == 'C1246895-osx.home':
-#            self.conn = connDb.Connect(**login_info_osx)
-            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
-
+        if platform.uname().node == 'C1246895-XPS':
+            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
+#            self.conn  = c.connect(login_info_xps)
+        elif platform.uname().node == 'C1246895-osx.home':
+            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+#            self.conn  = MySQLdb.connect(login_info_osx)
         elif platform.uname().node == 'OSXAir.home.home':
-#            self.conn = connDb.Connect(**login_info_default)
-            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+#            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+            self.conn  = MySQLdb.connect(host=login_info_osxAir['host'],user=login_info_osxAir['user'],password=login_info_osxAir['password'],db=login_info_osxAir['db'])
         elif platform.uname().node == 'C1246895-WIN64-Air':
-#            self.conn = connDb.Connect(**login_info_default)
-            self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
+        #    self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
+            self.conn  = MySQLdb.connect(login_info_WIN64_Air)
+        elif platform.uname().node == 'Randalls-MBP.home':
+            print("Host is " , 'Randalls-MBP.home')
+            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')            
         else:
-            self.conn = connDb.Connect(**login_info_default)
+            print("Host is " , 'default')
+            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home' 
         self.notTestRun = test 
@@ -499,18 +510,24 @@ class song_Add_Update_Delete():
 class album_Add_Update_Delete:       
     def __init__(self,test = False):
         print("*************** Node Name is ",platform.uname().node)
-        if platform.uname().node == 'C1246895-osx.home':
-#            self.conn = connDb.Connect(**login_info_osx)
-            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
-
+        if platform.uname().node == 'C1246895-XPS':
+            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
+#            self.conn  = c.connect(login_info_xps)
+        elif platform.uname().node == 'C1246895-osx.home':
+            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+#            self.conn  = MySQLdb.connect(login_info_osx)
         elif platform.uname().node == 'OSXAir.home.home':
-#            self.conn = connDb.Connect(**login_info_default)
-            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+#            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+            self.conn  = MySQLdb.connect(host=login_info_osxAir['host'],user=login_info_osxAir['user'],password=login_info_osxAir['password'],db=login_info_osxAir['db'])
         elif platform.uname().node == 'C1246895-WIN64-Air':
-#            self.conn = connDb.Connect(**login_info_default)
-            self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
+        #    self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
+            self.conn  = MySQLdb.connect(login_info_WIN64_Air)
+        elif platform.uname().node == 'Randalls-MBP.home':
+            print("Host is " , 'Randalls-MBP.home')
+            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')            
         else:
-            self.conn = connDb.Connect(**login_info_default)
+            print("Host is " , 'default')
+            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home' 
         self.notTestRun = test
@@ -638,18 +655,24 @@ class album_Add_Update_Delete:
 class artist_Add_Update_Delete:       
     def __init__(self,test = False):
         print("*************** Node Name is ",platform.uname().node)
-        if platform.uname().node == 'C1246895-osx.home':
-#            self.conn = connDb.Connect(**login_info_osx)
-            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
-
+        if platform.uname().node == 'C1246895-XPS':
+            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
+#            self.conn  = c.connect(login_info_xps)
+        elif platform.uname().node == 'C1246895-osx.home':
+            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+#            self.conn  = MySQLdb.connect(login_info_osx)
         elif platform.uname().node == 'OSXAir.home.home':
-#            self.conn = connDb.Connect(**login_info_default)
-            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+#            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+            self.conn  = MySQLdb.connect(host=login_info_osxAir['host'],user=login_info_osxAir['user'],password=login_info_osxAir['password'],db=login_info_osxAir['db'])
         elif platform.uname().node == 'C1246895-WIN64-Air':
-#            self.conn = connDb.Connect(**login_info_default)
-            self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
+        #    self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
+            self.conn  = MySQLdb.connect(login_info_WIN64_Air)
+        elif platform.uname().node == 'Randalls-MBP.home':
+            print("Host is " , 'Randalls-MBP.home')
+            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')            
         else:
-            self.conn = connDb.Connect(**login_info_default)
+            print("Host is " , 'default')
+            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home' 
         self.notTestRun = test  
@@ -739,19 +762,24 @@ Use only select statements
 
 class verify_data_tables:
         def __init__(self,test = True):
-            print("*************** Node Name is ",platform.uname().node)
-            if platform.uname().node == 'C1246895-osx.home':
-#            self.conn = connDb.Connect(**login_info_osx)
-                self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
-
+            if platform.uname().node == 'C1246895-XPS':
+                self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
+#            self.conn  = c.connect(login_info_xps)
+            elif platform.uname().node == 'C1246895-osx.home':
+                self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+#            self.conn  = MySQLdb.connect(login_info_osx)
             elif platform.uname().node == 'OSXAir.home.home':
-#            self.conn = connDb.Connect(**login_info_default)
-                self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+#            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+                self.conn  = MySQLdb.connect(host=login_info_osxAir['host'],user=login_info_osxAir['user'],password=login_info_osxAir['password'],db=login_info_osxAir['db'])
             elif platform.uname().node == 'C1246895-WIN64-Air':
-#            self.conn = connDb.Connect(**login_info_default)
-                self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
+        #    self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
+                self.conn  = MySQLdb.connect(login_info_WIN64_Air)
+            elif platform.uname().node == 'Randalls-MBP.home':
+                print("Host is " , 'Randalls-MBP.home')
+                self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')            
             else:
-                self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+                print("Host is " , 'default')
+                self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
             self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
             self.server = 'OSXAir.home' 
             self.notTestRun = test  
@@ -804,35 +832,35 @@ class verify_data_tables:
             cursor.close()
             return result    
         
-
-              
-                
 if __name__  == '__main__':
     
-    runMode = "NoRun" # NoRun  # Test
+    runMode = "Run" # NoRun  # Test
+    
+    '''
+    Un comment to load genres
+    '''
+    '''
+    
     trueLoad = musicLoad_Functions(True)
-#    testGen = 'Rocky'
-#    output = trueLoad.does_genre_exist(testGen)
-#    print(output)
-#    testGen = 'Rock'
-#    output = trueLoad.does_genre_exist(testGen)
-#    print(output)
     genreList = ['Alternative','BlueGrass','Blues','Classic','Country','Folk','Holiday',\
                             'Jazz','Latino','Pop','Regae','Rock','RockaBilly','Soul','Talk', \
                             'TestGenre','TexMex','Traditional','World','Easy Listening']
     trueLoad.set_genre_genre(genreList)
+    '''
+ 
+    '''
+    Un comment to load songs
+    '''    
+    if runMode == "NoRun":
+            pass
+    if runMode == "Run":
+        trueLoad = musicLoad_Functions(True)
+        trueLoad.initial_insert_into_album2songs()
+        allSongs = trueLoad.get_all_songs()
+        print('num songs is ', len(allSongs))
     
-    
-#    if runMode == "NoRun":
-#            pass
-#    if runMode == "Run":
-#        trueLoad = musicLoad_Functions(True)
-#        trueLoad.initial_insert_into_album2songs()
-#        allSongs = trueLoad.get_all_songs()
-#        print('num songs is ', len(allSongs))
-    
-#        trueLoad.sync_song_genre()
-#        trueLoad.sync_song_type()
+        trueLoad.sync_song_genre()
+        trueLoad.sync_song_type()
 
  
 
