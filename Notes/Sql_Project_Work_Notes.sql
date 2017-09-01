@@ -1,4 +1,4 @@
-/* 08-29-2017 */
+/* 08-31-2017 */
 
 SET SQL_SAFE_UPDATES = 0;
 
@@ -66,26 +66,11 @@ select a.genre, count(a.genre)  from `Music`.album2songs a group by a.genre orde
 'World','15'
 */
 
-
-
-
-
-
-
-
-select * from `Music`.album2songs a where a.song like '%songZZ%';
-
-select * from `Music`.album2songs a where a.artist like '%Styx%' order by a.album;
-
-select * from `Music`.album2songs a where a.album like '%Cornerstone%' order by a.song;
-
+/* update song name */
 update `Music`.album2songs set song = '06 What You Do To Me.mp3' where song like '06What You Do To Me.mp3';
 
+/* update album genre */
 update `Music`.album2songs set genre = 'Country' where album like 'Mono';
-
-select * from `Music`.album2songs a where a.song like '%Fascinate Me%';
-
-select * from `Music`.artist_albums where artist like 'Styx';
 
 commit;
 
@@ -106,21 +91,24 @@ select max(`index`) from `Music`.album2songs;
 select max(`index`) from `Music`.artist;
 select max(`index`) from `Music`.artist_albums;
 
-
-select count(*) from `Music`.artist_albums where album like '%Collaboration%';
-
-
-select * from `Music`.artist_albums where album like '%Collaboration%';
-
 select count(*) from `Music`.album2songs a where a.genre like 'Folk';
 
 /* trouble shooting normalized table*/
 
-select distinct sng.`index`, sng.song,  art.`index`, alb.`index` 
+select distinct sng.`index`, sng.song,  art.`index`, alb.`index`, alb.album 
                     from `Music`.album2songs sng, `Music`.artist art, `Music`.artist_albums alb 
                     where sng.album = alb.album  
                     and sng.artist = art.artist 
+                    and alb.album like 'Noel'
                     order by sng.`index`;
+                    
+select distinct sng.`index`, sng.song, sng.genre, art.`index`, alb.`index` ,alb.album 
+                    from `Music`.album2songs sng, `Music`.artist art, `Music`.artist_albums alb 
+                    where sng.album = alb.album  
+                    and sng.artist = art.artist 
+                    and art.artist like 'Drop%'
+                    order by sng.`index`;                    
+
 commit;
 /* match CD to album cover */
 
