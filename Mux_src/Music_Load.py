@@ -744,9 +744,10 @@ class artist_Add_Update_Delete:
         print(selectStatement)
         cursor.execute(selectStatement)
         row = cursor.fetchone()
-        print('deleting ',row)
-        index = row
-#        print(index)
+        print("Row is ", row)
+#        print('deleting ',row[0].[0])
+        index = row[0]
+        print(index)
         if self.notTestRun:
             deleteStatement = "Delete from `Music`.artist where `Music`.artist.index = " + str(index) + ";"       
             print(deleteStatement)
