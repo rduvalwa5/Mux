@@ -10,7 +10,7 @@ from Music_Get_Functions import musicGet_Functions
 root = Tk()
 
 artistList = []
-mux = musicGet_Functions()
+mux = musicGet_Functions(True)
 artistIn = mux.get_all_artist()
 print(artistIn)
 if artistIn != []:

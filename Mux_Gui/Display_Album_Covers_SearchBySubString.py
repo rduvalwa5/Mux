@@ -23,7 +23,7 @@ class show_image():
             if platform.uname().node == 'C1246895-XPS':
                 base = "C:\\Users\\RDuval\\git\\HubPRojects\\Mux\\AlbumCovers\\"
             else:
-                base = '/Users/rduvalwa2/git/Mux/AlbumCovers/'
+                base =  '/Users/rduvalwa2/Workspace_Git_Python/Mux/AlbumCovers/'
             dirlist = os.listdir(base)
             images = []
             for f in dirlist:
@@ -38,14 +38,15 @@ class show_image():
 
 
 if __name__  == '__main__':
+    '''
+    https://www.tutorialspoint.com/python/python_command_line_arguments.htm
+    http://anh.cs.luc.edu/python/hands-on/3.1/handsonHtml/io.html
+    '''
     im = show_image()
-    CoverImages = im.create_array_images('Joe')
-    for file in CoverImages:
-        print(file)
-        im.create_Image(file)
+    img = input('Enter search string: ')
     
-    
-    CoverImages2 = im.create_array_images('Grateful')
+    CoverImages2 = im.create_array_images(img)
     for file in CoverImages2:
         print(file)
         im.create_Image(file)
+        

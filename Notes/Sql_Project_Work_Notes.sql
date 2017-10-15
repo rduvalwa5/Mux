@@ -1,3 +1,8 @@
+/*  issue delete album covers */
+
+select * from `Music`.album_covers ac where ac.album_cover like '%DoobieBrothers%';
+delete from `Music`.album_covers where cover_idx in (474,475);
+
 /* 08-31-2017 */
 
 SET SQL_SAFE_UPDATES = 0;

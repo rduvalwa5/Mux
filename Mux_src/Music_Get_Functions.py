@@ -431,7 +431,7 @@ class musicGet_Functions:
 #       select music.artist.index, artist, genre from music.artist where artist = 'Bill Withers';
         fields = "music.artist.artist, music.artist.index"
 #        fields = "*"
-        statement = "select " + fields + " from music.artist;"
+        statement = "select " + fields + " from music.artist order by music.artist.artist;"
         print(statement)
         cursor = self.conn.cursor()
         try:
@@ -689,7 +689,7 @@ class musicGet_Functions:
 
     def get_all_album_covers(self):
         cursor = self.conn.cursor()
-        statement = "select * from `Music`.album_covers;"
+        statement = "select * from `Music`.album_covers order by album_cover;"
         print("get cover statement ", statement)
         try:
             cursor.execute(statement)
