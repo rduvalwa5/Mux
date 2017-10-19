@@ -9,9 +9,18 @@ SET SQL_SAFE_UPDATES = 0;
 
 -- data verifications
 
-select count(*) from `Music`.album2songs;
--- 7807  08-29-2017
+select count(*) from `Music`.album2songs where artist like '%Doors'; -- and album like 'Stonedhenge%';
+select * from `Music`.album2songs where artist like 'Deep Purple' order by album;
 
+select distinct album from `Music`.album2songs where artist like '%%' order by album;
+
+delete from `Music`.album2songs where `Music`.album2songs.index in (3881,3882,3883,3884,3885,3886,3887,3888,3889,3890,3891,3892,3893,3894,3895);
+
+update `Music`.album2songs set type = 'CD' where album like 'Platinum Jazz';
+update `Music`.album2songs set genre = 'Blues' where album like 'Platinum Jazz';
+
+-- 7807  08-29-2017
+commit;
 select count(*) from `Music`.artist;
 -- 567  08-29-2017
 
