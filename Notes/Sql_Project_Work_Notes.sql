@@ -21,6 +21,14 @@ update `Music`.album2songs set genre = 'Blues' where album like 'Platinum Jazz';
 
 -- 7807  08-29-2017
 commit;
+
+select count(distinct artist) from `Music`.album2songs;
+-- 470
+select count(distinct album) from `Music`.album2songs;
+-- 882
+select count(distinct song) from `Music`.album2songs;
+-- 7944
+
 select count(*) from `Music`.artist;
 -- 567  08-29-2017
 
