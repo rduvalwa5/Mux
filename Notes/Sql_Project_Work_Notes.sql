@@ -26,8 +26,15 @@ select count(distinct artist) from `Music`.album2songs;
 -- 470
 select count(distinct album) from `Music`.album2songs;
 -- 882
-select count(distinct song) from `Music`.album2songs;
--- 7944
+select count(song) from `Music`.album2songs; -- where song like '%.m%' or song like '%.aif%';
+
+select song from `Music`.album2songs where song not like '%.m%' and song not like '%.aif%';
+-- 7953  there are duplicate song titles
+
+
+update `Music`.album2songs set song = 'The Hobbit (Live in Frankfurt)' where song like 'The Hobbit (Live in Frankfurt).m4a';
+delete from `Music`.album2songs where song like '%.pdf%';
+delete from `Music`.album2songs where song like 'Let It Be - iTunes LP (v2.1).itlp';
 
 select count(*) from `Music`.artist;
 -- 567  08-29-2017
