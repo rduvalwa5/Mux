@@ -11,7 +11,7 @@ import MySQLdb   as connDb
 class Application(Frame):
     def __init__(self, master=None):
         def openHandler():
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             artist = self.text_in.get()
             try:
                 songList = mux.get_artist_songs(artist)

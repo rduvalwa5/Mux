@@ -206,9 +206,10 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
 
-    def get_song(self,song,album):
+    def get_song(self,song):
         fields = '*'
-        statement = "Select " + fields + " from music.album2songs where song like '%" + song + "' and album like '" + album + "' ;"
+# 10 -24-2017       statement = "Select " + fields + " from music.album2songs where song like '%" + song + "' and album like '" + album + "' ;"
+        statement = "Select " + fields + " from music.album2songs where song like '%" + song + "' ;"
         print(statement)
         cursor = self.conn.cursor()
         try:

@@ -11,7 +11,7 @@ import MySQLdb   as connDb
 class Application(Frame):
     def __init__(self, master=None):
         def openHandler():
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             song = self.text_in.get()
             try:
                 songList = mux.get_song(song)
@@ -24,7 +24,7 @@ class Application(Frame):
                         self.text_in2.insert(END, s)
                 else:
                     self.text_in2.insert(END, "None found! \n")
-            except self.conn.Error as err:
+            except Exception as err:
                 print("Exception is ", err)
                 self.text_in2.insert(END, err)
         Frame.__init__(self, master)
