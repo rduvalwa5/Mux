@@ -20,8 +20,7 @@ class Application(Frame):
         """Add all the widgets to the main frame."""
         
         Album_Cover_Frame = Frame(self)
-        
-        self.labelInputAlbumCover = Label(Album_Cover_Frame, text="Add Album Cover Name")        
+        self.labelInputAlbumCover = Label(Album_Cover_Frame, text="Album Cover Name") 
         self.labelResult = Label(Album_Cover_Frame, text = "Album Cover Result")
         
         self.text_in_Album_Cover  = Entry(Album_Cover_Frame)
@@ -33,8 +32,10 @@ class Application(Frame):
         Album_Cover_Frame.pack(side=TOP)
         bottom_frame = Frame(self)
         bottom_frame.pack(side=TOP)
+
+        
 #how to disable a button
-        self.QUIT = Button(bottom_frame, text="Quit", command=self.quit, state='disabled')
+        self.QUIT = Button(bottom_frame, text="Quit", command=self.quit, state='active')
         self.QUIT.pack(side=LEFT)
         self.handleb = Button(bottom_frame, text="Submit", command=self.handle)
         self.handleb.pack(side=LEFT)
@@ -45,11 +46,11 @@ class Application(Frame):
         radio button."""
         albumCover = self.text_in_Album_Cover.get()
         mux = musicGet_Functions(True)
-        result = mux.add_album_cover(albumCover)
-        print("Gui result ", result[0],  result[2])
-        self.labelResult.config(text=str(result[2]))
+        result = mux.get_album_cover(albumCover)
+        print("Gui result ", result)
+        self.labelResult.config(text=str(result))
         
-        print("Result "  + result[0],  result[2])
+        print("Result ",result)
         self.labelResult.config(text=result)
         
         self.QUIT.config(state = 'active')

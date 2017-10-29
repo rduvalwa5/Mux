@@ -7,10 +7,10 @@ from Music_Get_Functions import musicGet_Functions
         
 if __name__ == "__main__" :       
     mux = musicGet_Functions(True)
-    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Talking Heads/True Stories"
+    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Deep Purple/Live In Paris 1975 [Disc 2]"
 #    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Kenny Rogers & The First Edition/Anthology Kenny Rogers & The First Edition"
-    album = "True Stories"
-    artist = "Talking Heads"
+    album = "Live In Paris 1975 [Disc 2]"
+    artist = "Deep Purple"
     genre = "Rock"
-    inType = "Vinyl"    
+    inType = "CD"    
     mux.add_songs_in_path(myPath, album, artist, genre, inType)   

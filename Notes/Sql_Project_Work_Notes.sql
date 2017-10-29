@@ -1,11 +1,66 @@
-/*  issue delete album covers */
-
-select * from `Music`.album_covers ac where ac.album_cover like '%DoobieBrothers%';
-delete from `Music`.album_covers where cover_idx in (474,475);
-
 /* 08-31-2017 */
 
 SET SQL_SAFE_UPDATES = 0;
+
+/* Fixing tests */
+
+select * from music.artist_albums where album like 'Test_Crud_Album';
+
+select * from music.artist_albums;
+
+delete from `Music`.artist_albums where album like 'Test_Crud_Album';
+
+select * from `Music`.album_covers ac where ac.album_cover like '%80%';
+
+/* artist work */
+
+select * from `Music`.album2songs a where a.artist like '%Creedence Clearwater Revival%';
+
+
+select * from `Music`.artist_albums where `Music`.artist_albums.artist like '%Mysterians';
+
+select * from `Music`.artist where `Music`.artist.artist like '%Test%';
+
+select count(*) from `Music`.artist_albums;  -- 945
+select * from `Music`.artist_albums;
+delete from `Music`.artist_albums where album like '%Test_Crud_Album';
+
+
+select count(*) from `Music`.artist;  -- 569
+select count(*) from music.artist_albums;
+select count(*) from `Music`.album2songs; -- 8062
+select count(*) from `Music`.album_covers;  -- 473
+select * from `Music`.album_covers;
+select * from `Music`.album_covers  where cover_idx > 479; 
+delete from `Music`.album_covers where cover_idx > 480; -- in (478,479,481);
+
+
+delete from `Music`.artist where `Music`.artist.artist like '_ & The Mysterians';
+
+update `Music`.album2songs set `Music`.album2songs.artist = '? & The Mysterians' where `Music`.album2songs.artist like '_ & The Mysterians';
+select * from `Music`.album2songs where `Music`.album2songs.artist like '? & The Mysterians';
+
+/*  issue delete album covers */
+
+select * from `Music`.album_covers ac where ac.album_cover like 'animals original hits.jpg';
+
+delete from `Music`.album_covers where cover_idx = 480 ;
+
+delete from `Music`.album_covers where cover_idx in (480,481,482,483,484,485,486);
+
+update `Music`.album_covers set album_cover = 'JoanBaez_First 10 Years.jpg' where album_cover like 'First 10 Years.jpg'; 
+
+select * from `Music`.artist_albums al where al.cover_idx = 1 ; 
+
+select * from `Music`.artist_albums al where al.cover_name like '%Rubber Soul%'; 
+
+update `Music`.artist_albums set cover_name = "", cover_idx = NULL where cover_name like 'Download';
+
+
+
+select * from `Music`.album_covers ac where ac.album_cover like '%15BigOnesCover.jpg%';
+
+
 
 -- data verifications
 

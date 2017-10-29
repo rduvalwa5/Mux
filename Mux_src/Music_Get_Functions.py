@@ -215,6 +215,7 @@ class musicGet_Functions:
         try:
             cursor.execute(statement)
             result = cursor.fetchall()  
+            print("get_song result: ", result)
             cursor.close()
             self.dbConnectionClose()
             return result            
@@ -638,7 +639,7 @@ class musicGet_Functions:
         except self.conn.Error.Error as err:
             print("Exception is ", err)
             return str(err)        
-
+        
     def update_album(self,album,field,value):
         cursor = self.conn.cursor()
         execute = False
@@ -660,21 +661,23 @@ class musicGet_Functions:
             commit = "commit;"
             cursor.execute(commit)
         cursor.close()
-
+        
     def delete_album(self,album):
         cursor = self.conn.cursor()
-        selectStatement = "select artist_albums.index from Music.artist_albums where artist_albums.album like " + "'" + album + "';"
-        print("Delete Select .......",selectStatement)
-        try:
-            cursor.execute(selectStatement)
-            row = cursor.fetchone()
-            print("Rowwww ", row[0])
-            index = row[0]
-            print("Delete Album index.....",index)
-        except self.conn.Error as err:
-            print("Exception is ", err)
-            return str(err)
-        deleteStatement = "Delete from `Music`.artist_albums where `Music`.artist_albums.index = " + str(index) + ";"       
+#        selectStatement = "select artist_albums.index from Music.artist_albums where artist_albums.album like " + "'" + album + "';"
+#        print("Delete Select .......",selectStatement)
+#        try:
+#            cursor.execute(selectStatement)
+#            row = cursor.fetchone()
+#            print("Rowwww ", row[0])
+#            index = row[0]
+#            print("Delete Album index.....",index) 
+#        except self.conn.Error as err:
+#            print("Exception is ", err)
+#            return str(err)
+        deleteStatement = "delete from `Music`.artist_albums where `Music`.artist_albums.album like '" + album + "';"  
+        print('*****679   ', deleteStatement)
+#        "'" + artist + "';"     
         print(deleteStatement)
         try:
             cursor.execute(deleteStatement)
@@ -709,8 +712,8 @@ class musicGet_Functions:
         print("get cover statement ", statement)
         try:
             cursor.execute(statement)
-            result = cursor.fetchone()
-            print(result)
+            result = cursor.fetchall()
+            print("XXXget_album_cover result ",result)
             return result
             cursor.close()
 #            self.dbConnectionClose()
@@ -718,6 +721,18 @@ class musicGet_Functions:
         except self.conn.Error as err:
             print("Exception is ", err)
             return str(err)
+        
+    def delete_album_cover(self,coverId):
+        print("Start Delete ")
+        safe = "SET SQL_SAFE_UPDATES = 0;"       
+        cursor = self.conn.cursor()
+        print("cover id ", coverId)
+        deleteStatement = "Delete from `Music`.album_covers where `Music`.album_covers.cover_idx = " + str(coverId) + " ;"  
+        print("delete statement ", deleteStatement)      
+        result = cursor.execute(deleteStatement)
+        print("Delete Result is ", result)
+        cursor.execute("commit;")
+        cursor.close()
 
     def get_album_cover_count(self):
         cursor = self.conn.cursor()
@@ -749,18 +764,21 @@ class musicGet_Functions:
         print(self.get_album_cover(cover))
         return self.get_album_cover(cover)
     
-    def delete_album_cover(self,cover):
+    def update_album_cover(self,cover,newName):
         cursor = self.conn.cursor()
         cover_result = self.get_album_cover(cover)
-        coverIdx = cover_result[2]
-        print("cover result delete", coverIdx)
-        statement = "delete from `Music`.album_covers where cover_idx = " + str(coverIdx) + ";"
-        print(statement)
-        cursor.execute(statement)
-        cursor.execute("commit;")
-
-
-
+        coverIdx = cover_result
+        print("cover result update", coverIdx)
+        if coverIdx == None:
+            return "Update Failed cover Not Found"
+            exit
+        if coverIdx != None:
+            statement = "update `Music`.album_covers set album_cover = '" + newName + "' where cover_idx = " + str(coverIdx[2]) + ";"
+#                     update `Music`.album_covers set album_cover = 'JoanBaez_First 10 Years.jpg' where album_cover like 'First 10 Years.jpg'; 
+            print(statement)
+            cursor.execute(statement)
+            cursor.execute("commit;")
+    
 
     '''
             get from table by id  **********************
@@ -790,7 +808,7 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)   
 
-         
+'''         
 if __name__  == '__main__':
     import unittest
     import Test_Results
@@ -1060,3 +1078,4 @@ if __name__  == '__main__':
               
 
     unittest.main()    
+    '''
