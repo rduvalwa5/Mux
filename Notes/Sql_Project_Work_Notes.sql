@@ -6,9 +6,12 @@ SET SQL_SAFE_UPDATES = 0;
 
 select * from music.artist_albums where album like 'Test_Crud_Album';
 
+
 select * from music.artist_albums;
 
 delete from `Music`.artist_albums where album like 'Test_Crud_Album';
+Delete from `Music`.artist_albums where `Music`.artist_albums.album like 'Test_Crud_Album';
+delete from `Music`.artist_albums where `Music`.artist_albums.album like 'Test_Crud_Album';
 
 select * from `Music`.album_covers ac where ac.album_cover like '%80%';
 
@@ -23,6 +26,7 @@ select * from `Music`.artist where `Music`.artist.artist like '%Test%';
 
 select count(*) from `Music`.artist_albums;  -- 945
 select * from `Music`.artist_albums;
+
 delete from `Music`.artist_albums where album like '%Test_Crud_Album';
 
 

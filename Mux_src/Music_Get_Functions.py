@@ -767,13 +767,13 @@ class musicGet_Functions:
     def update_album_cover(self,cover,newName):
         cursor = self.conn.cursor()
         cover_result = self.get_album_cover(cover)
-        coverIdx = cover_result
+        coverIdx = cover_result[0][2]
         print("cover result update", coverIdx)
         if coverIdx == None:
             return "Update Failed cover Not Found"
             exit
         if coverIdx != None:
-            statement = "update `Music`.album_covers set album_cover = '" + newName + "' where cover_idx = " + str(coverIdx[2]) + ";"
+            statement = "update `Music`.album_covers set album_cover = '" + newName + "' where album_cover like '" + cover + "';"
 #                     update `Music`.album_covers set album_cover = 'JoanBaez_First 10 Years.jpg' where album_cover like 'First 10 Years.jpg'; 
             print(statement)
             cursor.execute(statement)
