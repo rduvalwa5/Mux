@@ -1,6 +1,9 @@
 '''
 List of album covers
 @author: rduvalwa2
+/Library/Frameworks/Python.framework/Versions/3.6/bin
+sudo pip3 install pillow
+
 select
 http://effbot.org/imagingbook/pil-index.htm
 
@@ -35,7 +38,10 @@ class displaySelectCover():
         mylist = Listbox(root, yscrollcommand = scrollbar.set, width = 100, selectmode = EXTENDED )
 
         for n in range(len(albumCoverList)):
-            mylist.insert(END,albumCoverList[n][1] )
+#            item = str(albumCoverList[n][1])
+            item = (str(albumCoverList[n][0]),albumCoverList[n][1])
+#            mylist.insert(END,albumCoverList[n][1])
+            mylist.insert(END, item)
         mylist.insert(END,"Total Albums " + str(mylist.size()))
         mylist.pack( side = LEFT, fill = BOTH )
         scrollbar.config( command = mylist.yview )
@@ -46,13 +52,18 @@ class displaySelectCover():
         root = Toplevel
         if platform.uname().node == 'C1246895-XPS':
             base = "C:\\Users\\RDuval\\git\\HubPRojects\\Mux\\AlbumCovers\\"
+        elif platform.uname().node == 'Randalls-MBP.home':
+            print(platform.uname().node)
+            base = '/Users/rduvalwa2/git/Mux/AlbumCovers/'
         else:
             base = '/Users/rduvalwa2/Workspace_Git_Python/Mux/AlbumCovers/'
+            
         widget = event.widget
         selection=widget.curselection()
         value = widget.get(selection[0])
-        print ("selection:", selection, ": '%s'" % value)
-        imagefile =  base + value 
+        print(value)
+        print ("selection:", selection, ": '%s" % value[1])
+        imagefile =  base + value[1] 
         print("cover is ", imagefile)
         image = Image.open(imagefile)
         image.show()          
