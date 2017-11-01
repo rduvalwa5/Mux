@@ -261,7 +261,7 @@ class TestGetFunctions(unittest.TestCase):
             mux.update_album(album, field,value)
             result =  mux.get_album(album)
             print(result)
-            expected =  ((1074, 'Test_Crud_Artist', 'Test_Crud_Album', 'Test_Crud_Genre', 'Test_Crud_Type', 'Test_Crud_cover.jpg', None),)
+            expected =  ((1084, 'Test_Crud_Artist', 'Test_Crud_Album', 'Test_Crud_Genre', 'Test_Crud_Type', 'Test_Crud_cover.jpg', None),)
             self.assertEqual(expected, result, "album update failure")
             
         def test_album_update_album_cover_idx(self):  
@@ -272,7 +272,7 @@ class TestGetFunctions(unittest.TestCase):
             mux.update_album(album, field,value)
             result =  mux.get_album(album)
             print(result)
-            expected =  ((1074, 'Test_Crud_Artist', 'Test_Crud_Album', 'Test_Crud_Genre', 'Test_Crud_Type', 'Test_Crud_cover.jpg', 999999),)
+            expected =  ((1084, 'Test_Crud_Artist', 'Test_Crud_Album', 'Test_Crud_Genre', 'Test_Crud_Type', 'Test_Crud_cover.jpg', 999999),)
             self.assertEqual(expected, result, "album update failure")    
             
         def test_delete_album(self):

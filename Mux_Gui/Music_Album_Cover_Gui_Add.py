@@ -46,6 +46,7 @@ class Application(Frame):
         albumCover = self.text_in_Album_Cover.get()
         mux = musicGet_Functions(True)
         result = mux.add_album_cover(albumCover)
+        print(result)
         print("Gui result ", result[0],  result[2])
         self.labelResult.config(text=str(result[2]))
         
