@@ -34,10 +34,6 @@ class Application(Frame):
         self.text_in_Type = Entry(Type_Frame)
         self.text_in_Genre = Entry(Genre_Frame)
         
-#        self.labelArtistResult = Label(Artist_Frame, text="Result Artist")
-#        self.labeTypeResult = Label(Type_Frame, text= "Result Type")
-#        self.labelGenreResult = Label(Genre_Frame, text="Result Genre")
-        
         self.labelInputAlbum.pack()
         self.labelInputArtist.pack()
         self.labelInputGenre.pack()
@@ -49,9 +45,6 @@ class Application(Frame):
         self.text_in_Genre.pack()
         
         self.labelResult.pack()
-#        self.labelArtistResult.pack()
-#        self.labelTypeResult.pack()
-#        self.labelGenreresult.pack()
         
         Album_Frame.pack(side=TOP)
         Artist_Frame.pack(side=TOP)

@@ -1,6 +1,32 @@
-/* 08-31-2017 */
 
 SET SQL_SAFE_UPDATES = 0;
+
+/* 11-12-2017 */
+update `Music`.artist_albums set artist_albums.cover_name = 'Crud_cover' where artist_albums.index = 1085;
+
+select * from `Music`.artist_albums where cover_name is NULL;
+
+select * from `Music`.artist_albums where `index` = 1085;
+
+select * from `Music`.album2songs a2s where a2s.`song` like '%Test%';
+
+Select * from music.album2songs where song like '%TestSong.mpX' ;
+
+delete from `Music`.album2songs where song = 'TestSong.mpX';
+
+delete from `Music`.album2songs where song like 'TestSong.mpX' and album like 'TestAlbum_X' and artist like 'TestArtist_X_upDate';
+
+delete  from `Music`.album2songs where `index` = 8333;
+
+commit;
+
+select * from `Music`.artist_albums where album = 'Crud_Album';
+
+delete from `Music`.artist_albums where album = 'Crud_Album';
+
+/* 08-31-2017 */
+
+select * from `Music`.artist_albums x;
 
 /* Fixing tests */
 

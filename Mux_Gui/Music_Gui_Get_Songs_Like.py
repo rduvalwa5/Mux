@@ -2,6 +2,18 @@
 Created on March 23 2017
 This code prints the songs by an artist
 @author: rduvalwa2
+
+def entry(self):
+    entry_field = tk.Entry(self.mainframe, bd=2)
+    entry_field.grid(row=1, column=0, sticky='nwse', padx=10, pady=10)
+    entry_field.insert(0, 'Enter task OR number of a task')
+    entry_field.focus()
+    self.entry_field= entry_field #make entry widget class' object
+
+#since there is only one row in common Entry, you need to only specify starting index 
+self.clear_button = tk.Button(..., command=lambda: self.entry_field.delete(0, tk.END) 
+
+
 '''
 from tkinter import *
 from Music_Get_Functions import musicGet_Functions

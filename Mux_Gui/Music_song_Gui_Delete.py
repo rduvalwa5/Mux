@@ -44,6 +44,7 @@ class Application(Frame):
         songId = self.text_in_SongId.get()
         DeleteSong =  musicGet_Functions(True)
         result = DeleteSong.delete_song(songId)
+        print("delete result from function: ", result)
         self.labelResult.config(text=result)
         if result == None:
             print("Result Success")

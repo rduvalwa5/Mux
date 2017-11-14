@@ -62,7 +62,7 @@ class Application(Frame):
         artist = self.text_in_artist.get()
         song = self.text_in_song.get()
         album = self.text_in_album.get()
-        update = musicGet_Functions()
+        update = musicGet_Functions(True)
         result = update.update_song_artist(artist,song,album)
         output = result
         self.labelResult.config(text=output)

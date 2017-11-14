@@ -20,8 +20,10 @@ class Application(Frame):
         top_frame = Frame(self)
 # Labels
         
-        self.label = Label(top_frame, text="Index of album to update")       
-        self.album_in = Entry(top_frame)
+        self.labelSong = Label(top_frame, text="Update Song")       
+        self.song_in = Entry(top_frame)
+        self.labelAlbum = Label(top_frame, text="Update Album")       
+        self.album_in = Entry(top_frame)       
         self.label1 = Label(top_frame, text="Value")
         self.text_in = Entry(top_frame)
         self.label2 = Label(top_frame, text="Result")
@@ -34,12 +36,11 @@ class Application(Frame):
         self.label.pack()
         self.r = IntVar()
 # Buttons
-        Radiobutton(top_frame, text="Album Name", variable=self.r, value=1).pack(side=LEFT)
-        Radiobutton(top_frame, text="Artist", variable=self.r, value=2).pack(side=LEFT)
-        Radiobutton(top_frame, text="Genre", variable=self.r, value=3).pack(side=LEFT)
-        Radiobutton(top_frame, text="Type", variable=self.r, value=4).pack(side=LEFT)
-        Radiobutton(top_frame, text="Album Cover", variable=self.r, value=5).pack(side=LEFT)
-        Radiobutton(top_frame, text="Cover Index", variable=self.r, value=6).pack(side=LEFT)
+        Radiobutton(top_frame, text="Update Song Name", variable=self.r, value=1).pack(side=LEFT)
+        Radiobutton(top_frame, text="Update Artist", variable=self.r, value=2).pack(side=LEFT)
+        Radiobutton(top_frame, text="Update Genre", variable=self.r, value=3).pack(side=LEFT)
+        Radiobutton(top_frame, text="Update Type", variable=self.r, value=4).pack(side=LEFT)
+#        Radiobutton(top_frame, text="Cover Index", variable=self.r, value=6).pack(side=LEFT)
 
         top_frame.pack(side=TOP)
         
@@ -57,12 +58,13 @@ class Application(Frame):
         radio button."""
         value = self.text_in.get()
         album = self.album_in.get()
+        song = self.song_in
         
         operation = self.r.get()
         if operation == 1:
             item = 'album'
             muxGet = musicGet_Functions(True)
-            muxGet.update_album(album,item,value)
+            muxGet.update_song_artist(song,self.album_in,value)
             result = muxGet.get_album(album)
             if result != []:
                 output = result

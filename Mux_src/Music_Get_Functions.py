@@ -191,9 +191,22 @@ class musicGet_Functions:
     '''
         Song  ********************
     '''
-
-    def update_song_artist(self,artist,song,album):
-        statement = "update `Music`.album2songs set artist = '" + artist + "' where song like '%" + song + "' and album like '" + album + "' ;"
+    def update_song_album_name(self,new_album_name,song,album):
+        statement = "update `Music`.album2songs set album = '" + new_album_name + "' where song like '%" + song + "' and album like '" + album + "' ;"
+        print(statement)
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(statement)
+            cursor.execute("commit;")
+            cursor.close()
+            self.dbConnectionClose()
+            return song + "updated successfully"            
+        except self.conn.Error.Error as err:
+            print("Exception is ", err)
+            return str(err)
+        
+    def update_song_name(self,new_name,song,album):
+        statement = "update `Music`.album2songs set song = '" + new_name + "' where song like '%" + song + "' and album like '" + album + "' ;"
         print(statement)
         cursor = self.conn.cursor()
         try:
@@ -206,20 +219,65 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
 
-    def get_song(self,song):
-        fields = '*'
-# 10 -24-2017       statement = "Select " + fields + " from music.album2songs where song like '%" + song + "' and album like '" + album + "' ;"
-        statement = "Select " + fields + " from music.album2songs where song like '%" + song + "' ;"
+    def update_song_artist(self,artist,song,album):
+        statement = "update `Music`.album2songs set artist = '" + artist + "' where song like '%" + song + "' and album like '" + album + "' ;"
+        getSongStatement = "Select * from music.album2songs where song like '%" + song + "%';"
         print(statement)
         cursor = self.conn.cursor()
         try:
             cursor.execute(statement)
-            result = cursor.fetchall()  
+            print("Update and Get  ",cursor.execute(getSongStatement))
+            cursor.execute("commit;")
+            cursor.close()
+            self.dbConnectionClose()
+#            return song + " updated successfully"   
+            return  song + " updated successfully"       
+        except self.conn.Error.Error as err:
+            print("Exception is ", err)
+            return str(err)
+
+    def update_song_genre(self,genre,song,album):
+        statement = "update `Music`.album2songs set genre = '" + genre + "' where song like '%" + song + "' and album like '" + album + "' ;"
+        print(statement)
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(statement)
+            cursor.execute("commit;")
+            cursor.close()
+            self.dbConnectionClose()
+            return song + " updated successfully"            
+        except self.conn.Error.Error as err:
+            print("Exception is ", err)
+            return str(err)
+        
+    def update_song_type(self,typ,song,album):
+        statement = "update `Music`.album2songs set type = '" + typ + "' where song like '%" + song + "' and album like '" + album + "' ;"
+        print(statement)
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(statement)
+            cursor.execute("commit;")
+            cursor.close()
+            self.dbConnectionClose()
+            return song + " updated successfully"            
+        except self.conn.Error.Error as err:
+            print("Exception is ", err)
+            return str(err)
+
+    def get_song(self,song):
+        fields = '*'
+# 10 -24-2017       statement = "Select " + fields + " from music.album2songs where song like '%" + song + "' and album like '" + album + "' ;"
+        statement = "Select * from music.album2songs where song like '%" + song + "%';"
+        print(statement)
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(statement)
+            result = cursor.fetchone()  
             print("get_song result: ", result)
             cursor.close()
             self.dbConnectionClose()
             return result            
-        except self.conn.Error.Error as err:
+        except self.conn.Error as err:
             print("Exception is ", err)
             return str(err)
 
@@ -280,7 +338,7 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)        
     
-    def add_one_song(self,artist,album,song,genre='Rock',path ='/Users/rduvalwa2/Music/iTunes/iTunes Music/Music',server='OSXAir.home',tipe='Download'):  
+    def add_one_song(self,artist,album,song,genre='Rock',tipe='Download' , path ='/Users/rduvalwa2/Music/iTunes/iTunes Music/Music',server='OSXAir.home'):  
         cursor = self.conn.cursor()
         maxStatement = 'select max(`Music`.album2songs.index) FROM `Music`.album2songs;'
         try:
@@ -298,16 +356,21 @@ class musicGet_Functions:
             cursor.execute(statement)
             commit = "commit;"
             cursor.execute(commit)
+            getStatement = "SELECT * FROM music.album2songs where `index` = " + str(newIndex) + ";"        
+            cursor.execute(getStatement)
+            thisSong = cursor.fetchone()
+            print("Added song is ",thisSong)
+
             cursor.close()
             self.dbConnectionClose()
-            return "Success"
+            return ("Success",newIndex, song)
         except self.conn.Error.Error as err:
             print("Exception is ", err)
             return str(err)
 
-    def delete_one_song(self,artist,album,song):
+    def delete_one_song(self,album,song):
             cursor = self.conn.cursor()
-            statement = "delete from `Music`.album2songs where song like '" + song + "' and album like '" + album + "' and artist like '" + artist + "';"
+            statement = "delete from `Music`.album2songs where song like '" + song + "';"   # and album like '" + album + "' and artist like '" + artist + "';"
             print("delete ", statement)
             try:
                 cursor.execute(statement)
@@ -400,13 +463,13 @@ class musicGet_Functions:
         insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(newIndex) + ",\"" + self.server + "\",\"" + self.base + "\",\""  + artist + "\",\""  + album + "\",\""  + song + "\",\""  + genre + "\",\""  + typ + "\")"
         print(insertStatement)
         cursor.execute( insertStatement)
-        countStatement = "SELECT count(*) FROM music.album2songs;"        
-        cursor.execute(countStatement)
-        count = cursor.fetchone()
-        print(count)
+        getStatement = "SELECT * FROM music.album2songs where `index` = " + str(newIndex) + ";"        
+        cursor.execute(getStatement)
+        thisSong = cursor.fetchone()
+        print("Added song is ",thisSong)
         commit = "commit;"
         cursor.execute(commit)
-        result = "added " + song
+        result = (song,newIndex)
         cursor.close()
         self.dbConnectionClose()
         return result 
@@ -416,16 +479,20 @@ class musicGet_Functions:
         '''
         delete  from `Music`.album2songs where song like 'Song_Song';
         '''
-        if self.notTestRun:
-            statement = "delete  from `Music`.album2songs where `index` = " + str(idx) + ";"
-            print(statement)
+        statement = "delete from `Music`.album2songs where album2songs.`index` = " + str(idx) + ";"
+        print(statement)
+        try:
             cursor = self.conn.cursor()
-            cursor.execute( statement)
+            safe = "SET SQL_SAFE_UPDATES = 0;"       
+            cursor.execute(safe)
+            cursor.execute(statement)
             commit = "commit;"
             cursor.execute(commit)
-            print("done")
-        cursor.close()
-    
+            cursor.close()
+            return "delete successfull "
+        except Exception  as e:
+            print("Exception is ", e)
+
     '''
         Artist  ********************
     '''
@@ -640,56 +707,58 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)        
         
-    def update_album(self,album,field,value):
+    def update_album(self,idx,field,value):
         cursor = self.conn.cursor()
-        execute = False
-        print(type(value))
-        if type(value) == type('str'): 
-            statement = "update `Music`.`artist_albums` set " + field + " = '" + value  +"' where album like '" + album +"';"
-            print(statement)
-        if type(value) == type(99):
-            print("INT Input........")
-            statement = "update `Music`.`artist_albums` set " + field + " = " + value  +" where album like '" + album +"';"
-            print(statement)
-        try:
-                cursor.execute(statement)
-                execute = True
-        except self.conn.Error as err:
-                print("Exception is ", err)
-                return str(err)        
-        if execute:   
-            commit = "commit;"
-            cursor.execute(commit)
+        safe = "SET SQL_SAFE_UPDATES = 0;"  
+        cursor.execute(safe)
+        statement = "update `Music`.artist_albums set artist_albums." + field + " = '" + value  +"' where artist_albums.index = " + str(idx) + ";"
+        print(statement)
+        cursor.execute(statement)
+        commit = "commit;"
+        cursor.execute(commit)
         cursor.close()
         
-    def delete_album(self,album):
+    def delete_album_byindex(self,idx):
         cursor = self.conn.cursor()
-#        selectStatement = "select artist_albums.index from Music.artist_albums where artist_albums.album like " + "'" + album + "';"
-#        print("Delete Select .......",selectStatement)
-#        try:
-#            cursor.execute(selectStatement)
-#            row = cursor.fetchone()
-#            print("Rowwww ", row[0])
-#            index = row[0]
-#            print("Delete Album index.....",index) 
-#        except self.conn.Error as err:
-#            print("Exception is ", err)
-#            return str(err)
-        deleteStatement = "delete from `Music`.artist_albums where `Music`.artist_albums.album like '" + album + "';"  
+        safe = "SET SQL_SAFE_UPDATES = 0;"  
+        cursor.execute(safe)
+        deleteStatement = "delete from `Music`.artist_albums where `index` = " + str(idx) + "';"  
         print('*****679   ', deleteStatement)
-#        "'" + artist + "';"     
-        print(deleteStatement)
         try:
             cursor.execute(deleteStatement)
             commit = "commit;"
             cursor.execute(commit)
-            result = "album " + album + "deleted"
+            result = "album " + idx + "deleted"
+            print("741  ", result)
             cursor.close()
-#            self.dbConnectionClose()
+            self.dbConnectionClose()
             return result  
         except self.conn.Error as err:
-            print("Exception is ", err)
-            return str(err)
+            print("Delete Album Exception is ", err)
+            cursor.close()
+            return err
+
+    def delete_album_by_name(self,album_name):
+        cursor = self.conn.cursor()
+        safe = "SET SQL_SAFE_UPDATES = 0;"  
+        cursor.execute(safe)
+        deleteStatement = "delete from `Music`.artist_albums where album = '" + album_name + "';"  
+        print('*****764   ', deleteStatement)
+        try:
+            cursor.execute(deleteStatement)
+            commit = "commit;"
+            cursor.execute(commit)
+            result = "album " + album_name + "deleted"
+            print("771  ", result)
+            cursor.close()
+            self.dbConnectionClose()
+            return result  
+        except self.conn.Error as err:
+            errorr =  "Delete Album by Name Exception is " + err
+            print(errorr)
+            cursor.close()
+            return errorr
+
 
     def get_all_album_covers(self):
         cursor = self.conn.cursor()
@@ -721,18 +790,6 @@ class musicGet_Functions:
         except self.conn.Error as err:
             print("Exception is ", err)
             return str(err)
-        
-    def delete_album_cover(self,coverId):
-        print("Start Delete ")
-        safe = "SET SQL_SAFE_UPDATES = 0;"       
-        cursor = self.conn.cursor()
-        print("cover id ", coverId)
-        deleteStatement = "Delete from `Music`.album_covers where `Music`.album_covers.cover_idx = " + str(coverId) + " ;"  
-        print("delete statement ", deleteStatement)      
-        result = cursor.execute(deleteStatement)
-        print("Delete Result is ", result)
-        cursor.execute("commit;")
-        cursor.close()
 
     def get_album_cover_count(self):
         cursor = self.conn.cursor()
@@ -763,7 +820,19 @@ class musicGet_Functions:
         cursor.execute("commit;")
         print(self.get_album_cover(cover))
         return self.get_album_cover(cover)
-    
+        
+    def delete_album_cover(self,coverId):
+        print("Start Delete ")
+        safe = "SET SQL_SAFE_UPDATES = 0;"       
+        cursor = self.conn.cursor()
+        print("cover id ", coverId)
+        deleteStatement = "Delete from `Music`.album_covers where `Music`.album_covers.cover_idx = " + str(coverId) + " ;"  
+        print("delete statement ", deleteStatement)      
+        result = cursor.execute(deleteStatement)
+        print("Delete Result is ", result)
+        cursor.execute("commit;")
+        cursor.close()
+
     def update_album_cover(self,cover,newName):
         cursor = self.conn.cursor()
         cover_result = self.get_album_cover(cover)

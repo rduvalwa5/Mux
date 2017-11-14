@@ -50,7 +50,7 @@ class Application(Frame):
         operation = self.r.get()
         if operation == 1:
             item = 'song'
-            muxGet = musicGet_Functions()
+            muxGet = musicGet_Functions(True)
             result = muxGet.get_by_id(text, item)
             if result != []:
                 output = result
@@ -59,7 +59,7 @@ class Application(Frame):
             
         elif operation == 2:
             item = 'artist'
-            muxGet = musicGet_Functions()
+            muxGet = musicGet_Functions(True)
             result = muxGet.get_by_id(text, item)
             if result != []:
                 output = result
@@ -67,7 +67,7 @@ class Application(Frame):
                 output = text + " not found"
         elif operation == 3:
             item = 'album'
-            muxGet = musicGet_Functions()
+            muxGet = musicGet_Functions(True)
             result = muxGet.get_by_id(text, item)
             if result != []:
                 output = result
