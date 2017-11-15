@@ -61,7 +61,7 @@ class musicGet_Functions:
     '''
     Get max index values from tables
     '''
-    def set_safe_update(self):
+    def set_safe(self):
         cursor = self.conn.cursor()
         statement = 'SET SQL_SAFE_UPDATES = 0;'
         try:
@@ -272,7 +272,7 @@ class musicGet_Functions:
         cursor = self.conn.cursor()
         try:
             cursor.execute(statement)
-            result = cursor.fetchone()  
+            result = cursor.fetchall()  
             print("get_song result: ", result)
             cursor.close()
             self.dbConnectionClose()
@@ -379,7 +379,7 @@ class musicGet_Functions:
                 cursor.close()
                 self.dbConnectionClose()
                 return song + " deleted"  
-            except self.conn.Error.Error as err:
+            except self.conn.Error as err:
                 print("Exception is ", err)
                 return str(err)      
 

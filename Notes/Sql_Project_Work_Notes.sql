@@ -1,7 +1,7 @@
 
 SET SQL_SAFE_UPDATES = 0;
 
-/* 11-12-2017 */
+/* 11-13-2017 */
 update `Music`.artist_albums set artist_albums.cover_name = 'Crud_cover' where artist_albums.index = 1085;
 
 select * from `Music`.artist_albums where cover_name is NULL;

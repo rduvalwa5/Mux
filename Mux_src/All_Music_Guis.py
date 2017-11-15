@@ -39,15 +39,16 @@ class getSong_UI(Frame):
         user has placed in the Entry widget according to the selected
         radio button."""
         song = self.text_in.get()
-        muxGet = musicGet_Functions()
+        muxGet = musicGet_Functions(True)
         result = muxGet.get_song(song)
+        print("Song get result ", result)
         if result != []:
             songs = []
-            idx = 0
-            for i in result:
-                print(i)
-                songs.append((result[idx][0],result[idx][3],result[idx][4], result[idx][5]))
-                idx = idx + 1
+#            idx = 0
+            for aSong in result:
+                theSong = str(aSong[0]) + aSong[3] + aSong[4]  + '\n'
+                songs.append(theSong)
+#                idx = idx + 1
             print(songs)            
             output = songs
         else:
@@ -91,8 +92,9 @@ class getArtist_UI(Frame):
         user has placed in the Entry widget according to the selected
         radio button."""
         artist = self.text_in.get()
-        muxGet = musicGet_Functions()
+        muxGet = musicGet_Functions(True)
         result = muxGet.get_artist(artist)
+        print(result)
         if result != []:
             artist = []
             idx = 0
@@ -144,7 +146,7 @@ class getAlbum_UI(Frame):
         user has placed in the Entry widget according to the selected
         radio button."""
         album = self.text_in.get()
-        muxGet = musicGet_Functions()
+        muxGet = musicGet_Functions(True)
         result = muxGet.get_album(album)
         if result != []:
             albums = []
@@ -208,7 +210,7 @@ class getById_UI(Frame):
         operation = self.r.get()
         if operation == 1:
             item = 'song'
-            muxGet = musicGet_Functions()
+            muxGet = musicGet_Functions(True)
             result = muxGet.get_by_id(text, item)
             if result != []:
                 output = result
@@ -217,7 +219,7 @@ class getById_UI(Frame):
             
         elif operation == 2:
             item = 'artist'
-            muxGet = musicGet_Functions()
+            muxGet = musicGet_Functions(True)
             result = muxGet.get_by_id(text, item)
             if result != []:
                 output = result
@@ -225,7 +227,7 @@ class getById_UI(Frame):
                 output = text + " not found"
         elif operation == 3:
             item = 'album'
-            muxGet = musicGet_Functions()
+            muxGet = musicGet_Functions(True)
             result = muxGet.get_by_id(text, item)
             if result != []:
                 output = result
