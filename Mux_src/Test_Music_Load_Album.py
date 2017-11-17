@@ -1,16 +1,18 @@
 '''
 '''
 import unittest 
-#from Musicdb_info import login_info_root
-#from Musicdb_info import login_info_osx 
-#import mysql.connector
+# from Musicdb_info import login_info_root
+# from Musicdb_info import login_info_osx 
+# import mysql.connector
 import os, platform
-#import self.conn.Error
+# import self.conn.Error
 import MySQLdb   as connDb
 import Music_Get_Functions
 from  Music_Load import musicLoad_Functions, song_Add_Update_Delete, album_Add_Update_Delete, artist_Add_Update_Delete
 
+
 class Test_MusicLoad(unittest.TestCase):
+
         def setUp(self):
 #   self.albumAddUpDel.add_album(self.album,self.addArtist,self.addType,self.addGenre)
 
@@ -52,31 +54,32 @@ class Test_MusicLoad(unittest.TestCase):
             expected = "True" 
             album = 'Heart Like A Wheel'
             result = self.albumAddUpDel.doesAlbumExist(album)
-            self.assertEqual(expected,result, "Result expected True but was False")  
+            self.assertEqual(expected, result, "Result expected True but was False")  
   
         def test_DoesAlbumExist_False(self):
             expected = "False" 
             album = "Long Long Road"
             result = self.albumAddUpDel.doesAlbumExist(album)
-            self.assertEqual(expected,result, "Result expected False but was True")  
+            self.assertEqual(expected, result, "Result expected False but was True")  
             
         """
             Test Support Functions
         """                    
+
         def Restore_testAlbum(self):   
-            print("*************** Node Name is ",platform.uname().node)
+            print("*************** Node Name is ", platform.uname().node)
             if platform.uname().node == 'C1246895-osx.home':
 #            self.conn = connDb.Connect(**login_info_osx)
-                self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
+                self.conn = connDb.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
 
             elif platform.uname().node == 'OSXAir.home.home':
 #            self.conn = connDb.Connect(**login_info_default)
-                self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+                self.conn = connDb.connect(host='OSXAir.home', user='rduvalwa2', password='blu4jazz', db='Music')
             elif platform.uname().node == 'C1246895-WIN64-Air':
 #            self.conn = connDb.Connect(**login_info_default)
-                self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
+                self.conn = connDb.connect(host='OSXAir.home', user='root', password='blu4jazz', db='Music')
             else:
-                self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
+                self.conn = connDb.connect(host='OSXAir.home', user='root', password='blu4jazz', db='Music')
 
             statement = "UPDATE `Music`.artist_albums SET artist = 'ZZ_ZTest',genre = 'Test GenX',type = 'TestTape' WHERE album = 'Test_AlbumA';"
             print(statement)
@@ -156,8 +159,6 @@ class Test_MusicLoad(unittest.TestCase):
             self.assertListEqual(expected, result, "list is not empty")   
             
 '''
-                               
-
                  
 if __name__ == "__main__":
     unittest.main()

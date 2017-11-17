@@ -14,6 +14,7 @@ from mysql.connector.errors import Error
 
 
 class connection_db:
+
     def connect_music(self):
         pass
 
@@ -24,8 +25,8 @@ class musicFile:
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home'       
     
-    def get_record_count(self,table):
-        statement = "select count(*) from " + table   + ";"
+    def get_record_count(self, table):
+        statement = "select count(*) from " + table + ";"
         if os.uname().nodename == 'C1246895-osx.home':
             conn = mysql.connector.Connect(**login_info_osx)
         else:
@@ -40,17 +41,16 @@ class musicFile:
     def get_max_index(self, table):
         self.table = '`Music`.' + table
         self.tableIndex = table + "." + 'Index'
-        max_index_statement = "select max(" + self.tableIndex + ") from " + self.table   + ";"
+        max_index_statement = "select max(" + self.tableIndex + ") from " + self.table + ";"
         if os.uname().nodename == 'C1246895-osx.home':
             conn = mysql.connector.Connect(**login_info_osx)
         else:
             conn = mysql.connector.Connect(**login_info_root)
         cursor = conn.cursor()
-        cursor.execute( max_index_statement)
+        cursor.execute(max_index_statement)
         maxIndex = cursor.fetchone()
         conn.close()   
         return maxIndex
-    
 
     def get_select_Album(self, fields, constraints):
         if os.uname().nodename == 'C1246895-osx.home':
@@ -60,7 +60,7 @@ class musicFile:
 #            print(os.uname().nodename)
             conn = mysql.connector.Connect(**login_info_root)
         dbCursor = conn.cursor()
-        statement = "select " + fields + " from Music.artist_albums " + constraints + ";" #where Albums.index = 3;"
+        statement = "select " + fields + " from Music.artist_albums " + constraints + ";"  # where Albums.index = 3;"
         dbCursor.execute(statement)
         row = dbCursor.fetchone()
         dbCursor.close()
@@ -74,7 +74,7 @@ class musicFile:
         else:
             conn = mysql.connector.Connect(**login_info_rd)
         dbCursor = conn.cursor()
-        statement = "select "+ fields + " from Music.artist " + constraints + ";" #where Albums.index = 3;"
+        statement = "select " + fields + " from Music.artist " + constraints + ";"  # where Albums.index = 3;"
         print(statement)
         dbCursor.execute(statement)
         rows = dbCursor.fetchall()
@@ -97,7 +97,7 @@ class musicFile:
         conn.close()
         return row        
     
-    def select_song_by_criteria(self,statement):
+    def select_song_by_criteria(self, statement):
         '''
         Select a song or songs by criteria.
         '''
@@ -123,12 +123,12 @@ class musicFile:
         musicDirs = os.listdir(self.base)
         for directory in musicDirs:
             if os.path.isdir(self.base + "/" + directory):
-                artist.append((index,directory))
+                artist.append((index, directory))
                 index = index + 1
         return artist
     
     def get_albums(self):
-        base =   "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
+        base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         albums = []
         index = 0
         artists = self.get_music_artist()
@@ -138,13 +138,13 @@ class musicFile:
                 artist_albums = os.listdir(base + "/" + artist)
                 for album in artist_albums:
                     if album != '.DS_Store':
-                        albums.append((index,artist,album))
+                        albums.append((index, artist, album))
                         index = index + 1
         return albums
 
     def get_all_songs(self):
         index = 0
-        base =   "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
+        base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         albums = []
         songs = []
         artist = self.get_music_artist()
@@ -153,10 +153,10 @@ class musicFile:
                 artist_albums = os.listdir(base + "/" + a[1])
                 for album in artist_albums:
                     if album != '.DS_Store':
-                        albums.append((a,album))
+                        albums.append((a, album))
                         album_songs = os.listdir(base + "/" + a[1] + "/" + album)
                         for song in album_songs:
-                                songs.append((index,a[1],album,song))
+                                songs.append((index, a[1], album, song))
                                 index = index + 1
         return songs
     
@@ -171,8 +171,8 @@ class musicFile:
         commit = "commit;"
         cursor.execute(commit)    
     
-    def get_songs(self,artist,album='all'):
-        base =   "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
+    def get_songs(self, artist, album='all'):
+        base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         albums = []
         songs = []
         newIndex = 0
@@ -182,22 +182,20 @@ class musicFile:
                 if album == 'all':
                     for al in artist_albums:
                         if al != '.DS_Store':
-                            albums.append((artist,al))
+                            albums.append((artist, al))
                             album_songs = os.listdir(base + "/" + artist + "/" + al)
                             for song in album_songs:
-                                    songs.append((newIndex,artist,al,song))
+                                    songs.append((newIndex, artist, al, song))
                 elif  album != 'all':
                     for al in artist_albums:
                         if al == album:
                             if al != '.DS_Store':
-                                albums.append((artist,al))
+                                albums.append((artist, al))
                                 album_songs = os.listdir(base + "/" + artist + "/" + al)
                                 for song in album_songs:
-                                    songs.append((newIndex,artist,al,song))
-                        
+                                    songs.append((newIndex, artist, al, song))
             
         return songs
-
 
     def initial_insert_into_album2songs(self): 
         '''
@@ -214,8 +212,8 @@ class musicFile:
         cursor.execute(trunkate)
         allSongs = self.get_all_songs()
         for song in allSongs:
-                insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(song[0]) + ",\"" + self.server + "\",\"" + self.base + "\",\""  + song[1] + "\",\""  + song[2] + "\",\""  + song[3] + "\",\""  + "rock" + "\",\""  + "download" + "\")"
-                cursor.execute( insertStatement)
+                insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(song[0]) + ",\"" + self.server + "\",\"" + self.base + "\",\"" + song[1] + "\",\"" + song[2] + "\",\"" + song[3] + "\",\"" + "rock" + "\",\"" + "download" + "\")"
+                cursor.execute(insertStatement)
         countStatement = "SELECT count(*) FROM music.album2songs;"        
         cursor.execute(countStatement)
         count = cursor.fetchone()
@@ -226,7 +224,7 @@ class musicFile:
         cursor.close()
         conn.close()
 
-    def add_songs(self,artist,album='all'):
+    def add_songs(self, artist, album='all'):
         '''
         This code adds song
         '''
@@ -237,19 +235,19 @@ class musicFile:
             self.server = os.uname().nodename
             conn = mysql.connector.Connect(**login_info_root)
         cursor = conn.cursor()
-        maxIndex =  self.get_max_index("album2songs")
+        maxIndex = self.get_max_index("album2songs")
         index = maxIndex[0]
         newIndex = index + 1
         print(newIndex)
         if album == 'all': 
             songs = self.get_songs(artist)
         else:
-            songs = self.get_songs(artist,album)
+            songs = self.get_songs(artist, album)
         print(songs)
         for song in songs:
-                insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(newIndex) + ",\"" + self.server + "\",\"" + self.base + "\",\""  + song[1] + "\",\""  + song[2] + "\",\""  + song[3] + "\",\""  + "rock" + "\",\""  + "download" + "\")"
+                insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(newIndex) + ",\"" + self.server + "\",\"" + self.base + "\",\"" + song[1] + "\",\"" + song[2] + "\",\"" + song[3] + "\",\"" + "rock" + "\",\"" + "download" + "\")"
                 print(insertStatement)
-                cursor.execute( insertStatement)
+                cursor.execute(insertStatement)
                 newIndex = newIndex + 1
         countStatement = "SELECT count(*) FROM music.album2songs;"        
         cursor.execute(countStatement)
@@ -260,9 +258,8 @@ class musicFile:
         print("done")
         cursor.close()
         conn.close()
-
     
-    def delete_songs(self,artist,albumin='all',songin="all"):
+    def delete_songs(self, artist, albumin='all', songin="all"):
         if os.uname().nodename == 'C1246895-osx.home':
             self.server = os.uname().nodename
             conn = mysql.connector.Connect(**login_info_osx)
@@ -270,7 +267,7 @@ class musicFile:
             self.server = os.uname().nodename
             conn = mysql.connector.Connect(**login_info_root)
         cursor = conn.cursor()   
-        delete_songs = self.get_songs(artist,albumin)
+        delete_songs = self.get_songs(artist, albumin)
         print("delete songs: ", delete_songs)  
         index = 0
         if albumin == 'all':
@@ -327,7 +324,6 @@ class musicFile:
         cursor.close()
         conn.close()
 
-
     def initial_insert_into_artist_albums(self): 
         '''
         This code recurses thru the "base" path and captures the artist, album and song
@@ -343,8 +339,8 @@ class musicFile:
         cursor.execute(trunkate)
         allAbums = self.get_albums()
         for album in allAbums:
-                insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.genre,artist_albums.type)  values(" + str(album[0]) + ",\""  + album[1] + "\",\""  + album[2] + "\",\""  + "rock" + "\",\""  + "download" + "\")"
-                cursor.execute( insertStatement)
+                insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.genre,artist_albums.type)  values(" + str(album[0]) + ",\"" + album[1] + "\",\"" + album[2] + "\",\"" + "rock" + "\",\"" + "download" + "\")"
+                cursor.execute(insertStatement)
         countStatement = "SELECT count(*) FROM music.artist_albums;"        
         cursor.execute(countStatement)
         count = cursor.fetchone()
@@ -354,7 +350,6 @@ class musicFile:
         print("done")
         cursor.close()
         conn.close()
-
 
     def initial_insert_into_artist(self): 
         '''
@@ -371,8 +366,8 @@ class musicFile:
         cursor.execute(trunkate)
         allArtist = self.get_music_artist()
         for artist in allArtist:
-                insertStatement = "INSERT into Music.artist (artist.index, artist.artist,artist.genre)  values(" + str(artist[0]) + ",\"" + artist[1] + "\",\""  + "rock" + "\")"
-                cursor.execute( insertStatement)
+                insertStatement = "INSERT into Music.artist (artist.index, artist.artist,artist.genre)  values(" + str(artist[0]) + ",\"" + artist[1] + "\",\"" + "rock" + "\")"
+                cursor.execute(insertStatement)
         countStatement = "SELECT count(*) FROM music.artist;"        
         cursor.execute(countStatement)
         count = cursor.fetchone()
@@ -382,9 +377,8 @@ class musicFile:
         print("done")
         cursor.close()
         conn.close()
-
  
-    def add_album(self,album,artist,tipe):
+    def add_album(self, album, artist, tipe):
         '''
         This code recurses thru the "base" path and captures the artist, album and song
         '''
@@ -395,11 +389,11 @@ class musicFile:
             self.server = os.uname().nodename
             conn = mysql.connector.Connect(**login_info_root)
         cursor = conn.cursor()
-        maxIndex =  self.get_max_index("artist_albums")
+        maxIndex = self.get_max_index("artist_albums")
         index = maxIndex[0]
         newIndex = index + 1
         print(newIndex)
-        insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.type)  values(" + str(newIndex) + ",\""  + artist + "\",\""  + album + "\",\""  + tipe + "\")"
+        insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.type)  values(" + str(newIndex) + ",\"" + artist + "\",\"" + album + "\",\"" + tipe + "\")"
         print(insertStatement)
         cursor.execute(insertStatement)
         count = cursor.fetchone()
@@ -409,10 +403,9 @@ class musicFile:
         print("done")
         cursor.close()
         conn.close()
-
         
 #  Not done
-    def delete_album(self,album):
+    def delete_album(self, album):
         if os.uname().nodename == 'C1246895-osx.home':
             self.server = os.uname().nodename
             conn = mysql.connector.Connect(**login_info_osx)
@@ -435,8 +428,7 @@ class musicFile:
         cursor.close()
         conn.close()
         
-        
-    def add_artist(self,artist,genre):
+    def add_artist(self, artist, genre):
         if os.uname().nodename == 'C1246895-osx.home':
             self.server = os.uname().nodename
             conn = mysql.connector.Connect(**login_info_osx)
@@ -444,11 +436,11 @@ class musicFile:
             self.server = os.uname().nodename
             conn = mysql.connector.Connect(**login_info_root)
         cursor = conn.cursor()
-        maxIndex =  self.get_max_index("artist")
+        maxIndex = self.get_max_index("artist")
         index = maxIndex[0]
         newIndex = index + 1
         print(newIndex) 
-        insertStatement = "INSERT into Music.artist (artist.index, artist.artist,artist.genre)  values(" + str(newIndex) + ",\""  + artist  + "\",\""  + genre + "\")"
+        insertStatement = "INSERT into Music.artist (artist.index, artist.artist,artist.genre)  values(" + str(newIndex) + ",\"" + artist + "\",\"" + genre + "\")"
         print(insertStatement)
         cursor.execute(insertStatement)
         commit = "commit;"
@@ -457,7 +449,7 @@ class musicFile:
         cursor.close()
         conn.close()
 
-    def delete_artist(self,artist):
+    def delete_artist(self, artist):
         if os.uname().nodename == 'C1246895-osx.home':
             self.server = os.uname().nodename
             conn = mysql.connector.Connect(**login_info_osx)
@@ -482,8 +474,9 @@ class musicFile:
 
     def dbConnectionClose(self):
         self.conn.close()    
+
     
-if __name__  == '__main__':
+if __name__ == '__main__':
 #    mux = musicFile()
 
 #    albumCount = mux.get_record_count("`Music`.artist_albums")
@@ -500,10 +493,7 @@ if __name__  == '__main__':
 #    mux.add_songs('ZZ_ZTest','all')
 #    mux.delete_songs('ZZ_ZTest','all')
     
-    
 #    songs = mux.get_songs(artist, album):
-        
-
 
 #    fields = "Music.artist.index, Music.artist.artist "
 #    criteria = " Music.artist.artist like \'Bob Dylan\'"   
@@ -550,22 +540,19 @@ if __name__  == '__main__':
 #    print(result)
 #    mux.delete_album(album)   
 #    print(mux.get_select_ArtistAlbums(fields,criteria))
-    
-    
 
 #    albumCount = mux.get_record_count("`Music`.artist_albums")
 #    songCount = mux.get_record_count("`Music`.album2songs")
 #    artistCount = mux.get_record_count("`Music`.artist")
 #    print("Artist: ", artistCount ," Songs: ", songCount, " Albums: ", albumCount )
     
-    
 #    albumCount = mux.get_record_count("`Music`.artist_albums")
 #    songCount = mux.get_record_count("`Music`.album2songs")
 #    artistCount = mux.get_record_count("`Music`.artist")
 #    print("Artist: ", artistCount ," Songs: ", songCount, " Albums: ", albumCount )
-    
 
     import unittest
+
     class TestConnector(unittest.TestCase):
 
         def test_get_select_ArtistAlbums(self):
@@ -574,8 +561,7 @@ if __name__  == '__main__':
             expected = 909
             mux = musicFile()
             result = mux.get_select_Album(fields, constraints)
-            self.assertEqual(expected,result[0])
- 
+            self.assertEqual(expected, result[0])
 
         def test_get_select_Album(self):
             fields = "count(*)"
@@ -583,7 +569,7 @@ if __name__  == '__main__':
             expected = 909
             mux = musicFile()
             result = mux.get_select_ArtistAlbums(fields, constraints)
-            self.assertEqual(expected,result[0])
+            self.assertEqual(expected, result[0])
 
         def test_get_select_Artist(self):
             fields = "count(*)"
@@ -591,42 +577,41 @@ if __name__  == '__main__':
             expected = 537
             mux = musicFile()
             result = mux.get_select_Artist(fields, constraints)
-            self.assertEqual(expected,result[0][0])
+            self.assertEqual(expected, result[0][0])
 
         def testGetMaxArtist(self):
             mux = musicFile()
             table = 'Artist'
             expected = 537
             result = mux.get_max_index(table)
-            self.assertEqual(expected,result[0])
+            self.assertEqual(expected, result[0])
             
         def testGetMaxAlbums(self):
             mux = musicFile()
             table = 'artist_albums'
             expected = 909
             result = mux.get_max_index(table)
-            self.assertEqual(expected,result[0])
+            self.assertEqual(expected, result[0])
  
         def testGetMaxSongs(self):
             mux = musicFile()
             table = 'album2songs'
             expected = 6624
             result = mux.get_max_index(table)
-            self.assertEqual(expected,result[0])
- 
+            self.assertEqual(expected, result[0])
            
         def testGetMaxAlbumSongs(self):
             mux = musicFile()
             table = 'album2songs'
             expected = 6624
             result = mux.get_max_index(table)
-            self.assertEqual(expected,result[0]) 
+            self.assertEqual(expected, result[0]) 
        
         def test_get_dirs_artist(self):
             mux = musicFile()
-            base =   "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
+            base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
             musicArtist = mux.get_music_artist()
-            self.assertIn( (409, 'The Charlie Daniels Band'), musicArtist, "Charlie Daniels Band not there")
+            self.assertIn((409, 'The Charlie Daniels Band'), musicArtist, "Charlie Daniels Band not there")
 
         def test_albumList(self):
             mux = musicFile()
@@ -637,4 +622,5 @@ if __name__  == '__main__':
             mux = musicFile()
             mysongs = mux.get_all_songs()
             self.assertIn((0, '18 South', 'Soulful Southern Roots Music', '01 Late Night Ramble.mp3'), mysongs, "'01 Late Night Ramble.mp3' song is missing")       
+
     unittest.main()    

@@ -7,8 +7,10 @@ Created on Feb 12, 2017
 from tkinter import *
 from Music_Get_Functions import musicGet_Functions
 
+
 class getSong_UI(Frame):
     """Application main window class."""
+
     def __init__(self, master=None):
         """Main frame initialization (mostly delegated)"""
         Frame.__init__(self, master)
@@ -28,7 +30,7 @@ class getSong_UI(Frame):
         
         bottom_frame = Frame(self)
         bottom_frame.pack(side=TOP)
-#how to disable a button
+# how to disable a button
         self.QUIT = Button(bottom_frame, text="Quit", command=self.quit, state='disabled')
         self.QUIT.pack(side=LEFT)
         self.handleb = Button(bottom_frame, text="Submit", command=self.handle)
@@ -46,7 +48,7 @@ class getSong_UI(Frame):
             songs = []
 #            idx = 0
             for aSong in result:
-                theSong = str(aSong[0]) + aSong[3] + aSong[4]  + '\n'
+                theSong = str(aSong[0]) + aSong[3] + aSong[4] + '\n'
                 songs.append(theSong)
 #                idx = idx + 1
             print(songs)            
@@ -56,12 +58,14 @@ class getSong_UI(Frame):
             
  # use .config to change the state of the button           
         self.labelResult.config(text=output)
-        self.QUIT.config(state = 'active')
+        self.QUIT.config(state='active')
 #        self.QUIT.pack(side=BOTTOM)
         self.QUIT.pack(side=TOP)
 
+
 class getArtist_UI(Frame):
     """Application main window class."""
+
     def __init__(self, master=None):
         """Main frame initialization (mostly delegated)"""
         Frame.__init__(self, master)
@@ -81,7 +85,7 @@ class getArtist_UI(Frame):
         
         bottom_frame = Frame(self)
         bottom_frame.pack(side=TOP)
-#how to disable a button
+# how to disable a button
         self.QUIT = Button(bottom_frame, text="Quit", command=self.quit, state='disabled')
         self.QUIT.pack(side=LEFT)
         self.handleb = Button(bottom_frame, text="Submit", command=self.handle)
@@ -100,7 +104,7 @@ class getArtist_UI(Frame):
             idx = 0
             for i in result:
                 print(i)
-                artist.append((result[idx][0],result[idx][1],result[idx][2]))
+                artist.append((result[idx][0], result[idx][1], result[idx][2]))
                 idx = idx + 1
             print(artist)            
             output = artist
@@ -109,13 +113,14 @@ class getArtist_UI(Frame):
             
  # use .config to change the state of the button           
         self.labelResult.config(text=output)
-        self.QUIT.config(state = 'active')
+        self.QUIT.config(state='active')
 #        self.QUIT.pack(side=BOTTOM)
         self.QUIT.pack(side=TOP)
         
 
 class getAlbum_UI(Frame):
     """Application main window class."""
+
     def __init__(self, master=None):
         """Main frame initialization (mostly delegated)"""
         Frame.__init__(self, master)
@@ -135,7 +140,7 @@ class getAlbum_UI(Frame):
         
         bottom_frame = Frame(self)
         bottom_frame.pack(side=TOP)
-#how to disable a button
+# how to disable a button
         self.QUIT = Button(bottom_frame, text="Quit", command=self.quit, state='disabled')
         self.QUIT.pack(side=LEFT)
         self.handleb = Button(bottom_frame, text="Submit", command=self.handle)
@@ -153,7 +158,7 @@ class getAlbum_UI(Frame):
             idx = 0
             for i in result:
                 print(i)
-                albums.append((result[idx][0],result[idx][2]))
+                albums.append((result[idx][0], result[idx][2]))
                 idx = idx + 1
             print(albums)            
             output = albums
@@ -162,13 +167,14 @@ class getAlbum_UI(Frame):
             
  # use .config to change the state of the button           
         self.labelResult.config(text=output)
-        self.QUIT.config(state = 'active')
+        self.QUIT.config(state='active')
 #        self.QUIT.pack(side=BOTTOM)
         self.QUIT.pack(side=TOP)
 
 
 class getById_UI(Frame):
     """Application main window class."""
+
     def __init__(self, master=None):
         """Main frame initialization (mostly delegated)"""
         Frame.__init__(self, master)
@@ -196,7 +202,7 @@ class getById_UI(Frame):
         
         bottom_frame = Frame(self)
         bottom_frame.pack(side=TOP)
-#how to disable a button
+# how to disable a button
         self.QUIT = Button(bottom_frame, text="Quit", command=self.quit, state='disabled')
         self.QUIT.pack(side=LEFT)
         self.handleb = Button(bottom_frame, text="Get Id", command=self.handle)
@@ -237,13 +243,13 @@ class getById_UI(Frame):
             output = "*******"
  # use .config to change the state of the button           
         self.label.config(text=output)
-        self.QUIT.config(state = 'active')
+        self.QUIT.config(state='active')
 #        self.QUIT.pack(side=BOTTOM)
         self.QUIT.pack(side=TOP)
 
 
-
 class Application(Frame):
+
     def create_getArtist(self):
         getArtist_UI(self)
            
@@ -258,19 +264,19 @@ class Application(Frame):
 
     def create_widgets(self):
         
-        self.x_button = Button(self, text="Get Artist", fg = "black", bg = "white", command=self.create_getArtist)
+        self.x_button = Button(self, text="Get Artist", fg="black", bg="white", command=self.create_getArtist)
         self.x_button.pack({"side": "left"})
         
-        self.d_button = Button(self, text="Get Album", fg = "white", bg = "black",command=self.create_getAlbum)
+        self.d_button = Button(self, text="Get Album", fg="white", bg="black", command=self.create_getAlbum)
         self.d_button.pack({"side": "left"})
         
-        self.d_button = Button(self, text="Get song", fg = "white", bg = "black",command=self.create_getSong)
+        self.d_button = Button(self, text="Get song", fg="white", bg="black", command=self.create_getSong)
         self.d_button.pack({"side": "left"})
         
-        self.d_button = Button(self, text="Get By Id", fg = "white", bg = "black",command=self.create_getById)
+        self.d_button = Button(self, text="Get By Id", fg="white", bg="black", command=self.create_getById)
         self.d_button.pack({"side": "left"})
 
-        self.QUIT = Button(self, text="Quit", fg="red",bg="black", command=self.quit)
+        self.QUIT = Button(self, text="Quit", fg="red", bg="black", command=self.quit)
         self.QUIT.pack({"side": "right"})
 
     def __init__(self, master=None):
@@ -278,9 +284,9 @@ class Application(Frame):
         self.grid()
         self.create_widgets()
 
+
 root = Tk()
 app = Application(master=root)
 app.mainloop()
-
 
     

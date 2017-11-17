@@ -34,33 +34,37 @@ import platform
 import MySQLdb  # as connDb
 from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
 
+
 class musicGet_Functions:   
-    def __init__(self,isNotTest):
-        print("*************** Node Name is ",platform.uname().node)
+
+    def __init__(self, isNotTest):
+        print("*************** Node Name is ", platform.uname().node)
         if platform.uname().node == 'C1246895-XPS':
-            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
+            self.conn = MySQLdb.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')
 #            self.conn  = c.connect(login_info_xps)
         elif platform.uname().node == 'C1246895-osx.home':
-            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+            self.conn = MySQLdb.connect(host='OSXAir.home', user='rduvalwa2', password='blu4jazz', db='Music')
 #            self.conn  = MySQLdb.connect(login_info_osx)
         elif platform.uname().node == 'OSXAir.home.home':
 #            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn  = MySQLdb.connect(host=login_info_osxAir['host'],user=login_info_osxAir['user'],password=login_info_osxAir['password'],db=login_info_osxAir['db'])
+            self.conn = MySQLdb.connect(host=login_info_osxAir['host'], user=login_info_osxAir['user'], password=login_info_osxAir['password'], db=login_info_osxAir['db'])
         elif platform.uname().node == 'C1246895-WIN64-Air':
         #    self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn  = MySQLdb.connect(login_info_WIN64_Air)
+            self.conn = MySQLdb.connect(login_info_WIN64_Air)
         elif platform.uname().node == 'Randalls-MBP.home':
             print("Host is " , 'Randalls-MBP.home')
-            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')            
+            self.conn = MySQLdb.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')            
         else:
             print("Host is " , 'default')
-            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduval',password='blu4jazz',db='Music')
+            self.conn = MySQLdb.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home' 
-        self.notTestRun =  isNotTest
+        self.notTestRun = isNotTest
+
     '''
     Get max index values from tables
     '''
+
     def set_safe(self):
         cursor = self.conn.cursor()
         statement = 'SET SQL_SAFE_UPDATES = 0;'
@@ -90,10 +94,10 @@ class musicGet_Functions:
     def get_max_index(self, table):
         self.table = '`Music`.' + table
         self.tableIndex = table + "." + 'Index'
-        max_index_statement = "select max(" + self.tableIndex + ") from " + self.table   + ";"
+        max_index_statement = "select max(" + self.tableIndex + ") from " + self.table + ";"
         try:
             cursor = self.conn.cursor()
-            cursor.execute( max_index_statement)
+            cursor.execute(max_index_statement)
             maxIndex = cursor.fetchone()
             cursor.close()
             return maxIndex
@@ -101,8 +105,8 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
                 
-    def get_count(self,table = 'music.album2songs', criteria = " "):
-        statement = "select count(*) from " + table + " "  + criteria + ";"
+    def get_count(self, table='music.album2songs', criteria=" "):
+        statement = "select count(*) from " + table + " " + criteria + ";"
         print("get count statement ", statement)
         cursor = self.conn.cursor()
         try:
@@ -115,12 +119,12 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
 
-    def get_type_count(self,tipe):
+    def get_type_count(self, tipe):
         criteria = "where music.album2songs.type = '" + tipe + "'"
         result = self.get_count('music.album2songs', criteria)
         return result
 
-    def get_genre_count(self,gen):
+    def get_genre_count(self, gen):
         criteria = "where music.album2songs.genre = '" + gen + "'"
         result = self.get_count('music.album2songs', criteria)
         return result
@@ -134,7 +138,7 @@ class musicGet_Functions:
             genresCount = cursor.fetchall()  
             cursor.close()
             self.dbConnectionClose()
-            print("Genres Count",genresCount)
+            print("Genres Count", genresCount)
             return genresCount                   
         except self.conn.Error.Error as err:
             print("Exception is ", err)
@@ -149,7 +153,7 @@ class musicGet_Functions:
             typeCount = cursor.fetchall()  
             cursor.close()
             self.dbConnectionClose()
-            print("Type Count",typeCount)
+            print("Type Count", typeCount)
             return typeCount                   
         except self.conn.Error as err:
             print("Exception is ", err)
@@ -165,14 +169,14 @@ class musicGet_Functions:
             genres = cursor.fetchall()  
             cursor.close()
             self.dbConnectionClose()
-            print("Genres ",genres)
+            print("Genres ", genres)
             return genres                   
         except self.conn.Error.Error as err:
             print("Exception is ", err)
             return str(err)
 
-    def get_all(self,fields = "*",table = 'music.album2songs', criteria = " "):
-        statement = "select " + fields + " from " + table + " "  + criteria + ";"
+    def get_all(self, fields="*", table='music.album2songs', criteria=" "):
+        statement = "select " + fields + " from " + table + " " + criteria + ";"
         print("get all ", statement)
         cursor = self.conn.cursor()
         try:
@@ -191,7 +195,8 @@ class musicGet_Functions:
     '''
         Song  ********************
     '''
-    def update_song_album_name(self,new_album_name,song,album):
+
+    def update_song_album_name(self, new_album_name, song, album):
         statement = "update `Music`.album2songs set album = '" + new_album_name + "' where song like '%" + song + "' and album like '" + album + "' ;"
         print(statement)
         cursor = self.conn.cursor()
@@ -205,7 +210,7 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
         
-    def update_song_name(self,new_name,song,album):
+    def update_song_name(self, new_name, song, album):
         statement = "update `Music`.album2songs set song = '" + new_name + "' where song like '%" + song + "' and album like '" + album + "' ;"
         print(statement)
         cursor = self.conn.cursor()
@@ -219,14 +224,14 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
 
-    def update_song_artist(self,artist,song,album):
+    def update_song_artist(self, artist, song, album):
         statement = "update `Music`.album2songs set artist = '" + artist + "' where song like '%" + song + "' and album like '" + album + "' ;"
         getSongStatement = "Select * from music.album2songs where song like '%" + song + "%';"
         print(statement)
         cursor = self.conn.cursor()
         try:
             cursor.execute(statement)
-            print("Update and Get  ",cursor.execute(getSongStatement))
+            print("Update and Get  ", cursor.execute(getSongStatement))
             cursor.execute("commit;")
             cursor.close()
             self.dbConnectionClose()
@@ -236,7 +241,7 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
 
-    def update_song_genre(self,genre,song,album):
+    def update_song_genre(self, genre, song, album):
         statement = "update `Music`.album2songs set genre = '" + genre + "' where song like '%" + song + "' and album like '" + album + "' ;"
         print(statement)
         cursor = self.conn.cursor()
@@ -250,7 +255,7 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
         
-    def update_song_type(self,typ,song,album):
+    def update_song_type(self, typ, song, album):
         statement = "update `Music`.album2songs set type = '" + typ + "' where song like '%" + song + "' and album like '" + album + "' ;"
         print(statement)
         cursor = self.conn.cursor()
@@ -264,7 +269,7 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
 
-    def get_song(self,song):
+    def get_song(self, song):
         fields = '*'
 # 10 -24-2017       statement = "Select " + fields + " from music.album2songs where song like '%" + song + "' and album like '" + album + "' ;"
         statement = "Select * from music.album2songs where song like '%" + song + "%';"
@@ -295,8 +300,8 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
 
-    def get_songs(self,artist,album='all'):
-        base =   "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
+    def get_songs(self, artist, album='all'):
+        base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         albums = []
         songs = []
         newIndex = 0
@@ -306,21 +311,21 @@ class musicGet_Functions:
                 if album == 'all':
                     for al in artist_albums:
                         if al != '.DS_Store':
-                            albums.append((artist,al))
+                            albums.append((artist, al))
                             album_songs = os.listdir(base + "/" + artist + "/" + al)
                             for song in album_songs:
-                                    songs.append((newIndex,artist,al,song))
+                                    songs.append((newIndex, artist, al, song))
                 elif  album != 'all':
                     for al in artist_albums:
                         if al == album:
                             if al != '.DS_Store':
-                                albums.append((artist,al))
+                                albums.append((artist, al))
                                 album_songs = os.listdir(base + "/" + artist + "/" + al)
                                 for song in album_songs:
-                                    songs.append((newIndex,artist,al,song))
+                                    songs.append((newIndex, artist, al, song))
         return songs
 
-    def test_artist_album_song_exist(self,artist,album,song):
+    def test_artist_album_song_exist(self, artist, album, song):
         cursor = self.conn.cursor()
         statement = "select * from Music.album2songs where Music.album2songs.song like '" + song + "' and Music.album2songs.artist like '" + artist + "' and Music.album2songs.album like '" + album + "';"        
         try:
@@ -329,7 +334,7 @@ class musicGet_Functions:
             print(result)
             cursor.close()
             self.dbConnectionClose()
-            print('Result is ',result)
+            print('Result is ', result)
             if result == None:
                 return  True
             else:
@@ -338,13 +343,13 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)        
     
-    def add_one_song(self,artist,album,song,genre='Rock',tipe='Download' , path ='/Users/rduvalwa2/Music/iTunes/iTunes Music/Music',server='OSXAir.home'):  
+    def add_one_song(self, artist, album, song, genre='Rock', tipe='Download' , path='/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', server='OSXAir.home'):  
         cursor = self.conn.cursor()
         maxStatement = 'select max(`Music`.album2songs.index) FROM `Music`.album2songs;'
         try:
             cursor.execute(maxStatement)
             maxIndex = cursor.fetchone()[0]
-            print("max is " ,maxIndex)
+            print("max is " , maxIndex)
             newIndex = maxIndex + 1
             print("new is ", newIndex)
         except self.conn.Error.Error as err:
@@ -359,18 +364,18 @@ class musicGet_Functions:
             getStatement = "SELECT * FROM music.album2songs where `index` = " + str(newIndex) + ";"        
             cursor.execute(getStatement)
             thisSong = cursor.fetchone()
-            print("Added song is ",thisSong)
+            print("Added song is ", thisSong)
 
             cursor.close()
             self.dbConnectionClose()
-            return ("Success",newIndex, song)
+            return ("Success", newIndex, song)
         except self.conn.Error.Error as err:
             print("Exception is ", err)
             return str(err)
 
-    def delete_one_song(self,album,song):
+    def delete_one_song(self, album, song):
             cursor = self.conn.cursor()
-            statement = "delete from `Music`.album2songs where song like '" + song + "';"   # and album like '" + album + "' and artist like '" + artist + "';"
+            statement = "delete from `Music`.album2songs where song like '" + song + "';"  # and album like '" + album + "' and artist like '" + artist + "';"
             print("delete ", statement)
             try:
                 cursor.execute(statement)
@@ -383,7 +388,7 @@ class musicGet_Functions:
                 print("Exception is ", err)
                 return str(err)      
 
-    def add_songs_in_path(self,path,album,artist,genre,inType):
+    def add_songs_in_path(self, path, album, artist, genre, inType):
         '''
         mux = musicGet_Functions()
         myPath = "/Users/rduvalwa2/music/iTunes/iTunes Music/Music/Seals & Crofts/Seals & Crofts Greatist Hits"
@@ -397,7 +402,7 @@ class musicGet_Functions:
         cursor = self.conn.cursor()
         print(idx)
         index = idx[0] + 1
-        base =   path
+        base = path
         songs = []
 #        print("base ",base)
         if os.path.isdir(base):
@@ -407,38 +412,38 @@ class musicGet_Functions:
             for song in album_songs: 
                 if song != '.DS_Store':
                         print("song", song)
-                        songs.append((index,song))
+                        songs.append((index, song))
                         index = index + 1
 
             for song in songs:
 #                print(song)
-                insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(song[0]) + ",\"" + self.server + "\",\"" + self.base + "\",\""  + artist + "\",\""  +  album + "\",\""  + song[1] + "\",\""  + genre + "\",\""  + inType + "\")"
+                insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(song[0]) + ",\"" + self.server + "\",\"" + self.base + "\",\"" + artist + "\",\"" + album + "\",\"" + song[1] + "\",\"" + genre + "\",\"" + inType + "\")"
                 print(insertStatement)
-                cursor.execute( insertStatement)
+                cursor.execute(insertStatement)
         commit = "commit;"
         cursor.execute(commit)
         print("done")
         cursor.close()
         self.conn.close()        
 
-    def add_songs(self,artist,album='all'):
+    def add_songs(self, artist, album='all'):
         '''
         This code adds song
         '''
         cursor = self.conn.cursor()
-        maxIndex =  self.get_max_index("album2songs")
+        maxIndex = self.get_max_index("album2songs")
         index = maxIndex[0]
         newIndex = index + 1
         print(newIndex)
         if album == 'all': 
             songs = self.get_songs(artist)
         else:
-            songs = self.get_songs(artist,album)
+            songs = self.get_songs(artist, album)
         print(songs)
         for song in songs:
-                insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(newIndex) + ",\"" + self.server + "\",\"" + self.base + "\",\""  + song[1] + "\",\""  + song[2] + "\",\""  + song[3] + "\",\""  + "rock" + "\",\""  + "download" + "\")"
+                insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(newIndex) + ",\"" + self.server + "\",\"" + self.base + "\",\"" + song[1] + "\",\"" + song[2] + "\",\"" + song[3] + "\",\"" + "rock" + "\",\"" + "download" + "\")"
                 print(insertStatement)
-                cursor.execute( insertStatement)
+                cursor.execute(insertStatement)
                 newIndex = newIndex + 1
         countStatement = "SELECT count(*) FROM music.album2songs;"        
         cursor.execute(countStatement)
@@ -451,31 +456,30 @@ class musicGet_Functions:
         self.dbConnectionClose()
         return result 
     
-    def add_song(self,artist,album,song,genre,typ):
+    def add_song(self, artist, album, song, genre, typ):
         '''
         This code adds song
         '''
         cursor = self.conn.cursor()
-        maxIndex =  self.get_max_index("album2songs")
+        maxIndex = self.get_max_index("album2songs")
         index = maxIndex[0]
         newIndex = index + 1
         print(newIndex)
-        insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(newIndex) + ",\"" + self.server + "\",\"" + self.base + "\",\""  + artist + "\",\""  + album + "\",\""  + song + "\",\""  + genre + "\",\""  + typ + "\")"
+        insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(newIndex) + ",\"" + self.server + "\",\"" + self.base + "\",\"" + artist + "\",\"" + album + "\",\"" + song + "\",\"" + genre + "\",\"" + typ + "\")"
         print(insertStatement)
-        cursor.execute( insertStatement)
+        cursor.execute(insertStatement)
         getStatement = "SELECT * FROM music.album2songs where `index` = " + str(newIndex) + ";"        
         cursor.execute(getStatement)
         thisSong = cursor.fetchone()
-        print("Added song is ",thisSong)
+        print("Added song is ", thisSong)
         commit = "commit;"
         cursor.execute(commit)
-        result = (song,newIndex)
+        result = (song, newIndex)
         cursor.close()
         self.dbConnectionClose()
         return result 
     
-    
-    def delete_song(self,idx):
+    def delete_song(self, idx):
         '''
         delete  from `Music`.album2songs where song like 'Song_Song';
         '''
@@ -496,6 +500,7 @@ class musicGet_Functions:
     '''
         Artist  ********************
     '''
+
     def get_all_artist(self):
 #       select music.artist.index, artist, genre from music.artist where artist = 'Bill Withers';
         fields = "music.artist.artist, music.artist.index"
@@ -513,8 +518,7 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)               
 
-
-    def get_artist(self,artist):
+    def get_artist(self, artist):
 #       select music.artist.index, artist, genre from music.artist where artist = 'Bill Withers';
         fields = "*"
         statement = "select " + fields + " from music.artist where artist like '" + artist + "';"
@@ -530,13 +534,13 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)               
        
-    def add_artist(self,artist,genre):
+    def add_artist(self, artist, genre):
         cursor = self.conn.cursor()
-        maxIndex =  self.get_max_index("artist")
+        maxIndex = self.get_max_index("artist")
         index = maxIndex[0]
         newIndex = index + 1
         print(newIndex) 
-        insertStatement = "INSERT into Music.artist (artist.index, artist.artist,artist.genre)  values(" + str(newIndex) + ",\""  + artist  + "\",\""  + genre + "\")"
+        insertStatement = "INSERT into Music.artist (artist.index, artist.artist,artist.genre)  values(" + str(newIndex) + ",\"" + artist + "\",\"" + genre + "\")"
         print(insertStatement)
         try:
             cursor.execute(insertStatement)
@@ -550,7 +554,7 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
         
-    def delete_artist(self,artist):
+    def delete_artist(self, artist):
         cursor = self.conn.cursor()
         selectStatement = "select artist.index from Music.artist where artist.artist like " + "'" + artist + "';"
         print(selectStatement)
@@ -576,7 +580,7 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err) 
 
-    def get_artistAlbums_fromAlbums(self,artist):
+    def get_artistAlbums_fromAlbums(self, artist):
 #       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
         fields = "*"
         statement = "select " + fields + " from music.artist_albums where artist like '" + artist + "';"
@@ -593,7 +597,7 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
         
-    def get_artistSongs_fromSongs(self,artist):
+    def get_artistSongs_fromSongs(self, artist):
 #       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
         fields = "music.album2songs.song, music.album2songs.album"
         statement = "select " + fields + " from music.album2songs where artist like '" + artist + "';"
@@ -613,6 +617,7 @@ class musicGet_Functions:
     '''
         Album  ********************
     '''  
+
     def get_all_albums(self):
         fields = "artist_albums.index, artist_albums.album, artist_albums.artist"
         statement = "select " + fields + " from music.artist_albums order by artist_albums.album;"
@@ -628,7 +633,7 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)         
             
-    def get_album(self,album):
+    def get_album(self, album):
 #       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
         fields = "*"
         statement = "select " + fields + " from music.artist_albums where album like '" + album + "';"
@@ -644,7 +649,7 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err) 
 
-    def get_album_songs(self,album):
+    def get_album_songs(self, album):
 #       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
 #        albumSongs = []
         fields = "music.album2songs.song"
@@ -665,7 +670,7 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err) 
 
-    def get_artist_songs(self,artist):
+    def get_artist_songs(self, artist):
 #       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
 #        albumSongs = []
         fields = "music.album2songs.song"
@@ -683,16 +688,16 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err) 
 
-    def add_album(self,album,artist,genre = 'Rock' ,tipe = 'Download'):
+    def add_album(self, album, artist, genre='Rock' , tipe='Download'):
         '''
         This code recurses thru the "base" path and captures the artist, album and song
         '''
         cursor = self.conn.cursor()
-        maxIndex =  self.get_max_index("artist_albums")
+        maxIndex = self.get_max_index("artist_albums")
         index = maxIndex[0]
         newIndex = index + 1
         print(newIndex)
-        insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.genre, artist_albums.type)  values(" + str(newIndex) + ",\""  + artist + "\",\""  + album + "\",\"" + genre + "\",\""  + tipe + "\")"
+        insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.genre, artist_albums.type)  values(" + str(newIndex) + ",\"" + artist + "\",\"" + album + "\",\"" + genre + "\",\"" + tipe + "\")"
         print(insertStatement)
         try:
             cursor.execute(insertStatement)
@@ -707,18 +712,18 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)        
         
-    def update_album(self,idx,field,value):
+    def update_album(self, idx, field, value):
         cursor = self.conn.cursor()
         safe = "SET SQL_SAFE_UPDATES = 0;"  
         cursor.execute(safe)
-        statement = "update `Music`.artist_albums set artist_albums." + field + " = '" + value  +"' where artist_albums.index = " + str(idx) + ";"
+        statement = "update `Music`.artist_albums set artist_albums." + field + " = '" + value + "' where artist_albums.index = " + str(idx) + ";"
         print(statement)
         cursor.execute(statement)
         commit = "commit;"
         cursor.execute(commit)
         cursor.close()
         
-    def delete_album_byindex(self,idx):
+    def delete_album_byindex(self, idx):
         cursor = self.conn.cursor()
         safe = "SET SQL_SAFE_UPDATES = 0;"  
         cursor.execute(safe)
@@ -738,7 +743,7 @@ class musicGet_Functions:
             cursor.close()
             return err
 
-    def delete_album_by_name(self,album_name):
+    def delete_album_by_name(self, album_name):
         cursor = self.conn.cursor()
         safe = "SET SQL_SAFE_UPDATES = 0;"  
         cursor.execute(safe)
@@ -754,11 +759,10 @@ class musicGet_Functions:
             self.dbConnectionClose()
             return result  
         except self.conn.Error as err:
-            errorr =  "Delete Album by Name Exception is " + err
+            errorr = "Delete Album by Name Exception is " + err
             print(errorr)
             cursor.close()
             return errorr
-
 
     def get_all_album_covers(self):
         cursor = self.conn.cursor()
@@ -775,14 +779,14 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
 
-    def get_album_cover(self,cover):
+    def get_album_cover(self, cover):
         cursor = self.conn.cursor()
         statement = "select * from `Music`.album_covers ac where ac.album_cover like '" + cover + "';"
         print("get cover statement ", statement)
         try:
             cursor.execute(statement)
             result = cursor.fetchall()
-            print("XXXget_album_cover result ",result)
+            print("XXXget_album_cover result ", result)
             return result
             cursor.close()
 #            self.dbConnectionClose()
@@ -796,7 +800,7 @@ class musicGet_Functions:
         statement = "select count(*)  from `Music`.album_covers;"
         try:
             cursor.execute(statement)
-            result =cursor.fetchone()
+            result = cursor.fetchone()
             return result[0]
             cursor.close()
 #            self.dbConnectionClose()
@@ -805,7 +809,7 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
         
-    def add_album_cover(self,cover):
+    def add_album_cover(self, cover):
         cursor = self.conn.cursor()
         statementIdx = "select max(cover_idx) from `Music`.album_covers;"
         cursor.execute(statementIdx)
@@ -821,7 +825,7 @@ class musicGet_Functions:
         print(self.get_album_cover(cover))
         return self.get_album_cover(cover)
         
-    def delete_album_cover(self,coverId):
+    def delete_album_cover(self, coverId):
         print("Start Delete ")
         safe = "SET SQL_SAFE_UPDATES = 0;"       
         cursor = self.conn.cursor()
@@ -833,7 +837,7 @@ class musicGet_Functions:
         cursor.execute("commit;")
         cursor.close()
 
-    def update_album_cover(self,cover,newName):
+    def update_album_cover(self, cover, newName):
         cursor = self.conn.cursor()
         cover_result = self.get_album_cover(cover)
         coverIdx = cover_result[0][2]
@@ -847,13 +851,12 @@ class musicGet_Functions:
             print(statement)
             cursor.execute(statement)
             cursor.execute("commit;")
-    
 
     '''
             get from table by id  **********************
     ''' 
  
-    def get_by_id(self,objId,itemType):
+    def get_by_id(self, objId, itemType):
         
         if itemType == 'artist':
             table = 'Music.artist'
@@ -864,7 +867,7 @@ class musicGet_Functions:
         else:
             table = 'Music.album2songs'
             
-        statement = "select * from " + table + " where " + table + ".index  = "  + str(objId) + ";"
+        statement = "select * from " + table + " where " + table + ".index  = " + str(objId) + ";"
         print(statement)
         cursor = self.conn.cursor()
         try:
@@ -876,6 +879,7 @@ class musicGet_Functions:
         except self.conn.Error.Error as err:
             print("Exception is ", err)
             return str(err)   
+
 
 '''         
 if __name__  == '__main__':

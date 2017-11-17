@@ -14,6 +14,7 @@ http://effbot.org/imagingbook/pil-index.htm
 '''
 from tkinter import *
 from Music_Get_Functions import musicGet_Functions
+#from Mux_src.Music_Get_Functions import musicGet_Functions
 import os, sys , platform
 from PIL import ImageTk, Image
 
@@ -54,7 +55,8 @@ class displaySelectCover():
             base = "C:\\Users\\RDuval\\git\\HubPRojects\\Mux\\AlbumCovers\\"
         elif platform.uname().node == 'Randalls-MBP.home':
             print(platform.uname().node)
-            base = '/Users/rduvalwa2/git/Mux/AlbumCovers/'
+ #           base = '/Users/rduvalwa2/git/Mux/AlbumCovers/'
+            base = '//Users/rduvalwa2/eclipse_git_hub/MusicDb/Projects/AlbumCovers/'
         else:
             base = '/Users/rduvalwa2/Workspace_Git_Python/Mux/AlbumCovers/'
             

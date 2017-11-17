@@ -21,14 +21,13 @@ Created on Mar 16, 2017
 '''
 
 from Music_Load import song_Add_Update_Delete
-
         
 if __name__ == "__main__" :
     
-    song_artist =    [("Song","The Troggs"), \
-                   ("02 Kicks (Re-Recorded).m4a","Paul Revere & The Raiders"), \
-                    ("03 Shakin\\' All Over (feat. Chad Allan) [Re-Recorded].m4a","The Guess Who")]
+    song_artist = [("Song", "The Troggs"), \
+                   ("02 Kicks (Re-Recorded).m4a", "Paul Revere & The Raiders"), \
+                    ("03 Shakin\\' All Over (feat. Chad Allan) [Re-Recorded].m4a", "The Guess Who")]
     
     mux = song_Add_Update_Delete(True)
-    print(song_artist )
+    print(song_artist)
     mux.update_songs_artists(song_artist)

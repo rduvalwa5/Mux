@@ -18,7 +18,7 @@ class Test(unittest.TestCase):
             expected = 909
             mux = musicFile()
             result = mux.get_record_count(table)
-            self.assertEqual(expected,result[0])
+            self.assertEqual(expected, result[0])
             
         def test_get_count_songs(self):
             '''
@@ -28,7 +28,7 @@ class Test(unittest.TestCase):
             expected = 6625
             mux = musicFile()
             result = mux.get_record_count(table)
-            self.assertEqual(expected,result[0])
+            self.assertEqual(expected, result[0])
             
         def test_get_count_artist(self):
             '''
@@ -38,22 +38,23 @@ class Test(unittest.TestCase):
             expected = 537
             mux = musicFile()
             result = mux.get_record_count(table)
-            self.assertEqual(expected,result[0])
+            self.assertEqual(expected, result[0])
             
         def test_get_count_Viny_Albums(self):
             '''
             get_select_Album
             '''
-            display =  "count(*)"
+            display = "count(*)"
             constraints = "where type like 'Vinyl'"
             expected = 183
             mux = musicFile()
-            result = mux.get_select_Album(display,constraints)
-            self.assertEqual(expected,result[0])
+            result = mux.get_select_Album(display, constraints)
+            self.assertEqual(expected, result[0])
  
         '''
         select artist FROM  `Music`.artist where genre like 'TexMex';
         '''
+
         def test_get_song(self):
             song = 'Johnny B. Goode'
             genre = 'Blues'
@@ -62,14 +63,13 @@ class Test(unittest.TestCase):
             print(result)
  #           self.assertEqual(artist, result[0][1], "artist return wrong")
  #           self.assertEqual(genre, result[0][2], "genre wrong")
-                
             
         def test_get_TexMex_Artist(self):
             '''
             get_select_Artist
             '''
             resultArtist = []
-            fields =  "Music.artist.artist"
+            fields = "Music.artist.artist"
             constraints = " genre like 'TexMex'"
             mux = musicFile()
             result = mux.get_select_Artist(fields, constraints)
@@ -79,12 +79,11 @@ class Test(unittest.TestCase):
 #            print(resultArtist)
             self.assertIn('Asleep At the Wheel', resultArtist, 'artist not present')
             self.assertIn('Eldorado', resultArtist, 'artist not present')
-            self.assertIn( 'Freddy Fender', resultArtist, 'artist not present')
+            self.assertIn('Freddy Fender', resultArtist, 'artist not present')
             self.assertIn('Los Lobos', resultArtist, 'artist not present')
             self.assertIn('Texas Tornados', resultArtist, 'artist not present')
-            self.assertIn( 'The Mavericks', resultArtist, 'artist not present')
+            self.assertIn('The Mavericks', resultArtist, 'artist not present')
             self.assertIn('The Sir Douglas Quintet', resultArtist, 'artist not present')
-            
  
         def test_get_album(self):
             artistName = 'Ten Years After'
@@ -134,6 +133,7 @@ class Test(unittest.TestCase):
 #            print("artist ",result)
             self.assertEqual(id, result[0][0], "artist id not found")
 
+
 if __name__ == "__main__":
-    #import sys;sys.argv = ['', 'Test.testName']
+    # import sys;sys.argv = ['', 'Test.testName']
     unittest.main()

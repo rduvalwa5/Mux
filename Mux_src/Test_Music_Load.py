@@ -8,7 +8,9 @@ import os
 import Music_Get_Functions
 from  Music_Load import musicLoad_Functions, song_Add_Update_Delete, album_Add_Update_Delete, artist_Add_Update_Delete
 
+
 class Test_MusicLoad(unittest.TestCase):
+
         def setUp(self):
 #   self.albumAddUpDel.add_album(self.album,self.addArtist,self.addType,self.addGenre)
 
@@ -51,35 +53,35 @@ class Test_MusicLoad(unittest.TestCase):
         """
             
         def test_Add_Artist(self): 
-            self.addArtistInfo.add_artist(self.artistAdd ,self.genreAdd)
+            self.addArtistInfo.add_artist(self.artistAdd , self.genreAdd)
             result = self.getInfo.get_artist_from_artistTable(self.artistAdd)
-            print("Add artist result ",result)
-            self.assertEqual(self.artistAdd,result[0][1],"artist name add failed")
-            self.assertEqual(self.genreAdd,result[0][2],"artist genre add failed")           
+            print("Add artist result ", result)
+            self.assertEqual(self.artistAdd, result[0][1], "artist name add failed")
+            self.assertEqual(self.genreAdd, result[0][2], "artist genre add failed")           
             
         def testDoesArtistAlreadyExist_False(self):
             expected = "False" 
             result = self.addArtistInfo.doesArtistExist("Bill Wither")
-            self.assertEqual(expected,result, "Result expected False but was True")  
+            self.assertEqual(expected, result, "Result expected False but was True")  
             
         def testDoesArtistAlreadyExist_True_(self):
             testArtist = "Bill Withers"
             testIndex = 42
             expected = "True" 
             result = self.addArtistInfo.doesArtistExist("Bill Withers")
-            self.assertEqual(expected,result, "Result expected True but was False")   
-            self.addArtistInfo.add_artist(testArtist,self.addGenre)
+            self.assertEqual(expected, result, "Result expected True but was False")   
+            self.addArtistInfo.add_artist(testArtist, self.addGenre)
             result = self.getInfo.get_artist_from_artistTable("Bill Withers")
-            self.assertEqual(testIndex,result[0][0],"artist index not " + str(testIndex))
-            self.assertEqual(testArtist,result[0][1],"artist not in data table")
+            self.assertEqual(testIndex, result[0][0], "artist index not " + str(testIndex))
+            self.assertEqual(testArtist, result[0][1], "artist not in data table")
             
         def test_update_date_artist_genre_update(self):
             newGenre = "Update"
             updateArtist = "Bill Withers"
             self.addArtistInfo.update_artist(updateArtist, newGenre)
             result = self.getInfo.get_artist_from_artistTable(updateArtist)
-            print("Update result newGenre",result)
-            self.assertEqual(newGenre,result[0][2],"genre update failed") 
+            print("Update result newGenre", result)
+            self.assertEqual(newGenre, result[0][2], "genre update failed") 
          
         def test_update_date_artist_genre_rock(self): 
             '''
@@ -89,8 +91,8 @@ class Test_MusicLoad(unittest.TestCase):
             updateArtist = "Bill Withers"      
             self.addArtistInfo.update_artist(updateArtist, original)
             result = self.getInfo.get_artist_from_artistTable(updateArtist)
-            print("Update result Rock",result)
-            self.assertEqual(original,result[0][2],"genre update failed")               
+            print("Update result Rock", result)
+            self.assertEqual(original, result[0][2], "genre update failed")               
             
         def test_Delete_Artist(self): 
             self.addArtistInfo.delete_artist(self.artistAdd)
@@ -106,19 +108,19 @@ class Test_MusicLoad(unittest.TestCase):
             expected = "True" 
             album = 'Heart Like A Wheel'
             result = self.albumAddUpDel.doesAlbumExist(album)
-            self.assertEqual(expected,result, "Result expected True but was False")  
+            self.assertEqual(expected, result, "Result expected True but was False")  
   
         def test_DoesAlbumExist_False(self):
             expected = "False" 
             album = "Long Long Road"
             result = self.albumAddUpDel.doesAlbumExist(album)
-            self.assertEqual(expected,result, "Result expected False but was True")          
+            self.assertEqual(expected, result, "Result expected False but was True")          
 
         def test_Add_Album(self):
             """
              Test Add Album to artist_albums table.
             """
-            self.albumAddUpDel.add_album(self.albumAdd,self.artistAdd,self.typeAdd,self.genreAdd)
+            self.albumAddUpDel.add_album(self.albumAdd, self.artistAdd, self.typeAdd, self.genreAdd)
             result = self.getInfo.get_Album_from_ArtistAlbums(self.albumAdd)
             self.assertEqual(self.artistAdd, result[0][1], "artist does not match")
             self.assertEqual(self.albumAdd, result[0][2], "album does not match")
@@ -147,7 +149,7 @@ class Test_MusicLoad(unittest.TestCase):
             test_album = 'Test_AlbumA'
             update_genre = 'up_genre'
             
-            self.albumAddUpDel.update_album(test_album, update_artist,update_genre)
+            self.albumAddUpDel.update_album(test_album, update_artist, update_genre)
             result = self.getInfo.get_Album_from_ArtistAlbums(test_album)
             print("update result is ", result)
             self.assertEqual(original_artist, result[0][1], "album update artist failed")
@@ -163,7 +165,7 @@ class Test_MusicLoad(unittest.TestCase):
             test_album = 'Test_AlbumA'
             update_type = 'Up_Type'
             
-            self.albumAddUpDel.update_album(test_album, 'no_change','no_change',update_type)
+            self.albumAddUpDel.update_album(test_album, 'no_change', 'no_change', update_type)
             result = self.getInfo.get_Album_from_ArtistAlbums(test_album)
             print("update result is ", result)
             self.assertEqual(original_artist, result[0][1], "album update artist failed")
@@ -177,7 +179,6 @@ class Test_MusicLoad(unittest.TestCase):
             print(result)
             expected = []
             self.assertListEqual(expected, result, "list is not empty")   
-            
                       
         """
             Test Album_Songs Table Functions
@@ -189,7 +190,7 @@ class Test_MusicLoad(unittest.TestCase):
              values (6599,'SongAlbum','SongArts','SongGenre','/path/path/','song_server','Song_Song.mp3','test_type');
              [(6599, 'song_server', '/Test/Music', 'Song_Artist', 'Test_SongAlbum', 'Song_Song.mp3', 'Song_genre', 'Song_Type')]
             """
-            self.songAUD.add_song(self.addAlbum,self.addArtist,self.addGenre,self.song,self.addType,self.addPath,self.addServer)
+            self.songAUD.add_song(self.addAlbum, self.addArtist, self.addGenre, self.song, self.addType, self.addPath, self.addServer)
             addSongResult = self.getInfo.get_song_by_song(self.song)
             print(addSongResult)
             self.assertEqual(self.addServer, addSongResult[0][1], "Server failed")
@@ -199,7 +200,6 @@ class Test_MusicLoad(unittest.TestCase):
             self.assertEqual(self.song, addSongResult[0][5], "song failed")
             self.assertEqual(self.addGenre, addSongResult[0][6], "genre failed")           
             self.assertEqual(self.addType, addSongResult[0][7], "album failed")
- 
             
         def test_update_song_artist(self):
             """
@@ -210,7 +210,6 @@ class Test_MusicLoad(unittest.TestCase):
             updateArtistResult = self.getInfo.get_song_by_song(self.song)
             print(updateArtistResult)
             self.assertEqual(self.artistUpdate, updateArtistResult[0][3], "update artist failed")
-
             
         def test_update_song_album(self):
             pass                
@@ -233,12 +232,11 @@ class Test_MusicLoad(unittest.TestCase):
 #            print(deleteSongResult)
             expected = []
             self.assertListEqual(expected, deleteSongResult, "list is not empty")  
-              
-
                    
         """
             Test Support Functions
         """                    
+
         def Restore_testAlbum(self):   
             if os.uname().nodename == 'C1246895-osx.home':
                 conn = mysql.connector.Connect(**login_info_osx)

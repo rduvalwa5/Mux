@@ -2,18 +2,20 @@
 '''
 import unittest 
 
-#import os, platform
-#import self.conn.Error
-#import MySQLdb   as connDb
+# import os, platform
+# import self.conn.Error
+# import MySQLdb   as connDb
 
-#from Musicdb_info import login_info_root
-#from Musicdb_info import login_info_osx 
-#import mysql.connector
+# from Musicdb_info import login_info_root
+# from Musicdb_info import login_info_osx 
+# import mysql.connector
 import os
 import Music_Get_Functions
 from  Music_Load import musicLoad_Functions, song_Add_Update_Delete, album_Add_Update_Delete, artist_Add_Update_Delete
 
+
 class Test_MusicLoadSongTable(unittest.TestCase):
+
         def setUp(self):
 #   self.albumAddUpDel.add_album(self.album,self.addArtist,self.addType,self.addGenre)
 
@@ -45,7 +47,6 @@ class Test_MusicLoadSongTable(unittest.TestCase):
         def tearDown(self):
             self.getInfo.dbConnectionClose()
             self.songAUD.dbConnectionClose()
-         
                        
         """
             Test Album_Songs Table Functions
@@ -57,7 +58,7 @@ class Test_MusicLoadSongTable(unittest.TestCase):
              values (6599,'SongAlbum','SongArts','SongGenre','/path/path/','song_server','Song_Song.mp3','test_type');
              [(6599, 'song_server', '/Test/Music', 'Song_Artist', 'Test_SongAlbum', 'Song_Song.mp3', 'Song_genre', 'Song_Type')]
             """
-            self.songAUD.add_song(self.addAlbum,self.addArtist,self.addGenre,self.song,self.addType,self.addPath,self.addServer)
+            self.songAUD.add_song(self.addAlbum, self.addArtist, self.addGenre, self.song, self.addType, self.addPath, self.addServer)
             addSongResult = self.getInfo.get_song_by_song(self.song)
             print(addSongResult)
             self.assertEqual(self.addServer, addSongResult[0][1], "Server failed")
@@ -67,7 +68,6 @@ class Test_MusicLoadSongTable(unittest.TestCase):
             self.assertEqual(self.song, addSongResult[0][5], "song failed")
             self.assertEqual(self.addGenre, addSongResult[0][6], "genre failed")           
             self.assertEqual(self.addType, addSongResult[0][7], "album failed")
- 
             
         def test_2_update_song(self):
             """
@@ -84,12 +84,12 @@ class Test_MusicLoadSongTable(unittest.TestCase):
             
             print("song update ", Result)
             self.assertEqual(self.serverUpdate, Result[0][1], "Server failed")
-            self.assertEqual(self.pathUpdate,Result[0][2], "path failed")
+            self.assertEqual(self.pathUpdate, Result[0][2], "path failed")
             self.assertEqual(self.artistUpdate, Result[0][3], "artist failed")
             self.assertEqual(self.albumUpdate, Result[0][4], "album failed")
-            self.assertEqual(self.song,Result[0][5], "song failed")
-            self.assertEqual(self.genreUpdate,Result[0][6], "genre failed")           
-            self.assertEqual(self.typeUpdate,Result[0][7], "album failed")
+            self.assertEqual(self.song, Result[0][5], "song failed")
+            self.assertEqual(self.genreUpdate, Result[0][6], "genre failed")           
+            self.assertEqual(self.typeUpdate, Result[0][7], "album failed")
  
         def test_3_delete_song(self):
             self.songAUD.delete_song(self.song)
@@ -97,6 +97,7 @@ class Test_MusicLoadSongTable(unittest.TestCase):
             print("song delete ", deleteSongResult)
             expected = []
             self.assertListEqual(expected, deleteSongResult, "list is not empty")  
+
                    
 if __name__ == "__main__":
     unittest.main()
