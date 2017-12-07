@@ -1,6 +1,28 @@
 
 SET SQL_SAFE_UPDATES = 0;
 
+select count(*) from `Music`.artist;  -- 574 569
+select count(*) from music.artist_albums; -- 963
+select count(*) from `Music`.album2songs; -- 8373 8062
+select count(*) from `Music`.album_covers;  -- 435  473
+
+/* database management */
+/*
+mysqldump --databases --user=rduval --password  Music > Music_export_into_db.sql
+
+mysql -u username -p database_name < file.sql
+if you don't you need to create the relevant database(empty) in MySQL, for that first log on to the MySQL console by running the following command in terminal or in cmd
+
+mysql -u userName -p;
+and when prompted provide the password.
+
+Next create a database and use it
+
+mysql>create database yourDatabaseName;
+mysql>use yourDatabaseName;
+
+*/
+
 /* 11-13-2017 */
 update `Music`.artist_albums set artist_albums.cover_name = 'Crud_cover' where artist_albums.index = 1085;
 
