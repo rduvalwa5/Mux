@@ -1,4 +1,5 @@
 '''
+OUT OF DATE Jan 25 2018
 this file provides user info for login
 @author: rduval
 '''
@@ -9,7 +10,9 @@ HOST = "localhost"
 DATABASE = "Music"
 PORT = 3306
 
-login_info_default = "host='OSXAir.home',user='root',password='blu4jazz',db='Music'"
+# self.conn = MySQLdb.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')
+
+login_info_default = "host='localhost',user='root',password='blu4jazz',db='music'"
 
 login_info_osxAir = {"host":"OSXAir.home", "user":"rduvalwa2", "password":"blu4jazz", "db":"Music"}
 

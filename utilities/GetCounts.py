@@ -144,7 +144,7 @@ if __name__ == '__main__':
 #            print(song)
             continue
 
-    print(len(a.listOfArtist))
-    print(len(a.listOfSongs))
-    print(artistCount)
-    print(songCount)
+    print("Number of artist from list",len(a.listOfArtist))
+    print("Number of songs from list",len(a.listOfSongs))
+    print("Artist count", artistCount)
+    print("Song Count",songCount)

@@ -3,22 +3,28 @@ Created on Nov 10, 2016
 This code is a Python port of a program that I wrote in Java in 2006
 It attempts to find the music files on a server and put them into a data base.
 @author: rduvalwa2
+
+mysql -u root -b music -p
+mysql -u rduvalwa2 -b music -p
+
 '''
 from MusicFile import musicFile
 import unittest
 import mysql.connector
-from  Musicdb_info import login_info_rd
-from Musicdb_info import login_info_root
+import MySQLdb
+from  Musicdb_info import login_info_osxAir
+from Musicdb_info import login_info_default
 from Musicdb_info import login_info_xps
 from mysql.connector.errors import Error
 
 
 class TestMusicDb(unittest.TestCase):
-    
+
+    '''    
     def test_music_Albums_Rows_XPS(self):
-        '''
-        Test access remote database
-        '''
+        
+        # Test access remote database
+        
         db = mysql.connector.Connect(**login_info_xps)
         cursor = db.cursor()
         statement = "select count(*) from Music.artist_albums;"
@@ -31,9 +37,9 @@ class TestMusicDb(unittest.TestCase):
         db.close()
         
     def test_music_artist_Rows_XPS(self):
-        '''
-        Test access remote database
-        '''
+        
+        # Test access remote database
+        
         db = mysql.connector.Connect(**login_info_xps)
         cursor = db.cursor()
         statement = "select count(*) from Music.artist;"
@@ -46,9 +52,7 @@ class TestMusicDb(unittest.TestCase):
         db.close()
         
     def test_music_song_Rows_XPS(self):
-        '''
-        Test access remote database
-        '''
+        # Test access remote database
         db = mysql.connector.Connect(**login_info_xps)
         cursor = db.cursor()
         statement = "select count(*) from Music.album2songs;"
@@ -132,20 +136,24 @@ class TestMusicDb(unittest.TestCase):
             result = mux.get_max_index(table)
             print(result[0])
             self.assertEqual(expected, result[0])           
-          
+   '''       
     def test_music_Albums_Rows(self):
-        db = mysql.connector.Connect(**login_info_rd)
+        db = MySQLdb.connect(host='localhost', user='root', password='blu4jazz', db='Music')
+#        db = mysql.connector.Connect(**login_info_osxAir)
         cursor = db.cursor()
         statement = "select count(*) from Music.artist_albums;"
-        cursor.execute(statement)
-        row = cursor.fetchone()
-        print("Row is " , row[0])
-        self.assertEqual(row[0], 909)
-        cursor.close()
-        db.close()
-    
+        try:
+            cursor.execute(statement)
+            row = cursor.fetchone()
+            print("Row is " , row[0])
+            self.assertEqual(row[0], 909)
+            cursor.close()
+            db.close()
+        except db.Error as err:
+                print("Exception is ", err)
+    '''
     def test_Music_Artist_RowsJ(self):
-        db = mysql.connector.Connect(**login_info_root)
+        db = mysql.connector.Connect(**login_info_osxAir)
         cursor = db.cursor()
 #        statement = "select uid from active_passwords where ap in ('password_db');"
         statement = "select count(*) from Music.Artist;"
@@ -158,7 +166,7 @@ class TestMusicDb(unittest.TestCase):
         db.close()
     
     def test_Music_Album_values(self):
-        db = mysql.connector.Connect(**login_info_rd)
+        db = mysql.connector.Connect(**login_info_osxAir)
         cursor = db.cursor()
 #        statement = "select album from Music.Albums where Albums.index = 3;"
         statement = "select * from Music.artist_albums where artist_albums.index = 337;"
@@ -176,7 +184,7 @@ class TestMusicDb(unittest.TestCase):
  
     def test_Crud_AlbumTable(self):
         albumName = "Test Album"
-        db = mysql.connector.Connect(**login_info_rd)
+        db = mysql.connector.Connect(**login_info_osxAir)
         cursor = db.cursor()
         max_index_statement = "select max(artist_albums.Index) from Music.artist_albums; "
         cursor.execute(max_index_statement)
@@ -240,7 +248,7 @@ class TestMusicDb(unittest.TestCase):
         result = mux.get_select_Artist(fields, constraints)
         print("result is ", result[0][0])
         self.assertEqual(expected, result[0][0])
-
+    '''
         
 if __name__ == "__main__":
     unittest.main()

@@ -4,14 +4,14 @@ Created on Apr 25, 2017
 @author: rduvalwa2
 '''
 
-cover_count = 435
+cover_count = 439
 songs_count = 8384
 artist_count = 576
-artist_albums_count = 966
+artist_albums_count = 970
 folk_songs = 614
 folk_albums = 45
 get_max_index_artist = 606
-get_max_index_albums = 1094
+get_max_index_albums = 1098
 get_max_index_songs = 8418
 #get_song = (1134, 'OSXAir.home', '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', 'Chuck Berry', 'The Best of Chuck Berry', '08 Johnny B. Goode.mp3', 'Rock', 'Vinyl', 1)
 get_song = ((1134, 'OSXAir.home', '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', 'Chuck Berry', 'The Best of Chuck Berry', '08 Johnny B. Goode.mp3', 'Rock', 'Vinyl', 1), (2776, 'OSXAir.home', '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', 'Grateful Dead', 'The Grateful Dead (Skull & Roses)', '09 Johnny B. Goode.mp3', 'Rock', 'Download', 1))
