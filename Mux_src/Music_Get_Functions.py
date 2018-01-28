@@ -397,7 +397,9 @@ class musicGet_Functions:
         genre = "Rock"
         inType = "CD"    
         mux.add_songs_in_path(myPath, album, artist, genre, inType)   
-        '''       
+        ''' 
+        print(path) 
+        print(os.path.isdir(path))     
         idx = self.get_max_index('album2songs')
         cursor = self.conn.cursor()
         print(idx)
@@ -880,7 +882,6 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)   
 
-    '''
         
 if __name__  == '__main__':
     import unittest
@@ -935,6 +936,7 @@ if __name__  == '__main__':
             mux.dbConnectionClose()
             self.assertEqual(expected,result)
             
+            '''           
         def test_get_count_album2Songs(self):
             mux = musicGet_Functions(True)
             table = 'Music.album2songs'
@@ -1147,8 +1149,8 @@ if __name__  == '__main__':
             deleteResult = mux.get_album_cover(albumCover)
             self.assertEqual(expected, deleteResult, "delete album cover failed")
             
-            
+        '''
               
 
     unittest.main()    
-    '''
+

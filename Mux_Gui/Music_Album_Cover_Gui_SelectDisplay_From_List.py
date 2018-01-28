@@ -58,7 +58,7 @@ class displaySelectCover():
  #           base = '/Users/rduvalwa2/git/Mux/AlbumCovers/'
             base = '//Users/rduvalwa2/eclipse_git_hub/MusicDb/Projects/AlbumCovers/'
         else:
-            base = '/Users/rduvalwa2/Workspace_Git_Python/Mux/AlbumCovers/'
+            base = '/Users/rduvalwa2/eOxigen-workspace/Mux/AlbumCovers/'
             
         widget = event.widget
         selection=widget.curselection()

@@ -23,7 +23,33 @@ mysql>use yourDatabaseName;
 
 */
 
-/* 11-13-2017 */
+/*  Jan 28 2018 ------------------------------------------------      */
+
+CREATE TABLE `derived_album2songs` (
+  `index` bigint(5) NOT NULL,
+  `server` varchar(50) DEFAULT NULL,
+  `path` varchar(100) NOT NULL,
+  `artist` varchar(100) NOT NULL,
+  `album` varchar(200) NOT NULL,
+  `song` varchar(200) NOT NULL,
+  `genre` varchar(50) DEFAULT NULL,
+  `type` varchar(20) DEFAULT NULL,
+  `genre_idx` bigint(5) unsigned DEFAULT '1',
+  PRIMARY KEY (`index`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+commit;
+
+
+INSERT derived_album2songs
+SELECT * FROM album2songs;
+
+select * from music.`album2songs` where `album2songs`.`artist` like 'Eric Clapton';
+
+delete from music.`album2songs` where `album2songs`.`album` like 'Live Back To Macon, GA [Disc 1]';
+
+/* 11-13-2017 ------------------------------------------------      */
 update `Music`.artist_albums set artist_albums.cover_name = 'Crud_cover' where artist_albums.index = 1085;
 
 select * from `Music`.artist_albums where cover_name is NULL;

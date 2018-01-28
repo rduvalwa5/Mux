@@ -1,3 +1,8 @@
+'''
+Created on Jan 27, 2018
+
+@author: rduvalwa2
+'''
 import os, platform
 import MySQLdb
 from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
@@ -805,13 +810,3 @@ if __name__ == '__main__':
                             'TestGenre','TexMex','Traditional','World','Easy Listening']
     trueLoad.set_genre_genre(genreList)
 
-    if runMode == "NoRun":
-            pass
-    if runMode == "Run":
-        trueLoad = musicLoad_Functions(True)
-        trueLoad.initial_insert_into_album2songs()
-        allSongs = trueLoad.get_all_songs()
-        print('num songs is ', len(allSongs))
-    
-        trueLoad.sync_song_genre()
-        trueLoad.sync_song_type()

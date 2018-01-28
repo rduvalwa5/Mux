@@ -159,7 +159,7 @@ class TestGetFunctions(unittest.TestCase):
             result = self.mux.test_artist_album_song_exist('Ten Years After', 'A Space In Time', '09 Over the Hill.m4p')
             print('Expect True ', result)
             self.assertTrue(expected, result)
-
+    
         def test_get_Song(self):
             thisSong = 'Johnny B. Goode.mp3'
 #            thisAlbum = 'The Best of Chuck Berry'
@@ -169,7 +169,7 @@ class TestGetFunctions(unittest.TestCase):
             result = self.mux.get_song(thisSong)
             print("song result is ", result)
             self.assertEqual(expected, result)
-                             
+                       
         def test_get_Album(self):
             #   mux = musicGet_Functions(True)
             album = 'A Space In Time'
@@ -198,22 +198,21 @@ class TestGetFunctions(unittest.TestCase):
             result = self.mux.get_artistAlbums_fromAlbums('Ten Years After')
             print("artistAlbums 726 ", result)
             self.assertEqual(expected, result)
-        
+               
         def test_get_album_songs(self):
             #   mux = musicGet_Functions(True)
             expected = Test_Results.get_artist_albums_songs
-          #  (('01 One of These Days.m4p',), ('02 Here They Come.m4p',), ("03 I'd Love to Change the World.m4p",), ('04 Over the Hill.m4p',), ("05 Baby Won't You Let Me Rock 'N' Roll You.m4p",), ('06 Once There Was a Time.m4p',), ('07 Let the Sky Fall.m4p',), ('08 Hard Monkeys.m4p',), ("09 I've Been There Too.m4p",), ('10 Uncle Jam.m4p',))
             result = self.mux.get_album_songs('A Space In Time')
-            print("artist albums ", result)
+            print("album songs ", result)
             self.assertEqual(expected, result, "song list for A Space In Time wrong")
 
         def test_get_artist_songs(self):
             #   mux = musicGet_Functions(True)
             expected = Test_Results.get_artist_songs
             # (('01 One of These Days.m4p', 'A Space In Time'), ('02 Here They Come.m4p', 'A Space In Time'), ("03 I'd Love to Change the World.m4p", 'A Space In Time'), ('04 Over the Hill.m4p', 'A Space In Time'), ("05 Baby Won't You Let Me Rock 'N' Roll You.m4p", 'A Space In Time'), ('06 Once There Was a Time.m4p', 'A Space In Time'), ('07 Let the Sky Fall.m4p', 'A Space In Time'), ('08 Hard Monkeys.m4p', 'A Space In Time'), ("09 I've Been There Too.m4p", 'A Space In Time'), ('10 Uncle Jam.m4p', 'A Space In Time'), ('01 One of These Days Live.m4p', 'Recorded Live'), ('02 You Give Me Loving.m4p', 'Recorded Live'), ('03 Good Morning Little Schoolgirl.m4p', 'Recorded Live'), ('04 Help Me.m4p', 'Recorded Live'), ('05 Classical Thing.m4p', 'Recorded Live'), ('06 Scat Thing.m4p', 'Recorded Live'), ("07 I Can't Keep from Cryin' Sometimes.m4p", 'Recorded Live'), ("09 I Can't Keep from Cryin' (Cont'd).m4p", 'Recorded Live'), ('10 Silly Thing.m4p', 'Recorded Live'), ("11 Slow Blues In 'C'.m4p", 'Recorded Live'), ("12 I'm Going Home.m4p", 'Recorded Live'), ('13 Choo Choo Mama.m4p', 'Recorded Live'), ('01 Rock You Mama (Live).m4a', 'Undead (Remastered) [Live]'), ('02 Spoonful (Live).m4a', 'Undead (Remastered) [Live]'), ("03 I May Be Wrong, But I Won't Be Wrong Always (Live).m4a", 'Undead (Remastered) [Live]'), ('04 Summertime _ Shantung Cabbage (Live).m4a', 'Undead (Remastered) [Live]'), ('05 Spider In My Web (Live).m4a', 'Undead (Remastered) [Live]'), ("06 (At the) Woodchopper's Ball [Live].m4a", 'Undead (Remastered) [Live]'), ('07 Standing At the Crossroads (Live).m4a', 'Undead (Remastered) [Live]'), ("08 I Can't Keep from Crying Sometimes _ Extension On One Chord (Live).m4a", 'Undead (Remastered) [Live]'), ("09 I'm Going Home (Live).m4a", 'Undead (Remastered) [Live]'))
-            result = self.mux.get_artistSongs_fromSongs('Ten Years After')
-            print("artist songs", result)
-            self.assertEqual(expected, result, "song list for Ten Years After wrong")
+            result = self.mux.get_artistSongs_fromSongs('Chuck Berry')
+            print("artist Chuck Berry songs", result)
+            self.assertEqual(expected, result, "song list for Chuck Berry wrong")
 
         def test_genres(self):
             #   mux = musicGet_Functions(True)
@@ -222,8 +221,6 @@ class TestGetFunctions(unittest.TestCase):
 
         '''
         DATABASE CRUD TEST
-        '''
-        '''
         Crud test album
         '''
 
