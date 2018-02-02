@@ -33,6 +33,7 @@ import os
 import platform
 import MySQLdb  # as connDb
 from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
+from _ast import IsNot
 
 
 class musicGet_Functions:   
@@ -651,6 +652,24 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err) 
 
+    def get_album_by_index(self, idx):
+#       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
+        fields = "*"
+        statement = "select * from music.artist_albums where `index` = " + str(idx) + ";"
+        print(statement)
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(statement)
+            result = cursor.fetchall()  
+            cursor.close()
+            self.dbConnectionClose()
+            return result           
+        except self.conn.Error as err:
+            print("Exception is ", err)
+            return str(err) 
+
+
+
     def get_album_songs(self, album):
 #       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
 #        albumSongs = []
@@ -714,11 +733,11 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)        
         
-    def update_album(self, idx, field, value):
+    def update_album(self,album, field, value):
         cursor = self.conn.cursor()
         safe = "SET SQL_SAFE_UPDATES = 0;"  
         cursor.execute(safe)
-        statement = "update `Music`.artist_albums set artist_albums." + field + " = '" + value + "' where artist_albums.index = " + str(idx) + ";"
+        statement = "update `Music`.artist_albums set artist_albums." + field + " = '" + value + "' where artist_albums.album like '" + album + "';"
         print(statement)
         cursor.execute(statement)
         commit = "commit;"
@@ -783,7 +802,7 @@ class musicGet_Functions:
 
     def get_album_cover(self, cover):
         cursor = self.conn.cursor()
-        statement = "select * from `Music`.album_covers ac where ac.album_cover like '" + cover + "';"
+        statement = "select * from `Music`.derived_album_covers where album_cover like '" + cover + "';"
         print("get cover statement ", statement)
         try:
             cursor.execute(statement)
@@ -799,7 +818,7 @@ class musicGet_Functions:
 
     def get_album_cover_count(self):
         cursor = self.conn.cursor()
-        statement = "select count(*)  from `Music`.album_covers;"
+        statement = "select count(*)  from `Music`.derived_album_covers;"
         try:
             cursor.execute(statement)
             result = cursor.fetchone()
@@ -811,20 +830,26 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)
         
-    def add_album_cover(self, cover):
+    def add_album_cover(self, cover,album):
         cursor = self.conn.cursor()
-        statementIdx = "select max(cover_idx) from `Music`.album_covers;"
+        statementIdx = "select max(cover_idx) from `Music`.derived_album_covers;"
         cursor.execute(statementIdx)
         idx = cursor.fetchone()
-        print("MAX ***********", idx[0])
-        newIdx = idx[0] + 1   
+        print("MAX ***********", idx)
+        if idx[0] is None:
+            print("idx is none")
+            maxCover = 0
+        else:
+            print("idx is NOT none")
+            maxCover = idx[0] 
+        newIdx = maxCover + 1   
         print("*********** New covver    ", newIdx) 
 #        statement = insert into `Music`.album_covers values ('BobbyDarin_MackTheKnife.jpeg','',303,'');
-        statement = "insert into `Music`.album_covers values ('" + cover + "',''," + str(newIdx) + ",'');"
+        statement = "insert into `Music`.derived_album_covers(`cover_idx`,`album_cover`,`album`,`description`) values (" + str(newIdx) + ",'" + cover + "','" + album + "'," + "'No description');"
         print(statement)
         cursor.execute(statement)
         cursor.execute("commit;")
-        print(self.get_album_cover(cover))
+        print("Get Cover Result is ", self.get_album_cover(cover))
         return self.get_album_cover(cover)
         
     def delete_album_cover(self, coverId):

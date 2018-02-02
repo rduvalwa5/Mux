@@ -214,7 +214,6 @@ class musicLoad_Functions:
             print("done")
         cursor.close()              
 
-    '''
 class song_Add_Update_Delete():       
 
     def __init__(self, test=False):
@@ -479,12 +478,12 @@ class song_Add_Update_Delete():
         cursor.execute(commit)
         print("done")
         cursor.close()
-    '''
+
     def dbConnectionClose(self):
         self.conn.close()
 
 
-class derived_album_Add_Update_Delete:       
+class album_Add_Update_Delete:       
     def __init__(self, test=False):
         print("*************** Node Name is ", platform.uname().node)
         if platform.uname().node == 'C1246895-XPS':
@@ -494,7 +493,7 @@ class derived_album_Add_Update_Delete:
             self.conn = MySQLdb.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
 #            self.conn  = MySQLdb.connect(login_info_osx)
         elif platform.uname().node == 'OSXAir.home.home':
-            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+            self.conn  = MySQLdb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
         elif platform.uname().node == 'C1246895-WIN64-Air':
         #    self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
             self.conn = MySQLdb.connect(login_info_WIN64_Air)
@@ -511,8 +510,6 @@ class derived_album_Add_Update_Delete:
     def dbConnectionClose(self):
         self.conn.close()
         
-    
-
     def doesAlbumExist(self, album):
         cursor = self.conn.cursor()
         selectStatement = "Select Music.artist_albums.index from Music.artist_albums where Music.artist_albums.album like '" + album + "';"
@@ -542,7 +539,7 @@ class derived_album_Add_Update_Delete:
             index = maxIndex[0]
             newIndex = index + 1
             if self.notTestRun:
-                insertStatement = "INSERT into Music.derived_artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.type,artist_albums.genre)  values(" + str(newIndex) + ",\"" + artist + "\",\"" + album + "\",\"" + tipe + "\",\"" + gen + "\" )"
+                insertStatement = "INSERT into `Music`.`artist_albums` (`artist_albums`.index, `artist_albums`.artist,`artist_albums`.album,`artist_albums`.type,`artist_albums`.genre)  values(" + str(newIndex) + ",\"" + artist + "\",\"" + album + "\",\"" + tipe + "\",\"" + gen + "\" )"
                 print(insertStatement)
                 cursor.execute(insertStatement)
                 commit = "commit;"
@@ -559,11 +556,11 @@ class derived_album_Add_Update_Delete:
         if self.doesAlbumExist(album) == 'True': 
             if artist != 'no_change':
                 if self.notTestRun:
-                    updateStatement = "UPDATE Music.derived_artist_albums set artist = '" + artist + "' where album = '" + album + "';"
+                    updateStatement = "UPDATE Music.artist_albums set artist = '" + artist + "' where album = '" + album + "';"
                     if genre != 'no_change':
-                            updateStatement = "UPDATE Music.derived_artist_albums set artist = '" + artist + "', genre = '" + genre + "' where album = '" + album + "';"
+                            updateStatement = "UPDATE Music.artist_albums set artist = '" + artist + "', genre = '" + genre + "' where album = '" + album + "';"
                             if tipe != 'no_change':
-                                updateStatement = "UPDATE Music.derived_artist_albums set artist = '" + artist + "', genre = '" + genre + "' ,type = '" + tipe + "' where album = '" + album + "';"
+                                updateStatement = "UPDATE Music.artist_albums set artist = '" + artist + "', genre = '" + genre + "' ,type = '" + tipe + "' where album = '" + album + "';"
                     print(updateStatement)
                     cursor.execute(updateStatement)
                     commit = "commit;"
@@ -571,9 +568,9 @@ class derived_album_Add_Update_Delete:
             elif artist == 'no_change' and  genre != 'no_change':
                 if self.notTestRun:
                     if tipe != 'no_change':
-                        updateStatement = "UPDATE Music.derived_artist_albums set genre = '" + genre + "', type = '" + tipe + "' where album = '" + album + "';"
+                        updateStatement = "UPDATE Music.artist_albums set genre = '" + genre + "', type = '" + tipe + "' where album = '" + album + "';"
                     else:
-                        updateStatement = "UPDATE Music.derived_artist_albums set genre = '" + genre + "' where album = '" + album + "';"
+                        updateStatement = "UPDATE Music.artist_albums set genre = '" + genre + "' where album = '" + album + "';"
                     print(updateStatement)
                     cursor.execute(updateStatement)
                     commit = "commit;"
@@ -581,7 +578,7 @@ class derived_album_Add_Update_Delete:
             elif artist == 'no_change' and genre == 'no_change':
                 if self.notTestRun:
                     if tipe != 'no_change':
-                                updateStatement = "UPDATE Music.derived_artist_albums set type = '" + tipe + "' where album = '" + album + "';"
+                                updateStatement = "UPDATE Music.artist_albums set type = '" + tipe + "' where album = '" + album + "';"
                                 print(updateStatement)
                                 cursor.execute(updateStatement)
                                 commit = "commit;"
@@ -591,14 +588,14 @@ class derived_album_Add_Update_Delete:
             else:
                 print("no updates ", artist , genre, tipe)    
         else:
-            print(artist, " does not exist in data table Music.derived_artist_albums.")            
+            print(artist, " does not exist in data table Music.artist_albums.")            
         print("done")
         cursor.close()
 
     def delete_album(self, album):
         cursor = self.conn.cursor()
         if self.notTestRun:
-            selectStatement = "select artist_albums.index from Music.derived_artist_albums where artist_albums.album like " + "'" + album + "';"
+            selectStatement = "select artist_albums.index from Music.artist_albums where artist_albums.album like " + "'" + album + "';"
             print(selectStatement)
             cursor.execute(selectStatement)
             try:
@@ -616,21 +613,19 @@ class derived_album_Add_Update_Delete:
                 print("Album not found")
                 return "Album not found"
 
-    
-'''
 class artist_Add_Update_Delete:       
 
     def __init__(self, test=False):
         print("*************** Node Name is ", platform.uname().node)
         if platform.uname().node == 'C1246895-XPS':
-            self.conn = MySQLdb.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')
+            self.conn = MySQLdb.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
 #            self.conn  = c.connect(login_info_xps)
-        elif platform.uname().node == 'C1246895-osx.home':
+        elif platform.uname().node == 'C1246895-osx.home.home':
             self.conn = MySQLdb.connect(host='OSXAir.home', user='rduvalwa2', password='blu4jazz', db='Music')
 #            self.conn  = MySQLdb.connect(login_info_osx)
         elif platform.uname().node == 'OSXAir.home.home':
 #            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn = MySQLdb.connect(host=login_info_osxAir['host'], user=login_info_osxAir['user'], password=login_info_osxAir['password'], db=login_info_osxAir['db'])
+            self.conn = MySQLdb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
         elif platform.uname().node == 'C1246895-WIN64-Air':
         #    self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
             self.conn = MySQLdb.connect(login_info_WIN64_Air)
@@ -793,10 +788,10 @@ class verify_data_tables:
 #                    print(item)
             cursor.close()
             return result    
-    '''
         
 if __name__ == '__main__':
-    
+    pass
+'''
     runMode = "Run"  # NoRun  # Test
     
     trueLoad = musicLoad_Functions(True)
@@ -815,3 +810,4 @@ if __name__ == '__main__':
     
         trueLoad.sync_song_genre()
         trueLoad.sync_song_type()
+        '''

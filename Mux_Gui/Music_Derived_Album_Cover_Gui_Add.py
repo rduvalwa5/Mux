@@ -20,19 +20,34 @@ class Application(Frame):
         """Add all the widgets to the main frame."""
         
         Album_Cover_Frame = Frame(self)
+        Album_Frame = Frame(self)
+        Result_Frame = Frame(self)
         
-        self.labelInputAlbumCover = Label(Album_Cover_Frame, text="Add Album Cover Name")        
-        self.labelResult = Label(Album_Cover_Frame, text = "Album Cover Result")
+        self.labelInputAlbumCover = Label(Album_Cover_Frame, text="Add Album Cover Name")
+        self.labelInput_Album =  Label(Album_Frame, text="Add Album Name")  
+        self.labelResult = Label(Result_Frame, text = "Album Cover Result") 
+        
         
         self.text_in_Album_Cover  = Entry(Album_Cover_Frame)
+        self.text_in_Album  = Entry(Album_Frame)
+        
         
         self.labelInputAlbumCover.pack()
         self.text_in_Album_Cover.pack()
-        
+        self.labelInput_Album.pack()
+        self.text_in_Album.pack_configure()
         self.labelResult.pack()
+        
         Album_Cover_Frame.pack(side=TOP)
+        Album_Frame.pack(side=TOP)
+        Result_Frame.pack(side=TOP)
+        
         bottom_frame = Frame(self)
         bottom_frame.pack(side=TOP)
+        
+        
+#        bottom_frame = Frame(self)
+#        bottom_frame.pack(side=TOP)
 #how to disable a button
         self.QUIT = Button(bottom_frame, text="Quit", command=self.quit, state='disabled')
         self.QUIT.pack(side=LEFT)
@@ -44,14 +59,15 @@ class Application(Frame):
         user has placed in the Entry widget according to the selected
         radio button."""
         albumCover = self.text_in_Album_Cover.get()
+        album = self.text_in_Album.get()
         mux = musicGet_Functions(True)
-        result = mux.add_album_cover(albumCover)
+        result = mux.add_album_cover(albumCover,album)
         print(result)
-        print("Gui result ", result[0],  result[2])
-        self.labelResult.config(text=str(result[2]))
+        print("Gui result ", result[0]) #,  result[2])
+        self.labelResult.config(text=str(result))
         
-        print("Result "  + result[0],  result[2])
-        self.labelResult.config(text=result)
+        print("Result " , result[0])
+        self.labelResult.config(text=result[0])
         
         self.QUIT.config(state = 'active')
         self.QUIT.pack(side=TOP)

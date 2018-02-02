@@ -1,3 +1,28 @@
+/*
+OSXAir:mysql rduvalwa2$ pwd
+/usr/local/mysql
+OSXAir:mysql rduvalwa2$ ls
+COPYING		README		bin		data		docs		include		lib		man		share		support-files
+OSXAir:mysql rduvalwa2$ sudo ls -l data
+total 386008
+drwxr-x---   25 _mysql  _mysql       800 Feb  1 15:00 Music
+-rw-r-----    1 _mysql  _mysql        56 Nov 26  2016 auto.cnf
+-rw-r-----    1 _mysql  _mysql      1394 Feb  1 11:19 ib_buffer_pool
+-rw-r-----    1 _mysql  _mysql  50331648 Feb  1 15:01 ib_logfile0
+-rw-r-----    1 _mysql  _mysql  50331648 Feb  1 15:01 ib_logfile1
+-rw-r-----    1 _mysql  _mysql  79691776 Feb  1 15:01 ibdata1
+-rw-r-----    1 _mysql  _mysql  12582912 Feb  1 15:00 ibtmp1
+drwxr-x---   77 _mysql  _mysql      2464 Nov 26  2016 mysql
+-rw-r-----    1 _mysql  _mysql   3798390 Feb  1 15:30 mysqld.local.err
+-rw-r-----    1 _mysql  _mysql         4 Feb  1 11:25 mysqld.local.pid
+drwxr-x---    5 _mysql  _mysql       160 Nov 27  2016 password
+drwxr-x---   90 _mysql  _mysql      2880 Nov 26  2016 performance_schema
+drwxr-x---  108 _mysql  _mysql      3456 Nov 26  2016 sys
+OSXAir:mysql rduvalwa2$ 
+*/
+
+
+
 
 SET SQL_SAFE_UPDATES = 0;
 
@@ -6,20 +31,58 @@ select count(*) from music.artist_albums; -- 963
 select count(*) from `Music`.album2songs; -- 8373 8062
 select count(*) from `Music`.album_covers;  -- 435  473
 
+
+/* Feb1 2018 */
+
+select * from `Music`.`album_covers` where album_cover like '%Noel%';
+
+select * from `Music`.`artist_albums` where album like '%song%';
+
+select * from `Music`.`artist_albums` where artist like '%White%';
+
+CREATE TABLE `album_covers` (
+  `cover_idx` int(11) unsigned NOT NULL,
+  `album_cover` varchar(100) NOT NULL,
+  `album` varchar(200) NOT NULL,
+  `description` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`cover_idx`),
+  UNIQUE KEY `cover_idx_UNIQUE` (`cover_idx`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT album_covers
+SELECT * FROM derived_album_covers;
+ 
 /* database management */
 /*
-mysqldump --databases --user=rduval --password  Music > Music_export_into_db.sql
+select count(*) from `Music`.`derived_artist`;  -- 482
+select count(*) from `music`.`artist_albums`; -- 970
+select count(*) from `Music`.`album2songs`; -- 8516
+select count(*) from `Music`.album_covers;  -- 439
 
-mysql -u username -p database_name < file.sql
-if you don't you need to create the relevant database(empty) in MySQL, for that first log on to the MySQL console by running the following command in terminal or in cmd
 
-mysql -u userName -p;
-and when prompted provide the password.
+CREATE TABLE `derived_album2songs` (
+  `index` bigint(5) NOT NULL,
+  `server` varchar(50) DEFAULT NULL,
+  `path` varchar(100) NOT NULL,
+  `artist` varchar(100) NOT NULL,
+  `album` varchar(200) NOT NULL,
+  `song` varchar(200) NOT NULL,
+  `genre` varchar(50) DEFAULT NULL,
+  `type` varchar(20) DEFAULT NULL,
+  `genre_idx` bigint(5) unsigned DEFAULT '1',
+  PRIMARY KEY (`index`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-Next create a database and use it
 
-mysql>create database yourDatabaseName;
-mysql>use yourDatabaseName;
+commit;
+
+
+INSERT derived_album2songs
+SELECT * FROM album2songs;
+
+select * from music.`album2songs` where `album2songs`.`artist` like 'Cream';
+
+delete from music.`album2songs` where `album2songs`.`album` like 'Live Back To Macon, GA [Disc 1]';
 
 */
 
