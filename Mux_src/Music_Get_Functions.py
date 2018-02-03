@@ -802,7 +802,7 @@ class musicGet_Functions:
 
     def get_album_cover(self, cover):
         cursor = self.conn.cursor()
-        statement = "select * from `Music`.derived_album_covers where album_cover like '" + cover + "';"
+        statement = "select * from `Music`.album_covers where album_cover like '" + cover + "';"
         print("get cover statement ", statement)
         try:
             cursor.execute(statement)
@@ -832,7 +832,7 @@ class musicGet_Functions:
         
     def add_album_cover(self, cover,album):
         cursor = self.conn.cursor()
-        statementIdx = "select max(cover_idx) from `Music`.derived_album_covers;"
+        statementIdx = "select max(cover_idx) from `Music`.album_covers;"
         cursor.execute(statementIdx)
         idx = cursor.fetchone()
         print("MAX ***********", idx)
@@ -845,7 +845,7 @@ class musicGet_Functions:
         newIdx = maxCover + 1   
         print("*********** New covver    ", newIdx) 
 #        statement = insert into `Music`.album_covers values ('BobbyDarin_MackTheKnife.jpeg','',303,'');
-        statement = "insert into `Music`.derived_album_covers(`cover_idx`,`album_cover`,`album`,`description`) values (" + str(newIdx) + ",'" + cover + "','" + album + "'," + "'No description');"
+        statement = "insert into `Music`.album_covers(`cover_idx`,`album_cover`,`album`,`description`) values (" + str(newIdx) + ",'" + cover + "','" + album + "'," + "'No description');"
         print(statement)
         cursor.execute(statement)
         cursor.execute("commit;")
