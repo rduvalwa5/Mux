@@ -36,9 +36,9 @@ select count(*) from `Music`.album_covers;  -- 435  473
 
 select * from `Music`.`album_covers` where album_cover like '%Noel%';
 
-select * from `Music`.`artist_albums` where album like '%song%';
+select * from `Music`.`artist_albums` where album like '%Duet%';
 
-select * from `Music`.`artist_albums` where artist like '%White%';
+select * from `Music`.`artist_albums` where artist like '%Ronstadt%';
 
 CREATE TABLE `album_covers` (
   `cover_idx` int(11) unsigned NOT NULL,

@@ -319,26 +319,23 @@ class TestGetFunctions(unittest.TestCase):
             getCoverResult = self.mux.get_album_cover(albumCover)
             print("277  ", getCoverResult)
             print("278  ", getCoverResult[0][0])
-            self.assertEqual(albumCover, getCoverResult[0][0], "add album cover failed")
+            self.assertEqual(albumCover, getCoverResult[0][1], "add album cover failed")
         
         def test_add_albumcover(self):
             #   mux = musicGet_Functions(True)
             albumCover = "Test Cover.jpg"
-            self.mux.add_album_cover(albumCover)
+            album = "Test album"
+            self.mux.add_album_cover(albumCover,album)
             getCoverResult = self.mux.get_album_cover(albumCover)
             print('285  ', getCoverResult[0][0])
-            self.assertEqual(albumCover, getCoverResult[0][0], "add album cover failed")
+            self.assertEqual(albumCover, getCoverResult[0][1], "add album cover failed")
             
         def test_delete_albumcover(self):
-            albumCover = "Test Cover.jpg"
-            #   mux = musicGet_Functions(True)
-            getCoverResult = self.mux.get_album_cover(albumCover)
-            print('292   ', getCoverResult)
-            albumCoverId = getCoverResult[0][2]
-            print('294  ', albumCoverId)
-            self.mux.delete_album_cover(albumCoverId)
+            album = "Test album"
+            print('delete cover of album ', album)
+            self.mux.delete_album_cover(album)
             expected = ()
-            deleteResult = self.mux.get_album_cover(albumCover)
+            deleteResult = self.mux.get_album_cover(album)
             self.assertEqual(expected, deleteResult, "delete album cover failed")
 
   

@@ -852,12 +852,12 @@ class musicGet_Functions:
         print("Get Cover Result is ", self.get_album_cover(cover))
         return self.get_album_cover(cover)
         
-    def delete_album_cover(self, coverId):
+    def delete_album_cover(self, album):
         print("Start Delete ")
         safe = "SET SQL_SAFE_UPDATES = 0;"       
         cursor = self.conn.cursor()
-        print("cover id ", coverId)
-        deleteStatement = "Delete from `Music`.album_covers where `Music`.album_covers.cover_idx = " + str(coverId) + " ;"  
+        print("cover album ", album)
+        deleteStatement = "Delete from `Music`.album_covers where album like '" + album + "' ;"  
         print("delete statement ", deleteStatement)      
         result = cursor.execute(deleteStatement)
         print("Delete Result is ", result)
