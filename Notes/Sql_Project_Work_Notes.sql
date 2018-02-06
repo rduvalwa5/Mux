@@ -21,9 +21,6 @@ drwxr-x---  108 _mysql  _mysql      3456 Nov 26  2016 sys
 OSXAir:mysql rduvalwa2$ 
 */
 
-
-
-
 SET SQL_SAFE_UPDATES = 0;
 
 select count(*) from `Music`.artist;  -- 574 569
@@ -31,6 +28,62 @@ select count(*) from music.artist_albums; -- 963
 select count(*) from `Music`.album2songs; -- 8373 8062
 select count(*) from `Music`.album_covers;  -- 435  473
 
+/* Feb 5 2018 */
+
+select  DISTINCT a.`genre` as Song, al.`genre` as Album, art.`genre` as Artist, art.`artist` 
+from Music.`album2songs`a , Music.`artist_albums`al , music.`artist` art
+where a.`artist` = al.`artist`
+and al.`artist` = art.`artist`
+order by art.`artist`;
+
+select * from Music.`artist`where genre like 'rock';
+
+update  Music.`album2songs` set genre  = 'Rock' where genre like 'Rock';
+
+/* Feb3 2018 */
+
+select distinct album, genre, album2songs.type from `Music`.`album2songs`;
+
+
+CREATE TABLE `temp_albums` (
+  `index` bigint(5) NOT NULL,
+  `artist` varchar(100) NOT NULL,
+  `album` varchar(200) NOT NULL,
+  `genre` varchar(20) DEFAULT NULL,
+  `type` varchar(20) DEFAULT NULL,
+  `cover_name` varchar(100) DEFAULT NULL,
+  `cover_idx` int(11) DEFAULT NULL,
+  PRIMARY KEY (`index`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT `temp_albums`
+SELECT * FROM `artist_albums`;
+
+update `temp_albums` set genre = "testGen" where `temp_albums`.`album` like "The Best Of White Lion";
+
+update `temp_albums` set `type` = "testType" where `temp_albums`.`album` like "The Best Of White Lion";
+
+update temp_albums set genre = 'testagain' where album like "The Best Of White Lion";
+
+/* Feb2 2018 */
+
+select count(*) from `Music`.`artist_albums`where genre like 'Country';
+
+select count(*) from `Music`.`artist_albums`where genre like 'Folk';
+
+
+
+
+update `Music`.artist_albums set genre = (select distinct `artist_albums`.genre from `album2songs`,`artist_albums`  where `Music`.artist_albums.album = `Music`.album2songs.album)
+where `artist_albums`.album = `album2songs`.album;
+
+
+select distinct `artist_albums`.genre from `album2songs`,`artist_albums`  where `Music`.artist_albums.album = `Music`.album2songs.album;
+
+
+
+select `artist_albums`.genre, `album2songs`.genre from `artist_albums`, `album2songs`
+where `artist_albums`.album = `album2songs`.album;
 
 /* Feb1 2018 */
 
