@@ -1,9 +1,8 @@
 '''
-Created on Feb 5, 2017
+Created on Feb 6, 2018
 
 @author: rduvalwa2
 '''
-
 from tkinter import *
 from Music_Get_Functions import musicGet_Functions
 
@@ -13,19 +12,35 @@ class Application(Frame):
         """Main frame initialization (mostly delegated)"""
         Frame.__init__(self, master)
         self.pack()
-        self.createArtistWidgets()
+        self.updateArtistWidgets()
         
-    def createArtistWidgets(self):
+    def updateArtistWidgets(self):
         """Add all the widgets to the main frame."""
-        top_frame = Frame(self)
-        self.labelInput = Label(top_frame, text="Artist Name")
-        self.text_in = Entry(top_frame)
-        self.labelResult = Label(top_frame, text="Result")
-        self.labelInput.pack()
-        self.text_in.pack()
-        self.labelResult.pack()
-        top_frame.pack(side=TOP)
+        tag_name = Frame(self)
+        artist_name = Frame(self)
+        newGenre_name = Frame(self)
+#        result = Frame()
+        self.labeltag = Label(tag_name, text="Update Artist Genre")
+        self.labelArtist = Label(artist_name, text="Artist Name")
+        self.labelNewGenre = Label(newGenre_name, text="New Genre Name")
+        self.labelResult = Label(artist_name, text="Result")
+                
+        self.text_in_artist = Entry(artist_name)
+        self.text_in_genre = Entry(newGenre_name)        
         
+        self.labeltag.pack()
+        self.labelArtist.pack()
+        self.labelNewGenre.pack()  
+        
+        self.text_in_artist.pack()
+        self.text_in_genre.pack()
+        self.labelResult.pack()  
+        
+        tag_name.pack(side=TOP)
+        artist_name.pack(side=TOP)
+        newGenre_name.pack(side=TOP)
+#        result.pack(side=TOP) 
+            
         bottom_frame = Frame(self)
         bottom_frame.pack(side=TOP)
 #how to disable a button
@@ -38,20 +53,11 @@ class Application(Frame):
         """Handle a click of the button by processing any text the
         user has placed in the Entry widget according to the selected
         radio button."""
-        artist = self.text_in.get()
+        artist = self.text_in_artist.get()
+        genre = self.text_in_genre.get()
         muxGet = musicGet_Functions(True)
-        result = muxGet.get_artist(artist)
-        if result != []:
-            artist = []
-            idx = 0
-            for i in result:
-                print(i)
-                artist.append((result[idx][0],result[idx][1],result[idx][2]))
-                idx = idx + 1
-            print(artist)            
-            output = artist
-        else:
-            output = artist + " not found"
+        result = muxGet.update_artist(artist, genre)
+        output = result
         self.labelResult.config(text=output)
         self.QUIT.config(state = 'active')
         self.QUIT.pack(side=TOP)

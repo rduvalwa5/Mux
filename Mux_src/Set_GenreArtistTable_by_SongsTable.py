@@ -44,7 +44,7 @@ class Set_Artist_Albums_Genre_Type:
     def set_genre_artist(self):
         cursor = self.conn.cursor()
         for album in self.AlbumList:
-            statement = "update `derived_artist` set genre = '" + album[1] + "' where artist like \"" + album[0] + "\";"
+            statement = "update `artist` set genre = '" + album[1] + "' where artist like \"" + album[0] + "\";"
 #            statement = "update `temp_albums` set genre = '" + album[1] + "' where album like \"" + album[0] + "\";"
             print(statement)
             cursor.execute(statement)

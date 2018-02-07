@@ -28,7 +28,75 @@ select count(*) from music.artist_albums; -- 963
 select count(*) from `Music`.album2songs; -- 8373 8062
 select count(*) from `Music`.album_covers;  -- 435  473
 
+/* Feb 6 2018 */
+
+select * from MUSIC.`artist` where genre like 'TexMex';
+
+
+select distinct artist, album from Music.`album2songs` where genre like 'Easy Listening';
+
+select distinct artist from Music.`album2songs` where genre like 'Regae';
+
+select distinct artist from Music.`album2songs` where genre like 'rockabilly';
+
+
+select * from music.`artist` where genre like 'Soul';
+
+select genre, count(genre) from Music.`album2songs`
+group by genre order by genre;
+/*
+Alternative	3
+BlueGrass	157
+Blues	440
+Classical	43
+Country	879
+Easy Listening	28
+Folk	615
+Holiday	97
+Jazz	780
+Latino	1
+Pop	444
+Regae	23
+Rock	4747
+RockaBilly	32
+Soul	44
+Talk	1
+TestGenre	3
+TexMex	155
+Traditional	23
+World	1
+*/
+
+select genre, count(genre) from Music.`artist`
+group by genre order by genre;
+/*
+BlueGrass	8
+Blues	30
+Classical	14
+Country	45
+Folk	25
+Jazz	40
+Pop	58
+Regae	4
+Rock	233
+RockaBilly	6
+Soul	11
+TexMex	8
+*/
+
+
 /* Feb 5 2018 */
+
+select genre, count(genre) 
+from music.`album2songs` a
+group by a.`genre` 
+order by a.`genre`;
+
+select genre, count(genre) 
+from music.`artist_albums` a
+group by a.`genre` 
+order by a.`genre`;
+
 
 select  DISTINCT a.`genre` as Song, al.`genre` as Album, art.`genre` as Artist, art.`artist` 
 from Music.`album2songs`a , Music.`artist_albums`al , music.`artist` art
