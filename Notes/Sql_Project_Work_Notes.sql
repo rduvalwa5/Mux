@@ -39,7 +39,6 @@ select distinct artist from Music.`album2songs` where genre like 'Regae';
 
 select distinct artist from Music.`album2songs` where genre like 'rockabilly';
 
-
 select * from music.`artist` where genre like 'Soul';
 
 select genre, count(genre) from Music.`album2songs`
