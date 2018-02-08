@@ -13,10 +13,10 @@ if __name__ == "__main__" :
 #    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Black Sabbath/Black Sabbath"
 #    myPath =  "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Gregg Allman/Live Back To Macon GA Disc 1"
 #    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Eric Clapton/Live In San Diego With Special Guest JJ Cale Disc 2"
-    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Cream/Goodbye"
+    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Vienna Teng/Waking Hour"
     
-    album = "Goodbye"
-    artist = "Cream"
-    genre = "Rock"
+    album = "Waking Hour"
+    artist = "Vienna Teng"
+    genre = "Pop"
     inType = "CD"    
     mux.add_songs_in_path(myPath, album, artist, genre, inType)   
