@@ -41,6 +41,8 @@ update music.`album2songs` set genre = 'Country' where artist like 'Zac Brown Ba
 update music.`artist_albums` set genre = 'Country' where artist like 'Zac Brown Band';
 update music.`artist` set genre = 'Country' where artist like 'Zac Brown Band';
 
+update music.`album2songs` set genre = 'Pop' where genre like 'Holiday';
+
 select genre, count(genre) from Music.`album2songs` group by genre order by genre;
 /*
 BlueGrass	179
@@ -48,11 +50,9 @@ Blues	761
 Classical	59
 Country	893
 Easy Listening	28
-Folk	627
-Folks	15
-Holiday	14
+Folk	642
 Jazz	774
-Pop	472
+Pop	486
 Regae	23
 Rock	4272
 RockaBilly	32
