@@ -82,7 +82,7 @@ class TestGetFunctions(unittest.TestCase):
                 expected = gen[1]
                 print("expect for genre ", gen[0])
                 result = self.mux.get_genre_count(gen[0])
-                self.assertEqual(expected, result)
+                self.assertEqual(expected, result, "Error " + gen[0])
 
         '''
         Test get counts

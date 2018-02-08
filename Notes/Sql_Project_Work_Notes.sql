@@ -28,6 +28,40 @@ select count(*) from music.artist_albums; -- 963
 select count(*) from `Music`.album2songs; -- 8373 8062
 select count(*) from `Music`.album_covers;  -- 435  473
 
+commit;
+/* Feb 7 2018 */
+
+select  DISTINCT a.`genre` as Song, al.`genre` as Album, art.`genre` as Artist, art.`artist` 
+from Music.`album2songs`a , Music.`artist_albums`al , music.`artist` art
+where a.`artist` = al.`artist`
+and al.`artist` = art.`artist`
+order by art.`artist`;
+
+update music.`album2songs` set genre = 'Country' where artist like 'Zac Brown Band';
+update music.`artist_albums` set genre = 'Country' where artist like 'Zac Brown Band';
+update music.`artist` set genre = 'Country' where artist like 'Zac Brown Band';
+
+select genre, count(genre) from Music.`album2songs` group by genre order by genre;
+/*
+BlueGrass	179
+Blues	761
+Classical	59
+Country	893
+Easy Listening	28
+Folk	627
+Folks	15
+Holiday	14
+Jazz	774
+Pop	472
+Regae	23
+Rock	4272
+RockaBilly	32
+Soul	159
+Talk	1
+TestGenre	3
+TexMex	202
+*/
+
 /* Feb 6 2018 */
 
 select * from MUSIC.`artist` where genre like 'TexMex';
