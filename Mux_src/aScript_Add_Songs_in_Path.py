@@ -7,16 +7,12 @@ from Music_Get_Functions import musicGet_Functions
         
 if __name__ == "__main__" :       
     mux = musicGet_Functions(True)
-    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Cream/Live Cream Vol 2"
-#    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Duran Duran/Greatest"
-#    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Drive-By Truckers/American Band"
-#    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Black Sabbath/Black Sabbath"
-#    myPath =  "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Gregg Allman/Live Back To Macon GA Disc 1"
-#    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Eric Clapton/Live In San Diego With Special Guest JJ Cale Disc 2"
-    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Vienna Teng/Waking Hour"
+    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Gladys Knight & The Pips/Gold [Disc 2]"
     
-    album = "Waking Hour"
-    artist = "Vienna Teng"
-    genre = "Pop"
+    album = "Gold [Disc 1]"
+    artist = "Gladys Knight & The Pips"
+    genre = "Soul"
     inType = "CD"    
-    mux.add_songs_in_path(myPath, album, artist, genre, inType)   
+    mux.add_songs_in_path(myPath, album, artist, genre, inType)
+#    mux.add_album(album, artist, genre, inType)
+#    mux.add_artist(artist, genre)

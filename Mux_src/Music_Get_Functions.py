@@ -533,6 +533,18 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)               
 
+    def doesArtistExist(self, artist):
+        cursor = self.conn.cursor()
+        selectStatement = "Select  Music.artist.index from Music.artist where  Music.artist.artist = '" + artist + "';"
+        print(selectStatement)
+        cursor.execute(selectStatement)
+        aritstIndex = cursor.fetchone()
+        if aritstIndex != None:
+            returnCode = 'True'
+        else:
+            returnCode = 'False'
+        return returnCode
+
     def get_artist(self, artist):
 #       select music.artist.index, artist, genre from music.artist where artist = 'Bill Withers';
         fields = "*"
@@ -547,27 +559,45 @@ class musicGet_Functions:
             return result  
         except self.conn.Error as err:
             print("Exception is ", err)
-            return str(err)               
-       
+            return str(err) 
+                             
+#    def add_artist(self, artist, genre):
+#        cursor = self.conn.cursor()
+#        maxIndex = self.get_max_index("artist")
+#        index = maxIndex[0]
+#        newIndex = index + 1
+#        print(newIndex) 
+#        insertStatement = "INSERT into Music.artist (artist.index, artist.artist,artist.genre)  values(" + str(newIndex) + ",\"" + artist + "\",\"" + genre + "\")"
+#        print(insertStatement)
+#        try:
+#            cursor.execute(insertStatement)
+#            commit = "commit;"
+#            cursor.execute(commit)
+#            cursor.close()
+#            print("done")
+#            return "Added " + artist
+#        except self.conn.Error as err:
+#            print("Exception is ", err)
+#            return str(err)
+        
     def add_artist(self, artist, genre):
-        cursor = self.conn.cursor()
-        maxIndex = self.get_max_index("artist")
-        index = maxIndex[0]
-        newIndex = index + 1
-        print(newIndex) 
-        insertStatement = "INSERT into Music.artist (artist.index, artist.artist,artist.genre)  values(" + str(newIndex) + ",\"" + artist + "\",\"" + genre + "\")"
-        print(insertStatement)
-        try:
-            cursor.execute(insertStatement)
-            commit = "commit;"
-            cursor.execute(commit)
+        if self.doesArtistExist(artist) == 'False':
+            cursor = self.conn.cursor()
+            maxIndex = self.get_max_index("artist")
+            index = maxIndex[0]
+            newIndex = index + 1
+            if self.notTestRun:
+                insertStatement = "INSERT into Music.artist (artist.index, artist.artist,artist.genre)  values(" + str(newIndex) + ",\"" + artist + "\",\"" + genre + "\")"
+                print(insertStatement)
+                cursor.execute(insertStatement)
+                commit = "commit;"
+                cursor.execute(commit)
+                print("done")
             cursor.close()
-            print("done")
-#            self.dbConnectionClose()
-            return "Added " + artist
-        except self.conn.Error as err:
-            print("Exception is ", err)
-            return str(err)
+            return "Success " + artist
+        else:
+            print(artist, " already exist in data table Music.artist.")
+            return "artist already exist in table"  
         
     def update_artist(self, artist, genre):
         cursor = self.conn.cursor() 
@@ -743,9 +773,11 @@ class musicGet_Functions:
         '''
         cursor = self.conn.cursor()
         maxIndex = self.get_max_index("artist_albums")
+        
         index = maxIndex[0]
+        print(str(index))
         newIndex = index + 1
-        print(newIndex)
+        print(str(newIndex))
         insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.genre, artist_albums.type)  values(" + str(newIndex) + ",\"" + artist + "\",\"" + album + "\",\"" + genre + "\",\"" + tipe + "\")"
         print(insertStatement)
         try:
