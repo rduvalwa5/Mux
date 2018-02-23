@@ -32,7 +32,7 @@ error: could not create 'c:\program files\python36-32\Lib\site-packages\olefile'
 import os
 import platform
 import MySQLdb  # as connDb
-from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
+from Musicdb_info import * #login_info_osx
 from _ast import IsNot
 
 
@@ -41,23 +41,25 @@ class musicGet_Functions:
     def __init__(self, isNotTest):
         print("*************** Node Name is ", platform.uname().node)
         if platform.uname().node == 'C1246895-XPS':
-            self.conn = MySQLdb.connect(host='OSXAir.home.home', user='rduval', password='blu4jazz', db='Music')
-#            self.conn  = c.connect(login_info_xps)
+            serv = login_info_xps
         elif platform.uname().node == 'C1246895-osx.home':
-            self.conn = MySQLdb.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
-#            self.conn  = MySQLdb.connect(login_info_osx)
+            serv = login_info_osx
         elif platform.uname().node == 'OSXAir.home.home':
-#            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn = MySQLdb.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
+            serv = login_info_osxAir
         elif platform.uname().node == 'C1246895-WIN64-Air':
-        #    self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn = MySQLdb.connect(login_info_WIN64_Air)
+            serv = login_info_WIN64_Air
         elif platform.uname().node == 'Randalls-MBP.home':
-            print("Host is " , 'Randalls-MBP.home')
-            self.conn = MySQLdb.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')            
+            serv = login_info_default
         else:
             print("Host is " , 'default')
-            self.conn = MySQLdb.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
+            serv = login_info_default
+
+        host = serv['host']
+        user = serv['user']
+        password = serv['password']
+        db = serv['db']
+        self.conn = MySQLdb.connect(host=host, user=user, password=password, db=db)
+        
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home.home' 
         self.notTestRun = isNotTest

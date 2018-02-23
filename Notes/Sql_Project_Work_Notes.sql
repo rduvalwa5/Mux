@@ -23,10 +23,10 @@ OSXAir:mysql rduvalwa2$
 
 SET SQL_SAFE_UPDATES = 0;
 
-select count(*) from `Music`.artist;  -- 574 569
-select count(*) from music.artist_albums; -- 963
-select count(*) from `Music`.album2songs; -- 8373 8062
-select count(*) from `Music`.album_covers;  -- 435  473
+select count(*) from `Music`.artist;  -- 486
+select count(*) from music.artist_albums; -- 944
+select count(*) from `Music`.album2songs; -- 8678
+select count(*) from `Music`.album_covers;  -- 520
 
 commit;
 /* Feb 7 2018 */
