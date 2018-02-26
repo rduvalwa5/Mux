@@ -6,7 +6,7 @@ this file provides user info for login
 
 # self.conn = MySQLdb.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')
 
-login_info_default = {'host':'osxair.home.home','user': 'rduvalwa2','password': 'blu4jazz','db': 'Music'}
+login_info_default = {'host':'localhost','user': 'root','password': 'blu4jazz','db': 'Music'}
 
 login_info_osxAir = {'host':'osxair.home.home','user': 'rduvalwa2','password': 'blu4jazz','db': 'Music'}
 
