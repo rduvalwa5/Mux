@@ -21,30 +21,48 @@ new process see the WindowsMusicFile.py
 ''' 
 import os, platform
 import MySQLdb
-from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
-
+#from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
+from Musicdb_info import *
 
 class musicGet_Functions:   
 
-    def __init__(self):
+    def __init__(self, isNotTest):
         print("*************** Node Name is ", platform.uname().node)
         if platform.uname().node == 'C1246895-XPS':
-            self.conn = MySQLdb.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')
-#            self.conn  = c.connect(login_info_xps)
+            serv = login_info_xps
         elif platform.uname().node == 'C1246895-osx.home':
-        #    self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn = MySQLdb.connect(login_info_osx)
+            serv = login_info_osx
         elif platform.uname().node == 'OSXAir.home.home':
-#            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn = MySQLdb.connect(host=login_info_osxAir['host'], user=login_info_osxAir['user'], password=login_info_osxAir['password'], db=login_info_osxAir['db'])
+            serv = login_info_osxAir
         elif platform.uname().node == 'C1246895-WIN64-Air':
-            self.conn = MySQLdb.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
-#            self.conn  = MySQLdb.connect(login_info_WIN64_Air)
+            serv = login_info_WIN64_Air
+        elif platform.uname().node == 'Randalls-MBP.home':
+            serv = login_info_default
         else:
-#            self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
-            self.conn = MySQLdb.connect(login_info_default)
+            print("Host is " , 'default')
+            serv = login_info_default
+
+        host = serv['host']
+        user = serv['user']
+        password = serv['password']
+        db = serv['db']
+        self.conn = MySQLdb.connect(host=host, user=user, password=password, db=db)
+        
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
-        self.server = 'OSXAir.home'  
+        self.server = 'OSXAir.home.home' 
+        self.notTestRun = isNotTest
+        
+        self.countryArtistList = ["Dolly Parton","Alabama","Alison Krauss","Alison Krauss & Brad Paisley","Alison Krauss & John Waite","Alison Krauss & Union Station","Bill Monroe","Boxcar Willie","Brenda Lee","Chanel Campbell","The Charlie Daniels Band","Charlie Rich","Chet Atkins and Hank Snow","Cody Bryant and The Riders Of The Purple Sage","Colt Ford","David Allan Coe","Della Mae","Dierks Bentley","Dixie Chicks","Eilen Jewell","Eldorado","Emmylou Harris","Emmylou Harris with Herb Pedersen","Emmylou Harris with Roy Orbison","Florida Georgia Line","Foy Willing & The Riders Of The Purple Sage","Gram Parsons","Hank Williams, Jr.","Jack Ingram","James Otto","Jamey Johnson","Jerry Jeff Walker","Jessi Colter","Jessi Colter & Sunny Sweeney","Jewel","Jimmy Buffet","John Hiatt","Johnny Cash","Josh Thompson","Justin Moore","Keith Urban ","Kenny Rogers & The First Edition","Kris Kristofferson","Kris Kristofferson & Patty Griffin","Linda Ronstadt","Lori McKenna","Mark O'Connor","The Marshall Tucker Band","Marty Robbins","The Mavericks","Michael Martin Murphey","Montgomery Gentry","New Riders of the Purple Sage","Nitty Gritty Dirt Band","Olivia Newton-John","Pat Green","Patsy Cline","Polecat","Prairie Flyer","Randy Houser","Redbird","Robert Plant & Alison Krauss","Shooter Jennings","Stray Birds","The Texas Tornados","Texas Tornados","Trace Adkins","Uncle Earl","Van Morrison","Waylon and Willie","Waylon Jennings","Waylon Jennings & The Waylors","Waylon Jennings & Willie Nelson","Willie Nelson and Leon Russel","Wyatt McCubbin","Zac Brown Band"]
+        self.popArtistList = ["Yo-Yo Ma","Sarah McLachlan","Reflejo de Luna","Nat _King_ Cole","Celtic Christmas","Bing Crosby","Armik","Tony Bennett","Ottmar Liebert%","Noam Chomsky","Philip Selway","Padraig MacMathuna","Ottmar Liebert_Luna Negra","Ottmar Liebert","Mannheim Steamroller","Loreena McKennitt","Julio Iglesias","ADELE","The Airborne Toxic Event","Alexander","Arcade Fire","Art Garfunkel","The Coats","Cold War Kids","Dean Martin","Death Cab for Cutie","Del Shannon","Diego Garcia","Frank Sinatra","Frank Sinatra & Dean Martin","Frank Sinatra & Sammy Davis Jr.","Frank Sinatra, Dean Martin & Sammy Davis Jr.","Generationals","George Baker & George Baker Selection","Harry Nilsson","Iron & Wine","Jackson Browne","Jeremy Camp","Jesse Thomas","Jose Feliciano","Judy Collins","Junip","k.d. lang and the Siss Boom Bang","Leo Sayer","Lesley Gore","The Mamas & The Papas","Nashville Teens","Neil Diamond","Neil Sedaka","Norah Jones","Parts & Labor","Paul Simon","Percy Sledge","Peter Bjorn and John","Playing for Change","Rita Coolidge","S. Carey","Sammy Davis Jr.","Sammy Davis Jr. & Dean Martin","Sarah Jarosz","Say Hi","The Shadows","Telekinesis","The Tokens","Tom Jones","Tom Jones, Johnnie Spence & Orchestra","We Are Augustines","Wrabel","Wye Oak"]
+        self.jazzArtistList = ["Walt Weiskopf Nonet","Pat Metheny Trio","Alex Hargreaves","Branford Marsalis","Brecker Brothers","Buddy Tate","Chick Corea","Darius Brubeck","Dave Brubeck Quartet",'%Dave Brubeck%' ,"Devin Duval","Duke Ellington","Eddie Lockjaw Davis","Fats Waller","Gary Burton, Steve Swallow, Roy Haynes, Tiger Okoshi","Grant Green","Hank Jones","Herbie Hancock","Ian Hunter","Jaco Pastorius","Jaco Pastorius With Herbie Hancock","The Jazz Crusaders","Jerry Gonzalez & The Fort Apache Band","Jimmy Witherspoon","Joe Henderson","John Coltrane","John Coltrane & Johnny Hartman","John Scofield","Keith Jarrett","Les McCann","Less McCann and Eddie Harris","Lester Young","Madeleine Peyroux","Mary Pastorius","Mass Mental","Michael Brecker","Miles Davis","Miles Davis Quintet","Miles Davis Sextet_Sonny Rollins","Miles Davis_Sonny Rollins","Oscar Peterson","The Overton Berry Trio","Pat Martino","Pat Metheny","Pat Metheny Group","The Quintet","Rodrigo Y Gabriela","Sonny Rollins","Sonny Stitt","Stanley Turrentine","Tech N9ne","The Jazz Crusaders","Thelonious Monk","Thelonious Monk Quartet With John Coltrane","Tony Burgos & His Swing Shift Orchestra","Various Artists","Walt Weiskopf","Weather Report"]
+        self.bluegrassArtistList = ["The Chieftains","Crooked Still","Infamous Stringdusters","Mountain Heart","Sarah Jarosz","Tim O'Brien","Uncle Earl","Walela"]
+        self.folkArtistList = ["The Kingston Trio","Peter Paul and Mary","Pete Segear Arlo Guthrie","Arlo Guthrie","Barry McGuire","Bee Gees","Bob Dylan","Cat Stevens","Gordon Lightfoot","The Handsome Family","Harry Belafonte","Joan Baez","John Fahey","John Fahey & His Orchestra","John Prine","Joni Mitchell","Josh Rouse","Judy Collins","Kingston Trio","Leo Kottke","Mark Lanegan","Pete Seeger & Arlo Guthrie","Peter, Paul & Mary","Richie Havens","Rodriguez","Steve Goodman","The Wailin' Jennys"]
+        self.bluesArtistList = ["Alvin Lee & Ten Years Later","Mavis Staples","Alvin Lee","Alvin Lee & Richard Newman","Alvin Lee, Richard Newman & Tim Hinkley","Billy Holliday","Blues Artists","Bob Forrest","The Box Tops","Boz Scaggs","Clarence Gatermouth Brown","Cream","Eric Clapton","Eric Clapton & B.B. King","Gregg Allman","Hot Tuna","Jimmy Witherspoon","Joe Louis Walker","John Lee Hooker","John Mayall","John Mayall & The Bluesbreakers","Johnny Winter","Muddy Waters","North Mississippi Allstars","The Paul Butterfield Blues Band","R.L. Burnside","Richie Havens","Savoy Brown","Stevie Ray Vaughan","Stevie Ray Vaughan & Double Trouble","Ten Years After","War","Wynton Marsalis & Eric Clapton","The Yardbirds","18 South"]
+        self.classicalArtistList = ["Andre Kostelanetz and his orchestra",'Charles Dutoit%','Alfred Hause%','Angele Dubeau%',"Antonio Vivaldi","Branford Marsalis","Branford Marsalis & Orpheus Chamber Orchestra","Dvorak","A Fielder Boston Pops","Mark O'Connor","Oliver Kane","Ravel","Richard Wagner","Wagner"]
+        self.TexMex = ['Asleep At the Wheel','Santana','Los Lobos','Freddy Fender','Texas Tornados','The Mavericks','Eldorado','Sir Douglas Quintet']
+        self.RockABilly = ['Buddy Holly','Carl Perkins','Jerry Lee Lewis','Bill Haley & His Comets','Dale Hawkins','Billy Lee Riley']
+        self.Soul = ['Marvin Gaye','Mavis Staples','Roberta Flack & Donny Hathaway','Aretha Franklin','Roberta Flack']
+        self.Regae = ['Desmond Dekker','Bob Marley & The Wailers','Freddie Notes & the Rudies','Bob Marley']
 
     '''
     Get max index values from tables
@@ -645,7 +663,7 @@ if __name__ == '__main__':
     class TestConnector(unittest.TestCase):
             
         def test_type_count(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             print("Type List is ", Test_Results.typeList)
             for tipe in Test_Results.typeList:
                 print("tipe is ", tipe)
@@ -657,7 +675,7 @@ if __name__ == '__main__':
                 self.assertEqual(expected, result) 
                       
         def test_genre_count(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             gList = Test_Results.genreList
             for gen in gList:
                 expected = gen[1]
@@ -666,7 +684,7 @@ if __name__ == '__main__':
                 self.assertEqual(expected, result)
                     
         def test_get_all_songs(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             expected = Test_Results.songs_count  # 6831
             result = mux.get_AllSongs()
             print("All songs count is ", len(result))
@@ -674,7 +692,7 @@ if __name__ == '__main__':
             self.assertEqual(expected, len(result), "Song count is wrong")
         
         def test_get_count_Artist(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             table = 'Music.artist'
             criteria = ""
             expected = Test_Results.artist_count  # 564
@@ -684,7 +702,7 @@ if __name__ == '__main__':
             self.assertEqual(expected, result)
               
         def test_get_count_Artist_Albums(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             table = 'Music.artist_albums'
             criteria = ""
             expected = Test_Results.artist_albums_count  # 932
@@ -694,7 +712,7 @@ if __name__ == '__main__':
             self.assertEqual(expected, result)
             
         def test_get_count_album2Songs(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             table = 'Music.album2songs'
             criteria = ""
             expected = Test_Results.songs_count
@@ -705,20 +723,20 @@ if __name__ == '__main__':
                     
         def test_get_all_folk_albums(self):
             expected = Test_Results.folk_albums  # 576
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             result = mux.get_all("`Music`.artist_albums.album", "`Music`.artist_albums", "where `Music`.artist_albums.genre like 'Folk'")
             print(len(result))
             self.assertEqual(expected, len(result))
 
         def test_get_all_folk_songs(self):
             expected = Test_Results.folk_songs  # 576
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             result = mux.get_all("`Music`.album2songs.album, `Music`.album2songs.artist", "`Music`.album2songs", "where `Music`.album2songs.genre like 'folk'")
             print(len(result))
             self.assertEqual(expected, len(result))
         
         def testGetMaxIndex_Artist(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             table = 'artist'
             expected = Test_Results.get_max_index_artist  # 565
             result = mux.get_max_index(table)
@@ -726,7 +744,7 @@ if __name__ == '__main__':
             self.assertEqual(expected, result[0])
             
         def testGetMaxIndex_Albums(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             table = 'artist_albums'
             expected = Test_Results.get_max_index_albums  # 978
             result = mux.get_max_index(table)
@@ -734,7 +752,7 @@ if __name__ == '__main__':
             self.assertEqual(expected, result[0])
 
         def testGetMaxIndex_Songs(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             table = 'album2songs'
             expected = Test_Results.get_max_index_songs  # 6830
             result = mux.get_max_index(table)
@@ -742,39 +760,39 @@ if __name__ == '__main__':
             self.assertEqual(expected, result[0])
         
         def test_artist_album_song_exist(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             expected = False
             result = mux.test_artist_album_song_exist('Ten Years After', 'A Space In Time', '04 Over the Hill.m4p')
             print('Expect False ', result)
             self.assertFalse(expected, result)
 
         def test_artist_album_song_Notexist(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             expected = True
             result = mux.test_artist_album_song_exist('Ten Years After', 'A Space In Time', '09 Over the Hill.m4p')
             print('Expect True ', result)
             self.assertTrue(expected, result)
             
         def test_Add_Song(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             artist = 'TestArtist_X'
             album = 'TestAlbum_X'
             song = 'TestSong.mpX'
             result = mux.add_one_song(artist, album, song)
             print("add song result is ", result)
             self.assertEqual(result, "Success")
-
+        '''
         def test_get_Song(self):
             thisSong = 'Johnny B. Goode.mp3'
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
 #            expected =  (946, 'OSXAir.home', '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', 'Chuck Berry', 'The Best of Chuck Berry', '08 Johnny B. Goode.mp3', 'Rock', 'Vinyl', 1)
             expected = Test_Results.get_song
             result = mux.get_song(thisSong)
             print("song result is ", result[0])
             self.assertEqual(expected, result[0])
-        
+       '''     
         def test_delete_songs(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             artist = 'TestArtist_X'
             album = 'TestAlbum_X'
             song = 'TestSong.mpX'
@@ -783,14 +801,14 @@ if __name__ == '__main__':
             self.assertEqual(expected, result)            
             
         def test_get_Album(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             album = 'A Space In Time'
             expected = Test_Results.get_album  # (664, 'Ten Years After', 'A Space In Time', 'Blues', 'Download')
             result = mux.get_album(album)
             self.assertEqual(expected, result[0])
 
         def test_get_all_albums(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             result = mux.get_all_albums()
             expected = Test_Results.artist_albums_count
             print("all albums ", result)
@@ -798,43 +816,43 @@ if __name__ == '__main__':
             self.assertEqual(expected, len(result), "All album count wrong")
 
         def test_get_Artist(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             expected = Test_Results.get_artist  # (411, 'Ten Years After', 'Blues')
             result = mux.get_artist('Ten Years After')
             self.assertEqual(expected, result[0])
-
+        '''
         def test_get_artistAlbums_from_Albums(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             expected = ['A Space In Time', 'Recorded Live', 'Undead (Remastered) [Live]']
             result = mux.get_artistAlbums_fromAlbums('Ten Years After')
             print("artistAlbums 664", result)
             self.assertEqual(expected, result)
-        
+        '''
         def test_get_album_songs(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             expected = Test_Results.get_artist_albums_songs
           #  (('01 One of These Days.m4p',), ('02 Here They Come.m4p',), ("03 I'd Love to Change the World.m4p",), ('04 Over the Hill.m4p',), ("05 Baby Won't You Let Me Rock 'N' Roll You.m4p",), ('06 Once There Was a Time.m4p',), ('07 Let the Sky Fall.m4p',), ('08 Hard Monkeys.m4p',), ("09 I've Been There Too.m4p",), ('10 Uncle Jam.m4p',))
             result = mux.get_album_songs('A Space In Time')
             print("artist albums ", result)
             self.assertEqual(expected, result, "song list for A Space In Time wrong")
-
+        '''
         def test_get_artist_songs(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             expected = ['01 One of These Days.m4p', '02 Here They Come.m4p', "03 I'd Love to Change the World.m4p", '04 Over the Hill.m4p', "05 Baby Won't You Let Me Rock 'N' Roll You.m4p", '06 Once There Was a Time.m4p', '07 Let the Sky Fall.m4p', '08 Hard Monkeys.m4p', "09 I've Been There Too.m4p", '10 Uncle Jam.m4p', '01 One of These Days Live.m4p', '02 You Give Me Loving.m4p', '03 Good Morning Little Schoolgirl.m4p', '04 Help Me.m4p', '05 Classical Thing.m4p', '06 Scat Thing.m4p', "07 I Can't Keep from Cryin' Sometimes.m4p", "09 I Can't Keep from Cryin' (Cont'd).m4p", '10 Silly Thing.m4p', "11 Slow Blues In 'C'.m4p", "12 I'm Going Home.m4p", '13 Choo Choo Mama.m4p', '01 Rock You Mama (Live).m4a', '02 Spoonful (Live).m4a', "03 I May Be Wrong, But I Won't Be Wrong Always (Live).m4a", '04 Summertime _ Shantung Cabbage (Live).m4a', '05 Spider In My Web (Live).m4a', "06 (At the) Woodchopper's Ball [Live].m4a", '07 Standing At the Crossroads (Live).m4a', "08 I Can't Keep from Crying Sometimes _ Extension On One Chord (Live).m4a", "09 I'm Going Home (Live).m4a"]
             # Test_Results.get_artist_songs
             # (('01 One of These Days.m4p', 'A Space In Time'), ('02 Here They Come.m4p', 'A Space In Time'), ("03 I'd Love to Change the World.m4p", 'A Space In Time'), ('04 Over the Hill.m4p', 'A Space In Time'), ("05 Baby Won't You Let Me Rock 'N' Roll You.m4p", 'A Space In Time'), ('06 Once There Was a Time.m4p', 'A Space In Time'), ('07 Let the Sky Fall.m4p', 'A Space In Time'), ('08 Hard Monkeys.m4p', 'A Space In Time'), ("09 I've Been There Too.m4p", 'A Space In Time'), ('10 Uncle Jam.m4p', 'A Space In Time'), ('01 One of These Days Live.m4p', 'Recorded Live'), ('02 You Give Me Loving.m4p', 'Recorded Live'), ('03 Good Morning Little Schoolgirl.m4p', 'Recorded Live'), ('04 Help Me.m4p', 'Recorded Live'), ('05 Classical Thing.m4p', 'Recorded Live'), ('06 Scat Thing.m4p', 'Recorded Live'), ("07 I Can't Keep from Cryin' Sometimes.m4p", 'Recorded Live'), ("09 I Can't Keep from Cryin' (Cont'd).m4p", 'Recorded Live'), ('10 Silly Thing.m4p', 'Recorded Live'), ("11 Slow Blues In 'C'.m4p", 'Recorded Live'), ("12 I'm Going Home.m4p", 'Recorded Live'), ('13 Choo Choo Mama.m4p', 'Recorded Live'), ('01 Rock You Mama (Live).m4a', 'Undead (Remastered) [Live]'), ('02 Spoonful (Live).m4a', 'Undead (Remastered) [Live]'), ("03 I May Be Wrong, But I Won't Be Wrong Always (Live).m4a", 'Undead (Remastered) [Live]'), ('04 Summertime _ Shantung Cabbage (Live).m4a', 'Undead (Remastered) [Live]'), ('05 Spider In My Web (Live).m4a', 'Undead (Remastered) [Live]'), ("06 (At the) Woodchopper's Ball [Live].m4a", 'Undead (Remastered) [Live]'), ('07 Standing At the Crossroads (Live).m4a', 'Undead (Remastered) [Live]'), ("08 I Can't Keep from Crying Sometimes _ Extension On One Chord (Live).m4a", 'Undead (Remastered) [Live]'), ("09 I'm Going Home (Live).m4a", 'Undead (Remastered) [Live]'))
             result = mux.get_artistSongs_fromSongs('Ten Years After')
             print("artist songs", result)
             self.assertEqual(expected, result, "song list for Ten Years After wrong")
-
+        '''
         def test_genres(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             genres = mux.get_genres()
             self.assertEqual(Test_Results.genresList, genres, "genre list is wrong")
             
         '''
         def test_verify_albums_match_rock(self):
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             cursor = mux.init()
             statement = "select * from `Music`.artist_albums a \
                          where a.genre = 'Rock' \

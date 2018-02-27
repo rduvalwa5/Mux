@@ -10,7 +10,7 @@ login_info_default = {'host':'localhost','user': 'root','password': 'blu4jazz','
 
 login_info_osxAir = {'host':'osxair.home.home','user': 'rduvalwa2','password': 'blu4jazz','db': 'Music'}
 
-login_info_xps = {'host':'osxair.home.home','user': 'rduval','password': 'blu4jazz','db': 'Music'}
+login_info_xps = {'host':'localhost','user': 'root','password': 'blu4jazz','db': 'Music'}
 
 login_info_WIN64_Air = {'host':'osxair.home.home','user': 'rduvalwa2','password': 'blu4jazz','db': 'Music'}
 
