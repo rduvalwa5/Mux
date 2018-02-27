@@ -1,5 +1,5 @@
 '''
-OUPDATED Feb 22 2018
+OUPDATED Feb 27 2018
 this file provides user info for login
 @author: rduval
 '''
