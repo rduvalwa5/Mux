@@ -513,6 +513,7 @@ class musicGet_Functions:
             return "delete successfull "
         except Exception  as e:
             print("Exception is ", e)
+            
 
     '''
         Artist  ********************

@@ -7,12 +7,12 @@ from Music_Get_Functions import musicGet_Functions
         
 if __name__ == "__main__" :       
     mux = musicGet_Functions(True)
-    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Elton John & Leon Russell/The Union"
+    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Donovan/A Gift From A Flower To A Garden"
     
-    album = "The Union"
-    artist = "Elton John & Leon Russell"
-    genre = "Pop"
-    inType = "CD"    
-#    mux.add_songs_in_path(myPath, album, artist, genre, inType)
-    mux.add_album(album, artist, genre, inType)
-    mux.add_artist(artist, genre)
+    album = "A Gift From A Flower To A Garden"
+    artist = "Donovan"
+    genre = "Folk"
+    inType = "Vinyl"    
+    mux.add_songs_in_path(myPath, album, artist, genre, inType)
+#    mux.add_album(album, artist, genre, inType)
+#    mux.add_artist(artist, genre)
