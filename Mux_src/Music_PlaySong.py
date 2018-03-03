@@ -38,21 +38,20 @@ Created on Feb 27, 2018
 import os
         
 class Play_Song:
-    def play_song(self,songPath,song):
+    def play_song(self,songPath):
 #        songPath = '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Billie Holiday/The Best Of Billie Holiday/'
 #        song = 'Body & Soul.mp3'
         self.aPath = songPath
-        self.aSong = song
         print(self.aPath)
-        self.songAndPath =   "\"" + self.aPath + self.aSong + "\"" 
+        self.songAndPath =  self.aPath
         print("song path is ",self.songAndPath)
-        self.comd = "afplay "  + self.songAndPath
+        self.comd = "afplay -t 30 "  + self.songAndPath
         print("command is ",self.comd)
         os.system(self.comd)
 
 
 if __name__  == '__main__':
-    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Billie Holiday/The Best Of Billie Holiday/"
-    mySong = "Body & Soul.mp3"
+    myPath = "\"/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Joan Baez/1st 10 years/05 No Expectations.mp3\""
+
     x = Play_Song()
-    x.play_song(myPath, mySong)
+    x.play_song(myPath)
