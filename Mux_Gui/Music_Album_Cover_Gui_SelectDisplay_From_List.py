@@ -58,6 +58,8 @@ class displaySelectCover():
             print(platform.uname().node)
  #           base = '/Users/rduvalwa2/git/Mux/AlbumCovers/'
             base = '//Users/rduvalwa2/eclipse_git_hub/MusicDb/Projects/AlbumCovers/'
+        elif platform.uname().node == 'C1246895-osx.home':
+                base = "/Users/rduvalwa2/git/Mux/AlbumCovers/"
         else:
             base = '/Users/rduvalwa2/eOxigen-workspace/Mux/AlbumCovers/'
             

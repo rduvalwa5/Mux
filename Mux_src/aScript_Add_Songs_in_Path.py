@@ -13,6 +13,6 @@ if __name__ == "__main__" :
     artist = "Donovan"
     genre = "Folk"
     inType = "Vinyl"    
-    mux.add_songs_in_path(myPath, album, artist, genre, inType)
-#    mux.add_album(album, artist, genre, inType)
+#    mux.add_songs_in_path(myPath, album, artist, genre, inType)
+    mux.add_album(album, artist, genre, inType)
 #    mux.add_artist(artist, genre)
