@@ -7,12 +7,12 @@ from Music_Get_Functions import musicGet_Functions
         
 if __name__ == "__main__" :       
     mux = musicGet_Functions(True)
-    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/The Doobie Brothers/Farewell Tour (Live) [Remastered]"
+    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Yo La Tengo/Stuff Like That There"
     
-    album = "Farewell Tour (Live) [Remastered]"
-    artist = "The Doobie Brothers"
+    album = "Stuff Like That There"
+    artist = "Yo La Tengo"
     genre = "Rock"
-    inType = "Download"    
-    mux.add_songs_in_path(myPath, album, artist, genre, inType)
+    inType = "CD"    
+#    mux.add_songs_in_path(myPath, album, artist, genre, inType)
 #    mux.add_album(album, artist, genre, inType)
-#    mux.add_artist(artist, genre)
+    mux.add_artist(artist, genre)

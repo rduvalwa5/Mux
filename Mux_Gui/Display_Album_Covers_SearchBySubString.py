@@ -25,7 +25,7 @@ class show_image():
             elif platform.uname().node == 'C1246895-osx.home':
                 base = "/Users/rduvalwa2/git/Mux/AlbumCovers/"
             else:
-                base =  '/Users/rduvalwa2/Workspace_Git_Python/Mux/AlbumCovers/'
+                base =  '/Users/rduvalwa2/eOxigen-workspace/Mux/AlbumCovers/'
             dirlist = os.listdir(base)
             images = []
             for f in dirlist:
