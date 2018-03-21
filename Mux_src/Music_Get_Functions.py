@@ -881,7 +881,7 @@ class musicGet_Functions:
 
     def get_album_cover_count(self):
         cursor = self.conn.cursor()
-        statement = "select count(*)  from `Music`.derived_album_covers;"
+        statement = "select count(*)  from `Music`.album_covers;"
         try:
             cursor.execute(statement)
             result = cursor.fetchone()
