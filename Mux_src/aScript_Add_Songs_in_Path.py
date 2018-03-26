@@ -7,10 +7,9 @@ from Music_Get_Functions import musicGet_Functions
         
 if __name__ == "__main__" :       
     mux = musicGet_Functions(True)
-    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Eric Clapton/Behind The Sun"
-    
-    album = "Behind The Sun"
-    artist = "Eric Clapton"
+    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Ringo Starr/Postcards From Paradise"    
+    album = "Postcards From Paradise"
+    artist = "Ringo Starr"
     genre = "Rock"
     inType = "CD"    
     mux.add_songs_in_path(myPath, album, artist, genre, inType)
