@@ -302,7 +302,7 @@ class musicGet_Functions:
             return str(err)
 
     def get_AllSongs(self):
-        statement = "select a.`index`, a.artist, a.album, a.song from `Music`.album2songs a order by a.album, a.song;"
+        statement = "select a.`index`, a.artist, a.album, a.song from `Music`.album2songs a order by a.artist, a.album, a.song;"
         print(statement)
         cursor = self.conn.cursor()
         try:
