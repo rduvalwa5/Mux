@@ -4,6 +4,8 @@ Created on Feb 12, 2017
 @author: rduvalwa2
 '''
 
+
+
 from tkinter import *
 from Music_Get_Functions import musicGet_Functions
 
@@ -41,7 +43,7 @@ class getSong_UI(Frame):
         user has placed in the Entry widget according to the selected
         radio button."""
         song = self.text_in.get()
-        muxGet = musicGet_Functions()
+        muxGet = musicGet_Functions(True)
         result = muxGet.get_song(song)
         if result != []:
             songs = []
@@ -139,7 +141,7 @@ class getAlbum_UI(Frame):
         bottom_frame = Frame(self)
         bottom_frame.pack(side=TOP)
 # how to disable a button
-        self.QUIT = Button(bottom_frame, text="Quit", command=self.quit, state='disabled')
+        self.QUIT = Button(bottom_frame, text="Quit", command=self.quit, state='active')
         self.QUIT.pack(side=LEFT)
         self.handleb = Button(bottom_frame, text="Submit", command=self.handle)
         self.handleb.pack(side=LEFT)
@@ -149,7 +151,7 @@ class getAlbum_UI(Frame):
         user has placed in the Entry widget according to the selected
         radio button."""
         album = self.text_in.get()
-        muxGet = musicGet_Functions()
+        muxGet = musicGet_Functions(True)
         result = muxGet.get_album(album)
         if result != []:
             albums = []
