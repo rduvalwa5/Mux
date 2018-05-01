@@ -21,7 +21,7 @@ TexMex    202
 
 '''
 
-cover_count = 543
+cover_count = 547
 songs_count = 9529
 artist_count = 497
 artist_albums_count = 1012
