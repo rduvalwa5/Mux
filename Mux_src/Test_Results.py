@@ -12,7 +12,7 @@ Folk    677
 Jazz    787
 Pop    646
 Regae    23
-Rock    4970
+Rock    5079
 RockaBilly    32
 Soul    198
 Talk    1
@@ -21,15 +21,15 @@ TexMex    202
 
 '''
 
-cover_count = 547
-songs_count = 9529
-artist_count = 497
-artist_albums_count = 1012
+cover_count = 549
+songs_count = 9638
+artist_count = 499
+artist_albums_count = 1018
 folk_songs = 677
 folk_albums = 51
-get_max_index_artist = 497
-get_max_index_albums = 1013
-get_max_index_songs = 9532
+get_max_index_artist = 499
+get_max_index_albums = 1019
+get_max_index_songs = 9641
 #get_song = (1134, 'OSXAir.home', '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', 'Chuck Berry', 'The Best of Chuck Berry', '08 Johnny B. Goode.mp3', 'Rock', 'Vinyl', 1)
 get_song = ((2389, 'OSXAir.home', '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', 'Grateful Dead', 'The Grateful Dead (Skull & Roses)', '09 Johnny B. Goode.mp3', 'Rock', 'Download', 1), (4044, 'OSXAir.home', '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', 'Chuck Berry', 'The Best of Chuck Berry', '08 Johnny B. Goode.mp3', 'Rock', 'Vinyl', 1))
 get_album = (188, 'Ten Years After', 'A Space In Time', 'Blues', 'Download', None, None)
@@ -40,8 +40,8 @@ get_artist_albums_songs = (("03 I'd Love to Change the World.m4p",), ('02 Here T
 get_artist_songs = (('08 Johnny B. Goode.mp3', 'The Best of Chuck Berry'), ('02 Roll Over Beethoven.mp3', 'The Best of Chuck Berry'), ('10 Sweet Little Sixteen.mp3', 'The Best of Chuck Berry'), ('09 Brown Eyed Handsome Man.mp3', 'The Best of Chuck Berry'), ('07 Maybelline.mp3', 'The Best of Chuck Berry'), ('03 Rock And Roll Music.mp3', 'The Best of Chuck Berry'), ('05 No Particular Place To Go.mp3', 'The Best of Chuck Berry'), ('06 My Ding A Ling.mp3', 'The Best of Chuck Berry'), ('01 School Days.mp3', 'The Best of Chuck Berry'), ("04 Reelin' and Rockin'.mp3", 'The Best of Chuck Berry')) 
 genreList = [('Alternative', 0), ('BlueGrass', 179), ('Blues', 785), ('Classical', 59), ('Country', 939), \
             ('Easy Listening', 28), ('Folk', 677), ('Holiday', 0), ('Jazz', 787), ('Latino', 0), ('Pop', 646), ('Regae', 23), \
-            ('Rock', 4970), ('RockaBilly', 32), ('Soul', 198), ('Talk', 1), ('TestGenre', 3), ('TexMex', 202), \
+            ('Rock', 5079), ('RockaBilly', 32), ('Soul', 198), ('Talk', 1), ('TestGenre', 3), ('TexMex', 202), \
             ('Traditional', 0), ('World', 0)]
-typeList = [('CD', 4289), ('Download', 3392), ('Tape', 24), ('TestType', 3), ('Vinyl', 1821)]
+typeList = [('CD', 4398), ('Download', 3392), ('Tape', 24), ('TestType', 3), ('Vinyl', 1821)]
 genresList = (('Rock', 1), ('Alternative', 7), ('BlueGrass', 8), ('Blues', 9), ('Classical', 10), ('Country', 11), ('Folk', 12), ('Holiday', 13), ('Jazz', 14), ('Latino', 15), ('Pop', 16), ('Regae', 17), ('RockaBilly', 18), ('Soul', 19), ('Talk', 20), ('TestGenre', 21), ('TexMex', 22), ('Traditional', 23), ('World', 24), ('NewGenre', 25), ('Easy Listening', 26), ('Classic', 27))
 
