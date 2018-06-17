@@ -7,12 +7,12 @@ from Music_Get_Functions import musicGet_Functions
         
 if __name__ == "__main__" :       
     mux = musicGet_Functions(True)
-    myPath = "/Users/rduvalwa2/music/iTunes/iTunes Music/Music/Isaac Hayes/Isaac Hayes Greatest Hit Singles"    
-    album = "Isaac Hayes Greatest Hit Singles"
-    artist = "Isaac Hayes"
-    genre = "R&B"
+    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Grateful Dead/Wake Of The Flood [Expanded]"    
+    album = "Wake Of The Flood [Expanded]"
+    artist = "Grateful Dead"
+    genre = "Rock"
     inType = "CD"    
-#    mux.add_songs_in_path(myPath, album, artist, genre, inType)
-    mux.add_album(album, artist, genre, inType)
-    mux.add_artist(artist, genre)
+    mux.add_songs_in_path(myPath, album, artist, genre, inType)
+#    mux.add_album(album, artist, genre, inType)
+#    mux.add_artist(artist, genre)
     
