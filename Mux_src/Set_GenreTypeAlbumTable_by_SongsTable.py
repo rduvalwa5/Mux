@@ -63,7 +63,7 @@ if __name__ == '__main__':
     x = Set_Artist_Albums_Genre_Type()    
     x.get_album_genre_type_from_songs()
     x.set_genre_albums()
-    x.set_type_albums()
+#    x.set_type_albums()
 #    for item in x.AlbumList:
 #        print(item[0],item[1],item[2])
     
