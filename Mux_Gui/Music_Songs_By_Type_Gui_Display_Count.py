@@ -8,7 +8,7 @@ from Music_Get_Functions import musicGet_Functions
 
 root = Tk()
 
-mux = musicGet_Functions()
+mux = musicGet_Functions(False)
 
 table = 'Music.album2songs'
 criteria = ""

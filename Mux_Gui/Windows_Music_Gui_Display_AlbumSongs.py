@@ -14,7 +14,7 @@ class Application(Frame):
         def frame2ClickHandler(event):
             print("Frame 2", event.x, event.y)
         def openHandler():
-            mux = musicGet_Functions()
+            mux = musicGet_Functions(True)
             album_name = self.text_in.get()
             try:
                 songList = mux.get_album_songs(album_name)
