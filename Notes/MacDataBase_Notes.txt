@@ -1,0 +1,77 @@
+Data Base search and find notes for MacOsx 10.6:
+
+1) MySql versions were hard to find and did not install successfully and trouble some to uninstall
+2) Trying this  https://postgresapp.com/downloads.html
+
+Turorial:  
+			http://www.postgresqltutorial.com
+			https://www.tutorialspoint.com/postgresql/postgresql_python.htm
+			
+3) How to use:
+	These are two applications that make Postgres useful:   
+	
+	'Postgres.app'   
+		a.  shows controls for server
+		b.  shows databases
+		c.  allows connection to database and command sql editor command window
+	
+	'pgAdmin 4.app' 
+		a) GUI for everything
+		
+		
+C1246895-OSX:~ rduvalwa2$ sudo find / -name psql
+Password:
+/Applications/pgAdmin 4.app/Contents/SharedSupport/psql
+/Applications/Postgres.app/Contents/Versions/10/bin/psql
+/Applications/Postgres.app/Contents/Versions/9.5/bin/psql
+/Applications/Postgres.app/Contents/Versions/9.6/bin/psql
+
+
+C1246895-OSX:~ rduvalwa2$ /Applications/Postgres.app/Contents/Versions/10/bin/psql Music rduvalwa2
+psql (10.5)
+Type "help" for help.
+
+Music=# select * from genre;
+     genre      | g_idx 
+----------------+-------
+ Rock           |     1
+ Alternative    |     7
+ BlueGrass      |     8
+ Blues          |     9
+ Classical      |    10
+ Country        |    11
+ Folk           |    12
+ Holiday        |    13
+ Jazz           |    14
+ Latino         |    15
+ Pop            |    16
+ Regae          |    17
+ RockaBilly     |    18
+ Soul           |    19
+ Talk           |    20
+ TestGenre      |    21
+ TexMex         |    22
+ Traditional    |    23
+ World          |    24
+ NewGenre       |    25
+ Easy Listening |    26
+ Classic        |    27
+ R&B            |    28
+(23 rows)
+
+Music=# \q
+C1246895-OSX:~ rduvalwa2$ 
+
+
+
+
+4) Notes on how to:
+	show tables:
+Music=# SELECT * FROM pg_catalog.pg_tables WHERE schemaname != 'pg_catalog' AND schemaname != 'information_schema';
+ schemaname |   tablename   | tableowner | tablespace | hasindexes | hasrules | hastriggers | rowsecurity 
+------------+---------------+------------+------------+------------+----------+-------------+-------------
+ public     | genre         | rduvalwa2  |            | t          | f        | f           | f
+ public     | album_covers  | rduvalwa2  |            | t          | f        | f           | f
+ public     | album2songs   | rduvalwa2  |            | f          | f        | f           | f
+ public     | artist        | rduvalwa2  |            | f          | f        | f           | f
+ public     | artist_albums | rduvalwa2  |            | f          | f        | f           | f
