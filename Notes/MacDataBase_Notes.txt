@@ -75,3 +75,38 @@ Music=# SELECT * FROM pg_catalog.pg_tables WHERE schemaname != 'pg_catalog' AND 
  public     | album2songs   | rduvalwa2  |            | f          | f        | f           | f
  public     | artist        | rduvalwa2  |            | f          | f        | f           | f
  public     | artist_albums | rduvalwa2  |            | f          | f        | f           | f
+ 
+ 5) Remote client access PostGres server:
+ https://support.plesk.com/hc/en-us/articles/115003321434-How-to-enable-remote-access-to-PostgreSQL-server-
+ 
+ https://www.postgresql.org/message-id/001f01c018c2$830133b0$64898cd5@northlink.gr
+ 
+ https://askubuntu.com/questions/423165/remotely-access-postgresql-database
+ 
+
+Articles in this section
+	How to enable remote access to PostgreSQL server on a Plesk server?
+
+Answer
+	Note: the instructions below were tested on a Plesk server, however it can be applicable to a non-plesk server as well keeping
+	in mind possible different path to the files.
+
+	To enable remote access to PostgreSQL server follow the steps below:
+
+	Connect to the PostgreSQL server via SSH .
+
+	Add the following line to the end of /var/lib/pgsql/data/postgresql.conf file:
+
+	listen_addresses = '*'
+
+	Add the following line to the end of /var/lib/pgsql/data/pg_hba.conf file:
+
+	host all all 203.0.113.2/32 md5
+
+	203.0.113.2/32 is the remote IP from which connection is allowed. If you want to allow connection from any 
+	IP specify 0.0.0.0/0 .md5 is the authentication method, which requires the client to supply a double-MD5-hashed password 
+	for authentication. As for other authentication methods refer to PostgreSQL documentation .
+
+	Restart PostgreSQL server to apply the changes:
+
+	# service postgresql restart
