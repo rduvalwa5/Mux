@@ -9,7 +9,7 @@ from Windows_Music_Get_Functions import musicGet_Functions
 root = Tk()
 
 albumList = []
-mux = musicGet_Functions()
+mux = musicGet_Functions(True)
 albumsIn = mux.get_all_albums()
 print(albumsIn)
 if albumsIn != []:
