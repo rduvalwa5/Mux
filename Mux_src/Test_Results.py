@@ -3,17 +3,18 @@ Created on Apr 25, 2017
 
 @author: rduvalwa2
 
+Alternative    11
 BlueGrass    179
 Blues    803
 Classical    59
 Country    1105
 Easy Listening    28
-Folk    677
+Folk    696
 Jazz    904
-Pop    691
-R&B    388
+Pop    716
+R&B    427
 Regae    23
-Rock    5996
+Rock    6346
 RockaBilly    32
 Soul    25
 Sound Track    2
@@ -22,15 +23,15 @@ TestGenre    3
 TexMex    218
 '''
 
-cover_count = 615
-songs_count = 11406
-artist_count = 547
-artist_albums_count = 1166
-folk_songs = 677
-folk_albums = 51
-get_max_index_artist = 548
-get_max_index_albums = 1173
-get_max_index_songs = 11437
+cover_count = 622
+songs_count = 11578
+artist_count = 562
+artist_albums_count = 1199
+folk_songs = 696
+folk_albums = 53
+get_max_index_artist = 564
+get_max_index_albums = 1207
+get_max_index_songs = 11610
 #get_song = (1134, 'OSXAir.home', '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', 'Chuck Berry', 'The Best of Chuck Berry', '08 Johnny B. Goode.mp3', 'Rock', 'Vinyl', 1)
 get_song = ((2389, 'OSXAir.home', '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', 'Grateful Dead', 'The Grateful Dead (Skull & Roses)', '09 Johnny B. Goode.mp3', 'Rock', 'Download', 1), (4044, 'OSXAir.home', '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', 'Chuck Berry', 'The Best of Chuck Berry', '08 Johnny B. Goode.mp3', 'Rock', 'Vinyl', 1))
 get_album = (188, 'Ten Years After', 'A Space In Time', 'Blues', 'Download', None, None)
@@ -40,9 +41,9 @@ get_artist_albums_songs = (("03 I'd Love to Change the World.m4p",), ('02 Here T
 
 get_artist_songs = (('08 Johnny B. Goode.mp3', 'The Best of Chuck Berry'), ('02 Roll Over Beethoven.mp3', 'The Best of Chuck Berry'), ('10 Sweet Little Sixteen.mp3', 'The Best of Chuck Berry'), ('09 Brown Eyed Handsome Man.mp3', 'The Best of Chuck Berry'), ('07 Maybelline.mp3', 'The Best of Chuck Berry'), ('03 Rock And Roll Music.mp3', 'The Best of Chuck Berry'), ('05 No Particular Place To Go.mp3', 'The Best of Chuck Berry'), ('06 My Ding A Ling.mp3', 'The Best of Chuck Berry'), ('01 School Days.mp3', 'The Best of Chuck Berry'), ("04 Reelin' and Rockin'.mp3", 'The Best of Chuck Berry')) 
 genreList = [('Alternative', 11), ('BlueGrass', 179), ('Blues', 803), ('Classical', 59), ('Country', 1105), \
-            ('Easy Listening', 28), ('Folk', 677), ('Holiday', 0), ('Jazz', 904), ('Latino', 0), ('Pop', 701), ('Regae', 23), \
-            ('Rock', 6208), ('RockaBilly', 32), ('Soul', 25), ('Talk', 1), ('TestGenre', 3), ('TexMex', 218), \
+            ('Easy Listening', 28), ('Folk', 696), ('Holiday', 0), ('Jazz', 904), ('Latino', 0), ('Pop', 716), ('Regae', 23), \
+            ('Rock', 6346), ('RockaBilly', 32), ('Soul', 25), ('Talk', 1), ('TestGenre', 3), ('TexMex', 218), \
             ('Traditional', 0), ('World', 0)]
-typeList = [('CD', 6154), ('Download', 3396), ('Tape', 24), ('TestType', 3), ('Vinyl', 1829)]
+typeList = [('CD', 6257), ('Download', 3465), ('Tape', 24), ('TestType', 3), ('Vinyl', 1829)]
 genresList = (('Rock', 1), ('Alternative', 7), ('BlueGrass', 8), ('Blues', 9), ('Classical', 10), ('Country', 11), ('Folk', 12), ('Holiday', 13), ('Jazz', 14), ('Latino', 15), ('Pop', 16), ('Regae', 17), ('RockaBilly', 18), ('Soul', 19), ('Talk', 20), ('TestGenre', 21), ('TexMex', 22), ('Traditional', 23), ('World', 24), ('NewGenre', 25), ('Easy Listening', 26), ('Classic', 27),('R&B', 28))
 
