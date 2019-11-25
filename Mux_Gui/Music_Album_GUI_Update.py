@@ -19,8 +19,7 @@ class Application(Frame):
         """Add all the widgets to the main frame."""
         top_frame = Frame(self)
 # Labels
-        
-        self.label = Label(top_frame, text="Index of album to update")       
+        self.label = Label(top_frame, text="Album Name of album to update")       
         self.album_in = Entry(top_frame)
         self.label1 = Label(top_frame, text="Value")
         self.text_in = Entry(top_frame)

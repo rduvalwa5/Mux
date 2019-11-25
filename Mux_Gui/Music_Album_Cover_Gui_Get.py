@@ -20,7 +20,7 @@ class Application(Frame):
         """Add all the widgets to the main frame."""
         
         Album_Cover_Frame = Frame(self)
-        self.labelInputAlbumCover = Label(Album_Cover_Frame, text="Album Cover Name") 
+        self.labelInputAlbumCover = Label(Album_Cover_Frame, text="Get Album Cover Name") 
         self.labelResult = Label(Album_Cover_Frame, text = "Album Cover Result")
         
         self.text_in_Album_Cover  = Entry(Album_Cover_Frame)
