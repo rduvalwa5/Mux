@@ -1,3 +1,41 @@
+/* album cover */
+
+update artist_albums set type = 'Download' where type = 'download';
+
+select * from artist_albums a where a.`cover_name` is null;
+
+select count(*) from artist_albums a where a.`cover_name` is null;
+
+select (select count(*) from artist_albums) - (select count(*) from artist_albums a where `cover_name` is null) as Difference;
+
+select * from album_covers ac wbere ac.`album_cover` like 'iTunesImages.jpg';
+
+select * from artist_albums a where a.`cover_name` is null and a.`type` like 'Vinyl' order by a.`artist` desc; 
+
+select count(*) from artist_albums a where a.`cover_name` is null and a.`type` like 'Vinyl' order by a.`artist` desc;
+
+select count(*) from artist_albums a where a.`cover_name` is null order by a.`artist` desc; 
+
+select * from artist_albums a where a.`cover_name` like 'iTunesImages.jpg' order by `artist` desc;
+
+select * from artist_albums a where a.artist like '%Doobie%'; 
+
+select * from artist_albums a where a.`album` like '%Greatest%';
+
+update `artist_albums` set `cover_name` = 'iTunesImages.jpg' where `cover_idx` = 631;
+
+update `artist_albums` set  `cover_idx` = 631  where `cover_name` = 'iTunesImages.jpg';
+
+update artist_albums set `cover_name` = 'iTunesImages.jpg' where type = 'Download' and cover_name is null;
+
+select * from artist_albums where type = 'Download';
+
+select * from `artist_albums`  where `cover_idx` = 631 order by `artist`;
+
+select * from `artist_albums` where `artist` like "%Beatles%";
+
+/* old  */
+
 SELECT *
   FROM `Music`.artist a;
 
