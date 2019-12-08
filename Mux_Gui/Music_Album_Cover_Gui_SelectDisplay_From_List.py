@@ -16,7 +16,7 @@ from tkinter import *
 from Music_Get_Functions import musicGet_Functions
 #from Mux_src.Music_Get_Functions import musicGet_Functions
 import os, sys , platform
-from PIL import ImageTk, Image
+from PIL import Image #, ImageTk
 
 class displaySelectCover():
     

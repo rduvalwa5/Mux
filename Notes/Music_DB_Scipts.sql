@@ -6,6 +6,10 @@ select * from artist_albums a where a.`cover_name` is null;
 
 select count(*) from artist_albums a where a.`cover_name` is null;
 
+select* from album_covers where `album_cover` = 'JudyCollins_Bothsides.jpg';
+
+
+
 select (select count(*) from artist_albums) - (select count(*) from artist_albums a where `cover_name` is null) as Difference;
 
 select * from album_covers ac wbere ac.`album_cover` like 'iTunesImages.jpg';
