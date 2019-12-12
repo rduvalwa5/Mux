@@ -108,10 +108,10 @@ class TestMusicDb(unittest.TestCase):
    '''       
     def test_connection_Artist_Albums_os_rduvalwa2_music_Albums_Rows(self):
  #       db = MySQLdb.connect(host='localhost', user='root', password='blu4jazz', db='Music')
-        db = MySQLdb.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
+        db = MySQLdb.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')
         cursor = db.cursor()
         statement = "select count(*) from Music.artist_albums;"
-        expected = 970
+        expected = 1210
         try:
             cursor.execute(statement)
             row = cursor.fetchone()
@@ -126,7 +126,7 @@ class TestMusicDb(unittest.TestCase):
     def test_connection_Artist_Table_As_Root_localhost(self):
         db = MySQLdb.connect(host='localhost', user='root', password='blu4jazz', db='Music')
         cursor = db.cursor()
-        expected = 576
+        expected = 567
 #        statement = "select uid from active_passwords where ap in ('password_db');"
         statement = "select count(*) from Music.Artist;"
         try:
@@ -142,7 +142,7 @@ class TestMusicDb(unittest.TestCase):
     def test_select_song_type_MusicSongs_By_Criteria(self):
         db = MySQLdb.connect(host='localhost', user='root', password='blu4jazz', db='Music')
         cursor = db.cursor()
-        expected = 'Sleep Walk.mp3' # 'Kansas City.mp3'
+        expected = '08 Got Me Under Pressure.mp3' # 'Kansas City.mp3'
         statement = 'select Music.album2songs.song from Music.album2songs where album2songs.type = \'tape\';'
         try:
             cursor.execute(statement)

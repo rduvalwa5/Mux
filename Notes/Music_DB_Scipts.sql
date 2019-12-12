@@ -2,12 +2,14 @@
 
 update artist_albums set type = 'Download' where type = 'download';
 
-select * from artist_albums a where a.`cover_name` is null;
+select * from artist_albums a where a.`cover_name` is null order by `artist`;
 
 select count(*) from artist_albums a where a.`cover_name` is null;
 
 select* from album_covers where `album_cover` = 'JudyCollins_Bothsides.jpg';
 
+
+select count(*) from music.album2songs where music.album2songs.genre = 'Alternative';
 
 
 select (select count(*) from artist_albums) - (select count(*) from artist_albums a where `cover_name` is null) as Difference;
