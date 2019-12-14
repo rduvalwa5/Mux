@@ -22,7 +22,7 @@ class show_image():
             print("Constraint is ", constraint)
             if platform.uname().node == 'C1246895-XPS':
                 base = "C:\\Users\\RDuval\\git\\HubPRojects\\Mux\\AlbumCovers\\"
-            elif platform.uname().node == 'C1246895-osx.home':
+            elif platform.uname().node == 'C1246895-OSX.home':
                 base = "/Users/rduvalwa2/git/Mux/AlbumCovers/"
             else:
                 base =  '/Users/rduvalwa2/eOxigen-workspace/Mux/AlbumCovers/'

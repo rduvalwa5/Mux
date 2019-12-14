@@ -8,14 +8,13 @@ mysql -u root -b music -p
 mysql -u rduvalwa2 -b music -p
 
 '''
+import pymysql.cursors
 from MusicFile import musicFile
 import unittest
-import mysql.connector
-import MySQLdb
 from  Musicdb_info import login_info_osxAir
 from Musicdb_info import login_info_default
 from Musicdb_info import login_info_xps
-from mysql.connector.errors import Error
+#from mysql.connector.errors import Error
 
 
 class TestMusicDb(unittest.TestCase):
@@ -138,7 +137,7 @@ class TestMusicDb(unittest.TestCase):
             self.assertEqual(expected, result[0])           
    '''       
     def test_music_Albums_Rows(self):
-        db = MySQLdb.connect(host='localhost', user='root', password='blu4jazz', db='Music')
+        db = pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music')
 #        db = mysql.connector.Connect(**login_info_osxAir)
         cursor = db.cursor()
         statement = "select count(*) from Music.artist_albums;"
