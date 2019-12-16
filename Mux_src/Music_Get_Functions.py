@@ -31,7 +31,8 @@ error: could not create 'c:\program files\python36-32\Lib\site-packages\olefile'
 ''' 
 import os
 import platform
-import MySQLdb  # as connDb
+#import MySQLdb  # as connDb
+import pymysql.cursors
 
 from Musicdb_info import * #login_info_osx
 from _ast import IsNot
@@ -59,8 +60,9 @@ class musicGet_Functions:
         user = serv['user']
         password = serv['password']
         db = serv['db']
-        self.conn = MySQLdb.connect(host=host, user=user, password=password, db=db)
-        
+#        self.conn = MySQLdb.connect(host=host, user=user, password=password, db=db)
+#        pymysql.connect
+        self.conn = pymysql.connect(host=host, user=user, password=password, db=db)
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home.home' 
         self.notTestRun = isNotTest

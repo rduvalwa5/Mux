@@ -9,11 +9,16 @@ mysql -u rduvalwa2 -b music -p
 
 '''
 import pymysql.cursors
+import os
+import platform
+
+
 from MusicFile import musicFile
 import unittest
-from  Musicdb_info import login_info_osxAir
-from Musicdb_info import login_info_default
-from Musicdb_info import login_info_xps
+from Musicdb_info import * 
+#from  Musicdb_info import login_info_osxAir
+#from Musicdb_info import login_info_default
+#from Musicdb_info import login_info_xps
 #from mysql.connector.errors import Error
 
 
@@ -137,18 +142,43 @@ class TestMusicDb(unittest.TestCase):
             self.assertEqual(expected, result[0])           
    '''       
     def test_music_Albums_Rows(self):
-        db = pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music')
+        print("*************** Node Name is ", platform.uname().node)
+        if platform.uname().node == 'C1246895-XPS':
+            serv = login_info_xps
+        elif platform.uname().node == 'C1246895-osx.home':
+            serv = login_info_osx
+        elif platform.uname().node == 'OSXAir.home.home':
+            serv = login_info_osxAir
+        elif platform.uname().node == 'C1246895-WIN64-Air':
+            serv = login_info_WIN64_Air
+        elif platform.uname().node == 'Randalls-MBP.home':
+            serv = login_info_default
+        else:
+            print("Host is " , 'default')
+            serv = login_info_default
+
+        host = serv['host']
+        user = serv['user']
+        password = serv['password']
+        db = serv['db']
+#        self.conn = MySQLdb.connect(host=host, user=user, password=password, db=db)
+#        pymysql.connect
+        self.conn = pymysql.connect(host=host, user=user, password=password, db=db)
+        self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
+        self.server = 'OSXAir.home.home' 
+#         self.notTestRun = isNotTest
 #        db = mysql.connector.Connect(**login_info_osxAir)
-        cursor = db.cursor()
+        cursor = self.conn.cursor()
+#        cursor = db.cursor()
         statement = "select count(*) from Music.artist_albums;"
         try:
             cursor.execute(statement)
             row = cursor.fetchone()
             print("Row is " , row[0])
-            self.assertEqual(row[0], 909)
+            self.assertEqual(row[0], 1210)
             cursor.close()
-            db.close()
-        except db.Error as err:
+ #           db.close()
+        except cursor.Error as err:
                 print("Exception is ", err)
     '''
     def test_Music_Artist_RowsJ(self):
