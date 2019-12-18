@@ -16,6 +16,8 @@ login_info_WIN64_Air = {'host':'osxair.home.home','user': 'rduvalwa2','password'
 
 login_info_osx = {'host': 'localhost', 'user': 'root', 'password': 'blu4jazz', 'db': 'Music'}
 
+login_info_bria = {'host': 'osxair.hsd1.wa.comcast.net', 'user': 'rduvalwa2', 'password': 'blu4jazz', 'db': 'Music'}
+
 #for k,v in login_info_osx.items():
 #    print(k,v)
     
