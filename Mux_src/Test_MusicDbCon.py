@@ -151,8 +151,8 @@ class TestMusicDb(unittest.TestCase):
             serv = login_info_osxAir
         elif platform.uname().node == 'C1246895-WIN64-Air':
             serv = login_info_WIN64_Air
-        elif platform.uname().node == 'Randalls-MBP.home':
-            serv = login_info_default
+        elif platform.uname().node == 'RandyDuvalsMBP-7.hsd1.wa.comcast.net':
+            serv = login_info_bria
         else:
             print("Host is " , 'default')
             serv = login_info_default
@@ -165,7 +165,7 @@ class TestMusicDb(unittest.TestCase):
 #        pymysql.connect
         self.conn = pymysql.connect(host=host, user=user, password=password, db=db)
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
-        self.server = 'OSXAir.home.home' 
+        self.server = 'osxair.hsd1.wa.comcast.net' 
 #         self.notTestRun = isNotTest
 #        db = mysql.connector.Connect(**login_info_osxAir)
         cursor = self.conn.cursor()
