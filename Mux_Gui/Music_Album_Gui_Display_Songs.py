@@ -5,8 +5,8 @@ This code prints the songs in the album
 '''
 from tkinter import *
 from Music_Get_Functions import musicGet_Functions
-import MySQLdb   as connDb
-
+#import MySQLdb   as connDb
+import pymysql.cursors
  
 class Application(Frame):
     def __init__(self, master=None):
@@ -17,6 +17,7 @@ class Application(Frame):
         def openHandler():
             mux = musicGet_Functions(True)
             album_name = self.text_in.get()
+            print("Input Album: ", album_name)
             try:
                 songList = mux.get_album_songs(album_name)
                 self.text_in2.insert(END, album_name + " songs: \n")
