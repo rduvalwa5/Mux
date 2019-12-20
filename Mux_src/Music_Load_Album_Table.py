@@ -1,10 +1,12 @@
 '''
+CAUTION THIS SCRIPT RELOADS THE DATA BASE
+
 Created on Jan 27, 2018
 
 @author: rduvalwa2
 '''
 import os, platform
-import MySQLdb
+import pymysql
 from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
 
 
@@ -13,23 +15,23 @@ class AlbumLoad_Functions:
     def __init__(self, test=False):
         print("*************** Node Name is ", platform.uname().node)
         if platform.uname().node == 'C1246895-XPS':
-            self.conn = MySQLdb.connect(host='OSXAir.home.home', user='rduval', password='blu4jazz', db='Music')
+            self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduval', password='blu4jazz', db='Music')
 #            self.conn  = c.connect(login_info_xps)
         elif platform.uname().node == 'C1246895-osx.home.home':
-            self.conn = MySQLdb.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
-#            self.conn  = MySQLdb.connect(login_info_osx)
-        elif platform.uname().node == 'OSXAir.home.home':
+            self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')
+#            self.conn  = pymysql.connect(login_info_osx)
+        elif platform.uname().node == 'OSXAir.hsd1.wa.comcast.net':
 #            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn = MySQLdb.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
+            self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')
         elif platform.uname().node == 'C1246895-WIN64-Air':
-        #    self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn = MySQLdb.connect(login_info_WIN64_Air)
+        #    self.conn  = connDb.connect(host='OSXAir.hsd1.wa.comcast.net',user='rduvalwa2',password='blu4jazz',db='Music')
+            self.conn = pymysql.connect(login_info_WIN64_Air)
         elif platform.uname().node == 'Randalls-MBP.home':
             print("Host is " , 'Randalls-MBP.home')
-            self.conn = MySQLdb.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')            
+            self.conn = pymysql.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')            
         else:
             print("Host is " , 'default')
-            self.conn = MySQLdb.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')
+            self.conn = pymysql.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home' 
         self.notTestRun = test
@@ -126,22 +128,22 @@ class album_Add_Update_Delete:
     def __init__(self, test=False):
         print("*************** Node Name is ", platform.uname().node)
         if platform.uname().node == 'C1246895-XPS':
-            self.conn = MySQLdb.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
+            self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')
 #            self.conn  = c.connect(login_info_xps)
         elif platform.uname().node == 'C1246895-osx.home':
-            self.conn = MySQLdb.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
-#            self.conn  = MySQLdb.connect(login_info_osx)
-        elif platform.uname().node == 'OSXAir.home.home':
-            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+            self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')
+#            self.conn  = pymysql.connect(login_info_osx)
+        elif platform.uname().node == 'OSXAir.hsd1.wa.comcast.net':
+            self.conn  = pymysql.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
         elif platform.uname().node == 'C1246895-WIN64-Air':
-        #    self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn = MySQLdb.connect(login_info_WIN64_Air)
+        #    self.conn  = connDb.connect(host='OSXAir.hsd1.wa.comcast.net',user='rduvalwa2',password='blu4jazz',db='Music')
+            self.conn = pymysql.connect(login_info_WIN64_Air)
         elif platform.uname().node == 'Randalls-MBP.home':
             print("Host is " , 'Randalls-MBP.home')
-            self.conn = MySQLdb.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')            
+            self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')            
         else:
             print("Host is " , 'default')
-            self.conn = MySQLdb.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
+            self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
         self.server = 'OSXAir.home' 
         self.notTestRun = test 

@@ -650,7 +650,7 @@ class musicGet_Functions:
     def get_artistAlbums_fromAlbums(self, artist):
 #       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
         fields = "*"
-        statement = "select " + fields + " from music.artist_albums where artist like '" + artist + "';"
+        statement = "select " + fields + " from music.artist_albums where artist like '%" + artist + "%';"
         print(statement)
         cursor = self.conn.cursor()
         try:

@@ -4,7 +4,7 @@ This code is a Python port of a program that I wrote in Java in 2006
 It attempts to find the music files on a server and put them into a data base.
 @author: rduvalwa2
 '''
-import pymysql.cursors
+import pymysql
 import os, sys
 #import mysql.connector
 from  Musicdb_info import login_info_osxAir
@@ -22,9 +22,24 @@ class connection_db:
 class musicFile:   
     
     def __init__(self):
-        self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music"
-        self.server = 'OSXAir.home'       
-    
+        Node = os.uname().nodename
+        print("Node is ", Node)
+        if Node == "C1246895-osx.hsd1.wa.comcast.net":
+            self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music"
+            self.server = Node
+            print("server is ", self.server)
+            print("base is ", self.base)
+        if Node == "OSXAir.hsd1.wa.comcast.net":
+            self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
+            self.server = Node
+            print("server is ", self.server)  
+            print("base is ", self.base)    
+        if Node == "RandyDuvalsMBP.hsd1.wa.comcast.net":
+            self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music"
+            self.server = Node
+            print("server is ", self.server)  
+            print("base is ", self.base)               
+             
     def get_record_count(self, table):
         statement = "select count(*) from " + table + ";"
         if os.uname().nodename == 'C1246895-osx.home':
@@ -128,7 +143,7 @@ class musicFile:
         return artist
     
     def get_albums(self):
-        base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music"
+        base = self.base #"/Users/rduvalwa2/Music/iTunes/iTunes Media/Music"
         albums = []
         index = 0
         artists = self.get_music_artist()
@@ -137,6 +152,7 @@ class musicFile:
             if os.path.isdir(base + "/" + artist):
                 artist_albums = os.listdir(base + "/" + artist)
                 for album in artist_albums:
+                    print(album)
                     if album != '.DS_Store':
                         albums.append((index, artist, album))
                         index = index + 1
@@ -172,29 +188,38 @@ class musicFile:
         cursor.execute(commit)    
     
     def get_songs(self, artist, album='all'):
-        base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music"
+        print("artist is ", artist)
+        print("Album is ", album)
+        base = self.base
         albums = []
         songs = []
         newIndex = 0
-        if os.path.isdir(base + "/" + artist):
-                artist_albums = os.listdir(base + "/" + artist)
-                print("artist_albums: ", artist_albums)
-                if album == 'all':
-                    for al in artist_albums:
-                        if al != '.DS_Store':
-                            albums.append((artist, al))
-                            album_songs = os.listdir(base + "/" + artist + "/" + al)
-                            for song in album_songs:
-                                    songs.append((newIndex, artist, al, song))
-                elif  album != 'all':
-                    for al in artist_albums:
-                        if al == album:
-                            if al != '.DS_Store':
-                                albums.append((artist, al))
-                                album_songs = os.listdir(base + "/" + artist + "/" + al)
-                                for song in album_songs:
-                                    songs.append((newIndex, artist, al, song))
-            
+        print("path is ",base + "/" + artist)
+        if(os.path.isdir(base + "/" + artist)):
+            artist_albums = os.listdir(base + "/" + artist)
+            print("artist_albums: ", artist_albums)
+            if album == 'all':
+                albums = os.listdir(base + "/" + artist)
+                print("Albums are ",albums)
+                for al in artist_albums:
+                   print("Album is ", al)
+                   if al != '.DS_Store':
+#                        albums.append((al))
+#                        print(albums)
+                        albumSongs = os.listdir(base + "/" + artist + "/" + al)
+                        songs.append(albumSongs)
+#                        for song in album_songs:
+#                                songs.append((newIndex, artist, al, song))
+            if album != 'all':
+                songs =  os.listdir(base + "/" + artist + "/" + album)
+ #               for song in songs:
+ #                   print(song)
+ #                   if al == album:
+ #                           if al != '.DS_Store':
+ #                               albums.append((artist, al))
+ #                               album_songs = os.listdir(base + "/" + artist + "/" + al)
+ #                               for song in album_songs:
+ #                                   songs.append((song))
         return songs
 
     def initial_insert_into_album2songs(self): 
@@ -611,16 +636,23 @@ if __name__ == '__main__':
             mux = musicFile()
             base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music"
             musicArtist = mux.get_music_artist()
-            self.assertIn((409, 'The Charlie Daniels Band'), musicArtist, "Charlie Daniels Band not there")
+            self.assertIn((174, 'The Charlie Daniels Band'), musicArtist, "Charlie Daniels Band not there")
 
         def test_albumList(self):
             mux = musicFile()
             alms = mux.get_albums()
-            self.assertIn((802, "Tim O'Brien", 'Cornbread Nation'), alms, "Cornbread Nation not present")
+            self.assertIn((308, "Tim O'Brien", 'Cornbread Nation'), alms, "Cornbread Nation not present")
 
         def test_songList(self):
             mux = musicFile()
-            mysongs = mux.get_all_songs()
-            self.assertIn((0, '18 South', 'Soulful Southern Roots Music', '01 Late Night Ramble.mp3'), mysongs, "'01 Late Night Ramble.mp3' song is missing")       
+            mysongs = mux.get_songs('18 South','Soulful Southern Roots Music')
+            print("mysongs are ",mysongs)
+            self.assertIn('03 Wanna Be Blue.mp3', mysongs, "'01 Late Night Ramble.mp3' song is missing")       
+
+        def test_songListAll(self):
+            mux = musicFile()
+            mysongs = mux.get_songs('18 South')
+            print("mysongs are ",mysongs)
+            self.assertIn('03 Wanna Be Blue.mp3', mysongs[0], "'03 Wanna Be Blue.mp3' song is missing")       
 
     unittest.main()    

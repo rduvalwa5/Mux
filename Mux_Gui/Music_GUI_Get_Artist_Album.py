@@ -38,7 +38,7 @@ class Application(Frame):
         user has placed in the Entry widget according to the selected
         radio button."""
         artist = self.text_in.get()
-        muxGet = musicGet_Functions()
+        muxGet = musicGet_Functions('isNotTest')
         result = muxGet.get_artistAlbums_fromAlbums(artist)
         if result != []:
             albums = []

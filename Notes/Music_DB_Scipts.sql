@@ -317,3 +317,8 @@ UPDATE Music.album2songs
 
 DELETE FROM Music.artist_albums
       WHERE artist_albums.index IN (924)
+      
+
+select Music.album2songs.song from Music.album2songs where album2songs.type = 'tape';
+
+select count(*) from Music.Artist;

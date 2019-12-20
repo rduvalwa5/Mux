@@ -23,7 +23,7 @@ TestGenre    3
 TexMex    218
 '''
 
-cover_count = 722
+cover_count = 779
 songs_count = 11674
 artist_count = 567
 artist_albums_count = 1210
