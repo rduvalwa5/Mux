@@ -17,8 +17,6 @@ self.clear_button = tk.Button(..., command=lambda: self.entry_field.delete(0, tk
 '''
 from tkinter import *
 from Music_Get_Functions import musicGet_Functions
-import MySQLdb   as connDb
-
  
 class Application(Frame):
     def __init__(self, master=None):

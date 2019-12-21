@@ -5,7 +5,7 @@ This code prints the songs by an artist
 '''
 from tkinter import *
 from Music_Get_Functions import musicGet_Functions
-import MySQLdb   as connDb
+#import MySQLdb   as connDb
 
  
 class Application(Frame):

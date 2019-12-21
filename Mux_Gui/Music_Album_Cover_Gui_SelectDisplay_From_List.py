@@ -52,14 +52,19 @@ class displaySelectCover():
 
     def OnDouble(self, event):
         root = Toplevel
-        if platform.uname().node == 'C1246895-XPS':
+        HOST = platform.uname().node
+        if HOST == 'C1246895-XPS':
             base = "C:\\Users\\RDuval\\git\\HubPRojects\\Mux\\AlbumCovers\\"
-        elif platform.uname().node == 'Randalls-MBP.home':
+            
+        elif HOST == 'RandyDuvalsMBP.hsd1.wa.comcast.net':
             print(platform.uname().node)
- #           base = '/Users/rduvalwa2/git/Mux/AlbumCovers/'
-            base = '//Users/rduvalwa2/eclipse_git_hub/MusicDb/Projects/AlbumCovers/'
-        elif platform.uname().node == 'C1246895-osx.home':
+            base = '/Users/rduvalwa2/git/Mux/AlbumCovers/'
+            
+        elif HOST == 'c1246895-osx.hsd1.wa.comcast.net':
                 base = "/Users/rduvalwa2/git/Mux/AlbumCovers/"
+                
+        elif HOST == 'osxair.hsd1.wa.comcast.net':
+                base = '/Users/rduvalwa2/eOxigen-workspace/Mux/AlbumCovers/'
         else:
             base = '/Users/rduvalwa2/eOxigen-workspace/Mux/AlbumCovers/'
             
