@@ -14,7 +14,7 @@ http://effbot.org/imagingbook/pil-index.htm
 '''
 from tkinter import *
 from Music_Get_Functions import musicGet_Functions
-import MySQLdb   as connDb
+#import MySQLdb   as connDb
 import os, sys , platform
 from Music_PlaySong import Play_Song
 

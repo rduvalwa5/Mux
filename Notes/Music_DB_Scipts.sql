@@ -1,3 +1,11 @@
+/* create User and data base */
+
+CREATE USER 'rduvalwa2'@'localhost' IDENTIFIED BY 'blu4jazz';
+
+GRANT ALL PRIVILEGES ON * . * TO 'rduvalwa2'@'localhost';
+
+GRANT ALL PRIVILEGES ON * . * TO 'rduval'@'localhost';
+
 /* album cover */
 
 update artist_albums set type = 'Download' where type = 'download';

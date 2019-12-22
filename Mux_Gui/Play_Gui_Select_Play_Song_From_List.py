@@ -14,7 +14,7 @@ http://effbot.org/imagingbook/pil-index.htm
 '''
 from tkinter import *
 from Music_Get_Functions import musicGet_Functions
-import MySQLdb   as connDb
+#import MySQLdb   as connDb
 import os, sys , platform
 from Music_PlaySong import Play_Song
 
@@ -60,7 +60,8 @@ class displaySongList():
         print(self.aPath)
         self.songAndPath =  self.aPath
         print("song path is ",self.songAndPath)
-        self.comd = "afplay -t 30 "  + "\"" + self.songAndPath + "\""
+#        self.comd = "afplay -t 30 "  + "\"" + self.songAndPath + "\""
+        self.comd = "afplay "  + "\"" + self.songAndPath + "\""
         print("command is ",self.comd)
         os.system(self.comd)
 
