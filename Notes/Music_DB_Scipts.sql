@@ -311,7 +311,13 @@ SELECT *
 
 SELECT *
   FROM Music.artist_albums
- WHERE artist LIKE 'R.E.M.';
+ WHERE artist LIKE '%Stephen King%';
+ 
+SELECT *
+  FROM Music.album2songs
+ WHERE artist LIKE '%Stephen King%'
+ order by album , song; 
+ 
 
 SELECT *
   FROM Music.artist_albums
