@@ -19,9 +19,6 @@ import os, sys , platform
 from Music_PlaySong import Play_Song
 
 class displaySongList():
-    
-
-    
     def getSongList(self):
         root = Tk()       
         root.geometry("1000x500+30+30")

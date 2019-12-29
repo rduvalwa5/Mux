@@ -20,11 +20,10 @@ from Music_PlaySong import Play_Song
 
 class displaySongList():
     
-
-    
     def getSongList(self):
         root = Tk()       
         root.geometry("1000x500+30+30")
+#        menuList = []
         songList = []
         base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/"
         mux = musicGet_Functions(True)
