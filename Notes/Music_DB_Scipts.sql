@@ -311,11 +311,11 @@ SELECT *
 
 SELECT *
   FROM Music.artist_albums
- WHERE artist LIKE '%Stephen King%';
+ WHERE artist LIKE '%Jo De%';
  
 SELECT *
   FROM Music.album2songs
- WHERE artist LIKE '%Stephen King%'
+ WHERE artist LIKE '%Weather Report%'
  order by album , song; 
  
 
