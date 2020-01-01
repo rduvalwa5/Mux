@@ -99,6 +99,7 @@ class Get_Directory_Counts_Function:
                 artist_albums = os.listdir(self.base + "/" + artist)
                 for al in artist_albums:
 #                        print("al is ",al)
+                    if al != ".DS_Store":
                         albumSongs = os.listdir(self.base + "/" + artist + "/" + al)
 #                        print("Al Song ", albumSongs)
                         self.songs = self.songs + len(albumSongs)
