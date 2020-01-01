@@ -76,8 +76,8 @@ class Get_Directory_Counts_Function:
         albumCovers = os.listdir(self.albumCovers)
         self.covers = len(albumCovers)
         print("Cover count is ", self.covers)
-        for cover in albumCovers:
-            print(cover)
+#        for cover in albumCovers:
+#            print(cover)
 
     def get_artist_count(self):
         musicDirs = os.listdir(self.base)
