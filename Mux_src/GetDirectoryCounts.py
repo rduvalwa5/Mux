@@ -28,7 +28,7 @@ class Get_Directory_Counts_Function:
             self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music/"
             self.server = "C1246895-osx.hsd1.wa.comcast.net"
         elif platform.uname().node == 'OSXAir.hsd1.wa.comcast.net':
-            self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')
+            self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music')
             self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
             self.server = "OSXAir.hsd1.wa.comcast.net"
         elif platform.uname().node == 'RandyDuvalsMBP.hsd1.wa.comcast.net':
@@ -98,7 +98,8 @@ class Get_Directory_Counts_Function:
             if os.path.isdir(self.base + "/" + artist):
                 artist_albums = os.listdir(self.base + "/" + artist)
                 for al in artist_albums:
-#                        print("al is ",al)
+                    if al != ".DS_Store":
+                        print("al is ",al)
                         albumSongs = os.listdir(self.base + "/" + artist + "/" + al)
 #                        print("Al Song ", albumSongs)
                         self.songs = self.songs + len(albumSongs)
