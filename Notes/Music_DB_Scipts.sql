@@ -1,3 +1,7 @@
+/* create table */
+
+CREATE TABLE Counts (server VARCHAR(50), artist int, albums int, songs int, Input_Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
+
 /* create User and data base */
 
 CREATE USER 'rduvalwa2'@'localhost' IDENTIFIED BY 'blu4jazz';
