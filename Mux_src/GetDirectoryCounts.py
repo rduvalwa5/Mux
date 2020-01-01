@@ -21,15 +21,18 @@ class Get_Directory_Counts_Function:
         self.albums = 0
         self .songs = 0
         self.genre = 0
+        self.covers = 0
                
         print("*************** Node Name is ", platform.uname().node)
         if platform.uname().node == 'C1246895-OSX.home': #'C1246895-osx.hsd1.wa.comcast.net':
             self.conn = pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music')
             self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music/"
+            self.albumCovers = ""
             self.server = "C1246895-osx.hsd1.wa.comcast.net"
         elif platform.uname().node == 'OSXAir.hsd1.wa.comcast.net':
             self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music')
             self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
+            self.albumCovers = "/Users/rduvalwa2/eOxigen-workspace/Mux/AlbumCovers"
             self.server = "OSXAir.hsd1.wa.comcast.net"
         elif platform.uname().node == 'RandyDuvalsMBP.hsd1.wa.comcast.net':
             print("Host is " , 'RandyDuvalsMBP.hsd1.wa.comcast.net')
@@ -44,7 +47,7 @@ class Get_Directory_Counts_Function:
         print("Start Insert Counts into DataBase...")
 #        print("Server ",self.server ,"Genre ", self.genre, " artist ", self.artist, " albums ", self.albums, " songs ", self.songs)
         cursor = self.conn.cursor()
-        statement = "INSERT INTO counts (SERVER, artist, albums, songs) VALUES ('" + self.server + "'," +  str(self.artist) + "," + str(self.albums) + "," + str(self.songs) + ");" 
+        statement = "INSERT INTO counts (SERVER, artist, albums, songs, album_covers, genre) VALUES ('" + self.server + "'," +  str(self.artist) + "," + str(self.albums) + "," + str(self.songs) + "," + str(self.covers) + "," + str(self.genre) + ");" 
         try:
             print("Statement ", statement)
             cursor.execute(statement)
@@ -68,6 +71,13 @@ class Get_Directory_Counts_Function:
                     print("Exception is ", err)
         cursor.close()
         print("done")
+        
+    def get_albumCover_count(self):
+        albumCovers = os.listdir(self.albumCovers)
+        self.covers = len(albumCovers)
+        print("Cover count is ", self.covers)
+        for cover in albumCovers:
+            print(cover)
 
     def get_artist_count(self):
         musicDirs = os.listdir(self.base)
@@ -103,4 +113,5 @@ if __name__ == '__main__':
     x.get_artist_count()
     x.get_albums_count()
     x.get_song_count()
+    x.get_albumCover_count()
     x.insertCounts_into_Db()
