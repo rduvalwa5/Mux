@@ -28,7 +28,7 @@ class Get_Directory_Counts_Function:
             self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music/"
             self.server = "C1246895-osx.hsd1.wa.comcast.net"
         elif platform.uname().node == 'OSXAir.hsd1.wa.comcast.net':
-            self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')
+            self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music')
             self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
             self.server = "OSXAir.hsd1.wa.comcast.net"
         elif platform.uname().node == 'RandyDuvalsMBP.hsd1.wa.comcast.net':
@@ -73,10 +73,8 @@ class Get_Directory_Counts_Function:
         musicDirs = os.listdir(self.base)
         for directory in musicDirs:
             if os.path.isdir(self.base + "/" + directory):
- #               print(directory)
                 self.artist = self.artist + 1
                 self.artistList.append(directory)
-        print(len(self.artistList))
  
     def get_albums_count(self):
         for a in self.artistList:
@@ -88,21 +86,15 @@ class Get_Directory_Counts_Function:
                         self.albumList.append(album)
                         self.albums = self.albums + 1
 
-#        print("albums count ", self.albums)
-#        print("albumList size ", len(self.albumList))
-
     def get_song_count(self):
         for a in self.artistList:
             artist = a
-#            print(self.base + "/" + artist)
             if os.path.isdir(self.base + "/" + artist):
                 artist_albums = os.listdir(self.base + "/" + artist)
                 for al in artist_albums:
-#                        print("al is ",al)
+                    if al != ".DS_Store":
                         albumSongs = os.listdir(self.base + "/" + artist + "/" + al)
-#                        print("Al Song ", albumSongs)
-                        self.songs = self.songs + len(albumSongs)
-#        print("Total songs ", self.songs)                
+                        self.songs = self.songs + len(albumSongs)             
 
 
 if __name__ == '__main__':
