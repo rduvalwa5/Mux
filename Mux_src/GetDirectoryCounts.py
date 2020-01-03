@@ -24,10 +24,10 @@ class Get_Directory_Counts_Function:
         self.covers = 0
                
         print("*************** Node Name is ", platform.uname().node)
-        if platform.uname().node == 'C1246895-OSX.home': #'C1246895-osx.hsd1.wa.comcast.net':
+        if platform.uname().node == 'c1246895-osx.hsd1.wa.comcast.net': #'C1246895-osx.hsd1.wa.comcast.net':
             self.conn = pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music')
             self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music/"
-            self.albumCovers = ""
+            self.albumCovers = "/Users/rduvalwa2/git/Mux/AlbumCovers"
             self.server = "C1246895-osx.hsd1.wa.comcast.net"
         elif platform.uname().node == 'OSXAir.hsd1.wa.comcast.net':
             self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music')
