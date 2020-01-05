@@ -36,9 +36,10 @@ class Get_Directory_Counts_Function:
             self.server = "OSXAir.hsd1.wa.comcast.net"
         elif platform.uname().node == 'RandyDuvalsMBP.hsd1.wa.comcast.net':
             print("Host is " , 'RandyDuvalsMBP.hsd1.wa.comcast.net')
-            self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music"
+            self.base = "/Users/rduvalwa2/music/iTunes/iTunes Music/Music"
+            self.albumCovers = "/Users/rduvalwa2/git/Mux/AlbumCovers"
             self.server = "RandyDuvalsMBP.hsd1.wa.comcast.net"
-            self.conn = pymysql.connect(host='RandyDuvalsMBP.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')            
+            self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music')            
         else:
             print("Host is not found ")
             exit
