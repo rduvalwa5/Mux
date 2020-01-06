@@ -1,3 +1,16 @@
+/* table counts */
+SELECT count(*) FROM `Music`.artist; -- 570
+
+SELECT count(*) FROM `Music`.artist_albums; -- 1219
+
+SELECT count(*) FROM `Music`.`album2songs`; -- 11802
+
+SELECT count(*) FROM `Music`.`album_covers`;  -- 779
+
+SELECT count(song)
+  FROM music.`album2songs`
+ WHERE `artist` LIKE 'Compilations'; -- 393
+
 /* create table */
 
 CREATE TABLE Counts (server VARCHAR(50), artist int, albums int, songs int, Input_Date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);
@@ -99,16 +112,6 @@ ORDER BY album2songs.genre;
 GROUP BY album2songs.type
 ORDER BY album2songs.type;
 
-
-SELECT count(*) FROM `Music`.artist;
-
-SELECT * FROM `Music`.artist;
-
-SELECT count(*) FROM `Music`.artist_albums;
-
-SELECT *
-  FROM music.artist
- WHERE music.artist.artist LIKE 'Compilations';
 
 -- 543	Compilations		Mix
 
