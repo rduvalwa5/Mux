@@ -4,3 +4,4 @@
 2020-01-05 22:34:34.007678  server: OSXAir.hsd1.wa.comcast.net artist: 589 albums: 4720 songs: 13188
 2020-01-06 12:22:16.729908  server: OSXAir.hsd1.wa.comcast.net artist: 588 albums: 4712 songs: 13188
 2020-01-06 12:24:12.730771  server: OSXAir.hsd1.wa.comcast.net artist: 588 albums: 4712 songs: 13188
+2020-01-06 14:44:57.641757  server: RandyDuvalsMBP.hsd1.wa.comcast.net artist: 587 albums: 4696 songs: 13124
