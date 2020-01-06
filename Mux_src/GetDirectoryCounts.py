@@ -8,6 +8,9 @@ INSERT INTO counts (SERVER, artist, albums, songs) VALUES ('Test2',2 , 0,0);
 '''
 import os, platform
 import pymysql
+from datetime import date
+from _datetime import datetime
+#from lib2to3.tests.data.infinite_recursion import FILE
 
 class Get_Directory_Counts_Function:
 
@@ -57,6 +60,8 @@ class Get_Directory_Counts_Function:
         except self.conn.Error as err:
             print("Exception is ", err)
         cursor.close()
+ #       return str((("server",self.server),("artist", self.artist),("albums", self.albums), ("songs", self.songs)))
+        return str(datetime.now()) + "  " + "server: " + str(self.server) + " artist: " + str(self.artist) + " albums: " + str(self.albums) + " songs: " + str(self.songs) + "\n"
         
     def get_genre_count(self):
         print("Start get genre count")
@@ -107,6 +112,28 @@ class Get_Directory_Counts_Function:
                         albumSongs = os.listdir(self.base + "/" + artist + "/" + al)
                         self.songs = self.songs + len(albumSongs)             
 
+    """ https://www.tutorialspoint.com/python/python_files_io.htm """
+
+    def open_write_file(self, data):
+#        rsyncFile = "/Users/rduvalwa2/Public/TestRync/counts.txt"
+        rsyncFile = "counts.txt"
+        synFile = open(rsyncFile,'a')
+        synFile.write(str(data))
+        synFile.close()
+  
+    def open_read_file(self):
+#        rsyncFile = "/Users/rduvalwa2/Public/TestRync/counts.txt"
+        rsyncFile = "counts.txt"
+        synFile = open(rsyncFile,'r')
+        redLines = synFile.readlines()
+        print("Lines READ ",redLines)
+        for line in redLines:
+            print("Line READ ",line)
+        synFile.close()
+        
+
+
+
 
 if __name__ == '__main__':
     x = Get_Directory_Counts_Function()
@@ -115,4 +142,8 @@ if __name__ == '__main__':
     x.get_albums_count()
     x.get_song_count()
     x.get_albumCover_count()
-    x.insertCounts_into_Db()
+    data = x.insertCounts_into_Db()
+#    for item in output:
+#        print(item)
+    x.open_write_file(data)
+    x.open_read_file()
