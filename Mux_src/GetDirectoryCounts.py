@@ -88,9 +88,10 @@ class Get_Directory_Counts_Function:
     def get_artist_count(self):
         musicDirs = os.listdir(self.base)
         for directory in musicDirs:
-            if os.path.isdir(self.base + "/" + directory):
-                self.artist = self.artist + 1
-                self.artistList.append(directory)
+            if directory != '.DS_Store':
+                if os.path.isdir(self.base + "/" + directory):
+                    self.artist = self.artist + 1
+                    self.artistList.append(directory)
  
     def get_albums_count(self):
         for a in self.artistList:
@@ -120,7 +121,8 @@ class Get_Directory_Counts_Function:
         songFile = "AASongFile" + self.server + ".txt"
         mysong = open(songFile,'w')
         for song in self.songList:
-            mysong.write(str(song) + "\n")
+            if song != '.DS_Store':
+                mysong.write(str(song) + "\n")
         mysong.close()
 
 
