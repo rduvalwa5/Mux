@@ -118,7 +118,7 @@ class Get_Directory_Counts_Function:
     def open_write_Songfile(self):
 #        rsyncFile = "/Users/rduvalwa2/Public/TestRync/counts.txt"
         songFile = "AASongFile" + self.server + ".txt"
-        mysong = open(songFile,'a')
+        mysong = open(songFile,'w')
         for song in self.songList:
             mysong.write(str(song) + "\n")
         mysong.close()
