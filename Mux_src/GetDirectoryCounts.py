@@ -111,8 +111,18 @@ class Get_Directory_Counts_Function:
                     if al != ".DS_Store":
                         albumSongs = os.listdir(self.base + "/" + artist + "/" + al)
                         self.songs = self.songs + len(albumSongs)             
-
+                        for song in albumSongs:
+                            self.songList.append(song)
+        print("Song File ", len(self.songList))
     """ https://www.tutorialspoint.com/python/python_files_io.htm """
+    def open_write_Songfile(self):
+#        rsyncFile = "/Users/rduvalwa2/Public/TestRync/counts.txt"
+        songFile = "AASongFile" + self.server + ".txt"
+        mysong = open(songFile,'a')
+        for song in self.songList:
+            mysong.write(str(song) + "\n")
+        mysong.close()
+
 
     def open_write_file(self, data):
 #        rsyncFile = "/Users/rduvalwa2/Public/TestRync/counts.txt"
@@ -142,6 +152,7 @@ if __name__ == '__main__':
     x.get_albums_count()
     x.get_song_count()
     x.get_albumCover_count()
+    x.open_write_Songfile()
     data = x.insertCounts_into_Db()
 #    for item in output:
 #        print(item)
