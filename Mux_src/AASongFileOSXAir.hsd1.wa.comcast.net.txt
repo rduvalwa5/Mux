@@ -269,7 +269,6 @@ Sleep Walk 2.mp3
 02 New York Mining Disaster 1941.aiff
 07 Every Christian Lion Hearted Man.aiff
 12 I Got To Get A Message To You.aiff
-.DS_Store
 03 Spicks And Specks.aiff
 11 I Started A Joke.aiff
 04 To Love Somebody.aiff
@@ -280,7 +279,6 @@ Sleep Walk 2.mp3
 09 Holliday.aiff
 10 I Cant see Nobody.aiff
 03 The Voices.aiff
-.DS_Store
 07 Lost In Your Love.aiff
 01 Charade.aiff
 09 Heavy Breathing.aiff
@@ -640,12 +638,10 @@ Heartland.mp3
 2-07 Greensleeves IV.mp3
 2-05 Greensleeves III.mp3
 2-14 It's Easy To Remember VII.mp3
-.DS_Store
 01 Naima.mp3
 03 My Favorite Things.mp3
 02 Introduction to My Favorite Things.mp3
 05 While My Lady Sleeps.aiff
-.DS_Store
 06 Chronic Blues.aiff
 01 Bakai.aiff
 03 Time Was.aiff
@@ -1735,7 +1731,6 @@ Digital Booklet - Corazon (Deluxe Version).pdf
 06 Affair on 8th Avenue of Darkness.mp3
 22 Carefree Highway.mp3
 09 Bitter Green.mp3
-.DS_Store
 04 Softly.mp3
 12 Sundown.mp3
 20 If You Could Read My Mind.mp3
@@ -1934,11 +1929,9 @@ Dr Jackle.mp3
 08 Boplicity.m4a
 01 Dr Jackle.mp3
 04 Milestones.mp3
-.DS_Store
 02 Sid's Ahead.mp3
 05 Billy Boy.mp3
 03 Two Bass Hit.mp3
-.DS_Store
 Frelon Brun.mp3
 Filles De Kilimanjaro.mp3
 Petits Machins.mp3
@@ -3854,7 +3847,6 @@ Digital Booklet - World Gone Crazy.pdf
 01 Person to Person.m4a
 10 I Heard It Through the Grapevine.m4a
 06 I'm the One.m4a
-.DS_Store
 02 Vivaldi Side 2.mp3
 01 Vivaldi Side 1.mp3
 08 Mr Man On The Street - Act One.mp3
@@ -5199,7 +5191,6 @@ Saturday Night Special.mp3
 04 Another Mambo.mp3
 14 She's Funny That Way.mp3
 11 Pennies From Heaven.mp3
-.DS_Store
 05 Kiss Me Again.mp3
 03 Rose Room.mp3
 09 Mean To Me.mp3
@@ -5249,7 +5240,6 @@ Saturday Night Special.mp3
 1-06 I Just Want To Make Love To You.mp3
 01 Side 1.mp3
 01 Side 2.mp3
-.DS_Store
 01 Pressure Cooker.mp3
 04 Gates Tune.mp3
 11 Blackjack.mp3
@@ -5432,7 +5422,6 @@ Saturday Night Special.mp3
 13 My Generation.mp3
 1-14 Pinball Wizard.m4p
 1-11 I Can See for Miles.m4p
-.DS_Store
 04 The Who-Tommy Side 4.aiff
 03 The Who-Tommy Side 3.aiff
 02 The Who-Tommy Side 2.aiff
@@ -5649,20 +5638,6 @@ Saturday Night Special.mp3
 2-05 Hey Diddle (Dixon Van Winkle Mix).mp3
 2-01 Another Day.mp3
 2-02 Oh Woman, Oh Why.mp3
-06 We Three (My Echo, My Shadow And Me).mp3
-10 My Very Good Friend The Milkman.mp3
-02 Home (When Shadows Fall).mp3
-14 Only Our Hearts.mp3
-05 The Glory Of Love.mp3
-01 I'm Gonna Sit Right Down And Write Myself A Letter.mp3
-12 Get Yourself Another Fool.mp3
-08 My Valentine.mp3
-04 More I Cannot Wish You.mp3
-13 The Inch Worm.mp3
-07 Ac-Cent-Tchu-Ate The Positive.mp3
-11 Bye Bye Blackbird.mp3
-03 It's Only A Paper Moon.mp3
-09 Always.mp3
 08 Monkberry Moon Delight.mp3
 09 Eat At Home.mp3
 06 Smile Away.mp3
@@ -7734,12 +7709,12 @@ Digital Booklet - The Music Inside - A Collaboration Dedicated To Waylon Jenning
 02 Castle Of Glass (M. Shinoda Remix).mp3
 14 A Light That Never Comes (Rick Rubin Reboot).mp3
 05 I'll Be Gone (Vice Remix).mp3
-01 Rain On The Roof.mp3
 08 Never Going Back.mp3
 05 Till I Run With You.mp3
 06 You Didnt Have To Be So NIce.mp3
 01 Younger Girl.mp3
 02 Day Dreamin.mp3
+09 Rain On The Roof.mp3
 07 Did You Ever Have To Make Up Your Mind.mp3
 04 Do You Believe In Magic.mp3
 03 Summer In The City.mp3
@@ -7807,7 +7782,6 @@ Digital Booklet - The Music Inside - A Collaboration Dedicated To Waylon Jenning
 02 Slowly We Walk Together.mp3
 11 Nappy Head.mp3
 10 Deliver The Word.mp3
-.DS_Store
 01 War Is Coming! War Is Coming!.mp3
 07 H2overture.mp3
 04 I Got You.mp3
@@ -7816,7 +7790,6 @@ Digital Booklet - The Music Inside - A Collaboration Dedicated To Waylon Jenning
 09 Smile Happy.mp3
 08 City, Country, City.mp3
 12 Four Cornered Room.mp3
-.DS_Store
 09 Why Can't We Be Friends.m4a
 01 Spill the Wine.m4a
 1-02 Tobacco Road.m4a
@@ -8366,7 +8339,6 @@ Alone.mp3
 06 Good Lovin'.m4a
 06 Groovin'.m4a
 04 In The Presence and Absence Of Each Other Michael Brecke.mp3
-.DS_Store
 01 Cityscape 1.mp3
 04 In The Presence and Absence Of Each Other.mp3
 02 Habanera.mp3
@@ -8533,7 +8505,6 @@ Alone.mp3
 08 Hey Baby.mp3
 03 Look Over Yonder.mp3
 04 Pali Gap.mp3
-.DS_Store
 09 Angel.mp3
 11 Like You Ain't Even Gone.mp3
 07 Smoke.mp3
@@ -8590,7 +8561,6 @@ Alone.mp3
 02 I'm A Loser.mp3
 Rock And Roll Music.mp3
 03 You Like Me to Much.aiff
-.DS_Store
 09 Dizzy Miss Lizzy.aiff
 11 Every Little Thing.aiff
 01 Kansas City.aiff
@@ -8626,7 +8596,6 @@ Rock And Roll Music.mp3
 02 I Saw Her Standing There Meet The Beatles.aiff
 01 I Want To Hold Your Hand.aiff
 01 Side2.aiff
-.DS_Store
 03 This Boy.aiff
 12 Not A Second Time.aiff
 05 All I've Got To Do.aiff
@@ -8639,7 +8608,6 @@ Rock And Roll Music.mp3
 10 Hold Me Tight.aiff
 05 Dig It.m4a
 09 One After 909.m4a
-.DS_Store
 12 Get Back.m4a
 03 Across the Universe.m4a
 13 Let It Be (Documentary).m4v
@@ -8684,7 +8652,6 @@ Let It Be - iTunes LP (v2.1).itlp
 08 Boys.mp3
 10 Help!.mp3
 09 We Can Work It Out.aiff
-.DS_Store
 07 And Your Bird Can Sing.aiff
 06 Act Naturally.aiff
 05 Yesterday Yesterday and Today.aiff
@@ -8698,14 +8665,12 @@ Let It Be - iTunes LP (v2.1).itlp
 03 I'll Cry Instead Hard Night.aiff
 01 A Hard Days Night.aiff
 05 If I Fell Hard Night.aiff
-.DS_Store
 07 Can't Buy Me Love.aiff
 06 And I Love Her.aiff
 04 I'm Happy Just to Dance with You Hard Night.aiff
 02 I Should Have Known Better Hard Days Night.aiff
 03 You Won't See Me.aiff
 09 I'm Looking Through You.aiff
-.DS_Store
 11 Wait.aiff
 02 Norwegian Wood.aiff
 06 Michelle.aiff
@@ -8731,7 +8696,6 @@ Let It Be - iTunes LP (v2.1).itlp
 11 Komm, Gib Mir Deine Hand.aiff
 01 I'll Cry Instead.aiff
 09 I'm Happy Just To Dance With You.aiff
-.DS_Store
 07 Tell Me Why.aiff
 05 Slow Down.aiff
 10 If I Fell.aiff
@@ -8741,7 +8705,6 @@ Let It Be - iTunes LP (v2.1).itlp
 04 When I Get Home.aiff
 08 And I Love Her.aiff
 2-01 Fly On The Wall.mp3
-.DS_Store
 03 Flying.aiff
 10 Baby You're a Rich Man.aiff
 04 Blue Jay Way.aiff
@@ -8801,7 +8764,6 @@ Let It Be - iTunes LP (v2.1).itlp
 1-05 I Want to Hold Your Hand.m4a
 01 Drive My Car.aiff
 13 If I Needed Someone Rubber Soul.aiff
-.DS_Store
 05 Think For Yourself Rubber Soul.aiff
 08 What Goes On.aiff
 14 Run For Your Life Rubber Soul.aiff
@@ -8834,7 +8796,6 @@ Let It Be - iTunes LP (v2.1).itlp
 05 Another Girl.aiff
 03 You've Got to Hide Your Love Away.aiff
 06 Ticket To Ride Help.aiff
-.DS_Store
 01 Help.aiff
 08 The Chase(orchestra).aiff
 02 The Night Before.aiff
@@ -9136,7 +9097,6 @@ St Charles Shuffle.mp3
 2-03 Traintime [Live].mp3
 09 I'm So Glad.mp3
 10 Toad.mp3
-.DS_Store
 07 Four Until Late.mp3
 08 Rollin And Tumblin.mp3
 06 Cat's Squirrel.mp3
@@ -9379,7 +9339,6 @@ Digital Booklet - Hittin' the Note.pdf
 11 High Time We Went.mp3
 03 The Jealous Kind.mp3
 12 Letter.mp3
-.DS_Store
 01 With A Little Help From My Friends.mp3
 10 Darling Be Home Soon.mp3
 08 Feeling Alright.mp3
@@ -10713,7 +10672,6 @@ Compared To What.mp3
 11 King Of Pain.mp3
 01 Roxanne.mp3
 09 Spirits In The Material World.mp3
-.DS_Store
 01 Louie Louie.m4a
 25 Long Tall Texan [Live].mp3
 22 Fever [Live].mp3
@@ -10966,7 +10924,6 @@ Compared To What.mp3
 05 Do You Wanna Dance.mp3
 18 My Girl.mp3
 04 I Call Your Name.mp3
-03 Monday, Monday.mp3
 14 Creeque Alley.mp3
 15 Glad To Be Unhappy.mp3
 08 Dancing Bear.mp3
@@ -11355,7 +11312,6 @@ Compared To What.mp3
 08 Initials.mp3
 04 Colored Spade.mp3
 10 Hair.mp3
-.DS_Store
 12 Don't Put It Down.mp3
 02 Donna - Hashish.mp3
 15 Where Do I Go_.mp3
@@ -11376,7 +11332,6 @@ Compared To What.mp3
 07 Air.mp3
 06 Don't Blame Me.mp3
 03 Criss-Cross.mp3
-.DS_Store
 07 Think Of One.mp3
 02 Tea For Two.mp3
 04 Eronel.mp3
@@ -11861,7 +11816,6 @@ Compared To What.mp3
 01 Keep It Steady.mp3
 08 What Can A Miracle Do.mp3
 05 Slick Stuff.mp3
-.DS_Store
 03 A Creature of Many Faces.mp3
 09 DBB.mp3
 07 Levitate.mp3
@@ -11872,7 +11826,6 @@ Compared To What.mp3
 06 Rocks.mp3
 01 Some Skunk Funk.mp3
 03 As Long As Ive Got Your Love.mp3
-.DS_Store
 07 Tabula Rasa.mp3
 05 Dont Stop The Music.mp3
 01 Finger Lickin Good.mp3
