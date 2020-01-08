@@ -719,9 +719,6 @@
 01 Take It Easy.mp3
 01 Take Me Back.m4a
 01 Tannhauser Overture.mp3
-01 Tape 1 Side 1.mp3
-01 Tape 1 Side 1.mp3
-01 Tape 1 Side 1.mp3
 01 Taxman.mp3
 01 Tears Of Rage.m4a
 01 Tell All The People.mp3
@@ -1582,10 +1579,6 @@
 02 Takin' It To The Streets.mp3
 02 Takin' It To the Streets (Farewell Live Tour Version) [2016 Remastered].m4a
 02 Talkin' New York.mp3
-02 Tape 1 Side 2 1.mp3
-02 Tape 1 Side 2.mp3
-02 Tape 1 Side 2.mp3
-02 Tape 1 Side 2.mp3
 02 Tea For Two.mp3
 02 Teach Your Children.mp3
 02 Teacher I Need You.mp3
@@ -2376,9 +2369,6 @@
 03 Takin' Care of Business.m4a
 03 Talisman.mp3
 03 Talking At The Same Time.m4a
-03 Tape 2 Side 1.mp3
-03 Tape 2 Side 1.mp3
-03 Tape 2 Side 1.mp3
 03 Te Ador.mp3
 03 Teen Town (Live).m4a
 03 Teen Town.mp3
@@ -3156,9 +3146,6 @@
 04 Take Me To The River.mp3
 04 Tales of Brave Ulysses.mp3
 04 Talk About The Passion.mp3
-04 Tape 2 Side 2 1.mp3
-04 Tape 2 Side 2.mp3
-04 Tape 2 Side 2.mp3
 04 Tattoo.mp3
 04 Tear It Down.mp3
 04 Tears In Heaven.mp3
@@ -3983,9 +3970,6 @@
 05 Take Me To The River.mp3
 05 Talladega.mp3
 05 Tank.mp3
-05 Tape 3 Side 1.mp3
-05 Tape 3 Side 1.mp3
-05 Tape 3 Side 1.mp3
 05 Tattoo.mp3
 05 Tell Me That You Love Me.mp3
 05 Tennesse River.mp3
@@ -4725,9 +4709,6 @@
 06 Take Me In Your Arms (Rock Me A Little While).mp3
 06 Taking It All Too Hard.mp3
 06 Talk To Me.mp3
-06 Tape 3 Side 2 1.mp3
-06 Tape 3 Side 2.mp3
-06 Tape 3 Side 2.mp3
 06 Tell It Like It Is.m4a
 06 Tell Me More.mp3
 06 Telling Lies.mp3
@@ -5469,9 +5450,6 @@
 07 Take This Job And Shove It.mp3
 07 Take a Look At That Baby.m4a
 07 Take the _A_ Train.mp3
-07 Tape 4 Side 1.mp3
-07 Tape 4 Side 1.mp3
-07 Tape 4 Side 1.mp3
 07 Tears.m4a
 07 Television Eye.mp3
 07 Tell It To The Devil.m4a
@@ -6199,9 +6177,6 @@
 08 Talk to Me.m4a
 08 Tangled In Love.mp3
 08 Tango Bitterness.mp3
-08 Tape 4 Side 2.mp3
-08 Tape 4 Side 2.mp3
-08 Tape 4 Side 2.mp3
 08 Teach Them How To Bleed.mp3
 08 Teardrops In My Eyes.m4a
 08 Tears Are In Your Eyes.mp3
@@ -6878,9 +6853,6 @@
 09 Take It As It Comes.mp3
 09 Take My Heart.m4a
 09 Tales of Brave Ulysses.m4a
-09 Tape 5 Side 1.mp3
-09 Tape 5 Side 1.mp3
-09 Tape 5 Side 1.mp3
 09 Tears, Tears, Tears.mp3
 09 Telegraph Your Love.mp3
 09 Testifying.mp3
@@ -8340,9 +8312,6 @@
 10 T-Bone Shuffle.m4a
 10 Take It All In And Check It All Out.mp3
 10 Take Me In Your Arms.mp3
-10 Tape 5 Side 2.mp3
-10 Tape 5 Side 2.mp3
-10 Tape 5 Side 2.mp3
 10 Taste Of Honey.aiff
 10 Tax Free.mp3
 10 Tell Her No.m4a
@@ -8849,9 +8818,6 @@
 11 Take Me.mp3
 11 Take The Highway [Live].m4a
 11 Taos, New Mexico.mp3
-11 Tape 6 Side 1.mp3
-11 Tape 6 Side 1.mp3
-11 Tape 6 Side 1.mp3
 11 Tapestry.mp3
 11 Tennessee Pusher.m4a
 11 That Lovin' You Feelin' Again.m4a
@@ -9276,9 +9242,6 @@
 12 Take It Like a Man.m4a
 12 Take Me for Longing.m4a
 12 Talking Blues.mp3
-12 Tape 6 Side 2.mp3
-12 Tape 6 Side 2.mp3
-12 Tape 6 Side 2.mp3
 12 Tastebud.mp3
 12 Tecumseh Valley.m4a
 12 Tell Me.mp3
@@ -9621,9 +9584,6 @@
 13 Summer Cannibals.mp3
 13 Sweet Suzanne.mp3
 13 Sympathy For The Devil.mp3
-13 Tape 7 Side 1.mp3
-13 Tape 7 Side 1.mp3
-13 Tape 7 Side 1.mp3
 13 Tears Of Rage (Alternate Take).m4a
 13 Television Eye [Remix].mp3
 13 Tend My Garden.mp3
@@ -9904,9 +9864,6 @@
 14 Sympathy for the Devil.m4a
 14 Take A Message To Mary.mp3
 14 Take These Chains.mp3
-14 Tape 7 Side 2.mp3
-14 Tape 7 Side 2.mp3
-14 Tape 7 Side 2.mp3
 14 Tennessee Jed.mp3
 14 The Baby.mp3
 14 The Big Money.mp3
@@ -10105,9 +10062,6 @@
 15 Sprawl II (Mountains Beyond Mountains).mp3
 15 Stray Cat Strut.mp3
 15 Streets Of Paradise.mp3
-15 Tape 8 Side 1.mp3
-15 Tape 8 Side 1.mp3
-15 Tape 8 Side 1.mp3
 15 Thaïs_ Meditation.m4a
 15 The Arrival Of The Wren Boys.mp3
 15 The Beat Goes On.mp3
@@ -10276,9 +10230,6 @@
 16 Sweet Surrender.mp3
 16 Symphony No. 9 In E Minor, Op. 95, _From the New World__ II. Largo.m4a
 16 Tampico Trama.mp3
-16 Tape 8 Side 2.mp3
-16 Tape 8 Side 2.mp3
-16 Tape 8 Side 2.mp3
 16 Tears Of Rage.mp3
 16 The Dingle Set - Dance.mp3
 16 The End.mp3
@@ -10407,9 +10358,6 @@
 17 Smells Like Teen Spirit.mp3
 17 Someone's Coming.mp3
 17 Sue City Sue.mp3
-17 Tape 9 Side 1.mp3
-17 Tape 9 Side 1.mp3
-17 Tape 9 Side 1.mp3
 17 Temptation Eyes.mp3
 17 Thanks and Goodbyes.m4a
 17 The Captain and the Kid.mp3
@@ -10528,9 +10476,6 @@
 18 Star.mp3
 18 Summer Time.mp3
 18 Sweet Sir Galahad.mp3
-18 Tape 9 Side 2.mp3
-18 Tape 9 Side 2.mp3
-18 Tape 9 Side 2.mp3
 18 The Lady Is A Tramp.mp3
 18 The Magic Bus Live At Leeds.mp3
 18 The Voyage (Original Take).mp3
@@ -10611,9 +10556,6 @@
 19 Substitute Live At Leeds.mp3
 19 Swan Lake Suite, Op. 20_ Scéne.m4a
 19 Sweet Hitch-Hiker.m4p
-19 Tape 10 Side 1.mp3
-19 Tape 10 Side 1.mp3
-19 Tape 10 Side 1.mp3
 19 Tell Me It Isnt True.mp3
 19 Tenderly.mp3
 19 That Was Then, This Is Now.mp3
@@ -11475,9 +11417,6 @@
 20 Speed Kills.m4a
 20 Stay.mp3
 20 Summertime Blues.mp3
-20 Tape 10 Side 2.mp3
-20 Tape 10 Side 2.mp3
-20 Tape 10 Side 2.mp3
 20 Tell All the People.m4a
 20 The Christmas Song (feat. Natalie Cole).m4a
 20 The End.m4a
@@ -11533,9 +11472,6 @@
 21 Sloppy (I Saw My Baby Gettin') [Live at the London HMV Forum].mp3
 21 So Deep Within You (BBC Sessions Version).mp3
 21 Starfish On the Toast.mp3
-21 Tape 11 Side 1.mp3
-21 Tape 11 Side 1.mp3
-21 Tape 11 Side 1.mp3
 21 That's The Way Love Is.mp3
 21 The Girl Can't Help It.m4a
 21 The Runway.mp3
@@ -11575,9 +11511,6 @@
 22 Sexy Sadie.mp3
 22 Shrivel-Up (Live at the London HMV Forum).mp3
 22 Sixteen Tracks.mp3
-22 Tape 11 Side 2.mp3
-22 Tape 11 Side 2.mp3
-22 Tape 11 Side 2.mp3
 22 The WASP (Texas Radio and the Big Beat).m4a
 22 Wedding Song (There Is Love).m4a
 23 Birth Of The Blues.mp3
@@ -11604,9 +11537,6 @@
 23 Soldiers Joy.mp3
 23 Sweet Rosyanne 1.mp3
 23 Sweet Rosyanne.mp3
-23 Tape 12 Side 1.mp3
-23 Tape 12 Side 1.mp3
-23 Tape 12 Side 1.mp3
 23 Too Many Rivers.mp3
 23 Use To Be.mp3
 24 Carmen Suite No. 2_ Habanera.m4a
@@ -11625,9 +11555,6 @@
 24 Settin' The Woods On Fire.mp3
 24 Soul Kitchen.m4a
 24 Tall Cool One [Instrumental][Live].mp3
-24 Tape 12 Side 2.mp3
-24 Tape 12 Side 2.mp3
-24 Tape 12 Side 2.mp3
 24 The Lonesome Road.mp3
 24 The Night Was So Young.mp3
 24 Underground Fire.m4a
@@ -11649,8 +11576,6 @@
 25 Revolution I.mp3
 25 Rumble in Brighton.mp3
 25 Symphony No. 9 In D Minor, Op. 125, _Choral__ Ode an Die Freude.m4a
-25 Tape 13 Side 1.mp3
-25 Tape 13 Side 1.mp3
 25 The Air That I Breathe.mp3
 25 Whole Lotta Shakin' Goin' On.m4a
 26 Big Four Poster Bed.mp3
@@ -11660,8 +11585,6 @@
 26 Let's Put Our Hearts Together.mp3
 26 Midnight Hour (Previously Unreleased Version).mp3
 26 Night Train [Instrumental][Live].mp3
-26 Tape 13 Side 2.mp3
-26 Tape 13 Side 2.mp3
 26 The Cure.mp3
 26 The Tales of Hoffmann_ Barcarolle.m4a
 26 The Ventures' Rocketing Rhythms' Interview.m4a
@@ -11934,7 +11857,6 @@ MyFavoriteThings.mp3
 Naima.mp3
 Nightingale I.mp3
 Nightingale II.mp3
-Noam-Chomsky-on-state-sposored-terrorism_64kb.mp3
 OM.mp3
 Oh Had I A Golden Thread.mp3
 Olivia Newton-John side 1.mp3

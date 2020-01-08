@@ -98,15 +98,28 @@ class Get_Directory_Counts_Function:
         self.artistList = sorted(self.artistList)
  
     def get_albums_count(self):
+        
         for a in self.artistList:
-            artist = a[1]
+            artist = a
             if os.path.isdir(self.base + "/" + artist):
                 artist_albums = os.listdir(self.base + "/" + artist)
                 for album in artist_albums:
-                    if album != '.DS_Store':
+                    if album != ".DS_Store":
                         self.albumList.append(album)
-                        self.albums = self.albums + 1
+        self.albums = len(self.albumList)                    
         self.albumList = sorted(self.albumList)
+#        print(self.albumList)
+        
+#        for a in self.artistList:
+#            artist = a[1]
+#            if os.path.isdir(self.base + "/" + a[1]):
+#                artist_albums = os.listdir(self.base + "/" + a[1] + "/")
+#                print("artist albums ",artist_albums)
+#                for album in artist_albums:
+#                    if album != '.DS_Store':
+#                        if album not in self.albumList:
+#                            self.albumList.append(album)
+
         
     def get_song_count(self):
         for a in self.artistList:
@@ -116,6 +129,8 @@ class Get_Directory_Counts_Function:
                 for al in artist_albums:
                     if al != ".DS_Store":
                         albumSongs = os.listdir(self.base + "/" + artist + "/" + al)
+                        if al == "Unknown Album":
+                            print("Unknown album ",albumSongs)
                         self.songs = self.songs + len(albumSongs)             
                         for song in albumSongs:
                             self.songList.append(song)
@@ -147,7 +162,7 @@ class Get_Directory_Counts_Function:
         myArtists.close()
 
     def open_write_file(self, data):
-        rsyncFile = "counts.txt"
+        rsyncFile = "AA_"+ self.server +"_counts.txt"
         synFile = open(rsyncFile,'a')
         synFile.write(str(data))
         synFile.close()
