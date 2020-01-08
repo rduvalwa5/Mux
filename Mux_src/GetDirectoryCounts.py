@@ -20,6 +20,7 @@ class Get_Directory_Counts_Function:
         self.artistList = []
         self.albumList = [] 
         self.songList = []
+        self.albumCoverList = []
         self.artist = 0
         self.albums = 0
         self .songs = 0
@@ -80,7 +81,10 @@ class Get_Directory_Counts_Function:
         
     def get_albumCover_count(self):
         albumCovers = os.listdir(self.albumCovers)
-        self.covers = len(albumCovers)
+        for cover in albumCovers:
+            if cover != '.DS_Store':
+                self.covers = self.covers + 1
+                self.albumCoverList.append(cover)
         print("Cover count is ", self.covers)
 #        for cover in albumCovers:
 #            print(cover)
