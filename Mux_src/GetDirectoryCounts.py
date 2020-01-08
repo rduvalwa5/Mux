@@ -86,8 +86,7 @@ class Get_Directory_Counts_Function:
                 self.covers = self.covers + 1
                 self.albumCoverList.append(cover)
         print("Cover count is ", self.covers)
-#        for cover in albumCovers:
-#            print(cover)
+        self.albumCoverList = sorted(self.albumCoverList)
 
     def get_artist_count(self):
         musicDirs = os.listdir(self.base)
@@ -96,6 +95,7 @@ class Get_Directory_Counts_Function:
                 if os.path.isdir(self.base + "/" + directory):
                     self.artist = self.artist + 1
                     self.artistList.append(directory)
+        self.artistList = sorted(self.artistList)
  
     def get_albums_count(self):
         for a in self.artistList:
@@ -106,7 +106,8 @@ class Get_Directory_Counts_Function:
                     if album != '.DS_Store':
                         self.albumList.append(album)
                         self.albums = self.albums + 1
-
+        self.albumList = sorted(self.albumList)
+        
     def get_song_count(self):
         for a in self.artistList:
             artist = a
@@ -118,6 +119,7 @@ class Get_Directory_Counts_Function:
                         self.songs = self.songs + len(albumSongs)             
                         for song in albumSongs:
                             self.songList.append(song)
+        self.songList = sorted(self.songList)
         print("Song File ", len(self.songList))
     """ https://www.tutorialspoint.com/python/python_files_io.htm """
     def open_write_Songfile(self):
