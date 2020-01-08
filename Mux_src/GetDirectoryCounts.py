@@ -163,7 +163,7 @@ class Get_Directory_Counts_Function:
 
     def open_write_file(self, data):
         rsyncFile = "AA_"+ self.server +"_counts.txt"
-        synFile = open(rsyncFile,'a')
+        synFile = open(rsyncFile,'w')
         synFile.write(str(data))
         synFile.close()
   
