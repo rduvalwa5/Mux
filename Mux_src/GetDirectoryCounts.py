@@ -123,7 +123,6 @@ class Get_Directory_Counts_Function:
         print("Song File ", len(self.songList))
     """ https://www.tutorialspoint.com/python/python_files_io.htm """
     def open_write_Songfile(self):
-#        rsyncFile = "/Users/rduvalwa2/Public/TestRync/counts.txt"
         songFile = "AASongFile" + self.server + ".txt"
         mysong = open(songFile,'w')
         for song in self.songList:
@@ -131,9 +130,23 @@ class Get_Directory_Counts_Function:
                 mysong.write(str(song) + "\n")
         mysong.close()
 
+    def open_write_Albumfile(self):
+        albumFile = "AAalbumFile" + self.server + ".txt"
+        myAlbums = open(albumFile,'w')
+        for album in self.albumList:
+            if album != '.DS_Store':
+                myAlbums.write(str(album) + "\n")
+        myAlbums.close()
+        
+    def open_write_Artistfile(self):
+        artistFile = "AAartistFile" + self.server + ".txt"
+        myArtists = open(artistFile,'w')
+        for artist in self.artistList:
+            if artist != '.DS_Store':
+                myArtists.write(str(artist) + "\n")
+        myArtists.close()
 
     def open_write_file(self, data):
-#        rsyncFile = "/Users/rduvalwa2/Public/TestRync/counts.txt"
         rsyncFile = "counts.txt"
         synFile = open(rsyncFile,'a')
         synFile.write(str(data))
@@ -161,6 +174,8 @@ if __name__ == '__main__':
     x.get_song_count()
     x.get_albumCover_count()
     x.open_write_Songfile()
+    x.open_write_Artistfile()
+    x.open_write_Albumfile()
     data = x.insertCounts_into_Db()
 #    for item in output:
 #        print(item)
