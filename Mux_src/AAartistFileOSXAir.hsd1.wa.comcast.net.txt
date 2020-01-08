@@ -574,7 +574,6 @@ Yes
 Yo La Tengo
 Yo-Yo Ma
 ZZ Top
-ZZ_ZTest
 Zac Brown Band
 _ & The Mysterians
 conductor Neil Warner
