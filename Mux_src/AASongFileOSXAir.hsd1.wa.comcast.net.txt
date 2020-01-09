@@ -715,7 +715,6 @@
 01 Sunflower River Blues.m4a
 01 Sunshine Superman.m4a
 01 Surf City (Re-recorded Version).m4a
-01 Surf City (Re-recorded Version).mp3
 01 Surrender 2 Love.mp3
 01 Survival.mp3
 01 Susie Q.m4p
@@ -1173,7 +1172,6 @@
 02 Fly By Night.mp3
 02 Fool On The Hill.aiff
 02 For Emily, Whenever I May Find Her.mp3
-02 Forever As The Moon 1.mp3
 02 Forever As The Moon.mp3
 02 Forever In Blue Jeans.mp3
 02 Forget About It.mp3
@@ -1520,7 +1518,6 @@
 02 Seven Years.m4a
 02 Sex & Money.mp3
 02 Sgt. Pepper's Lonely Hearts Club Band.mp3
-02 Shadow Cosmos 1.mp3
 02 Shadow Cosmos.mp3
 02 Shake It.mp3
 02 Shake Your Money Maker.mp3
@@ -1627,7 +1624,6 @@
 02 The Kids Are Alright.mp3
 02 The Last Goodbye.mp3
 02 The Little Old Lady (from Pasadena) [Re-recorded Version].m4a
-02 The Little Old Lady (from Pasadena) [Re-recorded Version].mp3
 02 The Little Shepherd from Children's Corner Suite.m4a
 02 The Man I Love.mp3
 02 The Masquerade Is Over.mp3
@@ -1939,7 +1935,6 @@
 03 Downed.mp3
 03 Downright Women.mp3
 03 Drag City (Re-recorded Version).m4a
-03 Drag City (Re-recorded Version).mp3
 03 Dream Gerrard.mp3
 03 Drive In Saturday.mp3
 03 Drivin' Wheel.mp3
@@ -2721,7 +2716,6 @@
 04 Day After Day (Re-Recorded).m4a
 04 Deacon Blues.m4p
 04 Dead Man's Curve (Re-recorded Version).m4a
-04 Dead Man's Curve (Re-recorded Version).mp3
 04 Dear Boy.mp3
 04 Deep in Your Heart.m4a
 04 Del Rio's Song.mp3
@@ -3678,7 +3672,6 @@
 05 I Didn't Know What Time It Was.mp3
 05 I Don't Want to Spoil the Party.aiff
 05 I Get Around (Re-recorded Version).m4a
-05 I Get Around (Re-recorded Version).mp3
 05 I Got My Mojo Working.mp3
 05 I Got The Train Sittin Waitin.mp3
 05 I Gotta Move.mp3
@@ -4379,7 +4372,6 @@
 06 From Now On.mp3
 06 Fun House.m4a
 06 Fun, Fun, Fun (Re-recorded Version).m4a
-06 Fun, Fun, Fun (Re-recorded Version).mp3
 06 Funk the Dumb Stuff.m4a
 06 Get Up and Go.mp3
 06 Get Up, Stand Up.m4a
@@ -5478,7 +5470,6 @@
 07 She's My Girl.mp3
 07 Shine On You Crazy Diamond, Pt. VI-IX.mp3
 07 Sidewalk Surfin' (Re-recorded Version).m4a
-07 Sidewalk Surfin' (Re-recorded Version).mp3
 07 Sing Song Bird.mp3
 07 Sitting An' Thinking.m4a
 07 Smoke.mp3
@@ -6012,7 +6003,6 @@
 08 Listen People.mp3
 08 Little Child.aiff
 08 Little Deuce Coupe (Re-recorded Version).m4a
-08 Little Deuce Coupe (Re-recorded Version).mp3
 08 Little Doll.m4a
 08 Lizard.mp3
 08 Lonely Avenue.mp3
@@ -6847,7 +6837,6 @@
 09 Reuben James.mp3
 09 Richard Cory.m4a
 09 Ride Cowboy Ride.mp3
-09 Ride the Wild Surf (Re-recorded Version) 1.m4a
 09 Ride the Wild Surf (Re-recorded Version).m4a
 09 Right Now And Not Later (Original Recrding).m4a
 09 Rikki Don't Lose that Number.m4p
@@ -8101,7 +8090,6 @@
 10 Heaven in a Pontiac.m4a
 10 Help Me Baby.m4a
 10 Help Me Through the Day.m4p
-10 Help Me, Rhonda (Re-recorded Version) 1.m4a
 10 Help Me, Rhonda (Re-recorded Version).m4a
 10 Help Me.mp3
 10 Help The Poor.mp3
