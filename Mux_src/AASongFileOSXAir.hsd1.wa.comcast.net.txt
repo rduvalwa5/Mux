@@ -1007,7 +1007,7 @@
 02 Bilouxi.mp3
 02 Bird on the Wire (Live Nov 6, 2008; Clyde Auditorium, Glasgow, Scotland).mp3
 02 Bitches Brew.mp3
-02 Black Friday 1.m4p
+02 Black Friday.m4p
 02 Black Friday.m4p
 02 Black Magic Woman.mp3
 02 Blood and Wiskey.m4p
@@ -1820,7 +1820,7 @@
 03 Baby I Love You.m4a
 03 Baby's In Black.mp3
 03 Baby's In Black.mp3
-03 Babylon Sisters 2.m4p
+03 Babylon Sisters.m4p
 03 Babylon Sisters.m4p
 03 Back Where It All Begins.m4a
 03 Bad Betty.mp3
@@ -2722,7 +2722,7 @@
 04 Darkness.mp3
 04 Daughter.mp3
 04 Day After Day (Re-Recorded).m4a
-04 Deacon Blues 1.m4p
+04 Deacon Blues.m4p
 04 Deacon Blues.m4p
 04 Dead Man's Curve (Re-recorded Version).m4a
 04 Dead Man's Curve (Re-recorded Version).mp3
@@ -3457,7 +3457,7 @@
 05 Bluebird.mp3
 05 Boat On The River.mp3
 05 Bob Wills Is Still The King.m4a
-05 Bodhisattva 2.m4p
+05 Bodhisattva.m4p
 05 Bodhisattva.m4p
 05 Boogie Albert.mp3
 05 Boom Boom.mp3
@@ -4432,7 +4432,7 @@
 06 Here We Are.mp3
 06 Hey Doll Baby.mp3
 06 Hey Lawdy Mama.mp3
-06 Hey Nineteen 1.m4p
+06 Hey Nineteen.m4p
 06 Hey Nineteen.m4p
 06 Higher Mountains.mp3
 06 Hillbilly Wins The Lotto Money.mp3
@@ -5069,7 +5069,7 @@
 07 Die Young Stay Pretty.mp3
 07 Dimming Of The Day.mp3
 07 Dinero (Live).m4a
-07 Do It Again 2.m4p
+07 Do It Again.m4p
 07 Do It Again.m4p
 07 Do The Evolution.mp3
 07 Do Your Thing.mp3
@@ -6127,7 +6127,7 @@
 08 Parchman Farm.mp3
 08 Parsifal Predlude to Act 1.mp3
 08 Peacekeeper.mp3
-08 Peg 1.m4p
+08 Peg.m4p
 08 Peg.m4p
 08 Pencil Thin Mustache Son Of A Sailor.mp3
 08 Pencil Thin Mustache.mp3
@@ -6860,7 +6860,7 @@
 09 Ride the Wild Surf (Re-recorded Version) 1.m4a
 09 Ride the Wild Surf (Re-recorded Version).m4a
 09 Right Now And Not Later (Original Recrding).m4a
-09 Rikki Don't Lose that Number 2.m4p
+09 Rikki Don't Lose that Number.m4p
 09 Rikki Don't Lose that Number.m4p
 09 Ringlin Ringlin Son Of A Sailor.mp3
 09 Ringlin Ringlin.mp3
@@ -8336,7 +8336,7 @@
 10 Red Boy Blues.mp3
 10 Red Camaro.mp3
 10 Reds and Whisky (Incomplete) [Live].m4a
-10 Reelin' in the Years 1.m4p
+10 Reelin' in the Years.m4p
 10 Reelin' in the Years.m4p
 10 Relax.mp3
 10 Rendezvous.mp3
@@ -8656,7 +8656,7 @@
 11 Duvalier's Dream.mp3
 11 Earth Children.mp3
 11 Ease With the Breeze.m4a
-11 East St. Louis Toodle-Oo 2.m4p
+11 East St. Louis Toodle-Oo.m4p
 11 East St. Louis Toodle-Oo.m4p
 11 Easy Money.mp3
 11 Eight Days On The Road.mp3
@@ -9209,7 +9209,7 @@
 12 Jump Right In.m4a
 12 Just A Gift.mp3
 12 Just Feel Better.mp3
-12 Kid Charlemagne 1.m4p
+12 Kid Charlemagne.m4p
 12 Kid Charlemagne.m4p
 12 La Memoria_Shadows.mp3
 12 Last Train Home.mp3
@@ -9631,7 +9631,7 @@
 13 Mussorgsky-The Old Castle.mp3
 13 My Father's Daughter.mp3
 13 My Generation.mp3
-13 My Old School 2.m4p
+13 My Old School.m4p
 13 My Old School.m4p
 13 Near You.mp3
 13 Never Too Old (To Hold Somebody).mp3
@@ -9798,7 +9798,7 @@
 14 Artificial Flowers.mp3
 14 Aubrey.mp3
 14 Baby What You Want Me to Do (Live).m4a
-14 Bad Sneakers 2.m4p
+14 Bad Sneakers.m4p
 14 Bad Sneakers.m4p
 14 Barbara-Ann.mp3
 14 Be-In.mp3
