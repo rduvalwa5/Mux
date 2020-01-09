@@ -1,1 +1,1 @@
-2020-01-08 18:01:51.302689  server: OSXAir.hsd1.wa.comcast.net artist: 580 albums: 1232 songs: 11957
+2020-01-08 18:47:07.516956  server: OSXAir.hsd1.wa.comcast.net artist: 580 albums: 1232 songs: 11949

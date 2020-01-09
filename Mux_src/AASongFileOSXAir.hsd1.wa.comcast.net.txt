@@ -229,7 +229,6 @@
 01 Ever Seen The Rain.m4p.m4p
 01 Every Day I Have The Blues.mp3
 01 Everyday.mp3
-01 Everything Going To Be Alright 1.mp3
 01 Everything Going To Be Alright.mp3
 01 Everything is kinda alright.mp3
 01 Eyes.m4p
@@ -3557,7 +3556,6 @@
 05 Doxy.mp3
 05 Draw Me a Map.m4a
 05 Dreamer.m4a
-05 Driftin' and Driftin' 2.mp3
 05 Driftin' and Driftin'.mp3
 05 Drinking Muddy Water.mp3
 05 Driving 2 Madrid (B4 The Storm).mp3
@@ -5751,7 +5749,6 @@
 08 Born In Chains.mp3
 08 Born On The Bayou.mp3
 08 Born On the Bayou (with Kid Rock).m4a
-08 Born Under A Bad Sign 1.mp3
 08 Born Under A Bad Sign.mp3
 08 Born Under A Bad Sign.mp3
 08 Bouncing With Bud.mp3
@@ -7082,10 +7079,6 @@
 1-01 Box Of Rain.mp3
 1-01 Bremen, Part 1.mp3
 1-01 Burn.mp3
-1-01 Cats Under The Stars 1.mp3
-1-01 Cats Under The Stars 2.mp3
-1-01 Cats Under The Stars 3.mp3
-1-01 Cats Under The Stars 4.mp3
 1-01 Cats Under The Stars.mp3
 1-01 Come On.mp3
 1-01 Cosmos.mp3
@@ -8378,7 +8371,6 @@
 10 Snake Man.mp3
 10 Snookeroo.mp3
 10 So Far From The Clyde.mp3
-10 So Far So Good 2.mp3
 10 So Far So Good.mp3
 10 So Good to See You.mp3
 10 Soillse Na Nollag.mp3
@@ -8757,7 +8749,7 @@
 11 It's All Over.mp3
 11 It's All Right.mp3
 11 It's Gonna Be Easy Now.mp3
-11 Its A Sin 1.mp3
+11 Its A Sin.mp3
 11 Jet Airliner.m4a
 11 Jump, Jive an' Wail.m4a
 11 Junkie Doll.mp3
@@ -10141,7 +10133,7 @@
 15 Lover's Plea.mp3
 15 Make Way For The Lady.m4a
 15 Marais La Nuit.mp3
-15 Maria 1.mp3
+15 Maria.mp3
 15 Mary Had a Little Lamb (Live).m4p
 15 Melissa.mp3
 15 Mighty Clouds Of Joy.mp3
@@ -10583,7 +10575,7 @@
 18 Promises.m4a
 18 Put Your Hand In The Hand.mp3
 18 Ramble On Rose.mp3
-18 Red River Valley 1.mp3
+18 Red River Valley.mp3
 18 Riders On the Storm.m4a
 18 Roadhouse Blues [Takes 13-15].mp3
 18 Roving Cowboy.mp3
