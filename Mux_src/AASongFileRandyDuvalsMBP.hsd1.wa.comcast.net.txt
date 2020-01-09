@@ -229,7 +229,6 @@
 01 Ever Seen The Rain.m4p.m4p
 01 Every Day I Have The Blues.mp3
 01 Everyday.mp3
-01 Everything Going To Be Alright 1.mp3
 01 Everything Going To Be Alright.mp3
 01 Everything is kinda alright.mp3
 01 Eyes.m4p
@@ -597,7 +596,7 @@
 01 Ride Captain Ride.m4a
 01 Riding With The King.mp3
 01 Riot In Cell Block #9.mp3
-01 Rip It Out 1.mp3
+01 Rip It Out.mp3
 01 Ritual Union.m4a
 01 Roadhouse Blues.mp3
 01 Rock 'N' Roll Is Free.m4a
@@ -715,7 +714,6 @@
 01 Sunflower River Blues.m4a
 01 Sunshine Superman.m4a
 01 Surf City (Re-recorded Version).m4a
-01 Surf City (Re-recorded Version).mp3
 01 Surrender 2 Love.mp3
 01 Survival.mp3
 01 Susie Q.m4p
@@ -1173,7 +1171,6 @@
 02 Fool On The Hill.aiff
 02 For Emily, Whenever I May Find Her.mp3
 02 Forever As The Moon 1.mp3
-02 Forever As The Moon.mp3
 02 Forever In Blue Jeans.mp3
 02 Forget About It.mp3
 02 Fork in the Road.m4a
@@ -1519,7 +1516,6 @@
 02 Seven Years.m4a
 02 Sex & Money.mp3
 02 Sgt. Pepper's Lonely Hearts Club Band.mp3
-02 Shadow Cosmos 1.mp3
 02 Shake It.mp3
 02 Shake Your Money Maker.mp3
 02 She Belongs To Me.mp3
@@ -1624,7 +1620,6 @@
 02 The Kids Are Alright.mp3
 02 The Last Goodbye.mp3
 02 The Little Old Lady (from Pasadena) [Re-recorded Version].m4a
-02 The Little Old Lady (from Pasadena) [Re-recorded Version].mp3
 02 The Little Shepherd from Children's Corner Suite.m4a
 02 The Man I Love.mp3
 02 The Masquerade Is Over.mp3
@@ -1936,7 +1931,6 @@
 03 Downed.mp3
 03 Downright Women.mp3
 03 Drag City (Re-recorded Version).m4a
-03 Drag City (Re-recorded Version).mp3
 03 Dream Gerrard.mp3
 03 Drive In Saturday.mp3
 03 Drivin' Wheel.mp3
@@ -2718,7 +2712,6 @@
 04 Day After Day (Re-Recorded).m4a
 04 Deacon Blues.m4p
 04 Dead Man's Curve (Re-recorded Version).m4a
-04 Dead Man's Curve (Re-recorded Version).mp3
 04 Dear Boy.mp3
 04 Deep in Your Heart.m4a
 04 Del Rio's Song.mp3
@@ -3549,7 +3542,6 @@
 05 Doxy.mp3
 05 Draw Me a Map.m4a
 05 Dreamer.m4a
-05 Driftin' and Driftin' 1.mp3
 05 Driftin' and Driftin'.mp3
 05 Drinking Muddy Water.mp3
 05 Driving 2 Madrid (B4 The Storm).mp3
@@ -3676,7 +3668,6 @@
 05 I Didn't Know What Time It Was.mp3
 05 I Don't Want to Spoil the Party.aiff
 05 I Get Around (Re-recorded Version).m4a
-05 I Get Around (Re-recorded Version).mp3
 05 I Got My Mojo Working.mp3
 05 I Got The Train Sittin Waitin.mp3
 05 I Gotta Move.mp3
@@ -4377,7 +4368,6 @@
 06 From Now On.mp3
 06 Fun House.m4a
 06 Fun, Fun, Fun (Re-recorded Version).m4a
-06 Fun, Fun, Fun (Re-recorded Version).mp3
 06 Funk the Dumb Stuff.m4a
 06 Get Up and Go.mp3
 06 Get Up, Stand Up.m4a
@@ -5476,7 +5466,6 @@
 07 She's My Girl.mp3
 07 Shine On You Crazy Diamond, Pt. VI-IX.mp3
 07 Sidewalk Surfin' (Re-recorded Version).m4a
-07 Sidewalk Surfin' (Re-recorded Version).mp3
 07 Sing Song Bird.mp3
 07 Sitting An' Thinking.m4a
 07 Smoke.mp3
@@ -5741,7 +5730,6 @@
 08 Born In Chains.mp3
 08 Born On The Bayou.mp3
 08 Born On the Bayou (with Kid Rock).m4a
-08 Born Under A Bad Sign 1.mp3
 08 Born Under A Bad Sign.mp3
 08 Born Under A Bad Sign.mp3
 08 Bouncing With Bud.mp3
@@ -6011,7 +5999,6 @@
 08 Listen People.mp3
 08 Little Child.aiff
 08 Little Deuce Coupe (Re-recorded Version).m4a
-08 Little Deuce Coupe (Re-recorded Version).mp3
 08 Little Doll.m4a
 08 Lizard.mp3
 08 Lonely Avenue.mp3
@@ -6846,7 +6833,7 @@
 09 Reuben James.mp3
 09 Richard Cory.m4a
 09 Ride Cowboy Ride.mp3
-09 Ride the Wild Surf (Re-recorded Version) 1.m4a
+09 Ride the Wild Surf (Re-recorded Version).m4a
 09 Right Now And Not Later (Original Recrding).m4a
 09 Rikki Don't Lose that Number.m4p
 09 Ringlin Ringlin Son Of A Sailor.mp3
@@ -7069,8 +7056,6 @@
 1-01 Box Of Rain.mp3
 1-01 Bremen, Part 1.mp3
 1-01 Burn.mp3
-1-01 Cats Under The Stars 1.mp3
-1-01 Cats Under The Stars 4.mp3
 1-01 Come On.mp3
 1-01 Cosmos.mp3
 1-01 Custard Pie.mp3
@@ -8100,7 +8085,7 @@
 10 Heaven in a Pontiac.m4a
 10 Help Me Baby.m4a
 10 Help Me Through the Day.m4p
-10 Help Me, Rhonda (Re-recorded Version) 1.m4a
+10 Help Me, Rhonda (Re-recorded Version).m4a
 10 Help Me.mp3
 10 Help The Poor.mp3
 10 Help!.mp3
