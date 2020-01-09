@@ -157,7 +157,7 @@
 01 Cinnamon Girl.mp3
 01 Cirrus Minor.mp3
 01 Cities On Flame With Rock And Roll [Album Version].mp3
-01 Cityscape 1.mp3
+01 Cityscape.mp3
 01 Classical Gas.m4p
 01 Climb Up On My Music.m4a
 01 Cochisse.mp3
@@ -10668,7 +10668,7 @@
 19 Peace Frog [False Starts & Dialogue].mp3
 19 Please Mr. Jailor.m4a
 19 Randy Lynn Rag.mp3
-19 Ribbon of Darkness 1.mp3
+19 Ribbon of Darkness.mp3
 19 Safe In My Garden.mp3
 19 Salt Of The Earth.mp3
 19 Shakey Ground.mp3
