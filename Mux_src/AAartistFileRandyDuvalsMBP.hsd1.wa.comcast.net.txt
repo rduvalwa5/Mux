@@ -17,6 +17,7 @@ Alligator Stew
 Aloe Blacc
 Alvin Lee
 Alvin Lee & Ten Years Later
+Amazula
 America
 Andre Kostelanetz and his orchestra
 Andy Narell
@@ -65,7 +66,6 @@ Blues Image
 Bob Dylan
 Bob Forrest
 Bob Marley
-Bob Marley & The Wailers
 Bob Seger
 Bobby Darin
 Bobby Rydell
@@ -323,7 +323,6 @@ Meat Loaf
 Men At Work
 Michael Brecker
 Michael Martin Murphey
-Micheal Brecker
 Miguel Zeno'n
 Miles Davis
 Miles Davis Quintet
@@ -408,7 +407,6 @@ Roy Orbison
 Rush
 S. Carey
 Santana
-Santo And Johnny
 Sarah Jarosz
 Sarah McLachlan
 Savoy Brown
@@ -535,7 +533,7 @@ Thelonious Monk Quartet With John Coltrane
 Them
 Thin Lizzy
 Three Dog Night
-Tim O'Brien
+Tim OBrien
 Tina Turner
 Tom Jones
 Tom Petty & The Heartbreakers
