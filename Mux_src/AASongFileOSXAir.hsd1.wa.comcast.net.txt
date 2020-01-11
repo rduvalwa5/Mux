@@ -596,7 +596,6 @@
 01 Ride Captain Ride.m4a
 01 Riding With The King.mp3
 01 Riot In Cell Block #9.mp3
-01 Rip It Out 1.mp3
 01 Rip It Out.mp3
 01 Ritual Union.m4a
 01 Roadhouse Blues.mp3
@@ -6439,7 +6438,6 @@
 09 Boredom.mp3
 09 Born Cross-Eyed [Alternate Version].mp3
 09 Born On The Bayou (Live In London).mp3
-09 Born Under A Bad Sign.mp3
 09 Breton Carol.mp3
 09 Bridge over Troubled Water.mp3
 09 Bright Sunny South.m4a
