@@ -229,11 +229,9 @@
 01 Ever Seen The Rain.m4p.m4p
 01 Every Day I Have The Blues.mp3
 01 Everyday.mp3
-01 Everything Going To Be Alright 1.mp3
 01 Everything Going To Be Alright.mp3
 01 Everything is kinda alright.mp3
 01 Eyes.m4p
-01 FM.m4p
 01 FM.m4p
 01 Famous for Nothing.m4p
 01 Farewell, Angelina.mp3
@@ -333,7 +331,7 @@
 01 Hooked On a Feeling.m4a
 01 Hot 'N' Nasty.mp3
 01 Hotel California.m4p
-01 How Blue Can You Get 1.mp3
+01 How Blue Can You Get.mp3
 01 I Ain't The One.mp3
 01 I Am The One You Warned Me Of.mp3
 01 I Can't Get You Off My Mind.mp3
@@ -598,7 +596,7 @@
 01 Ride Captain Ride.m4a
 01 Riding With The King.mp3
 01 Riot In Cell Block #9.mp3
-01 Rip It Out 1.mp3
+01 Rip It Out.mp3
 01 Ritual Union.m4a
 01 Roadhouse Blues.mp3
 01 Rock 'N' Roll Is Free.m4a
@@ -716,7 +714,6 @@
 01 Sunflower River Blues.m4a
 01 Sunshine Superman.m4a
 01 Surf City (Re-recorded Version).m4a
-01 Surf City (Re-recorded Version).mp3
 01 Surrender 2 Love.mp3
 01 Survival.mp3
 01 Susie Q.m4p
@@ -1008,7 +1005,6 @@
 02 Bird on the Wire (Live Nov 6, 2008; Clyde Auditorium, Glasgow, Scotland).mp3
 02 Bitches Brew.mp3
 02 Black Friday.m4p
-02 Black Friday.m4p
 02 Black Magic Woman.mp3
 02 Blood and Wiskey.m4p
 02 Bloody Well Right.m4a
@@ -1175,7 +1171,6 @@
 02 Fly By Night.mp3
 02 Fool On The Hill.aiff
 02 For Emily, Whenever I May Find Her.mp3
-02 Forever As The Moon 1.mp3
 02 Forever As The Moon.mp3
 02 Forever In Blue Jeans.mp3
 02 Forget About It.mp3
@@ -1522,7 +1517,7 @@
 02 Seven Years.m4a
 02 Sex & Money.mp3
 02 Sgt. Pepper's Lonely Hearts Club Band.mp3
-02 Shadow Cosmos 1.mp3
+02 Shadow Cosmos.mp3
 02 Shake It.mp3
 02 Shake Your Money Maker.mp3
 02 She Belongs To Me.mp3
@@ -1537,6 +1532,7 @@
 02 Side B Conclusion.mp3
 02 Silence Is Golden (Re-Recorded).m4a
 02 Silent Night 1.mp3
+02 Silent Night.mp3
 02 Silver Threads And Golden Needles.mp3
 02 Since I Fell For You.mp3
 02 Siren.mp3
@@ -1627,7 +1623,6 @@
 02 The Kids Are Alright.mp3
 02 The Last Goodbye.mp3
 02 The Little Old Lady (from Pasadena) [Re-recorded Version].m4a
-02 The Little Old Lady (from Pasadena) [Re-recorded Version].mp3
 02 The Little Shepherd from Children's Corner Suite.m4a
 02 The Man I Love.mp3
 02 The Masquerade Is Over.mp3
@@ -1819,7 +1814,6 @@
 03 Baby's In Black.mp3
 03 Baby's In Black.mp3
 03 Babylon Sisters.m4p
-03 Babylon Sisters.m4p
 03 Back Where It All Begins.m4a
 03 Bad Betty.mp3
 03 Bad Child.mp3
@@ -1940,7 +1934,6 @@
 03 Downed.mp3
 03 Downright Women.mp3
 03 Drag City (Re-recorded Version).m4a
-03 Drag City (Re-recorded Version).mp3
 03 Dream Gerrard.mp3
 03 Drive In Saturday.mp3
 03 Drivin' Wheel.mp3
@@ -1979,7 +1972,7 @@
 03 From Me To You.mp3
 03 From One Island To Another.mp3
 03 Georgia Cottonfield.mp3
-03 Georgia On My Mind 1.mp3
+03 Georgia On My Mind.mp3
 03 Georgia on My Mind.m4a
 03 Get On The Soul Ship.mp3
 03 Get Ready.mp3
@@ -2026,6 +2019,7 @@
 03 Hide In Your Shell.m4a
 03 High Shelf Booze.m4a
 03 High Time.mp3
+03 Hit Me With Your Best Shot (2002 Remaster).m4a
 03 Hit Me With Your Best Shot (2002 Remaster).m4a
 03 Hold Me Tight.mp3
 03 Hollywood Waltz.mp3
@@ -2721,9 +2715,7 @@
 04 Daughter.mp3
 04 Day After Day (Re-Recorded).m4a
 04 Deacon Blues.m4p
-04 Deacon Blues.m4p
 04 Dead Man's Curve (Re-recorded Version).m4a
-04 Dead Man's Curve (Re-recorded Version).mp3
 04 Dear Boy.mp3
 04 Deep in Your Heart.m4a
 04 Del Rio's Song.mp3
@@ -2981,7 +2973,7 @@
 04 Miss Fortune.mp3
 04 Miss It.m4a
 04 Mo' Onions.mp3
-04 Mojo Hand 1.mp3
+04 Mojo Hand.mp3
 04 Money Honey.mp3
 04 Monkeys Uptown.mp3
 04 Monolith.m4a
@@ -3456,7 +3448,6 @@
 05 Boat On The River.mp3
 05 Bob Wills Is Still The King.m4a
 05 Bodhisattva.m4p
-05 Bodhisattva.m4p
 05 Boogie Albert.mp3
 05 Boom Boom.mp3
 05 Born Cross-Eyed.mp3
@@ -3555,7 +3546,6 @@
 05 Doxy.mp3
 05 Draw Me a Map.m4a
 05 Dreamer.m4a
-05 Driftin' and Driftin' 1.mp3
 05 Driftin' and Driftin'.mp3
 05 Drinking Muddy Water.mp3
 05 Driving 2 Madrid (B4 The Storm).mp3
@@ -3682,7 +3672,6 @@
 05 I Didn't Know What Time It Was.mp3
 05 I Don't Want to Spoil the Party.aiff
 05 I Get Around (Re-recorded Version).m4a
-05 I Get Around (Re-recorded Version).mp3
 05 I Got My Mojo Working.mp3
 05 I Got The Train Sittin Waitin.mp3
 05 I Gotta Move.mp3
@@ -3812,7 +3801,7 @@
 05 Machine Gun.mp3
 05 Mademoiselle Marby.mp3
 05 Make It Better (Forget About Me).mp3
-05 Mama Talk To Your Daughter 1.mp3
+05 Mama Talk To Your Daughter.mp3
 05 Manchester England 1.mp3
 05 Manchester England.mp3
 05 Mango Tree (feat. Sara Bareilles).m4a
@@ -4383,7 +4372,6 @@
 06 From Now On.mp3
 06 Fun House.m4a
 06 Fun, Fun, Fun (Re-recorded Version).m4a
-06 Fun, Fun, Fun (Re-recorded Version).mp3
 06 Funk the Dumb Stuff.m4a
 06 Get Up and Go.mp3
 06 Get Up, Stand Up.m4a
@@ -4430,7 +4418,6 @@
 06 Here We Are.mp3
 06 Hey Doll Baby.mp3
 06 Hey Lawdy Mama.mp3
-06 Hey Nineteen.m4p
 06 Hey Nineteen.m4p
 06 Higher Mountains.mp3
 06 Hillbilly Wins The Lotto Money.mp3
@@ -4567,7 +4554,7 @@
 06 Mellow Down Easy.mp3
 06 Mellow My Mind.mp3
 06 Memphis Tennessee.mp3
-06 Messin' With The Kid (Live) 1.mp3
+06 Messin' With The Kid (Live).mp3
 06 Michelle.aiff
 06 Midnight Blue.mp3
 06 Midnight In Memphis.mp3
@@ -4580,7 +4567,7 @@
 06 Monk's Mood.mp3
 06 Montreux's Theme.mp3
 06 Moon Light.mp3
-06 Morning Papers Waltz 1.mp3
+06 Morning Papers Waltz.mp3
 06 Mothers Daughter.mp3
 06 Move Over.mp3
 06 Mr Moonlight.mp3
@@ -5068,7 +5055,6 @@
 07 Dimming Of The Day.mp3
 07 Dinero (Live).m4a
 07 Do It Again.m4p
-07 Do It Again.m4p
 07 Do The Evolution.mp3
 07 Do Your Thing.mp3
 07 Dogs On The Run.mp3
@@ -5484,7 +5470,6 @@
 07 She's My Girl.mp3
 07 Shine On You Crazy Diamond, Pt. VI-IX.mp3
 07 Sidewalk Surfin' (Re-recorded Version).m4a
-07 Sidewalk Surfin' (Re-recorded Version).mp3
 07 Sing Song Bird.mp3
 07 Sitting An' Thinking.m4a
 07 Smoke.mp3
@@ -5499,7 +5484,7 @@
 07 South Saturn Delta.mp3
 07 Southern Comfort.mp3
 07 Spanish Caravan.mp3
-07 Spoonful 1.mp3
+07 Spoonful.mp3
 07 St. Thomas.m4a
 07 Stackalee.mp3
 07 Stand Back.mp3
@@ -5749,7 +5734,6 @@
 08 Born In Chains.mp3
 08 Born On The Bayou.mp3
 08 Born On the Bayou (with Kid Rock).m4a
-08 Born Under A Bad Sign 1.mp3
 08 Born Under A Bad Sign.mp3
 08 Born Under A Bad Sign.mp3
 08 Bouncing With Bud.mp3
@@ -5814,7 +5798,7 @@
 08 Dollars & Cents.mp3
 08 Don't Cry (Original).m4a
 08 Don't Let It Go.mp3
-08 Don't Lie To Me 1.mp3
+08 Don't Lie To Me.mp3
 08 Don't Tease Me.mp3
 08 Don't Worry About The Government.mp3
 08 Donkey Town.mp3
@@ -6019,7 +6003,6 @@
 08 Listen People.mp3
 08 Little Child.aiff
 08 Little Deuce Coupe (Re-recorded Version).m4a
-08 Little Deuce Coupe (Re-recorded Version).mp3
 08 Little Doll.m4a
 08 Lizard.mp3
 08 Lonely Avenue.mp3
@@ -6125,7 +6108,6 @@
 08 Parchman Farm.mp3
 08 Parsifal Predlude to Act 1.mp3
 08 Peacekeeper.mp3
-08 Peg.m4p
 08 Peg.m4p
 08 Pencil Thin Mustache Son Of A Sailor.mp3
 08 Pencil Thin Mustache.mp3
@@ -6457,7 +6439,6 @@
 09 Boredom.mp3
 09 Born Cross-Eyed [Alternate Version].mp3
 09 Born On The Bayou (Live In London).mp3
-09 Born Under A Bad Sign.mp3
 09 Breton Carol.mp3
 09 Bridge over Troubled Water.mp3
 09 Bright Sunny South.m4a
@@ -6603,7 +6584,7 @@
 09 Goodbye Pork Pie Hat.mp3
 09 Goodbye.mp3
 09 Gospel Train.m4a
-09 Got My Mojo Working 1.mp3
+09 Got My Mojo Working.mp3
 09 Got To Find My Baby.mp3
 09 Grateful.mp3
 09 Groovin'.m4a
@@ -6858,7 +6839,6 @@
 09 Ride the Wild Surf (Re-recorded Version).m4a
 09 Right Now And Not Later (Original Recrding).m4a
 09 Rikki Don't Lose that Number.m4p
-09 Rikki Don't Lose that Number.m4p
 09 Ringlin Ringlin Son Of A Sailor.mp3
 09 Ringlin Ringlin.mp3
 09 River People (Live).m4a
@@ -7079,7 +7059,6 @@
 1-01 Box Of Rain.mp3
 1-01 Bremen, Part 1.mp3
 1-01 Burn.mp3
-1-01 Cats Under The Stars 4.mp3
 1-01 Cats Under The Stars.mp3
 1-01 Come On.mp3
 1-01 Cosmos.mp3
@@ -8057,7 +8036,7 @@
 10 Dream Baby (How Long Must I Dream).mp3
 10 Dream River.m4a
 10 Dreaming My Dreams With You.m4a
-10 Driftin' Blues 1.mp3
+10 Driftin' Blues.mp3
 10 Drifting Blues.mp3
 10 Early Morning Rain.mp3
 10 Echoes (Everybody's Talkin').mp3
@@ -8330,7 +8309,6 @@
 10 Red Camaro.mp3
 10 Reds and Whisky (Incomplete) [Live].m4a
 10 Reelin' in the Years.m4p
-10 Reelin' in the Years.m4p
 10 Relax.mp3
 10 Rendezvous.mp3
 10 Revenge.mp3
@@ -8371,7 +8349,6 @@
 10 Snake Man.mp3
 10 Snookeroo.mp3
 10 So Far From The Clyde.mp3
-10 So Far So Good 1.mp3
 10 So Far So Good.mp3
 10 So Good to See You.mp3
 10 Soillse Na Nollag.mp3
@@ -8649,7 +8626,6 @@
 11 Duvalier's Dream.mp3
 11 Earth Children.mp3
 11 Ease With the Breeze.m4a
-11 East St. Louis Toodle-Oo.m4p
 11 East St. Louis Toodle-Oo.m4p
 11 Easy Money.mp3
 11 Eight Days On The Road.mp3
@@ -9203,7 +9179,6 @@
 12 Just A Gift.mp3
 12 Just Feel Better.mp3
 12 Kid Charlemagne.m4p
-12 Kid Charlemagne.m4p
 12 La Memoria_Shadows.mp3
 12 Last Train Home.mp3
 12 Leave the Lights On.mp3
@@ -9625,7 +9600,6 @@
 13 My Father's Daughter.mp3
 13 My Generation.mp3
 13 My Old School.m4p
-13 My Old School.m4p
 13 Near You.mp3
 13 Never Too Old (To Hold Somebody).mp3
 13 New Favorite.m4a
@@ -9791,7 +9765,6 @@
 14 Artificial Flowers.mp3
 14 Aubrey.mp3
 14 Baby What You Want Me to Do (Live).m4a
-14 Bad Sneakers.m4p
 14 Bad Sneakers.m4p
 14 Barbara-Ann.mp3
 14 Be-In.mp3
@@ -11898,7 +11871,16 @@
 6-13 Althea [Live].mp3
 6-14 Lost Sailor [Live].mp3
 6-15 Saint Of Circumstance [Live].mp3
+Digital Booklet - Corazon (Deluxe Version).pdf
+Digital Booklet - Hittin' the Note.pdf
 Digital Booklet - Legend.pdf
-Digital Booklet - Legend.pdf
+Digital Booklet - Live At the 1972 Monterey Jazz Festival.pdf
+Digital Booklet - Songs of Innocence.pdf
+Digital Booklet - Songs of Joy & Peace.pdf
+Digital Booklet - The 50 Greatest Pieces of Classical Music.pdf
+Digital Booklet - The Music Inside - A Collaboration Dedicated To Waylon Jennings Vol I.pdf
+Digital Booklet - The Music Inside_ A Collaboration Dedicated To Waylon Jennings, Volume II.pdf
+Digital Booklet - Town And Country.pdf
+Digital Booklet - World Gone Crazy.pdf
 Let It Be - iTunes LP (v2.1).itlp
 Tell Mama (Live).m4v

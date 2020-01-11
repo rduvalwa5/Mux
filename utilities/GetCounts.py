@@ -7,7 +7,7 @@ path =
 import os, sys
 
 class get_music_counts():
-    def __init__(self, root = '/Users/rduvalwa2/music/iTunes/iTunes Music/Music/'):
+    def __init__(self, root = '/Users/rduvalwa2/Music/iTunes/iTunes Media/Music'):
         self.path = root
         self.artistDirs = os.listdir( self.path )
         self.artistCount = 0
