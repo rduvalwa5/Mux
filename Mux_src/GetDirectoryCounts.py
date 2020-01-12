@@ -61,8 +61,8 @@ class Get_Directory_Counts_Function:
         except self.conn.Error as err:
             print("Exception is ", err)
         cursor.close()
- #       return str((("server",self.server),("artist", self.artist),("albums", self.albums), ("songs", self.songs)))
-        print( str(datetime.now()) + "  " + "server: " + str(self.server) + " artist: " + str(self.artist) + " albums: " + str(self.albums) + " songs: " + str(self.songs) + "\n")
+        return str((("server",self.server),("artist", self.artist),("albums", self.albums), ("songs", self.songs)))
+ #       print( str(datetime.now()) + "  " + "server: " + str(self.server) + " artist: " + str(self.artist) + " albums: " + str(self.albums) + " songs: " + str(self.songs) + "\n")
         
     def get_genre_count(self):
         print("Start get genre count")
@@ -163,13 +163,19 @@ class Get_Directory_Counts_Function:
 
     def open_write_file(self, data):
         rsyncFile = "AA_"+ self.server +"_counts.txt"
-        synFile = open(rsyncFile,'w')
+        synFile = open(rsyncFile,'a')
+        synFile.write(str(data))
+        synFile.close()
+        
+    def open_write_CommonFile(self, data):
+        rsyncFile = "All_counts.txt"
+        synFile = open(rsyncFile,'a')
         synFile.write(str(data))
         synFile.close()
   
     def open_read_file(self):
 #        rsyncFile = "/Users/rduvalwa2/Public/TestRync/counts.txt"
-        rsyncFile = "counts.txt"
+        rsyncFile = "All_counts.txt"
         synFile = open(rsyncFile,'r')
         redLines = synFile.readlines()
         print("Lines READ ",redLines)
@@ -191,7 +197,10 @@ if __name__ == '__main__':
     x.open_write_Songfile()
     x.open_write_Artistfile()
     x.open_write_Albumfile()
-    x.insertCounts_into_Db()
+    FileData = x.insertCounts_into_Db()
+    x.open_write_file(FileData)
+    x.open_write_CommonFile(FileData)
+    x.open_read_file()
 #    data = x.insertCounts_into_Db()
 #    for item in output:
 #        print(item)

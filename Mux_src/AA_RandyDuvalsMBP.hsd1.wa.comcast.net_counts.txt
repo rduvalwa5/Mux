@@ -1,1 +1,1 @@
-2020-01-08 21:04:29.807876  server: RandyDuvalsMBP.hsd1.wa.comcast.net artist: 579 albums: 1229 songs: 11874
+(('server', 'RandyDuvalsMBP.hsd1.wa.comcast.net'), ('artist', 580), ('albums', 1232), ('songs', 11927))(('server', 'RandyDuvalsMBP.hsd1.wa.comcast.net'), ('artist', 580), ('albums', 1232), ('songs', 11927))
