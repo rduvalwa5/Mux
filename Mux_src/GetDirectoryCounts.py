@@ -170,7 +170,7 @@ class Get_Directory_Counts_Function:
     def open_write_CommonFile(self, data):
         rsyncFile = "All_counts.txt"
         synFile = open(rsyncFile,'a')
-        synFile.write(str(data))
+        synFile.write(str(data + "\n"))
         synFile.close()
   
     def open_read_file(self):
