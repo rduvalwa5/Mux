@@ -38,9 +38,9 @@ class Get_Directory_Counts_Function:
             self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
             self.albumCovers = "/Users/rduvalwa2/eOxigen-workspace/Mux/AlbumCovers"
             self.server = "OSXAir.hsd1.wa.comcast.net"
-        elif platform.uname().node == 'RandyDuvalsMBP.hsd1.wa.comcast.net':
+        elif platform.uname().node == 'RandalluvalsMBP.hsd1.wa.comcast.net':
             print("Host is " , 'RandyDuvalsMBP.hsd1.wa.comcast.net')
-            self.base = "/Users/rduvalwa2/music/iTunes/iTunes Music/Music"
+            self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music/"
             self.albumCovers = "/Users/rduvalwa2/git/Mux/AlbumCovers"
             self.server = "RandyDuvalsMBP.hsd1.wa.comcast.net"
             self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music')            
@@ -62,7 +62,7 @@ class Get_Directory_Counts_Function:
             print("Exception is ", err)
         cursor.close()
  #       return str((("server",self.server),("artist", self.artist),("albums", self.albums), ("songs", self.songs)))
-        return str(datetime.now()) + "  " + "server: " + str(self.server) + " artist: " + str(self.artist) + " albums: " + str(self.albums) + " songs: " + str(self.songs) + "\n"
+        print( str(datetime.now()) + "  " + "server: " + str(self.server) + " artist: " + str(self.artist) + " albums: " + str(self.albums) + " songs: " + str(self.songs) + "\n")
         
     def get_genre_count(self):
         print("Start get genre count")
@@ -191,8 +191,9 @@ if __name__ == '__main__':
     x.open_write_Songfile()
     x.open_write_Artistfile()
     x.open_write_Albumfile()
-    data = x.insertCounts_into_Db()
+    x.insertCounts_into_Db()
+#    data = x.insertCounts_into_Db()
 #    for item in output:
 #        print(item)
-    x.open_write_file(data)
-    x.open_read_file()
+#    x.open_write_file(data)
+#    x.open_read_file()

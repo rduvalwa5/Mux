@@ -943,6 +943,7 @@
 02 A Remark You Made.mp3
 02 A Rose For Emily.m4a
 02 A Thousand Kisses Deep.mp3
+02 A Whiter Shade Of Pale.mp3
 02 A Whiter Shade of Pale Harum.m4p
 02 A Whiter Shade of Pale.m4p
 02 A Woman In Love (It's Not Me).mp3
@@ -1170,7 +1171,7 @@
 02 Fly By Night.mp3
 02 Fool On The Hill.aiff
 02 For Emily, Whenever I May Find Her.mp3
-02 Forever As The Moon 1.mp3
+02 Forever As The Moon.mp3
 02 Forever In Blue Jeans.mp3
 02 Forget About It.mp3
 02 Fork in the Road.m4a
@@ -1516,6 +1517,7 @@
 02 Seven Years.m4a
 02 Sex & Money.mp3
 02 Sgt. Pepper's Lonely Hearts Club Band.mp3
+02 Shadow Cosmos.mp3
 02 Shake It.mp3
 02 Shake Your Money Maker.mp3
 02 She Belongs To Me.mp3
@@ -1530,6 +1532,7 @@
 02 Side B Conclusion.mp3
 02 Silence Is Golden (Re-Recorded).m4a
 02 Silent Night 1.mp3
+02 Silent Night.mp3
 02 Silver Threads And Golden Needles.mp3
 02 Since I Fell For You.mp3
 02 Siren.mp3
@@ -2016,6 +2019,7 @@
 03 Hide In Your Shell.m4a
 03 High Shelf Booze.m4a
 03 High Time.mp3
+03 Hit Me With Your Best Shot (2002 Remaster).m4a
 03 Hit Me With Your Best Shot (2002 Remaster).m4a
 03 Hold Me Tight.mp3
 03 Hollywood Waltz.mp3
@@ -6435,7 +6439,6 @@
 09 Boredom.mp3
 09 Born Cross-Eyed [Alternate Version].mp3
 09 Born On The Bayou (Live In London).mp3
-09 Born Under A Bad Sign.mp3
 09 Breton Carol.mp3
 09 Bridge over Troubled Water.mp3
 09 Bright Sunny South.m4a
@@ -7056,6 +7059,7 @@
 1-01 Box Of Rain.mp3
 1-01 Bremen, Part 1.mp3
 1-01 Burn.mp3
+1-01 Cats Under The Stars.mp3
 1-01 Come On.mp3
 1-01 Cosmos.mp3
 1-01 Custard Pie.mp3
@@ -8345,7 +8349,6 @@
 10 Snake Man.mp3
 10 Snookeroo.mp3
 10 So Far From The Clyde.mp3
-10 So Far So Good 1.mp3
 10 So Far So Good.mp3
 10 So Good to See You.mp3
 10 Soillse Na Nollag.mp3
@@ -11868,5 +11871,16 @@
 6-13 Althea [Live].mp3
 6-14 Lost Sailor [Live].mp3
 6-15 Saint Of Circumstance [Live].mp3
+Digital Booklet - Corazon (Deluxe Version).pdf
+Digital Booklet - Hittin' the Note.pdf
+Digital Booklet - Legend.pdf
+Digital Booklet - Live At the 1972 Monterey Jazz Festival.pdf
+Digital Booklet - Songs of Innocence.pdf
+Digital Booklet - Songs of Joy & Peace.pdf
+Digital Booklet - The 50 Greatest Pieces of Classical Music.pdf
+Digital Booklet - The Music Inside - A Collaboration Dedicated To Waylon Jennings Vol I.pdf
+Digital Booklet - The Music Inside_ A Collaboration Dedicated To Waylon Jennings, Volume II.pdf
+Digital Booklet - Town And Country.pdf
+Digital Booklet - World Gone Crazy.pdf
 Let It Be - iTunes LP (v2.1).itlp
 Tell Mama (Live).m4v
