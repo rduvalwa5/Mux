@@ -182,9 +182,6 @@ class Get_Directory_Counts_Function:
         for line in redLines:
             print("Line READ ",line)
         synFile.close()
-        
-
-
 
 
 if __name__ == '__main__':
@@ -197,12 +194,8 @@ if __name__ == '__main__':
     x.open_write_Songfile()
     x.open_write_Artistfile()
     x.open_write_Albumfile()
-    FileData = x.insertCounts_into_Db()
-    x.open_write_file(FileData)
-    x.open_write_CommonFile(FileData)
+    data = x.insertCounts_into_Db()
+    x.open_write_file(data)
+    x.open_write_CommonFile(data)
     x.open_read_file()
-#    data = x.insertCounts_into_Db()
-#    for item in output:
-#        print(item)
-#    x.open_write_file(data)
-#    x.open_read_file()
+ 
