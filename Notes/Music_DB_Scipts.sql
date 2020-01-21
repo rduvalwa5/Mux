@@ -1,11 +1,19 @@
+select * from album2songs where album2songs.`artist` = "Charlie Parker" order by song;
+
+select * from artist where artist = "Charlie Parker";
+
+select * from artist_albums where artist like '%Parker%';
+
+delete from artist_albums where `index` = 1230;
+
 /* table counts */
-SELECT count(*) FROM `Music`.artist; -- 570
+SELECT count(*) FROM `Music`.artist; -- 572
 
-SELECT count(*) FROM `Music`.artist_albums; -- 1219
+SELECT count(*) FROM `Music`.artist_albums; -- 1222
 
-SELECT count(*) FROM `Music`.`album2songs`; -- 11802
+SELECT count(*) FROM `Music`.`album2songs`; -- 11845
 
-SELECT count(*) FROM `Music`.`album_covers`;  -- 779
+SELECT count(*) FROM `Music`.`album_covers`;  -- 782
 
 SELECT count(song)
   FROM music.`album2songs`
