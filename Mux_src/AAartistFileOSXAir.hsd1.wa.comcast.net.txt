@@ -83,6 +83,7 @@ Brecker Brothers
 Brenda Lee
 Brewer & Shipley
 Bruce Springsteen
+Bruce Springsteen & The E Street Band
 Buddy Holly
 Buddy Tate
 Buffalo Springfield
@@ -94,6 +95,7 @@ Cat Stevens
 Celtic Christmas
 Chad & Jeremy
 Charles Dutoit, Kyung Wha Chung & Philharmonia Orchestra
+Charlie Parker
 Charlie Rich
 Cheap Trick
 Chet Atkins and Hank Snow
@@ -214,6 +216,7 @@ Isaac Hayes
 Ivan Shekov
 J. J. Cale With Leon Russell
 J.J. Cale
+J.J. Cale & Eric Clapton
 Jackson Browne
 James Brown
 James Gang
@@ -244,6 +247,7 @@ Joe Walsh
 Johann Strauss
 John Coltrane
 John Coltrane & Johnny Hartman
+John Denver
 John Fahey
 John Fahey & His Orchestra
 John Fogerty
@@ -286,6 +290,7 @@ Les McCann
 Lesley Gore
 Less McCann and Eddie Harris
 Lester Young
+Lester Young With The Oscar Peterson Trio
 Linda Ronstadt
 Linda Ronstadt & Emmylou Harris
 Linkin Park
@@ -386,6 +391,7 @@ Queen
 Queenryche
 R.E.M_
 R.L. Burnside
+REO Speedwagon
 Radiohead
 Ram Jam
 Ravel

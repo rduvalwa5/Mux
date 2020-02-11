@@ -2,3 +2,5 @@
 (('server', 'OSXAir.hsd1.wa.comcast.net'), ('artist', 580), ('albums', 1231), ('songs', 11926))
 (('server', 'C1246895-osx.hsd1.wa.comcast.net'), ('artist', 580), ('albums', 1232), ('songs', 11927))
 (('server', 'C1246895-osx.hsd1.wa.comcast.net'), ('artist', 580), ('albums', 1232), ('songs', 11927))
+(('server', 'OSXAir.hsd1.wa.comcast.net'), ('artist', 582), ('albums', 1234), ('songs', 11969))
+(('server', 'OSXAir.hsd1.wa.comcast.net'), ('artist', 586), ('albums', 1241), ('songs', 12057))

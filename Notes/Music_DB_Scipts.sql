@@ -1,17 +1,23 @@
-select * from album2songs where album2songs.`artist` = "Charlie Parker" order by song;
+select * from album2songs where album2songs.`artist` like '%REO%' order by album ,song;
 
-select * from artist where artist = "Charlie Parker";
+select * from artist where artist like '%REO%';
 
-select * from artist_albums where artist like '%Parker%';
+select * from artist_albums where artist like '%REO%';
 
 delete from artist_albums where `index` = 1230;
 
+select * from `album2songs` where artist like 'Judy Collins' order by album, song;
+
+delete from album2songs where album = 'The Road To Escondido';
+
+delete from `artist_albums` where album = 'The Road To Escondido';
+
 /* table counts */
-SELECT count(*) FROM `Music`.artist; -- 572
+SELECT count(*) FROM `Music`.artist; -- 576
 
-SELECT count(*) FROM `Music`.artist_albums; -- 1222
+SELECT count(*) FROM `Music`.artist_albums; -- 1229
 
-SELECT count(*) FROM `Music`.`album2songs`; -- 11845
+SELECT count(*) FROM `Music`.`album2songs`; -- 11933
 
 SELECT count(*) FROM `Music`.`album_covers`;  -- 782
 
