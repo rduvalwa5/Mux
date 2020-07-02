@@ -7,11 +7,11 @@ from Music_Get_Functions import musicGet_Functions
         
 if __name__ == "__main__" :       
     mux = musicGet_Functions(True)
-    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/REO Speedwagon/Hi Infidelity (30th Anniversary Edition)"    
-    album = "Hi Infidelity (30th Anniversary Edition)"
-    artist = "REO Speedwagon"
-    genre = "Rock"
+    myPath = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/Robert Shaw_ Atlanta Symphony Orchestra & Chorus/Choral Masterpieces"    
+    album = "Choral Masterpieces"
+    artist = "Robert Shaw_ Atlanta Symphony Orchestra & Chorus"
+    genre = "Classical"
     inType = "CD"    
-#    mux.add_songs_in_path(myPath, album, artist, genre, inType)
-    mux.add_album(album, artist, genre, inType)
-    mux.add_artist(artist, genre)
+    mux.add_songs_in_path(myPath, album, artist, genre, inType)
+#    mux.add_album(album, artist, genre, inType)
+#    mux.add_artist(artist, genre)

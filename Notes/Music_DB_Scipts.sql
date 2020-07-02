@@ -357,3 +357,7 @@ DELETE FROM Music.artist_albums
 select Music.album2songs.song from Music.album2songs where album2songs.type = 'tape';
 
 select count(*) from Music.Artist;
+
+select * from Music.Artist where artist like "Compilations";
+
+select DISTINCT album from Music.`album2songs` where genre = "Classical" order by album;
