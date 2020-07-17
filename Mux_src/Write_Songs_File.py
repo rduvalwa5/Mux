@@ -2,9 +2,18 @@ import os, platform
 
 class musicLoad_Write:
 
-    def __init__(self, test=False):
-        self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music"
+    def __init__(self):
+        
         self.server = platform.node()
+        self.fileName = self.server + "_songs.txt"
+        print(self.server)
+        if self.server == "MaxBookPro17OSX":
+                self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music"
+        if self.server == "BriaMBP":
+                self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music"
+        if self.server == "OSXAir.hsd1.wa.comcast.net":
+                self.base = "/Users/rduvalwa2/music/iTunes/iTunes Music/Music"                
+                
     
     def get_music_artist(self):
         artist = []
@@ -33,10 +42,27 @@ class musicLoad_Write:
                                 songs.append((self.server, index, a[1], album, song))
                                 index = index + 1
         return songs
+    
+    def getFile(self):
+            songFiles = open(self.fileName, "w+")
+            return songFiles
+        
+    def readFile(self):
+        print("Reading File", self.fileName)
+        f = open(self.fileName, "r")
+        print(f.read())
+#        f.close()
         
 if __name__ == '__main__':
     a = musicLoad_Write()
     theseSongs = a.get_all_songs()
+    fileOfSongs = a.getFile()
     for song in theseSongs:
-        print(song)
-        
+#        print(song)
+        fileOfSongs.write(str(song) + "\n")
+#    fileOfSongs.close()
+    myFileObject = open(a.fileName, "r")
+#    f = a.getFile()
+    
+    print(myFileObject.read())
+    myFileObject.close()
