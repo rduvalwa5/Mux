@@ -148,6 +148,8 @@ class TestMusicDb(unittest.TestCase):
         elif platform.uname().node == 'C1246895-osx.home':
             serv = login_info_osx
         elif platform.uname().node == 'OSXAir.home.home':
+#        elif platform.uname().node == 'OSXAir.hsd1.wa.comcast.net':
+# need to set up Data Base for new new setting
             serv = login_info_osxAir
         elif platform.uname().node == 'C1246895-WIN64-Air':
             serv = login_info_WIN64_Air
@@ -175,7 +177,7 @@ class TestMusicDb(unittest.TestCase):
             cursor.execute(statement)
             row = cursor.fetchone()
             print("Row is " , row[0])
-            self.assertEqual(row[0], 1210)
+            self.assertEqual(row[0], 1227)
             cursor.close()
  #           db.close()
         except cursor.Error as err:

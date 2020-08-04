@@ -13,7 +13,7 @@ update `derived_artist` set genre = 'Country' where artist in ("Alabama","Alison
 
 '''
 import os, platform
-import MySQLdb
+#import MySQLdb
 from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
 
 
