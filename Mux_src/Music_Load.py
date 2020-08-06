@@ -21,14 +21,16 @@ class musicLoad_Functions:
         elif platform.uname().node == 'C1246895-WIN64-Air':
         #    self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
             self.conn = pymysql.connect(login_info_WIN64_Air)
-        elif platform.uname().node == 'Randalls-MBP.home':
-            print("Host is " , 'Randalls-MBP.home')
-            self.conn = pymysql.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')            
+        elif platform.uname().node == 'RandallDuvalsMBP':
+            print("Host is " , 'RandallDuvalsMBP')
+            self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music') 
+            self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music" 
+            self.server = 'RandallDuvalsMBP'           
         else:
             print("Host is " , 'default')
             self.conn = pymysql.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')
-        self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
-        self.server = 'OSXAir.home' 
+#        self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
+#        self.server = 'OSXAir.home' 
         self.notTestRun = test
         self.genreList = ['Alternative', 'BlueGrass', 'Blues', 'Classic', 'Country', 'Folk', 'Holiday', \
                             'Jazz', 'Latino', 'Pop', 'Regae', 'Rock', 'RockaBilly', 'Soul', 'Talk', \
@@ -792,8 +794,8 @@ class verify_data_tables:
             return result    
         
 if __name__ == '__main__':
-    pass
-'''
+#    pass
+
     runMode = "Run"  # NoRun  # Test
     
     trueLoad = musicLoad_Functions(True)
@@ -812,4 +814,3 @@ if __name__ == '__main__':
     
         trueLoad.sync_song_genre()
         trueLoad.sync_song_type()
-        '''

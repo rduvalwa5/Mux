@@ -9,10 +9,10 @@ class musicLoad_Write:
         print(self.server)
         if self.server == "MaxBookPro17OSX":
                 self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music"
-        if self.server == "BriaMBP":
+        if self.server == "RandallDuvalsMBP":
                 self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music"
         if self.server == "OSXAir.hsd1.wa.comcast.net":
-                self.base = "/Users/rduvalwa2/music/iTunes/iTunes Music/Music"                
+                self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music"               
                 
     
     def get_music_artist(self):
