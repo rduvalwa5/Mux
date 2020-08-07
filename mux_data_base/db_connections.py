@@ -7,9 +7,20 @@ import os
 import platform
 import pymysql.cursors # as connDb
 #from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
-from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
+#from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
 
+class TestResults:
+    if platform.uname().node == 'MaxBookPro17OSX.hsd1.wa.comcast.net':
+        cover_count = 787
+        songs_count = 11944
+        artist_count = 585
+        artist_albums_count = 1238
 
+    elif platform.uname().node == 'OSXAir.hsd1.wa.comcast.net':
+        cover_count = 782
+        songs_count = 11935
+        artist_count = 576
+        artist_albums_count = 1227
 
 class dbInfo:
     def dbSpecs(self):
@@ -35,23 +46,23 @@ class musicGet_Functions:
         if platform.uname().node == 'C1246895-XPS':
             self.conn = pymysql.connect(host='OSXAir', user='rduval', password='blu4jazz', db='Music')
 #            self.conn  = c.connect(login_info_xps)
-        elif platform.uname().node == 'C1246895-osx.home':
-            self.conn = pymysql.connect(host='OSXAir', user='rduvalwa2', password='blu4jazz', db='Music')
-#            self.conn  = pymysql.connect(login_info_osx)
+        elif platform.uname().node == 'MaxBookPro17OSX.hsd1.wa.comcast.net':
+            self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music')
+            self.server = 'MaxBookPro17OSX' 
+            self.base = "/Users/rduvalwa2/iTunes/iTunes Media/Music"
         elif platform.uname().node == 'OSXAir.hsd1.wa.comcast.net':
-#            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
             self.conn = pymysql.connect(host='OSXAir', user='rduvalwa2', password='blu4jazz', db='Music')
-        elif platform.uname().node == 'C1246895-WIN64-Air':
-        #    self.conn  = connDb.connect(host='OSXAir',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn = pymysql.connect(login_info_WIN64_Air)
+            self.server = 'OSXAir' 
+            self.base = "/Users/rduvalwa2/eOxigen-workspace/Mux/AlbumCovers"
         elif platform.uname().node == 'Randalls-MBP.home':
             print("Host is " , 'Randalls-MBP.home')
             self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduval', password='blu4jazz', db='Music')            
         else:
             print("Host is " , 'default')
             self.conn = pymysql.connect(host='OSXAir', user='rduvalwa2', password='blu4jazz', db='Music')
-        self.server = 'OSXAir' 
-        self.base = "/Users/rduvalwa2/eOxigen-workspace/Mux/AlbumCovers"
+            self.server = 'OSXAir' 
+            self.base = "/Users/rduvalwa2/eOxigen-workspace/Mux/AlbumCovers"
+ 
         self.notTestRun =  isNotTest
                 
     def get_count(self,table = 'music.album2songs', criteria = " "):
@@ -96,7 +107,7 @@ if __name__  == '__main__':
             mux = musicGet_Functions(True)
             table = 'Music.artist'
             criteria = ""
-            expected = DB_Test_Results.artist_count # 564
+            expected = TestResults.artist_count
             result = mux.get_count(table, criteria)
             print("get_count artist",result)
             mux.dbConnectionClose()
@@ -107,7 +118,7 @@ if __name__  == '__main__':
             mux = musicGet_Functions(True)
             table = 'Music.artist_albums'
             criteria = ""
-            expected = DB_Test_Results.artist_albums_count  #932
+            expected = TestResults.artist_albums_count
             result = mux.get_count(table, criteria)
             print("get_count albums",result)
             mux.dbConnectionClose()
@@ -117,7 +128,7 @@ if __name__  == '__main__':
             mux = musicGet_Functions(True)
             table = 'Music.album2songs'
             criteria = ""
-            expected = DB_Test_Results.songs_count
+            expected = TestResults.songs_count
             result = mux.get_count(table, criteria)
             print("get_count songs",result)
             mux.dbConnectionClose()
@@ -125,7 +136,7 @@ if __name__  == '__main__':
                     
         def test_get_album_count(self):  
             mux = musicGet_Functions(True)
-            expected = DB_Test_Results.cover_count
+            expected = TestResults.cover_count
             result = mux.get_album_cover_count()
 #            print("***** album cover count is ",result)
             self.assertEqual(expected, result, "cover count wrong")
