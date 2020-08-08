@@ -44,7 +44,7 @@ class musicGet_Functions:
         print("*************** Node Name is ", platform.uname().node)
         if platform.uname().node == 'C1246895-XPS':
             serv = login_info_xps
-        elif platform.uname().node == 'C1246895-osx.home':
+        elif platform.uname().node == 'MaxBookPro17OSX.hsd1.wa.comcast.net':
             serv = login_info_osx
         elif platform.uname().node == 'OSXAir.home.home':
             serv = login_info_osxAir
@@ -113,6 +113,7 @@ class musicGet_Functions:
         self.table = '`Music`.' + table
         self.tableIndex = table + "." + 'Index'
         max_index_statement = "select max(" + self.tableIndex + ") from " + self.table + ";"
+        print("max index statement ",max_index_statement)
         try:
             cursor = self.conn.cursor()
             cursor.execute(max_index_statement)
