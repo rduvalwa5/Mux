@@ -20,9 +20,10 @@ class AlbumLoad_Functions:
         elif platform.uname().node == 'C1246895-osx.home.home':
             self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')
 #            self.conn  = pymysql.connect(login_info_osx)
-        elif platform.uname().node == 'OSXAir.hsd1.wa.comcast.net':
+        elif platform.uname().node == 'OsxAir.hsd1.wa.comcast.net':
 #            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')
+            self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music')
+            self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
         elif platform.uname().node == 'C1246895-WIN64-Air':
         #    self.conn  = connDb.connect(host='OSXAir.hsd1.wa.comcast.net',user='rduvalwa2',password='blu4jazz',db='Music')
             self.conn = pymysql.connect(login_info_WIN64_Air)
@@ -33,7 +34,7 @@ class AlbumLoad_Functions:
             self.server = 'RandallDuvalsMBP'           
         else:
             print("Host is " , 'default')
-            self.conn = pymysql.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')
+            self.conn = pymysql.connect(host='localhost', user='rduval', password='blu4jazz', db='Music')
 #        self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
 #        self.server = 'OSXAir.home' 
         self.notTestRun = test

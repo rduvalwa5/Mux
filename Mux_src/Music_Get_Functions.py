@@ -63,7 +63,7 @@ class musicGet_Functions:
 #        self.conn = MySQLdb.connect(host=host, user=user, password=password, db=db)
 #        pymysql.connect
         self.conn = pymysql.connect(host=host, user=user, password=password, db=db)
-        self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
+        self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
         self.server = 'OSXAir.home.home' 
         self.notTestRun = isNotTest
         

@@ -11,8 +11,6 @@ import platform
 from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
 
 
-
-
 class Load_Album_Covers():
     def __init__(self):
         if platform.uname().node == 'C1246895-XPS':
@@ -21,9 +19,9 @@ class Load_Album_Covers():
         elif platform.uname().node == 'C1246895-osx.home':
             self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')
 #            self.conn  = pymysql.connect(login_info_osx)
-        elif platform.uname().node == 'OSXAir.hsd1.wa.comcast.net':
+        elif platform.uname().node == 'OsxAir.hsd1.wa.comcast.net':
 #            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')
+            self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music')
         elif platform.uname().node == 'C1246895-WIN64-Air':
         #    self.conn  = connDb.connect(host='OSXAir.hsd1.wa.comcast.net',user='rduvalwa2',password='blu4jazz',db='Music')
             self.conn = pymysql.connect(login_info_WIN64_Air)
@@ -34,7 +32,7 @@ class Load_Album_Covers():
             print("Host is " , 'default')
             self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')
         self.server = 'OSXAir.hsd1.wa.comcast.net' 
-        self.base = "/Users/rduvalwa2/eOxigen-workspace/Mux/AlbumCovers"
+        self.base = "/Users/rduvalwa2/Code_Projects/eOxigen-workspace/Mux/AlbumCovers"
         
     def get_all_album_covers(self):
         albumCovers = []
@@ -44,31 +42,15 @@ class Load_Album_Covers():
                 albumCovers.append((cover))
                 albumCovers.sort()
         return albumCovers
-    
-    def initial_load_album_covers_temp(self):
-        idx = 0
-        covers = self.get_all_album_covers()
-        cursor = self.conn.cursor()
-        trunkate = "truncate  `Music`.temp_album_covers ;"
-        cursor.execute(trunkate)
-        for cov in covers:
-            insertStatement = "INSERT into Music.temp_album_covers (album_cover,cover_idx)  values(\"" + cov + "\"," + str(idx) + ");"
-            idx = idx + 1
-            print(insertStatement)
-            cursor.execute(insertStatement)
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
-        cursor.close()
-        
+            
     def initial_load_album_covers(self):
         idx = 0
         covers = self.get_all_album_covers()
         cursor = self.conn.cursor()
-        trunkate = "truncate  `Music`.temp_album_covers ;"
+        trunkate = "truncate  `Music`.album_covers ;"
         cursor.execute(trunkate)
         for cov in covers:
-            insertStatement = "INSERT into Music.temp_album_covers(album_cover,cover_idx)  values(\"" + cov + "\"," + str(idx) + ");"
+            insertStatement = "INSERT into Music.album_covers(album_cover,cover_idx,album,description)  values(\"" + cov + "\"," + str(idx) + "," + "0" + "," +"0" + ");"
             idx = idx + 1
             print(insertStatement)
             cursor.execute(insertStatement)
@@ -83,5 +65,5 @@ if __name__  == '__main__':
 #    covers = loadCov.get_all_album_covers()
 #    for cov in covers:
 #        print(cov)
-    loadCov.initial_load_album_covers_temp()
+    loadCov.initial_load_album_covers()
     
