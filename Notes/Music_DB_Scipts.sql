@@ -360,4 +360,69 @@ select count(*) from Music.Artist;
 
 select * from Music.Artist where artist like "Compilations";
 
-select DISTINCT album from Music.`album2songs` where genre = "Classical" order by album;
+select distinct album from Music.`album2songs` where genre = "Classical" order by album;
+
+select distinct type from Music.`album2songs`;
+
+select * from genre;
+
+CREATE TABLE `type` (
+  `type` varchar(20) NOT NULL,
+  `type_idx` bigint(5) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`type_idx`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+INSERT INTO type (type) VALUES ('Download');
+INSERT INTO type (type) VALUES ('Vinyl');
+INSERT INTO type (type) VALUES ('CD');
+INSERT INTO type (type) VALUES ('Tape');
+INSERT INTO type (type) VALUES ('TestType');
+
+select * from type;
+
+commit;
+
+select * from artist;
+
+select * from `artist_albums`;
+
+update `artist_albums` set genre = 'Rock';
+
+
+select a.artist, a.genre, b.`album`,b.genre from `artist`a, `artist_albums` b
+where a.artist = b.artist;
+
+
+UPDATE artist_albums
+        INNER JOIN
+    artist ON artist_albums.artist = artist.artist
+SET 
+    artist_albums.genre = artist.genre;
+
+
+
+
+select album from album2songs;
+
+UPDATE artist_albums
+        INNER JOIN
+    album2songs ON artist_albums.album =  album2songs.album
+SET 
+    artist_albums.type = album2songs.type;
+
+
+
+/* UPDATE employees
+        INNER JOIN
+    merits ON employees.performance = merits.performance 
+SET 
+    salary = salary + salary * percentage;  */
+
+
+update `artist_albums` set type = 'Download' where type like 'download';
+
+select * from artist where artist like '%Edith%';
+select * from artist_albums where artist like '%Edith%';
+
+select * from album2songs where artist like '%Edith%';
+
