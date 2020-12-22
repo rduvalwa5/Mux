@@ -8,11 +8,19 @@ import Music_Get_Functions
 import pymysql.cursors
 import os
 import platform
+import Mux_Parameters
 from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
+from Mux_Parameters import coverbase
 
 
 class Load_Album_Covers():
+    coverbase = Mux_Parameters.coverbase
+    base = Mux_Parameters.base
+    server = Mux_Parameters.server
+    hostName = Mux_Parameters.hostName
+    
     def __init__(self):
+
         if platform.uname().node == 'C1246895-XPS':
             self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduval', password='blu4jazz', db='Music')
 #            self.conn  = c.connect(login_info_xps)
@@ -24,21 +32,18 @@ class Load_Album_Covers():
             self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music')
         elif platform.uname().node == 'C1246895-WIN64-Air':
         #    self.conn  = connDb.connect(host='OSXAir.hsd1.wa.comcast.net',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn = pymysql.connect(login_info_WIN64_Air)
-        elif platform.uname().node == 'Randalls-MBP.home':
-            print("Host is " , 'Randalls-MBP.home')
-            self.conn = pymysql.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')            
+            self.conn = pymysql.connect(login_info_WIN64_Air)           
         else:
             print("Host is " , 'default')
             self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')
         self.server = 'OSXAir.hsd1.wa.comcast.net' 
-        self.base = "/Users/rduvalwa2/Code_Projects/eOxigen-workspace/Mux/AlbumCovers"
+
         
     def get_all_album_covers(self):
         albumCovers = []
-        albumCover_list = os.listdir(self.base)
+        albumCover_list = os.listdir(coverbase)
         for cover in albumCover_list:
-            if os.path.isfile(self.base + "/" + cover):
+            if os.path.isfile(coverbase + "/" + cover):
                 albumCovers.append((cover))
                 albumCovers.sort()
         return albumCovers
