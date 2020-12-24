@@ -55,18 +55,13 @@ class displaySelectCover():
         HOST = platform.uname().node
         if HOST == 'C1246895-XPS':
             base = "C:\\Users\\RDuval\\git\\HubPRojects\\Mux\\AlbumCovers\\"
-            
-        elif HOST == 'RandyDuvalsMBP.hsd1.wa.comcast.net':
-            print(platform.uname().node)
-            base = '/Users/rduvalwa2/git/Mux/AlbumCovers/'
-            
         elif HOST == 'c1246895-osx.hsd1.wa.comcast.net':
-                base = "/Users/rduvalwa2/git/Mux/AlbumCovers/"
+                base = '/Users/rduvalwa2/Code_Projects/eOxigen-workspace/Mux/AlbumCovers/'
                 
         elif HOST == 'osxair.hsd1.wa.comcast.net':
-                base = '/Users/rduvalwa2/eOxigen-workspace/Mux/AlbumCovers/'
+                base = '/Users/rduvalwa2/Code_Projects/eOxigen-workspace/Mux/AlbumCovers/'
         else:
-            base = '/Users/rduvalwa2/eOxigen-workspace/Mux/AlbumCovers/'
+            base = '/Users/rduvalwa2/Code_Projects/eOxigen-workspace/Mux/AlbumCovers/'
             
         widget = event.widget
         selection=widget.curselection()
