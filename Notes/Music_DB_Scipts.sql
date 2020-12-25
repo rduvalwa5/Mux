@@ -422,7 +422,39 @@ SET
 update `artist_albums` set type = 'Download' where type like 'download';
 
 select * from artist where artist like '%Edith%';
-select * from artist_albums where artist like '%Edith%';
+select * from artist_albums where album like '%50%';
 
 select * from album2songs where artist like '%Edith%';
 
+select * from album_covers where album like '%Areo%';
+
+select * from album_covers where `album_cover` like '%iTu%';
+
+select * from artist_albums where cover_name = "iTunesImages.jpg" order by artist;
+
+select count(*) from artist_albums where cover_name is not null order by artist;
+
+update artist_albums 
+set cover_name = "iTunesImages.jpg"
+where cover_name is null;
+
+update artist_albums 
+set cover_idx = 842
+where cover_name = "iTunesImages.jpg";
+
+
+
+/* 842	iTunesImages.jpg	0	0 */
+
+DELETE FROM artist_albums WHERE `index` = 874;
+
+
+/* left off here 
+400	Beethoven	Beethoven Concerto In D Major OP 61	Rock	Download	Beethoven_Yehudi_Menuhin.jpg	84
+*/
+
+select * from artist_albums where album like 'Beethoven Concerto%';
+
+select * from artist_albums where album like '%Cameo Parkway%';
+
+delete from artist_albums where `index` = 636;
