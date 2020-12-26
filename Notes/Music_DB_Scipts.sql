@@ -455,6 +455,10 @@ DELETE FROM artist_albums WHERE `index` = 874;
 
 select * from artist_albums where album like 'Beethoven Concerto%';
 
-select * from artist_albums where album like '%Cameo Parkway%';
+select * from artist_albums where album like '%Dead%';
+
+select * from artist_albums where `cover_name` likw "20 Best of Rockin' 70's (Original Artist Re-Recording).jpg";
 
 delete from artist_albums where `index` = 636;
+
+
