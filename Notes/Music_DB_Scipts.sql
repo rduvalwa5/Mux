@@ -411,6 +411,27 @@ SET
     artist_albums.type = album2songs.type;
 
 
+select album from album2songs;
+
+UPDATE artist_albums
+        INNER JOIN
+    album_covers ON artist_albums.`album` =  album_covers.`album`
+SET 
+    artist_albums.`cover_name` = album_covers.`album_cover`;
+    
+    
+UPDATE artist_albums
+        INNER JOIN
+    album_covers ON artist_albums.`album` =  album_covers.`album`
+SET 
+    artist_albums.`cover_idx` = album_covers.`cover_idx`;
+    
+    
+
+select * from artist_albums where `cover_name` not like 'iTunesImages.jpg';
+
+select * from artist_albums where artist like 'Weather Report';
+
 
 /* UPDATE employees
         INNER JOIN
@@ -453,12 +474,40 @@ DELETE FROM artist_albums WHERE `index` = 874;
 400	Beethoven	Beethoven Concerto In D Major OP 61	Rock	Download	Beethoven_Yehudi_Menuhin.jpg	84
 */
 
-select * from artist_albums where album like 'Beethoven Concerto%';
+select * from artist_albums where artist like '%Weather%';
 
-select * from artist_albums where album like '%Dead%';
+select * from artist_albums where artist like  '%Grateful Dead%';
 
-select * from artist_albums where `cover_name` likw "20 Best of Rockin' 70's (Original Artist Re-Recording).jpg";
+select * from artist_albums where album like '%Grateful Dead%';
 
-delete from artist_albums where `index` = 636;
+select * from artist_albums where artist like '%Coltrane%' and cover_name = "iTunesImages.jpg";
+
+select * from artist_albums where cover_name like '%Boston.jpg%';
+
+delete from artist_albums where `index` = 623;
+
+select * from album_covers where album like "%Brel%";
+
+select * from artist_albums where cover_name like "iTunesImages.jpg" order by Artist; 
+
+commit;
+
+
+UPDATE artist_albums
+        INNER JOIN
+    album_covers ON artist_albums.`album` =  album_covers.`album`
+SET 
+    artist_albums.`cover_name` = album_covers.`album_cover`;
+    
+    
+UPDATE artist_albums
+        INNER JOIN
+    album_covers ON artist_albums.`album` =  album_covers.`album`
+SET 
+    artist_albums.`cover_idx` = album_covers.`cover_idx`;
+
+
+
+
 
 
