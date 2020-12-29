@@ -474,17 +474,17 @@ DELETE FROM artist_albums WHERE `index` = 874;
 400	Beethoven	Beethoven Concerto In D Major OP 61	Rock	Download	Beethoven_Yehudi_Menuhin.jpg	84
 */
 
-select * from artist_albums where artist like '%Alvin%';
+select * from artist_albums where artist like '%Miles%';
 
 select * from artist_albums where artist like  '%Grateful Dead%';
 
-select * from artist_albums where artist like '%Dylan%';
+select * from artist_albums where artist like '%Jaco%';
 
-select * from artist_albums where artist like '%Doors%' and cover_name = "iTunesImages.jpg";
+select * from artist_albums where artist like '%Jaco%' and cover_name = "iTunesImages.jpg";
 
-select * from artist_albums where cover_name like '%Boston.jpg%';
+select * from artist_albums where cover_name like '%Eric Clapton%';
 
-delete from artist_albums where `index` = 623;
+delete from artist_albums where `index` = 796;
 
 select * from album_covers where album like "%Brel%";
 
@@ -493,6 +493,14 @@ select * from artist_albums where cover_name like "iTunesImages.jpg" order by Ar
 commit;
 
 select * from album_covers;
+
+select * from album2songs where album like '%Birthday%';
+select * from album2songs where artist like '%Jaco%';
+
+select * from artist_albums where artist like '%Birthday%';
+
+select * from artist where artist like '%Jaco%';
+
 
 UPDATE artist_albums
         INNER JOIN
