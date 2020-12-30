@@ -476,19 +476,25 @@ DELETE FROM artist_albums WHERE `index` = 874;
 
 select * from artist_albums where artist like '%Miles%';
 
-select * from artist_albums where artist like  '%Grateful Dead%';
 
-select * from artist_albums where artist like '%Jaco%';
+select * from artist_albums where artist like  '%The Doors%';
+select * from artist_albums where artist like '%Beatles%';
 
 select * from artist_albums where artist like '%Jaco%' and cover_name = "iTunesImages.jpg";
 
 select * from artist_albums where cover_name like '%Eric Clapton%';
 
-delete from artist_albums where `index` = 796;
+delete from artist_albums where `index` = 808;
 
-select * from album_covers where album like "%Brel%";
+delete from album_covers where cover_idx = 696;
 
-select * from artist_albums where cover_name like "iTunesImages.jpg" order by Artist; 
+select * from album_covers where album_covers.`album_cover` like '%Slow Train Coming.jpg%';
+
+select * from artist_albums where cover_name is null order by Artist; 
+
+select * from artist_albums where cover_name is null order by Artist; 
+
+select * from artist_albums where artist_albums.`cover_name` like 'EricClapton_The_Complete.jpg';
 
 commit;
 
@@ -497,7 +503,7 @@ select * from album_covers;
 select * from album2songs where album like '%Birthday%';
 select * from album2songs where artist like '%Jaco%';
 
-select * from artist_albums where artist like '%Birthday%';
+select * from artist_albums where artist like '%Compilations%' and artist_albums.`cover_name` is null;
 
 select * from artist where artist like '%Jaco%';
 
@@ -516,7 +522,11 @@ SET
     artist_albums.`cover_idx` = album_covers.`cover_idx`;
 
 
+select artist, count(artist) from `artist_albums` group by artist order by count(artist) desc;
 
+select * from `artist_albums` where artist like '.localized';
 
+delete from `artist_albums` where artist like '.localized';
 
+select * from album2songs where album like 'The Music Inside_ A Collaboration Dedicated To Waylon Jennings, Volume II';
 
