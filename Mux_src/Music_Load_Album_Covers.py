@@ -51,18 +51,22 @@ class Load_Album_Covers():
     def initial_load_album_covers(self):
         idx = 0
         covers = self.get_all_album_covers()
+        print(len(covers))
         cursor = self.conn.cursor()
         trunkate = "truncate  `Music`.album_covers ;"
         cursor.execute(trunkate)
+
         for cov in covers:
-            insertStatement = "INSERT into Music.album_covers(album_cover,cover_idx,album,description)  values(\"" + cov + "\"," + str(idx) + "," + "0" + "," +"0" + ");"
-            idx = idx + 1
-            print(insertStatement)
-            cursor.execute(insertStatement)
+            if cov != ".DS_Store":
+#                insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.type,artist_albums.genre)  values(" + str(newIndex) + ",\"" + artist + "\",\"" + album + "\",\"" + tipe + "\",\"" + gen + "\" )"
+                insertStatement = "INSERT into Music.album_covers(album_cover,cover_idx,album,description)  values(\"" + cov + "\"," + str(idx)  + "," + "\"iTunesImages\"" + "," + "\"none\" " + ");"
+                idx = idx + 1
+                print(insertStatement)
+                cursor.execute(insertStatement)
         commit = "commit;"
         cursor.execute(commit)
         print("done")
-        cursor.close()    
+#        cursor.close()    
         
         
 if __name__  == '__main__':

@@ -6,42 +6,61 @@ Created on Jan 27, 2018
 @author: rduvalwa2
 '''
 import os, platform
-import pymysql
+import pymysql.cursors
+import Mux_Parameters
 from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
 
 
 class AlbumLoad_Functions:
+    
+    hostName = platform.uname().node
 
-    def __init__(self, test=False):
-        print("*************** Node Name is ", platform.uname().node)
+    def __init__(self):
+        
+        hostName = platform.uname().node
+  
         if platform.uname().node == 'C1246895-XPS':
             self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduval', password='blu4jazz', db='Music')
 #            self.conn  = c.connect(login_info_xps)
-        elif platform.uname().node == 'C1246895-osx.home.home':
+        elif platform.uname().node == 'C1246895-osx.home':
             self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')
 #            self.conn  = pymysql.connect(login_info_osx)
         elif platform.uname().node == 'OsxAir.hsd1.wa.comcast.net':
 #            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
             self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music')
-            self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
         elif platform.uname().node == 'C1246895-WIN64-Air':
         #    self.conn  = connDb.connect(host='OSXAir.hsd1.wa.comcast.net',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn = pymysql.connect(login_info_WIN64_Air)
-        elif platform.uname().node == 'RandallDuvalsMBP':
-            print("Host is " , 'RandallDuvalsMBP')
-            self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music') 
-            self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music" 
-            self.server = 'RandallDuvalsMBP'           
+            self.conn = pymysql.connect(login_info_WIN64_Air)           
         else:
             print("Host is " , 'default')
-            self.conn = pymysql.connect(host='localhost', user='rduval', password='blu4jazz', db='Music')
-#        self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
-#        self.server = 'OSXAir.home' 
-        self.notTestRun = test
-        self.genreList = ['Alternative', 'BlueGrass', 'Blues', 'Classic', 'Country', 'Folk', 'Holiday', \
-                            'Jazz', 'Latino', 'Pop', 'Regae', 'Rock', 'RockaBilly', 'Soul', 'Talk', \
-                            'TestGenre', 'TexMex', 'Traditional', 'World']
-    
+            self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')
+        self.server = 'OSXAir.hsd1.wa.comcast.net' 
+
+        if platform.uname().node == 'C1246895-XPS':
+                print("Host is " , hostName)
+                self.base = "To be determined"
+                self.coverbase =  "To be determined"
+                server = hostName
+        elif platform.uname().node == 'C1246895-osx.home.home':
+            print("Host is " ,  hostName)
+            self.self.base = "/Users/rduvalwa2/music/Music/Media.localized"
+            coverbase = "To be determined"
+            server= hostName
+        elif platform.uname().node == 'OsxAir.hsd1.wa.comcast.net':
+            print("Host is " ,  hostName)            
+            self.coverbase = "/Users/rduvalwa2/Code_Projects/Active_Mux/AlbumCovers/"
+            server= hostName
+            self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
+        else:
+            print("Host is " , 'default')
+            self.coverbase = "/Users/rduvalwa2/Code_Projects/Active_Mux/AlbumCovers/"
+            server= hostName
+            self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
+
+        genreList =['Rock','Alternative','BlueGrass','Blues','Classical','Country','Folk','Holiday','Jazz','Latino','Pop', \
+                         'Regae','RockaBilly','Soul','Talk','TestGenre','TexMex','Traditional','World','NewGenre','Easy Listening', \
+                         'Classic','R&B','French Pop']    
+        
     def set_genre_genre(self, genre):
         print("Start set_genre")
         print(genre)
@@ -114,10 +133,11 @@ class AlbumLoad_Functions:
         trunkate = "truncate  music.artist_albums;"
         cursor.execute(trunkate)
         allAbums = self.get_albums()
-        if self.notTestRun:
-            for album in allAbums:
-                insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.genre,artist_albums.type)  values(" + str(album[0]) + ",\"" + album[1] + "\",\"" + album[2] + "\",\"" + "rock" + "\",\"" + "download" + "\")"
-                cursor.execute(insertStatement)
+        
+        for album in allAbums:
+            print(album)
+            insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.genre,artist_albums.type)  values(" + str(album[0]) + ",\"" + album[1] + "\",\"" + album[2] + "\",\"" + "rock" + "\",\"" + "download" + "\")"
+            cursor.execute(insertStatement)
             countStatement = "SELECT count(*) FROM music.artist_albums;"        
             cursor.execute(countStatement)
             count = cursor.fetchone()
@@ -261,7 +281,7 @@ if __name__ == '__main__':
     
     runMode = "Run"  # NoRun  # Test
     
-    trueLoad = AlbumLoad_Functions(True)
+    trueLoad = AlbumLoad_Functions()
     genreList = ['Alternative','BlueGrass','Blues','Classic','Country','Folk','Holiday',\
                             'Jazz','Latino','Pop','Regae','Rock','RockaBilly','Soul','Talk', \
                             'TestGenre','TexMex','Traditional','World','Easy Listening']
