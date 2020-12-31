@@ -477,7 +477,6 @@ DELETE FROM artist_albums WHERE `index` = 874;
 select * from artist_albums where artist like '%Miles%';
 
 
-select * from artist_albums where artist like  '%The Doors%';
 select * from artist_albums where artist like '%Beatles%';
 
 select * from artist_albums where artist like '%Jaco%' and cover_name = "iTunesImages.jpg";
@@ -496,7 +495,7 @@ select * from artist_albums where cover_name is null order by Artist;
 
 select * from artist_albums where artist_albums.`cover_name` like 'EricClapton_The_Complete.jpg';
 
-commit;
+
 
 select * from album_covers;
 
@@ -507,6 +506,10 @@ select * from artist_albums where artist like '%Compilations%' and artist_albums
 
 select * from artist where artist like '%Jaco%';
 
+
+select * from artist_albums where artist like  '%Savoy Brown%';
+
+commit;
 
 UPDATE artist_albums
         INNER JOIN
@@ -520,6 +523,8 @@ UPDATE artist_albums
     album_covers ON artist_albums.`album` =  album_covers.`album`
 SET 
     artist_albums.`cover_idx` = album_covers.`cover_idx`;
+    
+    
 
 
 select artist, count(artist) from `artist_albums` group by artist order by count(artist) desc;
