@@ -487,7 +487,7 @@ delete from artist_albums where `index` = 808;
 
 delete from album_covers where cover_idx = 8;
 
-select * from album_covers where album_covers.`album_cover` like '%iTun%';
+select * from album_covers where album_covers.`album_cover` like '%Heart%';
 
 select * from `album_covers`;
 
@@ -509,7 +509,7 @@ select * from artist_albums where artist like '%Compilations%' and artist_albums
 select * from artist where artist like '%Jaco%';
 
 
-select * from artist_albums where artist like  '%Zac Brown Band%';
+select * from artist_albums where artist like  '%Talking Heads%';
 select * from artist_albums where artist like  '%Jaco%';
 commit;
 
