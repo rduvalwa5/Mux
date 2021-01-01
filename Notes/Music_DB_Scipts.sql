@@ -481,13 +481,15 @@ select * from artist_albums where artist like '%Beatles%';
 
 select * from artist_albums where artist like '%Jaco%' and cover_name = "iTunesImages.jpg";
 
-select * from artist_albums where cover_name like '%Eric Clapton%';
+select * from artist_albums where album like 'The Marshall Tucker Band_ Live On Long Island - 4-18-80';
 
 delete from artist_albums where `index` = 808;
 
-delete from album_covers where cover_idx = 696;
+delete from album_covers where cover_idx = 8;
 
-select * from album_covers where album_covers.`album_cover` like '%Slow Train Coming.jpg%';
+select * from album_covers where album_covers.`album_cover` like '%iTun%';
+
+select * from `album_covers`;
 
 select * from artist_albums where cover_name is null order by Artist; 
 
@@ -507,8 +509,8 @@ select * from artist_albums where artist like '%Compilations%' and artist_albums
 select * from artist where artist like '%Jaco%';
 
 
-select * from artist_albums where artist like  '%Savoy Brown%';
-
+select * from artist_albums where artist like  '%Zac Brown Band%';
+select * from artist_albums where artist like  '%Jaco%';
 commit;
 
 UPDATE artist_albums
