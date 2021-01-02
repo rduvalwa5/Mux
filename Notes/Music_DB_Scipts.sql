@@ -509,7 +509,8 @@ select * from artist_albums where artist like '%Compilations%' and artist_albums
 select * from artist where artist like '%Jaco%';
 
 
-select * from artist_albums where artist like  '%Talking Heads%';
+select * from artist_albums where artist like  '%The Handsome Family%';
+select * from artist_albums where artist like  '%Comp%';
 select * from artist_albums where artist like  '%Jaco%';
 commit;
 
@@ -527,7 +528,8 @@ SET
     artist_albums.`cover_idx` = album_covers.`cover_idx`;
     
     
-
+select count(*) from artist_albums where `artist_albums`.`cover_name` is null;
+select count(*) from artist_albums where `artist_albums`.`cover_name` is not null;
 
 select artist, count(artist) from `artist_albums` group by artist order by count(artist) desc;
 
