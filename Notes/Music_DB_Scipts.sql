@@ -511,7 +511,7 @@ select * from artist where artist like '%Jaco%';
 
 select * from artist_albums where artist like  '%The Handsome Family%';
 select * from artist_albums where artist like  '%Comp%';
-select * from artist_albums where artist like  '%Jaco%';
+select * from artist_albums where artist like  '%Electric Light Orchestra%';
 commit;
 
 UPDATE artist_albums
@@ -538,4 +538,21 @@ select * from `artist_albums` where artist like '.localized';
 delete from `artist_albums` where artist like '.localized';
 
 select * from album2songs where album like 'The Music Inside_ A Collaboration Dedicated To Waylon Jennings, Volume II';
+
+select * from album2songs where album like 'JACO Original Soundtrack' order by song;
+
+delete from album2songs where album like 'JACO Original Soundtrack' and artist like 'Compilations';
+
+commit;
+
+select * from `album_covers` where album_cover like '%ELO%';
+
+select * from `album_covers` where album like 'iTunesImages'
+
+delete from `album_covers` where album like 'iTunesImages';
+
+delete from `album_covers` where `cover_idx` in (1483,1482,213,214,215,216);
+
+select * from `album_covers` order by `cover_idx`;
+
 
