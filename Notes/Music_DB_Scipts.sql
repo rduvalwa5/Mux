@@ -511,7 +511,8 @@ select * from artist where artist like '%Jaco%';
 
 select * from artist_albums where artist like  '%The Handsome Family%';
 select * from artist_albums where artist like  '%Comp%';
-select * from artist_albums where artist like  '%Electric Light Orchestra%';
+select * from artist_albums where artist like  '%Boston%';
+
 commit;
 
 UPDATE artist_albums
