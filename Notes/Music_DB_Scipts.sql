@@ -511,7 +511,7 @@ select * from artist where artist like '%Jaco%';
 
 select * from artist_albums where artist like  '%The Handsome Family%';
 select * from artist_albums where artist like  '%Comp%';
-select * from artist_albums where artist like  '%Boston%';
+select * from artist_albums where artist like  '%Drive-By Truckers%';
 
 commit;
 
