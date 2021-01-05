@@ -510,8 +510,8 @@ select * from artist where artist like '%Jaco%';
 
 
 select * from artist_albums where artist like  '%The Handsome Family%';
-select * from artist_albums where artist like  '%Comp%';
-select * from artist_albums where artist like  '%Drive-By Truckers%';
+select * from artist_albums where artist like  '%Don McLean%';
+select * from artist_albums where artist like  'The Drifters';
 
 commit;
 
