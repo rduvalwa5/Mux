@@ -511,7 +511,7 @@ select * from artist where artist like '%Jaco%';
 
 select * from artist_albums where artist like  '%The Handsome Family%';
 select * from artist_albums where artist like  '%Don McLean%';
-select * from artist_albums where artist like  '%Mark Lanegan%';
+select * from artist_albums where artist in ('Lulu','Hair','Patsy Cline','Madeleine Peyroux','Linda Ronstadt & Emmylou Harris','Kenny Rogers & The First Edition');
 
 commit;
 
@@ -538,6 +538,8 @@ select * from `artist_albums` where artist like '.localized';
 
 delete from `artist_albums` where artist like '.localized';
 
+delete from `artist_albums` where `index` = 88;
+
 select * from album2songs where album like 'The Music Inside_ A Collaboration Dedicated To Waylon Jennings, Volume II';
 
 select * from album2songs where album like 'JACO Original Soundtrack' order by song;
@@ -556,4 +558,7 @@ delete from `album_covers` where `cover_idx` in (1483,1482,213,214,215,216);
 
 select * from `album_covers` order by `cover_idx`;
 
+select * from `album_covers` where album like 'iTunesImages'
 
+select count(*) from `artist_albums` where `artist_albums`.`cover_name` is null;  -- 273
+select count(*) from `artist_albums` where `artist_albums`.`cover_name` is not null; -- 969
