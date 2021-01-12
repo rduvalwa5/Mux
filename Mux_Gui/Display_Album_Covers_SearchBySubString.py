@@ -22,8 +22,8 @@ class show_image():
             print("Constraint is ", constraint)
             if platform.uname().node == 'OsxAir.hsd1.wa.comcast.net':
                 base = "/Users/rduvalwa2/Code_Projects/eOxigen-workspace/Mux/AlbumCovers/"
-            elif platform.uname().node == 'C1246895-OSX.home':
-                base = "/Users/rduvalwa2/Code_Projects/eOxigen-workspace/Mux/AlbumCovers/"
+            elif platform.uname().node == 'MaxBookPro17OSX.hsd1.wa.comcast.net':
+                base = "/Users/rduvalwa2/git/Mux/AlbumCovers/"
             else:
                 base =  '/Users/rduvalwa2/Code_Projects/eOxigen-workspace/Mux/AlbumCovers/'
             dirlist = os.listdir(base)

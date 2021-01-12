@@ -96,6 +96,7 @@ class TestGetFunctions(unittest.TestCase):
             for gen in gList:
                 expected = gen[1]
                 result = self.mux.get_genre_count(gen[0])
+                print("Genre count result ", result)
                 if expected !=  result:
                     print("expect for genre ", gen[0], expected , " actual is ", result)
                     self.assertEqual(expected, result, "Error " + gen[0])
@@ -191,6 +192,7 @@ class TestGetFunctions(unittest.TestCase):
             album = 'A Space In Time'
             expected = Test_Results.get_album  # (664, 'Ten Years After', 'A Space In Time', 'Blues', 'Download')
             result = self.mux.get_album(album)
+            print("get album result", result)
             self.assertEqual(expected, result[0])
 
         def test_get_all_albums(self):
@@ -233,6 +235,7 @@ class TestGetFunctions(unittest.TestCase):
         def test_genres(self):
             #   mux = musicGet_Functions(True)
             genres = self.mux.get_genres()
+            print("Get Genres ",genres)
             self.assertEqual(Test_Results.genresList, genres, "genre list is wrong")
 
         '''
