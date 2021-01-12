@@ -571,4 +571,9 @@ select count(*) from `artist_albums` where `artist_albums`.`cover_name` is null;
 select count(*) from `artist_albums` where `artist_albums`.`cover_name` is not null; -- 1145
 
 
+select genre, count(genre) from album2songs group by genre order by count(genre) desc; 
+
+
+select * from genre; 
+
 
