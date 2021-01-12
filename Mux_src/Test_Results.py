@@ -40,7 +40,7 @@ get_artist_albums = ((258, 'Ten Years After', 'Stonedhenge (Re-Presents)', 'Blue
 get_artist_albums_songs = (("03 I'd Love to Change the World.m4p",), ('02 Here They Come.m4p',), ("05 Baby Won't You Let Me Rock 'N' Roll You.m4p",), ('01 One of These Days.m4p',), ('10 Uncle Jam.m4p',), ('04 Over the Hill.m4p',), ('07 Let the Sky Fall.m4p',), ("09 I've Been There Too.m4p",), ('06 Once There Was a Time.m4p',), ('08 Hard Monkeys.m4p',))
 
 get_artist_songs = (('08 Johnny B. Goode.mp3', 'The Best of Chuck Berry'), ('02 Roll Over Beethoven.mp3', 'The Best of Chuck Berry'), ('10 Sweet Little Sixteen.mp3', 'The Best of Chuck Berry'), ('09 Brown Eyed Handsome Man.mp3', 'The Best of Chuck Berry'), ('07 Maybelline.mp3', 'The Best of Chuck Berry'), ('03 Rock And Roll Music.mp3', 'The Best of Chuck Berry'), ('05 No Particular Place To Go.mp3', 'The Best of Chuck Berry'), ('06 My Ding A Ling.mp3', 'The Best of Chuck Berry'), ('01 School Days.mp3', 'The Best of Chuck Berry'), ("04 Reelin' and Rockin'.mp3", 'The Best of Chuck Berry')) 
-genreList = [('Rock', 6447), ('Alternative', 11), ('BlueGrass', 179), ('Blues', 803), ('Country', 1154), ('Folk', 696), ('Holiday', 0), ('Jazz', 968), ('Latino', 0), ('Pop', 750), ('Regae', 23), ('RockaBilly', 32), ('Soul', 25), ('Talk', 2), ('TestGenre', 3), ('TexMex', 228), ('Traditional', 0), ('World', 0), ('NewGenre', 0), ('Easy Listening', 28), ('Classical', 115), ('R&B', 467), ('French Pop', 78),('Audio Book',81),('Audiobooks',2),('Sound Track',2),('Soundtrack',2),('Reggae',1)]
+genreList = [('Rock', 6447), ('Alternative', 11), ('BlueGrass', 179), ('Blues', 803), ('Country', 1154), ('Folk', 696), ('Holiday', 0), ('Jazz', 968), ('Latino', 1), ('Pop', 750), ('Regae', 23), ('RockaBilly', 32), ('Soul', 25), ('Talk', 1), ('TestGenre', 3), ('TexMex', 228), ('Traditional', 0), ('World', 0), ('NewGenre', 0), ('Easy Listening', 28), ('Classical', 115), ('R&B', 467), ('French Pop', 78),('Audio Book',81),('Audiobooks',2),('Sound Track',2),('Soundtrack',2),('Reggae',1)]
 typeList = [('CD', 6434), ('Download', 3639), ('Tape',101), ('TestType', 3), ('Vinyl', 1920)]
 genresList = (('Rock', 1), ('Alternative', 2), ('BlueGrass', 3), ('Blues', 4), ('Classical', 5), ('Country', 6), ('Folk', 7), ('Holiday', 8), ('Jazz', 9), ('Latino', 10), ('Pop', 11), ('Regae', 12), ('RockaBilly', 13), ('Soul', 14), ('Talk', 15), ('TestGenre', 16), ('TexMex', 17), ('Traditional', 18), ('World', 19), ('NewGenre', 20), ('Easy Listening', 21), ('Classic', 22), ('R&B', 23), ('French Pop', 24))
 
@@ -69,4 +69,34 @@ Easy Listening    21
 Classic    22
 R&B    23
 French Pop    24
+
+
+Rock    6447
+Country    1154
+Jazz    968
+Blues    803
+Pop    750
+Folk    696
+R&B    467
+TexMex    228
+BlueGrass    179
+Classical    115
+Audio Book    81
+French Pop    78
+RockaBilly    32
+Easy Listening    28
+Soul    25
+Regae    23
+Alternative    11
+TestGenre    3
+Audiobooks    2
+Sound Track    2
+Soundtrack    2
+Reggae    1
+Talk    1
+Latino    1
+
+
+
+
 '''
