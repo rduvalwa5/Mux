@@ -3,24 +3,23 @@ Created on Aug 7, 2017
 for testing data base connectivity
 @author: rduvalwa2
 '''
+
 import os
 import platform
 import pymysql.cursors # as connDb
-#from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
-#from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
 
 class TestResults:
-    if platform.uname().node == 'MaxBookPro17OSX.hsd1.wa.comcast.net':
-        cover_count = 787
-        songs_count = 11944
-        artist_count = 585
-        artist_albums_count = 1238
+    if platform.uname().node == 'MaxBookPro17OSX.hsd1.wa.comcast.net': #wireless name
+        cover_count = 1263
+        songs_count = 12110
+        artist_count = 592
+        artist_albums_count = 1242
 
     elif platform.uname().node == 'OSXAir.hsd1.wa.comcast.net':
-        cover_count = 782
-        songs_count = 11935
-        artist_count = 576
-        artist_albums_count = 1227
+        cover_count = 1263
+        songs_count = 12110
+        artist_count = 592
+        artist_albums_count = 1242
 
 class dbInfo:
     def dbSpecs(self):
@@ -35,18 +34,13 @@ class dbInfo:
         login_info_default = "host='OSXAir.hsd1.wa.comcast.net',user='root',password='blu4jazz',db='Music'"
         #login_info_osxAir = {"host":"OSXAir.home","user":"rduvalwa2","password":"blu4jazz","db":"Music"}
         login_info_osxAir = {"host":"OSXAir.hsd1.wa.comcast.net","user":"rduval","password":"blu4jazz","db":"Music"}
-        login_info_xps = {"host='OSXAir.hsd1.wa.comcast.net',user='rduval',password='blu4jazz',db='Music'"}
-        login_info_WIN64_Air = "host='OSXAir.hsd1.wa.comcast.net',user='rduvalwa2',password='blu4jazz',db='Music'"
-        login_info_osx = "host='OSXAir.hsd1.wa.comcast.net',user='root',password='blu4jazz',db='Music'"
+        login_info_osx = "host='MaxBookPro17OSX.hsd1.wa.comcast.net',user='root',password='blu4jazz',db='Music'"
 
 
 class musicGet_Functions:   
     def __init__(self,isNotTest):
         print("*************** Node Name is ",platform.uname().node)
-        if platform.uname().node == 'C1246895-XPS':
-            self.conn = pymysql.connect(host='OSXAir', user='rduval', password='blu4jazz', db='Music')
-#            self.conn  = c.connect(login_info_xps)
-        elif platform.uname().node == 'MaxBookPro17OSX.hsd1.wa.comcast.net':
+        if platform.uname().node == 'MaxBookPro17OSX.hsd1.wa.comcast.net':
             self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music')
             self.server = 'MaxBookPro17OSX' 
             self.base = "/Users/rduvalwa2/iTunes/iTunes Media/Music"
@@ -54,12 +48,9 @@ class musicGet_Functions:
             self.conn = pymysql.connect(host='OSXAir', user='rduvalwa2', password='blu4jazz', db='Music')
             self.server = 'OSXAir' 
             self.base = "/Users/rduvalwa2/eOxigen-workspace/Mux/AlbumCovers"
-        elif platform.uname().node == 'Randalls-MBP.home':
-            print("Host is " , 'Randalls-MBP.home')
-            self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduval', password='blu4jazz', db='Music')            
         else:
             print("Host is " , 'default')
-            self.conn = pymysql.connect(host='OSXAir', user='rduvalwa2', password='blu4jazz', db='Music')
+            self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')
             self.server = 'OSXAir' 
             self.base = "/Users/rduvalwa2/eOxigen-workspace/Mux/AlbumCovers"
  
@@ -99,7 +90,7 @@ class musicGet_Functions:
 
 if __name__  == '__main__':
     import unittest
-    import DB_Test_Results
+#    import DB_Test_Results
     
     class TestConnector(unittest.TestCase):
             

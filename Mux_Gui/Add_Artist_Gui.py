@@ -5,7 +5,7 @@ Created on Feb 5, 2017
 '''
 
 from tkinter import *
-from Music_Get_Functions import musicGet_Functions
+import musicGet_Functions
 import Music_Load
 
 class Application(Frame):
