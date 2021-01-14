@@ -5,8 +5,8 @@ Created on Feb 5, 2017
 '''
 
 from tkinter import *
-import musicGet_Functions
-import Music_Load
+from Music_Get_Functions import musicGet_Functions
+#import Music_Load
 
 class Application(Frame):
     """Application main window class."""
@@ -57,7 +57,7 @@ class Application(Frame):
         artist = self.text_in_Artist.get()
         genre = self.text_in_Genre.get()
         print(artist  +  genre)
-        muxAddArtist = Music_Load.artist_Add_Update_Delete(True)
+        muxAddArtist = musicGet_Functions(True)  #.artist_Add_Update_Delete(True)
         resultArtist = muxAddArtist.add_artist(artist, genre)
         print("Result " + resultArtist)
         self.labelArtistResult.config(text=resultArtist)

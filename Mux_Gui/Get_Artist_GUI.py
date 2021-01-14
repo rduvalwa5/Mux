@@ -41,7 +41,8 @@ class Application(Frame):
         artist = self.text_in.get()
         muxGet = musicGet_Functions(True)
         result = muxGet.get_artist(artist)
-        if result != []:
+        print("Result is ", result)
+        if len(result) != 0:
             artist = []
             idx = 0
             for i in result:

@@ -53,11 +53,8 @@ class displaySelectCover():
     def OnDouble(self, event):
         root = Toplevel
         HOST = platform.uname().node
-        if HOST == 'C1246895-XPS':
-            base = "C:\\Users\\RDuval\\git\\HubPRojects\\Mux\\AlbumCovers\\"
-        elif HOST == 'c1246895-osx.hsd1.wa.comcast.net':
-                base = '/Users/rduvalwa2/Code_Projects/eOxigen-workspace/Mux/AlbumCovers/'
-                
+        if HOST == 'MaxBookPro17OSX.hsd1.wa.comcast.net':
+                base = '/Users/rduvalwa2/git/Mux/AlbumCovers/'                
         elif HOST == 'osxair.hsd1.wa.comcast.net':
                 base = '/Users/rduvalwa2/Code_Projects/eOxigen-workspace/Mux/AlbumCovers/'
         else:

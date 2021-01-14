@@ -4,8 +4,7 @@ Created on Feb 5, 2017
 '''
 
 from tkinter import *
-#from Music_Get_Functions  import musicGet_Functions
-import Music_Load
+from Music_Get_Functions import musicGet_Functions
 
 class Application(Frame):
     """Application main window class."""
@@ -68,8 +67,8 @@ class Application(Frame):
         tipe = self.text_in_Type.get()
         genre = self.text_in_Genre.get()
         print(artist  +  genre)
-        muxAddAlbum = Music_Load.album_Add_Update_Delete(True)
-        result = muxAddAlbum.add_album(album, artist, tipe, genre)
+        muxAddAlbum = musicGet_Functions(True)
+        result = muxAddAlbum.add_album(album, artist, genre, tipe)
         print("Gui result ", result)
         self.labelResult.config(text=result)
         

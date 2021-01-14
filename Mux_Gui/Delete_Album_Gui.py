@@ -6,7 +6,6 @@ Saint-Saëns_ Danse Macabre
 
 from tkinter import *
 from Music_Get_Functions import musicGet_Functions
-import Music_Load
 
 class Application(Frame):
     """Application main window class."""
@@ -45,8 +44,8 @@ class Application(Frame):
         user has placed in the Entry widget according to the selected
         radio button."""
         album = self.text_in_Album.get()
-        DeleteAlbum = Music_Load.album_Add_Update_Delete(True)
-        result = DeleteAlbum.delete_album(album)
+        DeleteAlbum = musicGet_Functions(True)
+        result = DeleteAlbum.delete_album_by_name(album)
         print("Gui result ", result)
         self.labelResult.config(text=result)
         if result == None:

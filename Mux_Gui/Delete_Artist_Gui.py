@@ -6,7 +6,7 @@ Created on Feb 5, 2017
 
 from tkinter import *
 from Music_Get_Functions import musicGet_Functions
-import Music_Load
+
 
 class Application(Frame):
     """Application main window class."""
@@ -43,8 +43,9 @@ class Application(Frame):
         radio button."""
         artist = self.text_in_Artist.get()
         print("delete " + artist)
-        muxAddArtist = Music_Load.artist_Add_Update_Delete(True)
-        result = muxAddArtist.delete_artist(artist)
+        muxDeleteArtist = musicGet_Functions(True)
+#        muxAddArtist = Music_Load.artist_Add_Update_Delete(True)
+        result = muxDeleteArtist.delete_artist(artist)
         print(result)
         output = result
         self.labelResult.config(text=output)
