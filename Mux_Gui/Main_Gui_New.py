@@ -3,107 +3,81 @@ Created on Dec 22, 2019
 
 @author: rduvalwa2
 '''
-from tkinter import *
-from Music_Get_Functions import musicGet_Functions
-import os, sys , platform
-
-class Music_Main_GUI(Frame):
-    def getSongList(self):
-        root = Tk()       
-        root.geometry("1000x500+30+30")
-        menuItems = ["1 Get By ALbum","2 Get Song","3 Get Song By Artist","4 Get Song By Genre","5 Get Song By Type" ]
-        menuList = []
-        mux = musicGet_Functions(True)
-#        songsIn = mux.get_AllSongs()
-#        print(songsIn)
-        menuList = Listbox(root, yscrollcommand = scrollbar.set, width = 150, selectmode = EXTENDED )
-#        menuList.insert(END,"End" )
-#       for n in range(len(songList)):
-#            item = str(albumCoverList[n][1])
-#            item = songList[n]
-#            print("print item ", item)
-#            mylist.insert(END,albumCoverList[n][1])
-#            mylist.insert(END, item)
-#        menuList.insert(END,"Total Albums " + str(menuList.size()))
-        menuList.pack( side = LEFT, fill = BOTH )
-
-#        scrollbar.config( command = menuList.yview )
-        menuList.bind("<Double-Button-1>", self.OnDouble)
-        mainloop()
-
-    def play_song(self,songPath):
-        self.aPath = songPath
-        print(self.aPath)
-        self.songAndPath =  self.aPath
-        print("song path is ",self.songAndPath)
-#        self.comd = "afplay -t 30 "  + "\"" + self.songAndPath + "\""
-        self.comd = "afplay "  + "\"" + self.songAndPath + "\""
-        print("command is ",self.comd)
-        os.system(self.comd)
-
-    def OnDouble(self, event):
-        root = Toplevel
-        if platform.uname().node == 'OSXAir.home.home':
-            base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music/"
-            print(base)
-        else:
-            print("Not playable on this platform")
-            
-        widget = event.widget
-        selection=widget.curselection()
-        value = widget.get(selection[0])
-        print("print value ",value)
-        print ("print selection:", selection, ": '%s" % value)
-        songfile =  value
-        print("song is ", songfile)
-        self.play_song(value)
-
-if __name__ == "__main__":
-
-    app = Music_Main_GUI()
-    app.getSongList()
- #   app.QuitButton()
-
 '''
- class Main_Gui():
-    gui = ""
-    while gui != "Q":
-        print("Select MUSIC UI")
-        print("1  Get ALbum")
-        print("2  Get Song")
-        print("3  Get Artist")
-        print("4  Get By ID")
-        print("Q to Quit")
+Created on Jan 26, 2013
 
-        gui = input('Input UI: ')
-        print("inpt is ", gui)
-        if gui == "1":
-            print("Music_GUI_MAIN")
-            root = Tk()
-            app = Music_Main_GUI(master=root)
-            app.mainloop()  
-        if gui == "2":
-            print("Music_GUI_Get_Song")
-        #    Music_GUI_Get_Song      
-#        gui = input('Input UI: ')      
-        if gui == "3":
-            print("Music_GUI_Get_Artist")
-#    Music_GUI_Get_Artist
-#        gui = input('Input UI: ')
-        if gui == "4":
-            print("Music_GUI_GetBy_Id")
-#    Music_GUI_GetBy_Id
+@author: rduvalwa2
+'''
+from tkinter import *
+from tkinter.filedialog import LoadFileDialog, SaveFileDialog, Directory
+from tkinter.colorchooser import askcolor
+from tkinter.messagebox import (showinfo, showwarning, showerror, askquestion,
+                                askokcancel, askyesno, askyesnocancel, askretrycancel) 
+
+filepatterns = [("Python Sources", "*.py"),
+                ("Text Files", "*.txt"),
+                ("All Files", "*.*")]
+
+class Application(Frame):
+    def askdir(self):
+        d = Directory(self)
+        print(d.show())
+
+    def messages(self):
+        print("info", showinfo("Spam", "Egg Information"))
+        print("warning", showwarning("Spam", "Egg Warning"))
+        print("error", showerror("Spam", "Egg Alert"))
+        print("question", askquestion("Spam", "Question?"))
+        print("proceed", askokcancel("Spam", "Proceed?"))
+        print("yes/no", askyesno("Spam", "Got it?"))
+        print("yes/no/cancel", askyesnocancel("Spam", "Want it?"))
+        print("try again", askretrycancel("Spam", "Try again?"))
+
+    def file_open(self):
+        d = LoadFileDialog(self)
+        fname = d.go("nosuch.txt", "*.py")
+        if fname is None:
+            print("Canceled...")
         else:
-            print("Invalid Input")
-        print(gui + "is now")
-#    gui = input('Input UI: ')
-print("Exiting")
-exit
+            print("Open file", fname)
+    
+    def file_save(self):
+        d = SaveFileDialog(self)
+        fname = d.go("example", "*.py")
+        if fname is None:
+            print("Canceled...")
+        else:
+            print("Saving file", fname)
+    def color(self):
+        d = askcolor()
+        print(d)
+    
+    def createWidgets(self):
+        d_button = Button(self)
+        d_button.config(width=12, text="Directory Test", command=self.askdir)
+        d_button.pack(side=TOP)
+        m_button = Button(self)
+        m_button.config(width=12, text="Messages Test", command=self.messages)
+        m_button.pack()
+        c_button = Button(self)
+        c_button.config(width=12, text="Color Choice", command=self.color)
+        c_button.pack()
+        l_button = Button(self)
+        l_button.config(width=12, text="Open File", command=self.file_open)
+        l_button.pack()
+        s_button = Button(self)
+        s_button.config(width=12, text="Save File", command=self.file_save)
+        s_button.pack()
+        self.QUIT = Button(self)
+        self.QUIT.config(width=12, text="Quit", fg="red", command=self.quit)
+        self.QUIT.pack(side=TOP)
 
-if __name__  == '__main__':
+    def __init__(self, master=None):
+        Frame.__init__(self, master)
+        self.pack()
+        self.createWidgets()
 
-    app = Music_Main_GUI()
- #   app.getSongList()
- #   Main_Gui
- 
- '''
+root = Tk()
+app = Application(master=root)
+app.mainloop()
+

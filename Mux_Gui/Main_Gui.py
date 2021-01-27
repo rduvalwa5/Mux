@@ -33,6 +33,7 @@ class Music_GUI_Get_Album(Frame):
         self.handleb = Button(bottom_frame, text="Submit", command=self.handle)
         self.handleb.pack(side=LEFT)
                 
+
     def handle(self):
         """Handle a click of the button by processing any text the
         user has placed in the Entry widget according to the selected
@@ -81,6 +82,8 @@ class Main_Gui():
             app.mainloop()  
         if gui == "2":
             print("Music_GUI_Get_Song")
+            app = Music_GUI_Get_Album(master=root)
+            app.mainloop()  
         #    Music_GUI_Get_Song      
 #        gui = input('Input UI: ')      
         if gui == "3":
