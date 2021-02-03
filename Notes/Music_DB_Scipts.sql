@@ -577,3 +577,30 @@ select genre, count(genre) from album2songs group by genre order by count(genre)
 select * from genre; 
 
 
+select a.album, a.`cover_name`, a.`cover_idx`,b.`album_cover`, b.`cover_idx` from artist_albums a, `album_covers`b
+where a.`album` = b.`album` 
+and a.`cover_name` != b.`album_cover`;
+
+UPDATE artist_albums
+        INNER JOIN
+    album_covers ON artist_albums.`album` =  album_covers.`album`
+SET 
+    artist_albums.`cover_idx` = album_covers.`cover_idx`;
+    
+UPDATE artist_albums
+        INNER JOIN
+    album_covers ON artist_albums.`album` =  album_covers.`album`
+SET 
+    artist_albums.`cover_name` = album_covers.`album_cover`;
+    
+commit;    
+
+select * from artist_albums where artist like '%The Bells Of Dublin%';
+
+select * from artist_albums where album like 'The Bells Of Dublin';
+
+select * from album_covers where artist like '%ZZ%';
+
+select * from album_covers where album like 'The Bells Of Dublin'; 
+
+delete from album_covers where cover_idx = 1503;
