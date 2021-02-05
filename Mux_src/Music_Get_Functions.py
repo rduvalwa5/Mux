@@ -42,16 +42,10 @@ class musicGet_Functions:
 
     def __init__(self, isNotTest):
         print("*************** Node Name is ", platform.uname().node)
-        if platform.uname().node == 'C1246895-XPS':
-            serv = login_info_xps
-        elif platform.uname().node == 'MaxBookPro17OSX.hsd1.wa.comcast.net':
+        if platform.uname().node == 'MaxBookPro17OSX.hsd1.wa.comcast.net':
             serv = login_info_osx
         elif platform.uname().node == 'OSXAir.home.home':
             serv = login_info_osxAir
-        elif platform.uname().node == 'C1246895-WIN64-Air':
-            serv = login_info_WIN64_Air
-        elif platform.uname().node == 'Randalls-MBP.home':
-            serv = login_info_default
         else:
             print("Host is " , 'default')
             serv = login_info_default

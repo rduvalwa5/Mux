@@ -595,12 +595,36 @@ SET
     
 commit;    
 
-select * from artist_albums where artist like '%The Bells Of Dublin%';
+select * from artist_albums where artist like 'The Paul Butterfield Blues Band';
 
-select * from artist_albums where album like 'The Bells Of Dublin';
+select * from artist_albums where album like 'Mono';
 
 select * from album_covers where artist like '%ZZ%';
 
-select * from album_covers where album like 'The Bells Of Dublin'; 
+select * from album_covers where album like 'Mono'; 
 
-delete from album_covers where cover_idx = 1503;
+select * from album_covers where `cover_idx` = 1409; 
+
+delete from album_covers where cover_idx = 1546;
+
+-- compare album2songs to artist albums 
+
+select distinct a.`album`, a.artist  from album2songs a
+where a.`album`  not in (select b.`album` from artist_albums b);
+
+delete from album2songs where artist like '';
+
+delete from album2songs where album like  '';
+
+select * from album2songs where artist like 'Marianne Faithfull';
+
+select * from album2songs where album like 'The Swinging Sixties: 15 Classic Tracks (Re-Recorded Versions)';
+
+select * from artist_albums where artist like 'Marianne Faithfull';
+
+
+
+update album2songs set album = 'Supremes Gold [Disc 2]' where album like 'Gold [Disc 2]' and artist like 'The Supremes';
+
+select * from album2songs where `index` > 12140; -- Lester Young With The Oscar Peterson Trio/Lester Young With The Oscar Peterson Trio
+

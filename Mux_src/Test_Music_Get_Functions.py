@@ -21,8 +21,6 @@ class TestResults:
         artist_count = 576
         artist_albums_count = 1227
 
-
-    
 class TestGetFunctions(unittest.TestCase):
 
         def setUp(self):
