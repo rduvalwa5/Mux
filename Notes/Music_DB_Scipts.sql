@@ -620,11 +620,45 @@ select * from album2songs where artist like 'Marianne Faithfull';
 
 select * from album2songs where album like 'The Swinging Sixties: 15 Classic Tracks (Re-Recorded Versions)';
 
-select * from artist_albums where artist like 'Marianne Faithfull';
+select * from artist_albums where artist like 'Asko Ensemble, Riccardo Chailly, Royal Concertgebouw Orchestra & Various Artists';
 
 
 
 update album2songs set album = 'Supremes Gold [Disc 2]' where album like 'Gold [Disc 2]' and artist like 'The Supremes';
 
 select * from album2songs where `index` > 12140; -- Lester Young With The Oscar Peterson Trio/Lester Young With The Oscar Peterson Trio
+
+select * from artist where artist like  'Alvin Lee%'; -- Alison Krauss
+
+/*
+Alvin Lee & Ten Years Later
+Alvin Lee & Company
+Alvin Lee & Richard Newman
+Alvin Lee & Mylon LeFevre 
+Alvin Lee
+
+*/
+
+select album from music.artist_albums order by artist_albums.album;
+
+delete from artist where `index` = 455;
+
+delete from artist where artist like 'Unknown Artist';
+
+
+select distinct artist from album2songs where artist like 'Alvin Lee%';
+
+select * from album2songs where artist like 'Alvin Lee%';
+
+update album2songs set artist = 'The Moody Blues' where artist = 'Moody Blues';
+
+select * from artist where artist in ('Beck', 'Bob Marley & The Wailers', 'Buddy Tate', 'Dexter Gordon', 'Diego Garcia', 'Dolly Parton', 'Douglas Adams', 'Duke Ellington', 'Freddie Notes & the Rudies', 'Glasser', 'James Morrison', 'Jeremy Camp', 'Jerry Gonzalez & The Fort Apache Band', 'Jesse Thomas', 'Josh Rouse', 'Joshua Redman', 'Mannheim Steamroller', 'Matt Nathanson', 'Meat Loaf', 'Nine Black Alps', 'Noam Chomsky', 'Norah Jones', 'Philip Selway', 'S. Carey', 'Say Hi', 'The Coats', "Tim O'Brien", 'Unknown Artist', 'Vienna Teng', 'Wayne Shorter', 'Wayne Shorter Quartet', 'We Are Augustines', 'ZZ_ZTest')
+
+delete from artist where artist in ('Beck', 'Bob Marley & The Wailers', 'Buddy Tate', 'Dexter Gordon', 'Diego Garcia', 'Dolly Parton', 'Douglas Adams', 'Duke Ellington', 'Freddie Notes & the Rudies', 'Glasser', 'James Morrison', 'Jeremy Camp', 'Jerry Gonzalez & The Fort Apache Band', 'Jesse Thomas', 'Josh Rouse', 'Joshua Redman', 'Mannheim Steamroller', 'Matt Nathanson', 'Meat Loaf', 'Nine Black Alps', 'Noam Chomsky', 'Norah Jones', 'Philip Selway', 'S. Carey', 'Say Hi', 'The Coats', "Tim O'Brien", 'Unknown Artist', 'Vienna Teng', 'Wayne Shorter', 'Wayne Shorter Quartet', 'We Are Augustines', 'ZZ_ZTest')
+
+
+-- ['.localized', 'Asko Ensemble, Riccardo Chailly, Royal Concertgebouw Orchestra & Various Artists', 'Automatically Add to Music.localized', 'Bachman', 'Beethoven', 'Branford Marsalis Trio', 'Dave Matthews & Tim Reynolds', 'Devin Duval, Vishal Nayak, Daniel Rio', 'Don Cherry & John Coltrane', 'Doug Sahm', 'Emmylou Harris & Rodney Crowell', 'Freddie Notes & The Rudies', 'Gerry & The Pacemakers', 'Gustav Holst', 'Herb Albert', 'Herb Alpert & The Tijuana Brass', 'Ivan Shekov', 'Janos Sebestyen', 'Johann Strauss', 'Judy Collins & Ari Hest', 'Lloyd Price', 'London Philharmonic Orchestra', 'Lulu', 'Max Reger', "Miguel Zeno'n", 'R.E.M_', 'Stan Getz', 'TestArtist', 'The Bad Plus', 'The Black Keys', 'The Brothers Johnson', 'The Fortunes', 'The Grass Roots', 'Tim OBrien', 'Wayne Fontana', 'Wilbert Harrison', 'Woody Guthrie', 'conductor Neil Warner']
+
+
+
 
