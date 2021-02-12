@@ -511,7 +511,53 @@ class musicGet_Functions:
             return "delete successfull "
         except Exception  as e:
             print("Exception is ", e)
-            
+
+    '''
+        Verify Table Syncs For Genre Type  ********************
+    '''
+    def get_sync_Album_ArtistGenre(self):
+        statement = "select aa.`album`, aa.`artist`, aa.genre,  a.artist, a.genre from artist a , artist_albums aa where a.artist = aa.`artist` and aa.artist not in ('Compilations')and  a.`genre` != aa.`genre`;"
+        print(statement)
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(statement)
+            result = cursor.fetchall()  
+            cursor.close()
+            self.dbConnectionClose()
+            return result  
+        except self.conn.Error as err:
+            print("Exception is ", err)
+            return str(err)                      
+
+    def get_sync_type(self):
+        statement = "select distinct aa.`album`, aa.type, ab.album ,ab.type, ab.artist from artist_albums aa , album2songs ab where aa.`album` = ab.`album`and  aa.`type` != ab.`type`;"
+        print(statement)
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(statement)
+            result = cursor.fetchall()  
+            cursor.close()
+            self.dbConnectionClose()
+            return result  
+        except self.conn.Error as err:
+            print("Exception is ", err)
+            return str(err)                      
+
+    def get_sync_genre_songsgenre(self):
+        statement = "select distinct aa.`album`, aa.genre, ab.album ,ab.genre, ab.artist from artist_albums aa , album2songs ab where aa.`album` = ab.`album` and  aa.`genre` != ab.`genre`;"
+        print(statement)
+        cursor = self.conn.cursor()
+        try:
+            cursor.execute(statement)
+            result = cursor.fetchall()  
+            cursor.close()
+            self.dbConnectionClose()
+            return result  
+        except self.conn.Error as err:
+            print("Exception is ", err)
+            return str(err)                
+
+
 
     '''
         Artist  ********************
