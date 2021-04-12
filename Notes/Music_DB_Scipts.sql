@@ -1027,3 +1027,12 @@ World	19
 */
 
 commit;
+
+
+select * from `artist_albums` where artist like '' order by album;
+
+select * from album2songs where song like '%Comfortably%';
+
+select * from album2songs where album like 'Masked & Anonymous' order by song;
+
+select * from album2songs where artist like 'Compilations'  order by album,song;
