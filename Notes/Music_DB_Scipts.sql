@@ -1036,3 +1036,26 @@ select * from album2songs where song like '%Comfortably%';
 select * from album2songs where album like 'Masked & Anonymous' order by song;
 
 select * from album2songs where artist like 'Compilations'  order by album,song;
+
+
+select * from album2songs where artist like '%Doug%';
+
+select * from album2songs where artist like '%ZZ Top%';
+
+select * from album2songs where album like "Doug Sahm Live Austin TX" order by genre, song;
+
+
+select * from `artist_albums` where artist like '%Doobie%' order by album;
+select * from album2songs where album like 'Esta Bueno (Deluxe Edition)' order by song;
+
+delete from album2songs where album like "Who Did That to You (Best Western Songs)" and artist = "Compilations";
+
+delete from artist_albums where `index` = 10012;
+
+
+
+select * from artist_albums where album like "Who Did That to You (Best Western Songs)";
+
+select * from album2songs where album like '%Who Did%' order by album;
+
+

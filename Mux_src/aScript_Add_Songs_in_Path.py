@@ -7,11 +7,11 @@ from Music_Get_Functions import musicGet_Functions
         
 if __name__ == "__main__" :       
     mux = musicGet_Functions(True)
-    myPath = "/Users/rduvalwa2/Music/Music/Media.localized/Bruce Springsteen/The River"    
-    album = "The River"
-    artist = "Bruce Springsteen"
+    myPath = "/Users/rduvalwa2/Music/Music/Media.localized/Compilations/Who Did That to You (Best Western Songs)"    
+    album = "Who Did That to You (Best Western Songs)"
+    artist = "Compilations"
     genre = "Rock"
-    inType = "CD"    
-    mux.add_songs_in_path(myPath, album, artist, genre, inType)
-#    mux.add_album(album, artist, genre, inType)
+    inType = "Download"    
+#    mux.add_songs_in_path(myPath, album, artist, genre, inType)
+    mux.add_album(album, artist, genre, inType)
 #    mux.add_artist(artist, genre)
