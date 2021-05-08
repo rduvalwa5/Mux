@@ -28,7 +28,7 @@ scrollbar.pack( side = RIGHT, fill=Y )
 mylist = Listbox(root, yscrollcommand = scrollbar.set, width = 100, selectmode = EXTENDED )
 
 for n in range(len(albumList)):
-    mylist.insert(END," " + str(albumList[n][0]) + "  " + albumList[n][1] + "  " + albumList[n][2] )
+    mylist.insert(END," " + str(albumList[n][0]) + " | " + albumList[n][1] + " | " + albumList[n][2] )
 mylist.insert(END,"Total Albums " + str(mylist.size()))
 mylist.pack( side = LEFT, fill = BOTH )
 scrollbar.config( command = mylist.yview )

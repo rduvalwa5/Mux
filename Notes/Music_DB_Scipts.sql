@@ -1058,4 +1058,7 @@ select * from artist_albums where album like "Who Did That to You (Best Western 
 
 select * from album2songs where album like '%Who Did%' order by album;
 
+select * from genre;
+
+select genre, count(genre) from album2songs group by genre order by genre;
 

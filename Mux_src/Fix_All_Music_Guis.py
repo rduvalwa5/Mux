@@ -2,6 +2,9 @@
 Created on Feb 12, 2017
 
 @author: rduvalwa2
+
+This code does not work correctly.
+
 '''
 
 from tkinter import *

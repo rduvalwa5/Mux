@@ -728,7 +728,7 @@ class musicGet_Functions:
 
     def get_all_albums(self):
         fields = "artist_albums.index, artist_albums.album, artist_albums.artist"
-        statement = "select " + fields + " from music.artist_albums order by artist_albums.album;"
+        statement = "select " + fields + " from music.artist_albums order by artist_albums.artist, artist_albums.album;"
         print(statement)
         cursor = self.conn.cursor()
         try:
@@ -780,9 +780,9 @@ class musicGet_Functions:
 #        albumSongs = []
         fields = "music.album2songs.song"
         if album == 'all':
-            statement = "select " + fields + " from music.album2songs order by `index`;"
+            statement = "select " + fields + " from music.album2songs order by album, song;"
         else:   
-            statement = "select " + fields + " from music.album2songs where album = '" + album + "' order by `index`;"
+            statement = "select " + fields + " from music.album2songs where album = '" + album + "' order by song;"
         
         print(statement)
         cursor = self.conn.cursor()
