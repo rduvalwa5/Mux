@@ -1062,3 +1062,11 @@ select * from genre;
 
 select genre, count(genre) from album2songs group by genre order by genre;
 
+select count(*) from Music.artist_albums;
+
+select * from album2songs where artist like '%Bluesbreakers & Eric%';
+
+delete from album2songs where artist like 'Bluesbreakers';
+
+
+select * from album2songs where album like 'A Space In Time';
