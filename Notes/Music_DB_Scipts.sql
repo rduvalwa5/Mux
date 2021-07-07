@@ -1064,9 +1064,23 @@ select genre, count(genre) from album2songs group by genre order by genre;
 
 select count(*) from Music.artist_albums;
 
-select * from album2songs where artist like '%Bluesbreakers & Eric%';
+select * from album2songs where artist like 'Stray Cats';
 
-delete from album2songs where artist like 'Bluesbreakers';
+delete from album2songs where artist like 'Stray Cats';
 
 
-select * from album2songs where album like 'A Space In Time';
+select * from album2songs where album like 'Stray Cats';
+
+select * from artist where artist like 'Miles Davis Sextet';
+
+select * from album2songs where artist like 'Miles Davis Sextet' order by album, song;
+
+select * from artist_albums where artist like 'Miles Davis';
+
+
+update artist set artist = 'Nat King Cole' where artist = 'Nat _King_ Cole';
+
+update `album2songs` set artist = 'Nat King Cole' where artist = 'Nat _King_ Cole';
+
+update artist_albums set artist = 'Nat King Cole' where artist = 'Nat _King_ Cole';
+
