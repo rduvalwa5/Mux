@@ -5,25 +5,24 @@ Created on Mar 16, 2017
 '''     
 
 import os, platform
-import MySQLdb   as connDb
+import pymysql
 
 
 class verify_artist:
     def __init__(self):       
-        print("*************** Node Name is ",platform.uname().node)
-        if platform.uname().node == 'C1246895-osx.home':
-#            self.conn = connDb.Connect(**login_info_osx)
-            self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
-
-        elif platform.uname().node == 'OSXAir.home.home':
-#            self.conn = connDb.Connect(**login_info_default)
-            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
-        elif platform.uname().node == 'C1246895-WIN64-Air':
-#            self.conn = connDb.Connect(**login_info_default)
-            self.conn  = connDb.connect(host='OSXAir.home',user='root',password='blu4jazz',db='Music')
+        print("*************** Node Name is ", platform.uname().node)
+        if platform.uname().node == 'OSXAir.local':
+            self.conn = pymysql.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
+        elif platform.uname().node == 'Macbook16.loca':
+            print("Host is " , 'Macbook16.loca')
+            self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music') 
         else:
-            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
-
+            print("Host is " , 'default')
+            self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music') 
+    
+            self.Node = os.uname().nodename
+            print(self.Node)
+ 
 
     def verify_artist_match(self):
             cursor = self.conn.cursor()
