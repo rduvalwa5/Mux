@@ -1,3 +1,21 @@
+INSERT INTO music_2.artist_albums (artist,album,genre,type,medium)
+SELECT distinct artist,album,genre,type,medium FROM music_2.album2songs;
+
+
+update music_2.artist_albums set medium = 'CD' where type = 'CD';
+update music_2.artist_albums set medium = 'Tape' where type = 'Tape';
+update music_2.album2songs set medium = 'Tape' where type = 'Tape';
+
+update music.artist_albums set medium = 'CD' where type = 'CD';
+
+update music_2.album2songs set medium = 'Tape' where type = 'Tape';
+update music.artist_albums set medium = 'Tape' where type = 'Tape';
+
+INSERT INTO music.artist_albums (artist,album,genre,type,medium)
+SELECT distinct artist,album,genre,type,medium FROM music.album2songs;
+
+commit;
+/*                           */
 select * from album2songs where album2songs.`artist` like '%REO%' order by album ,song;
 
 select * from artist where artist like '%REO%';
@@ -1075,7 +1093,7 @@ select * from artist where artist like 'Miles Davis Sextet';
 
 select * from album2songs where artist like 'Miles Davis Sextet' order by album, song;
 
-select * from artist_albums where artist like 'Miles Davis';
+select * from artist_albums where artist like 'Compilations';
 
 
 update artist set artist = 'Nat King Cole' where artist = 'Nat _King_ Cole';
@@ -1084,3 +1102,34 @@ update `album2songs` set artist = 'Nat King Cole' where artist = 'Nat _King_ Col
 
 update artist_albums set artist = 'Nat King Cole' where artist = 'Nat _King_ Cole';
 
+select  * from  artist_albums  where  artist like 'Alligator Stew%';
+
+select * from `album2songs`where  artist like 'Clarence%' order by album, song;
+
+select * from `album2songs`where  artist like 'ZZ Top%' order by album, song;
+
+select * from `album2songs`where  artist like 'Alligator Stew' order by album, song;
+
+/*  change down load to itunes */
+
+select * from `album2songs`where  song  like 'Lonely Days';
+
+select * from `album2songs` where  artist   like 'Bee Gees';
+
+select * from `album2songs`where  type  like 'Download' order by artist, album, song;
+
+update album2songs set type = 'Itunes' where album = 'Los Lobos_ Live at the Fillmore' and type = 'Download';
+
+update album2songs set type = 'Amazon' where album = 'The Best of Jan & Dean (Re-recorded Version)' and type = 'Download';
+
+update album2songs set type = 'CD' where album = 'Golden Heart' and type = 'Download';
+
+update album2songs set type = 'Vinyl' where album = 'Loggins And Messina' and type = 'Download';
+
+update album2songs set type = 'Itunes' where artist = 'Dropkick Murphys' and type = 'Download';
+
+update album2songs set type = 'Itunes' where artist = 'Asleep At the Wheel' and type = 'Download';
+
+select * from `album2songs`where  artist like 'Alvin Lee%' order by album, song;
+
+commit ;
