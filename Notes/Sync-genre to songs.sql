@@ -1,3 +1,6 @@
+/*  change Type and medium data values   Nov 9 2021*/ 
+
+
 select * from music_2.artist where genre = 'TexMex' order by artist;
 
  -- ['A Sleep At the Wheel','Calexico','Doug Sahm','Eldorado','Freddy Fender','Santana','Sir Douglas Quintet','Texas Tornados','The Mavericks']
