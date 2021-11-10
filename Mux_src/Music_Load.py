@@ -2,24 +2,26 @@ import os, platform
 # import MySQLdb
 import pymysql.cursors
 
-from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
+from Musicdb_info import *
 
 
 class musicLoad_Functions:
 
-    def __init__(self, test=False):
+    def __init__(self):
         print("*************** Node Name is ", platform.uname().node)
         self.hostname = platform.uname().node
-        if platform.uname().node == self.hostname:
+        if platform.uname().node == "Macbook16.local":
             self.conn = pymysql.connect(host= self.hostname, user='rduvalwa2', password='blu4jazz', db='Music')
             
-        elif platform.uname().node == 'OSXAir.hsd1.wa.comcast.net':
-            self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')
+        elif platform.uname().node == 'OSXAir.local':
+            self.conn = pymysql.connect(host='OOSXAir.local', user='rduvalwa2', password='blu4jazz', db='Music')
             
         else:
             print("Host is " , 'default')
-            self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduval', password='blu4jazz', db='Music')
-        self.notTestRun = test
+            self.conn = pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music')
+        
+        self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
+
         self.genreList = ['Alternative', 'BlueGrass', 'Blues', 'Classic', 'Country', 'Folk', 'Holiday', \
                             'Jazz', 'Latino', 'Pop', 'Regae', 'Rock', 'RockaBilly', 'Soul', 'Talk', \
                             'TestGenre', 'TexMex', 'Traditional', 'World']
@@ -123,7 +125,7 @@ class musicLoad_Functions:
             countStatement = "SELECT count(*) FROM music.artist;"        
             cursor.execute(countStatement)
             count = cursor.fetchone()
-#            print(count[0])
+            print(count[0])
             commit = "commit;"
             cursor.execute(commit)
             print("done")
@@ -164,7 +166,7 @@ class musicLoad_Functions:
             trunkate = "truncate  music.album2songs;"
             cursor.execute(trunkate)
             for song in allSongs:
-                insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(song[0]) + ",\"" + self.server + "\",\"" + self.base + "\",\"" + song[1] + "\",\"" + song[2] + "\",\"" + song[3] + "\",\"" + "rock" + "\",\"" + "download" + "\")"
+                insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.inType)  values(" + str(song[0]) + ",\"" + self.server + "\",\"" + self.base + "\",\"" + song[1] + "\",\"" + song[2] + "\",\"" + song[3] + "\",\"" + "rock" + "\",\"" + "download" + "\")"
                 print(insertStatement)
                 cursor.execute(insertStatement)
             countStatement = "SELECT count(*) FROM music.album2songs;"        
@@ -208,29 +210,20 @@ class musicLoad_Functions:
 
 class song_Add_Update_Delete():       
 
-    def __init__(self, test=False):
+    def __init__(self):
         print("*************** Node Name is ", platform.uname().node)
-        if platform.uname().node == 'C1246895-XPS':
-            self.conn = pymysql.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
-#            self.conn  = c.connect(login_info_xps)
-        elif platform.uname().node == 'C1246895-osx.home':
-            self.conn = pymysql.connect(host='OSXAir.home', user='rduvalwa2', password='blu4jazz', db='Music')
-#            self.conn  = MySQLdb.connect(login_info_osx)
-        elif platform.uname().node == 'OSXAir.home.home':
+        if platform.uname().node == 'OSXAir.home.home':
 #            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
             self.conn = pymysql.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
-        elif platform.uname().node == 'C1246895-WIN64-Air':
-        #    self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn = pymysql.connect(login_info_WIN64_Air)
-        elif platform.uname().node == 'Randalls-MBP.home':
-            print("Host is " , 'Randalls-MBP.home')
-            self.conn = pymysql.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')            
+        elif platform.uname().node == 'Macbook16.local':
+            print("Host is " , 'Macbook16.local')
+            self.conn = pymysql.connect(host='Macbook16.local', user='rduvalwa2', password='blu4jazz', db='Music')            
         else:
             print("Host is " , 'default')
-            self.conn = pymysql.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
-        self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
-        self.server = 'OSXAir.home' 
-        self.notTestRun = test 
+            self.conn = pymysql.connect(host='Macbook16.local', user='rduvalwa2', password='blu4jazz', db='Music')
+        self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
+        self.server =  platform.uname().node
+ 
         
     def get_max_index(self, table):
         self.table = '`Music`.' + table
@@ -294,13 +287,13 @@ class song_Add_Update_Delete():
             print("done")
         cursor.close()
 
-    def add_song(self, album, artist, genre, song, type, path='/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', server='OSXAir.home'):
+    def add_song(self, album, artist, genre, song, inType, path='/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', server='OSXAir.home'):
  
         cursor = self.conn.cursor()
         maxIndex = self.get_max_index("album2songs")
         index = maxIndex[0]
         newIndex = index + 1
-        insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(newIndex) + ",\"" + server + "\",\"" + path + "\",\"" + artist + "\",\"" + album + "\",\"" + song + "\",\"" + genre + "\",\"" + type + "\")"
+        insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.inType)  values(" + str(newIndex) + ",\"" + server + "\",\"" + path + "\",\"" + artist + "\",\"" + album + "\",\"" + song + "\",\"" + genre + "\",\"" + inType + "\")"
         print(insertStatement)
         if self.notTestRun:
             cursor.execute(insertStatement)
@@ -476,28 +469,21 @@ class song_Add_Update_Delete():
 
 
 class album_Add_Update_Delete:       
-    def __init__(self, test=False):
+    def __init__(self):
         print("*************** Node Name is ", platform.uname().node)
-        if platform.uname().node == 'C1246895-XPS':
-            self.conn = pymysql.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
-#            self.conn  = c.connect(login_info_xps)
-        elif platform.uname().node == 'C1246895-osx.home':
-            self.conn = pymysql.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
-#            self.conn  = pymysql.connect(login_info_osx)
-        elif platform.uname().node == 'OSXAir.home.home':
-            self.conn  = pymysql.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
-        elif platform.uname().node == 'C1246895-WIN64-Air':
-        #    self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn = pymysql.connect(login_info_WIN64_Air)
-        elif platform.uname().node == 'Randalls-MBP.home':
-            print("Host is " , 'Randalls-MBP.home')
-            self.conn = pymysql.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')            
+        self.hostname = platform.uname().node
+        if platform.uname().node == "Macbook16.local":
+            self.conn = pymysql.connect(host= self.hostname, user='rduvalwa2', password='blu4jazz', db='Music')
+            
+        elif platform.uname().node == 'OSXAir.local':
+            self.conn = pymysql.connect(host='OOSXAir.local', user='rduvalwa2', password='blu4jazz', db='Music')
+            
         else:
             print("Host is " , 'default')
-            self.conn = pymysql.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
-        self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
-        self.server = 'OSXAir.home' 
-        self.notTestRun = test 
+            self.conn = pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music')
+            
+        self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
+        self.server = platform.uname().node 
 
     def dbConnectionClose(self):
         self.conn.close()
@@ -607,29 +593,23 @@ class album_Add_Update_Delete:
 
 class artist_Add_Update_Delete:       
 
-    def __init__(self, test=False):
+    def __init__(self):
         print("*************** Node Name is ", platform.uname().node)
-        if platform.uname().node == 'C1246895-XPS':
-            self.conn = pymysql.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
-#            self.conn  = c.connect(login_info_xps)
-        elif platform.uname().node == 'C1246895-osx.home.home':
-            self.conn = pymysql.connect(host='OSXAir.home', user='rduvalwa2', password='blu4jazz', db='Music')
-#            self.conn  = pymysql.connect(login_info_osx)
-        elif platform.uname().node == 'OSXAir.home.home':
-#            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn = pymysql.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
-        elif platform.uname().node == 'C1246895-WIN64-Air':
-        #    self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn = pymysql.connect(login_info_WIN64_Air)
-        elif platform.uname().node == 'Randalls-MBP.home':
-            print("Host is " , 'Randalls-MBP.home')
-            self.conn = pymysql.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')            
+        self.hostname = platform.uname().node
+        if platform.uname().node == "Macbook16.local":
+            self.conn = pymysql.connect(host= self.hostname, user='rduvalwa2', password='blu4jazz', db='Music')
+            
+        elif platform.uname().node == 'OSXAir.local':
+            self.conn = pymysql.connect(host='OOSXAir.local', user='rduvalwa2', password='blu4jazz', db='Music')
+            
         else:
             print("Host is " , 'default')
-            self.conn = pymysql.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')
-        self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
-        self.server = 'OSXAir.home' 
-        self.notTestRun = test  
+            self.conn = pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music')
+            
+        self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
+        self.server = platform.uname().node 
+
+
 
     def dbConnectionClose(self):
         self.conn.close()
@@ -709,29 +689,22 @@ class artist_Add_Update_Delete:
 
 
 class verify_data_tables:
-
-        def __init__(self, test=True):
-            if platform.uname().node == 'C1246895-XPS':
-                self.conn = pymysql.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')
-#            self.conn  = c.connect(login_info_xps)
-            elif platform.uname().node == 'C1246895-osx.home':
-                self.conn = pymysql.connect(host='OSXAir.home', user='rduvalwa2', password='blu4jazz', db='Music')
-#            self.conn  = pymysql.connect(login_info_osx)
-            elif platform.uname().node == 'OSXAir.home.home':
-#            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
-                self.conn = pymysql.connect(host=login_info_osxAir['host'], user=login_info_osxAir['user'], password=login_info_osxAir['password'], db=login_info_osxAir['db'])
-            elif platform.uname().node == 'C1246895-WIN64-Air':
-        #    self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
-                self.conn = pymysql.connect(login_info_WIN64_Air)
-            elif platform.uname().node == 'Randalls-MBP.home':
-                print("Host is " , 'Randalls-MBP.home')
-                self.conn = pymysql.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')            
+    
+        def __init__(self):
+            print("*************** Node Name is ", platform.uname().node)
+            self.hostname = platform.uname().node
+            if platform.uname().node == "Macbook16.local":
+                self.conn = pymysql.connect(host= self.hostname, user='rduvalwa2', password='blu4jazz', db='Music')
+            
+            elif platform.uname().node == 'OSXAir.local':
+                self.conn = pymysql.connect(host='OOSXAir.local', user='rduvalwa2', password='blu4jazz', db='Music')
             else:
                 print("Host is " , 'default')
-                self.conn = pymysql.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')
-            self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
-            self.server = 'OSXAir.home' 
-            self.notTestRun = test  
+                self.conn = pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music')
+            
+            self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
+            self.server = platform.uname().node 
+
         
         def check_artist_table(self):
             cursor = self.conn.cursor()

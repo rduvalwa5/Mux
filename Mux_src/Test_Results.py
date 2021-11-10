@@ -3,12 +3,12 @@
     '''
 
 cover_count = 1253
-songs_count = 12070
-artist_count = 565
-artist_albums_count = 1275
+songs_count = 12561
+artist_count = 760
+artist_albums_count = 1388
 folk_songs = 740
 folk_albums = 64
-get_max_index_artist = 608
+get_max_index_artist = 760
 get_max_index_albums = 10013
 get_max_index_songs = 100184
 
@@ -25,10 +25,10 @@ get_artist_albums_songs = (('01 One of These Days.m4p',), ('02 Here They Come.m4
 get_artist_songs =(('08 Johnny B. Goode.mp3', 'The Best of Chuck Berry'), ('02 Roll Over Beethoven.mp3', 'The Best of Chuck Berry'), ('10 Sweet Little Sixteen.mp3', 'The Best of Chuck Berry'), ('09 Brown Eyed Handsome Man.mp3', 'The Best of Chuck Berry'), ('07 Maybelline.mp3', 'The Best of Chuck Berry'), ('03 Rock And Roll Music.mp3', 'The Best of Chuck Berry'), ('05 No Particular Place To Go.mp3', 'The Best of Chuck Berry'), ('06 My Ding A Ling.mp3', 'The Best of Chuck Berry'), ('01 School Days.mp3', 'The Best of Chuck Berry'), ("04 Reelin' and Rockin'.mp3", 'The Best of Chuck Berry'), ('2-16 You Never Can Tell.m4a', 'The Anthology'))
 
 
-genresList = (('Rock',1),('Alternative',2),('Blue Grass',3),('Blues',4),('Classical',5),('Country',6),('Folk',7),('Holiday',8),('Jazz',9),('Latino',10),('Pop',11),('Reggae',12),('RockaBilly',13),('Soul',14),('Talk',15),('TestGenre',16),('TexMex',17),('Traditional',18),('World',19),('Easy Listening',21),('R&B',23),('French Pop',24),('Soundtrack',25),('New Age',26))
+genresList = (('Rock',1),('Alternative',2),('Blue Grass',3),('Blues',4),('Classical',5),('Country',6),('Folk',7),('Holiday',8),('Jazz',9),('Latino',10),('Pop',11),('Reggae',12),('RockaBilly',32),('Soul',14),('Talk',15),('TestGenre',16),('TexMex',17),('Traditional',18),('World',19),('Easy Listening',21),('R&B',23),('French Pop',24),('Soundtrack',25),('New Age',26))
 
-genreList = [('Alternative',338),('Audio Book',81),('Audiobooks',2),('Blue Grass',192),('Blues',1147),('Classical',119),('Country',1101),('Folk',740),('French Pop',78),('Jazz',827),('New Age',46),('Pop',794),('R&B',577),('Reggae',24),('Rock',5684),('RockaBilly',32),('Soundtrack',89),('Talk',1),('Test Genre song',1),('TestGenre',3),('TexMex',194)]
+genreList = [('Blue Grass',192),('Blues',1137),('Classical',183),('Country',1046),('Folk',687),('French Pop',78),('Jazz',942),('Pop',1296),('R&B/Soul',587),('Reggae',25),('Rock',6035),('RockaBilly',32),('Soundtrack',0),('Talk',1),('TexMex',237)]
 
-typeList = [('CD', 6256), ('Download', 3695), ('Tape',101), ('TestType', 3), ('Vinyl', 2004)]
+typeList = [('CD', 7507), ('Itunes', 2348), ('Tape',99), ('Amazon', 319), ('Vinyl', 2285)]
 
 

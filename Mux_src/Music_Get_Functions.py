@@ -42,21 +42,35 @@ class musicGet_Functions:
 
     def __init__(self, isNotTest):
         print("*************** Node Name is ", platform.uname().node)
-        if platform.uname().node == 'MaxBookPro17OSX.hsd1.wa.comcast.net':
-            serv = login_info_osx
-        elif platform.uname().node == 'OSXAir.home.home':
-            serv = login_info_osxAir
+        if platform.uname().node == 'Macbook16.local':
+            self.host = login_info_Macbook16.get('host')
+            self.user = login_info_Macbook16['user']
+            self.password =  login_info_Macbook16['password']
+            self.db = login_info_Macbook16['db']
+            
+#login_info_default = {'host':'localhost','user': 'rduvalwa2','password': 'blu4jazz','db': 'Music_2'}            
+            
+        elif platform.uname().node == 'OSXAir.local':
+            self.host = login_info_osxAir.get('host')
+            self.user = login_info_osxAir['user']
+            self.password =  login_info_osxAir['password']
+            self.db = login_info_osxAir['db']
+  
         else:
             print("Host is " , 'default')
-            serv = login_info_default
-
-        host = serv['host']
-        user = serv['user']
-        password = serv['password']
-        db = serv['db']
+            self.host = login_info_default['host']
+            self.user = login_info_default['user']
+            self.password =  login_info_default['password']
+            self.db = login_info_default['db']
+  
+#        host = login_info_osxAir('host')
+#       print(host)
+#        user = serv['user']
+#        password = serv['password']
+#       db = serv['db']
 #        self.conn = MySQLdb.connect(host=host, user=user, password=password, db=db)
 #        pymysql.connect
-        self.conn = pymysql.connect(host=host, user=user, password=password, db=db)
+        self.conn = pymysql.connect(host=self.host,user=self.user,password=self.password,db=self.db)
         self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
         self.server = 'OSXAir.home.home' 
         self.notTestRun = isNotTest
@@ -401,7 +415,7 @@ class musicGet_Functions:
                 print("Exception is ", err)
                 return str(err)      
 
-    def add_songs_in_path(self, path, album, artist, genre, inType):
+    def add_songs_in_path(self, path, album, artist, genre, inType, Medium):
         '''
         mux = musicGet_Functions()
         myPath = "/Users/rduvalwa2/music/iTunes/iTunes Music/Music/Seals & Crofts/Seals & Crofts Greatist Hits"
@@ -409,7 +423,7 @@ class musicGet_Functions:
         artist = "Seals & Crofts"
         genre = "Rock"
         inType = "CD"    
-        mux.add_songs_in_path(myPath, album, artist, genre, inType)   
+        mux.add_songs_in_path(myPath, album, artist, genre, inType, Medium)   
         ''' 
         print(path) 
         print(os.path.isdir(path))     
@@ -432,7 +446,7 @@ class musicGet_Functions:
 
             for song in songs:
 #                print(song)
-                insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(song[0]) + ",\"" + self.server + "\",\"" + self.base + "\",\"" + artist + "\",\"" + album + "\",\"" + song[1] + "\",\"" + genre + "\",\"" + inType + "\")"
+                insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type, album2songs.medium)  values(" + str(song[0]) + ",\"" + self.server + "\",\"" + self.base + "\",\"" + artist + "\",\"" + album + "\",\"" + song[1] + "\",\"" + genre + "\",\"" + inType + "\",\"" + Medium +"\")"
                 print(insertStatement)
                 cursor.execute(insertStatement)
         commit = "commit;"
@@ -814,7 +828,7 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err) 
 
-    def add_album(self, album, artist, genre='Rock' , tipe='Download'):
+    def add_album(self, album, artist, genre='Rock' , tipe='Itunes', medium='Download'):
         '''
         This code recurses thru the "base" path and captures the artist, album and song
         '''
@@ -825,7 +839,7 @@ class musicGet_Functions:
         print(str(index))
         newIndex = index + 1
         print(str(newIndex))
-        insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.genre, artist_albums.type)  values(" + str(newIndex) + ",\"" + artist + "\",\"" + album + "\",\"" + genre + "\",\"" + tipe + "\")"
+        insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.genre, artist_albums.type, artist_albums.medium)  values(" + str(newIndex) + ",\"" + artist + "\",\"" + album + "\",\"" + genre + "\",\"" + tipe + "\",\"" + medium +"\")"
         print(insertStatement)
         try:
             cursor.execute(insertStatement)
