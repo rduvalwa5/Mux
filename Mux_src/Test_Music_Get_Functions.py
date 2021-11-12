@@ -211,7 +211,6 @@ class TestGetFunctions(unittest.TestCase):
         def test_get_artistAlbums_from_Albums(self):
             #   mux = musicGet_Functions(True)
             expected = Test_Results.get_artist_albums
- #           ((664, 'Ten Years After', 'A Space In Time', 'Blues', 'Download'), (665, 'Ten Years After', 'Recorded Live', 'Blues', 'Download'), (666, 'Ten Years After', 'Undead (Remastered) [Live]', 'Rock', 'Download'),(1064, 'Ten Years After', 'Stonedhenge (Re-Presents)', 'Rock', 'Download'))
             result = self.mux.get_artistAlbums_fromAlbums('Ten Years After')
             print("artistAlbums 726 ", result)
             self.assertEqual(expected, result)
@@ -248,7 +247,7 @@ class TestGetFunctions(unittest.TestCase):
             print("Add Result.........", add_result)
             self.album_index = add_result[0][0]
             print("add album index: ", self.album_index)
-            expected = ((self.album_index, 'Crud_Artist', 'Crud_Album', 'Crud_Genre', 'Crud_Type', None, None),)
+            expected = ((1420, 'Crud_Artist', 'Crud_Album', 'Crud_Genre', 'Crud_Type', None, None, 'Download'),)
             print("add resutl is ", add_result)
             self.assertEqual(expected, add_result, "album crud test add failure") 
             

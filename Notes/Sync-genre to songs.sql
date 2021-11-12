@@ -164,3 +164,38 @@ select * FROM music.album2songs where type like 'Tape';
 
 select * FROM music.album2songs where medium is NULL;
 
+-----------------------
+select count(*) from music.album2songs where music.album2songs.type = 'Vinyl';
+
+select * from music.album2songs where music.album2songs.type = 'Itunes';
+
+select * from music.album2songs where music.album2songs.type = 'CD';
+
+select genre, count(genre) from music.album2songs group by genre order by genre;
+
+select distinct type from music.album2songs order by type;
+
+INSERT INTO music_2.type (type)
+SELECT distinct type FROM music.album2songs order by type;
+
+INSERT INTO music_2.medium (medium)
+SELECT distinct medium FROM music.album2songs order by medium;
+
+select distinct medium FROM music_2.album2songs order by medium;
+
+update music_2.album2songs set medium = 'Download' where medium = 'Downloasd';
+
+select * from music.album2songs where genre = 'Talk';
+
+commit;
+
+select * FROM music.album2songs where type like 'Tape';
+
+select * FROM music.album2songs where medium is NULL;
+
+select * FROM music.album2songs where artist like '%Foy%';
+
+select * FROM music.album2songs where type like 'itunes';
+
+select * from music.album2songs where album like 'Easy Rider (Soundtrack from the Motion Picture) [Deluxe Edition]';
+
