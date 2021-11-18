@@ -199,3 +199,50 @@ select * FROM music.album2songs where type like 'itunes';
 
 select * from music.album2songs where album like 'Easy Rider (Soundtrack from the Motion Picture) [Deluxe Edition]';
 
+--------------------------------------------
+Album cover
+
+select count(*) from music.artist_albums where cover_name is null;  -- 1054
+
+select count(*) from music.artist_albums where cover_name is not null; -- 335
+
+select * from music.artist_albums where cover_name is null;
+
+select * from music.artist_albums where album like '%Christmas%';
+
+select * from music.artist_albums where artist like '%Blondie%';
+
+select * from music.album2songs where artist like '%Lost%Dogs%';
+
+select * from music.artist_albums where `index` = 1420;
+
+select * from music.album_covers where album_cover like '%Rocks%';
+
+select * from music.album_covers where album_cover like '%Blondie%';
+
+
+select * from music.album_covers where cover_idx = 1427;
+
+delete from music.album_covers where cover_idx = 1426;
+
+delete from music.artist_albums where `index` = 1426;
+
+select * from music.artist_albums aa, music.album_covers ac
+where aa.album in (select ac.album from album_covers);
+
+select * from music.artist_albums where album like '%Hollywood Bowl%';
+
+select * from album2songs where album like '%Hollywood Bowl%';
+
+select * from album2songs where artist like '%Beatles%' order by album;
+
+select cover_idx, album_cover from music.album_covers where album_cover like '%Chicago%';
+
+select * from music.album_covers where album_cover like '%Aladdin%Sane%';
+
+
+select * from music.artist_albums where artist like '%Chicago%';
+
+select * from music.artist_albums where album like '%Joan Baez (The Classic Debut Album..Plus!)%';
+
+select * from music.artist_albums where cover_name is null;
