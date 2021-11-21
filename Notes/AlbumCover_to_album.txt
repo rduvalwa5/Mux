@@ -1,7 +1,7 @@
+
 select count(*) from music.artist_albums where cover_name is null;  -- 1054. 868 624 572 475 408 264
 
 select count(*) from music.artist_albums where cover_name is not null; -- 335 448 689 740 844 911 1053
-
 
 
 select * from music.artist_albums where cover_name is null;
@@ -46,3 +46,12 @@ select * from music.artist_albums where artist like '%Chicago%';
 select * from music.artist_albums where album like '%Joan Baez (The Classic Debut Album..Plus!)%';
 
 select * from music.artist_albums where cover_name is null;
+
+select * from music.artist_albums where cover_name is null;
+
+select * from artist_albums where artist like '%The Troggs%';
+
+INSERT INTO `album_covers` (`cover_idx`, `album_cover`, `album`, `description`)
+VALUES
+	("1237",'This Is the Sonics.jpg', 'This Is the Sonics', 'none');
+Crooked Still
