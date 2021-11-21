@@ -1,6 +1,8 @@
-select count(*) from music.artist_albums where cover_name is null;  -- 1054. 868 624 572 475
+select count(*) from music.artist_albums where cover_name is null;  -- 1054. 868 624 572 475 408 264
 
-select count(*) from music.artist_albums where cover_name is not null; -- 335 448 689 740 844
+select count(*) from music.artist_albums where cover_name is not null; -- 335 448 689 740 844 911 1053
+
+
 
 select * from music.artist_albums where cover_name is null;
 
