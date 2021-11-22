@@ -1,14 +1,14 @@
 
-select count(*) from music.artist_albums where cover_name is null;  -- 1054. 868 624 572 475 408 264
+select count(*) from music.artist_albums where cover_name is null;  -- 1054. 868 624 572 475 408 264 182
 
-select count(*) from music.artist_albums where cover_name is not null; -- 335 448 689 740 844 911 1053
+select count(*) from music.artist_albums where cover_name is not null; -- 335 448 689 740 844 911 1053 1135
 
 
 select * from music.artist_albums where cover_name is null;
 
 select * from music.artist_albums where album like '%Time Signatures%';
 
-select * from music.artist_albums where artist like 'The Everly Brothers';
+select * from music.artist_albums where artist like 'R.E.M_';
 
 select * from music.album2songs where artist like '%Stooges%';
 
