@@ -1,3 +1,15 @@
+select count(*) from `album2songs` where type like 'Amazon' order by artist, album, song;  --319
+
+select count(*) from `album2songs` where type like 'Itunes' order by artist, album, song;  --2347
+
+select count(*) from `album2songs` where type like 'CD' order by artist, album, song;  --7636
+
+select count(*) from `album2songs` where type like 'Vinyl' order by artist, album, song;  --2285
+
+select count(*) from `album2songs` where type like 'Tape' order by artist, album, song;  --22
+
+-- -------------------------------------------------------------------------------------------------------------
+
 
 select count(*) from music.artist_albums where cover_name is null;  -- 1054. 868 624 572 475 408 264 182
 
