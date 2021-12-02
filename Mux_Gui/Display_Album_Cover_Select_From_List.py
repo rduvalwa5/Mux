@@ -52,13 +52,13 @@ class displaySelectCover():
 
     def OnDouble(self, event):
         root = Toplevel
-        HOST = platform.uname().node
-        if HOST == 'MaxBookPro17OSX.hsd1.wa.comcast.net':
-                base = '/Users/rduvalwa2/git/Mux/AlbumCovers/'                
-        elif HOST == 'osxair.hsd1.wa.comcast.net':
-                base = '/Users/rduvalwa2/Code_Projects/eOxigen-workspace/Mux/AlbumCovers/'
+        HOST = platform.uname().node            
+        if HOST == 'osxair.local':
+                base = '/Users/rduvalwa2/Documents/GitHub/Mux/AlbumCovers/'
+        elif HOST == 'Macbook16.local':
+                base = '/Users/rduvalwa2/Documents/GitHub/Mux/AlbumCovers/'
         else:
-            base = '/Users/rduvalwa2/Code_Projects/eOxigen-workspace/Mux/AlbumCovers/'
+            base = '/Users/rduvalwa2/Documents/GitHub/Mux/AlbumCovers/'
             
         widget = event.widget
         selection=widget.curselection()

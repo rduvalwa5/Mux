@@ -11,9 +11,31 @@ select count(*) from `album2songs` where type like 'Tape' order by artist, album
 -- -------------------------------------------------------------------------------------------------------------
 
 
+select count(*) from album_covers where artist is NULL;               -- 588 
+
+select count(*) from album_covers where artist is not NULL;          -- 695
+
+
+select distinct artist.artist, artist_albums.album, album_covers.album_cover, album_covers.cover_idx
+from artist, artist_albums, album_covers
+where artist.artist = artist_albums.artist
+and artist_albums.album = album_covers.album
+and artist.artist = album_covers.artist
+order by artist.artist;
+
+
 select count(*) from music.artist_albums where cover_name is null;  -- 1054. 868 624 572 475 408 264 182
 
 select count(*) from music.artist_albums where cover_name is not null; -- 335 448 689 740 844 911 1053 1135
+
+
+select * from album_covers;
+
+select * from album_covers where album like 'iTunes%';
+
+SELECT TRIM('.jpg') AS 'A Wagner Concert.jpg';
+
+SELECT TRIM('.jpg' FROM (select album_cover from album_covers where album like 'iTunes%')) AS Result;
 
 
 select * from music.artist_albums where cover_name is null;

@@ -19,6 +19,7 @@ class Mux_Parameters:
         elif platform.uname().node == 'Macbook16.loca':
             print("Host is " , 'Macbook16.loca')
             self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music') 
+#            self.cover_base = "/Users/rduvalwa2/Documents/GitHub/Mux/AlbumCovers"
         else:
             print("Host is " , 'default')
             self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music') 
