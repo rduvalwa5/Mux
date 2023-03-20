@@ -13,106 +13,19 @@ mysql -u root -b music -p
 mysql -u rduvalwa2 -b music -p
 
 '''
-from MusicFile import musicFile
+#from MusicFile import musicFile
 import unittest
-#import mysql.connector
-#import MySQLdb
-#from  Musicdb_info import login_info_osxAir
-#from Musicdb_info import login_info_default
-#from Musicdb_info import login_info_xps
-#from mysql.connector.errors import Error
 import pymysql
 
 class TestMusicDb(unittest.TestCase):
 
-    '''    
-    def test_music_Albums_Rows_XPS(self):
-        
-        # Test access remote database
-        
-        db = mysql.connector.Connect(**login_info_xps)
-        cursor = db.cursor()
-        statement = "select count(*) from Music.artist_albums;"
-        cursor.execute(statement)
-        row = cursor.fetchone()
-        print("Row is " , row[0])
-        expected = 904
-        self.assertTrue(row[0] == expected)
-        cursor.close()
-        db.close()
-        
-    def test_music_artist_Rows_XPS(self):
-        
-        # Test access remote database
-        
-        db = mysql.connector.Connect(**login_info_xps)
-        cursor = db.cursor()
-        statement = "select count(*) from Music.artist;"
-        cursor.execute(statement)
-        row = cursor.fetchone()
-        print("Row is " , row[0])
-        expected = 536
-        self.assertTrue(row[0] == expected)
-        cursor.close()
-        db.close()
-        
-    def test_music_song_Rows_XPS(self):
-        # Test access remote database
-        db = mysql.connector.Connect(**login_info_xps)
-        cursor = db.cursor()
-        statement = "select count(*) from Music.album2songs;"
-        cursor.execute(statement)
-        row = cursor.fetchone()
-        print("Row is " , row[0])
-        expected = 6596
-        self.assertTrue(row[0] == expected)
-        cursor.close()
-        db.close()
-
-
-    def testGetMaxArtist(self):
-            mux = musicFile()
-            table = 'Artist'
-            expected = 537
-#            mux.get_max_index(table)
-            result = mux.get_max_index(table)
-            print(result[0])
-            self.assertEqual(expected, result[0])
-               
-    def testGetMaxAlbums(self):
-            mux = musicFile()
-            table = 'artist_albums'
-            expected = 909
-#            mux.get_max_index(table)
-            result = mux.get_max_index(table)
-            print(result[0])
-            self.assertEqual(expected, result[0])
-    
-    def testGetMaxSongs(self):
-            mux = musicFile()
-            table = 'album2songs'
-            expected = 6624
-#            mux.get_max_index(table)
-            result = mux.get_max_index(table)
-            print(result[0])
-            self.assertEqual(expected, result[0])
-        
-    def testGetMaxAlbumSongs(self):
-            mux = musicFile()
-            table = 'artist_albums'
-            expected = 909
-#            mux.get_max_index(table)
-            result = mux.get_max_index(table)
-            print(result[0])
-            self.assertEqual(expected, result[0])           
-   '''       
-    def test_connection_Artist_Albums_os_rduvalwa2_music_Albums_Rows(self):
+      def test_connection_Artist_Albums_os_rduvalwa2_music_Albums_Rows(self):
  #       db = MySQLdb.connect(host='localhost', user='root', password='blu4jazz', db='Music')
 #        conn = pymysql.connect(**login_info_osx)
-        db =  pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')
+        db =  pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music')
         cursor = db.cursor()
         statement = "select count(*) from Music.artist_albums;"
-        expected = 1210
+        expected = 1311
         try:
             cursor.execute(statement)
             row = cursor.fetchone()
@@ -124,10 +37,10 @@ class TestMusicDb(unittest.TestCase):
                 print("Exception is ", err)
 #        db.close()
 
-    def test_connection_Artist_Table_As_Root_localhost(self):
+      def test_connection_Artist_Table_As_Root_localhost(self):
         db =  pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music')
         cursor = db.cursor()
-        expected = 567
+        expected = 760
 #        statement = "select uid from active_passwords where ap in ('password_db');"
         statement = "select count(*) from Music.Artist;"
         try:
@@ -140,53 +53,21 @@ class TestMusicDb(unittest.TestCase):
             print("Exception is ", err)
 #        db.close()
     
-    def test_select_song_type_MusicSongs_By_Criteria(self):
+      def test_select_song_type_MusicSongs_By_Criteria(self):
         db =  pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music')
         cursor = db.cursor()
-        expected = '08 Got Me Under Pressure.mp3' # 'Kansas City.mp3'
-        statement = 'select Music.album2songs.song from Music.album2songs where album2songs.type = \'tape\';'
+        expected = 'Maggie May.mp3' # 'Kansas City.mp3'
+        statement = 'select Music.album2songs.song from Music.album2songs where album2songs.medium = \'tape\' and artist like \'Rod Stewart\';'
         try:
             cursor.execute(statement)
             rows = cursor.fetchall()
-#            print("length ", len(rows))
-            for i in range(len(rows)):
-#                print(rows[i][0])
-                if rows[3][0] == expected:
-                    self.assertEqual(expected,rows[3][0], 'Not there')
-                if rows[3][0] != expected:
-                    self.assertEqual(expected,rows[3][0], 'Not there')
-                    
+            print("length ", len(rows))
+            print(rows[0])
+            self.assertTrue(rows[0][0] == expected)
         except db.Error as err:
             print("Exception is ", err)
 
         
-    '''
-        
-    def test_get_select_Albums(self):
-        fields = "count(*)"
-        constraints = " "
-        expected = 909
-        mux = musicFile()
-        result = mux.get_select_Album(fields, constraints)
-        self.assertEqual(expected, result[0])
-
-    def test_get_select_ArtistAlbums(self):
-        fields = "count(*)"
-        constraints = " "
-        expected = 909
-        mux = musicFile()
-        result = mux.get_select_ArtistAlbums(fields, constraints)
-        self.assertEqual(expected, result[0])
-
-    def test_get_select_Artist(self):
-        fields = "count(*)"
-        constraints = " "
-        expected = 537
-        mux = musicFile()
-        result = mux.get_select_Artist(fields, constraints)
-        print("result is ", result[0][0])
-        self.assertEqual(expected, result[0][0])
-    '''
         
 if __name__ == "__main__":
     unittest.main()

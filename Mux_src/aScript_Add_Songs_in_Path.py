@@ -7,12 +7,12 @@ from Music_Get_Functions import musicGet_Functions
         
 if __name__ == "__main__" :       
     mux = musicGet_Functions(True)
-    myPath = "/Users/rduvalwa2/Music/Music/Media.localized/Charlie Rich/Every Time You Touch Me (I Get High)"    
-    album = "Every Time You Touch Me (I Get High)"
-    artist = "Charlie Rich"
-    genre = "Country"
-    inType = "Vinyl"
-    Medium = 'Vinyl'    
+    myPath = "/Users/rduvalwa2/music/music/Media.localized/John Cafferty & The Beaver Brown Band/Tough All Over"    
+    album = "Tough All Over"
+    artist = "John Cafferty & The Beaver Brown Band"
+    genre = "Rock"
+    inType = "Itunes"
+    Medium = 'Download'    
     mux.add_songs_in_path(myPath, album, artist, genre, inType, Medium)
 #    mux.add_album(album, artist, genre, inType, Medium)
 #    mux.add_artist(artist, genre)
