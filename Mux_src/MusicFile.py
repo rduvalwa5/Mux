@@ -6,11 +6,11 @@ It attempts to find the music files on a server and put them into a data base.
 '''
 import pymysql
 import os, sys
-#import mysql.connector
+# import mysql.connector
 from  Musicdb_info import login_info_osxAir
 from Musicdb_info import login_info_default
 from Musicdb_info import login_info_osx 
-#from mysql.connector.errors import Error
+# from mysql.connector.errors import Error
 
 
 class connection_db:
@@ -19,7 +19,7 @@ class connection_db:
         pass
 
 
-class musicFile:   
+class musicFile: 
     
     def __init__(self):
         Node = os.uname().nodename
@@ -58,7 +58,7 @@ class musicFile:
         self.tableIndex = table + "." + 'Index'
         max_index_statement = "select max(" + self.tableIndex + ") from " + self.table + ";"
         if os.uname().nodename == 'C1246895-osx.home':
-            conn =pymysql.connect(**login_info_osx)
+            conn = pymysql.connect(**login_info_osx)
         else:
             conn = pymysql.connect(**login_info_default)
         cursor = conn.cursor()
@@ -143,7 +143,7 @@ class musicFile:
         return artist
     
     def get_albums(self):
-        base = self.base #"/Users/rduvalwa2/Music/iTunes/iTunes Media/Music"
+        base = self.base  # "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music"
         albums = []
         index = 0
         artists = self.get_music_artist()
@@ -194,13 +194,13 @@ class musicFile:
         albums = []
         songs = []
         newIndex = 0
-        print("path is ",base + "/" + artist)
+        print("path is ", base + "/" + artist)
         if(os.path.isdir(base + "/" + artist)):
             artist_albums = os.listdir(base + "/" + artist)
             print("artist_albums: ", artist_albums)
             if album == 'all':
                 albums = os.listdir(base + "/" + artist)
-                print("Albums are ",albums)
+                print("Albums are ", albums)
                 for al in artist_albums:
                    print("Album is ", al)
                    if al != '.DS_Store':
@@ -211,7 +211,7 @@ class musicFile:
 #                        for song in album_songs:
 #                                songs.append((newIndex, artist, al, song))
             if album != 'all':
-                songs =  os.listdir(base + "/" + artist + "/" + album)
+                songs = os.listdir(base + "/" + artist + "/" + album)
  #               for song in songs:
  #                   print(song)
  #                   if al == album:
@@ -296,7 +296,7 @@ class musicFile:
         print("delete songs: ", delete_songs)  
         index = 0
         if albumin == 'all':
-            if songin == 'all':   
+            if songin == 'all': 
                 for song in delete_songs:
                         selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
                         print(selectStatement)
@@ -308,7 +308,7 @@ class musicFile:
                         print(deleteStatement)
                         cursor.execute(deleteStatement)
             else:
-                for song in delete_songs:  
+                for song in delete_songs: 
                     if song[0] == 'songin':
                         selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
                         print(selectStatement)
@@ -320,7 +320,7 @@ class musicFile:
                         cursor.execute(deleteStatement)        
         else:
             if albumin != 'all': 
-                if songin == 'all':  
+                if songin == 'all': 
                     for song in delete_songs:
                         if albumin == song[2]: 
                             selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
@@ -333,7 +333,7 @@ class musicFile:
                             cursor.execute(deleteStatement)
             elif songin != 'all':
                     for song in delete_songs:
-                        if albumin == song[2]:                                
+                        if albumin == song[2]: 
                             if song[0] == 'song': 
                                 selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
                                 print(selectStatement)
@@ -645,14 +645,14 @@ if __name__ == '__main__':
 
         def test_songList(self):
             mux = musicFile()
-            mysongs = mux.get_songs('18 South','Soulful Southern Roots Music')
-            print("mysongs are ",mysongs)
+            mysongs = mux.get_songs('18 South', 'Soulful Southern Roots Music')
+            print("mysongs are ", mysongs)
             self.assertIn('03 Wanna Be Blue.mp3', mysongs, "'01 Late Night Ramble.mp3' song is missing")       
 
         def test_songListAll(self):
             mux = musicFile()
             mysongs = mux.get_songs('18 South')
-            print("mysongs are ",mysongs)
+            print("mysongs are ", mysongs)
             self.assertIn('03 Wanna Be Blue.mp3', mysongs[0], "'03 Wanna Be Blue.mp3' song is missing")       
 
     unittest.main()    

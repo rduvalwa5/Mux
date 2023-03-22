@@ -4,8 +4,6 @@ Created on Feb 12, 2017
 @author: rduvalwa2
 '''
 
-
-
 from tkinter import *
 from Music_Get_Functions import musicGet_Functions
 
@@ -288,5 +286,4 @@ class Application(Frame):
 root = Tk()
 app = Application(master=root)
 app.mainloop()
-
     

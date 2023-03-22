@@ -6,7 +6,7 @@ Created on Mar 16, 2017
 
 from Music_Get_Functions import musicGet_Functions
         
-if __name__ == "__main__" :    
+if __name__ == "__main__": 
     mux = musicGet_Functions()
     print(mux.get_count('artist_albums', ''))
 #    albumList = [("Anthology Kenny Rogers & The First Edition","Kenny Rogers & The First Edition","Rock","Download")]

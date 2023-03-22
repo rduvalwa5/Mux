@@ -13,37 +13,32 @@ mux = musicGet_Functions(False)
 table = 'Music.album2songs'
 criteria = ""
 totalSongs = mux.get_count(table, criteria)
-print("Total songs " ,str(totalSongs))
-      
+print("Total songs " , str(totalSongs))
 
 tipeCountList = []
 
-
 typeCounts = mux.get_all_type_count()
-
 
 print(typeCounts)
 if typeCounts != []:
     for tipe in typeCounts:
         print(tipe)
-        tipeCountList.append((tipe[0],tipe[1]))
+        tipeCountList.append((tipe[0], tipe[1]))
 else:
     tipeCountList.append("None found!")
 
 print(tipeCountList)
 
 scrollbar = Scrollbar(root)
-scrollbar.pack( side = RIGHT, fill=Y )
+scrollbar.pack(side=RIGHT, fill=Y)
 
-mylist = Listbox(root, yscrollcommand = scrollbar.set, width = 100, selectmode = EXTENDED, bg = 'black' , fg = 'yellow')
+mylist = Listbox(root, yscrollcommand=scrollbar.set, width=100, selectmode=EXTENDED, bg='black' , fg='yellow')
 
 for n in range(len(tipeCountList)):
-    mylist.insert(END,str(n + 1) + "  " + tipeCountList[n][0] + "  " + str(tipeCountList[n][1]))
+    mylist.insert(END, str(n + 1) + "  " + tipeCountList[n][0] + "  " + str(tipeCountList[n][1]))
 
-
-mylist.insert(END,"Total Songs " + str(totalSongs))
-mylist.pack( side = LEFT, fill = BOTH )
-scrollbar.config( command = mylist.yview )
-
+mylist.insert(END, "Total Songs " + str(totalSongs))
+mylist.pack(side=LEFT, fill=BOTH)
+scrollbar.config(command=mylist.yview)
 
 mainloop()

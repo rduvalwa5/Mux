@@ -8,7 +8,7 @@ import pymysql.cursors
 from Musicdb_info import *
 from Music_Get_Functions import musicGet_Functions
         
-if __name__ == "__main__" :
+if __name__ == "__main__":
         print("*************** Node Name is ", platform.uname().node)
         if platform.uname().node == 'C1246895-XPS':
             serv = login_info_xps
@@ -57,7 +57,7 @@ if __name__ == "__main__" :
             ge = str(gen)
             g = ge.strip('(),')
             print(g)
-            updateStatement = "update music.album2songs set genre = " + g + " where album like '"+thisAl+"';"
+            updateStatement = "update music.album2songs set genre = " + g + " where album like '" + thisAl + "';"
             print(updateStatement)
 
             try:
@@ -67,6 +67,5 @@ if __name__ == "__main__" :
                 print("Exception is ", err)
         cursor.execute("commit;")
         cursor.close()
-
     
     

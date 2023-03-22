@@ -7,8 +7,10 @@ Saint-Saëns_ Danse Macabre
 from tkinter import *
 from Music_Get_Functions import musicGet_Functions
 
+
 class Application(Frame):
     """Application main window class."""
+
     def __init__(self, master=None):
         """Main frame initialization (mostly delegated)"""
         Frame.__init__(self, master)
@@ -24,8 +26,8 @@ class Application(Frame):
         Genre_Frame = Frame(self)
         
         self.labelInputAlbum = Label(Album_Frame, text="Delete Album Name")        
-        self.labelResult = Label(Album_Frame, text = "Result Album")
-        self.text_in_Album  = Entry(Album_Frame)
+        self.labelResult = Label(Album_Frame, text="Result Album")
+        self.text_in_Album = Entry(Album_Frame)
         self.labelInputAlbum.pack()
         self.text_in_Album.pack()
         self.labelResult.pack()     
@@ -33,7 +35,7 @@ class Application(Frame):
         
         bottom_frame = Frame(self)
         bottom_frame.pack(side=TOP)
-#how to disable a button
+# how to disable a button
         self.QUIT = Button(bottom_frame, text="Quit", command=self.quit, state='active')
         self.QUIT.pack(side=LEFT)
         self.handleb = Button(bottom_frame, text="Submit", command=self.handle)
@@ -54,10 +56,11 @@ class Application(Frame):
         else:
             print(result)
             self.labelResult.config(text=result)
-            
         
-        self.QUIT.config(state = 'active')
+        self.QUIT.config(state='active')
         self.QUIT.pack(side=TOP)
+
+
 root = Tk()
 app = Application(master=root)
 app.mainloop()  

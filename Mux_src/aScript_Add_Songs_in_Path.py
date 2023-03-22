@@ -5,7 +5,7 @@ Created on Mar 16, 2017
 
 from Music_Get_Functions import musicGet_Functions
         
-if __name__ == "__main__" :       
+if __name__ == "__main__": 
     mux = musicGet_Functions(True)
     myPath = "/Users/rduvalwa2/music/music/Media.localized/John Cafferty & The Beaver Brown Band/Tough All Over"    
     album = "Tough All Over"

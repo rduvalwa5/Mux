@@ -8,16 +8,16 @@ from PIL import ImageTk, Image
 
 class show_image():
 
-    def create_Image(self,imagefile):
+    def create_Image(self, imagefile):
             root = Tk()
             canvas = Canvas(root, width=400, height=500)
             img = Image.open(imagefile)
             canvas.image = ImageTk.PhotoImage(img)
-            canvas.create_image(0, 0, image= canvas.image, anchor='nw')
+            canvas.create_image(0, 0, image=canvas.image, anchor='nw')
             canvas.pack()
             root.mainloop()            
             
-    def create_array_images(self,con= ""):
+    def create_array_images(self, con=""):
             constraint = con
             print("Constraint is ", constraint)
             if platform.uname().node == 'OsxAir.hsd1.wa.comcast.net':
@@ -25,7 +25,7 @@ class show_image():
             elif platform.uname().node == 'MaxBookPro17OSX.hsd1.wa.comcast.net':
                 base = "/Users/rduvalwa2/git/Mux/AlbumCovers/"
             else:
-                base =  '/Users/rduvalwa2/Code_Projects/eOxigen-workspace/Mux/AlbumCovers/'
+                base = '/Users/rduvalwa2/Code_Projects/eOxigen-workspace/Mux/AlbumCovers/'
             dirlist = os.listdir(base)
             images = []
             for f in dirlist:
@@ -39,7 +39,7 @@ class show_image():
             return images
 
 
-if __name__  == '__main__':
+if __name__ == '__main__':
     '''
     https://www.tutorialspoint.com/python/python_command_line_arguments.htm
     http://anh.cs.luc.edu/python/hands-on/3.1/handsonHtml/io.html

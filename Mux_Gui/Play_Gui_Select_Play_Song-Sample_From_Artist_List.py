@@ -14,11 +14,13 @@ http://effbot.org/imagingbook/pil-index.htm
 '''
 from tkinter import *
 from Music_Get_Functions import musicGet_Functions
-#import MySQLdb   as connDb
+# import MySQLdb   as connDb
 import os, sys , platform
 from Music_PlaySong import Play_Song
 
+
 class displaySongList():
+
     def getSongList(self):
         root = Tk()       
         root.geometry("1000x500+30+30")
@@ -29,36 +31,36 @@ class displaySongList():
         print(songsIn)
         if songsIn != []:
             for song in songsIn:
-                print("Song is ",song)
-                aSong = base +  song[1] + "/" + song[2] + "/" + song[3] 
+                print("Song is ", song)
+                aSong = base + song[1] + "/" + song[2] + "/" + song[3] 
                 songList.append(aSong)
         else:
             songList.append("None found!")
         scrollbar = Scrollbar(root)
-        scrollbar.pack( side = RIGHT, fill=Y )
+        scrollbar.pack(side=RIGHT, fill=Y)
 
-        mylist = Listbox(root, yscrollcommand = scrollbar.set, width = 150, selectmode = EXTENDED )
-        mylist.insert(END,"Total Songs " + str(len(songList)))
+        mylist = Listbox(root, yscrollcommand=scrollbar.set, width=150, selectmode=EXTENDED)
+        mylist.insert(END, "Total Songs " + str(len(songList)))
         for n in range(len(songList)):
 #            item = str(albumCoverList[n][1])
             item = songList[n]
             print("print item ", item)
 #            mylist.insert(END,albumCoverList[n][1])
             mylist.insert(END, item)
-        mylist.insert(END,"Total Albums " + str(mylist.size()))
-        mylist.pack( side = LEFT, fill = BOTH )
+        mylist.insert(END, "Total Albums " + str(mylist.size()))
+        mylist.pack(side=LEFT, fill=BOTH)
 
-        scrollbar.config( command = mylist.yview )
+        scrollbar.config(command=mylist.yview)
         mylist.bind("<Double-Button-1>", self.OnDouble)
         mainloop()
 
-    def play_song(self,songPath):
+    def play_song(self, songPath):
         self.aPath = songPath
         print(self.aPath)
-        self.songAndPath =  self.aPath
-        print("song path is ",self.songAndPath)
-        self.comd = "afplay -t 30 "  + "\"" + self.songAndPath + "\""
-        print("command is ",self.comd)
+        self.songAndPath = self.aPath
+        print("song path is ", self.songAndPath)
+        self.comd = "afplay -t 30 " + "\"" + self.songAndPath + "\""
+        print("command is ", self.comd)
         os.system(self.comd)
 
     def OnDouble(self, event):
@@ -70,13 +72,14 @@ class displaySongList():
             print("Not playable on this platform")
             
         widget = event.widget
-        selection=widget.curselection()
+        selection = widget.curselection()
         value = widget.get(selection[0])
-        print("print value ",value)
+        print("print value ", value)
         print ("print selection:", selection, ": '%s" % value)
-        songfile =  value
+        songfile = value
         print("song is ", songfile)
         self.play_song(value)
+
 
 if __name__ == "__main__":
 

@@ -18,7 +18,9 @@ filepatterns = [("Python Sources", "*.py"),
                 ("Text Files", "*.txt"),
                 ("All Files", "*.*")]
 
+
 class Application(Frame):
+
     def askdir(self):
         d = Directory(self)
         print(d.show())
@@ -48,6 +50,7 @@ class Application(Frame):
             print("Canceled...")
         else:
             print("Saving file", fname)
+
     def color(self):
         d = askcolor()
         print(d)
@@ -76,6 +79,7 @@ class Application(Frame):
         Frame.__init__(self, master)
         self.pack()
         self.createWidgets()
+
 
 root = Tk()
 app = Application(master=root)

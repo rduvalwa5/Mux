@@ -9,6 +9,7 @@ import Test_Results
 import platform
 from Music_Get_Functions import musicGet_Functions
 
+
 class TestResults:
     if platform.uname().node == 'MaxBookPro17OSX.hsd1.wa.comcast.net':
         cover_count = 787
@@ -21,6 +22,7 @@ class TestResults:
         songs_count = 11935
         artist_count = 576
         artist_albums_count = 1227
+
 
 class TestGetFunctions(unittest.TestCase):
 
@@ -96,7 +98,7 @@ class TestGetFunctions(unittest.TestCase):
                 expected = gen[1]
                 result = self.mux.get_genre_count(gen[0])
                 print("Genre count result ", result)
-                if expected !=  result:
+                if expected != result:
                     print("expect for genre ", gen[0], expected , " actual is ", result)
                     self.assertEqual(expected, result, "Error " + gen[0])
 
@@ -142,7 +144,7 @@ class TestGetFunctions(unittest.TestCase):
  #           self.mux.dbConnectionClose()
             self.assertEqual(expected, result)    
             
-        def test_get_album_cover_count(self):  
+        def test_get_album_cover_count(self): 
             #   mux = musicGet_Functions(True)
             expected = Test_Results.cover_count
             result = self.mux.get_album_cover_count()
@@ -233,7 +235,7 @@ class TestGetFunctions(unittest.TestCase):
         def test_genres(self):
             #   mux = musicGet_Functions(True)
             genres = self.mux.get_genres()
-            print("Get Genres ",genres)
+            print("Get Genres ", genres)
             self.assertEqual(Test_Results.genresList, genres, "genre list is wrong")
 
         '''
@@ -241,7 +243,7 @@ class TestGetFunctions(unittest.TestCase):
         Crud test album
         '''
 
-        def test_CRUD_album_insert_album(self):  
+        def test_CRUD_album_insert_album(self): 
             self.mux.add_album(self.album, self.artist, self.genre, self.album_type)
             add_result = self.mux.get_album(self.album)
             print("Add Result.........", add_result)
@@ -342,7 +344,7 @@ class TestGetFunctions(unittest.TestCase):
             #   mux = musicGet_Functions(True)
             albumCover = "Test Cover.jpg"
             album = "Test album"
-            self.mux.add_album_cover(albumCover,album)
+            self.mux.add_album_cover(albumCover, album)
             getCoverResult = self.mux.get_album_cover(albumCover)
             print('285  ', getCoverResult[0][0])
             self.assertEqual(albumCover, getCoverResult[0][1], "add album cover failed")

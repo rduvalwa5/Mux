@@ -7,8 +7,10 @@ Created on Feb 5, 2017
 from tkinter import *
 from Music_Get_Functions import musicGet_Functions
 
+
 class Application(Frame):
     """Application main window class."""
+
     def __init__(self, master=None):
         """Main frame initialization (mostly delegated)"""
         Frame.__init__(self, master)
@@ -28,7 +30,7 @@ class Application(Frame):
         
         bottom_frame = Frame(self)
         bottom_frame.pack(side=TOP)
-#how to disable a button
+# how to disable a button
         self.QUIT = Button(bottom_frame, text="Quit", command=self.quit, state='active')
         self.QUIT.pack(side=LEFT)
         self.handleb = Button(bottom_frame, text="Submit", command=self.handle)
@@ -47,15 +49,17 @@ class Application(Frame):
             idx = 0
             for i in result:
                 print(i)
-                artist.append((result[idx][0],result[idx][1],result[idx][2]))
+                artist.append((result[idx][0], result[idx][1], result[idx][2]))
                 idx = idx + 1
             print(artist)            
             output = artist
         else:
             output = artist + " not found"
         self.labelResult.config(text=output)
-        self.QUIT.config(state = 'active')
+        self.QUIT.config(state='active')
         self.QUIT.pack(side=TOP)
+
+
 root = Tk()
 app = Application(master=root)
 app.mainloop()  

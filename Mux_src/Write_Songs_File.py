@@ -1,5 +1,6 @@
 import os, platform
 
+
 class musicLoad_Write:
 
     def __init__(self):
@@ -13,7 +14,6 @@ class musicLoad_Write:
                 self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music"
         if self.server == "OSXAir.hsd1.wa.comcast.net":
                 self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music"               
-                
     
     def get_music_artist(self):
         artist = []
@@ -52,6 +52,7 @@ class musicLoad_Write:
         f = open(self.fileName, "r")
         print(f.read())
 #        f.close()
+
         
 if __name__ == '__main__':
     a = musicLoad_Write()

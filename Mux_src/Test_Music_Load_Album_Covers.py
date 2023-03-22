@@ -4,7 +4,7 @@ Created on Jan 30, 2018
 @author: rduvalwa2
 '''
 import Music_Get_Functions
-#import pymysql 
+# import pymysql 
 import pymysql.cursors
 import os
 import platform
@@ -60,7 +60,7 @@ class Load_Album_Covers():
         for cov in covers:
             if cov != ".DS_Store":
 #                insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.type,artist_albums.genre)  values(" + str(newIndex) + ",\"" + artist + "\",\"" + album + "\",\"" + tipe + "\",\"" + gen + "\" )"
-                insertStatement = "INSERT into Music.album_covers_test(album_cover,cover_idx,album,description)  values(\"" + cov + "\"," + str(idx)  + "," + "\"iTunesImages\"" + "," + "\"none\" " + ");"
+                insertStatement = "INSERT into Music.album_covers_test(album_cover,cover_idx,album,description)  values(\"" + cov + "\"," + str(idx) + "," + "\"iTunesImages\"" + "," + "\"none\" " + ");"
                 idx = idx + 1
                 print(insertStatement)
                 cursor.execute(insertStatement)
@@ -70,7 +70,7 @@ class Load_Album_Covers():
 #        cursor.close()    
         
         
-if __name__  == '__main__':
+if __name__ == '__main__':
     loadCov = Load_Album_Covers()
 #    covers = loadCov.get_all_album_covers()
 #    for cov in covers:

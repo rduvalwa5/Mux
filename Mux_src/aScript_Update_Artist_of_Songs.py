@@ -22,7 +22,7 @@ Created on Mar 16, 2017
 
 from Music_Load import song_Add_Update_Delete
         
-if __name__ == "__main__" :
+if __name__ == "__main__":
     
     song_artist = [("Song", "The Troggs"), \
                    ("02 Kicks (Re-Recorded).m4a", "Paul Revere & The Raiders"), \

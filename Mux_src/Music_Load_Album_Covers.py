@@ -4,12 +4,12 @@ Created on Jan 30, 2018
 @author: rduvalwa2
 '''
 import Music_Get_Functions
-#import pymysql 
+# import pymysql 
 import pymysql.cursors
 import os
 import platform
 import Mux_Parameters
-#from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
+# from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
 from Mux_Parameters import *
 
 
@@ -34,7 +34,6 @@ class Load_Album_Covers():
             print("Host is " , 'default')
             self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')
         self.server = 'OSXAir.hsd1.wa.comcast.net' 
-
         
     def get_all_album_covers(self):
         albumCovers = []
@@ -56,7 +55,7 @@ class Load_Album_Covers():
         for cov in covers:
             if cov != ".DS_Store":
 #                insertStatement = "INSERT into Music.artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.type,artist_albums.genre)  values(" + str(newIndex) + ",\"" + artist + "\",\"" + album + "\",\"" + tipe + "\",\"" + gen + "\" )"
-                insertStatement = "INSERT into Music.album_covers(album_cover,cover_idx,album,description)  values(\"" + cov + "\"," + str(idx)  + "," + "\"iTunesImages\"" + "," + "\"none\" " + ");"
+                insertStatement = "INSERT into Music.album_covers(album_cover,cover_idx,album,description)  values(\"" + cov + "\"," + str(idx) + "," + "\"iTunesImages\"" + "," + "\"none\" " + ");"
                 idx = idx + 1
                 print(insertStatement)
                 cursor.execute(insertStatement)
@@ -66,7 +65,7 @@ class Load_Album_Covers():
 #        cursor.close()    
         
         
-if __name__  == '__main__':
+if __name__ == '__main__':
     loadCov = Load_Album_Covers()
 #    covers = loadCov.get_all_album_covers()
 #    for cov in covers:

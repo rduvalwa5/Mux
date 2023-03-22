@@ -6,6 +6,7 @@ Created on Feb 3, 2018
 import MySQLdb
 import os, platform
 
+
 class Set_Artist_Albums_Genre_Type:
 
     def __init__(self, test=False):
@@ -20,7 +21,7 @@ class Set_Artist_Albums_Genre_Type:
 #            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
             self.conn = MySQLdb.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
         elif platform.uname().node == 'C1246895-WIN64-Air':
-            self.conn  = MySQLdb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
+            self.conn = MySQLdb.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
         elif platform.uname().node == 'Randalls-MBP.home':
             print("Host is " , 'Randalls-MBP.home')
             self.conn = MySQLdb.connect(host='OSXAir.home', user='rduval', password='blu4jazz', db='Music')            
@@ -58,6 +59,7 @@ class Set_Artist_Albums_Genre_Type:
             print(statement)
             cursor.execute(statement)
         cursor.execute("commit;")
+
        
 if __name__ == '__main__':
     x = Set_Artist_Albums_Genre_Type()    

@@ -6,7 +6,7 @@ Created on Mar 16, 2017
 
 from Music_Get_Functions import musicGet_Functions
         
-if __name__ == "__main__" :    
+if __name__ == "__main__": 
     mux = musicGet_Functions()
     print(mux.get_count('artist', ''))
 #    artistsList = [("Seals & Crofts","Rock"),("Herb Alpert & The Tijuana Brass","Alternative"),("Joni Mitchell","Rock")]

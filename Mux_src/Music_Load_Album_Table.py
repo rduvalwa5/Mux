@@ -39,27 +39,27 @@ class AlbumLoad_Functions:
         if platform.uname().node == 'C1246895-XPS':
                 print("Host is " , hostName)
                 self.base = "To be determined"
-                self.coverbase =  "To be determined"
+                self.coverbase = "To be determined"
                 server = hostName
         elif platform.uname().node == 'C1246895-osx.home.home':
-            print("Host is " ,  hostName)
+            print("Host is " , hostName)
             self.self.base = "/Users/rduvalwa2/music/Music/Media.localized"
             coverbase = "To be determined"
-            server= hostName
+            server = hostName
         elif platform.uname().node == 'OsxAir.hsd1.wa.comcast.net':
-            print("Host is " ,  hostName)            
+            print("Host is " , hostName)            
             self.coverbase = "/Users/rduvalwa2/Code_Projects/Active_Mux/AlbumCovers/"
-            server= hostName
+            server = hostName
             self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
         else:
             print("Host is " , 'default')
             self.coverbase = "/Users/rduvalwa2/Code_Projects/Active_Mux/AlbumCovers/"
-            server= hostName
+            server = hostName
             self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
 
-        genreList =['Rock','Alternative','BlueGrass','Blues','Classical','Country','Folk','Holiday','Jazz','Latino','Pop', \
-                         'Regae','RockaBilly','Soul','Talk','TestGenre','TexMex','Traditional','World','NewGenre','Easy Listening', \
-                         'Classic','R&B','French Pop']    
+        genreList = ['Rock', 'Alternative', 'BlueGrass', 'Blues', 'Classical', 'Country', 'Folk', 'Holiday', 'Jazz', 'Latino', 'Pop', \
+                         'Regae', 'RockaBilly', 'Soul', 'Talk', 'TestGenre', 'TexMex', 'Traditional', 'World', 'NewGenre', 'Easy Listening', \
+                         'Classic', 'R&B', 'French Pop']    
         
     def set_genre_genre(self, genre):
         print("Start set_genre")
@@ -119,7 +119,6 @@ class AlbumLoad_Functions:
                         albums.append((index, artist, album))
                         index = index + 1
         return albums
-
  
     """
     Initial Album Load functions
@@ -147,7 +146,9 @@ class AlbumLoad_Functions:
             print("done")
         cursor.close()
 
-class album_Add_Update_Delete:       
+
+class album_Add_Update_Delete: 
+
     def __init__(self, test=False):
         print("*************** Node Name is ", platform.uname().node)
         if platform.uname().node == 'C1246895-XPS':
@@ -157,7 +158,7 @@ class album_Add_Update_Delete:
             self.conn = pymysql.connect(host='OSXAir.hsd1.wa.comcast.net', user='rduvalwa2', password='blu4jazz', db='Music')
 #            self.conn  = pymysql.connect(login_info_osx)
         elif platform.uname().node == 'OSXAir.hsd1.wa.comcast.net':
-            self.conn  = pymysql.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+            self.conn = pymysql.connect(host='OSXAir.home', user='rduvalwa2', password='blu4jazz', db='Music')
         elif platform.uname().node == 'C1246895-WIN64-Air':
         #    self.conn  = connDb.connect(host='OSXAir.hsd1.wa.comcast.net',user='rduvalwa2',password='blu4jazz',db='Music')
             self.conn = pymysql.connect(login_info_WIN64_Air)
@@ -276,14 +277,15 @@ class album_Add_Update_Delete:
             except TypeError:
                 print("Album not found")
                 return "Album not found"
+
         
 if __name__ == '__main__':
     
     runMode = "Run"  # NoRun  # Test
     
     trueLoad = AlbumLoad_Functions()
-    genreList = ['Alternative','BlueGrass','Blues','Classic','Country','Folk','Holiday',\
-                            'Jazz','Latino','Pop','Regae','Rock','RockaBilly','Soul','Talk', \
-                            'TestGenre','TexMex','Traditional','World','Easy Listening']
+    genreList = ['Alternative', 'BlueGrass', 'Blues', 'Classic', 'Country', 'Folk', 'Holiday', \
+                            'Jazz', 'Latino', 'Pop', 'Regae', 'Rock', 'RockaBilly', 'Soul', 'Talk', \
+                            'TestGenre', 'TexMex', 'Traditional', 'World', 'Easy Listening']
     trueLoad.initial_insert_into_ArtistAlbums()
 

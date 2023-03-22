@@ -5,7 +5,7 @@ https://www.tutorialspoint.com/python/tk_listbox.htm
 '''
 from tkinter import *
 from Music_Get_Functions import musicGet_Functions
-#import mysql.connector
+# import mysql.connector
 
 root = Tk()
 
@@ -20,21 +20,20 @@ if genreSyncIn != []:
 else:
     GenreSyncList.append("None found!")
 
-#print("TypeSyncList  ", TypeSyncList)
+# print("TypeSyncList  ", TypeSyncList)
 for l in GenreSyncList:
     print(l)
 
 scrollbar = Scrollbar(root)
-scrollbar.pack( side = RIGHT, fill=Y )
+scrollbar.pack(side=RIGHT, fill=Y)
 
-mylist = Listbox(root, yscrollcommand = scrollbar.set, width = 100, selectmode = EXTENDED, bg = 'yellow' , fg = 'red')
+mylist = Listbox(root, yscrollcommand=scrollbar.set, width=100, selectmode=EXTENDED, bg='yellow' , fg='red')
 
-mylist.insert(END," | " + "Album Album  " + "    | " + "Album  Genre  " + " | " + "Song Album  " + " | " + "Song Genre   " + "Song Artist   ")
+mylist.insert(END, " | " + "Album Album  " + "    | " + "Album  Genre  " + " | " + "Song Album  " + " | " + "Song Genre   " + "Song Artist   ")
 for n in range(len(GenreSyncList)):
-    mylist.insert(END,"  " + str(n) + "  " + str(GenreSyncList[n][0]) + "  |  " + GenreSyncList[n][1] + "   |   " + GenreSyncList[n][2] + "  |  " + GenreSyncList[n][3]+ "  |  " + GenreSyncList[n][4])
-mylist.insert(END,"Total Diffs " + str(len(GenreSyncList)))
-mylist.pack( side = LEFT, fill = BOTH )
-scrollbar.config( command = mylist.yview )
-
+    mylist.insert(END, "  " + str(n) + "  " + str(GenreSyncList[n][0]) + "  |  " + GenreSyncList[n][1] + "   |   " + GenreSyncList[n][2] + "  |  " + GenreSyncList[n][3] + "  |  " + GenreSyncList[n][4])
+mylist.insert(END, "Total Diffs " + str(len(GenreSyncList)))
+mylist.pack(side=LEFT, fill=BOTH)
+scrollbar.config(command=mylist.yview)
 
 mainloop()

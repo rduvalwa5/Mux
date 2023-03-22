@@ -8,8 +8,10 @@ from tkinter import *
 from Music_Get_Functions import musicGet_Functions
 import Music_Load
 
+
 class Application(Frame):
     """Application main window class."""
+
     def __init__(self, master=None):
         """Main frame initialization (mostly delegated)"""
         Frame.__init__(self, master)
@@ -30,10 +32,10 @@ class Application(Frame):
         self.labelInputArtist = Label(Artist_Frame, text="Artist Name")
         self.labelInputType = Label(Type_Frame, text="Type")
         self.labelInputGenre = Label(Genre_Frame, text="Artist Genre")
-        self.labelResult = Label(Album_Frame, text = "Result Album")
+        self.labelResult = Label(Album_Frame, text="Result Album")
         
-        self.text_in_Song  = Entry(Song_Frame)
-        self.text_in_Album  = Entry(Album_Frame)
+        self.text_in_Song = Entry(Song_Frame)
+        self.text_in_Album = Entry(Album_Frame)
         self.text_in_Artist = Entry(Artist_Frame)
         self.text_in_Type = Entry(Type_Frame)
         self.text_in_Genre = Entry(Genre_Frame)
@@ -60,7 +62,7 @@ class Application(Frame):
         
         bottom_frame = Frame(self)
         bottom_frame.pack(side=TOP)
-#how to disable a button
+# how to disable a button
         self.QUIT = Button(bottom_frame, text="Quit", command=self.quit, state='disabled')
         self.QUIT.pack(side=LEFT)
         self.handleb = Button(bottom_frame, text="Submit", command=self.handle)
@@ -81,11 +83,13 @@ class Application(Frame):
         result = "Added " + song + ", index " + str(idx) 
         self.labelResult.config(text=result)
         
-        print("Result "  + result)
+        print("Result " + result)
         self.labelResult.config(text=result)
         
-        self.QUIT.config(state = 'active')
+        self.QUIT.config(state='active')
         self.QUIT.pack(side=TOP)
+
+
 root = Tk()
 app = Application(master=root)
 app.mainloop()  

@@ -14,9 +14,10 @@ http://effbot.org/imagingbook/pil-index.htm
 '''
 from tkinter import *
 from Music_Get_Functions import musicGet_Functions
-#from Mux_src.Music_Get_Functions import musicGet_Functions
+# from Mux_src.Music_Get_Functions import musicGet_Functions
 import os, sys , platform
-from PIL import Image #, ImageTk
+from PIL import Image  # , ImageTk
+
 
 class displaySelectCover():
     
@@ -29,14 +30,14 @@ class displaySelectCover():
         print(coversIn)
         if coversIn != []:
             for cover in coversIn:
-                print("coverIn ",cover)
+                print("coverIn ", cover)
                 albumCoverList.append((cover[0]  , cover[1], cover[2]))
         else:
             albumCoverList.append("None found!")
         scrollbar = Scrollbar(root)
-        scrollbar.pack( side = RIGHT, fill=Y )
+        scrollbar.pack(side=RIGHT, fill=Y)
 
-        mylist = Listbox(root, yscrollcommand = scrollbar.set, width = 100, selectmode = EXTENDED )
+        mylist = Listbox(root, yscrollcommand=scrollbar.set, width=100, selectmode=EXTENDED)
 
         for n in range(len(albumCoverList)):
 #            item = str(albumCoverList[n][1])
@@ -44,9 +45,9 @@ class displaySelectCover():
             print("print item ", item)
 #            mylist.insert(END,albumCoverList[n][1])
             mylist.insert(END, item)
-        mylist.insert(END,"Total Albums " + str(mylist.size()))
-        mylist.pack( side = LEFT, fill = BOTH )
-        scrollbar.config( command = mylist.yview )
+        mylist.insert(END, "Total Albums " + str(mylist.size()))
+        mylist.pack(side=LEFT, fill=BOTH)
+        scrollbar.config(command=mylist.yview)
         mylist.bind("<Double-Button-1>", self.OnDouble)
         mainloop()
 
@@ -61,14 +62,15 @@ class displaySelectCover():
             base = '/Users/rduvalwa2/Documents/GitHub/Mux/AlbumCovers/'
             
         widget = event.widget
-        selection=widget.curselection()
+        selection = widget.curselection()
         value = widget.get(selection[0])
-        print("print value ",value)
+        print("print value ", value)
         print ("print selection:", selection, ": '%s" % value[1])
-        imagefile =  base + value[1] 
+        imagefile = base + value[1] 
         print("cover is ", imagefile)
         image = Image.open(imagefile)
         image.show()          
+
 
 if __name__ == "__main__":
     app = displaySelectCover()

@@ -11,7 +11,7 @@ class musicLoad_Functions:
         print("*************** Node Name is ", platform.uname().node)
         self.hostname = platform.uname().node
         if platform.uname().node == "Macbook16.local":
-            self.conn = pymysql.connect(host= self.hostname, user='rduvalwa2', password='blu4jazz', db='Music')
+            self.conn = pymysql.connect(host=self.hostname, user='rduvalwa2', password='blu4jazz', db='Music')
             
         elif platform.uname().node == 'OSXAir.local':
             self.conn = pymysql.connect(host='OOSXAir.local', user='rduvalwa2', password='blu4jazz', db='Music')
@@ -208,7 +208,8 @@ class musicLoad_Functions:
             print("done")
         cursor.close()              
 
-class song_Add_Update_Delete():       
+
+class song_Add_Update_Delete(): 
 
     def __init__(self):
         print("*************** Node Name is ", platform.uname().node)
@@ -222,8 +223,7 @@ class song_Add_Update_Delete():
             print("Host is " , 'default')
             self.conn = pymysql.connect(host='Macbook16.local', user='rduvalwa2', password='blu4jazz', db='Music')
         self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
-        self.server =  platform.uname().node
- 
+        self.server = platform.uname().node
         
     def get_max_index(self, table):
         self.table = '`Music`.' + table
@@ -408,7 +408,7 @@ class song_Add_Update_Delete():
 #        print("delete songs: ", delete_songs)  
         index = 0
         if albumin == 'all':
-            if songin == 'all':   
+            if songin == 'all': 
                 for song in delete_songs:
                     if self.notTestRun:
                         selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
@@ -421,7 +421,7 @@ class song_Add_Update_Delete():
                         print(deleteStatement)
                         cursor.execute(deleteStatement)
             else:
-                for song in delete_songs:  
+                for song in delete_songs: 
                     if song[0] == 'songin':
                         if self.notTestRun:
                             selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
@@ -434,7 +434,7 @@ class song_Add_Update_Delete():
                             cursor.execute(deleteStatement)        
         else:
             if albumin != 'all': 
-                if songin == 'all':  
+                if songin == 'all': 
                     for song in delete_songs:
                         if albumin == song[2]: 
                             if self.notTestRun:
@@ -448,7 +448,7 @@ class song_Add_Update_Delete():
                                 cursor.execute(deleteStatement)
             elif songin != 'all':
                     for song in delete_songs:
-                        if albumin == song[2]:                                
+                        if albumin == song[2]: 
                             if song[0] == 'song': 
                                 if self.notTestRun:
                                     selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
@@ -468,12 +468,13 @@ class song_Add_Update_Delete():
         self.conn.close()
 
 
-class album_Add_Update_Delete:       
+class album_Add_Update_Delete: 
+
     def __init__(self):
         print("*************** Node Name is ", platform.uname().node)
         self.hostname = platform.uname().node
         if platform.uname().node == "Macbook16.local":
-            self.conn = pymysql.connect(host= self.hostname, user='rduvalwa2', password='blu4jazz', db='Music')
+            self.conn = pymysql.connect(host=self.hostname, user='rduvalwa2', password='blu4jazz', db='Music')
             
         elif platform.uname().node == 'OSXAir.local':
             self.conn = pymysql.connect(host='OOSXAir.local', user='rduvalwa2', password='blu4jazz', db='Music')
@@ -591,13 +592,14 @@ class album_Add_Update_Delete:
                 print("Album not found")
                 return "Album not found"
 
-class artist_Add_Update_Delete:       
+
+class artist_Add_Update_Delete: 
 
     def __init__(self):
         print("*************** Node Name is ", platform.uname().node)
         self.hostname = platform.uname().node
         if platform.uname().node == "Macbook16.local":
-            self.conn = pymysql.connect(host= self.hostname, user='rduvalwa2', password='blu4jazz', db='Music')
+            self.conn = pymysql.connect(host=self.hostname, user='rduvalwa2', password='blu4jazz', db='Music')
             
         elif platform.uname().node == 'OSXAir.local':
             self.conn = pymysql.connect(host='OOSXAir.local', user='rduvalwa2', password='blu4jazz', db='Music')
@@ -608,8 +610,6 @@ class artist_Add_Update_Delete:
             
         self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
         self.server = platform.uname().node 
-
-
 
     def dbConnectionClose(self):
         self.conn.close()
@@ -658,7 +658,7 @@ class artist_Add_Update_Delete:
 
         cursor = self.conn.cursor()
         if self.doesArtistExist(artist) == 'True':
-            if self.notTestRun:            
+            if self.notTestRun: 
                 updateStatement = "UPDATE Music.artist set genre = '" + genre + "' where artist = '" + artist + "';"
                 print(updateStatement)
                 cursor.execute(updateStatement)
@@ -694,7 +694,7 @@ class verify_data_tables:
             print("*************** Node Name is ", platform.uname().node)
             self.hostname = platform.uname().node
             if platform.uname().node == "Macbook16.local":
-                self.conn = pymysql.connect(host= self.hostname, user='rduvalwa2', password='blu4jazz', db='Music')
+                self.conn = pymysql.connect(host=self.hostname, user='rduvalwa2', password='blu4jazz', db='Music')
             
             elif platform.uname().node == 'OSXAir.local':
                 self.conn = pymysql.connect(host='OOSXAir.local', user='rduvalwa2', password='blu4jazz', db='Music')
@@ -704,7 +704,6 @@ class verify_data_tables:
             
             self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
             self.server = platform.uname().node 
-
         
         def check_artist_table(self):
             cursor = self.conn.cursor()
@@ -753,6 +752,7 @@ class verify_data_tables:
 #                    print(item)
             cursor.close()
             return result    
+
         
 if __name__ == '__main__':
 #    pass
@@ -760,9 +760,9 @@ if __name__ == '__main__':
     runMode = "Run"  # NoRun  # Test
     
     trueLoad = musicLoad_Functions(True)
-    genreList = ['Alternative','BlueGrass','Blues','Classic','Country','Folk','Holiday',\
-                            'Jazz','Latino','Pop','Regae','Rock','RockaBilly','Soul','Talk', \
-                            'TestGenre','TexMex','Traditional','World','Easy Listening']
+    genreList = ['Alternative', 'BlueGrass', 'Blues', 'Classic', 'Country', 'Folk', 'Holiday', \
+                            'Jazz', 'Latino', 'Pop', 'Regae', 'Rock', 'RockaBilly', 'Soul', 'Talk', \
+                            'TestGenre', 'TexMex', 'Traditional', 'World', 'Easy Listening']
     trueLoad.set_genre_genre(genreList)
 
     if runMode == "NoRun":

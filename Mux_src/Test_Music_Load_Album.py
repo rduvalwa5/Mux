@@ -66,7 +66,7 @@ class Test_MusicLoad(unittest.TestCase):
             Test Support Functions
         """                    
 
-        def Restore_testAlbum(self):   
+        def Restore_testAlbum(self): 
             print("*************** Node Name is ", platform.uname().node)
             if platform.uname().node == 'C1246895-osx.home':
 #            self.conn = connDb.Connect(**login_info_osx)
@@ -91,7 +91,6 @@ class Test_MusicLoad(unittest.TestCase):
             print("done")
             cursor.close()
             self.conn.close()
-       
                     
 '''
         def test_Add_Album(self):

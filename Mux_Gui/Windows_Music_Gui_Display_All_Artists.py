@@ -15,22 +15,21 @@ print(artistIn)
 if artistIn != []:
     for artist in artistIn:
         print(artist)
-        artistList.append((artist[0],artist[1]))
+        artistList.append((artist[0], artist[1]))
 else:
     artistList.append("None found!")
 
 print(artistList)
 
 scrollbar = Scrollbar(root)
-scrollbar.pack( side = RIGHT, fill=Y )
+scrollbar.pack(side=RIGHT, fill=Y)
 
-mylist = Listbox(root, yscrollcommand = scrollbar.set, width = 100, selectmode = EXTENDED )
+mylist = Listbox(root, yscrollcommand=scrollbar.set, width=100, selectmode=EXTENDED)
 
 for n in range(len(artistList)):
-    mylist.insert(END,str(n) + "  " + str(artistList[n][1]) + "  " + artistList[n][0])
-mylist.insert(END,"Total Artist " + str(mylist.size()))
-mylist.pack( side = LEFT, fill = BOTH )
-scrollbar.config( command = mylist.yview )
-
+    mylist.insert(END, str(n) + "  " + str(artistList[n][1]) + "  " + artistList[n][0])
+mylist.insert(END, "Total Artist " + str(mylist.size()))
+mylist.pack(side=LEFT, fill=BOTH)
+scrollbar.config(command=mylist.yview)
 
 mainloop()

@@ -9,6 +9,7 @@ from Music_Get_Functions import musicGet_Functions
 
 class Application(Frame):
     """Application main window class."""
+
     def __init__(self, master=None):
         """Main frame initialization (mostly delegated)"""
         Frame.__init__(self, master)
@@ -25,10 +26,10 @@ class Application(Frame):
         self.WidgetLabel = Label(Widget_Label_Frame, text="Album Cover Add Widget")
         self.labelInputAlbumCover = Label(Album_Cover_Frame, text="Add Album Cover Name") 
         self.labelInputAlbumName = Label(Album_Name_Frame, text="Album Name")        
-        self.labelResult = Label(AlbumCoveResult, text = "Album Cover Result")
+        self.labelResult = Label(AlbumCoveResult, text="Album Cover Result")
         
-        self.text_in_Album_Cover  = Entry(Album_Cover_Frame)
-        self.text_in_Album_Name  = Entry(Album_Name_Frame)
+        self.text_in_Album_Cover = Entry(Album_Cover_Frame)
+        self.text_in_Album_Name = Entry(Album_Name_Frame)
         
         self.WidgetLabel.pack()
         self.labelInputAlbumCover.pack()
@@ -45,10 +46,8 @@ class Application(Frame):
         
         bottom_frame = Frame(self)
         bottom_frame.pack(side=TOP)
-
         
-        
-#how to disable a button
+# how to disable a button
         self.QUIT = Button(bottom_frame, text="Quit", command=self.quit, state='active')
         self.QUIT.pack(side=LEFT)
         self.handleb = Button(bottom_frame, text="Submit", command=self.handle)
@@ -66,12 +65,14 @@ class Application(Frame):
         print("Gui result ", str(result))
 #        self.labelResult.config(text=result)
         
-        print("Result "  + str(result))
+        print("Result " + str(result))
  
-        self.labelResult.config(text= str(result))
+        self.labelResult.config(text=str(result))
         
-        self.QUIT.config(state = 'active')
+        self.QUIT.config(state='active')
         self.QUIT.pack(side=TOP)
+
+
 root = Tk()
 app = Application(master=root)
 app.mainloop()  

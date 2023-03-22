@@ -237,7 +237,7 @@ class Test_MusicLoad(unittest.TestCase):
             Test Support Functions
         """                    
 
-        def Restore_testAlbum(self):   
+        def Restore_testAlbum(self): 
             if os.uname().nodename == 'C1246895-osx.home':
                 conn = mysql.connector.Connect(**login_info_osx)
             elif  os.uname().nodename == 'OSXAir.home.home':

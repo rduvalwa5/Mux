@@ -95,7 +95,6 @@ class derivedAlbumLoad_Functions:
                         albums.append((index, artist, album))
                         index = index + 1
         return albums
-
  
     """
     Initial Album Load functions
@@ -122,7 +121,9 @@ class derivedAlbumLoad_Functions:
             print("done")
         cursor.close()
 
-class derived_album_Add_Update_Delete:       
+
+class derived_album_Add_Update_Delete: 
+
     def __init__(self, test=False):
         print("*************** Node Name is ", platform.uname().node)
         if platform.uname().node == 'C1246895-XPS':
@@ -132,7 +133,7 @@ class derived_album_Add_Update_Delete:
             self.conn = MySQLdb.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
 #            self.conn  = MySQLdb.connect(login_info_osx)
         elif platform.uname().node == 'OSXAir.home.home':
-            self.conn  = MySQLdb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
+            self.conn = MySQLdb.connect(host='OSXAir.home', user='rduvalwa2', password='blu4jazz', db='Music')
         elif platform.uname().node == 'C1246895-WIN64-Air':
         #    self.conn  = connDb.connect(host='OSXAir.home.home',user='rduvalwa2',password='blu4jazz',db='Music')
             self.conn = MySQLdb.connect(login_info_WIN64_Air)
@@ -251,14 +252,15 @@ class derived_album_Add_Update_Delete:
             except TypeError:
                 print("Album not found")
                 return "Album not found"
+
         
 if __name__ == '__main__':
     
     runMode = "Run"  # NoRun  # Test
     
     trueLoad = derivedAlbumLoad_Functions(True)
-    genreList = ['Alternative','BlueGrass','Blues','Classic','Country','Folk','Holiday',\
-                            'Jazz','Latino','Pop','Regae','Rock','RockaBilly','Soul','Talk', \
-                            'TestGenre','TexMex','Traditional','World','Easy Listening']
+    genreList = ['Alternative', 'BlueGrass', 'Blues', 'Classic', 'Country', 'Folk', 'Holiday', \
+                            'Jazz', 'Latino', 'Pop', 'Regae', 'Rock', 'RockaBilly', 'Soul', 'Talk', \
+                            'TestGenre', 'TexMex', 'Traditional', 'World', 'Easy Listening']
     trueLoad.initial_insert_into_Dervided_ArtistAlbums()
 

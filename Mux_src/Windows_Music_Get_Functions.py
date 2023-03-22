@@ -21,10 +21,11 @@ new process see the WindowsMusicFile.py
 ''' 
 import os, platform
 import MySQLdb
-#from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
+# from Musicdb_info import login_info_default, login_info_osxAir, login_info_xps, login_info_WIN64_Air, login_info_osx
 from Musicdb_info import *
 
-class musicGet_Functions:   
+
+class musicGet_Functions: 
 
     def __init__(self, isNotTest):
         print("*************** Node Name is ", platform.uname().node)
@@ -52,17 +53,17 @@ class musicGet_Functions:
         self.server = 'OSXAir.home.home' 
         self.notTestRun = isNotTest
         
-        self.countryArtistList = ["Dolly Parton","Alabama","Alison Krauss","Alison Krauss & Brad Paisley","Alison Krauss & John Waite","Alison Krauss & Union Station","Bill Monroe","Boxcar Willie","Brenda Lee","Chanel Campbell","The Charlie Daniels Band","Charlie Rich","Chet Atkins and Hank Snow","Cody Bryant and The Riders Of The Purple Sage","Colt Ford","David Allan Coe","Della Mae","Dierks Bentley","Dixie Chicks","Eilen Jewell","Eldorado","Emmylou Harris","Emmylou Harris with Herb Pedersen","Emmylou Harris with Roy Orbison","Florida Georgia Line","Foy Willing & The Riders Of The Purple Sage","Gram Parsons","Hank Williams, Jr.","Jack Ingram","James Otto","Jamey Johnson","Jerry Jeff Walker","Jessi Colter","Jessi Colter & Sunny Sweeney","Jewel","Jimmy Buffet","John Hiatt","Johnny Cash","Josh Thompson","Justin Moore","Keith Urban ","Kenny Rogers & The First Edition","Kris Kristofferson","Kris Kristofferson & Patty Griffin","Linda Ronstadt","Lori McKenna","Mark O'Connor","The Marshall Tucker Band","Marty Robbins","The Mavericks","Michael Martin Murphey","Montgomery Gentry","New Riders of the Purple Sage","Nitty Gritty Dirt Band","Olivia Newton-John","Pat Green","Patsy Cline","Polecat","Prairie Flyer","Randy Houser","Redbird","Robert Plant & Alison Krauss","Shooter Jennings","Stray Birds","The Texas Tornados","Texas Tornados","Trace Adkins","Uncle Earl","Van Morrison","Waylon and Willie","Waylon Jennings","Waylon Jennings & The Waylors","Waylon Jennings & Willie Nelson","Willie Nelson and Leon Russel","Wyatt McCubbin","Zac Brown Band"]
-        self.popArtistList = ["Yo-Yo Ma","Sarah McLachlan","Reflejo de Luna","Nat _King_ Cole","Celtic Christmas","Bing Crosby","Armik","Tony Bennett","Ottmar Liebert%","Noam Chomsky","Philip Selway","Padraig MacMathuna","Ottmar Liebert_Luna Negra","Ottmar Liebert","Mannheim Steamroller","Loreena McKennitt","Julio Iglesias","ADELE","The Airborne Toxic Event","Alexander","Arcade Fire","Art Garfunkel","The Coats","Cold War Kids","Dean Martin","Death Cab for Cutie","Del Shannon","Diego Garcia","Frank Sinatra","Frank Sinatra & Dean Martin","Frank Sinatra & Sammy Davis Jr.","Frank Sinatra, Dean Martin & Sammy Davis Jr.","Generationals","George Baker & George Baker Selection","Harry Nilsson","Iron & Wine","Jackson Browne","Jeremy Camp","Jesse Thomas","Jose Feliciano","Judy Collins","Junip","k.d. lang and the Siss Boom Bang","Leo Sayer","Lesley Gore","The Mamas & The Papas","Nashville Teens","Neil Diamond","Neil Sedaka","Norah Jones","Parts & Labor","Paul Simon","Percy Sledge","Peter Bjorn and John","Playing for Change","Rita Coolidge","S. Carey","Sammy Davis Jr.","Sammy Davis Jr. & Dean Martin","Sarah Jarosz","Say Hi","The Shadows","Telekinesis","The Tokens","Tom Jones","Tom Jones, Johnnie Spence & Orchestra","We Are Augustines","Wrabel","Wye Oak"]
-        self.jazzArtistList = ["Walt Weiskopf Nonet","Pat Metheny Trio","Alex Hargreaves","Branford Marsalis","Brecker Brothers","Buddy Tate","Chick Corea","Darius Brubeck","Dave Brubeck Quartet",'%Dave Brubeck%' ,"Devin Duval","Duke Ellington","Eddie Lockjaw Davis","Fats Waller","Gary Burton, Steve Swallow, Roy Haynes, Tiger Okoshi","Grant Green","Hank Jones","Herbie Hancock","Ian Hunter","Jaco Pastorius","Jaco Pastorius With Herbie Hancock","The Jazz Crusaders","Jerry Gonzalez & The Fort Apache Band","Jimmy Witherspoon","Joe Henderson","John Coltrane","John Coltrane & Johnny Hartman","John Scofield","Keith Jarrett","Les McCann","Less McCann and Eddie Harris","Lester Young","Madeleine Peyroux","Mary Pastorius","Mass Mental","Michael Brecker","Miles Davis","Miles Davis Quintet","Miles Davis Sextet_Sonny Rollins","Miles Davis_Sonny Rollins","Oscar Peterson","The Overton Berry Trio","Pat Martino","Pat Metheny","Pat Metheny Group","The Quintet","Rodrigo Y Gabriela","Sonny Rollins","Sonny Stitt","Stanley Turrentine","Tech N9ne","The Jazz Crusaders","Thelonious Monk","Thelonious Monk Quartet With John Coltrane","Tony Burgos & His Swing Shift Orchestra","Various Artists","Walt Weiskopf","Weather Report"]
-        self.bluegrassArtistList = ["The Chieftains","Crooked Still","Infamous Stringdusters","Mountain Heart","Sarah Jarosz","Tim O'Brien","Uncle Earl","Walela"]
-        self.folkArtistList = ["The Kingston Trio","Peter Paul and Mary","Pete Segear Arlo Guthrie","Arlo Guthrie","Barry McGuire","Bee Gees","Bob Dylan","Cat Stevens","Gordon Lightfoot","The Handsome Family","Harry Belafonte","Joan Baez","John Fahey","John Fahey & His Orchestra","John Prine","Joni Mitchell","Josh Rouse","Judy Collins","Kingston Trio","Leo Kottke","Mark Lanegan","Pete Seeger & Arlo Guthrie","Peter, Paul & Mary","Richie Havens","Rodriguez","Steve Goodman","The Wailin' Jennys"]
-        self.bluesArtistList = ["Alvin Lee & Ten Years Later","Mavis Staples","Alvin Lee","Alvin Lee & Richard Newman","Alvin Lee, Richard Newman & Tim Hinkley","Billy Holliday","Blues Artists","Bob Forrest","The Box Tops","Boz Scaggs","Clarence Gatermouth Brown","Cream","Eric Clapton","Eric Clapton & B.B. King","Gregg Allman","Hot Tuna","Jimmy Witherspoon","Joe Louis Walker","John Lee Hooker","John Mayall","John Mayall & The Bluesbreakers","Johnny Winter","Muddy Waters","North Mississippi Allstars","The Paul Butterfield Blues Band","R.L. Burnside","Richie Havens","Savoy Brown","Stevie Ray Vaughan","Stevie Ray Vaughan & Double Trouble","Ten Years After","War","Wynton Marsalis & Eric Clapton","The Yardbirds","18 South"]
-        self.classicalArtistList = ["Andre Kostelanetz and his orchestra",'Charles Dutoit%','Alfred Hause%','Angele Dubeau%',"Antonio Vivaldi","Branford Marsalis","Branford Marsalis & Orpheus Chamber Orchestra","Dvorak","A Fielder Boston Pops","Mark O'Connor","Oliver Kane","Ravel","Richard Wagner","Wagner"]
-        self.TexMex = ['Asleep At the Wheel','Santana','Los Lobos','Freddy Fender','Texas Tornados','The Mavericks','Eldorado','Sir Douglas Quintet']
-        self.RockABilly = ['Buddy Holly','Carl Perkins','Jerry Lee Lewis','Bill Haley & His Comets','Dale Hawkins','Billy Lee Riley']
-        self.Soul = ['Marvin Gaye','Mavis Staples','Roberta Flack & Donny Hathaway','Aretha Franklin','Roberta Flack']
-        self.Regae = ['Desmond Dekker','Bob Marley & The Wailers','Freddie Notes & the Rudies','Bob Marley']
+        self.countryArtistList = ["Dolly Parton", "Alabama", "Alison Krauss", "Alison Krauss & Brad Paisley", "Alison Krauss & John Waite", "Alison Krauss & Union Station", "Bill Monroe", "Boxcar Willie", "Brenda Lee", "Chanel Campbell", "The Charlie Daniels Band", "Charlie Rich", "Chet Atkins and Hank Snow", "Cody Bryant and The Riders Of The Purple Sage", "Colt Ford", "David Allan Coe", "Della Mae", "Dierks Bentley", "Dixie Chicks", "Eilen Jewell", "Eldorado", "Emmylou Harris", "Emmylou Harris with Herb Pedersen", "Emmylou Harris with Roy Orbison", "Florida Georgia Line", "Foy Willing & The Riders Of The Purple Sage", "Gram Parsons", "Hank Williams, Jr.", "Jack Ingram", "James Otto", "Jamey Johnson", "Jerry Jeff Walker", "Jessi Colter", "Jessi Colter & Sunny Sweeney", "Jewel", "Jimmy Buffet", "John Hiatt", "Johnny Cash", "Josh Thompson", "Justin Moore", "Keith Urban ", "Kenny Rogers & The First Edition", "Kris Kristofferson", "Kris Kristofferson & Patty Griffin", "Linda Ronstadt", "Lori McKenna", "Mark O'Connor", "The Marshall Tucker Band", "Marty Robbins", "The Mavericks", "Michael Martin Murphey", "Montgomery Gentry", "New Riders of the Purple Sage", "Nitty Gritty Dirt Band", "Olivia Newton-John", "Pat Green", "Patsy Cline", "Polecat", "Prairie Flyer", "Randy Houser", "Redbird", "Robert Plant & Alison Krauss", "Shooter Jennings", "Stray Birds", "The Texas Tornados", "Texas Tornados", "Trace Adkins", "Uncle Earl", "Van Morrison", "Waylon and Willie", "Waylon Jennings", "Waylon Jennings & The Waylors", "Waylon Jennings & Willie Nelson", "Willie Nelson and Leon Russel", "Wyatt McCubbin", "Zac Brown Band"]
+        self.popArtistList = ["Yo-Yo Ma", "Sarah McLachlan", "Reflejo de Luna", "Nat _King_ Cole", "Celtic Christmas", "Bing Crosby", "Armik", "Tony Bennett", "Ottmar Liebert%", "Noam Chomsky", "Philip Selway", "Padraig MacMathuna", "Ottmar Liebert_Luna Negra", "Ottmar Liebert", "Mannheim Steamroller", "Loreena McKennitt", "Julio Iglesias", "ADELE", "The Airborne Toxic Event", "Alexander", "Arcade Fire", "Art Garfunkel", "The Coats", "Cold War Kids", "Dean Martin", "Death Cab for Cutie", "Del Shannon", "Diego Garcia", "Frank Sinatra", "Frank Sinatra & Dean Martin", "Frank Sinatra & Sammy Davis Jr.", "Frank Sinatra, Dean Martin & Sammy Davis Jr.", "Generationals", "George Baker & George Baker Selection", "Harry Nilsson", "Iron & Wine", "Jackson Browne", "Jeremy Camp", "Jesse Thomas", "Jose Feliciano", "Judy Collins", "Junip", "k.d. lang and the Siss Boom Bang", "Leo Sayer", "Lesley Gore", "The Mamas & The Papas", "Nashville Teens", "Neil Diamond", "Neil Sedaka", "Norah Jones", "Parts & Labor", "Paul Simon", "Percy Sledge", "Peter Bjorn and John", "Playing for Change", "Rita Coolidge", "S. Carey", "Sammy Davis Jr.", "Sammy Davis Jr. & Dean Martin", "Sarah Jarosz", "Say Hi", "The Shadows", "Telekinesis", "The Tokens", "Tom Jones", "Tom Jones, Johnnie Spence & Orchestra", "We Are Augustines", "Wrabel", "Wye Oak"]
+        self.jazzArtistList = ["Walt Weiskopf Nonet", "Pat Metheny Trio", "Alex Hargreaves", "Branford Marsalis", "Brecker Brothers", "Buddy Tate", "Chick Corea", "Darius Brubeck", "Dave Brubeck Quartet", '%Dave Brubeck%' , "Devin Duval", "Duke Ellington", "Eddie Lockjaw Davis", "Fats Waller", "Gary Burton, Steve Swallow, Roy Haynes, Tiger Okoshi", "Grant Green", "Hank Jones", "Herbie Hancock", "Ian Hunter", "Jaco Pastorius", "Jaco Pastorius With Herbie Hancock", "The Jazz Crusaders", "Jerry Gonzalez & The Fort Apache Band", "Jimmy Witherspoon", "Joe Henderson", "John Coltrane", "John Coltrane & Johnny Hartman", "John Scofield", "Keith Jarrett", "Les McCann", "Less McCann and Eddie Harris", "Lester Young", "Madeleine Peyroux", "Mary Pastorius", "Mass Mental", "Michael Brecker", "Miles Davis", "Miles Davis Quintet", "Miles Davis Sextet_Sonny Rollins", "Miles Davis_Sonny Rollins", "Oscar Peterson", "The Overton Berry Trio", "Pat Martino", "Pat Metheny", "Pat Metheny Group", "The Quintet", "Rodrigo Y Gabriela", "Sonny Rollins", "Sonny Stitt", "Stanley Turrentine", "Tech N9ne", "The Jazz Crusaders", "Thelonious Monk", "Thelonious Monk Quartet With John Coltrane", "Tony Burgos & His Swing Shift Orchestra", "Various Artists", "Walt Weiskopf", "Weather Report"]
+        self.bluegrassArtistList = ["The Chieftains", "Crooked Still", "Infamous Stringdusters", "Mountain Heart", "Sarah Jarosz", "Tim O'Brien", "Uncle Earl", "Walela"]
+        self.folkArtistList = ["The Kingston Trio", "Peter Paul and Mary", "Pete Segear Arlo Guthrie", "Arlo Guthrie", "Barry McGuire", "Bee Gees", "Bob Dylan", "Cat Stevens", "Gordon Lightfoot", "The Handsome Family", "Harry Belafonte", "Joan Baez", "John Fahey", "John Fahey & His Orchestra", "John Prine", "Joni Mitchell", "Josh Rouse", "Judy Collins", "Kingston Trio", "Leo Kottke", "Mark Lanegan", "Pete Seeger & Arlo Guthrie", "Peter, Paul & Mary", "Richie Havens", "Rodriguez", "Steve Goodman", "The Wailin' Jennys"]
+        self.bluesArtistList = ["Alvin Lee & Ten Years Later", "Mavis Staples", "Alvin Lee", "Alvin Lee & Richard Newman", "Alvin Lee, Richard Newman & Tim Hinkley", "Billy Holliday", "Blues Artists", "Bob Forrest", "The Box Tops", "Boz Scaggs", "Clarence Gatermouth Brown", "Cream", "Eric Clapton", "Eric Clapton & B.B. King", "Gregg Allman", "Hot Tuna", "Jimmy Witherspoon", "Joe Louis Walker", "John Lee Hooker", "John Mayall", "John Mayall & The Bluesbreakers", "Johnny Winter", "Muddy Waters", "North Mississippi Allstars", "The Paul Butterfield Blues Band", "R.L. Burnside", "Richie Havens", "Savoy Brown", "Stevie Ray Vaughan", "Stevie Ray Vaughan & Double Trouble", "Ten Years After", "War", "Wynton Marsalis & Eric Clapton", "The Yardbirds", "18 South"]
+        self.classicalArtistList = ["Andre Kostelanetz and his orchestra", 'Charles Dutoit%', 'Alfred Hause%', 'Angele Dubeau%', "Antonio Vivaldi", "Branford Marsalis", "Branford Marsalis & Orpheus Chamber Orchestra", "Dvorak", "A Fielder Boston Pops", "Mark O'Connor", "Oliver Kane", "Ravel", "Richard Wagner", "Wagner"]
+        self.TexMex = ['Asleep At the Wheel', 'Santana', 'Los Lobos', 'Freddy Fender', 'Texas Tornados', 'The Mavericks', 'Eldorado', 'Sir Douglas Quintet']
+        self.RockABilly = ['Buddy Holly', 'Carl Perkins', 'Jerry Lee Lewis', 'Bill Haley & His Comets', 'Dale Hawkins', 'Billy Lee Riley']
+        self.Soul = ['Marvin Gaye', 'Mavis Staples', 'Roberta Flack & Donny Hathaway', 'Aretha Franklin', 'Roberta Flack']
+        self.Regae = ['Desmond Dekker', 'Bob Marley & The Wailers', 'Freddie Notes & the Rudies', 'Bob Marley']
 
     '''
     Get max index values from tables
@@ -249,7 +250,7 @@ class musicGet_Functions:
             print("Exception is ", err)
             return str(err)        
     
-    def add_one_song(self, artist, album, song, genre='Rock', path='/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', server='OSXAir.home', tipe='Download'):  
+    def add_one_song(self, artist, album, song, genre='Rock', path='/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', server='OSXAir.home', tipe='Download'): 
         cursor = self.conn.cursor()
         maxStatement = 'select max(`Music`.album2songs.index) FROM `Music`.album2songs;'
         try:
@@ -325,7 +326,7 @@ class musicGet_Functions:
         print("delete songs: ", delete_songs)  
         index = 0
         if albumin == 'all':
-            if songin == 'all':   
+            if songin == 'all': 
                 for song in delete_songs:
                         selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
                         print(selectStatement)
@@ -337,7 +338,7 @@ class musicGet_Functions:
                         print(deleteStatement)
                         cursor.execute(deleteStatement)
             else:
-                for song in delete_songs:  
+                for song in delete_songs: 
                     if song[0] == 'songin':
                         selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
                         print(selectStatement)
@@ -349,7 +350,7 @@ class musicGet_Functions:
                         cursor.execute(deleteStatement)        
         else:
             if albumin != 'all': 
-                if songin == 'all':  
+                if songin == 'all': 
                     for song in delete_songs:
                         if albumin == song[2]: 
                             selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
@@ -362,7 +363,7 @@ class musicGet_Functions:
                             cursor.execute(deleteStatement)
             elif songin != 'all':
                     for song in delete_songs:
-                        if albumin == song[2]:                                
+                        if albumin == song[2]: 
                             if song[0] == 'song': 
                                 selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
                                 print(selectStatement)
@@ -544,7 +545,7 @@ class musicGet_Functions:
         fields = "music.album2songs.song"
         if album == 'all':
             statement = "select " + fields + " from music.album2songs;"
-        else:   
+        else: 
             statement = "select " + fields + " from music.album2songs where album = '" + album + "';"
         
         print(statement)
@@ -781,6 +782,7 @@ if __name__ == '__main__':
             result = mux.add_one_song(artist, album, song)
             print("add song result is ", result)
             self.assertEqual(result, "Success")
+
         '''
         def test_get_Song(self):
             thisSong = 'Johnny B. Goode.mp3'
@@ -791,6 +793,7 @@ if __name__ == '__main__':
             print("song result is ", result[0])
             self.assertEqual(expected, result[0])
        '''     
+
         def test_delete_songs(self):
             mux = musicGet_Functions(True)
             artist = 'TestArtist_X'
@@ -820,6 +823,7 @@ if __name__ == '__main__':
             expected = Test_Results.get_artist  # (411, 'Ten Years After', 'Blues')
             result = mux.get_artist('Ten Years After')
             self.assertEqual(expected, result[0])
+
         '''
         def test_get_artistAlbums_from_Albums(self):
             mux = musicGet_Functions(True)
@@ -828,6 +832,7 @@ if __name__ == '__main__':
             print("artistAlbums 664", result)
             self.assertEqual(expected, result)
         '''
+
         def test_get_album_songs(self):
             mux = musicGet_Functions(True)
             expected = Test_Results.get_artist_albums_songs
@@ -835,6 +840,7 @@ if __name__ == '__main__':
             result = mux.get_album_songs('A Space In Time')
             print("artist albums ", result)
             self.assertEqual(expected, result, "song list for A Space In Time wrong")
+
         '''
         def test_get_artist_songs(self):
             mux = musicGet_Functions(True)
@@ -845,6 +851,7 @@ if __name__ == '__main__':
             print("artist songs", result)
             self.assertEqual(expected, result, "song list for Ten Years After wrong")
         '''
+
         def test_genres(self):
             mux = musicGet_Functions(True)
             genres = mux.get_genres()

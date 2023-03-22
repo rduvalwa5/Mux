@@ -29,7 +29,7 @@ class connection_db:
         pass
 
 
-class musicFile:   
+class musicFile: 
     
     def __init__(self):
         self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Music/Music"
@@ -282,7 +282,7 @@ class musicFile:
         print("delete songs: ", delete_songs)  
         index = 0
         if albumin == 'all':
-            if songin == 'all':   
+            if songin == 'all': 
                 for song in delete_songs:
                         selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
                         print(selectStatement)
@@ -294,7 +294,7 @@ class musicFile:
                         print(deleteStatement)
                         cursor.execute(deleteStatement)
             else:
-                for song in delete_songs:  
+                for song in delete_songs: 
                     if song[0] == 'songin':
                         selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
                         print(selectStatement)
@@ -306,7 +306,7 @@ class musicFile:
                         cursor.execute(deleteStatement)        
         else:
             if albumin != 'all': 
-                if songin == 'all':  
+                if songin == 'all': 
                     for song in delete_songs:
                         if albumin == song[2]: 
                             selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
@@ -319,7 +319,7 @@ class musicFile:
                             cursor.execute(deleteStatement)
             elif songin != 'all':
                     for song in delete_songs:
-                        if albumin == song[2]:                                
+                        if albumin == song[2]: 
                             if song[0] == 'song': 
                                 selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
                                 print(selectStatement)

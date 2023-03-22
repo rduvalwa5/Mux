@@ -10,7 +10,8 @@ import os, platform
 import pymysql
 from datetime import date
 from _datetime import datetime
-#from lib2to3.tests.data.infinite_recursion import FILE
+# from lib2to3.tests.data.infinite_recursion import FILE
+
 
 class Get_Directory_Counts_Function:
 
@@ -28,7 +29,7 @@ class Get_Directory_Counts_Function:
         self.covers = 0
                
         print("*************** Node Name is ", platform.uname().node)
-        if platform.uname().node == 'C1246895-OSX.hsd1.wa.comcast.net': #'C1246895-osx.hsd1.wa.comcast.net':
+        if platform.uname().node == 'C1246895-OSX.hsd1.wa.comcast.net':  # 'C1246895-osx.hsd1.wa.comcast.net':
             self.conn = pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music')
             self.base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music/"
             self.albumCovers = "/Users/rduvalwa2/git/Mux/AlbumCovers"
@@ -52,7 +53,7 @@ class Get_Directory_Counts_Function:
         print("Start Insert Counts into DataBase...")
 #        print("Server ",self.server ,"Genre ", self.genre, " artist ", self.artist, " albums ", self.albums, " songs ", self.songs)
         cursor = self.conn.cursor()
-        statement = "INSERT INTO counts (SERVER, artist, albums, songs, album_covers, genre) VALUES ('" + self.server + "'," +  str(self.artist) + "," + str(self.albums) + "," + str(self.songs) + "," + str(self.covers) + "," + str(self.genre) + ");" 
+        statement = "INSERT INTO counts (SERVER, artist, albums, songs, album_covers, genre) VALUES ('" + self.server + "'," + str(self.artist) + "," + str(self.albums) + "," + str(self.songs) + "," + str(self.covers) + "," + str(self.genre) + ");" 
         try:
             print("Statement ", statement)
             cursor.execute(statement)
@@ -61,7 +62,7 @@ class Get_Directory_Counts_Function:
         except self.conn.Error as err:
             print("Exception is ", err)
         cursor.close()
-        return str((("server",self.server),("artist", self.artist),("albums", self.albums), ("songs", self.songs)))
+        return str((("server", self.server), ("artist", self.artist), ("albums", self.albums), ("songs", self.songs)))
  #       print( str(datetime.now()) + "  " + "server: " + str(self.server) + " artist: " + str(self.artist) + " albums: " + str(self.albums) + " songs: " + str(self.songs) + "\n")
         
     def get_genre_count(self):
@@ -119,7 +120,6 @@ class Get_Directory_Counts_Function:
 #                    if album != '.DS_Store':
 #                        if album not in self.albumList:
 #                            self.albumList.append(album)
-
         
     def get_song_count(self):
         for a in self.artistList:
@@ -130,16 +130,18 @@ class Get_Directory_Counts_Function:
                     if al != ".DS_Store":
                         albumSongs = os.listdir(self.base + "/" + artist + "/" + al)
                         if al == "Unknown Album":
-                            print("Unknown album ",albumSongs)
+                            print("Unknown album ", albumSongs)
                         self.songs = self.songs + len(albumSongs)             
                         for song in albumSongs:
                             self.songList.append(song)
         self.songList = sorted(self.songList)
         print("Song File ", len(self.songList))
+
     """ https://www.tutorialspoint.com/python/python_files_io.htm """
+
     def open_write_Songfile(self):
         songFile = "AASongFile" + self.server + ".txt"
-        mysong = open(songFile,'w')
+        mysong = open(songFile, 'w')
         for song in self.songList:
             if song != '.DS_Store':
                 mysong.write(str(song) + "\n")
@@ -147,7 +149,7 @@ class Get_Directory_Counts_Function:
 
     def open_write_Albumfile(self):
         albumFile = "AAalbumFile" + self.server + ".txt"
-        myAlbums = open(albumFile,'w')
+        myAlbums = open(albumFile, 'w')
         for album in self.albumList:
             if album != '.DS_Store':
                 myAlbums.write(str(album) + "\n")
@@ -155,32 +157,32 @@ class Get_Directory_Counts_Function:
         
     def open_write_Artistfile(self):
         artistFile = "AAartistFile" + self.server + ".txt"
-        myArtists = open(artistFile,'w')
+        myArtists = open(artistFile, 'w')
         for artist in self.artistList:
             if artist != '.DS_Store':
                 myArtists.write(str(artist) + "\n")
         myArtists.close()
 
     def open_write_file(self, data):
-        rsyncFile = "AA_"+ self.server +"_counts.txt"
-        synFile = open(rsyncFile,'a')
+        rsyncFile = "AA_" + self.server + "_counts.txt"
+        synFile = open(rsyncFile, 'a')
         synFile.write(str(data))
         synFile.close()
         
     def open_write_CommonFile(self, data):
         rsyncFile = "All_counts.txt"
-        synFile = open(rsyncFile,'a')
+        synFile = open(rsyncFile, 'a')
         synFile.write(str(data + "\n"))
         synFile.close()
   
     def open_read_file(self):
 #        rsyncFile = "/Users/rduvalwa2/Public/TestRync/counts.txt"
         rsyncFile = "All_counts.txt"
-        synFile = open(rsyncFile,'r')
+        synFile = open(rsyncFile, 'r')
         redLines = synFile.readlines()
-        print("Lines READ ",redLines)
+        print("Lines READ ", redLines)
         for line in redLines:
-            print("Line READ ",line)
+            print("Line READ ", line)
         synFile.close()
 
 

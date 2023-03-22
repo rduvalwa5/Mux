@@ -12,14 +12,13 @@ import pymysql.cursors
 import os
 import platform
 
-
 from MusicFile import musicFile
 import unittest
 from Musicdb_info import * 
-#from  Musicdb_info import login_info_osxAir
-#from Musicdb_info import login_info_default
-#from Musicdb_info import login_info_xps
-#from mysql.connector.errors import Error
+# from  Musicdb_info import login_info_osxAir
+# from Musicdb_info import login_info_default
+# from Musicdb_info import login_info_xps
+# from mysql.connector.errors import Error
 
 
 class TestMusicDb(unittest.TestCase):
@@ -141,6 +140,7 @@ class TestMusicDb(unittest.TestCase):
             print(result[0])
             self.assertEqual(expected, result[0])           
    '''       
+
     def test_music_Albums_Rows(self):
         print("*************** Node Name is ", platform.uname().node)
         if platform.uname().node == 'C1246895-XPS':
@@ -176,6 +176,7 @@ class TestMusicDb(unittest.TestCase):
  #           db.close()
         except cursor.Error as err:
                 print("Exception is ", err)
+
     '''
     def test_Music_Artist_RowsJ(self):
         db = mysql.connector.Connect(**login_info_osxAir)
@@ -274,6 +275,7 @@ class TestMusicDb(unittest.TestCase):
         print("result is ", result[0][0])
         self.assertEqual(expected, result[0][0])
     '''
+
         
 if __name__ == "__main__":
     unittest.main()

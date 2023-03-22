@@ -13,16 +13,17 @@ mysql -u root -b music -p
 mysql -u rduvalwa2 -b music -p
 
 '''
-#from MusicFile import musicFile
+# from MusicFile import musicFile
 import unittest
 import pymysql
+
 
 class TestMusicDb(unittest.TestCase):
 
       def test_connection_Artist_Albums_os_rduvalwa2_music_Albums_Rows(self):
  #       db = MySQLdb.connect(host='localhost', user='root', password='blu4jazz', db='Music')
 #        conn = pymysql.connect(**login_info_osx)
-        db =  pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music')
+        db = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music')
         cursor = db.cursor()
         statement = "select count(*) from Music.artist_albums;"
         expected = 1311
@@ -38,7 +39,7 @@ class TestMusicDb(unittest.TestCase):
 #        db.close()
 
       def test_connection_Artist_Table_As_Root_localhost(self):
-        db =  pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music')
+        db = pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music')
         cursor = db.cursor()
         expected = 760
 #        statement = "select uid from active_passwords where ap in ('password_db');"
@@ -54,9 +55,9 @@ class TestMusicDb(unittest.TestCase):
 #        db.close()
     
       def test_select_song_type_MusicSongs_By_Criteria(self):
-        db =  pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music')
+        db = pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music')
         cursor = db.cursor()
-        expected = 'Maggie May.mp3' # 'Kansas City.mp3'
+        expected = 'Maggie May.mp3'  # 'Kansas City.mp3'
         statement = 'select Music.album2songs.song from Music.album2songs where album2songs.medium = \'tape\' and artist like \'Rod Stewart\';'
         try:
             cursor.execute(statement)
@@ -66,7 +67,6 @@ class TestMusicDb(unittest.TestCase):
             self.assertTrue(rows[0][0] == expected)
         except db.Error as err:
             print("Exception is ", err)
-
         
         
 if __name__ == "__main__":
