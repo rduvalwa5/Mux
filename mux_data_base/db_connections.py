@@ -9,35 +9,6 @@ import platform
 import pymysql  # as connDb
 import Test_Results
 
-#class TestResults:
-#    if platform.uname().node == 'MaxBookPro17OSX.hsd1.wa.comcast.net': #wireless name
-#        cover_count = 1263
-#         songs_count = 12110
-#        artist_count = 592
- #       artist_albums_count = 1242
-
- #   elif platform.uname().node == 'OSXAir.hsd1.wa.comcast.net':
- #       cover_count = 1263
- #       songs_count = 12110
- #       artist_count = 592
- #       artist_albums_count = 1242
-
-class dbInfo:
-    def dbSpecs(self):
-        USERNAME="rduvalwa2"
-        PASSWORD="blu4jazz"
-        #HOST="OSXAir.home.home"
-        HOST="localhost"
-        DATABASE="Music"
-        PORT=3306
-
-    def login_spec(self):
-        login_info_default = "host='OSXAir.hsd1.wa.comcast.net',user='root',password='blu4jazz',db='Music'"
-        #login_info_osxAir = {"host":"OSXAir.home","user":"rduvalwa2","password":"blu4jazz","db":"Music"}
-        login_info_osxAir = {"host":"OSXAir.hsd1.wa.comcast.net","user":"rduval","password":"blu4jazz","db":"Music"}
-        login_info_osx = "host='MaxBookPro17OSX.hsd1.wa.comcast.net',user='root',password='blu4jazz',db='Music'"
-
-
 class musicGet_Functions:   
     def __init__(self):
         print("*************** Node Name is ",platform.uname().node)
@@ -91,7 +62,6 @@ class musicGet_Functions:
 
 if __name__  == '__main__':
     import unittest
-    import Test_Results
     
     class TestConnector(unittest.TestCase):
             

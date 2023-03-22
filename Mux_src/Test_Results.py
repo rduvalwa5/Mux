@@ -26,7 +26,7 @@ get_artist_songs = (('08 Johnny B. Goode.mp3', 'The Best of Chuck Berry'), ('02 
 
 genresList = (('Audio Book', 1), ('Blue Grass', 2), ('Blues', 3), ('Classical', 4), ('Country', 5), ('Folk', 6), ('French Pop', 7), ('Jazz', 8), ('Pop', 9), ('R&B/Soul', 10), ('Reggae', 11), ('Rock', 12), ('RockaBilly', 13), ('Talk', 14), ('TexMex', 15))
 
-genreList = [('Blue Grass', 192), ('Blues', 1137), ('Classical', 183), ('Country', 1046), ('Folk', 687), ('French Pop', 78), ('Jazz', 942), ('Pop', 1296), ('R&B/Soul', 587), ('Reggae', 25), ('Rock', 6035), ('RockaBilly', 32), ('Soundtrack', 0), ('Talk', 1), ('TexMex', 237)]
+genreList = [('Blue Grass', 179), ('Blues', 701), ('Classical', 180), ('Country', 1256), ('Folk', 687), ('French Pop', 78), ('Jazz', 942), ('Pop', 1296), ('R&B/Soul', 587), ('Reggae', 25), ('Rock', 6035), ('RockaBilly', 32), ('Soundtrack', 0), ('Talk', 1), ('TexMex', 237)]
 
-typeList = [('CD', 7507), ('Itunes', 2348), ('Tape', 99), ('Amazon', 319), ('Vinyl', 2285)]
+typeList = [('CD', 7885), ('Itunes', 2744), ('Tape', 24), ('Amazon', 319), ('Vinyl', 2285)]
 

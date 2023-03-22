@@ -31,35 +31,28 @@ error: could not create 'c:\program files\python36-32\Lib\site-packages\olefile'
 ''' 
 import os
 import platform
-#import MySQLdb  # as connDb
 import pymysql.cursors
-
-from Musicdb_info import * #login_info_osx
-from _ast import IsNot
 
 
 class musicGet_Functions:   
 
-    def __init__(self, isNotTest):
-        print("*************** Node Name is ", platform.uname().node)
-        if platform.uname().node == 'MaxBookPro17OSX.hsd1.wa.comcast.net':
-            serv = login_info_osx
-        elif platform.uname().node == 'OSXAir.home.home':
-            serv = login_info_osxAir
+    def __init__(self):
+        print("*************** Node Name is ",platform.uname().node)
+        if platform.uname().node == 'Macbook16.local':
+            self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music_2')
+            self.server = 'MaxBookPro17OSX' 
+            self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
+        elif platform.uname().node == 'OSXAir.local':
+            print("Host is " , 'OsxAir')
+            self.conn = pymysql.connect(host='OSXAir.local', user='rduvalwa2', password='blu4jazz', db='Music_2')
+            self.server = 'OSXAir' 
+            self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
+        
         else:
-            print("Host is " , 'default')
-            serv = login_info_default
-
-        host = serv['host']
-        user = serv['user']
-        password = serv['password']
-        db = serv['db']
-#        self.conn = MySQLdb.connect(host=host, user=user, password=password, db=db)
-#        pymysql.connect
-        self.conn = pymysql.connect(host=host, user=user, password=password, db=db)
-        self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
-        self.server = 'OSXAir.home.home' 
-        self.notTestRun = isNotTest
+            print('Node is localhost')
+            self.conn = pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music_2')
+            self.server = 'OSXAir' 
+            self.base = "/Users/rduvalwa2/Music/Music/Media.localized"     
         
         self.countryArtistList = ["Dolly Parton","Alabama","Alison Krauss","Alison Krauss & Brad Paisley","Alison Krauss & John Waite","Alison Krauss & Union Station","Bill Monroe","Boxcar Willie","Brenda Lee","Chanel Campbell","The Charlie Daniels Band","Charlie Rich","Chet Atkins and Hank Snow","Cody Bryant and The Riders Of The Purple Sage","Colt Ford","David Allan Coe","Della Mae","Dierks Bentley","Dixie Chicks","Eilen Jewell","Eldorado","Emmylou Harris","Emmylou Harris with Herb Pedersen","Emmylou Harris with Roy Orbison","Florida Georgia Line","Foy Willing & The Riders Of The Purple Sage","Gram Parsons","Hank Williams, Jr.","Jack Ingram","James Otto","Jamey Johnson","Jerry Jeff Walker","Jessi Colter","Jessi Colter & Sunny Sweeney","Jewel","Jimmy Buffet","John Hiatt","Johnny Cash","Josh Thompson","Justin Moore","Keith Urban ","Kenny Rogers & The First Edition","Kris Kristofferson","Kris Kristofferson & Patty Griffin","Linda Ronstadt","Lori McKenna","Mark O'Connor","The Marshall Tucker Band","Marty Robbins","The Mavericks","Michael Martin Murphey","Montgomery Gentry","New Riders of the Purple Sage","Nitty Gritty Dirt Band","Olivia Newton-John","Pat Green","Patsy Cline","Polecat","Prairie Flyer","Randy Houser","Redbird","Robert Plant & Alison Krauss","Shooter Jennings","Stray Birds","The Texas Tornados","Texas Tornados","Trace Adkins","Uncle Earl","Van Morrison","Waylon and Willie","Waylon Jennings","Waylon Jennings & The Waylors","Waylon Jennings & Willie Nelson","Willie Nelson and Leon Russel","Wyatt McCubbin","Zac Brown Band"]
         self.popArtistList = ["Yo-Yo Ma","Sarah McLachlan","Reflejo de Luna","Nat _King_ Cole","Celtic Christmas","Bing Crosby","Armik","Tony Bennett","Ottmar Liebert%","Noam Chomsky","Philip Selway","Padraig MacMathuna","Ottmar Liebert_Luna Negra","Ottmar Liebert","Mannheim Steamroller","Loreena McKennitt","Julio Iglesias","ADELE","The Airborne Toxic Event","Alexander","Arcade Fire","Art Garfunkel","The Coats","Cold War Kids","Dean Martin","Death Cab for Cutie","Del Shannon","Diego Garcia","Frank Sinatra","Frank Sinatra & Dean Martin","Frank Sinatra & Sammy Davis Jr.","Frank Sinatra, Dean Martin & Sammy Davis Jr.","Generationals","George Baker & George Baker Selection","Harry Nilsson","Iron & Wine","Jackson Browne","Jeremy Camp","Jesse Thomas","Jose Feliciano","Judy Collins","Junip","k.d. lang and the Siss Boom Bang","Leo Sayer","Lesley Gore","The Mamas & The Papas","Nashville Teens","Neil Diamond","Neil Sedaka","Norah Jones","Parts & Labor","Paul Simon","Percy Sledge","Peter Bjorn and John","Playing for Change","Rita Coolidge","S. Carey","Sammy Davis Jr.","Sammy Davis Jr. & Dean Martin","Sarah Jarosz","Say Hi","The Shadows","Telekinesis","The Tokens","Tom Jones","Tom Jones, Johnnie Spence & Orchestra","We Are Augustines","Wrabel","Wye Oak"]
@@ -283,8 +276,6 @@ class musicGet_Functions:
             return str(err)
 
     def get_song(self, song):
-        fields = '*'
-# 10 -24-2017       statement = "Select " + fields + " from music.album2songs where song like '%" + song + "' and album like '" + album + "' ;"
         statement = "Select * from music.album2songs where song like '%" + song + "%';"
         print(statement)
         cursor = self.conn.cursor()
@@ -689,7 +680,6 @@ class musicGet_Functions:
             return str(err) 
 
     def get_artistAlbums_fromAlbums(self, artist):
-#       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
         fields = "*"
         statement = "select " + fields + " from music.artist_albums where artist like '%" + artist + "%';"
         print(statement)
@@ -697,7 +687,6 @@ class musicGet_Functions:
         try:
             cursor.execute(statement)
             result = cursor.fetchall()  
-#            print(result)
             cursor.close()
             self.dbConnectionClose()
             return result   
@@ -706,7 +695,6 @@ class musicGet_Functions:
             return str(err)
         
     def get_artistSongs_fromSongs(self, artist):
-#       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
         fields = "music.album2songs.song, music.album2songs.album"
         statement = "select " + fields + " from music.album2songs where artist like '" + artist + "';"
         print(statement)
@@ -758,8 +746,6 @@ class musicGet_Functions:
             return str(err) 
 
     def get_album_by_index(self, idx):
-#       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
-        fields = "*"
         statement = "select * from music.artist_albums where `index` = " + str(idx) + ";"
         print(statement)
         cursor = self.conn.cursor()
@@ -774,10 +760,7 @@ class musicGet_Functions:
             return str(err) 
 
 
-
     def get_album_songs(self, album):
-#       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
-#        albumSongs = []
         fields = "music.album2songs.song"
         if album == 'all':
             statement = "select " + fields + " from music.album2songs order by album, song;"
@@ -797,8 +780,6 @@ class musicGet_Functions:
             return str(err) 
 
     def get_artist_songs(self, artist):
-#       select music.artist.index, artist, genre fmsom music.artist where artist = 'Bill Withers';
-#        albumSongs = []
         fields = "music.album2songs.song"
         statement = "select " + fields + " from music.album2songs where artist = '" + artist + "';"
         
@@ -917,7 +898,6 @@ class musicGet_Functions:
             print("XXXget_album_cover result ", result)
             return result
             cursor.close()
-#            self.dbConnectionClose()
             return result  
         except self.conn.Error as err:
             print("Exception is ", err)
@@ -931,7 +911,6 @@ class musicGet_Functions:
             result = cursor.fetchone()
             return result[0]
             cursor.close()
-#            self.dbConnectionClose()
             return result  
         except self.conn.Error as err:
             print("Exception is ", err)
@@ -951,7 +930,6 @@ class musicGet_Functions:
             maxCover = idx[0] 
         newIdx = maxCover + 1   
         print("*********** New covver    ", newIdx) 
-#        statement = insert into `Music`.album_covers values ('BobbyDarin_MackTheKnife.jpeg','',303,'');
         statement = "insert into `Music`.album_covers(`cover_idx`,`album_cover`,`album`,`description`) values (" + str(newIdx) + ",'" + cover + "','" + album + "'," + "'No description');"
         print(statement)
         cursor.execute(statement)
@@ -1022,7 +1000,7 @@ if __name__  == '__main__':
     class TestConnector(unittest.TestCase):
             
         def test_type_count(self):
-            mux = musicGet_Functions(True)
+            mux = musicGet_Functions()
             for tipe in Test_Results.typeList:
                 print("Type IS...", tipe[0])
                 expected = tipe[1]
@@ -1031,7 +1009,7 @@ if __name__  == '__main__':
                 self.assertEqual(expected, result) 
                       
         def test_genre_count(self):
-            mux = musicGet_Functions(True)
+            mux = musicGet_Functions()
             gList = Test_Results.genreList
             for gen in gList:
                 expected = gen[1]
@@ -1040,7 +1018,7 @@ if __name__  == '__main__':
                 self.assertEqual(expected,result)
                     
         def test_get_all_songs(self):
-            mux = musicGet_Functions(True)
+            mux = musicGet_Functions()
             expected = Test_Results.songs_count  # 6831
             result = mux.get_AllSongs()
             print("All songs count is ", len(result))
@@ -1048,7 +1026,7 @@ if __name__  == '__main__':
             self.assertEqual(expected, len(result),"Song count is wrong")
         
         def test_get_count_Artist(self):
-            mux = musicGet_Functions(True)
+            mux = musicGet_Functions()
             table = 'Music.artist'
             criteria = ""
             expected = Test_Results.artist_count # 564
@@ -1059,7 +1037,7 @@ if __name__  == '__main__':
             
               
         def test_get_count_Artist_Albums(self):
-            mux = musicGet_Functions(True)
+            mux = musicGet_Functions()
             table = 'Music.artist_albums'
             criteria = ""
             expected = Test_Results.artist_albums_count  #932
