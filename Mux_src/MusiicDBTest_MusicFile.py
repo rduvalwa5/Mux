@@ -19,19 +19,19 @@ class musicFile:
     def __init__(self):
         print("*************** Node Name is ",platform.uname().node)
         if platform.uname().node == 'Macbook16.local':
-            self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music_2')
-            self.server = 'MaxBookPro17OSX' 
+            self.conn = pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music_Test')
+            self.server = 'MaxBook16' 
             self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
         elif platform.uname().node == 'OSXAir.local':
             print("Host is " , 'OsxAir')
-            self.conn = pymysql.connect(host='OSXAir.local', user='rduvalwa2', password='blu4jazz', db='Music_2')
+            self.conn = pymysql.connect(host='OSXAir.local', user='rduvalwa2', password='blu4jazz', db='Music_Test')
             self.server = 'OSXAir' 
             self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
         
         else:
             print('Node is localhost')
-            self.conn = pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music_2')
-            self.server = 'OSXAir' 
+            self.conn = pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music_Test')
+            self.server = 'localhost' 
             self.base = "/Users/rduvalwa2/Music/Music/Media.localized"     
       
              
@@ -97,32 +97,95 @@ class musicFile:
         cursor.close()
         self.conn.close()
         return rows
+    
+    '''
+    Load artist
+    '''
 
     def get_music_artist(self):
         artist = []
-        index = 0
         musicDirs = os.listdir(self.base)
         for directory in musicDirs:
             if os.path.isdir(self.base + "/" + directory):
-                artist.append((index, directory))
-                index = index + 1
+                if directory!= '.DS_Store' and directory!= '.localized':
+                    artist.append((directory))
+        artist.sort()
         return artist
+    
+    def initial_insert_into_artist(self): 
+        self.conn = pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music_Test')
+        cursor = self.conn.cursor()
+        cursor.execute("truncate  artist;")
+        
+        allArtist = self.get_music_artist()
+        for artist in allArtist:
+                if "\'"in artist:
+                    print("found apostrophe")
+                    artist = artist.replace("'", "\\\'")
+                    print("artist", artist)
+                insertStatement = "INSERT into artist  values(\"" + artist + "\");"
+                print(insertStatement)
+                cursor.execute(insertStatement)
+
+        cursor.execute("commit;")
+        print("done")
+        cursor.close()
+        self.conn.close()
+    
+    '''
+    End load artist
+    '''
+    
+    '''
+    load albums
+    '''
     
     def get_albums(self):
         base = self.base  # "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music"
         albums = []
-        index = 0
         artists = self.get_music_artist()
+        
         for a in artists:
-            artist = a[1]
+            artist = a
             if os.path.isdir(base + "/" + artist):
                 artist_albums = os.listdir(base + "/" + artist)
                 for album in artist_albums:
-                    print(album)
                     if album != '.DS_Store':
-                        albums.append((index, artist, album))
-                        index = index + 1
+                        albums.append(( artist, album))
+                        
         return albums
+    
+    def initial_insert_into_artist_albums(self): 
+        self.conn = pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music_Test')
+        truncate = "truncate `artist_albums`;"
+        cursor = self.conn.cursor()
+        cursor.execute(truncate)
+        albums = []
+        artists = self.get_music_artist()
+        for a in artists:
+            artist = a
+            if "\'"in artist:
+                    print("found apostrophe")
+                    artist = artist.replace("'", "\\\'")
+                    print("artist", artist)
+            if artist != '.DS_Store':
+                artistAlbums = os.listdir("/Users/rduvalwa2/Music/Music/Media.localized/" + a) # do not remove apostrophe for directory search
+                for album in artistAlbums:
+                    if album != '.DS_Store':
+                        albums.append(album)
+                        if "\'"in album:
+                                album = album.replace("'", "\\\'")
+                        insertStatement = "INSERT into Music_Test.artist_albums (artist_albums.artist,artist_albums.album)  values('" + artist + "','" + album + "');" #"+ "\",\"" + album[2] + "\",\"" + "rock" + "\",\"" + "download" + "\")"
+                        cursor.execute(insertStatement)
+        commit = "commit;"
+        cursor.execute(commit)
+        print("done")
+        cursor.close()
+        return albums        
+    '''
+    End load albums
+    '''   
+    
 
     def get_all_songs(self):
         index = 0
@@ -143,7 +206,7 @@ class musicFile:
     
     def get_all_songs_type_genre(self):
         cursor = self.conn.cursor()
-        sync_statement = "UPDATE `Music`.album2songs t1 INNER JOIN `Music`.artist_albums t2 ON t1.album = t2.album SET t1.genre = t2.genre, t1.type = t2.type;"
+        sync_statement = "UPDATE album2songs t1 INNER JOIN artist_albums t2 ON t1.album = t2.album SET t1.genre = t2.genre, t1.type = t2.type;"
         cursor.execute(sync_statement)
         commit = "commit;"
         cursor.execute(commit)    
@@ -154,7 +217,7 @@ class musicFile:
         base = self.base
         albums = []
         songs = []
-        newIndex = 0
+#        newIndex = 0
         print("path is ", self.base + "/" + artist)
         if(os.path.isdir(base + "/" + artist)):
             artist_albums = os.listdir(base + "/" + artist)
@@ -180,7 +243,7 @@ class musicFile:
         cursor.execute(trunkate)
         allSongs = self.get_all_songs()
         for song in allSongs:
-                insertStatement = "INSERT into Music.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(song[0]) + ",\"" + self.server + "\",\"" + self.base + "\",\"" + song[1] + "\",\"" + song[2] + "\",\"" + song[3] + "\",\"" + "rock" + "\",\"" + "download" + "\")"
+                insertStatement = "INSERT into album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(song[0]) + ",\"" + self.server + "\",\"" + self.base + "\",\"" + song[1] + "\",\"" + song[2] + "\",\"" + song[3] + "\",\"" + "rock" + "\",\"" + "download" + "\")"
                 cursor.execute(insertStatement)
         countStatement = "SELECT count(*) FROM music.album2songs;"        
         cursor.execute(countStatement)
@@ -207,7 +270,7 @@ class musicFile:
             songs = self.get_songs(artist, album)
         print(songs)
         for song in songs:
-                insertStatement = "INSERT into Music_2.album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(newIndex) + ",\"" + self.server + "\",\"" + self.base + "\",\"" + song[1] + "\",\"" + song[2] + "\",\"" + song[3] + "\",\"" + "rock" + "\",\"" + "download" + "\")"
+                insertStatement = "INSERT into album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(newIndex) + ",\"" + self.server + "\",\"" + self.base + "\",\"" + song[1] + "\",\"" + song[2] + "\",\"" + song[3] + "\",\"" + "rock" + "\",\"" + "download" + "\")"
                 print(insertStatement)
                 cursor.execute(insertStatement)
                 newIndex = newIndex + 1
@@ -280,48 +343,6 @@ class musicFile:
         cursor.close()
         self.conn.close()
 
-    def initial_insert_into_artist_albums(self): 
-        '''
-        This code recurses thru the "base" path and captures the artist, album and song
-        '''
-        cursor = self.conn.cursor()
-        trunkate = "truncate  music.artist_albums;"
-        cursor.execute(trunkate)
-        allAbums = self.get_albums()
-        for album in allAbums:
-                insertStatement = "INSERT into artist_albums (artist_albums.index, artist_albums.artist,artist_albums.album,artist_albums.genre,artist_albums.type)  values(" + str(album[0]) + ",\"" + album[1] + "\",\"" + album[2] + "\",\"" + "rock" + "\",\"" + "download" + "\")"
-                cursor.execute(insertStatement)
-        countStatement = "SELECT count(*) FROM artist_albums;"        
-        cursor.execute(countStatement)
-        count = cursor.fetchone()
-        print(count[0])
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
-        cursor.close()
-        self.conn.close()
-
-    def initial_insert_into_artist(self): 
-        '''
-        This code recurses thru the "base" path and captures the artist, album and song
-        '''
-        cursor = self.conn.cursor()
-        trunkate = "truncate  music.artist;"
-        cursor.execute(trunkate)
-        allArtist = self.get_music_artist()
-        for artist in allArtist:
-                insertStatement = "INSERT into artist (artist.index, artist.artist,artist.genre)  values(" + str(artist[0]) + ",\"" + artist[1] + "\",\"" + "rock" + "\")"
-                cursor.execute(insertStatement)
-        countStatement = "SELECT count(*) FROM artist;"        
-        cursor.execute(countStatement)
-        count = cursor.fetchone()
-        print(count[0])
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
-        cursor.close()
-        self.conn.close()
- 
     def add_album(self, album, artist, tipe):
         '''
         This code recurses thru the "base" path and captures the artist, album and song
@@ -335,7 +356,7 @@ class musicFile:
         print(insertStatement)
         cursor.execute(insertStatement)
         count = cursor.fetchone()
-#        print(count[0])
+        print(count[0])
         commit = "commit;"
         cursor.execute(commit)
         print("done")
@@ -397,157 +418,13 @@ class musicFile:
 
     
 if __name__ == '__main__':
-#    mux = musicFile()
+    mux = musicFile()
+    myartist = mux.get_music_artist()
+#    print(myartist)
+    mux.initial_insert_into_artist()
+#    myalbums = mux.get_albums()
+#   for album in myalbums:
+#       print(album[0] , album[1])
+#    print(myalbums)
 
-#    albumCount = mux.get_record_count("`Music`.artist_albums")
-#    songCount = mux.get_record_count("`Music`.album2songs")
-#    artistCount = mux.get_record_count("`Music`.artist")
-#    print("Artist: ", artistCount ," Songs: ", songCount, " Albums: ", albumCount )
-
-#    mux.add_songs('ZZ_ZTest', 'Test_Album1')
-#    mux.delete_songs('ZZ_ZTest', 'Test_Album1')
-    
-#    mux.add_songs('ZZ_ZTest', 'Test_Album2')
-#    mux.delete_songs('ZZ_ZTest', 'Test_Album2')
-    
-#    mux.add_songs('ZZ_ZTest','all')
-#    mux.delete_songs('ZZ_ZTest','all')
-    
-#    songs = mux.get_songs(artist, album):
-
-#    fields = "Music.artist.index, Music.artist.artist "
-#    criteria = " Music.artist.artist like \'Bob Dylan\'"   
-#    result = mux.get_select_Artist(fields,criteria)
-#    print(result)
-
-#    for artist in artistList:
-#        print(artist)
-
-#    allAlbums = mux.get_albums()
-#    for album in allAlbums:
-#        print(album)
-
-# ************
-#    mux.initial_insert_into_album2songs()
-#    mux.get_all_songs_type_genre()
-# ************
-#    mux.initial_insert_into_artist_albums()
-# ************
-#    mux.initial_insert_into_artist()
-# ************
-
-    '''
-    Test add artist, select artist, delete artist
-    '''
-#    arts = "Joe Blow"
-#    mux.add_artist(arts,"Rock")  
-#    fields = " * "
-#    criteria = "Music.artist.artist like \'Joe Blow\'"
-#    print(mux.get_select_Artist(fields,criteria))
-#    mux.delete_artist(arts)   
-#    print(mux.get_select_Artist(fields,criteria))
-    
-    '''
-    Test add album, select album, delete album
-    '''  
-#    arts = "Joe Blow"
-#    album = "The Best of Joe Blow"
-#    tipe = "Country"
-#    mux.add_album(album,arts,tipe)
-#    fields = " * "
-#    criteria = " where Music.artist_albums.album like '" + album + "'"
-#    result = mux.get_select_ArtistAlbums(fields,criteria)
-#    print(result)
-#    mux.delete_album(album)   
-#    print(mux.get_select_ArtistAlbums(fields,criteria))
-
-#    albumCount = mux.get_record_count("`Music`.artist_albums")
-#    songCount = mux.get_record_count("`Music`.album2songs")
-#    artistCount = mux.get_record_count("`Music`.artist")
-#    print("Artist: ", artistCount ," Songs: ", songCount, " Albums: ", albumCount )
-    
-#    albumCount = mux.get_record_count("`Music`.artist_albums")
-#    songCount = mux.get_record_count("`Music`.album2songs")
-#    artistCount = mux.get_record_count("`Music`.artist")
-#    print("Artist: ", artistCount ," Songs: ", songCount, " Albums: ", albumCount )
-
-    import unittest
-
-    class TestConnector(unittest.TestCase):
-
-        def test_get_select_ArtistAlbums(self):
-            fields = "count(*)"
-            constraints = " "
-            expected = 1210
-            mux = musicFile()
-            result = mux.get_select_Album(fields, constraints)
-            self.assertEqual(expected, result[0])
-
-        def test_get_select_Album(self):
-            fields = "count(*)"
-            constraints = " "
-            expected = 1210
-            mux = musicFile()
-            result = mux.get_select_ArtistAlbums(fields, constraints)
-            self.assertEqual(expected, result[0])
-
-        def test_get_select_Artist(self):
-            fields = "count(*)"
-            constraints = " "
-            expected = 567
-            mux = musicFile()
-            result = mux.get_select_Artist(fields, constraints)
-            self.assertEqual(expected, result[0][0])
-
-        def testGetMaxArtist(self):
-            mux = musicFile()
-            table = 'Artist'
-            expected = 569
-            result = mux.get_max_index(table)
-            self.assertEqual(expected, result[0])
-            
-        def testGetMaxAlbums(self):
-            mux = musicFile()
-            table = 'artist_albums'
-            expected = 1218
-            result = mux.get_max_index(table)
-            self.assertEqual(expected, result[0])
- 
-        def testGetMaxSongs(self):
-            mux = musicFile()
-            table = 'album2songs'
-            expected = 11706
-            result = mux.get_max_index(table)
-            self.assertEqual(expected, result[0])
-           
-        def testGetMaxAlbumSongs(self):
-            mux = musicFile()
-            table = 'album2songs'
-            expected = 11706
-            result = mux.get_max_index(table)
-            self.assertEqual(expected, result[0]) 
-       
-        def test_get_dirs_artist(self):
-            mux = musicFile()
-            base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music"
-            musicArtist = mux.get_music_artist()
-            self.assertIn((174, 'The Charlie Daniels Band'), musicArtist, "Charlie Daniels Band not there")
-
-        def test_albumList(self):
-            mux = musicFile()
-            alms = mux.get_albums()
-            self.assertIn((308, "Tim O'Brien", 'Cornbread Nation'), alms, "Cornbread Nation not present")
-
-        def test_songList(self):
-            mux = musicFile()
-            mysongs = mux.get_songs('18 South', 'Soulful Southern Roots Music')
-            print("mysongs are ", mysongs)
-            self.assertIn('03 Wanna Be Blue.mp3', mysongs, "'01 Late Night Ramble.mp3' song is missing")       
-
-        def test_songListAll(self):
-            mux = musicFile()
-            mysongs = mux.get_songs('18 South')
-            print("mysongs are ", mysongs)
-            self.assertIn('03 Wanna Be Blue.mp3', mysongs[0], "'03 Wanna Be Blue.mp3' song is missing")       
-
-    unittest.main()    
+    mux.initial_insert_into_artist_albums()

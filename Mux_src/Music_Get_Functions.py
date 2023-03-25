@@ -1015,7 +1015,7 @@ if __name__  == '__main__':
                 expected = gen[1]
                 print("expect for genre ", gen[0])
                 result = mux.get_genre_count(gen[0])
-                self.assertEqual(expected,result)
+                self.assertEqual(expected,result, gen)
                     
         def test_get_all_songs(self):
             mux = musicGet_Functions()

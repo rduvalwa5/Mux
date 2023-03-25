@@ -4,6 +4,7 @@ for testing data base connectivity
 @author: rduvalwa2
 '''
 
+import os
 import platform
 import pymysql  # as connDb
 import Test_Results
@@ -12,22 +13,22 @@ class musicGet_Functions:
     def __init__(self):
         print("*************** Node Name is ",platform.uname().node)
         if platform.uname().node == 'Macbook16.local':
-            self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music_2')
+            self.conn = pymysql.connect(host='localhost', user='rduvalwa2', password='blu4jazz', db='Music_Test')
             self.server = 'MaxBookPro17OSX' 
             self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
         elif platform.uname().node == 'OSXAir.local':
             print("Host is " , 'OsxAir')
-            self.conn = pymysql.connect(host='OSXAir.local', user='rduvalwa2', password='blu4jazz', db='Music_2')
+            self.conn = pymysql.connect(host='OSXAir.local', user='rduvalwa2', password='blu4jazz', db='Music_Test')
             self.server = 'OSXAir' 
             self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
         
         else:
             print('Node is localhost')
-            self.conn = pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music_2')
+            self.conn = pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music_Test')
             self.server = 'OSXAir' 
             self.base = "/Users/rduvalwa2/Music/Music/Media.localized"           
                 
-    def get_count(self,table = 'music.album2songs', criteria = " "):
+    def get_count(self,table = 'Music_Test.album2songs', criteria = " "):
         statement = "select count(*) from " + table + " "  + criteria + ";"
         print("get count statement ", statement)
         cursor = self.conn.cursor()
@@ -43,7 +44,7 @@ class musicGet_Functions:
 
     def get_album_cover_count(self):
         cursor = self.conn.cursor()
-        statement = "select count(*)  from `Music`.album_covers;"
+        statement = "select count(*)  from `Music_Test`.album_covers;"
         try:
             cursor.execute(statement)
             result =cursor.fetchone()
@@ -66,7 +67,7 @@ if __name__  == '__main__':
             
         def test_get_count_Artist(self):
             mux = musicGet_Functions()
-            table = 'Music.artist'
+            table = 'Music_Test.artist'
             criteria = ""
             expected = Test_Results.artist_count
             result = mux.get_count(table, criteria)
@@ -77,7 +78,7 @@ if __name__  == '__main__':
               
         def test_get_count_Artist_Albums(self):
             mux = musicGet_Functions()
-            table = 'Music.artist_albums'
+            table = 'Music_Test.artist_albums'
             criteria = ""
             expected = Test_Results.artist_albums_count
             result = mux.get_count(table, criteria)
@@ -87,7 +88,7 @@ if __name__  == '__main__':
             
         def test_get_count_album2Songs(self):
             mux = musicGet_Functions()
-            table = 'Music.album2songs'
+            table = 'Music_Test.album2songs'
             criteria = ""
             expected = Test_Results.songs_count
             result = mux.get_count(table, criteria)
