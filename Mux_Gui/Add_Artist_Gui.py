@@ -1,6 +1,9 @@
 '''
 Created on Feb 5, 2017
 
+Updated April 3 2023
+
+
 @author: rduvalwa2
 '''
 
@@ -57,7 +60,7 @@ class Application(Frame):
         artist = self.text_in_Artist.get()
         genre = self.text_in_Genre.get()
         print(artist  +  genre)
-        muxAddArtist = musicGet_Functions(True)  #.artist_Add_Update_Delete(True)
+        muxAddArtist = musicGet_Functions()  #.artist_Add_Update_Delete(True)
         resultArtist = muxAddArtist.add_artist(artist, genre)
         print("Result " + resultArtist)
         self.labelArtistResult.config(text=resultArtist)

@@ -1,5 +1,7 @@
 '''
-Created on Feb 5, 2017
+Updated april 4 2023
+
+problem thoough the delete query is good but does not disconnect if the data base
 Saint-Saëns_ Danse Macabre
 @author: rduvalwa2
 '''
@@ -21,15 +23,29 @@ class Application(Frame):
     def createArtistWidgets(self):
         """Add all the widgets to the main frame."""
         
-        songId_Frame = Frame(self)
+        song_Frame = Frame(self)
+        album_Frame = Frame(self)
+        result_Frame = Frame(self)
         
-        self.labelInputSongId = Label(songId_Frame, text="Delete Song Id")        
-        self.labelResult = Label(songId_Frame, text="Result Song")
-        self.text_in_SongId = Entry(songId_Frame)
-        self.labelInputSongId.pack()
-        self.text_in_SongId.pack()
-        self.labelResult.pack()     
-        songId_Frame.pack(side=TOP)
+        self.labelInputSong = Label(song_Frame, text="Delete Song")  
+        self.labelInputAlbum = Label(song_Frame, text="Delete Song Album")         
+        self.labelResult = Label(song_Frame, text="Result Delete Song")
+
+        self.labelInputSong.pack()
+        self.text_in_Song = Entry(song_Frame)
+        self.text_in_Song.pack()
+        
+        self.labelInputAlbum.pack()
+        self.text_in_Album = Entry(album_Frame)
+        self.text_in_Album.pack()
+
+        
+
+    
+        song_Frame.pack(side=TOP)
+        album_Frame.pack(side=TOP)
+        
+        self.labelResult.pack(side=TOP) 
         
         bottom_frame = Frame(self)
         bottom_frame.pack(side=TOP)
@@ -43,9 +59,11 @@ class Application(Frame):
         """Handle a click of the button by processing any text the
         user has placed in the Entry widget according to the selected
         radio button."""
-        songId = self.text_in_SongId.get()
-        DeleteSong = musicGet_Functions(True)
-        result = DeleteSong.delete_song(songId)
+        song = self.text_in_Song.get()
+        album = self.text_in_Album.get()
+        
+        DeleteSong = musicGet_Functions()
+        result = DeleteSong.delete_song(song, album)
         print("delete result from function: ", result)
         self.labelResult.config(text=result)
         if result == None:

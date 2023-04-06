@@ -1,5 +1,5 @@
 '''
-Created on Feb 6, 2018
+updated 04/05/2023
 
 @author: rduvalwa2
 '''
@@ -57,7 +57,7 @@ class Application(Frame):
         radio button."""
         artist = self.text_in_artist.get()
         genre = self.text_in_genre.get()
-        muxGet = musicGet_Functions(True)
+        muxGet = musicGet_Functions()
         result = muxGet.update_artist(artist, genre)
         output = result
         self.labelResult.config(text=output)

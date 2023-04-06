@@ -6,13 +6,13 @@ Created on Mar 16, 2017
 from Music_Get_Functions import musicGet_Functions
         
 if __name__ == "__main__": 
-    mux = musicGet_Functions(True)
-    myPath = "/Users/rduvalwa2/music/music/Media.localized/John Cafferty & The Beaver Brown Band/Tough All Over"    
-    album = "Tough All Over"
-    artist = "John Cafferty & The Beaver Brown Band"
-    genre = "Rock"
-    inType = "Itunes"
-    Medium = 'Download'    
-    mux.add_songs_in_path(myPath, album, artist, genre, inType, Medium)
-#    mux.add_album(album, artist, genre, inType, Medium)
-#    mux.add_artist(artist, genre)
+    mux = musicGet_Functions()
+    myPath = "/Users/rduvalwa2/Music/Music/Media.localized/Keith Jarrett/Paris Concert [Live]"    
+    album = "Paris Concert [Live]"
+    artist = "Keith Jarrett"
+    genre = "Jazz"
+    inType = "Amazon"
+    Medium = 'CD'    
+#    mux.add_songs_in_path(myPath, album, artist, genre, inType, Medium)
+    mux.add_album(album, artist, genre, inType, Medium)
+#   mux.add_artist(artist, genre)

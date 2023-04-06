@@ -1,6 +1,8 @@
 '''
 Created on Feb 5, 2017
 
+Updated April 3 2023
+
 @author: rduvalwa2
 '''
 
@@ -44,7 +46,7 @@ class Application(Frame):
         radio button."""
         artist = self.text_in_Artist.get()
         print("delete " + artist)
-        muxDeleteArtist = musicGet_Functions(True)
+        muxDeleteArtist = musicGet_Functions()
 #        muxAddArtist = Music_Load.artist_Add_Update_Delete(True)
         result = muxDeleteArtist.delete_artist(artist)
         print(result)

@@ -1,5 +1,5 @@
 '''
-Created on Feb 5, 2017
+Updated 04/05/2023
 
 @author: rduvalwa2
 '''
@@ -41,7 +41,7 @@ class Application(Frame):
         user has placed in the Entry widget according to the selected
         radio button."""
         artist = self.text_in.get()
-        muxGet = musicGet_Functions(True)
+        muxGet = musicGet_Functions()
         result = muxGet.get_artist(artist)
         print("Result is ", result)
         if len(result) != 0:
@@ -49,7 +49,7 @@ class Application(Frame):
             idx = 0
             for i in result:
                 print(i)
-                artist.append((result[idx][0], result[idx][1], result[idx][2]))
+                artist.append((result[idx][0], result[idx][1]))
                 idx = idx + 1
             print(artist)            
             output = artist

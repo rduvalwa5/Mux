@@ -1,12 +1,14 @@
 '''
 Created on Feb 5, 2017
 
+Updated April 3 2023
+
 @author: rduvalwa2
 '''
 
 from tkinter import *
 from Music_Get_Functions import musicGet_Functions
-import Music_Load
+#import Music_Load
 
 
 class Application(Frame):
@@ -17,6 +19,7 @@ class Application(Frame):
         Frame.__init__(self, master)
         self.pack()
         self.createArtistWidgets()
+        self.mux = musicGet_Functions()
         
     def createArtistWidgets(self):
         """Add all the widgets to the main frame."""
@@ -26,12 +29,14 @@ class Application(Frame):
         Artist_Frame = Frame(self)
         Type_Frame = Frame(self)
         Genre_Frame = Frame(self)
+        Medium_Frame = Frame(self)
         
         self.labelInputSong = Label(Song_Frame, text="Song Name")    
         self.labelInputAlbum = Label(Album_Frame, text="Album Name")        
         self.labelInputArtist = Label(Artist_Frame, text="Artist Name")
         self.labelInputType = Label(Type_Frame, text="Type")
         self.labelInputGenre = Label(Genre_Frame, text="Artist Genre")
+        self.labelInputMedium = Label(Medium_Frame, text="Artist Medium")
         self.labelResult = Label(Album_Frame, text="Result Album")
         
         self.text_in_Song = Entry(Song_Frame)
@@ -39,19 +44,21 @@ class Application(Frame):
         self.text_in_Artist = Entry(Artist_Frame)
         self.text_in_Type = Entry(Type_Frame)
         self.text_in_Genre = Entry(Genre_Frame)
+        self.text_in_Medium = Entry(Medium_Frame)
 
         self.labelInputSong.pack()        
         self.labelInputAlbum.pack()
         self.labelInputArtist.pack()
         self.labelInputGenre.pack()
         self.labelInputType.pack()
+        self.labelInputMedium.pack()
         
         self.text_in_Song.pack()
         self.text_in_Album.pack()
         self.text_in_Artist.pack()
         self.text_in_Type.pack()
         self.text_in_Genre.pack()
-        
+        self.text_in_Medium.pack()
         self.labelResult.pack()
 
         Song_Frame.pack(side=TOP)
@@ -59,6 +66,7 @@ class Application(Frame):
         Artist_Frame.pack(side=TOP)
         Type_Frame.pack(side=TOP)
         Genre_Frame.pack(side=TOP)
+        Medium_Frame.pack(side=TOP)
         
         bottom_frame = Frame(self)
         bottom_frame.pack(side=TOP)
@@ -77,12 +85,11 @@ class Application(Frame):
         artist = self.text_in_Artist.get()
         typ = self.text_in_Type.get()
         genre = self.text_in_Genre.get()
-        print(song, album, artist, typ, genre)
-        muxAddSong = Music_Load.song_Add_Update_Delete(True)
-        idx = muxAddSong.add_song(album, artist, genre, song, typ)
-        result = "Added " + song + ", index " + str(idx) 
-        self.labelResult.config(text=result)
-        
+        medium = self.text_in_Medium.get()
+        print(song, album, artist, typ, genre, medium)
+        self.mux.add_song(artist,album, genre, song, typ, medium)
+        result = "Added " + song + ", album " + album
+        self.labelResult.config(text=result)   
         print("Result " + result)
         self.labelResult.config(text=result)
         

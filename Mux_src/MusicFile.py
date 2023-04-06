@@ -478,7 +478,7 @@ if __name__ == '__main__':
         def test_get_select_ArtistAlbums(self):
             fields = "count(*)"
             constraints = " "
-            expected = 1210
+            expected = 1386
             mux = musicFile()
             result = mux.get_select_Album(fields, constraints)
             self.assertEqual(expected, result[0])
@@ -486,7 +486,7 @@ if __name__ == '__main__':
         def test_get_select_Album(self):
             fields = "count(*)"
             constraints = " "
-            expected = 1210
+            expected = 1386
             mux = musicFile()
             result = mux.get_select_ArtistAlbums(fields, constraints)
             self.assertEqual(expected, result[0])
@@ -497,6 +497,7 @@ if __name__ == '__main__':
             expected = 567
             mux = musicFile()
             result = mux.get_select_Artist(fields, constraints)
+            print(result)
             self.assertEqual(expected, result[0][0])
 
         def testGetMaxArtist(self):
@@ -531,7 +532,7 @@ if __name__ == '__main__':
             mux = musicFile()
             base = "/Users/rduvalwa2/Music/iTunes/iTunes Media/Music"
             musicArtist = mux.get_music_artist()
-            self.assertIn((174, 'The Charlie Daniels Band'), musicArtist, "Charlie Daniels Band not there")
+            self.assertIn(('The Charlie Daniels Band'), musicArtist, "Charlie Daniels Band not there")
 
         def test_albumList(self):
             mux = musicFile()

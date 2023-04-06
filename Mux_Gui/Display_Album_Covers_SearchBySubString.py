@@ -1,4 +1,10 @@
 '''
+update 04/04/2023
+
+Enter search string: 50's Rock.jpg
+Constraint is  50's Rock.jpg
+/Users/rduvalwa2/git/mux/AlbumCovers/50's Rock.jpg
+
 https://stackoverflow.com/questions/16539460/insert-a-jpg-in-a-canvas-with-tkinter-and-python-3-2
 '''
 import os, sys , platform
@@ -20,12 +26,12 @@ class show_image():
     def create_array_images(self, con=""):
             constraint = con
             print("Constraint is ", constraint)
-            if platform.uname().node == 'OsxAir.hsd1.wa.comcast.net':
-                base = "/Users/rduvalwa2/Code_Projects/eOxigen-workspace/Mux/AlbumCovers/"
+            if platform.uname().node == 'Macbook16.local':
+                base = "/Users/rduvalwa2/git/mux/AlbumCovers/"
             elif platform.uname().node == 'MaxBookPro17OSX.hsd1.wa.comcast.net':
-                base = "/Users/rduvalwa2/git/Mux/AlbumCovers/"
+                base = "/Users/rduvalwa2/git/mux/AlbumCovers/"
             else:
-                base = '/Users/rduvalwa2/Code_Projects/eOxigen-workspace/Mux/AlbumCovers/'
+                base = '/Users/rduvalwa2/git/mux/AlbumCovers/'
             dirlist = os.listdir(base)
             images = []
             for f in dirlist:

@@ -69,7 +69,7 @@ class Application(Frame):
         tipe = self.text_in_Type.get()
         genre = self.text_in_Genre.get()
         print(artist + genre)
-        muxAddAlbum = musicGet_Functions(True)
+        muxAddAlbum = musicGet_Functions()
         result = muxAddAlbum.add_album(album, artist, genre, tipe)
         print("Gui result ", result)
         self.labelResult.config(text=result)

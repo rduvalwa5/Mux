@@ -1,4 +1,7 @@
+#  Updated April 3 2023
+
 import os, platform
+
 # import MySQLdb
 import pymysql.cursors
 
@@ -215,13 +218,13 @@ class song_Add_Update_Delete():
         print("*************** Node Name is ", platform.uname().node)
         if platform.uname().node == 'OSXAir.home.home':
 #            self.conn  = connDb.connect(host='OSXAir.home',user='rduvalwa2',password='blu4jazz',db='Music')
-            self.conn = pymysql.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music')
+            self.conn = pymysql.connect(host='OSXAir.home.home', user='rduvalwa2', password='blu4jazz', db='Music_Test')
         elif platform.uname().node == 'Macbook16.local':
             print("Host is " , 'Macbook16.local')
-            self.conn = pymysql.connect(host='Macbook16.local', user='rduvalwa2', password='blu4jazz', db='Music')            
+            self.conn = pymysql.connect(host='Macbook16.local', user='root', password='blu4jazz', db='Music_Test')            
         else:
             print("Host is " , 'default')
-            self.conn = pymysql.connect(host='Macbook16.local', user='rduvalwa2', password='blu4jazz', db='Music')
+            self.conn = pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music_Test')
         self.base = "/Users/rduvalwa2/Music/Music/Media.localized"
         self.server = platform.uname().node
         

@@ -1,3 +1,7 @@
+'''
+updated 04/05/2023
+'''
+
 from tkinter import *
 from Music_Get_Functions import musicGet_Functions
 
@@ -6,12 +10,12 @@ def getSongs():
     root = Tk()
     
     songList = []
-    mux = musicGet_Functions(True)
+    mux = musicGet_Functions()
     songsIn = mux.get_AllSongs()
     if songsIn != []:
         for song in songsIn:
             print(song)
-            songList.append((song[0], song[1], song[2], song[3]))
+            songList.append((song[0], song[1], song[2])) #, song[3])
     else:
         songList.append("None found!")
     print(songList[0])
@@ -19,7 +23,7 @@ def getSongs():
     scrollbar.pack(side=RIGHT, fill=Y)
     mylist = Listbox(root, yscrollcommand=scrollbar.set, width=150, selectmode=EXTENDED, bg='cyan' , fg='black')
     for n in range(len(songList)):
-        mylist.insert(END, str(n) + "  " + str(songList[n][0]) + "  " + songList[n][1] + "  " + songList[n][2] + "  " + songList[n][3])
+        mylist.insert(END, str(n) + "  " + str(songList[n][0]) + "  " + songList[n][1] + "  " + songList[n][2]) # + "  " + songList[n][3])
     mylist.insert(END, "Total Artist " + str(mylist.size()))
     mylist.pack(side=LEFT, fill=BOTH)
     scrollbar.config(command=mylist.yview)
@@ -29,13 +33,13 @@ def getSongs():
 def getAlbums():
         root = Tk()
         albumList = []
-        mux = musicGet_Functions(True)
+        mux = musicGet_Functions()
         albumsIn = mux.get_all_albums()
         print(albumsIn)
         if albumsIn != []:
             for album in albumsIn:
                 print(album)
-                albumList.append((album[0], album[1], album[2]))
+                albumList.append((album[0], album[1]))
         else:
             albumList.append("None found!")
 
@@ -44,7 +48,7 @@ def getAlbums():
         scrollbar.pack(side=RIGHT, fill=Y)
         mylist = Listbox(root, yscrollcommand=scrollbar.set, width=100, selectmode=EXTENDED)
         for n in range(len(albumList)):
-            mylist.insert(END, " " + str(albumList[n][0]) + "  " + albumList[n][1] + "  " + albumList[n][2])
+            mylist.insert(END, " " + str(albumList[n][0]) + "  " + albumList[n][1])
             mylist.pack(side=LEFT, fill=BOTH)
             scrollbar.config(command=mylist.yview)
         mylist.insert(END, "Total Albums " + str(mylist.size()))
@@ -54,7 +58,7 @@ def getAlbums():
 def getArtists():
         root = Tk()
         artistList = []
-        mux = musicGet_Functions(True)
+        mux = musicGet_Functions()
         artistIn = mux.get_all_artist()
         print(artistIn)
         if artistIn != []:

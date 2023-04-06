@@ -1,5 +1,5 @@
 '''
-Created on March 23 2017
+Updated 04/04/2023
 This code prints the songs in the album 
 @author: rduvalwa2
 '''
@@ -20,7 +20,7 @@ class Application(Frame):
             print("Frame 2", event.x, event.y)
 
         def openHandler():
-            mux = musicGet_Functions(True)
+            mux = musicGet_Functions()
             album_name = self.text_in.get()
             print("Input Album: ", album_name)
             try:

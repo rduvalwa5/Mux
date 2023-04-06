@@ -1,5 +1,5 @@
 '''
-Created on March 2 2017
+update 04/04/2023
 https://www.tutorialspoint.com/python/tk_listbox.htm 
 @author: rduvalwa2
 '''
@@ -8,9 +8,9 @@ from Music_Get_Functions import musicGet_Functions
 
 root = Tk()
 
-mux = musicGet_Functions(False)
+mux = musicGet_Functions()
 
-table = 'Music.album2songs'
+table = 'Music_Test.album2songs'
 criteria = ""
 totalSongs = mux.get_count(table, criteria)
 print("Total songs " , str(totalSongs))

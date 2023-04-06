@@ -1,5 +1,6 @@
 '''
 Created on Feb 5, 2017
+update 04/04/2023
 
 @author: rduvalwa2
 '''
@@ -41,20 +42,17 @@ class Application(Frame):
         user has placed in the Entry widget according to the selected
         radio button."""
         album = self.text_in.get()
-        muxGet = musicGet_Functions(True)
+        muxGet = musicGet_Functions()
         result = muxGet.get_album(album)
         print("result is ", result)
         if result != ():
-            albums = []
-            idx = 0
-            for i in result:
-                print(i)
-                albums.append((result[idx][0], result[idx][1], result[idx][2], result[idx][3], result[idx][4], result[idx][5], result[idx][6]))
-                idx = idx + 1
-            print("albums are ", albums)            
-            output = albums
+#            for i in result:
+#                print(i)
+#                albums.append([result][0], result[1], result[2], result[3], result[4], result[5])
+            print("albums are ", result[0])            
+            output = result[0]
         else:
-            output = album + " not found"
+            output =  album +" not found"
             print(output)
             
  # use .config to change the state of the button           

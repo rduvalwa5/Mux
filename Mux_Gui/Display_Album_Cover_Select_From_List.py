@@ -1,5 +1,8 @@
 '''
 List of album covers
+
+Updated April 3 2023
+
 @author: rduvalwa2
 /Library/Frameworks/Python.framework/Versions/3.6/bin
 sudo pip3 install pillow
@@ -25,7 +28,7 @@ class displaySelectCover():
         root = Tk()
         root.geometry("1000x500+30+30")
         albumCoverList = []
-        mux = musicGet_Functions(True)
+        mux = musicGet_Functions()
         coversIn = mux.get_all_album_covers()
         print(coversIn)
         if coversIn != []:
@@ -55,11 +58,11 @@ class displaySelectCover():
         root = Toplevel
         HOST = platform.uname().node            
         if HOST == 'osxair.local':
-                base = '/Users/rduvalwa2/Documents/GitHub/Mux/AlbumCovers/'
+                base = '/Users/rduvalwa2/git/Mux/AlbumCovers/'
         elif HOST == 'Macbook16.local':
-                base = '/Users/rduvalwa2/Documents/GitHub/Mux/AlbumCovers/'
+                base = '/Users/rduvalwa2/git/Mux/AlbumCovers/'
         else:
-            base = '/Users/rduvalwa2/Documents/GitHub/Mux/AlbumCovers/'
+            base = '/Users/rduvalwa2/git/Mux/AlbumCovers'
             
         widget = event.widget
         selection = widget.curselection()

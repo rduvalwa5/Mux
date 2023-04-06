@@ -1,5 +1,6 @@
 '''
 Created on Feb 5, 2017
+Updated April 3 2023
 
 @author: rduvalwa2
 '''
@@ -45,7 +46,7 @@ class Application(Frame):
         user has placed in the Entry widget according to the selected
         radio button."""
         albumCover = self.text_in_Album_Cover.get()
-        mux = musicGet_Functions(True)
+        mux = musicGet_Functions()
         result = mux.get_album_cover(albumCover)
         print("Gui result ", result)
         self.labelResult.config(text=str(result))

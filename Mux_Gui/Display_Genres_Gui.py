@@ -1,5 +1,5 @@
 '''
-Created on March 2 2017
+Updated 04/05/2023
 https://www.tutorialspoint.com/python/tk_listbox.htm 
 @author: rduvalwa2
 '''
@@ -10,7 +10,7 @@ from Music_Get_Functions import musicGet_Functions
 root = Tk()
 
 genreList = []
-mux = musicGet_Functions('isNotTest')
+mux = musicGet_Functions()
 genresIn = mux.get_genres()
 print(genresIn)
 if genresIn != []:

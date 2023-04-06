@@ -1,5 +1,5 @@
 '''
-Created on Feb 4 2017
+Update 04/04/2023
 
 @author: rduval
 '''
@@ -40,7 +40,7 @@ class Application(Frame):
         Radiobutton(top_frame, text="Genre", variable=self.r, value=3).pack(side=LEFT)
         Radiobutton(top_frame, text="Type", variable=self.r, value=4).pack(side=LEFT)
         Radiobutton(top_frame, text="Album Cover", variable=self.r, value=5).pack(side=LEFT)
-        Radiobutton(top_frame, text="Cover Index", variable=self.r, value=6).pack(side=LEFT)
+        Radiobutton(top_frame, text="Medium", variable=self.r, value=6).pack(side=LEFT)
 
         top_frame.pack(side=TOP)
         
@@ -62,7 +62,7 @@ class Application(Frame):
         operation = self.r.get()
         if operation == 1:
             item = 'album'
-            muxGet = musicGet_Functions(True)
+            muxGet = musicGet_Functions()
             muxGet.update_album(album, item, value)
             result = muxGet.get_album(album)
             if result != []:
@@ -72,7 +72,7 @@ class Application(Frame):
             
         elif operation == 2:
             item = 'artist'
-            muxGet = musicGet_Functions(True)
+            muxGet = musicGet_Functions()
             muxGet.update_album(album, item, value)
             result = muxGet.get_album(album)
             if result != []:
@@ -82,7 +82,7 @@ class Application(Frame):
                 
         elif operation == 3:
             item = 'genre'
-            muxGet = musicGet_Functions(True)
+            muxGet = musicGet_Functions()
             muxGet.update_album(album, item, value)
             result = muxGet.get_album(album)
             if result != []:
@@ -92,7 +92,7 @@ class Application(Frame):
                 
         elif operation == 4:
             item = 'type'
-            muxGet = musicGet_Functions(True)
+            muxGet = musicGet_Functions()
             muxGet.update_album(album, item, value)
             result = muxGet.get_album(album)
             if result != []:
@@ -102,7 +102,7 @@ class Application(Frame):
                 
         elif operation == 5:
             item = 'cover_name'
-            muxGet = musicGet_Functions(True)
+            muxGet = musicGet_Functions()
             muxGet.update_album(album, item, value)
             result = muxGet.get_album(album)
             if result != []:
@@ -111,8 +111,8 @@ class Application(Frame):
                 output = " not found"
                 
         elif operation == 6:
-            item = 'cover_idx'
-            muxGet = musicGet_Functions(True)
+            item = 'Medium'
+            muxGet = musicGet_Functions()
             muxGet.update_album(album, item, value)
             result = muxGet.get_album(album)
             if result != []:

@@ -1,5 +1,5 @@
 '''
-Created on Feb 4 2017
+Updated 04/05/2023
 
 @author: rduval
 '''
@@ -20,7 +20,7 @@ class Application(Frame):
     def createWidgets(self):
         """Add all the widgets to the main frame."""
         top_frame = Frame(self)
-        self.label1 = Label(top_frame, text="ID")
+        self.label1 = Label(top_frame, text="Name")
         self.text_in = Entry(top_frame)
 #        self.label2 = Label(top_frame, text="Item Type")
 #        self.text_in2 = Entry(top_frame)        
@@ -41,7 +41,7 @@ class Application(Frame):
 # how to disable a button
         self.QUIT = Button(bottom_frame, text="Quit", command=self.quit, state='disabled')
         self.QUIT.pack(side=LEFT)
-        self.handleb = Button(bottom_frame, text="Get Id", command=self.handle)
+        self.handleb = Button(bottom_frame, text="Get Name", command=self.handle)
         self.handleb.pack(side=LEFT)
         
     def handle(self):
@@ -52,8 +52,8 @@ class Application(Frame):
         operation = self.r.get()
         if operation == 1:
             item = 'song'
-            muxGet = musicGet_Functions(True)
-            result = muxGet.get_by_id(text, item)
+            muxGet = musicGet_Functions()
+            result = muxGet.get_by_name(text, item)
             if result != []:
                 output = result
             else:
@@ -61,16 +61,16 @@ class Application(Frame):
             
         elif operation == 2:
             item = 'artist'
-            muxGet = musicGet_Functions(True)
-            result = muxGet.get_by_id(text, item)
+            muxGet = musicGet_Functions()
+            result = muxGet.get_by_name(text, item)
             if result != []:
                 output = result
             else:
                 output = text + " not found"
         elif operation == 3:
             item = 'album'
-            muxGet = musicGet_Functions(True)
-            result = muxGet.get_by_id(text, item)
+            muxGet = musicGet_Functions()
+            result = muxGet.get_by_name(text, item)
             if result != []:
                 output = result
             else:

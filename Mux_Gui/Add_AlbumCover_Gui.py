@@ -59,7 +59,7 @@ class Application(Frame):
         radio button."""
         albumCover = self.text_in_Album_Cover.get()
         album = self.text_in_Album_Name.get()
-        mux = musicGet_Functions(True)
+        mux = musicGet_Functions()
         result = mux.add_album_cover(albumCover, album)
 
         print("Gui result ", str(result))

@@ -43,7 +43,7 @@ class Application(Frame):
         """Handle a click of the button by processing any text the
         user has placed in the Entry widget according to the selected
         radio button."""
-        mux = musicGet_Functions(True)
+        mux = musicGet_Functions()
         result = mux.delete_album_cover(self.text_in_Album_Cover_Id.get())
         print("Gui result ", str(result))
         self.labelResult.config(text=str(result))

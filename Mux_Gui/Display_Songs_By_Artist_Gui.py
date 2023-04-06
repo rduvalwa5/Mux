@@ -13,7 +13,7 @@ class Application(Frame):
     def __init__(self, master=None):
 
         def openHandler():
-            mux = musicGet_Functions(True)
+            mux = musicGet_Functions()
             artist = self.text_in.get()
             try:
                 songList = mux.get_artist_songs(artist)

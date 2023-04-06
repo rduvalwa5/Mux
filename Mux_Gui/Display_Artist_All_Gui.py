@@ -10,13 +10,13 @@ from Music_Get_Functions import musicGet_Functions
 root = Tk()
 
 artistList = []
-mux = musicGet_Functions(True)
+mux = musicGet_Functions()
 artistIn = mux.get_all_artist()
 print(artistIn)
 if artistIn != []:
     for artist in artistIn:
         print(artist)
-        artistList.append((artist[0], artist[1]))
+        artistList.append((artist[0]))
 else:
     artistList.append("None found!")
 
@@ -27,8 +27,9 @@ scrollbar.pack(side=RIGHT, fill=Y)
 
 mylist = Listbox(root, yscrollcommand=scrollbar.set, width=100, selectmode=EXTENDED, bg='yellow' , fg='red')
 
-for n in range(len(artistList)):
-    mylist.insert(END, str(n) + "  " + str(artistList[n][1]) + "  " + artistList[n][0])
+for artist in mylist:
+    mylist.insert(str(artist))
+#    mylist.insert(END, str(n) + "  " + str(artistList[n][0])  + "  " + artistList[n][1])
 mylist.insert(END, "Total Artist " + str(mylist.size()))
 mylist.pack(side=LEFT, fill=BOTH)
 scrollbar.config(command=mylist.yview)

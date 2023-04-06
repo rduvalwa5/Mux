@@ -5,7 +5,7 @@ It attempts to find the music files on a server and put them into a data base.
 @author: rduvalwa2
 '''
 import pymysql
-import os, platform
+import os, platform, sys
 
 
 class connection_db:
@@ -44,7 +44,7 @@ class musicFile:
         return count        
     
     def get_max_index(self, table):
-        self.table = '`Music`.' + table
+        self.table = 'Music_Test.' + table
         self.tableIndex = table + "." + 'Index'
         max_index_statement = "select max(" + self.tableIndex + ") from " + self.table + ";"
         cursor = self.conn.cursor()
@@ -55,7 +55,7 @@ class musicFile:
 
     def get_select_Album(self, fields, constraints):
         dbCursor = self.conn.cursor()
-        statement = "select " + fields + " from Music.artist_albums " + constraints + ";"  # where Albums.index = 3;"
+        statement = "select " + fields + " from Music_Test.artist_albums " + constraints + ";"  # where Albums.index = 3;"
         dbCursor.execute(statement)
         row = dbCursor.fetchone()
         dbCursor.close()
@@ -64,7 +64,7 @@ class musicFile:
 
     def get_select_Artist(self, fields, constraints):
         dbCursor = self.conn.cursor()
-        statement = "select " + fields + " from Music.artist " + constraints + ";"  # where Albums.index = 3;"
+        statement = "select " + fields + " from Music_Test.artist " + constraints + ";"  # where Albums.index = 3;"
         print(statement)
         dbCursor.execute(statement)
         rows = dbCursor.fetchall()  
@@ -74,7 +74,7 @@ class musicFile:
     
     def get_select_ArtistAlbums(self, fields, constraints):
         dbCursor = self.conn.cursor()
-        statement = "select " + fields + " from Music.artist_albums" + constraints + ";"
+        statement = "select " + fields + " from Music_Test.artist_albums" + constraints + ";"
         print(statement)
         dbCursor.execute(statement)
         row = dbCursor.fetchone()
@@ -120,17 +120,17 @@ class musicFile:
         allArtist = self.get_music_artist()
         for artist in allArtist:
                 if "\'"in artist:
-                    print("found apostrophe")
+#                    print("found apostrophe")
                     artist = artist.replace("'", "\\\'")
-                    print("artist", artist)
-                insertStatement = "INSERT into artist  values(\"" + artist + "\");"
-                print(insertStatement)
+#                    print("artist", artist)
+                insertStatement = "INSERT into artist  values(\"" + artist + "\"," + "\"GENRE"  + "\");"
+#                print(insertStatement)
                 cursor.execute(insertStatement)
 
         cursor.execute("commit;")
-        print("done")
+        print("done initial insert to artist")
         cursor.close()
-        self.conn.close()
+  #      self.conn.close()
     
     '''
     End load artist
@@ -165,9 +165,9 @@ class musicFile:
         for a in artists:
             artist = a
             if "\'"in artist:
-                    print("found apostrophe")
+#                    print("found apostrophe")
                     artist = artist.replace("'", "\\\'")
-                    print("artist", artist)
+#                    print("artist", artist)
             if artist != '.DS_Store':
                 artistAlbums = os.listdir("/Users/rduvalwa2/Music/Music/Media.localized/" + a) # do not remove apostrophe for directory search
                 for album in artistAlbums:
@@ -185,23 +185,32 @@ class musicFile:
     '''
     End load albums
     '''   
-    
+    '''
+        Begin get songs
+    '''
 
     def get_all_songs(self):
-        index = 0
-        albums = []
+        print("Start get all songs")
         songs = []
-        artist = self.get_music_artist()
-        for a in artist:
-            if os.path.isdir(self.base + "/" + a[1]):
-                artist_albums = os.listdir(self.base + "/" + a[1])
-                for album in artist_albums:
-                    if album != '.DS_Store':
-                        albums.append((a, album))
-                        album_songs = os.listdir(self.base + "/" + a[1] + "/" + album)
+        albums = self.get_albums()
+#        print(albums)
+        for a in albums:
+            if os.path.isdir(self.base + "/" + a[0] + "/" + a[1] ):
+#                        print(os.listdir(self.base + "/" + a[0] + "/" + a[1]))
+                        album_songs = os.listdir(self.base + "/" + str(a[0]) + "/" + str(a[1]))
                         for song in album_songs:
-                                songs.append((index, a[1], album, song))
-                                index = index + 1
+                            if song != '.DS_Store':
+                                if "\'"in song:
+                                    song = song.replace("'", "\\\'")
+ #                                  print(str(a[0]),",", str(a[1]),",", song)
+                                    songs.append((str(a[0]), str(a[1]), song))
+                                else:
+                                    songs.append((str(a[0]), str(a[1]), song))
+#                                   print(str(a[0]),",", str(a[1]),",", song)
+                                
+#        print("All songs returned")
+#        print(songs)
+
         return songs
     
     def get_all_songs_type_genre(self):
@@ -238,21 +247,21 @@ class musicFile:
         '''
         This code recurses thru the "base" path and captures the artist, album and song
         '''
+        print("Start initial insert into album2songs")
+        self.conn = pymysql.connect(host='localhost', user='root', password='blu4jazz', db='Music_Test')
         cursor = self.conn.cursor()
         trunkate = "truncate  music.album2songs;"
         cursor.execute(trunkate)
         allSongs = self.get_all_songs()
-        for song in allSongs:
-                insertStatement = "INSERT into album2songs (album2songs.index, album2songs.server,album2songs.path,album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type)  values(" + str(song[0]) + ",\"" + self.server + "\",\"" + self.base + "\",\"" + song[1] + "\",\"" + song[2] + "\",\"" + song[3] + "\",\"" + "rock" + "\",\"" + "download" + "\")"
+        for song in allSongs: 
+                print(song)             
+                insertStatement = "INSERT into album2songs (album2songs.artist,album2songs.album,album2songs.song,album2songs.genre,album2songs.type,album2songs.medium)  values(\"" + str(song[0]) + "\",\"" + str(song[1]) + "\",\"" + str(song[2]) + "\",\"" + "" + "\",\"" + "" + "\",\"" + "" +"\");"
+                print(insertStatement)
                 cursor.execute(insertStatement)
-        countStatement = "SELECT count(*) FROM music.album2songs;"        
-        cursor.execute(countStatement)
-        count = cursor.fetchone()
-        print(count)
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
-        cursor.close()
+        cursor.execute("commit")
+
+
+        print("done initial insert album2songs")
         self.conn.close()
 
     def add_songs(self, artist, album='all'):
@@ -284,64 +293,7 @@ class musicFile:
         cursor.close()
         self.conn.close()
     
-    def delete_songs(self, artist, albumin='all', songin="all"):
-        cursor = self.conn.cursor()   
-        delete_songs = self.get_songs(artist, albumin)
-        print("delete songs: ", delete_songs)  
-        index = 0
-        if albumin == 'all':
-            if songin == 'all': 
-                for song in delete_songs:
-                        selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
-                        print(selectStatement)
-                        cursor.execute(selectStatement)
-                        row = cursor.fetchone()
-                        index = row[0]  
-                        print("delete index: ", index)         
-                        deleteStatement = "Delete from album2songs where `Music`.album2songs.index = " + str(index) + ";"  
-                        print(deleteStatement)
-                        cursor.execute(deleteStatement)
-            else:
-                for song in delete_songs: 
-                    if song[0] == 'songin':
-                        selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
-                        print(selectStatement)
-                        cursor.execute(selectStatement)
-                        row = cursor.fetchone()
-                        index = row[0]           
-                        deleteStatement = "Delete from album2songs where `Music`.album2songs.index = " + str(index) + ";"  
-                        print(deleteStatement)
-                        cursor.execute(deleteStatement)        
-        else:
-            if albumin != 'all': 
-                if songin == 'all': 
-                    for song in delete_songs:
-                        if albumin == song[2]: 
-                            selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
-                            print(selectStatement)
-                            cursor.execute(selectStatement)
-                            row = cursor.fetchone()
-                            index = row[0]                      
-                            deleteStatement = "Delete from album2songs where `Music`.album2songs.index = " + str(index) + ";"  
-                            print(deleteStatement)
-                            cursor.execute(deleteStatement)
-            elif songin != 'all':
-                    for song in delete_songs:
-                        if albumin == song[2]: 
-                            if song[0] == 'song': 
-                                selectStatement = "select album2songs.index from Music.album2songs where album2songs.song like " + "'" + song[3] + "';"
-                                print(selectStatement)
-                                cursor.execute(selectStatement)
-                                row = cursor.fetchone()
-                                index = row[0]           
-                                deleteStatement = "Delete from album2songs where `Music`.album2songs.index = " + str(index) + ";"  
-                                print(deleteStatement)
-                                cursor.execute(deleteStatement)        
-        commit = "commit;"
-        cursor.execute(commit)
-        print("done")
-        cursor.close()
-        self.conn.close()
+
 
     def add_album(self, album, artist, tipe):
         '''
@@ -419,12 +371,14 @@ class musicFile:
     
 if __name__ == '__main__':
     mux = musicFile()
-    myartist = mux.get_music_artist()
-#    print(myartist)
-    mux.initial_insert_into_artist()
-#    myalbums = mux.get_albums()
-#   for album in myalbums:
-#       print(album[0] , album[1])
-#    print(myalbums)
+#    mux.initial_insert_into_artist()
+#    mux.initial_insert_into_artist_albums()
+    mux.initial_insert_into_album2songs()
+#    mySongs = mux.get_all_songs()
+#    for song in mySongs:
+#        print(song)    
+#    albums = mux.get_albums()
+#    for al in albums:
+#        print(str(al[0]) + "\t"  +   str(al[1]))
 
-    mux.initial_insert_into_artist_albums()
+    

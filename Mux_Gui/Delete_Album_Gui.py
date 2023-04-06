@@ -1,5 +1,5 @@
 '''
-Created on Feb 5, 2017
+updated 04/04/2023
 Saint-Saëns_ Danse Macabre
 @author: rduvalwa2
 '''
@@ -46,7 +46,7 @@ class Application(Frame):
         user has placed in the Entry widget according to the selected
         radio button."""
         album = self.text_in_Album.get()
-        DeleteAlbum = musicGet_Functions(True)
+        DeleteAlbum = musicGet_Functions()
         result = DeleteAlbum.delete_album_by_name(album)
         print("Gui result ", result)
         self.labelResult.config(text=result)
