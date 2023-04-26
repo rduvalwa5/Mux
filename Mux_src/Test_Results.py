@@ -2,12 +2,12 @@
     updated 05-02-2021
     '''
 
-cover_count = 1232
-songs_count = 14519
-artist_count = 656
-artist_albums_count = 1423
+cover_count = 1279
+songs_count = 14562
+artist_count = 666
+artist_albums_count = 1441
 folk_songs = 920
-folk_albums = 81
+folk_albums = 80
 get_max_index_artist = 760
 get_max_index_albums = 1419
 get_max_index_songs = 100707
@@ -26,7 +26,7 @@ get_artist_songs = (('08 Johnny B. Goode.mp3', 'The Best of Chuck Berry'), ('02 
 
 genresList = (('Alternatives', 1), ('Blue Grass', 2), ('Blues', 3), ('Classical', 4), ('Country & Folk', 5), ('Folk', 6), ('French Pop', 7), ('Holiday', 8), ('International', 9), ('Jazz', 10), ('Latin', 11), ('New Age', 12), ('Pop', 13), ('R&B', 14), ('R&B/Soul', 15), ('Reggae', 16), ('Rock', 17), ('Rockbilly', 18), ('Singer/Songwriter', 19), ('Soul', 20), ('Soundtrack', 21), ('Southern Rock', 22), ('TexMex', 23))
 
-genreList = [('Alternative', 58),('Blue Grass', 168),('Blues', 604),('Classical', 194),('Country', 955),('Country Folk', 203),('Country Rock', 298),('Folk', 920),('Folk Rock', 179),('French Pop', 60),('Funk', 124),('Grunge', 29),('Holiday', 124),('Indie Rock', 12),('Jazz', 969),('Jazz Fusion', 211),('Latin', 145),('Metal', 369),('Pop', 170),('Psychedelic Rock', 120),('Punk Rock', 228),('R&B/Soul', 785),('Reggae', 26),('Religion', 2),('Rock', 5589),('Rock & Roll', 191),('Rockabilly', 84),('Soft Rock', 111),('Soundtrack', 98),('Southern Rock', 665),('Surf Rock', 60),('Tarantino', 11),('TexMex', 144)]
+genreList = [('Alternative', 58),('Blue Grass', 168),('Blues', 613),('Classical', 194),('Country', 956),('Country Folk', 203),('Country Rock', 298),('Folk', 920),('Folk Rock', 179),('French Pop', 60),('Funk', 124),('Grunge', 29),('Holiday', 124),('Indie Rock', 12),('Jazz', 998),('Jazz Fusion', 211),('Latin', 145),('Metal', 369),('Pop', 172),('Psychedelic Rock', 120),('Punk Rock', 228),('R&B/Soul', 785),('Reggae', 26),('Religion', 2),('Rock', 5573),('Rock & Roll', 191),('Rockabilly', 84),('Soft Rock', 111),('Soundtrack', 99),('Southern Rock', 665),('Surf Rock', 60),('Tarantino', 11),('TexMex', 144)]
 
-typeList = [('CD', 8572), ('Itunes', 2714), ('Tape', 23), ('Amazon',740), ('Vinyl', 2470)]
+typeList = [('CD', 8558), ('Itunes', 2742), ('Tape', 23), ('Amazon',768), ('Vinyl', 2470)]
 

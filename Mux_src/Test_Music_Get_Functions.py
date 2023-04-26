@@ -157,7 +157,7 @@ class TestGetFunctions(unittest.TestCase):
             #   mux = musicGet_Functions(True)
 #            expected =  (946, 'OSXAir.home', '/Users/rduvalwa2/Music/iTunes/iTunes Music/Music', 'Chuck Berry', 'The Best of Chuck Berry', '08 Johnny B. Goode.mp3', 'Rock', 'Vinyl', 1)
             expected = ('01 Johnny B. Goode.m4a',)
-            result = self.mux.get_song(thisSong,thisAlbum)
+            result = self.mux.get_song(thisSong)
             print("9999999999999999")
             print("song result is ", result)
             self.assertEqual(expected, result)

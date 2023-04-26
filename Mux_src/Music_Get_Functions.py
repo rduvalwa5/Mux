@@ -271,8 +271,8 @@ Get rid of indexes
             print("Exception is ", err)
             return str(err)
 
-    def get_song(self, song, album):
-        statement = "Select song from Music_Test.album2songs where song like '%" + song + "%' and album like '" + album + "' ;"
+    def get_song(self, song):
+        statement = "Select song from Music_Test.album2songs where song like '%" + song + "%' ;"
 #        statement = "Select * from Music_Test.album2songs where song like '%" + song + "%';"
         print("********************************")
         print(statement)
@@ -1120,34 +1120,6 @@ if __name__  == '__main__':
             expected = Test_Results.cover_count
             result = mux.get_album_cover_count()
 #            print("***** album cover count is ",result)
-            self.assertEqual(expected, result, "cover count wrong")
-
-        def test_album_update_albumGenre(self):  
-            mux = musicGet_Functions()
-#            mux.set_safe_update_delete()
-            album = "TestAlbum"
-            field = 'genre'
-            value = "Jazz"
-            mux.update_album(album, field,value)
-            result =  mux.get_album(album)
-            print(result)
-            expected =  (('TestArtist', 'TestAlbum', 'Jazz', 'CD', 'NULL', 'CD'),)
-            self.assertEqual(expected, result, "album update failure")
- 
-        def test_album_update_albumGenre_to_Rock(self):  
-            mux = musicGet_Functions()
-#            mux.set_safe_update_delete()
-            album = "TestAlbum"
-            field = 'genre'
-            value = "Rock"
-            mux.update_album(album, field,value)
-            result =  mux.get_album(album)
-            print(result)
-            expected =  (('TestArtist', 'TestAlbum', 'Rock', 'CD', 'NULL', 'CD'),)
-            self.assertEqual(expected, result, "album update failure")            
-            
-        def test_delete_album(self):
-            pass
 
         def test_get_albumcover(self):
             mux = musicGet_Functions()

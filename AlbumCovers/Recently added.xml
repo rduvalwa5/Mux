@@ -1,0 +1,1132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Major Version</key><integer>1</integer>
+	<key>Minor Version</key><integer>1</integer>
+	<key>Date</key><date>2023-04-23T04:41:25Z</date>
+	<key>Application Version</key><string>1.3.4.56</string>
+	<key>Features</key><integer>5</integer>
+	<key>Show Content Ratings</key><true/>
+	<key>Music Folder</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/</string>
+	<key>Library Persistent ID</key><string>70BF67FFBE5E6A16</string>
+	<key>Tracks</key>
+	<dict>
+		<key>16296</key>
+		<dict>
+			<key>Track ID</key><integer>16296</integer>
+			<key>Name</key><string>Woo Hoo</string>
+			<key>Artist</key><string>The 5.6.7.8's</string>
+			<key>Album Artist</key><string>The 5.6.7.8's</string>
+			<key>Album</key><string>Bomb the Twist - EP</string>
+			<key>Genre</key><string>Punk Rock</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>4455994</integer>
+			<key>Total Time</key><integer>122053</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>5</integer>
+			<key>Track Count</key><integer>6</integer>
+			<key>Year</key><integer>1996</integer>
+			<key>Date Modified</key><date>2023-03-25T03:11:37Z</date>
+			<key>Date Added</key><date>2017-03-10T04:33:19Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>7</integer>
+			<key>Play Date</key><integer>3765030658</integer>
+			<key>Play Date UTC</key><date>2023-04-23T00:50:58Z</date>
+			<key>Skip Count</key><integer>1</integer>
+			<key>Skip Date</key><date>2022-08-08T21:53:35Z</date>
+			<key>Release Date</key><date>1996-01-05T12:00:00Z</date>
+			<key>Normalization</key><integer>1158</integer>
+			<key>Sort Album</key><string>Bomb the Twist - EP</string>
+			<key>Sort Album Artist</key><string>5.6.7.8's</string>
+			<key>Sort Artist</key><string>5.6.7.8's</string>
+			<key>Sort Name</key><string>Woo Hoo</string>
+			<key>Persistent ID</key><string>BCF84BDE4A3D45D3</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/The%205.6.7.8's/Bomb%20the%20Twist%20-%20EP/05%20Woo%20Hoo.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>16777</key>
+		<dict>
+			<key>Track ID</key><integer>16777</integer>
+			<key>Name</key><string>Hold Tight!</string>
+			<key>Artist</key><string>Dave Dee, Dozy, Beaky, Mick &#38; Tich</string>
+			<key>Album Artist</key><string>Dave Dee, Dozy, Beaky, Mick &#38; Tich</string>
+			<key>Composer</key><string>Alan Tudor Blaikley &#38; Ken Howard</string>
+			<key>Album</key><string>Hold Tight! - Single</string>
+			<key>Genre</key><string>Rock</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>6284029</integer>
+			<key>Total Time</key><integer>166093</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>1</integer>
+			<key>Track Count</key><integer>1</integer>
+			<key>Year</key><integer>2007</integer>
+			<key>Date Modified</key><date>2022-10-09T19:46:19Z</date>
+			<key>Date Added</key><date>2021-08-30T01:58:37Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>10</integer>
+			<key>Play Date</key><integer>3765032888</integer>
+			<key>Play Date UTC</key><date>2023-04-23T01:28:08Z</date>
+			<key>Release Date</key><date>2007-01-01T08:00:00Z</date>
+			<key>Normalization</key><integer>5374</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Sort Album</key><string>Hold Tight! - Single</string>
+			<key>Sort Artist</key><string>Dave Dee, Dozy, Beaky, Mick &#38; Tich</string>
+			<key>Sort Name</key><string>Hold Tight!</string>
+			<key>Persistent ID</key><string>3D0E582AD944905D</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Dave%20Dee,%20Dozy,%20Beaky,%20Mick%20&#38;%20Tich/Hold%20Tight!%20-%20Single/01%20Hold%20Tight!.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>20213</key>
+		<dict>
+			<key>Track ID</key><integer>20213</integer>
+			<key>Name</key><string>Bang a Gong (Get It On)</string>
+			<key>Artist</key><string>T. Rex</string>
+			<key>Album Artist</key><string>T. Rex</string>
+			<key>Album</key><string>Electric Warrior (Remastered)</string>
+			<key>Genre</key><string>Rock</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>10395196</integer>
+			<key>Total Time</key><integer>267000</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>6</integer>
+			<key>Track Count</key><integer>18</integer>
+			<key>Year</key><integer>1971</integer>
+			<key>Date Modified</key><date>2016-08-09T00:18:52Z</date>
+			<key>Date Added</key><date>2021-09-03T23:39:49Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>2</integer>
+			<key>Play Date</key><integer>3765030925</integer>
+			<key>Play Date UTC</key><date>2023-04-23T00:55:25Z</date>
+			<key>Release Date</key><date>1971-09-24T00:00:00Z</date>
+			<key>Normalization</key><integer>2931</integer>
+			<key>Artwork Count</key><integer>1</integer>
+			<key>Sort Album</key><string>Electric Warrior (Remastered)</string>
+			<key>Sort Artist</key><string>T. Rex</string>
+			<key>Sort Name</key><string>Bang a Gong (Get It On)</string>
+			<key>Persistent ID</key><string>7D9A38273DD3D6BB</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/T.%20Rex/Electric%20Warrior%20(Remastered)/06%20Bang%20a%20Gong%20(Get%20It%20On).m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>30957</key>
+		<dict>
+			<key>Track ID</key><integer>30957</integer>
+			<key>Name</key><string>Girl, You'll Be a Woman Soon</string>
+			<key>Artist</key><string>Urge Overkill</string>
+			<key>Album Artist</key><string>Urge Overkill</string>
+			<key>Album</key><string>Stull - EP</string>
+			<key>Genre</key><string>Rock</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>6761848</integer>
+			<key>Total Time</key><integer>189626</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>1</integer>
+			<key>Track Count</key><integer>6</integer>
+			<key>Year</key><integer>1992</integer>
+			<key>Date Modified</key><date>2022-10-09T04:56:15Z</date>
+			<key>Date Added</key><date>2022-09-22T20:48:41Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>7</integer>
+			<key>Play Date</key><integer>3765034098</integer>
+			<key>Play Date UTC</key><date>2023-04-23T01:48:18Z</date>
+			<key>Release Date</key><date>1992-06-10T12:00:00Z</date>
+			<key>Normalization</key><integer>751</integer>
+			<key>Persistent ID</key><string>DA411E75382AFEE7</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Urge%20Overkill/Stull%20-%20EP/01%20Girl,%20You'll%20Be%20a%20Woman%20Soon.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>30960</key>
+		<dict>
+			<key>Track ID</key><integer>30960</integer>
+			<key>Name</key><string>Son of a Preacher Man</string>
+			<key>Artist</key><string>Dusty Springfield</string>
+			<key>Album Artist</key><string>Dusty Springfield</string>
+			<key>Composer</key><string>John Hurley &#38; Ronnie Wilkins</string>
+			<key>Album</key><string>Dusty In Memphis (Deluxe Edition)</string>
+			<key>Genre</key><string>Country Rock</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>5465418</integer>
+			<key>Total Time</key><integer>149160</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>3</integer>
+			<key>Track Count</key><integer>25</integer>
+			<key>Year</key><integer>1968</integer>
+			<key>Date Modified</key><date>2022-10-09T19:48:59Z</date>
+			<key>Date Added</key><date>2022-09-22T21:48:56Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>7</integer>
+			<key>Play Date</key><integer>3765018882</integer>
+			<key>Play Date UTC</key><date>2023-04-22T21:34:42Z</date>
+			<key>Release Date</key><date>1968-11-01T08:00:00Z</date>
+			<key>Normalization</key><integer>2097</integer>
+			<key>Persistent ID</key><string>7A536FF0A9E90646</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Dusty%20Springfield/Dusty%20In%20Memphis%20(Deluxe%20Edition)/03%20Son%20of%20a%20Preacher%20Man.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>30963</key>
+		<dict>
+			<key>Track ID</key><integer>30963</integer>
+			<key>Name</key><string>Flowers On the Wall</string>
+			<key>Artist</key><string>The Statler Brothers</string>
+			<key>Album Artist</key><string>The Statler Brothers</string>
+			<key>Composer</key><string>Lewis De Witt</string>
+			<key>Album</key><string>The Best of the Statler Bros.</string>
+			<key>Genre</key><string>Country</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>5910375</integer>
+			<key>Total Time</key><integer>147533</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>5</integer>
+			<key>Track Count</key><integer>11</integer>
+			<key>Year</key><integer>1975</integer>
+			<key>Date Modified</key><date>2023-04-21T23:57:40Z</date>
+			<key>Date Added</key><date>2022-09-22T21:55:39Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>6</integer>
+			<key>Play Date</key><integer>3765021938</integer>
+			<key>Play Date UTC</key><date>2023-04-22T22:25:38Z</date>
+			<key>Release Date</key><date>1975-01-15T12:00:00Z</date>
+			<key>Normalization</key><integer>1176</integer>
+			<key>Sort Album</key><string>Best of the Statler Bros.</string>
+			<key>Sort Album Artist</key><string>Statler Brothers</string>
+			<key>Sort Artist</key><string>Statler Brothers</string>
+			<key>Persistent ID</key><string>4BD4BB3B34740482</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/The%20Statler%20Brothers/The%20Best%20of%20the%20Statler%20Bros_/05%20Flowers%20On%20the%20Wall.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>30975</key>
+		<dict>
+			<key>Track ID</key><integer>30975</integer>
+			<key>Name</key><string>Didn't I (Blow Your Mind This Time)</string>
+			<key>Artist</key><string>The Delfonics</string>
+			<key>Album Artist</key><string>The Delfonics</string>
+			<key>Composer</key><string>Thomas Bell &#38; William Hart</string>
+			<key>Album</key><string>The Delfonics (Remastered)</string>
+			<key>Genre</key><string>R&#38;B/Soul</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>7958853</integer>
+			<key>Total Time</key><integer>201066</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>1</integer>
+			<key>Track Count</key><integer>10</integer>
+			<key>Year</key><integer>1970</integer>
+			<key>Date Modified</key><date>2022-10-09T19:27:49Z</date>
+			<key>Date Added</key><date>2022-09-23T01:43:48Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>3</integer>
+			<key>Play Date</key><integer>3765033602</integer>
+			<key>Play Date UTC</key><date>2023-04-23T01:40:02Z</date>
+			<key>Release Date</key><date>1970-02-01T08:00:00Z</date>
+			<key>Normalization</key><integer>4689</integer>
+			<key>Sort Album</key><string>Delfonics (Remastered)</string>
+			<key>Sort Album Artist</key><string>Delfonics</string>
+			<key>Sort Artist</key><string>Delfonics</string>
+			<key>Persistent ID</key><string>5A591FBED0A2D0ED</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/The%20Delfonics/The%20Delfonics%20(Remastered)/01%20Didn't%20I%20(Blow%20Your%20Mind%20This%20Time).m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>30978</key>
+		<dict>
+			<key>Track ID</key><integer>30978</integer>
+			<key>Name</key><string>Let's Stay Together</string>
+			<key>Artist</key><string>Al Green</string>
+			<key>Album Artist</key><string>Al Green</string>
+			<key>Composer</key><string>Al Green</string>
+			<key>Album</key><string>Let's Stay Together</string>
+			<key>Genre</key><string>R&#38;B/Soul</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>7289020</integer>
+			<key>Total Time</key><integer>199396</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>1</integer>
+			<key>Track Count</key><integer>9</integer>
+			<key>Year</key><integer>1972</integer>
+			<key>Date Modified</key><date>2022-10-08T22:41:08Z</date>
+			<key>Date Added</key><date>2022-09-23T01:45:35Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>5</integer>
+			<key>Play Date</key><integer>3765022286</integer>
+			<key>Play Date UTC</key><date>2023-04-22T22:31:26Z</date>
+			<key>Skip Count</key><integer>1</integer>
+			<key>Skip Date</key><date>2023-04-18T00:19:21Z</date>
+			<key>Release Date</key><date>1972-01-31T08:00:00Z</date>
+			<key>Normalization</key><integer>1912</integer>
+			<key>Persistent ID</key><string>A27BD085A93C44B9</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Al%20Green/Let's%20Stay%20Together/01%20Let's%20Stay%20Together.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>30981</key>
+		<dict>
+			<key>Track ID</key><integer>30981</integer>
+			<key>Name</key><string>The Last Race</string>
+			<key>Artist</key><string>TarantinosNYC</string>
+			<key>Album Artist</key><string>TarantinosNYC</string>
+			<key>Composer</key><string>Jack Nitzsche</string>
+			<key>Album</key><string>Super Sounds of the Cinema</string>
+			<key>Genre</key><string>Southern Rock</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>4665772</integer>
+			<key>Total Time</key><integer>124353</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>5</integer>
+			<key>Track Count</key><integer>14</integer>
+			<key>Year</key><integer>2009</integer>
+			<key>Date Modified</key><date>2022-10-09T05:19:22Z</date>
+			<key>Date Added</key><date>2022-09-23T01:48:19Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>3</integer>
+			<key>Play Date</key><integer>3765020709</integer>
+			<key>Play Date UTC</key><date>2023-04-22T22:05:09Z</date>
+			<key>Release Date</key><date>2009-11-07T12:00:00Z</date>
+			<key>Normalization</key><integer>7154</integer>
+			<key>Sort Name</key><string>Last Race</string>
+			<key>Persistent ID</key><string>95B7B46C36E0B4CA</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/TarantinosNYC/Super%20Sounds%20of%20the%20Cinema/05%20The%20Last%20Race.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>30984</key>
+		<dict>
+			<key>Track ID</key><integer>30984</integer>
+			<key>Name</key><string>Jungle Boogie</string>
+			<key>Artist</key><string>Kool &#38; The Gang</string>
+			<key>Album Artist</key><string>Kool &#38; The Gang</string>
+			<key>Composer</key><string>Donald Boyce, Dennis Ronald Thomas, Robert Spike Mickens, Richard Westfield, Ronald Nathan Bell, Robert Bell, Claydes Smith &#38; George Brown</string>
+			<key>Album</key><string>Pulp Fiction (Original Motion Picture Soundtrack)</string>
+			<key>Genre</key><string>Funk</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>6975604</integer>
+			<key>Total Time</key><integer>185672</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>4</integer>
+			<key>Track Count</key><integer>20</integer>
+			<key>Year</key><integer>1994</integer>
+			<key>Date Modified</key><date>2023-04-21T23:27:11Z</date>
+			<key>Date Added</key><date>2022-09-24T00:35:37Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>4</integer>
+			<key>Play Date</key><integer>3764759002</integer>
+			<key>Play Date UTC</key><date>2023-04-19T21:23:22Z</date>
+			<key>Release Date</key><date>1994-09-27T12:00:00Z</date>
+			<key>Normalization</key><integer>3740</integer>
+			<key>Sort Album</key><string>Pulp Fiction (Original Motion Picture Soundtrack)</string>
+			<key>Sort Artist</key><string>Kool &#38; The Gang</string>
+			<key>Sort Name</key><string>Jungle Boogie</string>
+			<key>Persistent ID</key><string>B6BBE68BC1B701F1</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Kool%20&#38;%20The%20Gang/Pulp%20Fiction%20(Original%20Motion%20Picture%20Soundtrack)/04%20Jungle%20Boogie.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>30987</key>
+		<dict>
+			<key>Track ID</key><integer>30987</integer>
+			<key>Name</key><string>Too Old to Die Young</string>
+			<key>Artist</key><string>Brother Dege</string>
+			<key>Album Artist</key><string>Brother Dege</string>
+			<key>Composer</key><string>Dege Legg</string>
+			<key>Album</key><string>Folk Songs of the American Longhair</string>
+			<key>Genre</key><string>Folk Rock</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>7940518</integer>
+			<key>Total Time</key><integer>223987</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>3</integer>
+			<key>Track Count</key><integer>10</integer>
+			<key>Year</key><integer>2012</integer>
+			<key>Date Modified</key><date>2022-10-09T19:46:57Z</date>
+			<key>Date Added</key><date>2022-09-24T00:47:47Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>3</integer>
+			<key>Play Date</key><integer>3765034516</integer>
+			<key>Play Date UTC</key><date>2023-04-23T01:55:16Z</date>
+			<key>Skip Count</key><integer>1</integer>
+			<key>Skip Date</key><date>2022-10-20T19:11:44Z</date>
+			<key>Release Date</key><date>2012-12-18T12:00:00Z</date>
+			<key>Normalization</key><integer>2690</integer>
+			<key>Sort Album</key><string>Folk Songs of the American Longhair</string>
+			<key>Sort Artist</key><string>Brother Dege</string>
+			<key>Sort Name</key><string>Too Old to Die Young</string>
+			<key>Persistent ID</key><string>BE32431F6C945267</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Brother%20Dege/Folk%20Songs%20of%20the%20American%20Longhair/03%20Too%20Old%20to%20Die%20Young.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>30990</key>
+		<dict>
+			<key>Track ID</key><integer>30990</integer>
+			<key>Name</key><string>Tennessee Stud</string>
+			<key>Artist</key><string>Johnny Cash</string>
+			<key>Album Artist</key><string>Johnny Cash</string>
+			<key>Composer</key><string>Jimmy Driftwood</string>
+			<key>Album</key><string>American Recordings</string>
+			<key>Genre</key><string>Country</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>6418651</integer>
+			<key>Total Time</key><integer>174626</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>9</integer>
+			<key>Track Count</key><integer>13</integer>
+			<key>Year</key><integer>1994</integer>
+			<key>Date Modified</key><date>2022-10-09T19:44:24Z</date>
+			<key>Date Added</key><date>2022-09-24T00:56:29Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>2</integer>
+			<key>Play Date</key><integer>3765032494</integer>
+			<key>Play Date UTC</key><date>2023-04-23T01:21:34Z</date>
+			<key>Release Date</key><date>1994-04-26T12:00:00Z</date>
+			<key>Normalization</key><integer>587</integer>
+			<key>Sort Album</key><string>American Recordings</string>
+			<key>Sort Artist</key><string>Johnny Cash</string>
+			<key>Sort Name</key><string>Tennessee Stud</string>
+			<key>Persistent ID</key><string>B3AC4E90FB96E424</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Johnny%20Cash/American%20Recordings/09%20Tennessee%20Stud.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>31944</key>
+		<dict>
+			<key>Track ID</key><integer>31944</integer>
+			<key>Name</key><string>Hot Blooded</string>
+			<key>Artist</key><string>Foreigner</string>
+			<key>Album Artist</key><string>Foreigner</string>
+			<key>Composer</key><string>Lou Gramm &#38; Mick Jones</string>
+			<key>Album</key><string>No End In Sight_ The Very Best of Foreigner (Remastered)</string>
+			<key>Genre</key><string>Rock</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>9438467</integer>
+			<key>Total Time</key><integer>267760</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>8</integer>
+			<key>Track Count</key><integer>32</integer>
+			<key>Year</key><integer>1978</integer>
+			<key>Date Modified</key><date>2023-04-21T23:06:36Z</date>
+			<key>Date Added</key><date>2023-04-15T06:22:49Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>1</integer>
+			<key>Play Date</key><integer>3764937812</integer>
+			<key>Play Date UTC</key><date>2023-04-21T23:03:32Z</date>
+			<key>Release Date</key><date>1978-06-20T07:00:00Z</date>
+			<key>Normalization</key><integer>9835</integer>
+			<key>Persistent ID</key><string>AFB501256AB9FA61</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Foreigner/No%20End%20In%20Sight_%20The%20Very%20Best%20of%20Foreigner%20(Remastered)/08%20Hot%20Blooded.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>31947</key>
+		<dict>
+			<key>Track ID</key><integer>31947</integer>
+			<key>Name</key><string>Tiny Dancer</string>
+			<key>Artist</key><string>Elton John</string>
+			<key>Album Artist</key><string>Elton John</string>
+			<key>Composer</key><string>Elton John</string>
+			<key>Album</key><string>Diamonds</string>
+			<key>Genre</key><string>Pop</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>14361321</integer>
+			<key>Total Time</key><integer>375866</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>2</integer>
+			<key>Track Count</key><integer>17</integer>
+			<key>Year</key><integer>1971</integer>
+			<key>Date Modified</key><date>2023-04-21T23:53:20Z</date>
+			<key>Date Added</key><date>2023-04-15T06:23:44Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>3</integer>
+			<key>Play Date</key><integer>3765032031</integer>
+			<key>Play Date UTC</key><date>2023-04-23T01:13:51Z</date>
+			<key>Release Date</key><date>1971-11-05T12:00:00Z</date>
+			<key>Normalization</key><integer>1799</integer>
+			<key>Persistent ID</key><string>71B52A48B7C28479</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Elton%20John/Diamonds/02%20Tiny%20Dancer.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>31950</key>
+		<dict>
+			<key>Track ID</key><integer>31950</integer>
+			<key>Name</key><string>Bend It</string>
+			<key>Artist</key><string>Dave Dee, Dozy, Beaky, Mick &#38; Tich</string>
+			<key>Album Artist</key><string>Dave Dee, Dozy, Beaky, Mick &#38; Tich</string>
+			<key>Album</key><string>Dave Dee, Dozy, Beaky, Mick &#38; Tich</string>
+			<key>Genre</key><string>Pop</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>5498075</integer>
+			<key>Total Time</key><integer>152210</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>1</integer>
+			<key>Track Count</key><integer>14</integer>
+			<key>Year</key><integer>1966</integer>
+			<key>Date Modified</key><date>2023-04-17T00:38:14Z</date>
+			<key>Date Added</key><date>2023-04-17T00:38:06Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>3</integer>
+			<key>Play Date</key><integer>3765033401</integer>
+			<key>Play Date UTC</key><date>2023-04-23T01:36:41Z</date>
+			<key>Skip Count</key><integer>1</integer>
+			<key>Skip Date</key><date>2023-04-17T00:54:01Z</date>
+			<key>Release Date</key><date>1966-01-01T12:00:00Z</date>
+			<key>Normalization</key><integer>1730</integer>
+			<key>Persistent ID</key><string>E09DD3F3D813F24F</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Dave%20Dee,%20Dozy,%20Beaky,%20Mick%20&#38;%20Tich/Dave%20Dee,%20Dozy,%20Beaky,%20Mick%20&#38;%20Tich/01%20Bend%20It.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>31953</key>
+		<dict>
+			<key>Track ID</key><integer>31953</integer>
+			<key>Name</key><string>Last Night In Soho</string>
+			<key>Artist</key><string>Dave Dee, Dozy, Beaky, Mick &#38; Tich</string>
+			<key>Album Artist</key><string>Dave Dee, Dozy, Beaky, Mick &#38; Tich</string>
+			<key>Album</key><string>Dave Dee, Dozy, Beaky, Mick &#38; Tich</string>
+			<key>Genre</key><string>Pop</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>6854857</integer>
+			<key>Total Time</key><integer>193974</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>5</integer>
+			<key>Track Count</key><integer>14</integer>
+			<key>Year</key><integer>1966</integer>
+			<key>Date Modified</key><date>2023-04-17T00:38:51Z</date>
+			<key>Date Added</key><date>2023-04-17T00:38:45Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>3</integer>
+			<key>Play Date</key><integer>3765034292</integer>
+			<key>Play Date UTC</key><date>2023-04-23T01:51:32Z</date>
+			<key>Release Date</key><date>1966-01-01T12:00:00Z</date>
+			<key>Normalization</key><integer>1521</integer>
+			<key>Persistent ID</key><string>17D27F19A6ED97D1</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Dave%20Dee,%20Dozy,%20Beaky,%20Mick%20&#38;%20Tich/Dave%20Dee,%20Dozy,%20Beaky,%20Mick%20&#38;%20Tich/05%20Last%20Night%20In%20Soho.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>31956</key>
+		<dict>
+			<key>Track ID</key><integer>31956</integer>
+			<key>Name</key><string>The Legend of Xanadu</string>
+			<key>Artist</key><string>Dave Dee, Dozy, Beaky, Mick &#38; Tich</string>
+			<key>Album Artist</key><string>Dave Dee, Dozy, Beaky, Mick &#38; Tich</string>
+			<key>Album</key><string>Dave Dee, Dozy, Beaky, Mick &#38; Tich</string>
+			<key>Genre</key><string>Pop</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>7496307</integer>
+			<key>Total Time</key><integer>212973</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>9</integer>
+			<key>Track Count</key><integer>14</integer>
+			<key>Year</key><integer>1966</integer>
+			<key>Date Modified</key><date>2023-04-17T00:39:07Z</date>
+			<key>Date Added</key><date>2023-04-17T00:39:04Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>2</integer>
+			<key>Play Date</key><integer>3765020258</integer>
+			<key>Play Date UTC</key><date>2023-04-22T21:57:38Z</date>
+			<key>Release Date</key><date>1966-01-01T12:00:00Z</date>
+			<key>Normalization</key><integer>1920</integer>
+			<key>Sort Name</key><string>Legend of Xanadu</string>
+			<key>Persistent ID</key><string>298226C81C24686B</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Dave%20Dee,%20Dozy,%20Beaky,%20Mick%20&#38;%20Tich/Dave%20Dee,%20Dozy,%20Beaky,%20Mick%20&#38;%20Tich/09%20The%20Legend%20of%20Xanadu.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>31959</key>
+		<dict>
+			<key>Track ID</key><integer>31959</integer>
+			<key>Name</key><string>Lonesome Town</string>
+			<key>Artist</key><string>Ricky Nelson</string>
+			<key>Album Artist</key><string>Ricky Nelson</string>
+			<key>Composer</key><string>Baker Knight</string>
+			<key>Album</key><string>Pulp Fiction (Original Motion Picture Soundtrack)</string>
+			<key>Genre</key><string>Pop</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>5179800</integer>
+			<key>Total Time</key><integer>133553</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>7</integer>
+			<key>Track Count</key><integer>20</integer>
+			<key>Year</key><integer>1959</integer>
+			<key>Date Modified</key><date>2023-04-21T23:27:33Z</date>
+			<key>Date Added</key><date>2023-04-17T23:45:46Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>4</integer>
+			<key>Play Date</key><integer>3765033022</integer>
+			<key>Play Date UTC</key><date>2023-04-23T01:30:22Z</date>
+			<key>Skip Count</key><integer>1</integer>
+			<key>Skip Date</key><date>2023-04-18T00:19:32Z</date>
+			<key>Release Date</key><date>1959-01-01T12:00:00Z</date>
+			<key>Normalization</key><integer>1082</integer>
+			<key>Persistent ID</key><string>2A8A8073039402DD</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Ricky%20Nelson/Pulp%20Fiction%20(Original%20Motion%20Picture%20Soundtrack)/07%20Lonesome%20Town.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>31967</key>
+		<dict>
+			<key>Track ID</key><integer>31967</integer>
+			<key>Name</key><string>Across 110th Street</string>
+			<key>Artist</key><string>Bobby Womack &#38; Peace</string>
+			<key>Album Artist</key><string>Bobby Womack &#38; Peace</string>
+			<key>Album</key><string>Across 110th Street (Original Motion Picture Soundtrack)</string>
+			<key>Genre</key><string>Soundtrack</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>8974552</integer>
+			<key>Total Time</key><integer>226533</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>1</integer>
+			<key>Track Count</key><integer>11</integer>
+			<key>Year</key><integer>1972</integer>
+			<key>Date Modified</key><date>2023-04-19T01:47:43Z</date>
+			<key>Date Added</key><date>2023-04-19T00:57:56Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>3</integer>
+			<key>Play Date</key><integer>3765033248</integer>
+			<key>Play Date UTC</key><date>2023-04-23T01:34:08Z</date>
+			<key>Release Date</key><date>1972-12-16T08:00:00Z</date>
+			<key>Normalization</key><integer>2268</integer>
+			<key>Sort Album</key><string>Across 110th Street (Original Motion Picture Soundtrack)</string>
+			<key>Sort Artist</key><string>Bobby Womack &#38; Peace</string>
+			<key>Sort Name</key><string>Across 110th Street</string>
+			<key>Persistent ID</key><string>8A399D7E40DA7968</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Bobby%20Womack%20&#38;%20Peace/Across%20110th%20Street%20(Original%20Motion%20Picture%20Soundtrack)/01%20Across%20110th%20Street.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>31970</key>
+		<dict>
+			<key>Track ID</key><integer>31970</integer>
+			<key>Name</key><string>Apple Blossom (Remixed)</string>
+			<key>Artist</key><string>The White Stripes</string>
+			<key>Album Artist</key><string>Jack White</string>
+			<key>Composer</key><string>Jack White</string>
+			<key>Album</key><string>Jack White Acoustic Recordings 1998 - 2016</string>
+			<key>Genre</key><string>Alternative</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>4942094</integer>
+			<key>Total Time</key><integer>134413</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>2</integer>
+			<key>Track Number</key><integer>2</integer>
+			<key>Track Count</key><integer>14</integer>
+			<key>Year</key><integer>2016</integer>
+			<key>Date Modified</key><date>2023-04-21T23:15:17Z</date>
+			<key>Date Added</key><date>2023-04-19T01:01:44Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>3</integer>
+			<key>Play Date</key><integer>3765031224</integer>
+			<key>Play Date UTC</key><date>2023-04-23T01:00:24Z</date>
+			<key>Release Date</key><date>2016-09-09T12:00:00Z</date>
+			<key>Normalization</key><integer>1521</integer>
+			<key>Sort Album</key><string>Jack White Acoustic Recordings 1998 - 2016</string>
+			<key>Sort Artist</key><string>White Stripes</string>
+			<key>Sort Name</key><string>Apple Blossom (Remixed)</string>
+			<key>Persistent ID</key><string>8D78B98611280C39</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Jack%20White/Jack%20White%20Acoustic%20Recordings%201998%20-%202016/1-02%20Apple%20Blossom%20(Remixed).m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>31973</key>
+		<dict>
+			<key>Track ID</key><integer>31973</integer>
+			<key>Name</key><string>California Dreaming</string>
+			<key>Artist</key><string>José Feliciano</string>
+			<key>Album Artist</key><string>José Feliciano</string>
+			<key>Album</key><string>You Keep Me Hangin' On Best 60s Album Ever</string>
+			<key>Genre</key><string>Rock &#38; Roll</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>8495052</integer>
+			<key>Total Time</key><integer>243920</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>19</integer>
+			<key>Track Count</key><integer>25</integer>
+			<key>Year</key><integer>2001</integer>
+			<key>Date Modified</key><date>2023-04-21T23:50:26Z</date>
+			<key>Date Added</key><date>2023-04-19T01:03:44Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>2</integer>
+			<key>Play Date</key><integer>3765031468</integer>
+			<key>Play Date UTC</key><date>2023-04-23T01:04:28Z</date>
+			<key>Skip Count</key><integer>1</integer>
+			<key>Skip Date</key><date>2023-04-22T03:32:21Z</date>
+			<key>Release Date</key><date>2001-10-20T12:00:00Z</date>
+			<key>Normalization</key><integer>3538</integer>
+			<key>Sort Album</key><string>You Keep Me Hangin' On Best 60s Album Ever</string>
+			<key>Sort Artist</key><string>José Feliciano</string>
+			<key>Sort Name</key><string>California Dreaming</string>
+			<key>Persistent ID</key><string>620C27B62FAE7039</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Jos%C3%A9%20Feliciano/You%20Keep%20Me%20Hangin'%20On%20Best%2060s%20Album%20Ever/19%20California%20Dreaming.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>31976</key>
+		<dict>
+			<key>Track ID</key><integer>31976</integer>
+			<key>Name</key><string>Cissy Strut</string>
+			<key>Artist</key><string>The Meters</string>
+			<key>Album Artist</key><string>The Meters</string>
+			<key>Album</key><string>Oldies 60s</string>
+			<key>Genre</key><string>R&#38;B/Soul</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>7420778</integer>
+			<key>Total Time</key><integer>186853</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>47</integer>
+			<key>Track Count</key><integer>50</integer>
+			<key>Year</key><integer>1969</integer>
+			<key>Date Modified</key><date>2023-04-21T23:30:45Z</date>
+			<key>Date Added</key><date>2023-04-19T01:05:19Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>2</integer>
+			<key>Play Date</key><integer>3765031655</integer>
+			<key>Play Date UTC</key><date>2023-04-23T01:07:35Z</date>
+			<key>Release Date</key><date>1969-01-01T12:00:00Z</date>
+			<key>Normalization</key><integer>1520</integer>
+			<key>Sort Album</key><string>Oldies 60s</string>
+			<key>Sort Album Artist</key><string>Meters</string>
+			<key>Sort Artist</key><string>Meters</string>
+			<key>Sort Name</key><string>Cissy Strut</string>
+			<key>Persistent ID</key><string>2CCEF18BD77086AB</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/The%20Meters/Oldies%2060s/47%20Cissy%20Strut.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>31979</key>
+		<dict>
+			<key>Track ID</key><integer>31979</integer>
+			<key>Name</key><string>Harvest Moon</string>
+			<key>Artist</key><string>Bedlam</string>
+			<key>Album Artist</key><string>Bedlam</string>
+			<key>Composer</key><string>Jay Joyce</string>
+			<key>Album</key><string>Reservoir Dogs (Original Motion Picture Soundtrack)</string>
+			<key>Genre</key><string>Pop</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>5765724</integer>
+			<key>Total Time</key><integer>157765</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>12</integer>
+			<key>Track Count</key><integer>16</integer>
+			<key>Year</key><integer>1992</integer>
+			<key>Date Modified</key><date>2023-04-21T23:41:16Z</date>
+			<key>Date Added</key><date>2023-04-19T01:07:25Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>4</integer>
+			<key>Play Date</key><integer>3765033763</integer>
+			<key>Play Date UTC</key><date>2023-04-23T01:42:43Z</date>
+			<key>Release Date</key><date>1992-01-01T12:00:00Z</date>
+			<key>Normalization</key><integer>1388</integer>
+			<key>Sort Album</key><string>Reservoir Dogs (Original Motion Picture Soundtrack)</string>
+			<key>Sort Artist</key><string>Bedlam</string>
+			<key>Sort Name</key><string>Harvest Moon</string>
+			<key>Persistent ID</key><string>9F17BDD7F4620265</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Bedlam/Reservoir%20Dogs%20(Original%20Motion%20Picture%20Soundtrack)/12%20Harvest%20Moon.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>31982</key>
+		<dict>
+			<key>Track ID</key><integer>31982</integer>
+			<key>Name</key><string>I Gotcha</string>
+			<key>Artist</key><string>Joe Tex</string>
+			<key>Album Artist</key><string>Joe Tex</string>
+			<key>Album</key><string>The Very Best, Vol. 2</string>
+			<key>Genre</key><string>R&#38;B/Soul</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>5430313</integer>
+			<key>Total Time</key><integer>148813</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>4</integer>
+			<key>Track Count</key><integer>17</integer>
+			<key>Year</key><integer>1971</integer>
+			<key>Date Modified</key><date>2023-04-21T23:55:36Z</date>
+			<key>Date Added</key><date>2023-04-19T01:10:40Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>2</integer>
+			<key>Play Date</key><integer>3765033908</integer>
+			<key>Play Date UTC</key><date>2023-04-23T01:45:08Z</date>
+			<key>Skip Count</key><integer>1</integer>
+			<key>Skip Date</key><date>2023-04-22T21:28:34Z</date>
+			<key>Release Date</key><date>1971-12-01T12:00:00Z</date>
+			<key>Normalization</key><integer>1720</integer>
+			<key>Sort Album</key><string>Very Best, Vol. 2</string>
+			<key>Sort Artist</key><string>Joe Tex</string>
+			<key>Sort Name</key><string>I Gotcha</string>
+			<key>Persistent ID</key><string>8C517C9B98C8987C</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Joe%20Tex/The%20Very%20Best,%20Vol.%202/04%20I%20Gotcha.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>31985</key>
+		<dict>
+			<key>Track ID</key><integer>31985</integer>
+			<key>Name</key><string>Il tramonto</string>
+			<key>Artist</key><string>Ennio Morricone</string>
+			<key>Album Artist</key><string>Ennio Morricone</string>
+			<key>Album</key><string>Il buono, il brutto, il cattivo (The Good, the Bad &#38; the Ugly) [The Complete Original Motion Picture Soundtrack]</string>
+			<key>Genre</key><string>Soundtrack</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>3304923</integer>
+			<key>Total Time</key><integer>78186</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>2</integer>
+			<key>Track Count</key><integer>21</integer>
+			<key>Year</key><integer>1966</integer>
+			<key>Date Modified</key><date>2023-04-19T01:47:37Z</date>
+			<key>Date Added</key><date>2023-04-19T01:11:39Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>2</integer>
+			<key>Play Date</key><integer>3765021656</integer>
+			<key>Play Date UTC</key><date>2023-04-22T22:20:56Z</date>
+			<key>Release Date</key><date>1966-01-01T08:00:00Z</date>
+			<key>Normalization</key><integer>233</integer>
+			<key>Sort Album</key><string>Il buono, il brutto, il cattivo (The Good, the Bad &#38; the Ugly) [The Complete Original Motion Picture Soundtrack]</string>
+			<key>Sort Artist</key><string>Ennio Morricone</string>
+			<key>Sort Name</key><string>Il tramonto</string>
+			<key>Persistent ID</key><string>36697EE7826F39BA</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Ennio%20Morricone/Il%20buono,%20il%20brutto,%20il%20cattivo%20(The%20Good,%20the%20Bad%20&#38;%20the%20Ugly)%20%5BThe%20Complete%20Original%20Motion%20Picture%20Soundtrack%5D/02%20Il%20tramonto.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>31988</key>
+		<dict>
+			<key>Track ID</key><integer>31988</integer>
+			<key>Name</key><string>Inside My Love</string>
+			<key>Artist</key><string>Minnie Riperton</string>
+			<key>Album Artist</key><string>Minnie Riperton</string>
+			<key>Composer</key><string>Minnie Riperton, Leon Ware &#38; Richard Rudolph</string>
+			<key>Album</key><string>Adventures In Paradise</string>
+			<key>Genre</key><string>R&#38;B/Soul</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>11420472</integer>
+			<key>Total Time</key><integer>288066</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>7</integer>
+			<key>Track Count</key><integer>10</integer>
+			<key>Year</key><integer>1975</integer>
+			<key>Date Modified</key><date>2023-04-19T01:47:40Z</date>
+			<key>Date Added</key><date>2023-04-19T01:13:11Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>2</integer>
+			<key>Play Date</key><integer>3765032319</integer>
+			<key>Play Date UTC</key><date>2023-04-23T01:18:39Z</date>
+			<key>Release Date</key><date>1975-05-22T12:00:00Z</date>
+			<key>Normalization</key><integer>1769</integer>
+			<key>Sort Album</key><string>Adventures In Paradise</string>
+			<key>Sort Artist</key><string>Minnie Riperton</string>
+			<key>Sort Name</key><string>Inside My Love</string>
+			<key>Persistent ID</key><string>744A3D815646C260</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Minnie%20Riperton/Adventures%20In%20Paradise/07%20Inside%20My%20Love.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>31991</key>
+		<dict>
+			<key>Track ID</key><integer>31991</integer>
+			<key>Name</key><string>There Won't Be Many Coming Home</string>
+			<key>Artist</key><string>Roy Orbison</string>
+			<key>Album Artist</key><string>Roy Orbison</string>
+			<key>Composer</key><string>Roy Orbison &#38; Bill Dees</string>
+			<key>Album</key><string>The MGM Years 1965-1973</string>
+			<key>Grouping</key><string>The Fastest Guitar Alive</string>
+			<key>Genre</key><string>Rock</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>5924756</integer>
+			<key>Total Time</key><integer>165040</integer>
+			<key>Disc Number</key><integer>5</integer>
+			<key>Disc Count</key><integer>14</integer>
+			<key>Track Number</key><integer>10</integer>
+			<key>Track Count</key><integer>10</integer>
+			<key>Year</key><integer>1967</integer>
+			<key>Date Modified</key><date>2023-04-21T23:17:42Z</date>
+			<key>Date Added</key><date>2023-04-19T01:25:56Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>3</integer>
+			<key>Play Date</key><integer>3765031090</integer>
+			<key>Play Date UTC</key><date>2023-04-23T00:58:10Z</date>
+			<key>Release Date</key><date>1967-01-01T12:00:00Z</date>
+			<key>Normalization</key><integer>1679</integer>
+			<key>Sort Album</key><string>MGM Years 1965-1973</string>
+			<key>Sort Artist</key><string>Roy Orbison</string>
+			<key>Sort Name</key><string>There Won't Be Many Coming Home</string>
+			<key>Persistent ID</key><string>D8D69017BC49F51E</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Roy%20Orbison/The%20MGM%20Years%201965-1973/5-10%20There%20Won't%20Be%20Many%20Coming%20Home.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>32016</key>
+		<dict>
+			<key>Track ID</key><integer>32016</integer>
+			<key>Name</key><string>Are You Ready?</string>
+			<key>Artist</key><string>Pacific Gas &#38; Electric</string>
+			<key>Album Artist</key><string>Pacific Gas &#38; Electric</string>
+			<key>Composer</key><string>Charles Allen &#38; John Hill</string>
+			<key>Album</key><string>Are You Ready?</string>
+			<key>Genre</key><string>Blues</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>12755968</integer>
+			<key>Total Time</key><integer>322266</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>1</integer>
+			<key>Track Count</key><integer>8</integer>
+			<key>Year</key><integer>1970</integer>
+			<key>Date Modified</key><date>2023-04-21T19:50:19Z</date>
+			<key>Date Added</key><date>2023-04-19T02:21:48Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Release Date</key><date>1970-01-01T12:00:00Z</date>
+			<key>Normalization</key><integer>1967</integer>
+			<key>Persistent ID</key><string>EA7F844E570E83EC</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Pacific%20Gas%20&#38;%20Electric/Are%20You%20Ready_/01%20Are%20You%20Ready_.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+		<key>32019</key>
+		<dict>
+			<key>Track ID</key><integer>32019</integer>
+			<key>Name</key><string>Staggolee</string>
+			<key>Artist</key><string>Pacific Gas &#38; Electric</string>
+			<key>Album Artist</key><string>Pacific Gas &#38; Electric</string>
+			<key>Composer</key><string>John Hill &#38; Charles Allen</string>
+			<key>Album</key><string>Are You Ready?</string>
+			<key>Genre</key><string>Blues</string>
+			<key>Kind</key><string>Purchased AAC audio file</string>
+			<key>Size</key><integer>9241255</integer>
+			<key>Total Time</key><integer>228760</integer>
+			<key>Disc Number</key><integer>1</integer>
+			<key>Disc Count</key><integer>1</integer>
+			<key>Track Number</key><integer>3</integer>
+			<key>Track Count</key><integer>8</integer>
+			<key>Year</key><integer>1970</integer>
+			<key>Date Modified</key><date>2023-04-21T19:50:19Z</date>
+			<key>Date Added</key><date>2023-04-19T02:22:06Z</date>
+			<key>Bit Rate</key><integer>256</integer>
+			<key>Sample Rate</key><integer>44100</integer>
+			<key>Play Count</key><integer>2</integer>
+			<key>Play Date</key><integer>3765032722</integer>
+			<key>Play Date UTC</key><date>2023-04-23T01:25:22Z</date>
+			<key>Release Date</key><date>1970-01-01T12:00:00Z</date>
+			<key>Normalization</key><integer>1066</integer>
+			<key>Persistent ID</key><string>D8326F7EB97AAF0C</string>
+			<key>Track Type</key><string>File</string>
+			<key>Purchased</key><true/>
+			<key>Location</key><string>file:///Users/rduvalwa2/Music/Music/Media.localized/Pacific%20Gas%20&#38;%20Electric/Are%20You%20Ready_/03%20Staggolee.m4a</string>
+			<key>File Folder Count</key><integer>4</integer>
+			<key>Library Folder Count</key><integer>1</integer>
+		</dict>
+	</dict>
+	<key>Playlists</key>
+	<array>
+		<dict>
+			<key>Name</key><string>Recently added</string>
+			<key>Description</key><string></string>
+			<key>Playlist ID</key><integer>207368</integer>
+			<key>Playlist Persistent ID</key><string>9E0AE8F317C42615</string>
+			<key>All Items</key><true/>
+			<key>Playlist Items</key>
+			<array>
+				<dict>
+					<key>Track ID</key><integer>32019</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>32016</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>31991</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>31988</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>31985</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>31982</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>31979</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>31976</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>31973</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>31970</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>31944</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>31947</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>30984</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>30978</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>30963</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>30975</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>30990</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>30987</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>30981</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>30960</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>30957</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>16296</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>20213</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>16777</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>31950</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>31953</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>31956</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>31959</integer>
+				</dict>
+				<dict>
+					<key>Track ID</key><integer>31967</integer>
+				</dict>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
